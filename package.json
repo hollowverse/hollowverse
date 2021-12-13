@@ -1,0 +1,34 @@
+{
+  "name": "hollowverse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "hollowverse",
+  "author": "M.K. Safi",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.3",
+    "clsx": "^1.1.1",
+    "gatsby": "^4.3.0",
+    "gatsby-plugin-image": "^2.3.0",
+    "gatsby-plugin-sharp": "^4.3.0",
+    "gatsby-source-filesystem": "^4.3.0",
+    "gatsby-theme-material-ui": "^5.1.0",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "gatsby-plugin-typescript": "^4.3.0"
+  }
+}
