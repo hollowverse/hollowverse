@@ -5,14 +5,20 @@ import menorah from '../../images/icons/menorah.svg';
 import cross from '../../images/icons/cross.svg';
 import martini from '../../images/icons/martini.svg';
 import democrat from '../../images/icons/democrat.svg';
-import maleCouple from '../../images/icons/maleCouple.svg';
+import lgbt from '../../images/icons/lgbt.svg';
+import hourglass from '../../images/icons/hourglass.svg';
+import camera from '../../images/icons/camera.svg';
+import flag from '../../images/icons/flag.svg';
 
 const iconLabelMap = [
   [['jewish'], menorah, 'Menorah'],
   [['catholic'], cross, 'Cross'],
   [['non-religious'], martini, 'Martini'],
   [['democrat', 'liberal', 'obama'], democrat, 'Donkey'],
-  [['lgbt'], maleCouple, 'Male couple'],
+  [['lgbt'], lgbt, 'LGBT'],
+  [['actress', 'actor'], camera, 'Camera'],
+  [['years old'], hourglass, 'Hourglass'],
+  [['ancestry'], flag, 'Flag'],
 ];
 
 export const Attribute: React.FC<{

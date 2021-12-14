@@ -3,9 +3,7 @@ import 'normalize.css';
 import React from 'react';
 import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
-// @ts-ignore
 import logo from '../../images/logo.svg';
-// @ts-ignore
 import * as s from './notablePerson.module.scss';
 import { Avatar, Divider, ThemeProvider, Typography } from '@mui/material';
 import {
@@ -15,6 +13,8 @@ import {
 import { theme } from '../theme';
 import { Attribute } from '../Attribute/Attribute';
 import { NotablePersonYml, Pic } from '../types';
+import quote from '../../images/icons/quote.svg';
+import pen from '../../images/icons/pen.svg';
 
 export default (p: { yml: NotablePersonYml; pic: Pic; editorial: string }) => {
   return (
@@ -60,7 +60,10 @@ export default (p: { yml: NotablePersonYml; pic: Pic; editorial: string }) => {
             </Container>
 
             <div className={s.quotesContainer}>
-              <Typography variant="h2">Quotes</Typography>
+              <Typography variant="h1" component="h2">
+                <img width="25" src={quote} alt="Quote" />
+                <span style={{ marginLeft: '10px' }}>Quotes</span>
+              </Typography>
 
               {p.yml.quotes.map((quote, i) => (
                 <div className={s.quoteBlock} key={i}>
@@ -89,7 +92,10 @@ export default (p: { yml: NotablePersonYml; pic: Pic; editorial: string }) => {
             </div>
 
             <div className={s.editorialContainer}>
-              <Typography variant="h2">Editorial</Typography>
+              <Typography variant="h1" component="h2">
+                <img width="25" src={pen} alt="Pen" />
+                <span style={{ marginLeft: '10px' }}>Editorial</span>
+              </Typography>
 
               <div
                 className={s.editorialContent}

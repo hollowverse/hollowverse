@@ -17,7 +17,7 @@
 
 .fancyBackgroundContainer {
   text-align: center;
-  // padding: 80px 0 120px;
+  padding: 0;
   position: relative;
   background: linear-gradient(-90deg, #4535f74f, #fbc9546f, #4cfde838);
   background-size: 100% 100%;
@@ -100,8 +100,4 @@
 
 .editorialContainer {
   margin-top: $s8;
-
-  .editorialContent {
-    margin: 0 50px;
-  }
 }
