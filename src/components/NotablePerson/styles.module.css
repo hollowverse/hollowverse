@@ -11,6 +11,8 @@
   --buttonTextColor: #ffffff;
   --redColor: #c1292e;
   --gray700: #616161;
+  --gray400: #bdbdbd;
+  --gray800: #424242;
 }
 
 .alignItemsCenter {
@@ -95,6 +97,10 @@
 
 .colorGray700 {
   color: var(--gray700);
+}
+
+.colorGray800 {
+  color: var(--gray800);
 }
 
 .colorButton {
@@ -233,6 +239,10 @@
   margin-top: calc(var(--pixelUnit) * 2);
 }
 
+.marginTop3 {
+  margin-top: calc(var(--pixelUnit) * 3);
+}
+
 .marginTop5 {
   margin-top: calc(var(--pixelUnit) * 5);
 }
@@ -365,12 +375,6 @@
   width: 100%;
 }
 
-.personDetailsCover:after {
-  background-image: linear-gradient(
-    132deg,
-    #4cfde9 -20%,
-    rgba(251, 201, 84, 0) 30%,
-    rgba(251, 201, 84, 0) 60%,
-    #4435f7 120%
-  );
+.border {
+  border: 1px solid var(--gray400);
 }

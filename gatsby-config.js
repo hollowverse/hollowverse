@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.yourdomain.tld',
+    siteUrl: 'https://hollowverse.com',
     title: 'hollowverse',
   },
   plugins: [
@@ -8,12 +8,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     'gatsby-theme-material-ui',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
-      },
-    },
+    `gatsby-plugin-sass`,
   ],
 };

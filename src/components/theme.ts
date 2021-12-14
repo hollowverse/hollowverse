@@ -27,6 +27,9 @@ export const theme: ThemeOptions = {
   },
 
   typography: {
+    fontFamily:
+      "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+
     h1: {
       fontSize: '2rem',
     },
