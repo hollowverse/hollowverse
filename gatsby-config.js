@@ -9,5 +9,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     'gatsby-theme-material-ui',
     `gatsby-plugin-sass`,
+    'gatsby-plugin-tsconfig-paths',
   ],
 };

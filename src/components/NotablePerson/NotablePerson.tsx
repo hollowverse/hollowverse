@@ -3,18 +3,18 @@ import 'normalize.css';
 import React from 'react';
 import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
-import logo from '../../images/logo.svg';
+import logo from '_i/logo.svg';
 import * as s from './notablePerson.module.scss';
 import { Avatar, Divider, ThemeProvider, Typography } from '@mui/material';
 import {
   unstable_createMuiStrictModeTheme,
   StyledEngineProvider,
 } from '@mui/material/styles';
-import { theme } from '../theme';
-import { Attribute } from '../Attribute/Attribute';
-import { NotablePersonYml, Pic } from '../types';
-import quote from '../../images/icons/quote.svg';
-import pen from '../../images/icons/pen.svg';
+import { theme } from '_c/theme';
+import { Attribute } from '_c/Attribute/Attribute';
+import { NotablePersonYml, Pic } from '_c/types';
+import quote from '_i/icons/quote.svg';
+import pen from '_i/icons/pen.svg';
 
 export default (p: { yml: NotablePersonYml; pic: Pic; editorial: string }) => {
   return (
@@ -86,7 +86,7 @@ export default (p: { yml: NotablePersonYml; pic: Pic; editorial: string }) => {
                     </div>
                   </div>
 
-                  {i != p.yml.quotes.length - 1 && <Divider></Divider>}
+                  {i != p.yml.quotes.length - 1 && <Divider />}
                 </div>
               ))}
             </div>

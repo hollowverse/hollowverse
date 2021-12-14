@@ -1,14 +1,14 @@
 import React from 'react';
 import * as s from './attribute.module.scss';
 
-import menorah from '../../images/icons/menorah.svg';
-import cross from '../../images/icons/cross.svg';
-import martini from '../../images/icons/martini.svg';
-import democrat from '../../images/icons/democrat.svg';
-import lgbt from '../../images/icons/lgbt.svg';
-import hourglass from '../../images/icons/hourglass.svg';
-import camera from '../../images/icons/camera.svg';
-import flag from '../../images/icons/flag.svg';
+import menorah from '_i/icons/menorah.svg';
+import cross from '_i/icons/cross.svg';
+import martini from '_i/icons/martini.svg';
+import democrat from '_i/icons/democrat.svg';
+import lgbt from '_i/icons/lgbt.svg';
+import hourglass from '_i/icons/hourglass.svg';
+import camera from '_i/icons/camera.svg';
+import flag from '_i/icons/flag.svg';
 
 const iconLabelMap = [
   [['jewish'], menorah, 'Menorah'],
