@@ -43,12 +43,12 @@
   padding-top: $s4;
   position: relative;
   z-index: 2;
-}
 
-.notablePersonMainImage {
-  width: 150px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4.5px rgb(255 255 255 / 70%), 0 2px 1px 0 rgb(0 0 0 / 10%);
+  .notablePersonMainImage {
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4.5px rgb(255 255 255 / 70%), 0 2px 1px 0 rgb(0 0 0 / 10%);
+  }
 }
 
 .pageTitleLessEmphasized {
@@ -92,10 +92,15 @@
 .quoteTextContainer {
   padding: $s4;
   display: flex;
-}
 
-.quoteText {
-  margin-left: $s4;
+  .quoteAvatar {
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  .quoteText {
+    margin-left: $s4;
+  }
 }
 
 .editorialContainer {
@@ -110,7 +115,33 @@
     }
   }
 
-  .otherInterestingProfiles {
+  .editorialSource {
+    color: #1769aa;
+  }
+
+  .interestingProfilesContainer {
     margin-top: $s8;
+
+    .interestingProfiles {
+      margin-top: $s8;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .interestingProfile {
+        text-align: center;
+        color: $textColor;
+        text-decoration: none;
+
+        .interestingProfileImage {
+          width: 120px;
+          border-radius: 50%;
+        }
+
+        .interestingProfileName {
+          margin-top: $s4;
+        }
+      }
+    }
   }
 }

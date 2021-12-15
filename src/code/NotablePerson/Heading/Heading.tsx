@@ -4,16 +4,19 @@ import React from 'react';
 import * as s from '../notablePerson.module.scss';
 import { Typography, Container } from '@mui/material';
 import { Attribute } from '_c/Attribute/Attribute';
-import { NotablePersonYml, Pic } from '_c/types';
+import { NotablePersonData, Pic } from '_c/types';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
-export const Heading = (p: { yml: NotablePersonYml; pic: Pic }) => {
+export const Heading = (p: { yml: NotablePersonData; pic: Pic }) => {
+  const pic = getImage(p.pic)!;
+
   return (
     <>
       <div className={s.notablePersonHeading}>
-        <img
-          src={p.pic}
-          className={s.notablePersonMainImage}
+        <GatsbyImage
+          image={pic}
           alt={p.yml.name}
+          className={s.notablePersonMainImage}
         />
         <Typography variant="h1" className={s.pageTitle}>
           <span className={s.pageTitleLessEmphasized}>

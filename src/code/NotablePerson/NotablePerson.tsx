@@ -9,16 +9,21 @@ import {
   StyledEngineProvider,
 } from '@mui/material/styles';
 import { theme } from '_c/theme';
-import { NotablePersonYml, Pic } from '_c/types';
+import {
+  InterestingProfiles as InterestingProfilesType,
+  NotablePersonData,
+  Pic,
+} from '_c/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';
-import { StaticImage } from 'gatsby-plugin-image';
-import { graphql, useStaticQuery } from 'gatsby';
 
-// { yml: NotablePersonYml; pic: Pic; editorial: string }
-
-const NotablePerson = (p: any) => {
+const NotablePerson = (p: {
+  data: NotablePersonData;
+  pic: Pic;
+  editorial: string;
+  interestingProfiles: InterestingProfilesType;
+}) => {
   return (
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
@@ -39,22 +44,25 @@ const NotablePerson = (p: any) => {
 
           <Container maxWidth="md">
             <Container className={s.fancyBackgroundContainer}>
-              <Heading yml={p.yml} pic={p.pic} />
+              <Heading yml={p.data} pic={p.pic} />
             </Container>
 
             <div className={s.quotesContainer}>
-              <Quotes yml={p.yml} pic={p.pic} />
+              <Quotes yml={p.data} pic={p.pic} />
             </div>
 
-            {p.editorial && p.yml['editorial-sources'] && (
+            {p.editorial && p.data['editorial-sources'] && (
               <div className={s.editorialContainer}>
                 <Editorial
                   editorial={p.editorial}
-                  sources={p.yml['editorial-sources']}
+                  sources={p.data['editorial-sources']}
+                  interestingProfiles={p.interestingProfiles}
                 />
               </div>
             )}
           </Container>
+
+          <div style={{ marginTop: '100px' }} />
         </ThemeProvider>
       </StyledEngineProvider>
     </React.StrictMode>
