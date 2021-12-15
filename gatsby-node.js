@@ -1,3 +1,11 @@
+const pagesToDelete = [];
+
+exports.onCreatePage = ({ page, actions }) => {
+  // if (page.path === '/alyson-hannigan/') {
+  //   actions.deletePage(page);
+  // }
+};
+
 exports.onCreateWebpackConfig = ({
   stage,
   rules,

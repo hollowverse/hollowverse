@@ -100,4 +100,17 @@
 
 .editorialContainer {
   margin-top: $s8;
+
+  .editorialContent {
+    font-size: 120%;
+
+    blockquote {
+      padding: 1px 0 1px $s4;
+      border-left: 15px solid $lessEmphasis300;
+    }
+  }
+
+  .otherInterestingProfiles {
+    margin-top: $s8;
+  }
 }
