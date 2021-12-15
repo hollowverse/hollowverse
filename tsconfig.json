@@ -36,8 +36,9 @@
     "rootDir": "src",
 
     "paths": {
-      "_c/*": ["src/components/*"],
-      "_i/*": ["src/images/*"]
+      "_c/*": ["src/code/*"],
+      "_i/*": ["src/images/*"],
+      "_s/*": ["src/*"]
     }
   },
   "exclude": ["node_modules", "./built/**/*"],

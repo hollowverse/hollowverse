@@ -29,11 +29,11 @@ export const Editorial = (p: {
       </Typography>
 
       <ol>
-        {p.sources.map((source) => {
+        {p.sources.map(([url, title]) => {
           return (
-            <li>
-              <a href={source[1]} rel="external" target="_blank">
-                {source[0]}
+            <li key={url}>
+              <a href={url} rel="external" target="_blank">
+                {title}
               </a>
             </li>
           );

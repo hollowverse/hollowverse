@@ -8,8 +8,8 @@ import {
   unstable_createMuiStrictModeTheme,
   StyledEngineProvider,
 } from '@mui/material/styles';
-import { theme } from 'src/components/theme';
-import { NotablePersonYml, Pic } from 'src/components/types';
+import { theme } from '_c/theme';
+import { NotablePersonYml, Pic } from '_c/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';

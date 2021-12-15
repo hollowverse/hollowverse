@@ -3,8 +3,8 @@ import 'normalize.css';
 import React from 'react';
 import * as s from '../notablePerson.module.scss';
 import { Typography, Container } from '@mui/material';
-import { Attribute } from 'src/components/Attribute/Attribute';
-import { NotablePersonYml, Pic } from 'src/components/types';
+import { Attribute } from '_c/Attribute/Attribute';
+import { NotablePersonYml, Pic } from '_c/types';
 
 export const Heading = (p: { yml: NotablePersonYml; pic: Pic }) => {
   return (

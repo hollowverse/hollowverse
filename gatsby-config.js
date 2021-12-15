@@ -8,12 +8,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: 'gatsby-transformer-yaml',
-      options: {
-        typeName: 'Data',
-      },
-    },
     'gatsby-theme-material-ui',
     `gatsby-plugin-sass`,
     'gatsby-plugin-tsconfig-paths',

@@ -1,22 +1,18 @@
-import { graphql } from 'gatsby';
 import React from 'react';
-import NotablePerson from 'src/components/NotablePerson/NotablePerson';
+// @ts-ignore
+import alysonHannigan from './pic.jpg';
+// @ts-ignore
+import alysonHanniganYml from './data.yml';
+import NotablePerson from '_c/NotablePerson/NotablePerson';
+// @ts-ignore
+import editorial from './editorial.md';
 
-const Page = ({ data }: any) => {
-  return <div>hello</div>;
-  // return <NotablePerson />;
+export default () => {
+  return (
+    <NotablePerson
+      yml={alysonHanniganYml}
+      pic={alysonHannigan}
+      editorial={editorial}
+    ></NotablePerson>
+  );
 };
-
-export const query = graphql`
-  query PageQuery {
-    allData(filter: { name: { eq: "Alyson Hannigan" } }) {
-      edges {
-        node {
-          name
-        }
-      }
-    }
-  }
-`;
-
-export default Page;
