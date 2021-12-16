@@ -8,9 +8,9 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    'gatsby-theme-material-ui',
     `gatsby-plugin-sass`,
     'gatsby-plugin-tsconfig-paths',
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
       options: {

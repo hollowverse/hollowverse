@@ -1,8 +1,8 @@
 import 'normalize.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import * as s from '../notablePerson.module.scss';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import pen from '_i/icons/pen.svg';
 import bookOpen from '_i/icons/book-open.svg';
 import stars from '_i/icons/stars.svg';
@@ -14,6 +14,8 @@ export const Editorial = (p: {
   sources: [string, string][];
   interestingProfiles: TInterestingProfiles;
 }) => {
+  const [showSources, setShowSources] = useState(false);
+
   return (
     <>
       <Typography variant="h1" component="h3">
@@ -26,27 +28,39 @@ export const Editorial = (p: {
         dangerouslySetInnerHTML={{ __html: p.editorial }}
       ></div>
 
-      <Typography variant="h3" component="h4">
-        <img width="15" src={bookOpen} alt="Book open" />
-        <span style={{ marginLeft: '10px' }}>Sources for the editorial</span>
-      </Typography>
+      <div className={s.sourcesTitleContainer}>
+        <Typography variant="h3" component="h4"></Typography>
+        <Button
+          variant="text"
+          size="large"
+          onClick={() => setShowSources(!showSources)}
+          style={{ textTransform: 'none' }}
+        >
+          <img width="15" src={bookOpen} alt="Book open" />
+          <span style={{ marginLeft: '10px' }}>
+            {showSources ? 'Hide' : 'Show'} sources for the editorial
+          </span>
+        </Button>
+      </div>
 
-      <ol>
-        {p.sources.map(([title, url]) => {
-          return (
-            <li key={url}>
-              <a
-                href={url}
-                rel="external"
-                target="_blank"
-                className={s.editorialSource}
-              >
-                {title}
-              </a>
-            </li>
-          );
-        })}
-      </ol>
+      {showSources && (
+        <ol>
+          {p.sources.map(([title, url]) => {
+            return (
+              <li key={url} className={s.editorialListItem}>
+                <a
+                  href={url}
+                  rel="external"
+                  target="_blank"
+                  className={s.editorialSource}
+                >
+                  {title}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      )}
 
       <div className={s.interestingProfilesContainer}>
         <Typography variant="h1" component="h3">

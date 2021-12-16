@@ -1,6 +1,8 @@
 import 'normalize.css';
+import '_c/globalStyles.css';
 
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import logo from '_i/logo.svg';
 import * as s from './notablePerson.module.scss';
 import { ThemeProvider, Typography, Container, AppBar } from '@mui/material';
@@ -31,6 +33,21 @@ const NotablePerson = (p: {
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={unstable_createMuiStrictModeTheme(theme)}>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>
+              {p.data.name}'s religion and political view | Hollowverse
+            </title>
+            <meta
+              name="description"
+              content={`${p.data.name}: ${p.data.attributes.join(', ')}`}
+            ></meta>
+            <link
+              rel="canonical"
+              href={`https://hollowverse.com/${p.data.slug}`}
+            />
+          </Helmet>
+
           <AppBar
             elevation={1}
             color="transparent"
@@ -38,12 +55,12 @@ const NotablePerson = (p: {
             className={s.appBar}
           >
             <Container maxWidth="md" className={s.appBarContainer}>
-              <div className={s.logo}>
+              <a className={s.logo} href="/">
                 <img src={logo} alt="Hollowverse" style={{ width: 200 }}></img>
                 <Typography variant="body2" className={s.logoSubtitle}>
                   Important people and facts
                 </Typography>
-              </div>
+              </a>
 
               <div className={s.search}>
                 <div className="gcse-search"></div>

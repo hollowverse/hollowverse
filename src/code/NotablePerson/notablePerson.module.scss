@@ -19,6 +19,10 @@
     align-self: center;
   }
 
+  .logo {
+    text-decoration: none;
+  }
+
   .search {
     position: relative;
     z-index: 100;
@@ -123,7 +127,7 @@
   margin-top: $s8;
 
   .editorialContent {
-    font-size: 120%;
+    font-size: 110%;
 
     blockquote {
       padding: 1px 0 1px $s4;
@@ -131,8 +135,19 @@
     }
   }
 
-  .editorialSource {
-    color: #1769aa;
+  .editorialListItem {
+    & + .editorialListItem {
+      margin-top: $s4;
+    }
+
+    .editorialSource {
+      color: #1769aa;
+    }
+  }
+
+  .sourcesTitleContainer {
+    display: flex;
+    align-items: center;
   }
 
   .interestingProfilesContainer {
