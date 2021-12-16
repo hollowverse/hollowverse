@@ -9,6 +9,21 @@
 .appBarContainer {
   margin-top: $s4;
   margin-bottom: $s4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .logo,
+  .search {
+    flex: 0.5;
+    align-self: center;
+  }
+
+  .search {
+    position: relative;
+    z-index: 100;
+    min-width: 400px;
+  }
 }
 
 .logoSubtitle {
@@ -22,6 +37,7 @@
   background: linear-gradient(-90deg, #4535f74f, #fbc9546f, #4cfde838);
   background-size: 100% 100%;
   background-repeat: repeat-x;
+  z-index: 0;
 }
 
 .fancyBackgroundContainer::after {
@@ -42,7 +58,7 @@
   align-items: center;
   padding-top: $s4;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 
   .notablePersonMainImage {
     width: 150px;
@@ -73,7 +89,7 @@
   flex-wrap: wrap;
   text-align: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .quotesContainer {

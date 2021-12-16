@@ -28,7 +28,7 @@ export const Editorial = (p: {
 
       <Typography variant="h3" component="h4">
         <img width="15" src={bookOpen} alt="Book open" />
-        <span style={{ marginLeft: '10px' }}>Editorial sources</span>
+        <span style={{ marginLeft: '10px' }}>Sources for the editorial</span>
       </Typography>
 
       <ol>

@@ -11,7 +11,11 @@ export const InterestingProfiles = (p: {
     <>
       {p.interestingProfiles.map(([data, pic]) => {
         return (
-          <a className={s.interestingProfile} href={`/${data.slug}`}>
+          <a
+            className={s.interestingProfile}
+            href={`/${data.slug}`}
+            key={data.slug}
+          >
             <GatsbyImage
               image={getImage(pic)!}
               alt={data.name}

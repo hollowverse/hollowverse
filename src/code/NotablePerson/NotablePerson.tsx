@@ -17,6 +17,7 @@ import {
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';
+import { useInjectScript } from '_c/useInjectScript';
 
 const NotablePerson = (p: {
   data: NotablePersonData;
@@ -24,6 +25,8 @@ const NotablePerson = (p: {
   editorial: string;
   interestingProfiles: InterestingProfilesType;
 }) => {
+  useInjectScript('https://cse.google.com/cse.js?cx=b70c7f6ba6a334ff2');
+
   return (
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
@@ -35,10 +38,16 @@ const NotablePerson = (p: {
             className={s.appBar}
           >
             <Container maxWidth="md" className={s.appBarContainer}>
-              <img src={logo} alt="Hollowverse" style={{ width: 200 }}></img>
-              <Typography variant="body2" className={s.logoSubtitle}>
-                Important people and facts
-              </Typography>
+              <div className={s.logo}>
+                <img src={logo} alt="Hollowverse" style={{ width: 200 }}></img>
+                <Typography variant="body2" className={s.logoSubtitle}>
+                  Important people and facts
+                </Typography>
+              </div>
+
+              <div className={s.search}>
+                <div className="gcse-search"></div>
+              </div>
             </Container>
           </AppBar>
 
