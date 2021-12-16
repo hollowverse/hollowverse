@@ -64,22 +64,12 @@ export const theme: ThemeOptions = {
     },
   },
 
-  // overrides: {
-  //   MuiButton: {
-  //     root: {
-  //       textTransform: "inherit",
-  //     },
-  //   },
-  // },
-
-  // props: {
-  //   MuiButtonBase: {
-  //     disableRipple: true,
-  //     disableTouchRipple: true,
-  //   },
-
-  //   MuiButton: {
-  //     disableFocusRipple: true,
-  //   },
-  // },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+        disableTouchRipple: true,
+      },
+    },
+  },
 };
