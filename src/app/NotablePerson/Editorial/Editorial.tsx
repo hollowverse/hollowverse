@@ -7,7 +7,7 @@ import pen from '_i/icons/pen.svg';
 import bookOpen from '_i/icons/book-open.svg';
 import stars from '_i/icons/stars.svg';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
-import { InterestingProfiles as TInterestingProfiles } from '_c/types';
+import { InterestingProfiles as TInterestingProfiles } from '_s/app/types';
 
 export const Editorial = (p: {
   editorial: string;

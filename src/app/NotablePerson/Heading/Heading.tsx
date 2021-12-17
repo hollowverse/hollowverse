@@ -3,19 +3,16 @@ import 'normalize.css';
 import React from 'react';
 import * as s from '../notablePerson.module.scss';
 import { Typography, Container } from '@mui/material';
-import { Attribute } from '_c/Attribute/Attribute';
-import { NotablePersonData, Pic } from '_c/types';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { Attribute } from '_s/app/Attribute/Attribute';
+import { NotablePersonData, Pic } from '_s/app/types';
 
 export const Heading = (p: { yml: NotablePersonData; pic: Pic }) => {
-  const pic = getImage(p.pic)!;
-
   return (
     <>
       <div className={s.notablePersonHeading}>
-        <GatsbyImage
-          image={pic}
-          alt={p.yml.name}
+        <div
+          // image={pic}
+          // alt={p.yml.name}
           className={s.notablePersonMainImage}
         />
         <Typography variant="h1" className={s.pageTitle}>

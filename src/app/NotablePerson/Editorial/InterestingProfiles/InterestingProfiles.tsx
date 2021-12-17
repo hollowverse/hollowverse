@@ -1,7 +1,6 @@
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import * as s from '../../notablePerson.module.scss';
-import { InterestingProfiles as InterestingProfilesType } from '_c/types';
+import { InterestingProfiles as InterestingProfilesType } from '_s/app/types';
 import { Typography } from '@mui/material';
 
 export const InterestingProfiles = (p: {
@@ -16,9 +15,9 @@ export const InterestingProfiles = (p: {
             href={`/${data.slug}`}
             key={data.slug}
           >
-            <GatsbyImage
-              image={getImage(pic)!}
-              alt={data.name}
+            <div
+              // image={getImage(pic)!}
+              // alt={data.name}
               className={s.interestingProfileImage}
             />
             <Typography

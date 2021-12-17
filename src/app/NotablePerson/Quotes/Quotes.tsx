@@ -3,13 +3,10 @@ import 'normalize.css';
 import React from 'react';
 import * as s from '../notablePerson.module.scss';
 import { Avatar, Divider, Typography } from '@mui/material';
-import { NotablePersonData, Pic } from '_c/types';
+import { NotablePersonData, Pic } from '_s/app/types';
 import quote from '_i/icons/quote.svg';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 export const Quotes = (p: { yml: NotablePersonData; pic: Pic }) => {
-  const pic = getImage(p.pic)!;
-
   return (
     <>
       <Typography variant="h1" component="h2">
@@ -25,9 +22,9 @@ export const Quotes = (p: { yml: NotablePersonData; pic: Pic }) => {
 
           <div className={s.quoteTextContainer}>
             <div>
-              <GatsbyImage
-                image={pic}
-                alt={p.yml.name}
+              <div
+                // image={pic}
+                // alt={p.yml.name}
                 className={s.quoteAvatar}
               />
             </div>

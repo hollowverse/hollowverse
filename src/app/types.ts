@@ -1,5 +1,3 @@
-import { ImageDataLike } from 'gatsby-plugin-image';
-
 export type NotablePersonData = {
   slug: string;
   name: string;
@@ -8,6 +6,6 @@ export type NotablePersonData = {
   'editorial-sources'?: [string, string][];
 };
 
-export type Pic = ImageDataLike;
+export type Pic = any;
 
 export type InterestingProfiles = [NotablePersonData, Pic][];

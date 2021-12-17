@@ -4,7 +4,6 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
-
     "strict": true,
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
@@ -12,18 +11,13 @@
     "noEmitOnError": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-
     "module": "esnext",
     "target": "ES2017",
     "sourceMap": true,
-
     "skipLibCheck": true,
-
     "allowJs": true,
     "checkJs": true,
-
     "jsx": "preserve",
-
     "pretty": true,
     "baseUrl": ".",
     "declaration": false,
@@ -32,15 +26,32 @@
     "removeComments": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-
     "rootDir": "src",
-
     "paths": {
-      "_c/*": ["src/code/*"],
-      "_i/*": ["src/images/*"],
-      "_s/*": ["src/*"]
-    }
+      "_c/*": [
+        "src/code/*"
+      ],
+      "_i/*": [
+        "src/images/*"
+      ],
+      "_s/*": [
+        "src/*"
+      ]src/app/*
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true
   },
-  "exclude": ["node_modules", "./built/**/*"],
-  "include": ["src/**/*"]
+  "exclude": [
+    "node_modules",
+    "./built/**/*"
+  ],
+  "include": [
+    "src/**/*"
+  ]
 }

@@ -1,5 +1,5 @@
 import 'normalize.css';
-import '_c/globalStyles.css';
+// import '_c/globalStyles.css';
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -10,16 +10,16 @@ import {
   unstable_createMuiStrictModeTheme,
   StyledEngineProvider,
 } from '@mui/material/styles';
-import { theme } from '_c/theme';
+import { theme } from '_s/app/theme';
 import {
   InterestingProfiles as InterestingProfilesType,
   NotablePersonData,
   Pic,
-} from '_c/types';
+} from '_s/app/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';
-import { useInjectScript } from '_c/useInjectScript';
+import { useInjectScript } from '_s/app/useInjectScript';
 
 const NotablePerson = (p: {
   data: NotablePersonData;
