@@ -1,5 +1,6 @@
 import React from 'react';
-import * as s from './attribute.module.scss';
+import s from './attribute.module.scss';
+import Image from 'next/image';
 
 import menorah from '_i/icons/menorah.svg';
 import cross from '_i/icons/cross.svg';
@@ -11,14 +12,14 @@ import camera from '_i/icons/camera.svg';
 import flag from '_i/icons/flag.svg';
 
 const iconLabelMap = [
-  [['jewish'], menorah, 'Menorah'],
-  [['catholic'], cross, 'Cross'],
-  [['non-religious'], martini, 'Martini'],
-  [['democrat', 'liberal', 'obama'], democrat, 'Donkey'],
-  [['lgbt'], lgbt, 'LGBT'],
-  [['actress', 'actor'], camera, 'Camera'],
-  [['years old'], hourglass, 'Hourglass'],
-  [['ancestry'], flag, 'Flag'],
+  [['jewish'], 'menorah', 'Menorah'],
+  [['catholic'], 'cross', 'Cross'],
+  [['non-religious'], 'martini', 'Martini'],
+  [['democrat', 'liberal', 'obama'], 'democrat', 'Donkey'],
+  [['lgbt'], 'lgbt', 'LGBT'],
+  [['actress', 'actor'], 'camera', 'Camera'],
+  [['years old'], 'hourglass', 'Hourglass'],
+  [['ancestry'], 'flag', 'Flag'],
 ];
 
 export const Attribute: React.FC<{
@@ -42,7 +43,16 @@ export const Attribute: React.FC<{
   return (
     <div className={s.attribute}>
       <div>{p.label}</div>
-      <div>{icon && <img className={s.img} src={icon[1]} alt={icon[2]} />}</div>
+      <div className={s.img}>
+        {icon && (
+          <Image
+            width={20}
+            height={20}
+            src={`/images/icons/${icon[1]}.svg`}
+            alt={icon[2] as string}
+          />
+        )}
+      </div>
     </div>
   );
 };

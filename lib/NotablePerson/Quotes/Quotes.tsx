@@ -1,32 +1,34 @@
 import 'normalize.css';
 
 import React from 'react';
-import * as s from '../notablePerson.module.scss';
-import { Avatar, Divider, Typography } from '@mui/material';
-import { NotablePersonData, Pic } from '_s/lib/types';
+import s from '../notablePerson.module.scss';
+import { Divider, Typography } from '@mui/material';
+import { NotablePersonData, Pic } from '_l/types';
 import quote from '_i/icons/quote.svg';
+import Image from 'next/image';
 
-export const Quotes = (p: { yml: NotablePersonData; pic: Pic }) => {
+export const Quotes = (p: { data: NotablePersonData; pic: Pic }) => {
   return (
     <>
       <Typography variant="h1" component="h2">
-        <img width="25" src={quote} alt="Quote" />
+        <Image
+          width={25}
+          height={25}
+          src="/images/icons/quote.svg"
+          alt="Quote"
+        />
         <span style={{ marginLeft: '10px' }}>Quotes</span>
       </Typography>
 
-      {p.yml.quotes.map((quote, i) => (
+      {p.data.quotes.map((quote, i) => (
         <div className={s.quoteBlock} key={i}>
           <Typography variant="h4" component="p" className={s.quoteContext}>
             {quote[0]}
           </Typography>
 
           <div className={s.quoteTextContainer}>
-            <div>
-              <div
-                // image={pic}
-                // alt={p.yml.name}
-                className={s.quoteAvatar}
-              />
+            <div className={s.quoteAvatar}>
+              <Image src={p.pic} alt={p.data.name} width={50} height={50} />
             </div>
             <div className={s.quoteText}>
               <Typography variant="h2" component="p">
@@ -35,7 +37,7 @@ export const Quotes = (p: { yml: NotablePersonData; pic: Pic }) => {
             </div>
           </div>
 
-          {i != p.yml.quotes.length - 1 && <Divider />}
+          {i != p.data.quotes.length - 1 && <Divider />}
         </div>
       ))}
     </>

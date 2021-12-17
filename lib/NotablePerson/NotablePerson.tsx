@@ -80,7 +80,7 @@ const NotablePerson = (p: {
             </Container>
 
             <div className={s.quotesContainer}>
-              <Quotes yml={p.data} pic={p.pic} />
+              <Quotes data={p.data} pic={p.pic} />
             </div>
 
             {p.editorial && p.data['editorial-sources'] && (

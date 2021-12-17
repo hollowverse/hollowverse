@@ -62,7 +62,7 @@ export const getStaticProps = async ({ params }: any) => {
     props: {
       data,
       editorial: editorialHtml,
-      pic: join('images', 'notablePeople', `${(data as any).id}.jpg`),
+      pic: `/images/notablePeople/${(data as any).id}.jpg`,
     },
   };
 };

@@ -22,6 +22,7 @@
   }
 
   .search {
+    height: 62px;
     position: relative;
     z-index: 100;
     min-width: 400px;
@@ -115,7 +116,12 @@
   display: flex;
 
   .quoteAvatar {
-    width: 50px;
+    position: relative;
+    overflow: hidden;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
     border-radius: 50%;
   }
 

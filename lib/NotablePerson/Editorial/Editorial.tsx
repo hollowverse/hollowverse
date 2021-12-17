@@ -1,13 +1,12 @@
 import 'normalize.css';
 
 import React, { useState } from 'react';
-import * as s from '../notablePerson.module.scss';
+import s from '../notablePerson.module.scss';
 import { Button, Typography } from '@mui/material';
-import pen from '_i/icons/pen.svg';
-import bookOpen from '_i/icons/book-open.svg';
 import stars from '_i/icons/stars.svg';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
-import { InterestingProfiles as TInterestingProfiles } from '_s/lib/types';
+import { InterestingProfiles as TInterestingProfiles } from '_l/types';
+import Image from 'next/image';
 
 export const Editorial = (p: {
   editorial: string;
@@ -19,7 +18,7 @@ export const Editorial = (p: {
   return (
     <>
       <Typography variant="h1" component="h3">
-        <img width="25" src={pen} alt="Pen" />
+        <Image width={25} height={25} src="/images/icons/pen.svg" alt="Pen" />
         <span style={{ marginLeft: '10px' }}>Editorial</span>
       </Typography>
 
@@ -36,7 +35,12 @@ export const Editorial = (p: {
           onClick={() => setShowSources(!showSources)}
           style={{ textTransform: 'none' }}
         >
-          <img width="15" src={bookOpen} alt="Book open" />
+          <Image
+            width={15}
+            height={15}
+            src="/images/icons/book-open.svg"
+            alt="Book open"
+          />
           <span style={{ marginLeft: '10px' }}>
             {showSources ? 'Hide' : 'Show'} sources for the editorial
           </span>

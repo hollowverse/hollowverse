@@ -12,7 +12,7 @@ export const Heading = (p: { yml: NotablePersonData; pic: Pic }) => {
     <>
       <div className={s.notablePersonHeading}>
         <div className={s.notablePersonImageContainer}>
-          <Image src={`/${p.pic}`} width={150} height={150} />
+          <Image src={p.pic} width={150} height={150} priority />
         </div>
         <Typography variant="h1" className={s.pageTitle}>
           <span className={s.pageTitleLessEmphasized}>
