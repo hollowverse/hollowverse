@@ -7,7 +7,7 @@ import pen from '_i/icons/pen.svg';
 import bookOpen from '_i/icons/book-open.svg';
 import stars from '_i/icons/stars.svg';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
-import { InterestingProfiles as TInterestingProfiles } from '_s/app/types';
+import { InterestingProfiles as TInterestingProfiles } from '_s/lib/types';
 
 export const Editorial = (p: {
   editorial: string;
@@ -62,16 +62,20 @@ export const Editorial = (p: {
         </ol>
       )}
 
-      <div className={s.interestingProfilesContainer}>
-        <Typography variant="h1" component="h3">
-          <img width="25" src={stars} alt="Stars" />
-          <span style={{ marginLeft: '10px' }}>Other interesting profiles</span>
-        </Typography>
+      {false && (
+        <div className={s.interestingProfilesContainer}>
+          <Typography variant="h1" component="h3">
+            <img width="25" src={stars} alt="Stars" />
+            <span style={{ marginLeft: '10px' }}>
+              Other interesting profiles
+            </span>
+          </Typography>
 
-        <div className={s.interestingProfiles}>
-          <InterestingProfiles interestingProfiles={p.interestingProfiles} />
+          <div className={s.interestingProfiles}>
+            <InterestingProfiles interestingProfiles={p.interestingProfiles} />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

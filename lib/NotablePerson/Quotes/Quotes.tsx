@@ -3,7 +3,7 @@ import 'normalize.css';
 import React from 'react';
 import * as s from '../notablePerson.module.scss';
 import { Avatar, Divider, Typography } from '@mui/material';
-import { NotablePersonData, Pic } from '_s/app/types';
+import { NotablePersonData, Pic } from '_s/lib/types';
 import quote from '_i/icons/quote.svg';
 
 export const Quotes = (p: { yml: NotablePersonData; pic: Pic }) => {

@@ -28,30 +28,15 @@
     "resolveJsonModule": true,
     "rootDir": "src",
     "paths": {
-      "_c/*": [
-        "src/code/*"
-      ],
-      "_i/*": [
-        "src/images/*"
-      ],
-      "_s/*": [
-        "src/*"
-      ]src/app/*
+      "_c/*": ["src/code/*"],
+      "_i/*": ["src/images/*"],
+      "_s/*": ["src/*"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true
   },
-  "exclude": [
-    "node_modules",
-    "./built/**/*"
-  ],
-  "include": [
-    "src/**/*"
-  ]
+  "exclude": ["node_modules", "./built/**/*"],
+  "include": ["src/**/*"]
 }

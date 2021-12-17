@@ -1,7 +1,7 @@
 import React from 'react';
-import NotablePerson from '_s/app/NotablePerson/NotablePerson';
+import NotablePerson from '_s/lib/NotablePerson/NotablePerson';
 import editorial from './editorial.md';
-import { NotablePersonData, Pic } from '_s/app/types';
+import { NotablePersonData, Pic } from '_s/lib/types';
 
 // Data imports
 import notablePersonData from './data.yml';

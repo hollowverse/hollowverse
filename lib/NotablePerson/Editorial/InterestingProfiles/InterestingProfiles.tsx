@@ -1,6 +1,6 @@
 import React from 'react';
 import * as s from '../../notablePerson.module.scss';
-import { InterestingProfiles as InterestingProfilesType } from '_s/app/types';
+import { InterestingProfiles as InterestingProfilesType } from '_s/lib/types';
 import { Typography } from '@mui/material';
 
 export const InterestingProfiles = (p: {

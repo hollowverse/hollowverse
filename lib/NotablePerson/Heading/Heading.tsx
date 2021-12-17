@@ -3,16 +3,18 @@ import 'normalize.css';
 import React from 'react';
 import * as s from '../notablePerson.module.scss';
 import { Typography, Container } from '@mui/material';
-import { Attribute } from '_s/app/Attribute/Attribute';
-import { NotablePersonData, Pic } from '_s/app/types';
+import { Attribute } from '_s/lib/Attribute/Attribute';
+import { NotablePersonData, Pic } from '_s/lib/types';
+import Image from 'next/image';
 
 export const Heading = (p: { yml: NotablePersonData; pic: Pic }) => {
   return (
     <>
       <div className={s.notablePersonHeading}>
-        <div
-          // image={pic}
-          // alt={p.yml.name}
+        <Image
+          src={p.pic}
+          width={150}
+          height={150}
           className={s.notablePersonMainImage}
         />
         <Typography variant="h1" className={s.pageTitle}>
