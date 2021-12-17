@@ -7,8 +7,6 @@
 }
 
 .appBarContainer {
-  margin-top: $s4;
-  margin-bottom: $s4;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -64,10 +62,13 @@
   position: relative;
   z-index: 1;
 
-  .notablePersonMainImage {
+  .notablePersonImageContainer {
+    overflow: hidden;
+    position: relative;
     width: 150px;
+    height: 150px;
     border-radius: 50%;
-    box-shadow: 0 0 0 4.5px rgb(255 255 255 / 70%), 0 2px 1px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 0 0 4px rgb(255 255 255 / 70%), 0 2px 1px 0 rgb(0 0 0 / 10%);
   }
 }
 

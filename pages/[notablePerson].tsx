@@ -1,13 +1,13 @@
 import yml from 'js-yaml';
 import fs from 'fs';
 import { join } from 'path';
-import { publishedNotablePeople } from '_s/publishedNotablePeople';
-import { notablePeoplePath } from '_s/lib/paths';
+import { publishedNotablePeople } from '_r/publishedNotablePeople';
+import { notablePeoplePath } from '_l/paths';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 
-import NotablePerson from '_s/lib/NotablePerson/NotablePerson';
-import { NotablePersonData, Pic } from '_s/lib/types';
+import NotablePerson from '_l/NotablePerson/NotablePerson';
+import { NotablePersonData, Pic } from '_l/types';
 
 // // Data imports
 // import notablePersonData from './data.yml';
@@ -62,7 +62,7 @@ export const getStaticProps = async ({ params }: any) => {
     props: {
       data,
       editorial: editorialHtml,
-      pic: join(notablePeoplePath, params.notablePerson, 'pic.jpg'),
+      pic: join('images', 'notablePeople', `${(data as any).id}.jpg`),
     },
   };
 };

@@ -3,11 +3,6 @@ declare module '*.svg' {
   export = value;
 }
 
-declare module '*.scss' {
-  const value: { [name: string]: string };
-  export = value;
-}
-
 declare module '*.md' {
   const value: string;
   export = value;

@@ -1,22 +1,19 @@
 import 'normalize.css';
 
 import React from 'react';
-import * as s from '../notablePerson.module.scss';
+import s from '../notablePerson.module.scss';
 import { Typography, Container } from '@mui/material';
-import { Attribute } from '_s/lib/Attribute/Attribute';
-import { NotablePersonData, Pic } from '_s/lib/types';
+import { Attribute } from '_l/Attribute/Attribute';
+import { NotablePersonData, Pic } from '_l/types';
 import Image from 'next/image';
 
 export const Heading = (p: { yml: NotablePersonData; pic: Pic }) => {
   return (
     <>
       <div className={s.notablePersonHeading}>
-        <Image
-          src={p.pic}
-          width={150}
-          height={150}
-          className={s.notablePersonMainImage}
-        />
+        <div className={s.notablePersonImageContainer}>
+          <Image src={`/${p.pic}`} width={150} height={150} />
+        </div>
         <Typography variant="h1" className={s.pageTitle}>
           <span className={s.pageTitleLessEmphasized}>
             Religion, politics, and ideas of

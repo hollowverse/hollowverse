@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./built",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
@@ -26,17 +25,17 @@
     "removeComments": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "paths": {
-      "_c/*": ["src/code/*"],
-      "_i/*": ["src/images/*"],
-      "_s/*": ["src/*"]
+      "_l/*": ["lib/*"],
+      "_i/*": ["public/images/*"],
+      "_r/*": ["*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true
   },
-  "exclude": ["node_modules", "./built/**/*"],
-  "include": ["src/**/*"]
+  "exclude": ["node_modules"],
+  "include": ["."]
 }
