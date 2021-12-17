@@ -6,7 +6,6 @@ import { notablePeoplePath } from '_l/paths';
 import matter from 'gray-matter';
 
 import NotablePerson from '_l/NotablePerson/NotablePerson';
-import { TEditorial, TNotablePersonData, TPic } from '_l/types';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 

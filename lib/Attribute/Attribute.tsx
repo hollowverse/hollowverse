@@ -2,15 +2,6 @@ import React from 'react';
 import s from './attribute.module.scss';
 import Image from 'next/image';
 
-import menorah from '_i/icons/menorah.svg';
-import cross from '_i/icons/cross.svg';
-import martini from '_i/icons/martini.svg';
-import democrat from '_i/icons/democrat.svg';
-import lgbt from '_i/icons/lgbt.svg';
-import hourglass from '_i/icons/hourglass.svg';
-import camera from '_i/icons/camera.svg';
-import flag from '_i/icons/flag.svg';
-
 const iconLabelMap = [
   [['jewish'], 'menorah', 'Menorah'],
   [['catholic'], 'cross', 'Cross'],
@@ -19,7 +10,7 @@ const iconLabelMap = [
   [['lgbt'], 'lgbt', 'LGBT'],
   [['actress', 'actor'], 'camera', 'Camera'],
   [['years old'], 'hourglass', 'Hourglass'],
-  [['ancestry'], 'flag', 'Flag'],
+  [['ancestry'], 'seedling', 'Seedling'],
 ];
 
 export const Attribute: React.FC<{

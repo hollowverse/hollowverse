@@ -6,8 +6,9 @@ import { Typography, Container } from '@mui/material';
 import { Attribute } from '_l/Attribute/Attribute';
 import { TNotablePersonData, TPic } from '_l/types';
 import Image from 'next/image';
+import { differenceInCalendarYears, parse } from 'date-fns';
 
-export const Heading = (p: { yml: TNotablePersonData; pic: TPic }) => {
+export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
     <>
       <div className={s.notablePersonHeading}>
@@ -18,14 +19,20 @@ export const Heading = (p: { yml: TNotablePersonData; pic: TPic }) => {
           <span className={s.pageTitleLessEmphasized}>
             Religion, politics, and ideas of
           </span>
-          <br /> <span className={s.notablePersonName}>{p.yml.name}</span>
+          <br /> <span className={s.notablePersonName}>{p.data.name}</span>
         </Typography>
       </div>
 
       <Container maxWidth="sm" className={s.attributesContainer}>
-        {p.yml.attributes.map((label) => (
+        {p.data.attributes.concat(p.data.occupations).map((label) => (
           <Attribute key={label} label={label} />
         ))}
+        <Attribute
+          label={`${differenceInCalendarYears(
+            new Date(),
+            parse(p.data.born, 'MM-dd-yyyy', new Date()),
+          )} years old`}
+        />
       </Container>
     </>
   );

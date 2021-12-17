@@ -1,9 +1,9 @@
-import matter from 'gray-matter';
-
 export type TNotablePersonData = {
   id: string;
   name: string;
+  born: string;
   attributes: string[];
+  occupations: string[];
   quotes: [string, string, string][];
 };
 

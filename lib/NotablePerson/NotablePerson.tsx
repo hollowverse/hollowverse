@@ -9,12 +9,7 @@ import {
   StyledEngineProvider,
 } from '@mui/material/styles';
 import { theme } from '_l/theme';
-import {
-  TEditorial,
-  TInterestingProfiles,
-  TNotablePersonData,
-  TPic,
-} from '_l/types';
+import { TEditorial, TNotablePersonData, TPic } from '_l/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';
@@ -44,7 +39,7 @@ const NotablePerson = (p: {
             ></meta>
             <link
               rel="canonical"
-              href={`https://hollowverse.com/${p.data.slug}`}
+              href={`https://hollowverse.com/${p.data.id}`}
             />
           </Head>
 
@@ -62,7 +57,6 @@ const NotablePerson = (p: {
                   height={20}
                   alt="Hollowverse"
                 />
-                {/* <img src={logo} alt="Hollowverse" style={{ width: 200 }}></img> */}
                 <Typography variant="body2" className={s.logoSubtitle}>
                   Important people and facts
                 </Typography>
@@ -76,7 +70,7 @@ const NotablePerson = (p: {
 
           <Container maxWidth="md">
             <Container className={s.fancyBackgroundContainer}>
-              <Heading yml={p.data} pic={p.pic} />
+              <Heading data={p.data} pic={p.pic} />
             </Container>
 
             <div className={s.quotesContainer}>
