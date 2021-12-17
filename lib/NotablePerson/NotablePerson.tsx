@@ -10,9 +10,10 @@ import {
 } from '@mui/material/styles';
 import { theme } from '_l/theme';
 import {
-  InterestingProfiles as InterestingProfilesType,
-  NotablePersonData,
-  Pic,
+  TEditorial,
+  TInterestingProfiles,
+  TNotablePersonData,
+  TPic,
 } from '_l/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
@@ -22,10 +23,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 const NotablePerson = (p: {
-  data: NotablePersonData;
-  pic: Pic;
-  editorial: string;
-  interestingProfiles: InterestingProfilesType;
+  data: TNotablePersonData;
+  pic: TPic;
+  editorial: TEditorial;
 }) => {
   useInjectScript('https://cse.google.com/cse.js?cx=b70c7f6ba6a334ff2');
 
@@ -83,13 +83,9 @@ const NotablePerson = (p: {
               <Quotes data={p.data} pic={p.pic} />
             </div>
 
-            {p.editorial && p.data['editorial-sources'] && (
+            {p.editorial && (
               <div className={s.editorialContainer}>
-                <Editorial
-                  editorial={p.editorial}
-                  sources={p.data['editorial-sources']}
-                  interestingProfiles={p.interestingProfiles}
-                />
+                <Editorial editorial={p.editorial} />
               </div>
             )}
           </Container>

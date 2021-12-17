@@ -4,10 +4,10 @@ import React from 'react';
 import s from '../notablePerson.module.scss';
 import { Typography, Container } from '@mui/material';
 import { Attribute } from '_l/Attribute/Attribute';
-import { NotablePersonData, Pic } from '_l/types';
+import { TNotablePersonData, TPic } from '_l/types';
 import Image from 'next/image';
 
-export const Heading = (p: { yml: NotablePersonData; pic: Pic }) => {
+export const Heading = (p: { yml: TNotablePersonData; pic: TPic }) => {
   return (
     <>
       <div className={s.notablePersonHeading}>

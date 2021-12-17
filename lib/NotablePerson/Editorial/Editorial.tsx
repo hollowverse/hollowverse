@@ -3,16 +3,11 @@ import 'normalize.css';
 import React, { useState } from 'react';
 import s from '../notablePerson.module.scss';
 import { Button, Typography } from '@mui/material';
-import stars from '_i/icons/stars.svg';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
-import { InterestingProfiles as TInterestingProfiles } from '_l/types';
+import { TEditorial } from '_l/types';
 import Image from 'next/image';
 
-export const Editorial = (p: {
-  editorial: string;
-  sources: [string, string][];
-  interestingProfiles: TInterestingProfiles;
-}) => {
+export const Editorial = (p: { editorial: TEditorial }) => {
   const [showSources, setShowSources] = useState(false);
 
   return (
@@ -24,7 +19,7 @@ export const Editorial = (p: {
 
       <div
         className={s.editorialContent}
-        dangerouslySetInnerHTML={{ __html: p.editorial }}
+        dangerouslySetInnerHTML={{ __html: p.editorial.content }}
       ></div>
 
       <div className={s.sourcesTitleContainer}>
@@ -49,7 +44,7 @@ export const Editorial = (p: {
 
       {showSources && (
         <ol>
-          {p.sources.map(([title, url]) => {
+          {p.editorial.data.sources.map(([title, url]) => {
             return (
               <li key={url} className={s.editorialListItem}>
                 <a
@@ -66,20 +61,23 @@ export const Editorial = (p: {
         </ol>
       )}
 
-      {false && (
-        <div className={s.interestingProfilesContainer}>
-          <Typography variant="h1" component="h3">
-            <img width="25" src={stars} alt="Stars" />
-            <span style={{ marginLeft: '10px' }}>
-              Other interesting profiles
-            </span>
-          </Typography>
+      <div className={s.interestingProfilesContainer}>
+        <Typography variant="h1" component="h3">
+          <Image
+            height={25}
+            width={25}
+            src="/images/icons/stars.svg"
+            alt="Stars"
+          />
+          <span style={{ marginLeft: '10px' }}>Other interesting profiles</span>
+        </Typography>
 
-          <div className={s.interestingProfiles}>
-            <InterestingProfiles interestingProfiles={p.interestingProfiles} />
-          </div>
+        <div className={s.interestingProfiles}>
+          <InterestingProfiles
+            interestingProfiles={p.editorial.data.interestingProfiles}
+          />
         </div>
-      )}
+      </div>
     </>
   );
 };

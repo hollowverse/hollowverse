@@ -1,23 +1,26 @@
 import React from 'react';
-import * as s from '../../notablePerson.module.scss';
-import { InterestingProfiles as InterestingProfilesType } from '_s/lib/types';
+import s from '../../notablePerson.module.scss';
+import { TEditorial } from '_l/types';
 import { Typography } from '@mui/material';
+import Image from 'next/image';
 
 export const InterestingProfiles = (p: {
-  interestingProfiles: InterestingProfilesType;
+  interestingProfiles: TEditorial['data']['interestingProfiles'];
 }) => {
   return (
     <>
-      {p.interestingProfiles.map(([data, pic]) => {
+      {p.interestingProfiles.map((notablePersonData) => {
         return (
           <a
             className={s.interestingProfile}
-            href={`/${data.slug}`}
-            key={data.slug}
+            href={`/${notablePersonData.id}`}
+            key={notablePersonData.id}
           >
-            <div
-              // image={getImage(pic)!}
-              // alt={data.name}
+            <Image
+              src={`/images/notablePeople/${notablePersonData.id}.jpg`}
+              alt={notablePersonData.name}
+              width={120}
+              height={120}
               className={s.interestingProfileImage}
             />
             <Typography
@@ -26,7 +29,7 @@ export const InterestingProfiles = (p: {
               component="p"
               className={s.interestingProfileName}
             >
-              {data.name}
+              {notablePersonData.name}
             </Typography>
           </a>
         );

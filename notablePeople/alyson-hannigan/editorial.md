@@ -1,3 +1,27 @@
+---
+sources:
+  - - Alyson Hannigan Biography. IMDb
+    - https://www.imdb.com/name/nm0004989/bio
+
+  - - 'Hollywood Now: Alyson Hannigan, Jewish Male Actors, Fall Features'
+    - https://18doors.org/hollywood_now_alyson_hannigan_jewish_male_actors_fall_features/
+
+  - - Michelle Obama Hits Up Beverly Hills Fundraisers.
+    - https://politicalhollywood.wordpress.com/tag/alyson-hannigan/
+
+  - - Alyson Hannigan Excitedly Waves at Obama Motorcade While Cuddling Daughter Keeva
+    - https://www.eonline.com/news/427841/alyson-hannigan-excitedly-waves-at-obama-motorcade-while-cuddling-daughter-keeva
+
+  - - Amber Benson Talks Tara And Willow Breaking Down Barriers On 'Buffy The Vampire Slayer'
+    - https://www.huffpost.com/entry/amber-benson-tara-willow-buffy-the-vampire-slayer_n_3675530
+
+interestingProfileIds:
+  - sarah-michelle-gellar
+  - chelsea-handler
+  - rachel-bilson
+  - jamie-lee-curtis
+---
+
 Alyson Hannigan was born in Washington, D.C, but grew up in Atlanta, Georgia with her mother after the divorce of her parents.
 
 Hannigan’s father is of Irish descent,1 indicating what are likely some Catholic roots.

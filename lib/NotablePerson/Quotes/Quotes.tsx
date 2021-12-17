@@ -3,11 +3,11 @@ import 'normalize.css';
 import React from 'react';
 import s from '../notablePerson.module.scss';
 import { Divider, Typography } from '@mui/material';
-import { NotablePersonData, Pic } from '_l/types';
+import { TNotablePersonData, TPic } from '_l/types';
 import quote from '_i/icons/quote.svg';
 import Image from 'next/image';
 
-export const Quotes = (p: { data: NotablePersonData; pic: Pic }) => {
+export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
     <>
       <Typography variant="h1" component="h2">
