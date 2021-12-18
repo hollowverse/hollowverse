@@ -6,6 +6,7 @@ import { Divider, Typography } from '@mui/material';
 import { TNotablePersonData, TPic } from '_l/types';
 import quote from '_i/icons/quote.svg';
 import Image from 'next/image';
+import { format, parse } from 'date-fns';
 
 export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
@@ -20,10 +21,10 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
         <span style={{ marginLeft: '10px' }}>Quotes</span>
       </Typography>
 
-      {p.data.quotes.map((quote, i) => (
+      {p.data.quotes.map(([context, text, source, date], i) => (
         <div className={s.quoteBlock} key={i}>
           <Typography variant="h4" component="p" className={s.quoteContext}>
-            {quote[0]}
+            {context}
           </Typography>
 
           <div className={s.quoteTextContainer}>
@@ -32,8 +33,24 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
             </div>
             <div className={s.quoteText}>
               <Typography variant="h2" component="p">
-                {quote[1]}
+                {text}
               </Typography>
+
+              {(source || date) && (
+                <Typography variant="body1" className={s.quoteTextFooter}>
+                  {date &&
+                    format(
+                      parse(date, 'MM-dd-yyyy', new Date()),
+                      'MMM do yyyy',
+                    )}
+                  {source && date && ' • '}
+                  {source && (
+                    <a href={source} rel="external" target="_blank">
+                      Source
+                    </a>
+                  )}
+                </Typography>
+              )}
             </div>
           </div>
 

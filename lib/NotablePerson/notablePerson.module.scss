@@ -127,6 +127,13 @@
 
   .quoteText {
     margin-left: $s4;
+
+    .quoteTextFooter,
+    .quoteTextFooter a {
+      text-decoration: none;
+      color: $lessEmphasis;
+      margin-top: $s4;
+    }
   }
 }
 
