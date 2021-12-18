@@ -23,7 +23,7 @@ export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
         </Typography>
       </div>
 
-      <Container maxWidth="sm" className={s.attributesContainer}>
+      <Container maxWidth="md" className={s.attributesContainer}>
         {p.data.attributes.concat(p.data.occupations).map((label) => (
           <Attribute key={label} label={label} />
         ))}
