@@ -4,7 +4,7 @@ export type TNotablePersonData = {
   born: string;
   attributes: string[];
   occupations: string[];
-  quotes: [string, string, string][];
+  quotes: [string, string, string, string][];
 };
 
 export type TPic = string;
