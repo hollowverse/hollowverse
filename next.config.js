@@ -1,10 +1,10 @@
 module.exports = {
   async rewrites() {
-    return [
-      {
-        source: '/foo',
-        destination: '/test.html',
-      },
-    ];
+    return {
+      beforeFiles: [{
+        source: '/:path'
+        destination: '/:path/index.html'
+      }]
+    };
   },
 };
