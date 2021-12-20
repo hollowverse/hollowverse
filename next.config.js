@@ -1,7 +1,7 @@
 module.exports = {
   async rewrites() {
     return {
-      beforeFiles: [
+      fallback: [
         {
           source: '/:path',
           destination: '/:path/index.html',
