@@ -2,11 +2,12 @@ import 'normalize.css';
 
 import React from 'react';
 import s from '../notablePerson.module.scss';
-import { Typography, Container } from '@mui/material';
+import { Typography, Container, Button } from '@mui/material';
 import { Attribute } from '_l/Attribute/Attribute';
 import { TNotablePersonData, TPic } from '_l/types';
 import Image from 'next/image';
 import { differenceInCalendarYears, parse } from 'date-fns';
+import { EditButton } from '../common/EditButton/EditButton';
 
 export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
@@ -27,6 +28,7 @@ export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
         {p.data.attributes.concat(p.data.occupations).map((label) => (
           <Attribute key={label} label={label} />
         ))}
+
         <Attribute
           label={`${differenceInCalendarYears(
             new Date(),
@@ -34,6 +36,10 @@ export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
           )} years old`}
         />
       </Container>
+
+      <div style={{ zIndex: 1, position: 'relative' }}>
+        <EditButton data={p.data} type="tag" />
+      </div>
     </>
   );
 };

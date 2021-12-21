@@ -3,12 +3,19 @@ import '../lib/globalStyles.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
 import {
+  AppBar,
+  Container,
+  Divider,
+  Link,
   StyledEngineProvider,
   ThemeProvider,
+  Typography,
   unstable_createMuiStrictModeTheme,
 } from '@mui/material';
 import { theme } from '_l/theme';
 import Head from 'next/head';
+import Image from 'next/image';
+import s from './_app.module.scss';
 
 export default ({ Component, pageProps }: AppProps) => {
   return (
@@ -37,10 +44,118 @@ export default ({ Component, pageProps }: AppProps) => {
               name="description"
               content="The religion, politics, and ideas of important people"
             ></meta>
-            <link rel="shortcut icon" href="/images/icons/favicon.png" />
+            <link rel="shortcut icon" href="/images/icons/letter-logo.png" />
           </Head>
 
+          <AppBar
+            elevation={1}
+            color="transparent"
+            position="static"
+            className={s.appBar}
+          >
+            <Container maxWidth="md" className={s.appBarContainer}>
+              <a className={s.logo} href="/">
+                <Image
+                  src="/images/logo.svg"
+                  width={200}
+                  height={20}
+                  alt="Hollowverse"
+                />
+                <Typography variant="body2" className={s.logoSubtitle}>
+                  Important people and facts
+                </Typography>
+              </a>
+
+              <div className={s.search}>
+                <div className="gcse-search"></div>
+              </div>
+            </Container>
+          </AppBar>
+
           <Component {...pageProps} />
+
+          <Container maxWidth="md" className={s.footerContainer}>
+            <Divider />
+            <footer className={s.footer}>
+              <div className={s.footerImage}>
+                <Image
+                  width={50}
+                  height={50}
+                  src="/images/icons/letter-logo.png"
+                />
+              </div>
+              <div className={s.footerItems}>
+                <div>
+                  <Typography variant="h4" component="p">
+                    <Image
+                      src="/images/icons/info-circle.svg"
+                      width="15"
+                      height="15"
+                    />{' '}
+                    About
+                  </Typography>
+
+                  <Typography variant="body1">
+                    Hollowverse is about the important people and their beliefs.
+                  </Typography>
+                </div>
+
+                <div>
+                  <Typography variant="h4" component="p">
+                    <Image
+                      src="/images/icons/comment-dots.svg"
+                      width="15"
+                      height="15"
+                    />{' '}
+                    Contact
+                  </Typography>
+
+                  <Typography variant="body1">
+                    <Link
+                      href="https://discuss.hollowverse.com/signup"
+                      target="_blank"
+                      color="inherit"
+                    >
+                      Log-in
+                    </Link>{' '}
+                    to our discussion forum and send us a{' '}
+                    <Link
+                      href="https://discuss.hollowverse.com/g/admins"
+                      target="_blank"
+                      color="inherit"
+                    >
+                      private message
+                    </Link>
+                    .
+                  </Typography>
+                </div>
+
+                <div>
+                  <Typography variant="h4" component="p">
+                    <Image
+                      src="/images/icons/gift.svg"
+                      width="15"
+                      height="15"
+                    />{' '}
+                    Copyrights
+                  </Typography>
+
+                  <Typography variant="body1">
+                    We reserve none. Everything here is free, including{' '}
+                    <Link
+                      href="https://github.com/hollowverse/"
+                      target="_blank"
+                      color="inherit"
+                    >
+                      the code
+                    </Link>
+                    .
+                  </Typography>
+                </div>
+              </div>
+            </footer>
+            <div style={{ marginTop: '100px' }} />
+          </Container>
         </ThemeProvider>
       </StyledEngineProvider>
     </React.StrictMode>

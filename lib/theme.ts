@@ -62,6 +62,10 @@ export const theme: ThemeOptions = {
     body2: {
       fontSize: '0.8rem',
     },
+
+    button: {
+      textTransform: 'none',
+    },
   },
 
   components: {

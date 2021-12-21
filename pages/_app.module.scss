@@ -1,0 +1,65 @@
+@import '../lib/common';
+
+.appBar {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+.appBarContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .logo,
+  .search {
+    flex: 0.5;
+    align-self: center;
+  }
+
+  .logo {
+    text-decoration: none;
+  }
+
+  .search {
+    height: 62px;
+    position: relative;
+    z-index: 100;
+    min-width: 400px;
+  }
+}
+
+.logoSubtitle {
+  color: $lessEmphasis;
+}
+
+.footerContainer {
+  margin-top: $s8;
+
+  .footer {
+    display: flex;
+    padding: $s4;
+    margin-top: $s4;
+
+    .footerImage {
+      filter: grayscale(100%);
+    }
+
+    .footerItems {
+      margin-left: $s8;
+
+      div + div {
+        margin-top: $s8;
+      }
+
+      :global(.MuiTypography-h4) {
+        color: $lessEmphasis;
+
+        img {
+          filter: invert(33%) sepia(46%) saturate(0%) hue-rotate(294deg)
+            brightness(99%) contrast(87%);
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,6 @@ import React from 'react';
 import s from '../notablePerson.module.scss';
 import { Divider, Typography } from '@mui/material';
 import { TNotablePersonData, TPic } from '_l/types';
-import quote from '_i/icons/quote.svg';
 import Image from 'next/image';
 import { format, parse } from 'date-fns';
 

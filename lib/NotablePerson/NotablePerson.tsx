@@ -2,12 +2,13 @@ import 'normalize.css';
 
 import React from 'react';
 import s from './notablePerson.module.scss';
-import { Typography, Container, AppBar } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { TEditorial, TNotablePersonData, TPic } from '_l/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';
 import Head from 'next/head';
+import Script from 'next/script';
 import Image from 'next/image';
 
 const NotablePerson = (p: {
@@ -17,6 +18,21 @@ const NotablePerson = (p: {
 }) => {
   return (
     <>
+      <Script
+        type="text/javascript"
+        async={true}
+        dangerouslySetInnerHTML={{
+          __html: `
+          DiscourseEmbed = { discourseUrl: 'https://discuss.hollowverse.com/',
+          topicId: '${p.data['discourse-topic-id']}' };
+
+          // var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+          // d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+          // (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+      `,
+        }}
+      />
+      <Script src="https://discuss.hollowverse.com/javascripts/embed.js"></Script>
       <Head>
         <title>{p.data.name}'s religion and political view | Hollowverse</title>
         <meta
@@ -25,32 +41,6 @@ const NotablePerson = (p: {
         ></meta>
         <link rel="canonical" href={`https://hollowverse.com/${p.data.id}`} />
       </Head>
-
-      <AppBar
-        elevation={1}
-        color="transparent"
-        position="static"
-        className={s.appBar}
-      >
-        <Container maxWidth="md" className={s.appBarContainer}>
-          <a className={s.logo} href="/">
-            <Image
-              src="/images/logo.svg"
-              width={200}
-              height={20}
-              alt="Hollowverse"
-            />
-            <Typography variant="body2" className={s.logoSubtitle}>
-              Important people and facts
-            </Typography>
-          </a>
-
-          <div className={s.search}>
-            <div className="gcse-search"></div>
-          </div>
-        </Container>
-      </AppBar>
-
       <Container maxWidth="md">
         <Container className={s.fancyBackgroundContainer}>
           <Heading data={p.data} pic={p.pic} />
@@ -65,9 +55,24 @@ const NotablePerson = (p: {
             <Editorial editorial={p.editorial} />
           </div>
         )}
-      </Container>
 
-      <div style={{ marginTop: '100px' }} />
+        <div className={s.discussionContainer}>
+          <Typography variant="h1" component="h2">
+            <Image
+              width={25}
+              height={25}
+              src="/images/icons/comments-alt.svg"
+              alt="Pen"
+            />
+
+            <span style={{ marginLeft: '10px' }}>
+              Discuss the beliefs and ideas of {p.data.name}
+            </span>
+          </Typography>
+
+          <div className={s.discourseElement} id="discourse-comments"></div>
+        </div>
+      </Container>
     </>
   );
 };

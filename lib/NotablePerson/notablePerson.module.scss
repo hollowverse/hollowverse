@@ -1,38 +1,5 @@
 @import '../common';
 
-.appBar {
-  display: flex;
-  position: relative;
-  z-index: 2;
-}
-
-.appBarContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  .logo,
-  .search {
-    flex: 0.5;
-    align-self: center;
-  }
-
-  .logo {
-    text-decoration: none;
-  }
-
-  .search {
-    height: 62px;
-    position: relative;
-    z-index: 100;
-    min-width: 400px;
-  }
-}
-
-.logoSubtitle {
-  color: $lessEmphasis;
-}
-
 .fancyBackgroundContainer {
   text-align: center;
   padding: 0;
@@ -188,5 +155,13 @@
         }
       }
     }
+  }
+}
+
+.discussionContainer {
+  margin-top: $s8;
+
+  .discourseElement {
+    margin-top: $s4;
   }
 }

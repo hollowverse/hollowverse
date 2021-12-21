@@ -24,21 +24,22 @@ export const Editorial = (p: { editorial: TEditorial }) => {
 
       <div className={s.sourcesTitleContainer}>
         <Typography variant="h3" component="h4"></Typography>
+
         <Button
+          color="inherit"
           variant="text"
           size="large"
           onClick={() => setShowSources(!showSources)}
-          style={{ textTransform: 'none' }}
+          startIcon={
+            <Image
+              width={15}
+              height={15}
+              src="/images/icons/book-open.svg"
+              alt="Book open"
+            />
+          }
         >
-          <Image
-            width={15}
-            height={15}
-            src="/images/icons/book-open.svg"
-            alt="Book open"
-          />
-          <span style={{ marginLeft: '10px' }}>
-            {showSources ? 'Hide' : 'Show'} sources for the editorial
-          </span>
+          {showSources ? 'Hide' : 'Show'} sources for the editorial
         </Button>
       </div>
 

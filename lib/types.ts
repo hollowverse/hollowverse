@@ -5,6 +5,7 @@ export type TNotablePersonData = {
   attributes: string[];
   occupations: string[];
   quotes: [string, string, string, string][];
+  'discourse-topic-id': number;
 };
 
 export type TPic = string;
