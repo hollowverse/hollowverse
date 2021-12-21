@@ -6,6 +6,7 @@ import { Divider, Typography } from '@mui/material';
 import { TNotablePersonData, TPic } from '_l/types';
 import Image from 'next/image';
 import { format, parse } from 'date-fns';
+import { EditButton } from '../common/EditButton/EditButton';
 
 export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
@@ -30,8 +31,9 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
             <div className={s.quoteAvatar}>
               <Image src={p.pic} alt={p.data.name} width={50} height={50} />
             </div>
+
             <div className={s.quoteText}>
-              <Typography variant="h2" component="p">
+              <Typography variant="h2" component="blockquote" cite={source}>
                 {text}
               </Typography>
 
@@ -56,6 +58,10 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
           {i != p.data.quotes.length - 1 && <Divider />}
         </div>
       ))}
+
+      <div className={s.quoteEditButtonContainer}>
+        <EditButton type="quote" data={p.data.name} />
+      </div>
     </>
   );
 };

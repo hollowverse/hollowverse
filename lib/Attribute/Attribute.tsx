@@ -32,8 +32,9 @@ export const Attribute: React.FC<{
   }
 
   return (
-    <div className={s.attribute}>
-      <div>{p.label}</div>
+    <li className={s.attribute}>
+      <p>{p.label}</p>
+
       <div className={s.img}>
         {icon && (
           <Image
@@ -44,6 +45,6 @@ export const Attribute: React.FC<{
           />
         )}
       </div>
-    </div>
+    </li>
   );
 };

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { Button } from '@mui/material';
 import Image from 'next/image';
-import { Box, Button, CircularProgress } from '@mui/material';
-import { constants } from '_l/constants';
+import React from 'react';
 
 export const getTypePlural = (type: string) => {
-  return type === 'tag' ? 'tags' : 'categories';
+  return type === 'tag' ? 'tags' : 'quotes';
 };
 
 export const EditButton = (p: any) => {

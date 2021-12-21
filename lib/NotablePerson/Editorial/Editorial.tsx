@@ -17,10 +17,10 @@ export const Editorial = (p: { editorial: TEditorial }) => {
         <span style={{ marginLeft: '10px' }}>Editorial</span>
       </Typography>
 
-      <div
+      <article
         className={s.editorialContent}
         dangerouslySetInnerHTML={{ __html: p.editorial.content }}
-      ></div>
+      />
 
       <div className={s.sourcesTitleContainer}>
         <Typography variant="h3" component="h4"></Typography>

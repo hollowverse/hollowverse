@@ -17,7 +17,7 @@ const NotablePerson = (p: {
   editorial: TEditorial;
 }) => {
   return (
-    <>
+    <main>
       <Script
         type="text/javascript"
         async={true}
@@ -25,10 +25,6 @@ const NotablePerson = (p: {
           __html: `
           DiscourseEmbed = { discourseUrl: 'https://discuss.hollowverse.com/',
           topicId: '${p.data['discourse-topic-id']}' };
-
-          // var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-          // d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
-          // (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
       `,
         }}
       />
@@ -41,22 +37,23 @@ const NotablePerson = (p: {
         ></meta>
         <link rel="canonical" href={`https://hollowverse.com/${p.data.id}`} />
       </Head>
-      <Container maxWidth="md">
-        <Container className={s.fancyBackgroundContainer}>
-          <Heading data={p.data} pic={p.pic} />
-        </Container>
 
-        <div className={s.quotesContainer}>
+      <Container maxWidth="md">
+        <section className={s.fancyBackgroundContainer}>
+          <Heading data={p.data} pic={p.pic} />
+        </section>
+
+        <section className={s.quotesContainer}>
           <Quotes data={p.data} pic={p.pic} />
-        </div>
+        </section>
 
         {p.editorial && (
-          <div className={s.editorialContainer}>
+          <section className={s.editorialContainer}>
             <Editorial editorial={p.editorial} />
-          </div>
+          </section>
         )}
 
-        <div className={s.discussionContainer}>
+        <section className={s.discussionContainer}>
           <Typography variant="h1" component="h2">
             <Image
               width={25}
@@ -71,9 +68,9 @@ const NotablePerson = (p: {
           </Typography>
 
           <div className={s.discourseElement} id="discourse-comments"></div>
-        </div>
+        </section>
       </Container>
-    </>
+    </main>
   );
 };
 

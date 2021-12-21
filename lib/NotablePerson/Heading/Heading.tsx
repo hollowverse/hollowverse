@@ -11,11 +11,12 @@ import { EditButton } from '../common/EditButton/EditButton';
 
 export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
-    <>
+    <header>
       <div className={s.notablePersonHeading}>
         <div className={s.notablePersonImageContainer}>
           <Image src={p.pic} width={150} height={150} priority />
         </div>
+
         <Typography variant="h1" className={s.pageTitle}>
           <span className={s.pageTitleLessEmphasized}>
             Religion, politics, and ideas of
@@ -24,7 +25,7 @@ export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
         </Typography>
       </div>
 
-      <Container maxWidth="md" className={s.attributesContainer}>
+      <ul className={s.attributesContainer}>
         {p.data.attributes.concat(p.data.occupations).map((label) => (
           <Attribute key={label} label={label} />
         ))}
@@ -35,11 +36,11 @@ export const Heading = (p: { data: TNotablePersonData; pic: TPic }) => {
             parse(p.data.born, 'MM-dd-yyyy', new Date()),
           )} years old`}
         />
-      </Container>
+      </ul>
 
       <div style={{ zIndex: 1, position: 'relative' }}>
         <EditButton data={p.data} type="tag" />
       </div>
-    </>
+    </header>
   );
 };
