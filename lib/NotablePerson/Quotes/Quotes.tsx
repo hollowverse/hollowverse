@@ -23,27 +23,38 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
 
       {p.data.quotes.map(([context, text, source, date], i) => (
         <div className={s.quoteBlock} key={i}>
-          <Typography variant="h4" component="p" className={s.quoteContext}>
-            {context}
-          </Typography>
-
           <div className={s.quoteTextContainer}>
             <div className={s.quoteAvatar}>
               <Image src={p.pic} alt={p.data.name} width={50} height={50} />
             </div>
 
-            <div className={s.quoteText}>
+            <figure className={s.quoteText}>
+              <Typography
+                variant="h4"
+                component="cite"
+                className={s.quoteContext}
+              >
+                {context}
+              </Typography>
+
               <Typography variant="h2" component="blockquote" cite={source}>
                 {text}
               </Typography>
 
               {(source || date) && (
-                <Typography variant="body1" className={s.quoteTextFooter}>
-                  {date &&
-                    format(
-                      parse(date, 'MM-dd-yyyy', new Date()),
-                      'MMM do yyyy',
-                    )}
+                <Typography
+                  variant="body1"
+                  component="figcaption"
+                  className={s.quoteTextFooter}
+                >
+                  {date && (
+                    <time>
+                      {format(
+                        parse(date, 'MM-dd-yyyy', new Date()),
+                        'MMM do yyyy',
+                      )}
+                    </time>
+                  )}
                   {source && date && ' • '}
                   {source && (
                     <a href={source} rel="external" target="_blank">
@@ -52,7 +63,7 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
                   )}
                 </Typography>
               )}
-            </div>
+            </figure>
           </div>
 
           {i != p.data.quotes.length - 1 && <Divider />}
@@ -60,7 +71,7 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
       ))}
 
       <div className={s.quoteEditButtonContainer}>
-        <EditButton type="quote" data={p.data.name} />
+        <EditButton type="quote" data={p.data} />
       </div>
     </>
   );

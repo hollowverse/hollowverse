@@ -97,7 +97,11 @@
   }
 
   .quoteText {
-    margin-left: $s4;
+    margin: 0 0 0 $s4;
+
+    blockquote {
+      margin-top: $s2;
+    }
 
     .quoteTextFooter,
     .quoteTextFooter a {
