@@ -2,6 +2,7 @@ import {
   AppBar,
   Container,
   Divider,
+  IconButton,
   StyledEngineProvider,
   ThemeProvider,
   Typography,
@@ -11,13 +12,18 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import Image from 'next/image';
 import Script from 'next/script';
-import React from 'react';
+import React, { useState } from 'react';
 import { Footer } from '_r/pages/_app/Footer/Footer';
 import { theme } from '_r/pages/common/theme';
 import './_app/globalStyles.css';
 import s from './_app/_app.module.scss';
+import { Icon } from './common/Icon';
+import SearchIcon from '_i/icons/search-regular.svg';
+import TimesIcon from '_i/icons/times-regular.svg';
 
 export default ({ Component, pageProps }: AppProps) => {
+  const [showSearch, setShowSearch] = useState(false);
+
   return (
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
@@ -29,7 +35,7 @@ export default ({ Component, pageProps }: AppProps) => {
 
           <Script src="https://www.googletagmanager.com/gtag/js?id=UA-5715214-12" />
 
-          <Script>{`
+          <Script id="google-analytics">{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -54,26 +60,37 @@ export default ({ Component, pageProps }: AppProps) => {
             className={s.appBar}
           >
             <Container maxWidth="md" className={s.appBarContainer}>
-              <a className={s.logo} href="/">
-                <Image
-                  src="/images/logo.svg"
-                  width={250}
-                  height={30}
-                  alt="Hollowverse"
-                />
-                <Typography variant="body2" className={s.logoSubtitle}>
-                  Important people and facts
-                </Typography>
-              </a>
+              <div className={s.logo}>
+                <div style={{ display: showSearch ? 'block' : 'none' }}>
+                  <div title="Google search results" className="gcse-search" />
+                </div>
+
+                <div style={{ display: showSearch ? 'none' : 'block' }}>
+                  <a href="/">
+                    <Image
+                      src="/images/logo.svg"
+                      width={250}
+                      height={30}
+                      alt="Hollowverse"
+                    />
+                    <Typography variant="body2" className={s.logoSubtitle}>
+                      Important people and facts
+                    </Typography>
+                  </a>
+                </div>
+              </div>
 
               <div className={s.search}>
-                {/* <IconButton
-                  width={30}
-                  height={30}
-                  src="/images/icons/search-regular.svg"
-                  alt="Search"
-                /> */}
-                {/* <div title="Google search results" className="gcse-search" /> */}
+                <IconButton
+                  aria-label="Search"
+                  onClick={() => setShowSearch(!showSearch)}
+                  style={{ opacity: showSearch ? 0.5 : 1 }}
+                >
+                  <Icon
+                    component={showSearch ? TimesIcon : SearchIcon}
+                    fontSize="large"
+                  ></Icon>
+                </IconButton>
               </div>
             </Container>
           </AppBar>

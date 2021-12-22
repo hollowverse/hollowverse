@@ -3,34 +3,32 @@
 .appBar {
   display: flex;
   position: relative;
+  justify-content: center;
   z-index: 2;
   height: 80px;
-}
 
-.appBarContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  .appBarContainer {
+    display: flex;
+    align-items: center;
 
-  .logo,
-  .search {
-    flex: 0.5;
-    align-self: center;
+    .logo {
+      flex: 1;
+
+      a {
+        text-decoration: none;
+      }
+
+      .logoSubtitle {
+        color: $lessEmphasis;
+      }
+    }
+
+    .search {
+      flex: 0;
+      position: relative;
+      z-index: 100;
+    }
   }
-
-  .logo {
-    text-decoration: none;
-  }
-
-  .search {
-    position: relative;
-    z-index: 100;
-    // min-width: 400px;
-  }
-}
-
-.logoSubtitle {
-  color: $lessEmphasis;
 }
 
 .footerContainer {
