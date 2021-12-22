@@ -57,19 +57,13 @@ export default (p: {
         )}
 
         <section className={s.discussionContainer}>
-          <Icon component={CommentsAlt} />
           <Typography variant="h1" component="h2">
-            {/* <Image
-              width={25}
-              height={25}
-              src="/images/icons/comments-alt.svg"
-              alt="Comments"
-            /> */}
-
-            <span style={{ marginLeft: '10px' }}>
+            <Icon component={CommentsAlt} />
+            <span style={{ marginLeft: 5 }}>
               Discuss the beliefs and ideas of {p.data.name}
             </span>
           </Typography>
+
           <div
             className={s.discourseElement}
             id="discourse-comments"

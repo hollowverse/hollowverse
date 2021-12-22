@@ -6,8 +6,9 @@ import { Button, Typography } from '@mui/material';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { TEditorial } from '_r/pages/common/types';
 import StarsIcon from '_i/icons/stars.svg';
-import Image from 'next/image';
 import { Icon } from '_r/pages/common/Icon';
+import PenIcon from '_i/icons/pen.svg';
+import BookOpenIcon from '_i/icons/book-open.svg';
 
 export const Editorial = (p: { editorial: TEditorial }) => {
   const [showSources, setShowSources] = useState(false);
@@ -15,8 +16,8 @@ export const Editorial = (p: { editorial: TEditorial }) => {
   return (
     <>
       <Typography variant="h1" component="h3">
-        <Image width={25} height={25} src="/images/icons/pen.svg" alt="Pen" />
-        <span style={{ marginLeft: '10px' }}>Editorial</span>
+        <Icon component={PenIcon}></Icon>
+        Editorial
       </Typography>
 
       <article
@@ -32,14 +33,7 @@ export const Editorial = (p: { editorial: TEditorial }) => {
           variant="text"
           size="large"
           onClick={() => setShowSources(!showSources)}
-          startIcon={
-            <Image
-              width={15}
-              height={15}
-              src="/images/icons/book-open.svg"
-              alt="Book open"
-            />
-          }
+          startIcon={<Icon component={BookOpenIcon}></Icon>}
         >
           {showSources ? 'Hide' : 'Show'} sources for the editorial
         </Button>

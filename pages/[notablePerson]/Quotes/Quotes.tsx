@@ -5,18 +5,15 @@ import { TNotablePersonData, TPic } from '_r/pages/common/types';
 import Image from 'next/image';
 import { format, parse } from 'date-fns';
 import { EditButton } from '../common/EditButton/EditButton';
+import QuoteIcon from '_i/icons/quote.svg';
+import { Icon } from '_r/pages/common/Icon';
 
 export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
   return (
     <>
       <Typography variant="h1" component="h2">
-        <Image
-          width={25}
-          height={25}
-          src="/images/icons/quote.svg"
-          alt="Quote"
-        />
-        <span style={{ marginLeft: '10px' }}>Quotes</span>
+        <Icon component={QuoteIcon}></Icon>
+        Quotes
       </Typography>
 
       {p.data.quotes.map(([context, text, source, date], i) => (
