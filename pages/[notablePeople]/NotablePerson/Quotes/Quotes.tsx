@@ -3,7 +3,7 @@ import 'normalize.css';
 import React from 'react';
 import s from '../notablePerson.module.scss';
 import { Divider, Typography } from '@mui/material';
-import { TNotablePersonData, TPic } from '_l/types';
+import { TNotablePersonData, TPic } from '_r/pages/common/types';
 import Image from 'next/image';
 import { format, parse } from 'date-fns';
 import { EditButton } from '../common/EditButton/EditButton';

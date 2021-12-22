@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import s from '../notablePerson.module.scss';
 import { Button, Typography } from '@mui/material';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
-import { TEditorial } from '_l/types';
+import { TEditorial } from '_r/pages/common/types';
 import Image from 'next/image';
 
 export const Editorial = (p: { editorial: TEditorial }) => {

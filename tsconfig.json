@@ -31,7 +31,7 @@
       "_i/*": ["public/images/*"],
       "_r/*": ["*"]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["es5", "es6", "dom", "dom.iterable"],
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true

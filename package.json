@@ -13,7 +13,9 @@
   "dependencies": {
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.3",
+    "@svgr/webpack": "^6.1.2",
     "@types/app-root-path": "^1.2.4",
     "@types/js-yaml": "^4.0.5",
     "@types/react-helmet": "^6.1.4",

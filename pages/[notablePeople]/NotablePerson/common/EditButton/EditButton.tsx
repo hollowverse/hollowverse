@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
-import Image from 'next/image';
 import React from 'react';
+import EditRegularSvg from '_i/icons/edit-regular.svg';
+import { Icon } from '_r/pages/common/Icon';
 
 export const getTypePlural = (type: string) => {
   return type === 'tag' ? 'tags' : 'quotes';
@@ -17,13 +18,7 @@ export const EditButton = (p: any) => {
       )}
       size="large"
       endIcon={
-        <Image
-          className="primaryBlueFilter"
-          width={15}
-          height={15}
-          src="/images/icons/edit-regular.svg"
-          alt="Edit "
-        />
+        <Icon width={10} height={10} component={EditRegularSvg as any} />
       }
     >
       Suggest changes to these {getTypePlural(p.type)}

@@ -4,6 +4,7 @@
   display: flex;
   position: relative;
   z-index: 2;
+  height: 80px;
 }
 
 .appBarContainer {
@@ -22,10 +23,9 @@
   }
 
   .search {
-    height: 62px;
     position: relative;
     z-index: 100;
-    min-width: 400px;
+    // min-width: 400px;
   }
 }
 

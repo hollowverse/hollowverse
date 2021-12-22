@@ -63,6 +63,7 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: 0;
 }
 
 .quotesContainer {
@@ -143,12 +144,12 @@
     margin-top: $s8;
 
     .interestingProfiles {
-      margin-top: $s8;
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
 
       .interestingProfile {
+        margin-top: $s8;
         text-align: center;
         color: $textColor;
         text-decoration: none;
@@ -159,7 +160,7 @@
         }
 
         .interestingProfileName {
-          margin-top: $s4;
+          margin-top: $s2;
         }
       }
     }

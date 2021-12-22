@@ -2,14 +2,16 @@ import 'normalize.css';
 
 import React from 'react';
 import s from './notablePerson.module.scss';
-import { Container, Typography } from '@mui/material';
-import { TEditorial, TNotablePersonData, TPic } from '_l/types';
+import { Container, createSvgIcon, SvgIcon, Typography } from '@mui/material';
+import { TEditorial, TNotablePersonData, TPic } from '_r/pages/common/types';
 import { Heading } from './Heading/Heading';
 import { Quotes } from './Quotes/Quotes';
 import { Editorial } from './Editorial/Editorial';
 import Head from 'next/head';
 import Script from 'next/script';
 import Image from 'next/image';
+import CommentsAlt from '_i/icons/comments-alt.svg';
+import { Icon } from '_r/pages/common/Icon';
 
 const NotablePerson = (p: {
   data: TNotablePersonData;
@@ -39,11 +41,13 @@ const NotablePerson = (p: {
         <link rel="canonical" href={`https://hollowverse.com/${p.data.id}`} />
       </Head>
 
-      <Container maxWidth="md">
+      <Container maxWidth="md" style={{ padding: 0 }}>
         <section className={s.fancyBackgroundContainer}>
           <Heading data={p.data} pic={p.pic} attributes={p.attributes} />
         </section>
+      </Container>
 
+      <Container maxWidth="md">
         <section className={s.quotesContainer}>
           <Quotes data={p.data} pic={p.pic} />
         </section>
@@ -55,19 +59,19 @@ const NotablePerson = (p: {
         )}
 
         <section className={s.discussionContainer}>
+          <Icon component={CommentsAlt as any} />
           <Typography variant="h1" component="h2">
-            <Image
+            {/* <Image
               width={25}
               height={25}
               src="/images/icons/comments-alt.svg"
-              alt="Pen"
-            />
+              alt="Comments"
+            /> */}
 
             <span style={{ marginLeft: '10px' }}>
               Discuss the beliefs and ideas of {p.data.name}
             </span>
           </Typography>
-
           <div
             className={s.discourseElement}
             id="discourse-comments"

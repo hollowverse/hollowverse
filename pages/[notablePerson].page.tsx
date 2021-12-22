@@ -2,13 +2,13 @@ import yml from 'js-yaml';
 import fs from 'fs';
 import { join } from 'path';
 import { publishedNotablePeople } from '_r/publishedNotablePeople';
-import { notablePeoplePath } from '_l/paths';
+import { notablePeoplePath } from '_r/pages/[notablePeople]/paths';
 import matter from 'gray-matter';
 
-import NotablePerson from '_l/NotablePerson/NotablePerson';
+import NotablePerson from '_r/pages/[notablePeople]/NotablePerson/NotablePerson';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { attributeIconMap } from '_l/attributeIconMap';
+import { attributeIconMap } from '_r/pages/[notablePeople]/attributeIconMap';
 
 export default ({ data, editorial, pic, attributes }: any) => {
   return (

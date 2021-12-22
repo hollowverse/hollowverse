@@ -1,5 +1,5 @@
 declare module '*.svg' {
-  const value: string;
+  const value: React.ElementType<any>;
   export = value;
 }
 
