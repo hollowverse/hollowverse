@@ -17,14 +17,15 @@ module.exports = {
 
   async rewrites() {
     return {
-      beforeFiles: [
-        {
-          source: '/',
-          destination: '/index/index.html',
-        },
-      ],
       fallback: [
-        { source: '/:path*', destination: 'https://hollowverse.com/:path*' },
+        {
+          source: '/:path(.+\\..+)',
+          destination: 'https://hollowverse.web.app/:path*',
+        },
+        {
+          source: '/:path*',
+          destination: 'https://hollowverse.web.app/:path*/',
+        },
       ],
     };
   },
