@@ -14,8 +14,6 @@
     "target": "ES2017",
     "sourceMap": true,
     "skipLibCheck": true,
-    "allowJs": true,
-    "checkJs": true,
     "jsx": "preserve",
     "pretty": true,
     "baseUrl": ".",
@@ -34,8 +32,9 @@
     "lib": ["es5", "es6", "dom", "dom.iterable"],
     "noEmit": true,
     "incremental": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "allowJs": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "next.config.js", "out"],
   "include": ["."]
 }
