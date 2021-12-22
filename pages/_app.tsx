@@ -152,6 +152,7 @@ export default ({ Component, pageProps }: AppProps) => {
                       href="https://github.com/hollowverse/"
                       target="_blank"
                       color="inherit"
+                      rel="noopener"
                     >
                       the code
                     </Link>

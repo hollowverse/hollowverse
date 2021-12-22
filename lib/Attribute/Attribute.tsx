@@ -8,7 +8,7 @@ export const Attribute: React.FC<{
   alt: string;
 }> = (p) => {
   return (
-    <div className={s.attribute}>
+    <li className={s.attribute}>
       <div>{p.text}</div>
 
       <div className={s.img}>
@@ -19,6 +19,6 @@ export const Attribute: React.FC<{
           alt={p.alt}
         />
       </div>
-    </div>
+    </li>
   );
 };
