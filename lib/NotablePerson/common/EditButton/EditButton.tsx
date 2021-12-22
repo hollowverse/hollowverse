@@ -11,6 +11,7 @@ export const EditButton = (p: any) => {
     <Button
       component="a"
       target="_blank"
+      rel="noopener"
       href={encodeURI(
         `https://discuss.hollowverse.com/new-topic?title=${p.data.name}: ${p.type} change suggestion&category=${p.type}-changes`,
       )}
