@@ -1,7 +1,7 @@
 import 'normalize.css';
 
 import React, { useState } from 'react';
-import s from '../notablePerson.module.scss';
+import s from '../../notablePerson.module.scss';
 import { Button, Typography } from '@mui/material';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { TEditorial } from '_r/pages/common/types';

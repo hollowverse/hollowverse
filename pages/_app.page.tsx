@@ -14,8 +14,8 @@ import Script from 'next/script';
 import React from 'react';
 import { Footer } from '_r/pages/_app/Footer/Footer';
 import { theme } from '_r/pages/common/theme';
-import '../lib/globalStyles.css';
-import s from './_app.module.scss';
+import './_app/globalStyles.css';
+import s from './_app/_app.module.scss';
 
 export default ({ Component, pageProps }: AppProps) => {
   return (

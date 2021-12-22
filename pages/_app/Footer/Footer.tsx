@@ -4,7 +4,7 @@ import { Icon } from '_r/pages/common/Icon';
 import InfoCircle from '_i/icons/info-circle.svg';
 import CommentDots from '_i/icons/comment-dots.svg';
 import GiftIcon from '_i/icons/gift.svg';
-import s from '../../pages/_app.module.scss';
+import s from '../_app.module.scss';
 import { Link, Typography } from '@mui/material';
 
 export const Footer = () => {

@@ -1,17 +1,15 @@
-import 'normalize.css';
-
-import React from 'react';
-import s from './notablePerson.module.scss';
-import { Container, createSvgIcon, SvgIcon, Typography } from '@mui/material';
-import { TEditorial, TNotablePersonData, TPic } from '_r/pages/common/types';
-import { Heading } from './Heading/Heading';
-import { Quotes } from './Quotes/Quotes';
-import { Editorial } from './Editorial/Editorial';
+import { Container, Typography } from '@mui/material';
 import Head from 'next/head';
 import Script from 'next/script';
-import Image from 'next/image';
+import 'normalize.css';
+import React from 'react';
 import CommentsAlt from '_i/icons/comments-alt.svg';
 import { Icon } from '_r/pages/common/Icon';
+import { TEditorial, TNotablePersonData, TPic } from '_r/pages/common/types';
+import { Editorial } from './Editorial/Editorial';
+import { Heading } from './Heading/Heading';
+import s from '../notablePerson.module.scss';
+import { Quotes } from './Quotes/Quotes';
 
 const NotablePerson = (p: {
   data: TNotablePersonData;
