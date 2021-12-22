@@ -2,7 +2,7 @@ import React from 'react';
 import s from './tag.module.scss';
 import Image from 'next/image';
 
-export const Attribute: React.FC<{
+export const Tag: React.FC<{
   text: string;
   icon: string;
   alt: string;

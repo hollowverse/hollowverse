@@ -3,15 +3,15 @@ import { differenceInCalendarYears, parse } from 'date-fns';
 import Image from 'next/image';
 import 'normalize.css';
 import React from 'react';
-import { TAttribute, TNotablePersonData, TPic } from '_r/pages/common/types';
-import { Attribute } from '_r/pages/[notablePerson]/Attribute/Tag';
+import { TTag, TNotablePersonData, TPic } from '_r/pages/common/types';
+import { Tag } from '_r/pages/[notablePerson]/Tag/Tag';
 import { EditButton } from '../common/EditButton/EditButton';
 import s from '../notablePerson.module.scss';
 
 export const Heading = (p: {
   data: TNotablePersonData;
   pic: TPic;
-  tags: TAttribute[];
+  tags: TTag[];
 }) => {
   return (
     <header>
@@ -36,10 +36,10 @@ export const Heading = (p: {
 
       <ul className={s.tagsContainer}>
         {p.tags.map(({ text, icon, alt }) => (
-          <Attribute key={text} text={text} icon={icon} alt={alt} />
+          <Tag key={text} text={text} icon={icon} alt={alt} />
         ))}
 
-        <Attribute
+        <Tag
           text={`${differenceInCalendarYears(
             new Date(),
             parse(p.data.born, 'MM-dd-yyyy', new Date()),

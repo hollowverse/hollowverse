@@ -8,7 +8,7 @@ export type TNotablePersonData = {
   'discourse-topic-id': number;
 };
 
-export type TAttribute = {
+export type TTag = {
   text: string;
   icon: string;
   alt: string;
