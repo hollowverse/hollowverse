@@ -1,13 +1,12 @@
-import 'normalize.css';
-
-import React from 'react';
-import s from '../notablePerson.module.scss';
-import { Typography, Container, Button } from '@mui/material';
-import { Attribute } from '_r/pages/[notablePerson]/Attribute/Attribute';
-import { TAttribute, TNotablePersonData, TPic } from '_r/pages/common/types';
-import Image from 'next/image';
+import { Typography } from '@mui/material';
 import { differenceInCalendarYears, parse } from 'date-fns';
+import Image from 'next/image';
+import 'normalize.css';
+import React from 'react';
+import { TAttribute, TNotablePersonData, TPic } from '_r/pages/common/types';
+import { Attribute } from '_r/pages/[notablePerson]/Attribute/Attribute';
 import { EditButton } from '../common/EditButton/EditButton';
+import s from '../notablePerson.module.scss';
 
 export const Heading = (p: {
   data: TNotablePersonData;

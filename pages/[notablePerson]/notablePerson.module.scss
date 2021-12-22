@@ -120,8 +120,9 @@
     font-size: 110%;
 
     blockquote {
+      margin-left: $s2;
       padding: 1px 0 1px $s4;
-      border-left: 15px solid $lessEmphasis300;
+      border-left: 10px solid $lessEmphasis300;
     }
   }
 
