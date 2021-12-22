@@ -15,7 +15,7 @@ export default (p: {
   data: TNotablePersonData;
   pic: TPic;
   editorial: TEditorial;
-  attributes: any;
+  tags: any;
 }) => {
   return (
     <main>
@@ -38,14 +38,14 @@ export default (p: {
         <title>{p.data.name}'s religion and political view | Hollowverse</title>
         <meta
           name="description"
-          content={`${p.data.name}: ${p.data.attributes.join(', ')}`}
+          content={`${p.data.name}: ${p.data.tags.join(', ')}`}
         ></meta>
         <link rel="canonical" href={`https://hollowverse.com/${p.data.id}`} />
       </Head>
 
       <Container maxWidth="md" style={{ padding: 0 }}>
         <section className={s.fancyBackgroundContainer}>
-          <Heading data={p.data} pic={p.pic} attributes={p.attributes} />
+          <Heading data={p.data} pic={p.pic} tags={p.tags} />
         </section>
       </Container>
 

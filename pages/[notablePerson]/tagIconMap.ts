@@ -1,4 +1,4 @@
-export const attributeIconMap = [
+export const tagIconMap = [
   { keywords: ['jewish'], icon: 'menorah', alt: 'Menorah' },
   { keywords: ['catholic'], icon: 'christmas-tree', alt: 'Christmas tree' },
   { keywords: ['non-religious'], icon: 'martini', alt: 'Martini' },

@@ -6,7 +6,7 @@ import matter from 'gray-matter';
 
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { attributeIconMap } from '_r/pages/[notablePerson]/attributeIconMap';
+import { tagIconMap } from '_r/pages/[notablePerson]/tagIconMap';
 
 const loadNotablePersonData = (notablePerson: string) =>
   yml.load(
@@ -39,17 +39,15 @@ export const getStaticProps = async ({ params }: any) => {
       data,
       editorial,
       pic: `/images/notablePeople/${data.id}.jpg`,
-      attributes: data.attributes
-        .concat(data.occupations)
-        .map((text: string) => {
-          const { icon, alt } = attributeIconMap.find((record) => {
-            return record.keywords.some((keyword) =>
-              text.toLowerCase().includes(keyword),
-            );
-          })!;
+      tags: data.tags.concat(data.occupations).map((text: string) => {
+        const { icon, alt } = tagIconMap.find((record) => {
+          return record.keywords.some((keyword) =>
+            text.toLowerCase().includes(keyword),
+          );
+        })!;
 
-          return { text, icon, alt };
-        }),
+        return { text, icon, alt };
+      }),
     },
   };
 };

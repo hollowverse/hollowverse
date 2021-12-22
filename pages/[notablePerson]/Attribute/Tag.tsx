@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './attribute.module.scss';
+import s from './tag.module.scss';
 import Image from 'next/image';
 
 export const Attribute: React.FC<{
@@ -8,7 +8,7 @@ export const Attribute: React.FC<{
   alt: string;
 }> = (p) => {
   return (
-    <li className={s.attribute}>
+    <li className={s.tag}>
       <div>{p.text}</div>
 
       <div className={s.img}>

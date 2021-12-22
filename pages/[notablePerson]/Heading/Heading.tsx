@@ -4,14 +4,14 @@ import Image from 'next/image';
 import 'normalize.css';
 import React from 'react';
 import { TAttribute, TNotablePersonData, TPic } from '_r/pages/common/types';
-import { Attribute } from '_r/pages/[notablePerson]/Attribute/Attribute';
+import { Attribute } from '_r/pages/[notablePerson]/Attribute/Tag';
 import { EditButton } from '../common/EditButton/EditButton';
 import s from '../notablePerson.module.scss';
 
 export const Heading = (p: {
   data: TNotablePersonData;
   pic: TPic;
-  attributes: TAttribute[];
+  tags: TAttribute[];
 }) => {
   return (
     <header>
@@ -34,8 +34,8 @@ export const Heading = (p: {
         </Typography>
       </div>
 
-      <ul className={s.attributesContainer}>
-        {p.attributes.map(({ text, icon, alt }) => (
+      <ul className={s.tagsContainer}>
+        {p.tags.map(({ text, icon, alt }) => (
           <Attribute key={text} text={text} icon={icon} alt={alt} />
         ))}
 

@@ -2,7 +2,7 @@ export type TNotablePersonData = {
   id: string;
   name: string;
   born: string;
-  attributes: string[];
+  tags: string[];
   occupations: string[];
   quotes: [string, string, string, string][];
   'discourse-topic-id': number;
