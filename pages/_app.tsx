@@ -67,7 +67,7 @@ export default ({ Component, pageProps }: AppProps) => {
               </a>
 
               <div className={s.search}>
-                <div className="gcse-search"></div>
+                <div title="Google search form" className="gcse-search"></div>
               </div>
             </Container>
           </AppBar>
@@ -81,6 +81,7 @@ export default ({ Component, pageProps }: AppProps) => {
                 <Image
                   width={50}
                   height={50}
+                  alt="Hollowverse"
                   src="/images/icons/letter-logo.png"
                 />
               </div>
@@ -91,6 +92,7 @@ export default ({ Component, pageProps }: AppProps) => {
                       src="/images/icons/info-circle.svg"
                       width="15"
                       height="15"
+                      alt="Info"
                     />{' '}
                     About
                   </Typography>
@@ -106,12 +108,14 @@ export default ({ Component, pageProps }: AppProps) => {
                       src="/images/icons/comment-dots.svg"
                       width="15"
                       height="15"
+                      alt="Comment"
                     />{' '}
                     Contact
                   </Typography>
 
                   <Typography variant="body1">
                     <Link
+                      rel="noopener"
                       href="https://discuss.hollowverse.com/signup"
                       target="_blank"
                       color="inherit"
@@ -120,6 +124,7 @@ export default ({ Component, pageProps }: AppProps) => {
                     </Link>{' '}
                     to our discussion forum and send us a{' '}
                     <Link
+                      rel="noopener"
                       href="https://discuss.hollowverse.com/g/admins"
                       target="_blank"
                       color="inherit"
@@ -136,6 +141,7 @@ export default ({ Component, pageProps }: AppProps) => {
                       src="/images/icons/gift.svg"
                       width="15"
                       height="15"
+                      alt="Gift"
                     />{' '}
                     Copyrights
                   </Typography>

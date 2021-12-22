@@ -8,6 +8,12 @@ export type TNotablePersonData = {
   'discourse-topic-id': number;
 };
 
+export type TAttribute = {
+  text: string;
+  icon: string;
+  alt: string;
+};
+
 export type TPic = string;
 
 export type TEditorial = {

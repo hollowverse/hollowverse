@@ -15,6 +15,7 @@ const NotablePerson = (p: {
   data: TNotablePersonData;
   pic: TPic;
   editorial: TEditorial;
+  attributes: any;
 }) => {
   return (
     <main>
@@ -40,7 +41,7 @@ const NotablePerson = (p: {
 
       <Container maxWidth="md">
         <section className={s.fancyBackgroundContainer}>
-          <Heading data={p.data} pic={p.pic} />
+          <Heading data={p.data} pic={p.pic} attributes={p.attributes} />
         </section>
 
         <section className={s.quotesContainer}>
@@ -67,7 +68,11 @@ const NotablePerson = (p: {
             </span>
           </Typography>
 
-          <div className={s.discourseElement} id="discourse-comments"></div>
+          <div
+            className={s.discourseElement}
+            id="discourse-comments"
+            title="Comments"
+          ></div>
         </section>
       </Container>
     </main>

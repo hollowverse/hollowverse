@@ -57,7 +57,7 @@ export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
                   )}
                   {source && date && ' • '}
                   {source && (
-                    <a href={source} rel="external" target="_blank">
+                    <a href={source} rel="noopener" target="_blank">
                       Source
                     </a>
                   )}

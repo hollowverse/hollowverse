@@ -8,10 +8,16 @@ import matter from 'gray-matter';
 import NotablePerson from '_l/NotablePerson/NotablePerson';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
+import { attributeIconMap } from '_l/attributeIconMap';
 
-export default ({ data, editorial, pic }: any) => {
+export default ({ data, editorial, pic, attributes }: any) => {
   return (
-    <NotablePerson data={data} pic={pic} editorial={editorial}></NotablePerson>
+    <NotablePerson
+      data={data}
+      pic={pic}
+      editorial={editorial}
+      attributes={attributes}
+    ></NotablePerson>
   );
 };
 
@@ -21,7 +27,7 @@ const loadNotablePersonData = (notablePerson: string) =>
   );
 
 export const getStaticProps = async ({ params }: any) => {
-  const data = loadNotablePersonData(params.notablePerson);
+  const data = loadNotablePersonData(params.notablePerson) as any;
   const editorialMd = fs.readFileSync(
     join(notablePeoplePath, params.notablePerson, 'editorial.md'),
   );
@@ -45,7 +51,18 @@ export const getStaticProps = async ({ params }: any) => {
     props: {
       data,
       editorial,
-      pic: `/images/notablePeople/${(data as any).id}.jpg`,
+      pic: `/images/notablePeople/${data.id}.jpg`,
+      attributes: data.attributes
+        .concat(data.occupations)
+        .map((text: string) => {
+          const { icon, alt } = attributeIconMap.find((record) => {
+            return record.keywords.some((keyword) =>
+              text.toLowerCase().includes(keyword),
+            );
+          })!;
+
+          return { text, icon, alt };
+        }),
     },
   };
 };
