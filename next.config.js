@@ -23,6 +23,9 @@ module.exports = {
           destination: '/index/index.html',
         },
       ],
+      fallback: [
+        { source: '/:path*', destination: 'https://hollowverse.com/:path*' },
+      ],
     };
   },
 };
