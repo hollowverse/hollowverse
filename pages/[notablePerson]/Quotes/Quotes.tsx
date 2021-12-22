@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../../notablePerson.module.scss';
+import s from '../notablePerson.module.scss';
 import { Divider, Typography } from '@mui/material';
 import { TNotablePersonData, TPic } from '_r/pages/common/types';
 import Image from 'next/image';

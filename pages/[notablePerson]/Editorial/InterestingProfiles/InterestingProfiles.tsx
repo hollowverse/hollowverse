@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../../../notablePerson.module.scss';
+import s from '../../notablePerson.module.scss';
 import { TEditorial } from '_r/pages/common/types';
 import { Typography } from '@mui/material';
 import Image from 'next/image';

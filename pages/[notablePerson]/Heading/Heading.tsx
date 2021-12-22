@@ -1,9 +1,9 @@
 import 'normalize.css';
 
 import React from 'react';
-import s from '../../notablePerson.module.scss';
+import s from '../notablePerson.module.scss';
 import { Typography, Container, Button } from '@mui/material';
-import { Attribute } from '_r/pages/[notablePeople]/Attribute/Attribute';
+import { Attribute } from '_r/pages/[notablePerson]/Attribute/Attribute';
 import { TAttribute, TNotablePersonData, TPic } from '_r/pages/common/types';
 import Image from 'next/image';
 import { differenceInCalendarYears, parse } from 'date-fns';
