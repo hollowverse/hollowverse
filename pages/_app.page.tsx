@@ -21,7 +21,7 @@ import { Icon } from './common/Icon';
 import SearchIcon from '_i/icons/search-regular.svg';
 import TimesIcon from '_i/icons/times-regular.svg';
 
-export default ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
@@ -107,3 +107,5 @@ export default ({ Component, pageProps }: AppProps) => {
     </React.StrictMode>
   );
 };
+
+export default App;

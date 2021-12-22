@@ -11,7 +11,7 @@ import { Heading } from './[notablePerson]/Heading/Heading';
 import s from './[notablePerson]/notablePerson.module.scss';
 import { Quotes } from './[notablePerson]/Quotes/Quotes';
 
-export default (p: {
+const NotablePerson = (p: {
   data: TNotablePersonData;
   pic: TPic;
   editorial: TEditorial;
@@ -35,7 +35,9 @@ export default (p: {
         }}
       />
       <Head>
-        <title>{p.data.name}'s religion and political view | Hollowverse</title>
+        <title>
+          {p.data.name}&apos;s religion and political view | Hollowverse
+        </title>
         <meta
           name="description"
           content={`${p.data.name}: ${p.data.tags.join(', ')}`}
@@ -78,6 +80,8 @@ export default (p: {
     </main>
   );
 };
+
+export default NotablePerson;
 
 export { getStaticProps } from './[notablePerson]/getStaticProps';
 export { getStaticPaths } from './[notablePerson]/getStaticPaths';

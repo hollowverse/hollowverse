@@ -46,7 +46,7 @@ export const Editorial = (p: { editorial: TEditorial }) => {
               <li key={url} className={s.editorialListItem}>
                 <a
                   href={url}
-                  rel="noopener"
+                  rel="noreferrer"
                   target="_blank"
                   className={s.editorialSource}
                 >
