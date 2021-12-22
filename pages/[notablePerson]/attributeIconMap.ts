@@ -1,6 +1,6 @@
 export const attributeIconMap = [
   { keywords: ['jewish'], icon: 'menorah', alt: 'Menorah' },
-  { keywords: ['catholic'], icon: 'cross', alt: 'Cross' },
+  { keywords: ['catholic'], icon: 'christmas-tree', alt: 'Christmas tree' },
   { keywords: ['non-religious'], icon: 'martini', alt: 'Martini' },
   {
     keywords: ['democrat', 'liberal', 'obama'],

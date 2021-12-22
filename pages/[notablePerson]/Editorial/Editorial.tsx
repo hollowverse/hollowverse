@@ -5,7 +5,9 @@ import s from '../notablePerson.module.scss';
 import { Button, Typography } from '@mui/material';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { TEditorial } from '_r/pages/common/types';
+import StarsIcon from '_i/icons/stars.svg';
 import Image from 'next/image';
+import { Icon } from '_r/pages/common/Icon';
 
 export const Editorial = (p: { editorial: TEditorial }) => {
   const [showSources, setShowSources] = useState(false);
@@ -64,13 +66,8 @@ export const Editorial = (p: { editorial: TEditorial }) => {
 
       <div className={s.interestingProfilesContainer}>
         <Typography variant="h1" component="h3">
-          <Image
-            height={25}
-            width={25}
-            src="/images/icons/stars.svg"
-            alt="Stars"
-          />
-          <span style={{ marginLeft: '10px' }}>Other interesting profiles</span>
+          <Icon component={StarsIcon} />
+          Other interesting profiles
         </Typography>
 
         <div className={s.interestingProfiles}>
