@@ -19,6 +19,10 @@ module.exports = {
     return {
       fallback: [
         {
+          source: '/',
+          destination: 'https://hollowverse.web.app',
+        },
+        {
           source: '/:path(.+\\..+)',
           destination: 'https://hollowverse.web.app/:path*',
         },
