@@ -19,7 +19,7 @@ const NotablePerson = (p: {
 }) => {
   return (
     <main>
-      <Script
+      {/* <Script
         id="discourse-embed"
         dangerouslySetInnerHTML={{
           __html: `
@@ -33,15 +33,15 @@ const NotablePerson = (p: {
           })();
         `,
         }}
-      />
+      /> */}
       <Head>
         <title>
           {p.data.name}&apos;s religion and political view | Hollowverse
         </title>
-        <meta
+        {/* <meta
           name="description"
           content={`${p.data.name}: ${p.data.tags.join(', ')}`}
-        ></meta>
+        ></meta> */}
         <link rel="canonical" href={`https://hollowverse.com/${p.data.id}`} />
       </Head>
 
@@ -52,9 +52,9 @@ const NotablePerson = (p: {
       </Container>
 
       <Container maxWidth="md">
-        <section className={s.quotesContainer}>
+        {/* <section className={s.quotesContainer}>
           <Quotes data={p.data} pic={p.pic} />
-        </section>
+        </section> */}
 
         {p.editorial && (
           <section className={s.editorialContainer}>
@@ -62,7 +62,7 @@ const NotablePerson = (p: {
           </section>
         )}
 
-        <section className={s.discussionContainer}>
+        {/* <section className={s.discussionContainer}>
           <Typography variant="h1" component="h2">
             <Icon component={CommentsAlt} />
             <span style={{ marginLeft: 5 }}>
@@ -75,7 +75,7 @@ const NotablePerson = (p: {
             id="discourse-comments"
             title="Comments"
           ></div>
-        </section>
+        </section> */}
       </Container>
     </main>
   );

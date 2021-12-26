@@ -15,10 +15,10 @@ export const Editorial = (p: { editorial: TEditorial }) => {
 
   return (
     <>
-      <Typography variant="h1" component="h3">
+      {/* <Typography variant="h1" component="h3">
         <Icon component={PenIcon}></Icon>
         Editorial
-      </Typography>
+      </Typography> */}
 
       <article
         className={s.editorialContent}

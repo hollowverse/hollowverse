@@ -33,10 +33,15 @@
   .notablePersonImageContainer {
     overflow: hidden;
     position: relative;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    width: 200px;
+    height: 250px;
+    // border-radius: 50%;
     box-shadow: 0 0 0 4px rgb(255 255 255 / 70%), 0 2px 1px 0 rgb(0 0 0 / 10%);
+
+    .notablePersonImage {
+      object-fit: cover;
+      object-position: top;
+    }
   }
 }
 
@@ -155,9 +160,14 @@
         color: $textColor;
         text-decoration: none;
 
-        .interestingProfileImage {
-          width: 120px;
-          border-radius: 50%;
+        .interestingProfileImageContainer {
+          height: 250px;
+          width: 200px;
+          overflow: hidden;
+          position: relative;
+          display: block;
+          border: 1px solid lightgray;
+          padding: 1px;
         }
 
         .interestingProfileName {

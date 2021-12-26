@@ -1,11 +1,12 @@
 export type TNotablePersonData = {
   id: string;
   name: string;
-  born: string;
-  tags: string[];
-  occupations: string[];
-  quotes: [string, string, string, string][];
-  'discourse-topic-id': number;
+  slug: string;
+  // born: string;
+  // tags: string[];
+  // occupations: string[];
+  // quotes: [string, string, string, string][];
+  // 'discourse-topic-id': number;
 };
 
 export type TTag = {

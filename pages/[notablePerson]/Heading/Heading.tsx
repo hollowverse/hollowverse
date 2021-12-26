@@ -18,9 +18,11 @@ export const Heading = (p: {
       <div className={s.notablePersonHeading}>
         <div className={s.notablePersonImageContainer}>
           <Image
+            className={s.notablePersonImage}
+            layout="fill"
             src={p.pic}
-            width={150}
-            height={150}
+            width={200}
+            height={250}
             priority
             alt={p.data.name}
           />
@@ -34,7 +36,7 @@ export const Heading = (p: {
         </Typography>
       </div>
 
-      <ul className={s.tagsContainer}>
+      {/* <ul className={s.tagsContainer}>
         {p.tags.map(({ text, icon, alt }) => (
           <Tag key={text} text={text} icon={icon} alt={alt} />
         ))}
@@ -47,7 +49,7 @@ export const Heading = (p: {
           icon="hourglass"
           alt="Hourglass"
         />
-      </ul>
+      </ul> */}
 
       <div style={{ zIndex: 1, position: 'relative' }}>
         <EditButton data={p.data} type="tag" />
