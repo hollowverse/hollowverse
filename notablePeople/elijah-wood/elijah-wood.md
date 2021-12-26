@@ -25,11 +25,11 @@ sources:
 
 Elijah Wood was born and raised in Ceder Rapids, Iowa.
 
-Wood was raised a Catholic.<a class="source-citation" href="http://www.nndb.com/people/765/000022699/" title="Elijah Wood">[1]</a> But we get the feeling it wasn't an overwhelming, guilt-ridden Catholic upbringing like, say, the one Carlos Santana describes. He once said:
+Wood was raised a Catholic.<a class="source-citation" href="#http://www.nndb.com/people/765/000022699/" title="Elijah Wood">[1]</a> But we get the feeling it wasn't an overwhelming, guilt-ridden Catholic upbringing like, say, the one Carlos Santana describes. He once said:
 
->I was raised Catholic. Well, not that my mother wanted to make a priest out of me or anything. You could call me a Catholic light.<a class="source-citation" href="http://always.ejwsites.net/HumoInterview.html" title="Elijah Wood">[2]</a>
+>I was raised Catholic. Well, not that my mother wanted to make a priest out of me or anything. You could call me a Catholic light.<a class="source-citation" href="#http://always.ejwsites.net/HumoInterview.html" title="Elijah Wood">[2]</a>
 
-There's rumor that Wood is quite devout as an adult, even reports that he prays every night.<a class="source-citation" href="http://bridgetbatson.hubpages.com/hub/Catholic-Celebrity-Awards" title="Catholic Celebrity Awards">[3]</a> But I was unable to confirm that and given the fact that there's very little about Catholicism–or any religion for that matter–from Wood himself, it's a safe bet that he's either not religious or he keeps it to himself.
+There's rumor that Wood is quite devout as an adult, even reports that he prays every night.<a class="source-citation" href="#http://bridgetbatson.hubpages.com/hub/Catholic-Celebrity-Awards" title="Catholic Celebrity Awards">[3]</a> But I was unable to confirm that and given the fact that there's very little about Catholicism–or any religion for that matter–from Wood himself, it's a safe bet that he's either not religious or he keeps it to himself.
 
 
 ## Elven politics
@@ -38,14 +38,14 @@ Woods is clearly a liberal–and not in the "I'm a Hollywood star doing what all
 
 He's never endorsed Obama that I can see, but he did hop on Twitter to applaud the president for his stance on gay marriage, saying:
 
->Obama announces support for same-sex marriage. Well said, sir. Equality is the key word.<a class="source-citation" href="https://twitter.com/woodelijah/status/200567913818767360" title="Woodelijah: Obama announces support for…">[4]</a>
+>Obama announces support for same-sex marriage. Well said, sir. Equality is the key word.<a class="source-citation" href="#https://twitter.com/woodelijah/status/200567913818767360" title="Woodelijah: Obama announces support for…">[4]</a>
 
 Plus, he supports the legalization of marijuana. Even though he's not a pot smoker himself, Wood said:
 
->I think the whole notion that marijuana is illegal is past the point of ridiculousness.<a class="source-citation" href="http://www.huffingtonpost.com/2011/08/23/elijah-wood-covers-high-t_n_934474.html" title="Elijah Wood Covers &quot;High Times&quot;; Talks Marijuana Support">[5]</a>
+>I think the whole notion that marijuana is illegal is past the point of ridiculousness.<a class="source-citation" href="#http://www.huffingtonpost.com/2011/08/23/elijah-wood-covers-high-t_n_934474.html" title="Elijah Wood Covers &quot;High Times&quot;; Talks Marijuana Support">[5]</a>
 
-More telling is Wood's stance on government and his support for the Occupy Wall Street movement. He was a promoter for a coalition called the 99 Percent Spring which brought together a wide range of groups to train and educate tens of thousands of people to be more effective agitators. It wasn't much of a success, apparently, and most Occupiers didn't back the project.<a class="source-citation" href="http://www.thenation.com/blog/167253/occupy-wall-street-activists-respond-99-spring#" title="Occupy Wall Street Activists Respond to the 99 Percent Spring">[6]</a>
+More telling is Wood's stance on government and his support for the Occupy Wall Street movement. He was a promoter for a coalition called the 99 Percent Spring which brought together a wide range of groups to train and educate tens of thousands of people to be more effective agitators. It wasn't much of a success, apparently, and most Occupiers didn't back the project.<a class="source-citation" href="#http://www.thenation.com/blog/167253/occupy-wall-street-activists-respond-99-spring#" title="Occupy Wall Street Activists Respond to the 99 Percent Spring">[6]</a>
 
 Still, Woods showed his share of solidarity. Stating his stance on public protests and political statements in general, Woods said:
 
->I always think it is important to question even your government, especially your government actually.<a class="source-citation" href="http://www.mania.com/elijah-wood-return-ring_article_37226.html" title="Elijah Wood: Return of the RING">[7]</a>
+>I always think it is important to question even your government, especially your government actually.<a class="source-citation" href="#http://www.mania.com/elijah-wood-return-ring_article_37226.html" title="Elijah Wood: Return of the RING">[7]</a>

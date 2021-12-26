@@ -10,6 +10,18 @@ import remarkHtml from 'remark-html';
 
 const withPubDir = (s: string) => `${publicDir}/${s}`;
 
+const getImageLink = (link: string) => {
+  const jpg = `${link}.jpg`;
+  const jpeg = `${link}.jpeg`;
+  const png = `${link}.png`;
+
+  return fs.existsSync(withPubDir(jpg))
+    ? jpg
+    : fs.existsSync(withPubDir(jpeg))
+    ? jpeg
+    : png;
+};
+
 const loadNotablePersonData = (notablePerson: string) =>
   yml.load(
     fs.readFileSync(
@@ -31,10 +43,11 @@ export const getStaticProps = async ({ params }: any) => {
       slug: params.notablePerson,
       interestingProfiles: editorialObj.data.relatedPeople.map(
         (interestingProfileId: string) => {
-          const data = loadNotablePersonData(interestingProfileId)!;
+          const data = loadNotablePersonData(interestingProfileId) as any;
           return {
-            ...(data as any),
+            ...data,
             slug: interestingProfileId,
+            pic: getImageLink(`/images/notablePeople/${data.id}`),
           };
         },
       ),
@@ -47,17 +60,7 @@ export const getStaticProps = async ({ params }: any) => {
   };
 
   const imageLinkWithoutExtension = `/images/notablePeople/${data.id}`;
-  const jpg = `${imageLinkWithoutExtension}.jpg`;
-  const jpeg = `${imageLinkWithoutExtension}.jpeg`;
-  const png = `${imageLinkWithoutExtension}.png`;
-
-  const imagePath = fs.existsSync(withPubDir(jpg))
-    ? jpg
-    : fs.existsSync(withPubDir(jpeg))
-    ? jpeg
-    : png;
-
-  console.log('imagePath', imagePath);
+  const imagePath = getImageLink(imageLinkWithoutExtension);
 
   return {
     props: {

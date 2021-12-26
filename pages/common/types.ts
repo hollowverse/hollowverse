@@ -21,6 +21,10 @@ export type TEditorial = {
   data: {
     sources: { sourceUrl: string; sourceTitle: string }[];
     interestingProfiles: TNotablePersonData[];
+    summaries: {
+      religion: string;
+      politicalViews: string;
+    };
   };
   content: string;
 };

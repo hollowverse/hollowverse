@@ -23,11 +23,11 @@ sources:
 
 Brooklyn Decker was born in Kettering, Ohio. She grew up there, in Middleton, Ohio, and in Matthews, North Carolina.
 
-Decker appears to be entirely non-religious. Some people claim she's Jewish,<a class="source-citation" href="http://www.chacha.com/question/is-brooklyn-decker-jewish" title="Is Brooklyn Decker Jewish?">[1]</a> and others say she's not.<a class="source-citation" href="http://wiki.answers.com/Q/Is_Brooklyn_decker_Jewish" title="Is Brooklyn decker Jewish?">[2]</a>
+Decker appears to be entirely non-religious. Some people claim she's Jewish,<a class="source-citation" href="#http://www.chacha.com/question/is-brooklyn-decker-jewish" title="Is Brooklyn Decker Jewish?">[1]</a> and others say she's not.<a class="source-citation" href="#http://wiki.answers.com/Q/Is_Brooklyn_decker_Jewish" title="Is Brooklyn decker Jewish?">[2]</a>
 
 She criticized those who use the bible to oppose gay rights and gay marriage on Twitter when she wrote:
 
->Having belief in God and supporting equal human rights don't have to be mutually exclusive.<a class="source-citation" href="https://twitter.com/BrooklynDecker/status/200091294880641024" title="BrooklynDecker: Having belief in God and …">[3]</a>
+>Having belief in God and supporting equal human rights don't have to be mutually exclusive.<a class="source-citation" href="#https://twitter.com/BrooklynDecker/status/200091294880641024" title="BrooklynDecker: Having belief in God and …">[3]</a>
 
 Although that makes her neither anti-Christian nor a Christian herself, it does pit her against conservative Christians. Which bring us to…
 
@@ -36,12 +36,12 @@ Although that makes her neither anti-Christian nor a Christian herself, it does 
 
 She was particularly outspoken when her home state of North Carolina passed a constitutional ban on same-sex marriage, calling it "one giant step backward." And, despite not officially endorsing the Democrats or the President, she was "very proud and excited" about Obama's declaration of support for the issue saying,
 
->I think it was a huge accomplishment for Americans, and I think it's about time.<a class="source-citation" href="http://marquee.blogs.cnn.com/2012/05/11/obamas-same-sex-remarks-are-talk-of-battleship-premiere/" title="Obama&apos;s same-sex remarks are talk of &apos;Battleship&apos; premiere.">[4]</a>
+>I think it was a huge accomplishment for Americans, and I think it's about time.<a class="source-citation" href="#http://marquee.blogs.cnn.com/2012/05/11/obamas-same-sex-remarks-are-talk-of-battleship-premiere/" title="Obama&apos;s same-sex remarks are talk of &apos;Battleship&apos; premiere.">[4]</a>
 
 She also showed her dedication to environmentalism by teaming up with the Sierra Club for a week-long trip to the Arctic National Wildlife Refuge in Alaska–the location of the politically controversial arctic oil-drilling debate. She said this about her trip:
 
->Going on a Sierra Club Outing to the Arctic was an enlightening experience and gave me a chance to reconnect with nature. Anyone who spends time enjoying our planet knows exactly why it's important to protect places like the Arctic.<a class="source-citation" href="http://www.huffingtonpost.com/2012/08/30/brooklyn-decker-model-hea_n_1841126.html" title="Brooklyn Decker Heads To The Arctic National Wildlife Refuge With Sierra Club.">[5]</a>
+>Going on a Sierra Club Outing to the Arctic was an enlightening experience and gave me a chance to reconnect with nature. Anyone who spends time enjoying our planet knows exactly why it's important to protect places like the Arctic.<a class="source-citation" href="#http://www.huffingtonpost.com/2012/08/30/brooklyn-decker-model-hea_n_1841126.html" title="Brooklyn Decker Heads To The Arctic National Wildlife Refuge With Sierra Club.">[5]</a>
 
 Decker is clearly liberal. And even though she hasn't let us in on her opinions about U.S. military operations in the middle east, she definitely supports the troops. For the eleventh anniversary of the 9/11 terrorist attacks, Decker visited active military troops on a USO tour. She reached out to the organization because she had been thinking about doing a tour for quite some time. In anticipation of the trip she said,
 
->I know this experience will be unforgettable, and I can't wait to let our troops know how much their sacrifice is appreciated.<a class="source-citation" href="http://www.uso.org/brooklyn-decker-christine-teigen-first-uso-tour-2012/" title="Celebrities Brooklyn Decker, Christine Teigen Spend 9/11 With Troops in the Middle East.">[6]</a>
+>I know this experience will be unforgettable, and I can't wait to let our troops know how much their sacrifice is appreciated.<a class="source-citation" href="#http://www.uso.org/brooklyn-decker-christine-teigen-first-uso-tour-2012/" title="Celebrities Brooklyn Decker, Christine Teigen Spend 9/11 With Troops in the Middle East.">[6]</a>

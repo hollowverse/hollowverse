@@ -15,11 +15,11 @@ sources:
 
 Miranda Cosgrove was born in Los Angeles, California.
 
-There is no indication of her religion, which is particularly strange for an American child star, except for her Myspace page, where she lists herself as "Christian-other."<a class="source-citation" href="http://www.myspace.com/mirandacosgrove14" title="Miranda Cosgrove on Myspace">[1]</a> I get the Christian part, but what is this other business?
+There is no indication of her religion, which is particularly strange for an American child star, except for her Myspace page, where she lists herself as "Christian-other."<a class="source-citation" href="#http://www.myspace.com/mirandacosgrove14" title="Miranda Cosgrove on Myspace">[1]</a> I get the Christian part, but what is this other business?
 
 
 ## Political guest star
 
-Cosgrove hasn't come out about her political leanings either. But she did share a stage once with Michelle Obama, if that counts for anything.<a class="source-citation" href="http://www.huffingtonpost.com/2012/01/11/michelle-obama-icarly-miranda-cosgrove-nathan-kress_n_1198394.html" title="Michelle Obama On &apos;iCarly&apos;: Miranda Cosgrove, Nathan Kress Share First Lady Stories">[2]</a> In an interview after their meeting, Cosgrove only had nice things to say.
+Cosgrove hasn't come out about her political leanings either. But she did share a stage once with Michelle Obama, if that counts for anything.<a class="source-citation" href="#http://www.huffingtonpost.com/2012/01/11/michelle-obama-icarly-miranda-cosgrove-nathan-kress_n_1198394.html" title="Michelle Obama On &apos;iCarly&apos;: Miranda Cosgrove, Nathan Kress Share First Lady Stories">[2]</a> In an interview after their meeting, Cosgrove only had nice things to say.
 
 Truly, she's young and a rising star in Hollywood. She's probably hanging out with liberals and Democrats all day long, so it's likely that has or will rub off on Cosgrove.

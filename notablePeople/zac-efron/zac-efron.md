@@ -19,20 +19,20 @@ sources:
 
 Oh Zac. You're just too pretty for God.
 
-Efron grew up in Southern California, quite possibly the most godless place on the planet, in a non-religious family. One of his grandfathers was Jewish and the name Efron is the Hebrew word for "lark."<a class="source-citation" href="http://www.shalomlife.com/culture/10878/zac-efron-to-smuggle-cocaine-in-a-movie/" title="Zac Efron to Smuggle Cocaine (in a move)">[1]</a>
+Efron grew up in Southern California, quite possibly the most godless place on the planet, in a non-religious family. One of his grandfathers was Jewish and the name Efron is the Hebrew word for "lark."<a class="source-citation" href="#http://www.shalomlife.com/culture/10878/zac-efron-to-smuggle-cocaine-in-a-movie/" title="Zac Efron to Smuggle Cocaine (in a move)">[1]</a>
 
 It might be the name or Zac's grandfather because Efron is regularly referred to as a Jew. However, you aren't really Jewish unless your mother is Jewish (according to tradition) and besides, Efron himself has come out and said he's not religious:
 
->I was raised agnostic, so we never practiced religion, but my parents were very strict.<a class="source-citation" href="http://www.celebatheists.com/wiki/Zac_Efron" title="Zac Efron">[2]</a>
+>I was raised agnostic, so we never practiced religion, but my parents were very strict.<a class="source-citation" href="#http://www.celebatheists.com/wiki/Zac_Efron" title="Zac Efron">[2]</a>
 
 Beyond that, Efron hasn't said much about religion.
 
 ## The politics of the rich, young, and good looking
 
-Maybe when Efron's career goes down the toilet or he's blasted for back-taxes or he finally makes it in with the Hollywood circles who are constantly chattering on about their political views, he'll have more to say. But at this point, Efron has been very quiet about politics. He's even refused to talk about who he votes for.<a class="source-citation" href="http://www.aceshowbiz.com/news/view/00019058.html" title="&apos;HSM Stars Talk About U.S. Presidential Election">[3]</a>
+Maybe when Efron's career goes down the toilet or he's blasted for back-taxes or he finally makes it in with the Hollywood circles who are constantly chattering on about their political views, he'll have more to say. But at this point, Efron has been very quiet about politics. He's even refused to talk about who he votes for.<a class="source-citation" href="#http://www.aceshowbiz.com/news/view/00019058.html" title="&apos;HSM Stars Talk About U.S. Presidential Election">[3]</a>
 
 However, he did once make a public service announcement where he talked about the importance of voting, saying:
 
->Just in general, voting is something really important that everyone in the nation should take part in. We're picking officials to represent ourselves, you know, so the more people we can have, the more opinions represented, the better.<a class="source-citation" href="http://www.youtube.com/watch?v=2VCcSUeQMec" title="Zac Efron Declares Himself">[4]</a>
+>Just in general, voting is something really important that everyone in the nation should take part in. We're picking officials to represent ourselves, you know, so the more people we can have, the more opinions represented, the better.<a class="source-citation" href="#http://www.youtube.com/watch?v=2VCcSUeQMec" title="Zac Efron Declares Himself">[4]</a>
 
 Maybe someday we can expect some opinions from Efron, but at this point, we can give him the benefit of the doubt and assume he's just too classy to talk about his personal views.

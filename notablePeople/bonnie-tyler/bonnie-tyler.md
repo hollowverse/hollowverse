@@ -19,7 +19,7 @@ Bonnie Tyler, born Gaynor Hopkins, was born and raised in Skewen, Neath, Wales.
 
 Tyler was raised in a close-knit religious family. In describing her childhood, she wrote,
 
->We were brought up Protestant and I went to church three times a day on a Sunday. My parents weren't Bible-bashers, but we all have a strong belief in God and a strong faith.<a class="source-citation" href="http://www.guardian.co.uk/lifeandstyle/2012/nov/17/bonnie-tyler-my-family-values" title="Bonnie Tyler: My family values.">[1]</a>
+>We were brought up Protestant and I went to church three times a day on a Sunday. My parents weren't Bible-bashers, but we all have a strong belief in God and a strong faith.<a class="source-citation" href="#http://www.guardian.co.uk/lifeandstyle/2012/nov/17/bonnie-tyler-my-family-values" title="Bonnie Tyler: My family values.">[1]</a>
 
 She didn't indicate exactly which denomination to which she adheres, but chances are it is likely the Church in Wales, or possibly the Presbyterian Church of Wales.
 
@@ -32,9 +32,9 @@ Regardless, there's no doubt she takes her faith seriously.
 
 The one and only time I think politics got anywhere near Bonnie Tyler was when she was picked to be the 2013 representative for Britain at the Eurovision Song Contest. After a disappointing outcome for 2012's representative Engelbert Humperdink, some quarters were a little disappointed that a more contemporary artist wasn't picked. One columnist for The Telegraph was fairly offended at the choice. She wrote,
 
->[Outside the U.K.] the Eurovision song contest is a deadly serious kind of fun, a modern pan-European folk tradition shoring up our political and economic unity. . . . So when we choose Tyler, or Humperdinck, to be our national representative, having not bought their records in years, it looks to our neighbours as if we are just indulging in that other peculiarly British pastime–taking the mickey.<a class="source-citation" href="http://www.telegraph.co.uk/culture/tvandradio/eurovision/9915761/Bonnie-Tyler-Why-the-UK-needs-to-take-Eurovision-seriously.html" title="Bonnie Tyler: Why the UK needs to take Eurovision seriously.">[2]</a>
+>[Outside the U.K.] the Eurovision song contest is a deadly serious kind of fun, a modern pan-European folk tradition shoring up our political and economic unity. . . . So when we choose Tyler, or Humperdinck, to be our national representative, having not bought their records in years, it looks to our neighbours as if we are just indulging in that other peculiarly British pastime–taking the mickey.<a class="source-citation" href="#http://www.telegraph.co.uk/culture/tvandradio/eurovision/9915761/Bonnie-Tyler-Why-the-UK-needs-to-take-Eurovision-seriously.html" title="Bonnie Tyler: Why the UK needs to take Eurovision seriously.">[2]</a>
 
-Indeed, others note that the contest is often seen as a kind of political game, with countries voting for each other based more on politics than the quality of the performances.<a class="source-citation" href="http://www.dailymail.co.uk/news/article-2289380/Will-Bonnie-Tyler-finally-end-Eurovision-heartache.html" title="Will Bonnie Tyler finally end our Eurovision heartache?">[3]</a> But then if that's the case, who cares if it's Tyler or Humperdinck or anyone else? Enlighten us in the comments.
+Indeed, others note that the contest is often seen as a kind of political game, with countries voting for each other based more on politics than the quality of the performances.<a class="source-citation" href="#http://www.dailymail.co.uk/news/article-2289380/Will-Bonnie-Tyler-finally-end-Eurovision-heartache.html" title="Will Bonnie Tyler finally end our Eurovision heartache?">[3]</a> But then if that's the case, who cares if it's Tyler or Humperdinck or anyone else? Enlighten us in the comments.
 
 And that's the extent of it. Aside from being a potentially an outdated representative of U.K. culture, Tyler appears to live completely outside the political realm.
 

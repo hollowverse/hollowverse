@@ -23,9 +23,9 @@ sources:
 
 Jennifer Morrison was born in Chicago, Illinois and was raised in the Chicago suburb, Arlington Heights.
 
-Morrison is as non-religious as any other celebrity who hasn't declared themselves an atheist. The character for which she is perhaps most famous, from the television series House, is an atheist doctor,<a class="source-citation" href="http://www.squidoo.com/AtheistCharacters" title="A List of Atheist and Agnostic Film and TV Characters.">[1]</a> but I couldn't find any indication that she's ever talked about that aspect of her on-screen life.
+Morrison is as non-religious as any other celebrity who hasn't declared themselves an atheist. The character for which she is perhaps most famous, from the television series House, is an atheist doctor,<a class="source-citation" href="#http://www.squidoo.com/AtheistCharacters" title="A List of Atheist and Agnostic Film and TV Characters.">[1]</a> but I couldn't find any indication that she's ever talked about that aspect of her on-screen life.
 
-Her Myspace profile, which is almost definitely not official, lists her religion as "Christian – other,"<a class="source-citation" href="http://www.myspace.com/jennifermor" title="Jennifer Morrison (Jennifer Morrison).">[2]</a> but it doesn't seem likely to me that she'd call herself a Christian. More likely is that she's totally non-religious. She doesn't mention God or praying on her (definitely official) [Twitter feed](https://twitter.com/jenmorrisonlive), and the closest thing we get to religion is a lone "Merry Christmas!!" tweet in 2011.<a class="source-citation" href="https://twitter.com/jenmorrisonlive/status/150969922812526592" title="jenmorrisonlive: Merry Christmas!!">[3]</a>
+Her Myspace profile, which is almost definitely not official, lists her religion as "Christian – other,"<a class="source-citation" href="#http://www.myspace.com/jennifermor" title="Jennifer Morrison (Jennifer Morrison).">[2]</a> but it doesn't seem likely to me that she'd call herself a Christian. More likely is that she's totally non-religious. She doesn't mention God or praying on her (definitely official) [Twitter feed](https://twitter.com/jenmorrisonlive), and the closest thing we get to religion is a lone "Merry Christmas!!" tweet in 2011.<a class="source-citation" href="#https://twitter.com/jenmorrisonlive/status/150969922812526592" title="jenmorrisonlive: Merry Christmas!!">[3]</a>
 
 If you've come across something I've missed, feel free to drop us a line in the comments.
 
@@ -34,10 +34,10 @@ If you've come across something I've missed, feel free to drop us a line in the 
 
 As far as politics go, Morrison's giving us a little more to chew on, but not much. What we know for sure: she's an Obama fan. Outside that? Pretty much nothing. But at least she made that one fact clear.
 
-Morrison wore an Obama t-shirt loud and proud to an event in 2009<a class="source-citation" href="http://coolspotters.com/actresses/jennifer-morrison/and/clothing/urban-outfitters-obey-obama-tee#medium-33760" title="Jennifer Morrison and Urban Outfitters Obey Obama Tee.">[4]</a> and she tweeted her support for the president during his 2012 campaign. The day after perhaps Obama's lowest moment in the campaign, after he bombed his first debate against challenger Mitt Romney, Morrison retweeted this plea from his camp:
+Morrison wore an Obama t-shirt loud and proud to an event in 2009<a class="source-citation" href="#http://coolspotters.com/actresses/jennifer-morrison/and/clothing/urban-outfitters-obey-obama-tee#medium-33760" title="Jennifer Morrison and Urban Outfitters Obey Obama Tee.">[4]</a> and she tweeted her support for the president during his 2012 campaign. The day after perhaps Obama's lowest moment in the campaign, after he bombed his first debate against challenger Mitt Romney, Morrison retweeted this plea from his camp:
 
->RT @BarackObama: RT if you're on #TeamObama tonight.<a class="source-citation" href="http://tweetwood.com/conversation/jenmorrisonlive/BarackObama" title="Twitter conversation between Jennifer Morrison and Barack Obama.">[5]</a>
+>RT @BarackObama: RT if you're on #TeamObama tonight.<a class="source-citation" href="#http://tweetwood.com/conversation/jenmorrisonlive/BarackObama" title="Twitter conversation between Jennifer Morrison and Barack Obama.">[5]</a>
 
-But then when it came time to actually vote, she was mostly silent except one retweet several days before the election from fellow actress Christina Applegate to please vote, and vote thoughtfully.<a class="source-citation" href="https://twitter.com/jenmorrisonlive" title="Jennifer Morrison (jenmorrisonlive) on Twitter.">[6]</a>
+But then when it came time to actually vote, she was mostly silent except one retweet several days before the election from fellow actress Christina Applegate to please vote, and vote thoughtfully.<a class="source-citation" href="#https://twitter.com/jenmorrisonlive" title="Jennifer Morrison (jenmorrisonlive) on Twitter.">[6]</a>
 
 So, she might not be the most active celebrity on the block, but at least we know where she stands.

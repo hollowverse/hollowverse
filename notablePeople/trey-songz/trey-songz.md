@@ -17,27 +17,25 @@ sources:
     sourceUrl: "http://www.rap-up.com/2012/09/25/video-trey-songz-campaigns-for-obama-in-virginia/"
   - sourceTitle: "Trey Songz"
     sourceUrl: "https://twitter.com/TreySongz"
-  - sourceTitle: "Trey Songz"
-    sourceUrl: "https://twitter.com/TreySongz"
 ---
 
 Trey Songz, whose real name is Tremaine Aldon Neverson, was born and raised in Petersburg, Virginia.
 
-Songz is some sort of Christian. Apparently, he was often taken to church by his devout grandmother, who sang in the choir.<a class="source-citation" href="http://www.sing365.com/music/lyric.nsf/Trey-Songz-Biography/5902B5FAD5FD8C224825704D0006DE9B" title="Trey Songz Biography">[1]</a> Also, he's sometimes spotted wearing a cross around his neck.<a class="source-citation" href="http://prayerbracelet.wordpress.com/2011/07/14/trey-songz-wearing-a-religious-necklace/" title="Trey Songz wearing a religious necklace">[2]</a>
+Songz is some sort of Christian. Apparently, he was often taken to church by his devout grandmother, who sang in the choir.<a class="source-citation" href="#http://www.sing365.com/music/lyric.nsf/Trey-Songz-Biography/5902B5FAD5FD8C224825704D0006DE9B" title="Trey Songz Biography">[1]</a> Also, he's sometimes spotted wearing a cross around his neck.<a class="source-citation" href="#http://prayerbracelet.wordpress.com/2011/07/14/trey-songz-wearing-a-religious-necklace/" title="Trey Songz wearing a religious necklace">[2]</a>
 
-But that's about it. Oh, other than the rumors that he's "Illuminati,"<a class="source-citation" href="http://www.youtube.com/watch?v=hbz45IEG92k" title="Trey Songz Illuminati Exposed – Part 1">[3]</a> whatever that means.
+But that's about it. Oh, other than the rumors that he's "Illuminati,"<a class="source-citation" href="#http://www.youtube.com/watch?v=hbz45IEG92k" title="Trey Songz Illuminati Exposed – Part 1">[3]</a> whatever that means.
 
 
 ## Politics=Obama
 
-Songz seemingly isn't political–unless it's about Obama. During the 2012 elections, Songz was all over the president's reelection efforts. In his home state of Virginia, Songz held a "Gotta Vote" concert in hopes of getting people registered to vote.<a class="source-citation" href="http://www.rap-up.com/2012/09/25/video-trey-songz-campaigns-for-obama-in-virginia/" title="Trey Songz Campaigns for Obama in Virginia">[4]</a>
+Songz seemingly isn't political–unless it's about Obama. During the 2012 elections, Songz was all over the president's reelection efforts. In his home state of Virginia, Songz held a "Gotta Vote" concert in hopes of getting people registered to vote.<a class="source-citation" href="#http://www.rap-up.com/2012/09/25/video-trey-songz-campaigns-for-obama-in-virginia/" title="Trey Songz Campaigns for Obama in Virginia">[4]</a>
 
 And his twitter feed around election day in 2012 was full of supportive tweets, like:
 
->Americans let your voice be heard!!! I spoke and said "OBAMA!!!!<a class="source-citation" href="https://twitter.com/TreySongz" title="Trey Songz">[5]</a>
+>Americans let your voice be heard!!! I spoke and said "OBAMA!!!!<a class="source-citation" href="#https://twitter.com/TreySongz" title="Trey Songz">[5]</a>
 
 And:
 
->Virginia lets go!!!! You know what we gotta do. Give our guy another 4 to push our country 4ward!!!<a class="source-citation" href="https://twitter.com/TreySongz" title="Trey Songz">[6]</a>
+>Virginia lets go!!!! You know what we gotta do. Give our guy another 4 to push our country 4ward!!!<a class="source-citation" href="#https://twitter.com/TreySongz" title="Trey Songz">[6]</a>
 
 So, we've honed in on a label: Democrat. But that's as far as Songz will let us go at this time. Keep us updated in the comments.

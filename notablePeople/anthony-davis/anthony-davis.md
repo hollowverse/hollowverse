@@ -19,9 +19,9 @@ sources:
 
 Anthony Davis (who is really Anthony Davis, Jr.) was born and raised in South Chicago, Illinois.
 
-Davis is a Christian of some kind–has been his whole life. He grew up practicing basketball at a local church<a class="source-citation" href="http://usatoday30.usatoday.com/sports/college/mensbasketball/story/2012-03-29/Kentucky-found-hidden-gem-in-Anthony-Davis/53872780/1" title="Kentucky found hidden gem in Anthony Davis">[1]</a> and regularly attended a church in the South Chicago neighborhood of Englewood. We know this because, during the Christmas season of 2012, Davis decided he wanted to donate coats to the children of his former Chicago church. He said of the charity event:
+Davis is a Christian of some kind–has been his whole life. He grew up practicing basketball at a local church<a class="source-citation" href="#http://usatoday30.usatoday.com/sports/college/mensbasketball/story/2012-03-29/Kentucky-found-hidden-gem-in-Anthony-Davis/53872780/1" title="Kentucky found hidden gem in Anthony Davis">[1]</a> and regularly attended a church in the South Chicago neighborhood of Englewood. We know this because, during the Christmas season of 2012, Davis decided he wanted to donate coats to the children of his former Chicago church. He said of the charity event:
 
->I just wanted to give back to the city that helped me through everything. God has blessed me and with how I was raised, giving back is just a part of who I am.<a class="source-citation" href="http://www.nbcchicago.com/blogs/outside-shot/Anthony-Davis-Gives-Back-to-His-Englewood-Neighborhood-184712791.html" title="Anthony Davis Gives Back for the Holidays">[2]</a>
+>I just wanted to give back to the city that helped me through everything. God has blessed me and with how I was raised, giving back is just a part of who I am.<a class="source-citation" href="#http://www.nbcchicago.com/blogs/outside-shot/Anthony-Davis-Gives-Back-to-His-Englewood-Neighborhood-184712791.html" title="Anthony Davis Gives Back for the Holidays">[2]</a>
 
 And Davis' father added:
 
@@ -29,7 +29,7 @@ And Davis' father added:
 
 However, a [Google maps](https://maps.google.com/maps?hl=en&ie=UTF-8&q=Englewood+church+chicago&fb=1&gl=us&hq=Englewood+church&hnear=0x880e2c3cd0f4cbed:0xafe0a6ad09c0c000,Chicago,+IL&ei=MQtaUfzdLY31iQL95YCYBA&ved=0CMgBELYD) search reveals numerous churches in the area with the word "Englewood" in them, so there's no way of knowing if Davis is a Methodist, Baptist, Evangelical or what. It's safe to assume he's Christian, though. And he's at least a little devout. He retweeted:
 
->God gave you another day to get it right! Don't take it for granted!<a class="source-citation" href="https://twitter.com/AntDavis23" title="Anthony Davis (AntDavis23) on Twitter">[3]</a>
+>God gave you another day to get it right! Don't take it for granted!<a class="source-citation" href="#https://twitter.com/AntDavis23" title="Anthony Davis (AntDavis23) on Twitter">[3]</a>
 
 ## 
 
@@ -39,6 +39,6 @@ Davis doesn't appear to be the most political person. (Actually, in the hundreds
 
 It is well known that Barack Obama is a big basketball fan, and during a game in which Davis was playing, the president visited the locker room to shake hands with the players and joke around with Davis about his unibrow. Obama said:
 
->That's trademark, man, that's big money right there.<a class="source-citation" href="http://johnclay.bloginky.com/2012/07/18/video-president-obama-jokes-around-with-anthony-davis/#" title="Video: President Obama jokes around with Anthony Davis">[4]</a>
+>That's trademark, man, that's big money right there.<a class="source-citation" href="#http://johnclay.bloginky.com/2012/07/18/video-president-obama-jokes-around-with-anthony-davis/#" title="Video: President Obama jokes around with Anthony Davis">[4]</a>
 
 Davis is all smiles in the [video](http://johnclay.bloginky.com/2012/07/18/video-president-obama-jokes-around-with-anthony-davis/#) and appears to be fine with the joke, so it's safe to say he's not an Obama-hater, but it's certainly far from an endorsement. Until further notice, we'll have to just call him non-political.

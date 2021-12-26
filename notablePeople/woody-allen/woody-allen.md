@@ -23,7 +23,7 @@ Woody Allen was born and raised in New York City.
 
 He was raised in a Jewish home and has mixed feelings about it. Allen approved of his family and their religion for instilling in him an appreciation for learning, art, music, and culture but doesn't have much respect for his religious upbringing in general, saying:
 
->I was raised in a religious home. It was unreasonable enforced religion that turned me off it. It was a joyless, unpleasant, stupid, barbaric thing when I was a child and I've never gotten over that feeling.<a class="source-citation" href="http://www.woodyallen.art.pl/eng/wywiad_eng_12.php" title="Woody Allen Interview">[1]</a>
+>I was raised in a religious home. It was unreasonable enforced religion that turned me off it. It was a joyless, unpleasant, stupid, barbaric thing when I was a child and I've never gotten over that feeling.<a class="source-citation" href="#http://www.woodyallen.art.pl/eng/wywiad_eng_12.php" title="Woody Allen Interview">[1]</a>
 
 Now, Woody Allen is counted among the world's most famous atheists. Being a funnyman, an incredibly prolific artist, and an atheist has resulted in quite a few hilarious quotes on the topic, but here are a few ones:
 
@@ -31,11 +31,11 @@ Now, Woody Allen is counted among the world's most famous atheists. Being a funn
 
 or
 
->How can I believe in God when just last week I got my tongue caught in the roller of an electric typewriter?<a class="source-citation" href="http://atheism.about.com/library/quotes/bl_q_WAllen.htm" title="Woody Allen: Quotations on Freethought and Religion">[2]</a>
+>How can I believe in God when just last week I got my tongue caught in the roller of an electric typewriter?<a class="source-citation" href="#http://atheism.about.com/library/quotes/bl_q_WAllen.htm" title="Woody Allen: Quotations on Freethought and Religion">[2]</a>
 
 and
 
->To me, there's no real difference between a fortune teller or a fortune cookie and any of the organized religions. They're all equally valid or invalid, really. And equally helpful.<a class="source-citation" href="http://onfaith.washingtonpost.com/onfaith/brad_hirschfield/2010/09/any_difference_between_religio.html#" title="Woody Allen&apos;s religion: Any difference between religious faith and fortune cookies?">[3]</a>
+>To me, there's no real difference between a fortune teller or a fortune cookie and any of the organized religions. They're all equally valid or invalid, really. And equally helpful.<a class="source-citation" href="#http://onfaith.washingtonpost.com/onfaith/brad_hirschfield/2010/09/any_difference_between_religio.html#" title="Woody Allen&apos;s religion: Any difference between religious faith and fortune cookies?">[3]</a>
 
 Allen is often associated with the philosophy of existentialism, which is itself often associated with atheism–for better or worse. Essentially, it is about the power of the individual, free choice, and the sense that the world is probably without significant meaning.
 
@@ -44,10 +44,10 @@ Allen is often associated with the philosophy of existentialism, which is itself
 
 Woody Allen considers himself, first and foremost, an artist. And his artistic focus tends to be individuals and the interactions between individuals. Things like politics are rarely addressed in Allen's films or books. He once said:
 
->I don't find politics profound enough to deal with it as an artist. The story of human beings is composed of murder, only the cosmetics and the decorations change: 2001 some fanatics killed Americans, and now the Americans kill Iraqis. And when I was a kid, Nazis murdered Jews. Now, Jews and Palestinians are butchering each other. Politics has been volatile for thousands of years, and meaningless, because everything repeats itself. But, as a citizen I vote, or course.<a class="source-citation" href="http://www.noahbrier.com/archives/2004/09/woody_allen_on/" title="Woody Allen on Politics">[4]</a>
+>I don't find politics profound enough to deal with it as an artist. The story of human beings is composed of murder, only the cosmetics and the decorations change: 2001 some fanatics killed Americans, and now the Americans kill Iraqis. And when I was a kid, Nazis murdered Jews. Now, Jews and Palestinians are butchering each other. Politics has been volatile for thousands of years, and meaningless, because everything repeats itself. But, as a citizen I vote, or course.<a class="source-citation" href="#http://www.noahbrier.com/archives/2004/09/woody_allen_on/" title="Woody Allen on Politics">[4]</a>
 
 But who did he vote for in 2008? Well, of course he went with the party of Jews, atheists, artists, and the Hollywood elite–Democrats! He's a big fan of Obama and once said that the president should basically be granted a king. Of course, many people were frustrated with the deadlocked Congress at the time. Allen said:
 
->It would be good…if [Obama] could be dictator for a few years because he could do a lot of good things quickly.<a class="source-citation" href="http://latimesblogs.latimes.com/washington/2010/05/woody-allen-obama.html" title="Top political strategist Woody Allen thinks Obama would get much more done as dictator">[5]</a>
+>It would be good…if [Obama] could be dictator for a few years because he could do a lot of good things quickly.<a class="source-citation" href="#http://latimesblogs.latimes.com/washington/2010/05/woody-allen-obama.html" title="Top political strategist Woody Allen thinks Obama would get much more done as dictator">[5]</a>
 
 Of course, one never knows when Allen is joking or if he's dead serious. However, that man can say whatever he wants. His place in history is secure.

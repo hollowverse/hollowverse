@@ -19,7 +19,7 @@ Literally, the only thing I could find on this actress was [this picture](http:/
 
 So. . . let's just say our conclusions are inconclusive. We'll call her non-religious until further notice.
 
-Her political views are equally totally ambiguous. Seriously. The only thing I could find about politics, either in Canada where she's from, or the United States where she lives and works, was that her ex-boyfriend supports gay marriage.<a class="source-citation" href="http://www.jdoasis.com/blog/standing-support-same-sex-marriage" title="Standing In Support of Same-Sex Marriage.">[1]</a> I'm telling you, it's rough out there.
+Her political views are equally totally ambiguous. Seriously. The only thing I could find about politics, either in Canada where she's from, or the United States where she lives and works, was that her ex-boyfriend supports gay marriage.<a class="source-citation" href="#http://www.jdoasis.com/blog/standing-support-same-sex-marriage" title="Standing In Support of Same-Sex Marriage.">[1]</a> I'm telling you, it's rough out there.
 
 The fact that she's a Hollywood actress automatically raises the liberal flag, although politics by association is always sketchy business. But maybe the fact that she associates with known social liberals can help strengthen our assumption?
 

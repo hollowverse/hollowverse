@@ -12,8 +12,6 @@ sources:
   - sourceTitle: "Jimmy Fallon on His Catholicism"
     sourceUrl: "http://www.sacatholic.com/2011/12/05/catholicism-jimmy-fallon-wanted-to-be-a-priest/"
   - sourceTitle: "Jimmy Fallon on His Catholicism"
-    sourceUrl: "http://www.sacatholic.com/2011/12/05/catholicism-jimmy-fallon-wanted-to-be-a-priest/"
-  - sourceTitle: "Jimmy Fallon on His Catholicism"
     sourceUrl: "http://acatholicview.blogspot.com/2011/12/jimmy-fallon-on-his-catholicism.html"
   - sourceTitle: "Jimmy Fallon Makes New GOP Campaign Ads For Perry, Romney, Bachmann & Cain"
     sourceUrl: "http://www.huffingtonpost.com/2011/11/11/jimmy-fallon-campaign-ads-perry-romney-bachmann-cain-video_n_1088223.html"
@@ -25,13 +23,13 @@ sources:
 
 Jimmy Fallon was born in Brooklyn, New York and grew up in Saugerties, New York.
 
-Fallon was raised a strict Catholic. In fact, his parents would let him watch Saturday Night Live growing up–but only pre-edited "clean" versions of the show.<a class="source-citation" href="http://nymag.com/nymetro/arts/features/2139/" title="Not Jerry Seinfeld">[1]</a> Fallon went to church every week. He was an altar boy and even wanted to be a priest when he grew up. Fallon calls his role in church his first performing experience–one that led him to become the funny man he is now.<a class="source-citation" href="http://www.sacatholic.com/2011/12/05/catholicism-jimmy-fallon-wanted-to-be-a-priest/" title="Jimmy Fallon on His Catholicism">[2]</a> He said:
+Fallon was raised a strict Catholic. In fact, his parents would let him watch Saturday Night Live growing up–but only pre-edited "clean" versions of the show.<a class="source-citation" href="#http://nymag.com/nymetro/arts/features/2139/" title="Not Jerry Seinfeld">[1]</a> Fallon went to church every week. He was an altar boy and even wanted to be a priest when he grew up. Fallon calls his role in church his first performing experience–one that led him to become the funny man he is now.<a class="source-citation" href="#http://www.sacatholic.com/2011/12/05/catholicism-jimmy-fallon-wanted-to-be-a-priest/" title="Jimmy Fallon on His Catholicism">[2]</a> He said:
 
->I loved the church. I loved the idea of it. I loved the smell of the incense. I loved the feeling you get when you left church. I loved like how this priest can make people feel this good… I loved the whole idea of it. My grandfather was very religious, so I used to go to Mass with him at like 6:45 in the morning.<a class="source-citation" href="http://www.sacatholic.com/2011/12/05/catholicism-jimmy-fallon-wanted-to-be-a-priest/" title="Jimmy Fallon on His Catholicism">[3]</a>
+>I loved the church. I loved the idea of it. I loved the smell of the incense. I loved the feeling you get when you left church. I loved like how this priest can make people feel this good… I loved the whole idea of it. My grandfather was very religious, so I used to go to Mass with him at like 6:45 in the morning.<a class="source-citation" href="#http://www.sacatholic.com/2011/12/05/catholicism-jimmy-fallon-wanted-to-be-a-priest/" title="Jimmy Fallon on His Catholicism">[3]</a>
 
 But when asked if he currently attends or has the same sentiments toward his childhood religion, he cites the fact that Catholicism and Mass has changed since then, and when he did try to go back, it just wasn't the same. He said:
 
->I tried to go back. When I was out in L.A. and I was kind of struggling for a bit. I went to church for a while, but it's kind of, it's gotten gigantic now for me. It's like too… There's a band there now, and you got to, you have to hold hands with people through the whole Mass now, and I don't like doing that. You know, I mean, it used to be the shaking hands piece was the only time you touched each other.<a class="source-citation" href="http://acatholicview.blogspot.com/2011/12/jimmy-fallon-on-his-catholicism.html" title="Jimmy Fallon on His Catholicism">[4]</a>
+>I tried to go back. When I was out in L.A. and I was kind of struggling for a bit. I went to church for a while, but it's kind of, it's gotten gigantic now for me. It's like too… There's a band there now, and you got to, you have to hold hands with people through the whole Mass now, and I don't like doing that. You know, I mean, it used to be the shaking hands piece was the only time you touched each other.<a class="source-citation" href="#http://acatholicview.blogspot.com/2011/12/jimmy-fallon-on-his-catholicism.html" title="Jimmy Fallon on His Catholicism">[4]</a>
 
 ## 
 
@@ -39,8 +37,8 @@ But when asked if he currently attends or has the same sentiments toward his chi
 
 With comedians, especially ones who make politics a part of their act–like Fallon–it can be difficult to discern their real views. They are just out for laughs after all. But with Fallon, it seems kind of obvious.
 
-Maybe it was the way in which he routinely skewered every single 2012 Republican presidential candidate, one by one, in a series of videos that tipped me off.<a class="source-citation" href="http://www.huffingtonpost.com/2011/11/11/jimmy-fallon-campaign-ads-perry-romney-bachmann-cain-video_n_1088223.html" title="Jimmy Fallon Makes New GOP Campaign Ads For Perry, Romney, Bachmann &amp; Cain">[5]</a>
+Maybe it was the way in which he routinely skewered every single 2012 Republican presidential candidate, one by one, in a series of videos that tipped me off.<a class="source-citation" href="#http://www.huffingtonpost.com/2011/11/11/jimmy-fallon-campaign-ads-perry-romney-bachmann-cain-video_n_1088223.html" title="Jimmy Fallon Makes New GOP Campaign Ads For Perry, Romney, Bachmann &amp; Cain">[5]</a>
 
-Or maybe it was when he invited Barack Obama on his show to "slow jam" his pitch to Congress to keep student loan interest rates the same, while skewering the Republicans that did it.<a class="source-citation" href="http://newsbusters.org/blogs/noel-sheppard/2012/04/25/president-obama-and-jimmy-fallon-slow-jam-democrat-talking-points-and" title="Jimmy Fallon Helps Obama Slow Jam Democrat Talking Points and Republican Attacks on NBC&apos;s Late Night">[6]</a>
+Or maybe it was when he invited Barack Obama on his show to "slow jam" his pitch to Congress to keep student loan interest rates the same, while skewering the Republicans that did it.<a class="source-citation" href="#http://newsbusters.org/blogs/noel-sheppard/2012/04/25/president-obama-and-jimmy-fallon-slow-jam-democrat-talking-points-and" title="Jimmy Fallon Helps Obama Slow Jam Democrat Talking Points and Republican Attacks on NBC&apos;s Late Night">[6]</a>
 
-But I think the clincher was when he explicitly endorsed Obama while doing an impression of the James Taylor song, Fire and Rain, where he skewered Mitt Romney with his interpretation–Romney and Bain. So I guess he's a Democrat.<a class="source-citation" href="http://newsbusters.org/blogs/tim-graham/2012/09/08/jimmy-fallon-endorses-obama-during-james-taylor-impersonation-nbc" title="Jimmy Fallon Endorses Obama During James Taylor Impersonation on NBC">[7]</a>
+But I think the clincher was when he explicitly endorsed Obama while doing an impression of the James Taylor song, Fire and Rain, where he skewered Mitt Romney with his interpretation–Romney and Bain. So I guess he's a Democrat.<a class="source-citation" href="#http://newsbusters.org/blogs/tim-graham/2012/09/08/jimmy-fallon-endorses-obama-during-james-taylor-impersonation-nbc" title="Jimmy Fallon Endorses Obama During James Taylor Impersonation on NBC">[7]</a>

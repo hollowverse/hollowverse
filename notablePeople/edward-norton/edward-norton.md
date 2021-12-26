@@ -19,8 +19,6 @@ sources:
     sourceUrl: "http://www.nytimes.com/2008/01/16/nyregion/16campaign.html?_r=1"
   - sourceTitle: "Actor urges audience to vote Bush out"
     sourceUrl: "http://www.edward-norton.org/articles/plaindealer21oct04.html"
-  - sourceTitle: "Edward Norton"
-    sourceUrl: "http://www.brainyquote.com/quotes/authors/e/edward_norton.html"
   - sourceTitle: "An interview with actor and solar advocate Edward Norton"
     sourceUrl: "http://grist.org/living/little-norton/"
   - sourceTitle: "Ed Norton calls on Congress to fight global warming"
@@ -29,33 +27,33 @@ sources:
 
 Edward Norton was born just outside of Baltimore, Maryland, the son of an environmental lawyer working in Asia and an English teacher.
 
-He was raised Anglican and Episcopalian but doesn't currently subscribe to any faith or denomination.<a class="source-citation" href="http://www.thisislondon.co.uk/arts/film/ed-takes-a-leap-of-faith-6304474.html" title="Ed takes a leap of faith">[1]</a>
+He was raised Anglican and Episcopalian but doesn't currently subscribe to any faith or denomination.<a class="source-citation" href="#http://www.thisislondon.co.uk/arts/film/ed-takes-a-leap-of-faith-6304474.html" title="Ed takes a leap of faith">[1]</a>
 
 When it comes to the religious upbringing of his childhood, Norton identifies more with Judaism than anything else. He said:
 
->I grew up an honorary Jew. If you go to more than ten barmitzvahs you get an honorary Jew certificate. I went to at least ten in one year. I was drunk on Manischevitz half of 1987!<a class="source-citation" href="http://www.imdb.com/name/nm0001570/news?year=2000" title="Edward Norton: Honorary Jew?">[2]</a>
+>I grew up an honorary Jew. If you go to more than ten barmitzvahs you get an honorary Jew certificate. I went to at least ten in one year. I was drunk on Manischevitz half of 1987!<a class="source-citation" href="#http://www.imdb.com/name/nm0001570/news?year=2000" title="Edward Norton: Honorary Jew?">[2]</a>
 
 There is a depth and humility to Norton that implies some sort of spirituality, but the notoriously reclusive actor doesn't much talk about these kinds of things. His attitude is that of a man not comfortable with fame and notoriety, a sort of Buddhist Zen. He once said:
 
->If I ever have to stop taking the subway, I'm going to have a heart attack.<a class="source-citation" href="http://www.brainyquote.com/quotes/authors/e/edward_norton.html" title="Edward Norton">[3]</a>
+>If I ever have to stop taking the subway, I'm going to have a heart attack.<a class="source-citation" href="#http://www.brainyquote.com/quotes/authors/e/edward_norton.html" title="Edward Norton">[3]</a>
 
 He just wants to be a normal guy.
 
 
 ## Politics
 
-Norton's political contributions point to someone who has gone to great lengths to formulate his views. First of all, he's a Democrat who even made a documentary film about the election of Barack Obama.<a class="source-citation" href="http://www.huffingtonpost.com/2009/10/29/edward-norton-discusses-h_n_339450.html" title="Edward Norton Discusses His HBO Obama Documentary On Countdown">[4]</a> He was a big supporter of Democratic former New York governor Elliot Spitzer, donating thousands of dollars and rallying other stars to do so when it looked like his 2008 re-election campaign was losing steam.<a class="source-citation" href="http://www.nytimes.com/2008/01/16/nyregion/16campaign.html?_r=1" title="As Spitzer&apos;s Popularity Fell, Donors Rallied to His Side">[5]</a>
+Norton's political contributions point to someone who has gone to great lengths to formulate his views. First of all, he's a Democrat who even made a documentary film about the election of Barack Obama.<a class="source-citation" href="#http://www.huffingtonpost.com/2009/10/29/edward-norton-discusses-h_n_339450.html" title="Edward Norton Discusses His HBO Obama Documentary On Countdown">[4]</a> He was a big supporter of Democratic former New York governor Elliot Spitzer, donating thousands of dollars and rallying other stars to do so when it looked like his 2008 re-election campaign was losing steam.<a class="source-citation" href="#http://www.nytimes.com/2008/01/16/nyregion/16campaign.html?_r=1" title="As Spitzer&apos;s Popularity Fell, Donors Rallied to His Side">[5]</a>
 
 Norton hated George W. Bush (like so many others), and even told a crowd at Cuyahoga Community College in Cleveland to please vote him out in 2004, basically calling the president stupid and ignorant and asking the crowd:
 
->Do tax breaks for movie stars make any sense to you?<a class="source-citation" href="http://www.edward-norton.org/articles/plaindealer21oct04.html" title="Actor urges audience to vote Bush out">[6]</a>
+>Do tax breaks for movie stars make any sense to you?<a class="source-citation" href="#http://www.edward-norton.org/articles/plaindealer21oct04.html" title="Actor urges audience to vote Bush out">[6]</a>
 
 And it was well into the Bush years when Norton confessed:
 
->I almost forgot what it's like to be proud of my government.<a class="source-citation" href="http://www.brainyquote.com/quotes/authors/e/edward_norton.html" title="Edward Norton">[7]</a>
+>I almost forgot what it's like to be proud of my government.<a class="source-citation" href="#http://www.brainyquote.com/quotes/authors/e/edward_norton.html" title="Edward Norton">[7]</a>
 
-Norton is also an environmental activist. He has helped provide solar power to low-income families, which is cool, even if he did it by teaming up with oil giant BP.<a class="source-citation" href="http://grist.org/living/little-norton/" title="An interview with actor and solar advocate Edward Norton">[8]</a>
+Norton is also an environmental activist. He has helped provide solar power to low-income families, which is cool, even if he did it by teaming up with oil giant BP.<a class="source-citation" href="#http://grist.org/living/little-norton/" title="An interview with actor and solar advocate Edward Norton">[8]</a>
 
 He also addressed Congress, imploring them to take global warming seriously, saying:
 
->I have very little doubt that the legacy of my generation is going to hinge on how we respond to these revelations that we're not living sustainably and that we are altering the environment.<a class="source-citation" href="http://www.youtube.com/watch?v=1kz4jfjDDZg" title="Ed Norton calls on Congress to fight global warming">[9]</a>
+>I have very little doubt that the legacy of my generation is going to hinge on how we respond to these revelations that we're not living sustainably and that we are altering the environment.<a class="source-citation" href="#http://www.youtube.com/watch?v=1kz4jfjDDZg" title="Ed Norton calls on Congress to fight global warming">[9]</a>

@@ -20,7 +20,7 @@ export const InterestingProfiles = (p: {
               <Image
                 objectFit="cover"
                 objectPosition="top"
-                src={`/images/notablePeople/${notablePersonData.id}.jpg`}
+                src={notablePersonData.pic}
                 alt={notablePersonData.name}
                 layout="fixed"
                 width={160}

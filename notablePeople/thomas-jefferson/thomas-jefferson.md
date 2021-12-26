@@ -25,15 +25,15 @@ sources:
 
 Thomas Jefferson was born in Shadwell, Virginia.
 
-Jefferson was raised an Anglican/Episcopalian.<a class="source-citation" href="http://www.adherents.com/people/pj/Thomas_Jefferson.html" title="The religion of Thomas Jefferson, third U.S. president">[1]</a> But as a spokesperson for the Enlightenment that was sweeping western society at the time, he valued reason above faith. He said, in classic Enlightenment fashion:
+Jefferson was raised an Anglican/Episcopalian.<a class="source-citation" href="#http://www.adherents.com/people/pj/Thomas_Jefferson.html" title="The religion of Thomas Jefferson, third U.S. president">[1]</a> But as a spokesperson for the Enlightenment that was sweeping western society at the time, he valued reason above faith. He said, in classic Enlightenment fashion:
 
->Question with boldness even the existence of a god; because, if there be one, he must more approve the homage of reason, than that of blindfolded fear.<a class="source-citation" href="http://www.monticello.org/site/research-and-collections/jeffersons-religious-beliefs" title="Jefferson&apos;s Religious Beliefs">[2]</a>
+>Question with boldness even the existence of a god; because, if there be one, he must more approve the homage of reason, than that of blindfolded fear.<a class="source-citation" href="#http://www.monticello.org/site/research-and-collections/jeffersons-religious-beliefs" title="Jefferson&apos;s Religious Beliefs">[2]</a>
 
 For a man to question the existence of God, as this quote implies, would surely make them an agnostic, perhaps even an atheist. And maybe in his quiet, private moments, Jefferson was, in fact, an athiest. However, he was very quick to say that he wasn't an atheist and considered himself a Christian, but that man had corrupted the fundamental Christian message. He said:
 
->To the corruptions of Christianity I am indeed opposed; but not to the genuine precepts of Jesus himself. I am a Christian, in the only sense he wished any one to be; sincerely attached to his doctrines, in preference to all others; ascribing to himself every human excellence; & believing he never claimed any other.<a class="source-citation" href="http://lonestar.texas.net/~mseifert/rush.html" title="Thomas Jefferson to Benjamin Rush, M.D.">[3]</a>
+>To the corruptions of Christianity I am indeed opposed; but not to the genuine precepts of Jesus himself. I am a Christian, in the only sense he wished any one to be; sincerely attached to his doctrines, in preference to all others; ascribing to himself every human excellence; & believing he never claimed any other.<a class="source-citation" href="#http://lonestar.texas.net/~mseifert/rush.html" title="Thomas Jefferson to Benjamin Rush, M.D.">[3]</a>
 
-In terms of Jesus as a divine character, son of God, endowed with godly powers, Jefferson was skeptical. Many categorize Jefferson as a Christian deist, believing in the value of a Christian moral framework but not necessarily believing in all of the supernatural stuff like miracles and resurrection.<a class="source-citation" href="http://www.deism.com/deistamerica.htm" title="Deist Roots of America">[4]</a>
+In terms of Jesus as a divine character, son of God, endowed with godly powers, Jefferson was skeptical. Many categorize Jefferson as a Christian deist, believing in the value of a Christian moral framework but not necessarily believing in all of the supernatural stuff like miracles and resurrection.<a class="source-citation" href="#http://www.deism.com/deistamerica.htm" title="Deist Roots of America">[4]</a>
 
 ## One of America's Original Politicians
 
@@ -43,9 +43,9 @@ Jefferson's socio-political philosophy is heavily influence by the zeitgeist of 
 
 He took somewhat of a libertarian view on civil liberties–at least on paper, saying:
 
->Rightful liberty is unobstructed action according to our will within limits drawn around us by the equal rights of others. I do not add 'within the limits of the law' because law is often but the tyrant's will, and always so when it violates the rights of the individual.<a class="source-citation" href="http://www.brainyquote.com/quotes/quotes/t/thomasjeff136362.html" title="Rightful liberty is unobstructed action…">[5]</a>
+>Rightful liberty is unobstructed action according to our will within limits drawn around us by the equal rights of others. I do not add 'within the limits of the law' because law is often but the tyrant's will, and always so when it violates the rights of the individual.<a class="source-citation" href="#http://www.brainyquote.com/quotes/quotes/t/thomasjeff136362.html" title="Rightful liberty is unobstructed action…">[5]</a>
 
-But while Jefferson was vocally opposed to slavery, and even passed the Act to Prohibit the Importation of Slaves during his second term as president,<a class="source-citation" href="http://teachingamericanhistory.org/library/index.asp?document=179" title="Act to Prohibit the Importation of Slaves">[6]</a> he was a slave owner and believed that black people were inferior to white people.<a class="source-citation" href="http://www.theatlantic.com/past/docs/issues/96oct/obrien/obrien.htm" title="Thomas Jefferson: Radical and Racist">[7]</a>
+But while Jefferson was vocally opposed to slavery, and even passed the Act to Prohibit the Importation of Slaves during his second term as president,<a class="source-citation" href="#http://teachingamericanhistory.org/library/index.asp?document=179" title="Act to Prohibit the Importation of Slaves">[6]</a> he was a slave owner and believed that black people were inferior to white people.<a class="source-citation" href="#http://www.theatlantic.com/past/docs/issues/96oct/obrien/obrien.htm" title="Thomas Jefferson: Radical and Racist">[7]</a>
 
 For some, this is cause enough to dismiss Jefferson as someone for whom history has inflated their reputation, but he was a man of his time–though revolutionary–and was subject to the cultural beliefs of that time.
 

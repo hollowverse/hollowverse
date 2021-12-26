@@ -2,7 +2,7 @@ import 'normalize.css';
 
 import React, { useState } from 'react';
 import s from '../notablePerson.module.scss';
-import { Button, Typography } from '@mui/material';
+import { Button, Divider, Paper, Typography } from '@mui/material';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { TEditorial } from '_r/pages/common/types';
 import StarsIcon from '_i/icons/stars.svg';
@@ -13,8 +13,6 @@ import BookOpenIcon from '_i/icons/book-open.svg';
 export const Editorial = (p: { editorial: TEditorial }) => {
   const [showSources, setShowSources] = useState(false);
 
-  console.log('p.editorial', p.editorial);
-
   return (
     <>
       {/* <Typography variant="h1" component="h3">
@@ -22,14 +20,29 @@ export const Editorial = (p: { editorial: TEditorial }) => {
         Editorial
       </Typography> */}
 
+      {/* {p.editorial.data.summaries && (
+        <div>
+
+        </div>
+      )} */}
+
       <article
         className={s.editorialContent}
-        dangerouslySetInnerHTML={{ __html: p.editorial.content }}
         onClick={(e) => {
-          console.log('e.target.classList', e.target.classList);
-          setShowSources(true);
+          if ((e.target as Element).classList.contains('source-citation')) {
+            setShowSources(true);
+          }
         }}
-      />
+      >
+        {p.editorial.data.summaries && (
+          <Paper style={{ padding: 10 }} variant="outlined">
+            <p>{p.editorial.data.summaries.religion}</p>
+            <p>{p.editorial.data.summaries.politicalViews}</p>
+          </Paper>
+        )}
+
+        <div dangerouslySetInnerHTML={{ __html: p.editorial.content }}></div>
+      </article>
 
       <div className={s.sourcesTitleContainer}>
         <Typography variant="h3" component="h4"></Typography>
@@ -46,14 +59,11 @@ export const Editorial = (p: { editorial: TEditorial }) => {
       </div>
 
       {showSources && (
-        <ol>
-          {p.editorial.data.sources.map(({ sourceTitle, sourceUrl }, i) => {
+        <ul>
+          {p.editorial.data.sources.map(({ sourceTitle, sourceUrl }) => {
+            const encoded = encodeURIComponent(sourceUrl);
             return (
-              <li
-                key={sourceUrl}
-                id={sourceUrl}
-                className={s.editorialListItem}
-              >
+              <li key={encoded} id={encoded} className={s.editorialListItem}>
                 <a
                   href={sourceUrl}
                   rel="noreferrer"
@@ -65,7 +75,7 @@ export const Editorial = (p: { editorial: TEditorial }) => {
               </li>
             );
           })}
-        </ol>
+        </ul>
       )}
 
       <div className={s.interestingProfilesContainer}>

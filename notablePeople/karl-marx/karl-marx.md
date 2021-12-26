@@ -15,23 +15,21 @@ sources:
     sourceUrl: "http://www.goodreads.com/author/quotes/7084.Karl_Marx"
   - sourceTitle: "Marx, A Contribution to the Critique of Hegel's Philosophy of Right 1844"
     sourceUrl: "http://www.marxists.org/archive/marx/works/1843/critique-hpr/intro.htm"
-  - sourceTitle: "Karl Marx Quotes"
-    sourceUrl: "http://www.goodreads.com/author/quotes/7084.Karl_Marx"
   - sourceTitle: "Let the ruling classes tremble…"
     sourceUrl: "http://www.brainyquote.com/quotes/quotes/k/karlmarx401519.html"
 ---
 
 Karl Marx was born and raised in Trier, a city that was then in the Kingdom of Prussia but now occupies southwestern Germany on the French border. He died of respiratory problems in London in 1883.
 
-Marx came from a Jewish background, but his father converted to Lutheranism to avoid losing his work as a lawyer in anti-Semitic Prussia.<a class="source-citation" href="http://www.adherents.com/people/pm/Karl_Marx.html" title="Religion of Karl Marx: Jewish Lutheran turned atheist Marxist">[1]</a> His home was only Christian in name and largely non-religious. Marx, of course, became the atheist we all know.
+Marx came from a Jewish background, but his father converted to Lutheranism to avoid losing his work as a lawyer in anti-Semitic Prussia.<a class="source-citation" href="#http://www.adherents.com/people/pm/Karl_Marx.html" title="Religion of Karl Marx: Jewish Lutheran turned atheist Marxist">[1]</a> His home was only Christian in name and largely non-religious. Marx, of course, became the atheist we all know.
 
-It's not that Marx was antagonistic toward religion, he just saw it from a uniquely historical perspective. Everything to Marx was a matter of society which, in turn, was a reflection of economics. Oppression, poor economic conditions, fear and desperation caused humanity to cling to religion<a class="source-citation" href="http://atheism.about.com/od/philosophyofreligion/a/marx_3.htm" title="Karl Marx, Religion, and Economics">[2]</a> and Marx always hoped for a world where such comfort was unneeded. He said:
+It's not that Marx was antagonistic toward religion, he just saw it from a uniquely historical perspective. Everything to Marx was a matter of society which, in turn, was a reflection of economics. Oppression, poor economic conditions, fear and desperation caused humanity to cling to religion<a class="source-citation" href="#http://atheism.about.com/od/philosophyofreligion/a/marx_3.htm" title="Karl Marx, Religion, and Economics">[2]</a> and Marx always hoped for a world where such comfort was unneeded. He said:
 
->The abolition of religion as the illusory happiness of the people is the demand for their real happiness.<a class="source-citation" href="http://www.goodreads.com/author/quotes/7084.Karl_Marx" title="Karl Marx Quotes">[3]</a>
+>The abolition of religion as the illusory happiness of the people is the demand for their real happiness.<a class="source-citation" href="#http://www.goodreads.com/author/quotes/7084.Karl_Marx" title="Karl Marx Quotes">[3]</a>
 
 According to Marx, religion was an unnecessary social institution that, while comforting to mankind, only served to stupefy him in the end, hence perhaps his most famous quote:
 
->Religion is the sigh of the oppressed creature, the heart of a heartless world, and the soul of soulless conditions. It is the opium of the people.<a class="source-citation" href="http://www.marxists.org/archive/marx/works/1843/critique-hpr/intro.htm" title="Marx, A Contribution to the Critique of Hegel&apos;s Philosophy of Right 1844">[4]</a>
+>Religion is the sigh of the oppressed creature, the heart of a heartless world, and the soul of soulless conditions. It is the opium of the people.<a class="source-citation" href="#http://www.marxists.org/archive/marx/works/1843/critique-hpr/intro.htm" title="Marx, A Contribution to the Critique of Hegel&apos;s Philosophy of Right 1844">[4]</a>
 
 ## 
 
@@ -41,11 +39,11 @@ Politics to Marx, like religion, is a manifestation of economics and the materia
 
 This horrible injustice was the basis for Marx's revolutionary philosophy. He called for real, violent action against owners and the political systems that supported them. He said things like:
 
->The philosophers have only interpreted the world, in various ways: the point, however, is to change it.<a class="source-citation" href="http://www.goodreads.com/author/quotes/7084.Karl_Marx" title="Karl Marx Quotes">[5]</a>
+>The philosophers have only interpreted the world, in various ways: the point, however, is to change it.<a class="source-citation" href="#http://www.goodreads.com/author/quotes/7084.Karl_Marx" title="Karl Marx Quotes">[5]</a>
 
 And:
 
->Let the ruling classes tremble at a Communist revolution. The proletarians have nothing to lose but their chains. They have a world to win. Working men of all countries, unite!<a class="source-citation" href="http://www.brainyquote.com/quotes/quotes/k/karlmarx401519.html" title="Let the ruling classes tremble…">[6]</a>
+>Let the ruling classes tremble at a Communist revolution. The proletarians have nothing to lose but their chains. They have a world to win. Working men of all countries, unite!<a class="source-citation" href="#http://www.brainyquote.com/quotes/quotes/k/karlmarx401519.html" title="Let the ruling classes tremble…">[6]</a>
 
 What would come after the revolution, according to Marx, is a government, society, and economy ruled completely by the workers themselves. They would create an economic utopia where all labor was exchanged for equal value, where no-one and everyone owned all property, and humanity would reach its full potential as a single, cooperative unit.
 

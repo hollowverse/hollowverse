@@ -19,7 +19,6 @@ export const Heading = (p: {
         <div className={s.notablePersonImageContainer}>
           <Image
             className={s.notablePersonImage}
-            layout="fill"
             src={p.pic}
             width={200}
             height={250}
@@ -51,9 +50,9 @@ export const Heading = (p: {
         />
       </ul> */}
 
-      <div style={{ zIndex: 1, position: 'relative' }}>
+      {/* <div style={{ zIndex: 1, position: 'relative' }}>
         <EditButton data={p.data} type="tag" />
-      </div>
+      </div> */}
     </header>
   );
 };

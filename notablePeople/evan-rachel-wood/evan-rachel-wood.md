@@ -31,13 +31,13 @@ sources:
 
 Evan Rachel Wood was born and raised in Raleigh, North Carolina.
 
-Wood's mother is Jewish, but her father was not Jewish–most likely Christian or non-religious–<a class="source-citation" href="http://www.jewornotjew.com/profile.jsp?ID=590" title="Evan Rachel Wood.">[1]</a> which makes her Jewish, sort of. In describing her mother, she said,
+Wood's mother is Jewish, but her father was not Jewish–most likely Christian or non-religious–<a class="source-citation" href="#http://www.jewornotjew.com/profile.jsp?ID=590" title="Evan Rachel Wood.">[1]</a> which makes her Jewish, sort of. In describing her mother, she said,
 
->She made every boyfriend in my life miserable. And she absolutely still gets up in my business. She's a Jewish mother, so I was raised by a Jewish southern mother. I definitely went through the ringer.<a class="source-citation" href="http://www.parade.com/celebrity/celebrity-parade/archive/evan-rachel-wood-dating-older-men.html" title="Evan Rachel Wood: Dating Older Men &apos;Works For Me.&apos;">[2]</a>
+>She made every boyfriend in my life miserable. And she absolutely still gets up in my business. She's a Jewish mother, so I was raised by a Jewish southern mother. I definitely went through the ringer.<a class="source-citation" href="#http://www.parade.com/celebrity/celebrity-parade/archive/evan-rachel-wood-dating-older-men.html" title="Evan Rachel Wood: Dating Older Men &apos;Works For Me.&apos;">[2]</a>
 
 Not exactly the most sympathetic description of one's mother I've found, but you can't judge a whole childhood from one quote. Nevertheless, she doesn't consider herself Jewish anymore. In response to a fan's question about her spirituality, she tweeted,
 
->I believe in god but i am not religious. I am spiritual. My definition of god isnt in any religion. Its very personal.<a class="source-citation" href="https://twitter.com/evanrachelwood/status/264567124775825409" title="evanrachelwood: I believe in god but i am not …">[3]</a>
+>I believe in god but i am not religious. I am spiritual. My definition of god isnt in any religion. Its very personal.<a class="source-citation" href="#https://twitter.com/evanrachelwood/status/264567124775825409" title="evanrachelwood: I believe in god but i am not …">[3]</a>
 
 So there you have it: once a Jew, but not anymore. It's spirituality sans religion for Wood now.
 
@@ -46,14 +46,14 @@ So there you have it: once a Jew, but not anymore. It's spirituality sans religi
 
 Wood joins many of her other celebrity friends on the left side of the aisle. Around election time in 2012, she retweeted several Obama tweets including this one:
 
->This happened because of you. Thank you.<a class="source-citation" href="https://twitter.com/evanrachelwood" title="Evan Rachel Wood (evanrachelwood) on Twitter.">[4]</a>
+>This happened because of you. Thank you.<a class="source-citation" href="#https://twitter.com/evanrachelwood" title="Evan Rachel Wood (evanrachelwood) on Twitter.">[4]</a>
 
-And she's taken up most of the other liberal causes of the day on her Twitter feed. Gay marriage in particular is a personal cause for the openly bisexual<a class="source-citation" href="http://www.huffingtonpost.com/2011/10/05/evan-rachel-wood-talks-sex-politics-and-bisexuality_n_996668.html" title="Evan Rachel Wood Talks Sex, Politics And Bisexuality.">[5]</a> actress. She celebrated Obama when he announced his support for gay marriage,<a class="source-citation" href="http://www.gossipcop.com/celebrities-reaction-obama-gay-marriage-twitter/" title="Celebrities React to President Obama Supporting Gay Marriage.">[6]</a> and after actively campaigning against a ban on gay marriage in her home state of North Carolina,<a class="source-citation" href="https://twitter.com/evanrachelwood/status/196514414776696832" title="evanrachelwood: Support gay marriage in North …">[7]</a> she sounded heartbroken in a series of tweets when the referendum passed. She wrote,
+And she's taken up most of the other liberal causes of the day on her Twitter feed. Gay marriage in particular is a personal cause for the openly bisexual<a class="source-citation" href="#http://www.huffingtonpost.com/2011/10/05/evan-rachel-wood-talks-sex-politics-and-bisexuality_n_996668.html" title="Evan Rachel Wood Talks Sex, Politics And Bisexuality.">[5]</a> actress. She celebrated Obama when he announced his support for gay marriage,<a class="source-citation" href="#http://www.gossipcop.com/celebrities-reaction-obama-gay-marriage-twitter/" title="Celebrities React to President Obama Supporting Gay Marriage.">[6]</a> and after actively campaigning against a ban on gay marriage in her home state of North Carolina,<a class="source-citation" href="#https://twitter.com/evanrachelwood/status/196514414776696832" title="evanrachelwood: Support gay marriage in North …">[7]</a> she sounded heartbroken in a series of tweets when the referendum passed. She wrote,
 
->Just bent over on set and cried over this outcome. I hope my children see a more peaceful and tolerant world.<a class="source-citation" href="http://m.vh1.com/news/article.rbml?id=1684760" title="Clay Aiken, President Obama Disappointed By North Carolina Gay Marriage Ban.">[8]</a>
+>Just bent over on set and cried over this outcome. I hope my children see a more peaceful and tolerant world.<a class="source-citation" href="#http://m.vh1.com/news/article.rbml?id=1684760" title="Clay Aiken, President Obama Disappointed By North Carolina Gay Marriage Ban.">[8]</a>
 
-She's also tweeted her support for gun control<a class="source-citation" href="https://twitter.com/evanrachelwood/status/279655923440574464" title="evanrachelwood: What is it going to take? #guncontrol.">[9]</a> and women's issues. About the Obama administration's announcement in early 2012 that health insurers would be required to provide contraception free of charge, which caused uproar among Catholic employers, Wood tweeted,
+She's also tweeted her support for gun control<a class="source-citation" href="#https://twitter.com/evanrachelwood/status/279655923440574464" title="evanrachelwood: What is it going to take? #guncontrol.">[9]</a> and women's issues. About the Obama administration's announcement in early 2012 that health insurers would be required to provide contraception free of charge, which caused uproar among Catholic employers, Wood tweeted,
 
->Isnt forcing your religious beliefs on your employees a violation of THEIR religious freedom. Where is their freedom to choose?<a class="source-citation" href="https://twitter.com/evanrachelwood/status/280735323594584064" title="evanrachelwood: Isn&apos;t forcing your religious …">[10]</a>
+>Isnt forcing your religious beliefs on your employees a violation of THEIR religious freedom. Where is their freedom to choose?<a class="source-citation" href="#https://twitter.com/evanrachelwood/status/280735323594584064" title="evanrachelwood: Isn&apos;t forcing your religious …">[10]</a>
 
 No ambiguity here. Evan Rachel Wood is clearly on the side of the liberal Democrats.

@@ -9,8 +9,6 @@ date: "2012-03-14"
 sources:
   - sourceTitle: "Richard Nixon"
     sourceUrl: "http://www.brainyquote.com/quotes/authors/r/richard_m_nixon_2.html"
-  - sourceTitle: "Richard Nixon"
-    sourceUrl: "http://www.brainyquote.com/quotes/authors/r/richard_m_nixon_2.html"
 ---
 
 Richard Nixon was born quite poor in Yorba Linda, California.
@@ -23,7 +21,7 @@ And this from the president who is most famous for Watergate and the Vietnam War
 
 Even though Nixon's family was devout, he didn't have a high view of religion once taking office, saying:
 
->In the long term we can hope that religion will change the nature of man and reduce conflict. But history is not encouraging in this respect. The bloodiest wars in history have been religious wars.<a class="source-citation" href="http://www.brainyquote.com/quotes/authors/r/richard_m_nixon_2.html" title="Richard Nixon">[1]</a>
+>In the long term we can hope that religion will change the nature of man and reduce conflict. But history is not encouraging in this respect. The bloodiest wars in history have been religious wars.<a class="source-citation" href="#http://www.brainyquote.com/quotes/authors/r/richard_m_nixon_2.html" title="Richard Nixon">[1]</a>
 
 ## A lying politician, never!
 
@@ -35,4 +33,4 @@ Economically, Nixon was more liberal than conservative. The Vietnam War took a t
 
 In other ways, he was all Republican such as opposing the welfare state–now an American institution, saying:
 
->If we take the route of the permanent handout, the American character will itself be impoverished.<a class="source-citation" href="http://www.brainyquote.com/quotes/authors/r/richard_m_nixon_2.html" title="Richard Nixon">[2]</a>
+>If we take the route of the permanent handout, the American character will itself be impoverished.<a class="source-citation" href="#http://www.brainyquote.com/quotes/authors/r/richard_m_nixon_2.html" title="Richard Nixon">[2]</a>

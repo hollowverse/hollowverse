@@ -28,10 +28,10 @@ Duff's political views are tough to nail down. She's got a history with America'
 
 First of all, she tweeted about an experience with Obama:
 
->Wow just had the most interesting dinner with about 20 couples and @BarackObama!! Always fascinating to talk to such influential people!<a class="source-citation" href="https://twitter.com/HilaryDuff/status/128681218647662593" title="Wow just had the most interesting dinner with about 20 couples and @BarackObama !!Always fascinating to talk to such influential people!">[1]</a>
+>Wow just had the most interesting dinner with about 20 couples and @BarackObama!! Always fascinating to talk to such influential people!<a class="source-citation" href="#https://twitter.com/HilaryDuff/status/128681218647662593" title="Wow just had the most interesting dinner with about 20 couples and @BarackObama !!Always fascinating to talk to such influential people!">[1]</a>
 
 But having an interesting dinner is certainly not an endorsement.
 
-Some people claim that she is a registered Republican in the state of Texas. And some cite the fact that she performed at one of George Bush's inaugural balls in 2005 as reason to believe she's a Republican.<a class="source-citation" href="http://www.wetpaint.com/network/gallery/surprising-celebrities-who-are-republican/photo/surprising-republicans-hilary-duff" title="Who Knew These Celebrities Were Republican?">[2]</a>
+Some people claim that she is a registered Republican in the state of Texas. And some cite the fact that she performed at one of George Bush's inaugural balls in 2005 as reason to believe she's a Republican.<a class="source-citation" href="#http://www.wetpaint.com/network/gallery/surprising-celebrities-who-are-republican/photo/surprising-republicans-hilary-duff" title="Who Knew These Celebrities Were Republican?">[2]</a>
 
 There certainly a stigma about Texans and Republicans, but with no concrete evidence, we're hoping you all can enlighten us in the comments.
