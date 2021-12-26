@@ -23,8 +23,8 @@ export const InterestingProfiles = (p: {
                 src={`/images/notablePeople/${notablePersonData.id}.jpg`}
                 alt={notablePersonData.name}
                 layout="fixed"
-                width={200}
-                height={250}
+                width={160}
+                height={200}
                 className={s.interestingProfileImage}
               />
             </span>

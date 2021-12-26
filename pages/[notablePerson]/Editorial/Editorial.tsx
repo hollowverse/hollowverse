@@ -13,6 +13,8 @@ import BookOpenIcon from '_i/icons/book-open.svg';
 export const Editorial = (p: { editorial: TEditorial }) => {
   const [showSources, setShowSources] = useState(false);
 
+  console.log('p.editorial', p.editorial);
+
   return (
     <>
       {/* <Typography variant="h1" component="h3">
@@ -23,6 +25,10 @@ export const Editorial = (p: { editorial: TEditorial }) => {
       <article
         className={s.editorialContent}
         dangerouslySetInnerHTML={{ __html: p.editorial.content }}
+        onClick={(e) => {
+          console.log('e.target.classList', e.target.classList);
+          setShowSources(true);
+        }}
       />
 
       <div className={s.sourcesTitleContainer}>
@@ -41,16 +47,20 @@ export const Editorial = (p: { editorial: TEditorial }) => {
 
       {showSources && (
         <ol>
-          {p.editorial.data.sources.map(([title, url]) => {
+          {p.editorial.data.sources.map(({ sourceTitle, sourceUrl }, i) => {
             return (
-              <li key={url} className={s.editorialListItem}>
+              <li
+                key={sourceUrl}
+                id={sourceUrl}
+                className={s.editorialListItem}
+              >
                 <a
-                  href={url}
+                  href={sourceUrl}
                   rel="noreferrer"
                   target="_blank"
                   className={s.editorialSource}
                 >
-                  {title}
+                  {sourceTitle}
                 </a>
               </li>
             );

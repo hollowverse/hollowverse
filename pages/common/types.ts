@@ -19,7 +19,7 @@ export type TPic = string;
 
 export type TEditorial = {
   data: {
-    sources: [string, string][];
+    sources: { sourceUrl: string; sourceTitle: string }[];
     interestingProfiles: TNotablePersonData[];
   };
   content: string;

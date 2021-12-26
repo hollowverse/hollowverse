@@ -121,6 +121,12 @@
 .editorialContainer {
   margin-top: $s8;
 
+  :global(.source-citation) {
+    vertical-align: super;
+    font-size: 75%;
+    color: #1769aa;
+  }
+
   .editorialContent {
     font-size: 110%;
 
@@ -147,7 +153,7 @@
   }
 
   .interestingProfilesContainer {
-    margin-top: $s8;
+    margin-top: $s4;
 
     .interestingProfiles {
       display: flex;
@@ -155,19 +161,23 @@
       flex-wrap: wrap;
 
       .interestingProfile {
-        margin-top: $s8;
+        margin-top: $s4;
         text-align: center;
         color: $textColor;
         text-decoration: none;
 
         .interestingProfileImageContainer {
-          height: 250px;
-          width: 200px;
+          width: 160px;
+          height: 200px;
           overflow: hidden;
           position: relative;
           display: block;
           border: 1px solid lightgray;
-          padding: 1px;
+          padding: 5px;
+
+          img {
+            border: 1px solid lightgray !important;
+          }
         }
 
         .interestingProfileName {
