@@ -19,7 +19,7 @@ export const Heading = (p: {
         <div className={s.notablePersonImageContainer}>
           <Image
             className={s.notablePersonImage}
-            src={p.pic}
+            src={p.pic ? p.pic : '/images/avatar-placeholder.png'}
             width={200}
             height={250}
             priority

@@ -20,7 +20,7 @@ export const InterestingProfiles = (p: {
               <Image
                 objectFit="cover"
                 objectPosition="top"
-                src={notablePersonData.pic}
+                src={notablePersonData.pic || '/images/avatar-placeholder.png'}
                 alt={notablePersonData.name}
                 layout="fixed"
                 width={160}

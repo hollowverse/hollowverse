@@ -19,7 +19,9 @@ const getImageLink = (link: string) => {
     ? jpg
     : fs.existsSync(withPubDir(jpeg))
     ? jpeg
-    : png;
+    : fs.existsSync(withPubDir(png))
+    ? png
+    : '';
 };
 
 const loadNotablePersonData = (notablePerson: string) =>
