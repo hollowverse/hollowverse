@@ -13,16 +13,21 @@ export const InterestingProfiles = (p: {
         return (
           <a
             className={s.interestingProfile}
-            href={`/${notablePersonData.id}`}
+            href={`/${notablePersonData.slug}`}
             key={notablePersonData.id}
           >
-            <Image
-              src={`/images/notablePeople/${notablePersonData.id}.jpg`}
-              alt={notablePersonData.name}
-              width={120}
-              height={120}
-              className={s.interestingProfileImage}
-            />
+            <span className={s.interestingProfileImageContainer}>
+              <Image
+                objectFit="cover"
+                objectPosition="top"
+                src={notablePersonData.pic || '/images/avatar-placeholder.png'}
+                alt={notablePersonData.name}
+                layout="fixed"
+                width={160}
+                height={200}
+                className={s.interestingProfileImage}
+              />
+            </span>
             <Typography
               fontWeight={500}
               variant="h4"

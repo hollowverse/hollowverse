@@ -1,11 +1,13 @@
 export type TNotablePersonData = {
   id: string;
   name: string;
-  born: string;
-  tags: string[];
-  occupations: string[];
-  quotes: [string, string, string, string][];
-  'discourse-topic-id': number;
+  slug: string;
+  pic: string;
+  // born: string;
+  // tags: string[];
+  // occupations: string[];
+  // quotes: [string, string, string, string][];
+  // 'discourse-topic-id': number;
 };
 
 export type TTag = {
@@ -18,8 +20,12 @@ export type TPic = string;
 
 export type TEditorial = {
   data: {
-    sources: [string, string][];
+    sources: { sourceUrl: string; sourceTitle: string }[];
     interestingProfiles: TNotablePersonData[];
+    summaries: {
+      religion: string;
+      politicalViews: string;
+    };
   };
   content: string;
 };
