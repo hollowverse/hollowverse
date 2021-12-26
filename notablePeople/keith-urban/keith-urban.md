@@ -1,30 +1,30 @@
 ---
-name: "Keith Urban"
+name: 'Keith Urban'
 relatedPeople:
-  - "tulisa-contostavlos"
-  - "dulce-maria"
-  - "tom-waits"
-  - "fergie"
-date: "2012-11-02"
+  - 'leonard-cohen'
+  - 'dulce-maria'
+  - 'tom-waits'
+  - 'fergie'
+date: '2012-11-02'
 sources:
-  - sourceTitle: "keith urban catholic."
-    sourceUrl: "https://www.google.com/search?rlz=1C1ASUT_enUS499US499&aq=f&oq=keith+u&sugexp=chrome,mod=0&sourceid=chrome&ie=UTF-8&q=keith+urban+catholic"
-  - sourceTitle: "Actress Kidman completes journey back to Catholic Church with wedding."
-    sourceUrl: "http://www.catholic.org/hf/love/story.php?id=20325"
-  - sourceTitle: "Nicole Kidman Attends Catholic Morning Mass."
-    sourceUrl: "http://www.justjared.com/2008/12/28/nicole-kidman-christmas-morning-mass/"
-  - sourceTitle: "Nicole Kidman & Keith Urban Welcome Daughter Faith Margaret."
-    sourceUrl: "http://celebritybabies.people.com/2011/01/17/nicole-kidman-keith-urban-welcome-daughter-faith-margaret/"
-  - sourceTitle: "Keith Urban: And my love and prayers go …"
-    sourceUrl: "https://twitter.com/KeithUrban/status/204580301383540738"
-  - sourceTitle: "BUT FOR THE GRACE OF GOD LYRICS – KEITH URBAN."
-    sourceUrl: "http://www.sing365.com/music/lyric.nsf/But-For-The-Grace-Of-God-lyrics-Keith-Urban/D3A26A4509BD71A848256B6C0020C14E"
-  - sourceTitle: "Keith Urban Makes Concerts Eco-Friendly."
-    sourceUrl: "http://www.gactv.com/gac/nw_headlines/article/0,,GAC_26063_5805414,00.html"
-  - sourceTitle: "Live Earth Rocks The World."
-    sourceUrl: "http://www.cbsnews.com/2100-207_162-3026665.html"
+  - sourceTitle: 'keith urban catholic.'
+    sourceUrl: 'https://www.google.com/search?rlz=1C1ASUT_enUS499US499&aq=f&oq=keith+u&sugexp=chrome,mod=0&sourceid=chrome&ie=UTF-8&q=keith+urban+catholic'
+  - sourceTitle: 'Actress Kidman completes journey back to Catholic Church with wedding.'
+    sourceUrl: 'http://www.catholic.org/hf/love/story.php?id=20325'
+  - sourceTitle: 'Nicole Kidman Attends Catholic Morning Mass.'
+    sourceUrl: 'http://www.justjared.com/2008/12/28/nicole-kidman-christmas-morning-mass/'
+  - sourceTitle: 'Nicole Kidman & Keith Urban Welcome Daughter Faith Margaret.'
+    sourceUrl: 'http://celebritybabies.people.com/2011/01/17/nicole-kidman-keith-urban-welcome-daughter-faith-margaret/'
+  - sourceTitle: 'Keith Urban: And my love and prayers go …'
+    sourceUrl: 'https://twitter.com/KeithUrban/status/204580301383540738'
+  - sourceTitle: 'BUT FOR THE GRACE OF GOD LYRICS – KEITH URBAN.'
+    sourceUrl: 'http://www.sing365.com/music/lyric.nsf/But-For-The-Grace-Of-God-lyrics-Keith-Urban/D3A26A4509BD71A848256B6C0020C14E'
+  - sourceTitle: 'Keith Urban Makes Concerts Eco-Friendly.'
+    sourceUrl: 'http://www.gactv.com/gac/nw_headlines/article/0,,GAC_26063_5805414,00.html'
+  - sourceTitle: 'Live Earth Rocks The World.'
+    sourceUrl: 'http://www.cbsnews.com/2100-207_162-3026665.html'
 summaries:
-  religion: "Urban appears to be a devoted Catholic."
+  religion: 'Urban appears to be a devoted Catholic.'
   politicalViews: "He is dedicated to environmental causes, but hasn't officially made his political views known."
 ---
 
@@ -36,16 +36,15 @@ The two were married in a Catholic ceremony,<a class="source-citation" href="#ht
 
 Even though his wife's deep faith overshadows Urban's, it seems he was still devoted to God before he met her. His first big hit in the U.S. was a song called "But For The Grace Of God," a deeply religious song:
 
->But for the grace of God go I/ I must've been born a lucky guy/ Heaven only knows how I've been blessed/ With the gift of your love/ And I look around and all I see/Is your happiness embracing me/ Oh Lord I'd be lost/ But for the grace of God<a class="source-citation" href="#http%3A%2F%2Fwww.sing365.com%2Fmusic%2Flyric.nsf%2FBut-For-The-Grace-Of-God-lyrics-Keith-Urban%2FD3A26A4509BD71A848256B6C0020C14E" title="BUT FOR THE GRACE OF GOD LYRICS – KEITH URBAN.">[6]</a>
+> But for the grace of God go I/ I must've been born a lucky guy/ Heaven only knows how I've been blessed/ With the gift of your love/ And I look around and all I see/Is your happiness embracing me/ Oh Lord I'd be lost/ But for the grace of God<a class="source-citation" href="#http%3A%2F%2Fwww.sing365.com%2Fmusic%2Flyric.nsf%2FBut-For-The-Grace-Of-God-lyrics-Keith-Urban%2FD3A26A4509BD71A848256B6C0020C14E" title="BUT FOR THE GRACE OF GOD LYRICS – KEITH URBAN.">[6]</a>
 
 I couldn't find whether or not Urban grew up in the Catholic church, but I think it's a pretty good bet. Regardless, he's certainly Catholic now.
-
 
 ## Plastic Shirts and Bio-Fuel
 
 The only clue we have to Keith Urban's political affiliation is questionable at best. The musician is dedicated to environmental causes and does what he can to make his tours more eco-friendly. His concert t-shirts are made partially out of recycled water bottles and he runs his buses on bio-diesel. He says about his contribution to the cause,
 
->While I am far from the greenest guy on the block, I do look for situations where I can make even a small difference.<a class="source-citation" href="#http%3A%2F%2Fwww.gactv.com%2Fgac%2Fnw_headlines%2Farticle%2F0%2C%2CGAC_26063_5805414%2C00.html" title="Keith Urban Makes Concerts Eco-Friendly.">[7]</a>
+> While I am far from the greenest guy on the block, I do look for situations where I can make even a small difference.<a class="source-citation" href="#http%3A%2F%2Fwww.gactv.com%2Fgac%2Fnw_headlines%2Farticle%2F0%2C%2CGAC_26063_5805414%2C00.html" title="Keith Urban Makes Concerts Eco-Friendly.">[7]</a>
 
 Urban also performed at a benefit concert held by environmental activist and former Democratic presidential candidate Al Gore in 2009 which aimed to fight climate change.<a class="source-citation" href="#http%3A%2F%2Fwww.cbsnews.com%2F2100-207_162-3026665.html" title="Live Earth Rocks The World.">[8]</a> So I'm not going to give him a solid liberal label yet, but I'd definitely lean that way.
 

@@ -1,18 +1,18 @@
 ---
-name: "Tori Black"
+name: 'Tori Black'
 relatedPeople:
-  - "alexis-texas"
-  - "audrey-bitoni"
-  - "shyla-stylez"
-  - "lana-del-rey"
-date: "2012-12-27"
+  - 'alexis-texas'
+  - 'bill-gates'
+  - 'shyla-stylez'
+  - 'lana-del-rey'
+date: '2012-12-27'
 sources:
-  - sourceTitle: "Tori Black interview."
-    sourceUrl: "http://www.youtube.com/watch?v=BmLZRZXZ3ig"
+  - sourceTitle: 'Tori Black interview.'
+    sourceUrl: 'http://www.youtube.com/watch?v=BmLZRZXZ3ig'
   - sourceTitle: "Tori Black's text pheed."
-    sourceUrl: "http://www.pheed.com/misstoriblack/2140181/15190"
-  - sourceTitle: "Tori Black Arrested After Breast Milk Fight."
-    sourceUrl: "http://filmdrunk.uproxx.com/2012/01/tori-black-arrested-after-breast-milk-fight"
+    sourceUrl: 'http://www.pheed.com/misstoriblack/2140181/15190'
+  - sourceTitle: 'Tori Black Arrested After Breast Milk Fight.'
+    sourceUrl: 'http://filmdrunk.uproxx.com/2012/01/tori-black-arrested-after-breast-milk-fight'
 summaries:
 ---
 

@@ -1,41 +1,41 @@
 ---
-name: "Naomi Campbell"
+name: 'Naomi Campbell'
 relatedPeople:
-  - "tulisa-contostavlos"
-  - "prince"
-  - "george-foreman"
-  - "janet-jackson"
-date: "2012-12-24"
+  - 'leonard-cohen'
+  - 'prince'
+  - 'george-foreman'
+  - 'janet-jackson'
+date: '2012-12-24'
 sources:
-  - sourceTitle: "The religion of Naomi Campbell, supermodel."
-    sourceUrl: "http://www.adherents.com/people/pc/Naomi_Campbell.html"
-  - sourceTitle: "Naomi Campbell Slams Witchcraft Rumors."
-    sourceUrl: "http://socialitelife.com/naomi_campbell_slams_witchcraft_rumors-01-2007"
-  - sourceTitle: "Naomi Campbell to change faith to marry Russian."
-    sourceUrl: "http://rt.com/news/prime-time/naomi-campbell-to-change-faith-to-marry-russian/"
-  - sourceTitle: "Naomi Campbell passionate about bizarre Brazilian sect."
-    sourceUrl: "http://www.religionnewsblog.com/17246/naomi-campbell-candomble"
-  - sourceTitle: "Naomi Campbell Converts to Kabbalah."
-    sourceUrl: "http://www.usmagazine.com/celebrity-news/news/naomi-campbell-converts-to-kabbalah-20101910"
-  - sourceTitle: "Quoted: Naomi Campbell Talks Religion."
-    sourceUrl: "http://blog.beliefnet.com/idolchatter/2008/07/quote-naomi-campbell-talks-rel.html"
-  - sourceTitle: "Naomi Campbell: Religious and Private Trip to Israel."
-    sourceUrl: "http://www.abbanibi.com/blog/naomi-campbell-religious-and-private-trip-to-israel/"
-  - sourceTitle: "NaomiCampbell: #omiquotes Spiritual work is …"
-    sourceUrl: "https://twitter.com/NaomiCampbell/status/280031955150585857"
+  - sourceTitle: 'The religion of Naomi Campbell, supermodel.'
+    sourceUrl: 'http://www.adherents.com/people/pc/Naomi_Campbell.html'
+  - sourceTitle: 'Naomi Campbell Slams Witchcraft Rumors.'
+    sourceUrl: 'http://socialitelife.com/naomi_campbell_slams_witchcraft_rumors-01-2007'
+  - sourceTitle: 'Naomi Campbell to change faith to marry Russian.'
+    sourceUrl: 'http://rt.com/news/prime-time/naomi-campbell-to-change-faith-to-marry-russian/'
+  - sourceTitle: 'Naomi Campbell passionate about bizarre Brazilian sect.'
+    sourceUrl: 'http://www.religionnewsblog.com/17246/naomi-campbell-candomble'
+  - sourceTitle: 'Naomi Campbell Converts to Kabbalah.'
+    sourceUrl: 'http://www.usmagazine.com/celebrity-news/news/naomi-campbell-converts-to-kabbalah-20101910'
+  - sourceTitle: 'Quoted: Naomi Campbell Talks Religion.'
+    sourceUrl: 'http://blog.beliefnet.com/idolchatter/2008/07/quote-naomi-campbell-talks-rel.html'
+  - sourceTitle: 'Naomi Campbell: Religious and Private Trip to Israel.'
+    sourceUrl: 'http://www.abbanibi.com/blog/naomi-campbell-religious-and-private-trip-to-israel/'
+  - sourceTitle: 'NaomiCampbell: #omiquotes Spiritual work is …'
+    sourceUrl: 'https://twitter.com/NaomiCampbell/status/280031955150585857'
   - sourceTitle: "Naomi's 'jolly' trip to No10."
-    sourceUrl: "http://www.thesun.co.uk/sol/homepage/news/1171336/News-Politics-Naomi-Campbell-Gordon-Brown-Naomis-jolly-trip-to-No10.html"
+    sourceUrl: 'http://www.thesun.co.uk/sol/homepage/news/1171336/News-Politics-Naomi-Campbell-Gordon-Brown-Naomis-jolly-trip-to-No10.html'
   - sourceTitle: "Naomi Campbell gets Sarah Brown's vote in Harper's list of heroines."
-    sourceUrl: "http://www.guardian.co.uk/politics/2009/dec/06/sarah-brown-naomi-campbell-harpers"
-  - sourceTitle: "Hannah Pool on racism in fashion."
-    sourceUrl: "http://www.guardian.co.uk/lifeandstyle/2007/aug/22/fashion.race"
+    sourceUrl: 'http://www.guardian.co.uk/politics/2009/dec/06/sarah-brown-naomi-campbell-harpers'
+  - sourceTitle: 'Hannah Pool on racism in fashion.'
+    sourceUrl: 'http://www.guardian.co.uk/lifeandstyle/2007/aug/22/fashion.race'
   - sourceTitle: "Naomi Campbell and Kate Moss bare all, talk racism in fashion for Russian and German 'Interview.'"
-    sourceUrl: "http://thegrio.com/2012/11/29/naomi-campbell-and-kate-moss-bare-all-talk-racism-in-fashion-for-russian-and-german-interview/#s:naomi-2-2"
-  - sourceTitle: "Black no longer the new black."
-    sourceUrl: "http://www.mmtimes.com/no494/t005.htm"
+    sourceUrl: 'http://thegrio.com/2012/11/29/naomi-campbell-and-kate-moss-bare-all-talk-racism-in-fashion-for-russian-and-german-interview/#s:naomi-2-2'
+  - sourceTitle: 'Black no longer the new black.'
+    sourceUrl: 'http://www.mmtimes.com/no494/t005.htm'
 summaries:
   religion: "Campbell was born a Jehovah's Witness, but appears to be Church of England Protestant these days--despite the fact that people think she's converting to all sorts of other religions."
-  politicalViews: "She is a Labour supporter, but is most focused on fighting racism in the fashion industry."
+  politicalViews: 'She is a Labour supporter, but is most focused on fighting racism in the fashion industry.'
 ---
 
 Naomi Campbell was born and raised in London, England with a brief stint in Rome, Italy.
@@ -48,10 +48,9 @@ And then there was the whole [Kabbalah](http://en.wikipedia.org/wiki/Kabbalah)�
 
 Despite all these rumors, Campbell is genuinely dedicated to her faith. She took a trip to Jerusalem over her 42nd birthday for a "religious" trip.<a class="source-citation" href="#http%3A%2F%2Fwww.abbanibi.com%2Fblog%2Fnaomi-campbell-religious-and-private-trip-to-israel%2F" title="Naomi Campbell: Religious and Private Trip to Israel.">[8]</a> And she left us with this quote on her Twitter feed:
 
->Spiritual work is like climbing a ladder. To reach the peak, make sure you are firm on the step you are on, before going up to the next one. But don't stay satisfied too long on it, or you'll lose the motivation to keep climbing, and won't complete the journey.<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FNaomiCampbell%2Fstatus%2F280031955150585857" title="NaomiCampbell: #omiquotes Spiritual work is …">[9]</a>
+> Spiritual work is like climbing a ladder. To reach the peak, make sure you are firm on the step you are on, before going up to the next one. But don't stay satisfied too long on it, or you'll lose the motivation to keep climbing, and won't complete the journey.<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FNaomiCampbell%2Fstatus%2F280031955150585857" title="NaomiCampbell: #omiquotes Spiritual work is …">[9]</a>
 
 Pretty heavy stuff. Looks like she's a devout Christian after all.
-
 
 ## Black in a White Industry
 
@@ -59,7 +58,7 @@ Campbell's politics are not quite so difficult to decipher. She doesn't appear t
 
 But beyond the partisan, Campbell is most focused on fighting racism in the fashion industry. In 1997 she said,
 
->There is prejudice. It is a problem and I can't go along any more with brushing it under the carpet. This business is about selling, and blonde and blue-eyed girls are what sells.<a class="source-citation" href="#http%3A%2F%2Fwww.guardian.co.uk%2Flifeandstyle%2F2007%2Faug%2F22%2Ffashion.race" title="Hannah Pool on racism in fashion.">[12]</a>
+> There is prejudice. It is a problem and I can't go along any more with brushing it under the carpet. This business is about selling, and blonde and blue-eyed girls are what sells.<a class="source-citation" href="#http%3A%2F%2Fwww.guardian.co.uk%2Flifeandstyle%2F2007%2Faug%2F22%2Ffashion.race" title="Hannah Pool on racism in fashion.">[12]</a>
 
 More recently, in 2011, she criticized candy-maker Cadbury for comparing her to chocolate, prompting an apology from the company.<a class="source-citation" href="#http%3A%2F%2Fthegrio.com%2F2012%2F11%2F29%2Fnaomi-campbell-and-kate-moss-bare-all-talk-racism-in-fashion-for-russian-and-german-interview%2F%23s%3Anaomi-2-2" title="Naomi Campbell and Kate Moss bare all, talk racism in fashion for Russian and German &apos;Interview.&apos;">[13]</a> And after Barack Obama was elected America's first black president, she said she thought it was great, but that racism in fashion was only getting worse.<a class="source-citation" href="#http%3A%2F%2Fwww.mmtimes.com%2Fno494%2Ft005.htm" title="Black no longer the new black.">[14]</a>
 

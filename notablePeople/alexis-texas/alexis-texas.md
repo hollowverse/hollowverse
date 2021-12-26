@@ -1,18 +1,18 @@
 ---
-name: "Alexis Texas"
+name: 'Alexis Texas'
 relatedPeople:
-  - "tori-black"
-  - "audrey-bitoni"
-  - "shyla-stylez"
-  - "faye-reagan"
-date: "2012-10-07"
+  - 'tori-black'
+  - 'ashlynn-brooke'
+  - 'shyla-stylez'
+  - 'bill-gates'
+date: '2012-10-07'
 sources:
-  - sourceTitle: "Alexis_Texas: Bored in the Chicago airport…"
-    sourceUrl: "https://twitter.com/Alexis_Texas/status/236168656122429440"
-  - sourceTitle: "Interview Alexis Texas."
-    sourceUrl: "http://www.youtube.com/watch?v=-bNWTrTb75Q"
-  - sourceTitle: "Alexis Texas: Lone Star Superstar."
-    sourceUrl: "http://www.xtrememagazine.com/2010/10/alexis-texas-lone-star-superstar/"
+  - sourceTitle: 'Alexis_Texas: Bored in the Chicago airport…'
+    sourceUrl: 'https://twitter.com/Alexis_Texas/status/236168656122429440'
+  - sourceTitle: 'Interview Alexis Texas.'
+    sourceUrl: 'http://www.youtube.com/watch?v=-bNWTrTb75Q'
+  - sourceTitle: 'Alexis Texas: Lone Star Superstar.'
+    sourceUrl: 'http://www.xtrememagazine.com/2010/10/alexis-texas-lone-star-superstar/'
 summaries:
 ---
 
@@ -22,7 +22,7 @@ Texas doesn't talk about religion, so I think it's safe to say she's non-religio
 
 She made one mention of Jesus on her Twitter feed, but it sounds more like a line from Talladega Nights than a sincere appeal to the divine:
 
->Bored in the Chicago airport waiting on another delayed flight. . . lets get it together baby Jesus I just wanna land this booty in montreal.<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FAlexis_Texas%2Fstatus%2F236168656122429440" title="Alexis_Texas: Bored in the Chicago airport…">[1]</a>
+> Bored in the Chicago airport waiting on another delayed flight. . . lets get it together baby Jesus I just wanna land this booty in montreal.<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FAlexis_Texas%2Fstatus%2F236168656122429440" title="Alexis_Texas: Bored in the Chicago airport…">[1]</a>
 
 She also said she was blessed to have a "ginormous ass,"<a class="source-citation" href="#http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-bNWTrTb75Q" title="Interview Alexis Texas.">[2]</a> but really, who would ever put those words together in a sentence in serious praise of God?
 

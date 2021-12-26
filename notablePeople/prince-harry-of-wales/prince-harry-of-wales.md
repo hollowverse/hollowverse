@@ -1,31 +1,31 @@
 ---
-name: "Prince Harry of Wales"
+name: 'Prince Harry of Wales'
 relatedPeople:
-  - "prince-william"
-  - "elizabeth-ii"
-  - "kate-middleton"
-  - "ed-westwick"
-date: "2012-09-15"
+  - 'prince-william'
+  - 'elizabeth-ii'
+  - 'rowan-atkinson'
+  - 'ed-westwick'
+date: '2012-09-15'
 sources:
-  - sourceTitle: "Prince Harry of Wales"
-    sourceUrl: "http://www.enotes.com/topic/Prince_Harry_of_Wales#Royal_duties"
-  - sourceTitle: "Supreme Governor of the Church of England"
-    sourceUrl: "http://www.enotes.com/topic/Supreme_Governor_of_the_Church_of_England"
-  - sourceTitle: "Ban on British monarch marrying a Catholic to be lifted"
-    sourceUrl: "http://www.catholicherald.co.uk/news/2011/10/31/ban-on-british-monarch-marrying-a-catholic-to-be-lifted/"
-  - sourceTitle: "Centuries-old ties fraying between English church, state"
-    sourceUrl: "http://www.usatoday.com/news/religion/2011-04-26-Wedding_England_church__25_ST_N.htm"
-  - sourceTitle: "10 Reasons Why Prince Harry is the Coolest Royal"
-    sourceUrl: "http://powerwall.msnbc.msn.com/business/10-reasons-why-prince-harry-is-the-cooler-than-his-bro-9729.gallery#!wallState=0__%2Fbusiness%2F10-reasons-why-prince-harry-is-the-cooler-than-his-bro-9729.gallery%3FphotoId%3D39118"
-  - sourceTitle: "Prince Harry pulled out over threats"
-    sourceUrl: "http://www.url.biz/Articles/Article-3063.html"
+  - sourceTitle: 'Prince Harry of Wales'
+    sourceUrl: 'http://www.enotes.com/topic/Prince_Harry_of_Wales#Royal_duties'
+  - sourceTitle: 'Supreme Governor of the Church of England'
+    sourceUrl: 'http://www.enotes.com/topic/Supreme_Governor_of_the_Church_of_England'
+  - sourceTitle: 'Ban on British monarch marrying a Catholic to be lifted'
+    sourceUrl: 'http://www.catholicherald.co.uk/news/2011/10/31/ban-on-british-monarch-marrying-a-catholic-to-be-lifted/'
+  - sourceTitle: 'Centuries-old ties fraying between English church, state'
+    sourceUrl: 'http://www.usatoday.com/news/religion/2011-04-26-Wedding_England_church__25_ST_N.htm'
+  - sourceTitle: '10 Reasons Why Prince Harry is the Coolest Royal'
+    sourceUrl: 'http://powerwall.msnbc.msn.com/business/10-reasons-why-prince-harry-is-the-cooler-than-his-bro-9729.gallery#!wallState=0__%2Fbusiness%2F10-reasons-why-prince-harry-is-the-cooler-than-his-bro-9729.gallery%3FphotoId%3D39118'
+  - sourceTitle: 'Prince Harry pulled out over threats'
+    sourceUrl: 'http://www.url.biz/Articles/Article-3063.html'
   - sourceTitle: "German award recognizes Prince Harry's charity work"
-    sourceUrl: "http://www.bbc.co.uk/news/uk-12030792"
-  - sourceTitle: "Prince Harry touches down in Washington D.C., to meet injured war veterans and collect a prestigious award"
-    sourceUrl: "http://www.dailymail.co.uk/news/article-2140989/Prince-Harry-touches-Washington-DC-meet-injured-war-veterans-collect-prestigious-award.html"
+    sourceUrl: 'http://www.bbc.co.uk/news/uk-12030792'
+  - sourceTitle: 'Prince Harry touches down in Washington D.C., to meet injured war veterans and collect a prestigious award'
+    sourceUrl: 'http://www.dailymail.co.uk/news/article-2140989/Prince-Harry-touches-Washington-DC-meet-injured-war-veterans-collect-prestigious-award.html'
 summaries:
-  religion: "Prince Harry is an obligatory member of the Church of England and is third in line to receive the title of \"Supreme Governor\" of that church."
-  politicalViews: "Prince Harry is not allowed to participate in any political activity, however he is a war veteran and a decorated humanitarian."
+  religion: 'Prince Harry is an obligatory member of the Church of England and is third in line to receive the title of "Supreme Governor" of that church.'
+  politicalViews: 'Prince Harry is not allowed to participate in any political activity, however he is a war veteran and a decorated humanitarian.'
 ---
 
 Prince Harry of Wales, whose full name is His Royal Highness Henry Charles Albert David of Wales, was born in London, England and raised in various palaces around that country and royal tours abroad.
@@ -36,9 +36,9 @@ While still rather rigid, the Anglican stranglehold on British royals has loosen
 
 Still, whether or not Harry is truly religious is debated and it is highly unlikely that Harry would ever say anything publicly to cause us to think he wasn't. But western society, England included, marches ever onward toward secularization and it is probable that Harry marches with it. As one journalist said of his brother:
 
->For his part, William has expressed little concern about or commitment to either the Church of England or Christianity. Those close to the couple say they are, like their peers, quietly indifferent about religion.<a class="source-citation" href="#http%3A%2F%2Fwww.usatoday.com%2Fnews%2Freligion%2F2011-04-26-Wedding_England_church__25_ST_N.htm" title="Centuries-old ties fraying between English church, state">[4]</a>
+> For his part, William has expressed little concern about or commitment to either the Church of England or Christianity. Those close to the couple say they are, like their peers, quietly indifferent about religion.<a class="source-citation" href="#http%3A%2F%2Fwww.usatoday.com%2Fnews%2Freligion%2F2011-04-26-Wedding_England_church__25_ST_N.htm" title="Centuries-old ties fraying between English church, state">[4]</a>
 
-## 
+##
 
 ## Make scarce with those politics there ginger boy
 

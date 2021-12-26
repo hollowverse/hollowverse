@@ -1,15 +1,15 @@
-import { Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 import Head from 'next/head';
-import Script from 'next/script';
+// import Script from 'next/script';
 import 'normalize.css';
 import React from 'react';
-import CommentsAlt from '_i/icons/comments-alt.svg';
-import { Icon } from '_r/pages/common/Icon';
+// import CommentsAlt from '_i/icons/comments-alt.svg';
+// import { Icon } from '_r/pages/common/Icon';
 import { TEditorial, TNotablePersonData, TPic } from '_r/pages/common/types';
 import { Editorial } from './[notablePerson]/Editorial/Editorial';
 import { Heading } from './[notablePerson]/Heading/Heading';
 import s from './[notablePerson]/notablePerson.module.scss';
-import { Quotes } from './[notablePerson]/Quotes/Quotes';
+// import { Quotes } from './[notablePerson]/Quotes/Quotes';
 
 const NotablePerson = (p: {
   data: TNotablePersonData;

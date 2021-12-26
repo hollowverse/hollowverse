@@ -1,20 +1,20 @@
 ---
-name: "Eli Manning"
+name: 'Eli Manning'
 relatedPeople:
-  - "drew-brees"
-  - "peyton-manning"
-  - "chael-sonnen"
-  - "bruce-jenner"
-date: "2012-06-20"
+  - 'drew-brees'
+  - 'peyton-manning'
+  - 'chael-sonnen'
+  - 'kris-jenner'
+date: '2012-06-20'
 sources:
-  - sourceTitle: "Is Eli Manning a Christian?"
-    sourceUrl: "http://wiki.answers.com/Q/Is_Eli_Manning_a_Christian"
-  - sourceTitle: "What church does Eli Manning attend?"
-    sourceUrl: "http://www.chacha.com/question/what-church-does-eli-manning-attend"
-  - sourceTitle: "Is Eli manning Republican?"
-    sourceUrl: "http://wiki.answers.com/Q/Is_Eli_manning_republican"
-  - sourceTitle: "Tim Tebow Favorite QB of Republicans and Eli Manning for Democrats"
-    sourceUrl: "http://www.yardbarker.com/nfl/articles/tim_tebow_favorite_qb_of_republicans_and_eli_manning_for_democrats/8891260"
+  - sourceTitle: 'Is Eli Manning a Christian?'
+    sourceUrl: 'http://wiki.answers.com/Q/Is_Eli_Manning_a_Christian'
+  - sourceTitle: 'What church does Eli Manning attend?'
+    sourceUrl: 'http://www.chacha.com/question/what-church-does-eli-manning-attend'
+  - sourceTitle: 'Is Eli manning Republican?'
+    sourceUrl: 'http://wiki.answers.com/Q/Is_Eli_manning_republican'
+  - sourceTitle: 'Tim Tebow Favorite QB of Republicans and Eli Manning for Democrats'
+    sourceUrl: 'http://www.yardbarker.com/nfl/articles/tim_tebow_favorite_qb_of_republicans_and_eli_manning_for_democrats/8891260'
 summaries:
 ---
 
