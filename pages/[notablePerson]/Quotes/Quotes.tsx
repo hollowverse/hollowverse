@@ -1,73 +1,73 @@
 import React from 'react';
-import s from '../notablePerson.module.scss';
-import { Divider, Typography } from '@mui/material';
-import { TNotablePersonData, TPic } from '_r/pages/common/types';
-import Image from 'next/image';
-import { format, parse } from 'date-fns';
-import { EditButton } from '../common/EditButton/EditButton';
-import QuoteIcon from '_i/icons/quote.svg';
-import { Icon } from '_r/pages/common/Icon';
+// import s from '../notablePerson.module.scss';
+// import { Divider, Typography } from '@mui/material';
+// import { TNotablePersonData, TPic } from '_r/pages/common/types';
+// import Image from 'next/image';
+// import { format, parse } from 'date-fns';
+// import { EditButton } from '../common/EditButton/EditButton';
+// import QuoteIcon from '_i/icons/quote.svg';
+// import { Icon } from '_r/pages/common/Icon';
 
-export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
-  return (
-    <>
-      <Typography variant="h1" component="h2">
-        <Icon component={QuoteIcon}></Icon>
-        Quotes
-      </Typography>
+// export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
+//   return (
+//     <>
+//       <Typography variant="h1" component="h2">
+//         <Icon component={QuoteIcon}></Icon>
+//         Quotes
+//       </Typography>
 
-      {p.data.quotes.map(([context, text, source, date], i) => (
-        <div className={s.quoteBlock} key={i}>
-          <div className={s.quoteTextContainer}>
-            <div className={s.quoteAvatar}>
-              <Image src={p.pic} alt={p.data.name} width={50} height={50} />
-            </div>
+//       {p.data.quotes.map(([context, text, source, date], i) => (
+//         <div className={s.quoteBlock} key={i}>
+//           <div className={s.quoteTextContainer}>
+//             <div className={s.quoteAvatar}>
+//               <Image src={p.pic} alt={p.data.name} width={50} height={50} />
+//             </div>
 
-            <figure className={s.quoteText}>
-              <Typography
-                variant="h4"
-                component="cite"
-                className={s.quoteContext}
-              >
-                {context}
-              </Typography>
+//             <figure className={s.quoteText}>
+//               <Typography
+//                 variant="h4"
+//                 component="cite"
+//                 className={s.quoteContext}
+//               >
+//                 {context}
+//               </Typography>
 
-              <Typography variant="h2" component="blockquote" cite={source}>
-                {text}
-              </Typography>
+//               <Typography variant="h2" component="blockquote" cite={source}>
+//                 {text}
+//               </Typography>
 
-              {(source || date) && (
-                <Typography
-                  variant="body1"
-                  component="figcaption"
-                  className={s.quoteTextFooter}
-                >
-                  {date && (
-                    <time>
-                      {format(
-                        parse(date, 'MM-dd-yyyy', new Date()),
-                        'MMM do yyyy',
-                      )}
-                    </time>
-                  )}
-                  {source && date && ' • '}
-                  {source && (
-                    <a href={source} rel="noreferrer" target="_blank">
-                      Source
-                    </a>
-                  )}
-                </Typography>
-              )}
-            </figure>
-          </div>
+//               {(source || date) && (
+//                 <Typography
+//                   variant="body1"
+//                   component="figcaption"
+//                   className={s.quoteTextFooter}
+//                 >
+//                   {date && (
+//                     <time>
+//                       {format(
+//                         parse(date, 'MM-dd-yyyy', new Date()),
+//                         'MMM do yyyy',
+//                       )}
+//                     </time>
+//                   )}
+//                   {source && date && ' • '}
+//                   {source && (
+//                     <a href={source} rel="noreferrer" target="_blank">
+//                       Source
+//                     </a>
+//                   )}
+//                 </Typography>
+//               )}
+//             </figure>
+//           </div>
 
-          {i != p.data.quotes.length - 1 && <Divider />}
-        </div>
-      ))}
+//           {i != p.data.quotes.length - 1 && <Divider />}
+//         </div>
+//       ))}
 
-      <div className={s.quoteEditButtonContainer}>
-        <EditButton type="quote" data={p.data} />
-      </div>
-    </>
-  );
-};
+//       <div className={s.quoteEditButtonContainer}>
+//         <EditButton type="quote" data={p.data} />
+//       </div>
+//     </>
+//   );
+// };
