@@ -44,38 +44,46 @@ export const Editorial = (p: { editorial: TEditorial }) => {
         <div dangerouslySetInnerHTML={{ __html: p.editorial.content }}></div>
       </article>
 
-      <div className={s.sourcesTitleContainer}>
-        <Typography variant="h3" component="h4"></Typography>
+      {p.editorial.data.sources && p.editorial.data.sources.length > 0 && (
+        <>
+          <div className={s.sourcesTitleContainer}>
+            <Typography variant="h3" component="h4"></Typography>
 
-        <Button
-          color="inherit"
-          variant="text"
-          size="large"
-          onClick={() => setShowSources(!showSources)}
-          startIcon={<Icon component={BookOpenIcon}></Icon>}
-        >
-          {showSources ? 'Hide' : 'Show'} sources for the editorial
-        </Button>
-      </div>
+            <Button
+              color="inherit"
+              variant="text"
+              size="large"
+              onClick={() => setShowSources(!showSources)}
+              startIcon={<Icon component={BookOpenIcon}></Icon>}
+            >
+              {showSources ? 'Hide' : 'Show'} sources for the editorial
+            </Button>
+          </div>
 
-      {showSources && (
-        <ul>
-          {p.editorial.data.sources.map(({ sourceTitle, sourceUrl }) => {
-            const encoded = encodeURIComponent(sourceUrl);
-            return (
-              <li key={encoded} id={encoded} className={s.editorialListItem}>
-                <a
-                  href={sourceUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                  className={s.editorialSource}
-                >
-                  {sourceTitle}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+          {showSources && (
+            <ul>
+              {p.editorial.data.sources.map(({ sourceTitle, sourceUrl }) => {
+                const encoded = encodeURIComponent(sourceUrl);
+                return (
+                  <li
+                    key={encoded}
+                    id={encoded}
+                    className={s.editorialListItem}
+                  >
+                    <a
+                      href={sourceUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                      className={s.editorialSource}
+                    >
+                      {sourceTitle}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </>
       )}
 
       <div className={s.interestingProfilesContainer}>

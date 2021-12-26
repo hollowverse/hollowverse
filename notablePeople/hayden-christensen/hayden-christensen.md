@@ -6,5 +6,6 @@ relatedPeople:
   - "taylor-kitsch"
   - "kiefer-sutherland"
 sources: []
+summaries:
 ---
 

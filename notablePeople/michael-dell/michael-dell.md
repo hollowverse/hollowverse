@@ -6,5 +6,6 @@ relatedPeople:
   - "barry-goldwater"
   - "paul-newman"
 sources: []
+summaries:
 ---
 

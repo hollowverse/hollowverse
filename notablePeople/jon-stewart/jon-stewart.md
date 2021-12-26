@@ -15,6 +15,9 @@ sources:
     sourceUrl: "http://home.earthlink.net/~aladato/anchor.html"
   - sourceTitle: "Jon Stewart on CNN: \"Fox News is 'Wrong,' a 'Political Organization"
     sourceUrl: "http://newsbusters.org/blogs/matthew-balan/2010/10/21/jon-stewart-cnn-fox-news-wrong-political-organization"
+summaries:
+  religion: "Jon Stewart was raised Jewish, but seems to have a more nuanced, reason-based attitude towards religion."
+  politicalViews: "Really, Jon is a liberal. Though much of his criticism of American politics would indicate that he would like to see more moderate discourse and compromise among U.S. politicians."
 ---
 
 Jon Stewart grew up in New Jersey in a Jewish family. He has a sort-of detached, but not negative, opinion of religion, saying:
@@ -23,7 +26,7 @@ Jon Stewart grew up in New Jersey in a Jewish family. He has a sort-of detached,
 
 He goes on to say:
 
->When people say things like, "I found God and that helped me stop drinking," I say, "Great! More power to you. Just know that some people stop drinking without it." It's when it gets into the realm of "This is the only way to salvation"—that's when I think, "Okay, now we're getting into a problem.<a class="source-citation" href="#http://www.patheos.com/blogs/unreasonablefaith/2009/07/jon-stewart-on-religion-morality/" title="Jon Stewart on Religion">[1]</a>
+>When people say things like, "I found God and that helped me stop drinking," I say, "Great! More power to you. Just know that some people stop drinking without it." It's when it gets into the realm of "This is the only way to salvation"—that's when I think, "Okay, now we're getting into a problem.<a class="source-citation" href="#http%3A%2F%2Fwww.patheos.com%2Fblogs%2Funreasonablefaith%2F2009%2F07%2Fjon-stewart-on-religion-morality%2F" title="Jon Stewart on Religion">[1]</a>
 
 Even though he doesn't think religion is all-important, he's definitely not afraid of using his Jewish background for comedic effect.
 
@@ -31,15 +34,15 @@ Left, right, they're all idiots
 
 Jon has a lot to say about politics. He's generally considered to be a liberal, especially because of his relentless criticism of the Bush administration, with quotes like this, referring to Bush's handling of the Iraq war:
 
->It's as if a guy drove me into a ditch and said, 'Don't worry, I know how to drive us out of this.'<a class="source-citation" href="#http://politicalhumor.about.com/library/bljonstewartquotes.htm" title="Jon Stewart Quotes">[2]</a>
+>It's as if a guy drove me into a ditch and said, 'Don't worry, I know how to drive us out of this.'<a class="source-citation" href="#http%3A%2F%2Fpoliticalhumor.about.com%2Flibrary%2Fbljonstewartquotes.htm" title="Jon Stewart Quotes">[2]</a>
 
 He even mentioned that he liked one of America's most famous socialists, saying:
 
->[In high school, I was] very into Eugene Debs and a bit of a leftist.<a class="source-citation" href="#http://home.earthlink.net/~aladato/anchor.html" title="Anchor Astray">[3]</a>
+>[In high school, I was] very into Eugene Debs and a bit of a leftist.<a class="source-citation" href="#http%3A%2F%2Fhome.earthlink.net%2F~aladato%2Fanchor.html" title="Anchor Astray">[3]</a>
 
 Still, Stewart tends to be most critical of politics that takes one side or the other and doesn't compromise or discuss ideas. He tends to think politics is too much game-playing while politicians don't deal with real issues. Essentially, politicians and politics is generally ridiculous. He has said:
 
->With Republicans, you never- they never have to prove that they love this country. Democrats always seem to have to prove to America that they love America. Republicans love America- they just seem to hate about 50 percent of the people who live in it. Democrats- you know, for their thing, it's always they love this country- they just somehow wish it were a different country. You know, Democrats are always like- you know, America's the greatest country in the world. Have you seen Finland's health care system? You get back rubs at work. You're surrounded by sandwiches.<a class="source-citation" href="#http://newsbusters.org/blogs/matthew-balan/2010/10/21/jon-stewart-cnn-fox-news-wrong-political-organization" title="Jon Stewart on CNN: &quot;Fox News is &apos;Wrong,&apos; a &apos;Political Organization">[4]</a>
+>With Republicans, you never- they never have to prove that they love this country. Democrats always seem to have to prove to America that they love America. Republicans love America- they just seem to hate about 50 percent of the people who live in it. Democrats- you know, for their thing, it's always they love this country- they just somehow wish it were a different country. You know, Democrats are always like- you know, America's the greatest country in the world. Have you seen Finland's health care system? You get back rubs at work. You're surrounded by sandwiches.<a class="source-citation" href="#http%3A%2F%2Fnewsbusters.org%2Fblogs%2Fmatthew-balan%2F2010%2F10%2F21%2Fjon-stewart-cnn-fox-news-wrong-political-organization" title="Jon Stewart on CNN: &quot;Fox News is &apos;Wrong,&apos; a &apos;Political Organization">[4]</a>
 
 The thing is, Jon is pretty reasonable when it comes to politics–and religion.
 

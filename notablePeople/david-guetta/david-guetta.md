@@ -13,17 +13,18 @@ sources:
     sourceUrl: "http://articles.timesofindia.indiatimes.com/2012-03-17/news-and-interviews/31204441_1_indian-fans-dj-huge-fan"
   - sourceTitle: "David Guetta – Without You Lyrics"
     sourceUrl: "http://www.directlyrics.com/david-guetta-without-u-lyrics.html"
+summaries:
 ---
 
 David Guetta, whose real name is Pierre David Guetta, was born and raised in Paris, France.
 
-Guetta's family is Morrocan Sephardi Jewish.<a class="source-citation" href="#http://www.lyricsfreak.com/d/david+guetta/biography.html" title="David Guetta – Biography">[1]</a> It is unclear how devout Guetta is to Judaism now that he's an international electronic music superstar, but he's at least curious about other religions. While on tour in India, he said:
+Guetta's family is Morrocan Sephardi Jewish.<a class="source-citation" href="#http%3A%2F%2Fwww.lyricsfreak.com%2Fd%2Fdavid%2Bguetta%2Fbiography.html" title="David Guetta – Biography">[1]</a> It is unclear how devout Guetta is to Judaism now that he's an international electronic music superstar, but he's at least curious about other religions. While on tour in India, he said:
 
->How you people live, your religion and your habits, I really don't know much, and that's the reason I'm so curious about India.<a class="source-citation" href="#http://articles.timesofindia.indiatimes.com/2012-03-17/news-and-interviews/31204441_1_indian-fans-dj-huge-fan" title="I&apos;m hounoured touring India, says David Guetta">[2]</a>
+>How you people live, your religion and your habits, I really don't know much, and that's the reason I'm so curious about India.<a class="source-citation" href="#http%3A%2F%2Farticles.timesofindia.indiatimes.com%2F2012-03-17%2Fnews-and-interviews%2F31204441_1_indian-fans-dj-huge-fan" title="I&apos;m hounoured touring India, says David Guetta">[2]</a>
 
 There is some speculation that his song, "Without You" is religious in nature with lyrics like:
 
->I won't run, I won't fly/I will never make it by/Without you, without you/I can't rest, I can't fight/All I need is you and I/Without you, without…. You!<a class="source-citation" href="#http://www.directlyrics.com/david-guetta-without-u-lyrics.html" title="David Guetta – Without You Lyrics">[3]</a>
+>I won't run, I won't fly/I will never make it by/Without you, without you/I can't rest, I can't fight/All I need is you and I/Without you, without…. You!<a class="source-citation" href="#http%3A%2F%2Fwww.directlyrics.com%2Fdavid-guetta-without-u-lyrics.html" title="David Guetta – Without You Lyrics">[3]</a>
 
 But it could just as easily be about a girl, or his fans.
 

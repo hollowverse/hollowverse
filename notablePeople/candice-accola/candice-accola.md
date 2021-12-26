@@ -6,5 +6,6 @@ relatedPeople:
   - "julianne-hough"
   - "rose-mcgowan"
 sources: []
+summaries:
 ---
 

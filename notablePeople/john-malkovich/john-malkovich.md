@@ -15,19 +15,22 @@ sources:
     sourceUrl: "http://www.thestar.com/entertainment/movies/2008/09/11/a_kinder_gentler_malkovich.html"
   - sourceTitle: "John Malkovich: 'I haven't voted since McGovern lost"
     sourceUrl: "http://dailycaller.com/2011/06/17/john-malkovich-i-havent-voted-since-mcgovern-lost/"
+summaries:
+  religion: "Malkovich is an atheist."
+  politicalViews: "Malkovich claims to be non-political despite having voted for a Democrat and wanting to fight British Labour politicians to the death."
 ---
 
 John Malkovich was born in Christopher, Illinois and grew up in Benton, Illinois.
 
-Malkovich is of Croatian descent,<a class="source-citation" href="#http://www.imdb.com/name/nm0000518/bio" title="ohn Malkovich – Biography">[1]</a> a country with an overwhelming Catholic majority.<a class="source-citation" href="#http://en.wikipedia.org/wiki/Croatia#Demographics" title="Croatia">[2]</a> So, it stands to reason that somewhere in Malkovich's heritage is the Catholic faith.
+Malkovich is of Croatian descent,<a class="source-citation" href="#http%3A%2F%2Fwww.imdb.com%2Fname%2Fnm0000518%2Fbio" title="ohn Malkovich – Biography">[1]</a> a country with an overwhelming Catholic majority.<a class="source-citation" href="#http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCroatia%23Demographics" title="Croatia">[2]</a> So, it stands to reason that somewhere in Malkovich's heritage is the Catholic faith.
 
 However, Malkovich is an atheist. When asked if one needed religious belief to play spiritual characters, (which Malkovich does on occasion) he responded:
 
->No, I'd say not. I'm an atheist. I wouldn't say I'm without spiritual belief particularly, or rather, specifically. Maybe I'm agnostic, but I'm not quite sure there's some great creator somehow controlling everything and giving us free will. I don't know; it doesn't seem to make a lot of sense to me.<a class="source-citation" href="#http://www.thestar.com/entertainment/movies/2008/09/11/a_kinder_gentler_malkovich.html" title="A kinder, gentler Malkovich">[3]</a>
+>No, I'd say not. I'm an atheist. I wouldn't say I'm without spiritual belief particularly, or rather, specifically. Maybe I'm agnostic, but I'm not quite sure there's some great creator somehow controlling everything and giving us free will. I don't know; it doesn't seem to make a lot of sense to me.<a class="source-citation" href="#http%3A%2F%2Fwww.thestar.com%2Fentertainment%2Fmovies%2F2008%2F09%2F11%2Fa_kinder_gentler_malkovich.html" title="A kinder, gentler Malkovich">[3]</a>
 
 That's not to say that Malkovich doesn't understand and sympathize with the human drive toward religious or spiritual belief. It just doesn't make sense to him:
 
->I think everyone would like to believe there's something immutable or infallible about the human spirit. Everyone would like to believe that, but I'm not sure there's any reason to.<a class="source-citation" href="#http://www.thestar.com/entertainment/movies/2008/09/11/a_kinder_gentler_malkovich.html" title="A kinder, gentler Malkovich">[4]</a>
+>I think everyone would like to believe there's something immutable or infallible about the human spirit. Everyone would like to believe that, but I'm not sure there's any reason to.<a class="source-citation" href="#http%3A%2F%2Fwww.thestar.com%2Fentertainment%2Fmovies%2F2008%2F09%2F11%2Fa_kinder_gentler_malkovich.html" title="A kinder, gentler Malkovich">[4]</a>
 
 There you have it. No reason to believe for Malkovich–so he doesn't.
 
@@ -36,12 +39,12 @@ There you have it. No reason to believe for Malkovich–so he doesn't.
 
 Malkovich insists that he's not at all political:
 
->I'm not a political person actually, and I don't have an ideology. And I don't think other people really think about [my political views].<a class="source-citation" href="#http://dailycaller.com/2011/06/17/john-malkovich-i-havent-voted-since-mcgovern-lost/" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[5]</a>
+>I'm not a political person actually, and I don't have an ideology. And I don't think other people really think about [my political views].<a class="source-citation" href="#http%3A%2F%2Fdailycaller.com%2F2011%2F06%2F17%2Fjohn-malkovich-i-havent-voted-since-mcgovern-lost%2F" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[5]</a>
 
 He says he last voted for George McGovern in 1972, a Democratic candidate who lost against Richard Nixon:
 
->I haven't voted since McGovern lost and don't intend to. I see no reason to.<a class="source-citation" href="#http://dailycaller.com/2011/06/17/john-malkovich-i-havent-voted-since-mcgovern-lost/" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[6]</a>
+>I haven't voted since McGovern lost and don't intend to. I see no reason to.<a class="source-citation" href="#http%3A%2F%2Fdailycaller.com%2F2011%2F06%2F17%2Fjohn-malkovich-i-havent-voted-since-mcgovern-lost%2F" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[6]</a>
 
-Perhaps that means he lost faith in the political process. However, friends and co-workers such as William Hootkins, disagree, calling Malkovich incredibly "right-wing."<a class="source-citation" href="#http://dailycaller.com/2011/06/17/john-malkovich-i-havent-voted-since-mcgovern-lost/" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[7]</a> And, when Malkovich was asked who he'd like to fight to the death, he mentioned, among others, British Labour politician George Galloway.<a class="source-citation" href="#http://dailycaller.com/2011/06/17/john-malkovich-i-havent-voted-since-mcgovern-lost/" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[8]</a> So maybe right-wing isn't too off base.
+Perhaps that means he lost faith in the political process. However, friends and co-workers such as William Hootkins, disagree, calling Malkovich incredibly "right-wing."<a class="source-citation" href="#http%3A%2F%2Fdailycaller.com%2F2011%2F06%2F17%2Fjohn-malkovich-i-havent-voted-since-mcgovern-lost%2F" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[7]</a> And, when Malkovich was asked who he'd like to fight to the death, he mentioned, among others, British Labour politician George Galloway.<a class="source-citation" href="#http%3A%2F%2Fdailycaller.com%2F2011%2F06%2F17%2Fjohn-malkovich-i-havent-voted-since-mcgovern-lost%2F" title="John Malkovich: &apos;I haven&apos;t voted since McGovern lost">[8]</a> So maybe right-wing isn't too off base.
 
 Other than that, Malkovich really does seem non-political. Feel free to weigh in, readers, if you know anything.

@@ -6,5 +6,6 @@ relatedPeople:
   - "stanley-kubrick"
   - "goldie-hawn"
 sources: []
+summaries:
 ---
 

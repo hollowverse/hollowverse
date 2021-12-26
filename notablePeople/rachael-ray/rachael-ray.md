@@ -6,5 +6,6 @@ relatedPeople:
   - "katie-price"
   - "elle-macpherson"
 sources: []
+summaries:
 ---
 

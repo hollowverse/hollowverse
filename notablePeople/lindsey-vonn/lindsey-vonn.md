@@ -6,5 +6,6 @@ relatedPeople:
   - "bethany-hamilton"
   - "missy-franklin"
 sources: []
+summaries:
 ---
 

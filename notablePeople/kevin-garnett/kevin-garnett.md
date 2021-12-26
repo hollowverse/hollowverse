@@ -6,5 +6,6 @@ relatedPeople:
   - "chris-paul"
   - "magic-johnson"
 sources: []
+summaries:
 ---
 

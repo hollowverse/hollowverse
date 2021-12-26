@@ -27,31 +27,34 @@ sources:
     sourceUrl: "http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.7906537/k.7E86/Keke_Palmer_YWCA_USA_AntiBullying_Spokesperson.htm"
   - sourceTitle: "Let's Talk: Keke Palmer Kicks Off National Movement on Behalf of Girls with March to Times Square."
     sourceUrl: "http://www.bgca.org/newsevents/PressReleases/Pages/DoveEvents100312.aspx"
+summaries:
+  religion: "Keke Palmer is a preacher and choir director's daughter, and is a devout Christian still."
+  politicalViews: "She is a big Obama supporter, and also works to improve the lives and self-esteem of young women and girls."
 ---
 
 Lauren "Keke" Palmer was born in Harvey, Illinois. She grew up in Robbins, Illinois and Los Angeles, California.
 
-Palmer grew up in the church. I couldn't figure exactly which church it was, but it was a central part of her experience growing up. Her father was a preacher, and her mother was the director of the choir in which she got her start singing.<a class="source-citation" href="#http://www.scholastic.com/browse/article.jsp?id=3756844" title="Keke Palmer Makes Joyful Noise.">[1]</a> But according to Keke, they weren't over-the-top about it. When asked if her parents were overbearing, she said,
+Palmer grew up in the church. I couldn't figure exactly which church it was, but it was a central part of her experience growing up. Her father was a preacher, and her mother was the director of the choir in which she got her start singing.<a class="source-citation" href="#http%3A%2F%2Fwww.scholastic.com%2Fbrowse%2Farticle.jsp%3Fid%3D3756844" title="Keke Palmer Makes Joyful Noise.">[1]</a> But according to Keke, they weren't over-the-top about it. When asked if her parents were overbearing, she said,
 
->Not at all, my mother and my father both, I mean we were religious but they didn't beat me over the head with it. They taught me about religion. . . but they let me have my own mind.<a class="source-citation" href="#http://globalgrind.com/entertainment/keke-palmer-jeremy-jordan-dish-their-screen-relationship" title="Keke Palmer And Jeremy Jordan Joyful Noise Interview.">[2]</a>
+>Not at all, my mother and my father both, I mean we were religious but they didn't beat me over the head with it. They taught me about religion. . . but they let me have my own mind.<a class="source-citation" href="#http%3A%2F%2Fglobalgrind.com%2Fentertainment%2Fkeke-palmer-jeremy-jordan-dish-their-screen-relationship" title="Keke Palmer And Jeremy Jordan Joyful Noise Interview.">[2]</a>
 
 From what I gather from her [Twitter feed](https://twitter.com/KekePalmer), these days she doesn't seem to be too caught up on the details of religion, and seems to opt for an inclusive, love-based belief in God. First there's this one:
 
->God has no religion.<a class="source-citation" href="#https://twitter.com/KekePalmer/status/198561089464696832" title="KekePalmer: God has no religion.">[3]</a>
+>God has no religion.<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FKekePalmer%2Fstatus%2F198561089464696832" title="KekePalmer: God has no religion.">[3]</a>
 
 And then there's this one which is representative of most of her God-related tweets–love yourself, love your enemies, be happy:
 
->God makes no mistakes, there for he made you perfectly and in the image of HIM.<a class="source-citation" href="#https://twitter.com/KekePalmer/status/305919313339097088" title="KekePalmer: God makes no mistakes, there …">[4]</a>
+>God makes no mistakes, there for he made you perfectly and in the image of HIM.<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FKekePalmer%2Fstatus%2F305919313339097088" title="KekePalmer: God makes no mistakes, there …">[4]</a>
 
 She seems like a girl with a good head on her shoulders.
 
 
 ## So Much Grace
 
-Palmer is a big Obama fan. The 2012 election was the first time she was old enough to vote, and she took full advantage. The young actress tweeted support for the president,<a class="source-citation" href="#https://twitter.com/KekePalmer/status/266059991377670144" title="KekePalmer: OBAMA!!!!!!!!!!!!">[5]</a> campaigned for him at colleges,<a class="source-citation" href="#http://hbcubuzz.com/keke-palmer-campaigns-for-obama-voting-at-bethune-cookman/" title="Keke Palmer Campaigns for Obama &amp; Voting at Bethune Cookman.">[6]</a> and hosted the Kids' Inaugural event following the election.<a class="source-citation" href="#http://www.seventeen.com/college/presidential-election-blog/keke-palmer-kids-inaugural" title="Keke Palmer Hosts Kids&apos; Inaugural – Malia, Sasha, and Michelle Obama.">[7]</a> In one particularly heartfelt tweet during the presidential debates, she wrote,
+Palmer is a big Obama fan. The 2012 election was the first time she was old enough to vote, and she took full advantage. The young actress tweeted support for the president,<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FKekePalmer%2Fstatus%2F266059991377670144" title="KekePalmer: OBAMA!!!!!!!!!!!!">[5]</a> campaigned for him at colleges,<a class="source-citation" href="#http%3A%2F%2Fhbcubuzz.com%2Fkeke-palmer-campaigns-for-obama-voting-at-bethune-cookman%2F" title="Keke Palmer Campaigns for Obama &amp; Voting at Bethune Cookman.">[6]</a> and hosted the Kids' Inaugural event following the election.<a class="source-citation" href="#http%3A%2F%2Fwww.seventeen.com%2Fcollege%2Fpresidential-election-blog%2Fkeke-palmer-kids-inaugural" title="Keke Palmer Hosts Kids&apos; Inaugural – Malia, Sasha, and Michelle Obama.">[7]</a> In one particularly heartfelt tweet during the presidential debates, she wrote,
 
->Whenever President Obama speaks I just want to listen. He has so much Grace<a class="source-citation" href="#https://twitter.com/KekePalmer/status/253679793390895104" title="KekePalmer: Whenever President Obama speaks …">[8]</a>
+>Whenever President Obama speaks I just want to listen. He has so much Grace<a class="source-citation" href="#https%3A%2F%2Ftwitter.com%2FKekePalmer%2Fstatus%2F253679793390895104" title="KekePalmer: Whenever President Obama speaks …">[8]</a>
 
-Outside of her support for Obama, she is incredibly involved in various causes related especially to young people. She works with the YWCA's Saving Our Daughters campaign to end bullying among girls and young women.<a class="source-citation" href="#http://www.ywca.org/site/c.cuIRJ7NTKrLaG/b.7906537/k.7E86/Keke_Palmer_YWCA_USA_AntiBullying_Spokesperson.htm" title="Keke Palmer, YWCA USA Anti-Bullying Spokesperson.">[9]</a> She has also teamed up with the Boys and Girls Club and the Girl Scouts of America to encourage girls and women to improve their self-esteem.<a class="source-citation" href="#http://www.bgca.org/newsevents/PressReleases/Pages/DoveEvents100312.aspx" title="Let&apos;s Talk: Keke Palmer Kicks Off National Movement on Behalf of Girls with March to Times Square.">[10]</a> And that's just the tip of the iceberg.
+Outside of her support for Obama, she is incredibly involved in various causes related especially to young people. She works with the YWCA's Saving Our Daughters campaign to end bullying among girls and young women.<a class="source-citation" href="#http%3A%2F%2Fwww.ywca.org%2Fsite%2Fc.cuIRJ7NTKrLaG%2Fb.7906537%2Fk.7E86%2FKeke_Palmer_YWCA_USA_AntiBullying_Spokesperson.htm" title="Keke Palmer, YWCA USA Anti-Bullying Spokesperson.">[9]</a> She has also teamed up with the Boys and Girls Club and the Girl Scouts of America to encourage girls and women to improve their self-esteem.<a class="source-citation" href="#http%3A%2F%2Fwww.bgca.org%2Fnewsevents%2FPressReleases%2FPages%2FDoveEvents100312.aspx" title="Let&apos;s Talk: Keke Palmer Kicks Off National Movement on Behalf of Girls with March to Times Square.">[10]</a> And that's just the tip of the iceberg.
 
 It looks like feminism has a fresh young face ready to take on the world. This isn't the last we'll hear from Keke Palmer.

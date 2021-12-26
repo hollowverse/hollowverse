@@ -11,11 +11,14 @@ sources:
     sourceUrl: "http://www.santabanta.com/bollywood/40188/kindly-note-that-shahid-kapoor-is-a-typical-muslim-shahid-kapoor/"
   - sourceTitle: "Shahid Kapoor's Most Personal Interview."
     sourceUrl: "http://web.archive.org/web/20101110073835/http://www.thefilmstreetjournal.com/2010/08/shahid-kapoor%E2%80%99s-most-personal-interview/"
+summaries:
+  religion: "Shahid Kapoor is a devout Muslim, but understands the importance of religious tolerance."
+  politicalViews: "He is entirely non-political."
 ---
 
 Shahid Kapoor was born in Delhi, India and raised mostly in Junaghad, India.
 
-Kapoor's father is Hindu and his mother is Muslim. But his parents separated when he was young and he was raised by his mother and grandmother in the Islamic faith. Today the actor is devout, never missing his prayers and dutifully observing the Holy Month of Ramadan.<a class="source-citation" href="#http://www.santabanta.com/bollywood/40188/kindly-note-that-shahid-kapoor-is-a-typical-muslim-shahid-kapoor/" title="Kindly note that Shahid Kapoor is a typical Muslim: Shahid Kapoor.">[1]</a>
+Kapoor's father is Hindu and his mother is Muslim. But his parents separated when he was young and he was raised by his mother and grandmother in the Islamic faith. Today the actor is devout, never missing his prayers and dutifully observing the Holy Month of Ramadan.<a class="source-citation" href="#http%3A%2F%2Fwww.santabanta.com%2Fbollywood%2F40188%2Fkindly-note-that-shahid-kapoor-is-a-typical-muslim-shahid-kapoor%2F" title="Kindly note that Shahid Kapoor is a typical Muslim: Shahid Kapoor.">[1]</a>
 
 He said that when he was a boy and his mother and priest would try to teach him to read the Koran in Arabic, he was frustrated that he couldn't understand it. So he did the only thing that made sense to him to do:
 
@@ -23,9 +26,9 @@ He said that when he was a boy and his mother and priest would try to teach him 
 
 And there his spirituality was strengthened into the deep devotion it is today. He said,
 
->I am extremely spiritual and have a lot of faith in God. It is only this 100 per cent trust and faith that I have in God that helps me understand the immense power of life.<a class="source-citation" href="#http://web.archive.org/web/20101110073835/http://www.thefilmstreetjournal.com/2010/08/shahid-kapoor%E2%80%99s-most-personal-interview/" title="Shahid Kapoor&apos;s Most Personal Interview.">[2]</a>
+>I am extremely spiritual and have a lot of faith in God. It is only this 100 per cent trust and faith that I have in God that helps me understand the immense power of life.<a class="source-citation" href="#http%3A%2F%2Fweb.archive.org%2Fweb%2F20101110073835%2Fhttp%3A%2F%2Fwww.thefilmstreetjournal.com%2F2010%2F08%2Fshahid-kapoor%25E2%2580%2599s-most-personal-interview%2F" title="Shahid Kapoor&apos;s Most Personal Interview.">[2]</a>
 
-But coming for a family with multiple religions gave him a sense of the importance of religious tolerance. He said his parents taught him that we must look upon our fellow humans, regardless of religion, with compassion and not hatred.<a class="source-citation" href="#http://web.archive.org/web/20101110073835/http://www.thefilmstreetjournal.com/2010/08/shahid-kapoor%E2%80%99s-most-personal-interview/" title="Shahid Kapoor&apos;s Most Personal Interview.">[3]</a>
+But coming for a family with multiple religions gave him a sense of the importance of religious tolerance. He said his parents taught him that we must look upon our fellow humans, regardless of religion, with compassion and not hatred.<a class="source-citation" href="#http%3A%2F%2Fweb.archive.org%2Fweb%2F20101110073835%2Fhttp%3A%2F%2Fwww.thefilmstreetjournal.com%2F2010%2F08%2Fshahid-kapoor%25E2%2580%2599s-most-personal-interview%2F" title="Shahid Kapoor&apos;s Most Personal Interview.">[3]</a>
 
 ## All quiet on the Bollywood front
 
