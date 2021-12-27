@@ -30,22 +30,14 @@ export const Footer = () => {
               CommentDots,
               <>Contact</>,
               <>
+                Email us at{' '}
                 <Link
                   rel="noopener"
-                  href="https://discuss.hollowverse.com/signup"
+                  href="mailto:hollowverse@hollowverse.com"
                   target="_blank"
                   color="inherit"
                 >
-                  Log-in
-                </Link>{' '}
-                to our discussion forum and send us a{' '}
-                <Link
-                  rel="noopener"
-                  href="https://discuss.hollowverse.com/g/admins"
-                  target="_blank"
-                  color="inherit"
-                >
-                  private message
+                  hollowverse@hollowverse.com
                 </Link>
                 .
               </>,
