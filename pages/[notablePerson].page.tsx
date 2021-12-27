@@ -16,6 +16,7 @@ const NotablePerson = (p: {
   pic: TPic;
   editorial: TEditorial;
   tags: any;
+  slug: string;
 }) => {
   return (
     <main>
@@ -38,11 +39,13 @@ const NotablePerson = (p: {
         <title>
           {p.data.name}&apos;s religion and political view | Hollowverse
         </title>
-        {/* <meta
-          name="description"
-          content={`${p.data.name}: ${p.data.tags.join(', ')}`}
-        ></meta> */}
-        <link rel="canonical" href={`https://hollowverse.com/${p.data.id}`} />
+        {p.editorial?.data?.summaries && (
+          <meta
+            name="description"
+            content={`Religion: ${p.editorial.data.summaries.religion}; political views: ${p.editorial.data.summaries.politicalViews}`}
+          ></meta>
+        )}
+        <link rel="canonical" href={`https://hollowverse.com/${p.slug}`} />
       </Head>
 
       <Container maxWidth="md" style={{ padding: 0 }}>
