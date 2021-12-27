@@ -66,6 +66,7 @@ export const getStaticProps = async ({ params }: any) => {
 
   return {
     props: {
+      slug: params.notablePerson,
       data,
       editorial,
       pic: imagePath,
