@@ -1,0 +1,17 @@
+@import '../../../common/common';
+
+.Article {
+  font-size: 110%;
+
+  :global(.source-citation) {
+    vertical-align: super;
+    font-size: 75%;
+    color: #1769aa;
+  }
+
+  blockquote {
+    margin-left: $s2;
+    padding: 1px 0 1px $s4;
+    border-left: 10px solid $lessEmphasis300;
+  }
+}

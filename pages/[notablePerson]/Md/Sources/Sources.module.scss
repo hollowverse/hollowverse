@@ -1,0 +1,18 @@
+@import '../../../common/common';
+
+.Sources {
+  .titleContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .listItem {
+    & + .listItem {
+      margin-top: $s4;
+    }
+
+    .source {
+      color: #1769aa;
+    }
+  }
+}

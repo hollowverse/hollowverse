@@ -1,6 +1,3 @@
-import { Container } from '@mui/material';
-import Head from 'next/head';
-import 'normalize.css';
 import React from 'react';
 import {
   TNotablePersonMd,
@@ -8,50 +5,30 @@ import {
   TPic,
   TSlug,
 } from '_r/pages/common/types';
-import { Editorial } from './[notablePerson]/Editorial/Editorial';
-import { Heading } from './[notablePerson]/Heading/Heading';
-import s from './[notablePerson]/notablePerson.module.scss';
+import { Md } from './[notablePerson]/Md/Md';
+import { PageHead } from './[notablePerson]/PageHead/PageHead';
+import { TopSection } from './[notablePerson]/TopSection/TopSection';
 
-const NotablePerson = (p: {
+export type NotablePersonProps = {
   notablePersonYaml: TNotablePersonYaml;
   pic: TPic;
-  notablePersonMd: TNotablePersonMd;
+  notablePersonMd?: TNotablePersonMd;
   slug: TSlug;
-}) => {
+};
+
+const NotablePerson = (p: NotablePersonProps) => {
   return (
     <main>
-      <Head>
-        <title>
-          {p.notablePersonYaml.name}&apos;s religion and political view |
-          Hollowverse
-        </title>
-        {p.notablePersonMd.data?.summaries && (
-          <meta
-            name="description"
-            content={`Religion: ${p.notablePersonMd.data.summaries.religion}; political views: ${p.notablePersonMd.data.summaries.politicalViews}`}
-          ></meta>
-        )}
-        <link rel="canonical" href={`https://hollowverse.com/${p.slug}`} />
-      </Head>
+      <PageHead {...p} />
 
-      <Container maxWidth="md" style={{ padding: 0 }}>
-        <section className={s.fancyBackgroundContainer}>
-          <Heading notablePersonYaml={p.notablePersonYaml} pic={p.pic} />
-        </section>
-      </Container>
+      <TopSection {...p} />
 
-      <Container maxWidth="md">
-        {p.notablePersonMd && (
-          <section className={s.editorialContainer}>
-            <Editorial editorial={p.notablePersonMd} />
-          </section>
-        )}
-      </Container>
+      {p.notablePersonMd && <Md {...p} />}
     </main>
   );
 };
 
 export default NotablePerson;
 
-export { getStaticProps } from './[notablePerson]/getStaticProps';
 export { getStaticPaths } from './[notablePerson]/getStaticPaths';
+export { getStaticProps } from './[notablePerson]/getStaticProps';
