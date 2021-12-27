@@ -1,16 +1,14 @@
+import { Button, Paper, Typography } from '@mui/material';
 import 'normalize.css';
-
 import React, { useState } from 'react';
-import s from '../notablePerson.module.scss';
-import { Button, Divider, Paper, Typography } from '@mui/material';
-import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
-import { TEditorial } from '_r/pages/common/types';
+import BookOpenIcon from '_i/icons/book-open.svg';
 import StarsIcon from '_i/icons/stars.svg';
 import { Icon } from '_r/pages/common/Icon';
-import PenIcon from '_i/icons/pen.svg';
-import BookOpenIcon from '_i/icons/book-open.svg';
+import { TNotablePersonMd } from '_r/pages/common/types';
+import s from '../notablePerson.module.scss';
+import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 
-export const Editorial = (p: { editorial: TEditorial }) => {
+export const Editorial = (p: { editorial: TNotablePersonMd }) => {
   const [showSources, setShowSources] = useState(false);
 
   return (
@@ -44,7 +42,7 @@ export const Editorial = (p: { editorial: TEditorial }) => {
         <div dangerouslySetInnerHTML={{ __html: p.editorial.content }}></div>
       </article>
 
-      {p.editorial.data.sources && p.editorial.data.sources.length > 0 && (
+      {p.editorial.data?.sources?.length > 0 && (
         <>
           <div className={s.sourcesTitleContainer}>
             <Typography variant="h3" component="h4"></Typography>
@@ -93,9 +91,7 @@ export const Editorial = (p: { editorial: TEditorial }) => {
         </Typography>
 
         <div className={s.interestingProfiles}>
-          <InterestingProfiles
-            interestingProfiles={p.editorial.data.interestingProfiles}
-          />
+          <InterestingProfiles relatedPeople={p.editorial.data.relatedPeople} />
         </div>
       </div>
     </>

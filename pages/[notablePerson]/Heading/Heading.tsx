@@ -1,17 +1,13 @@
 import { Typography } from '@mui/material';
-import { differenceInCalendarYears, parse } from 'date-fns';
 import Image from 'next/image';
 import 'normalize.css';
 import React from 'react';
-import { TTag, TNotablePersonData, TPic } from '_r/pages/common/types';
-import { Tag } from '_r/pages/[notablePerson]/Tag/Tag';
-import { EditButton } from '../common/EditButton/EditButton';
+import { TNotablePersonYaml, TPic } from '_r/pages/common/types';
 import s from '../notablePerson.module.scss';
 
-export const Heading = (p: {
-  data: TNotablePersonData;
+export const Heading = (props: {
+  notablePersonYaml: TNotablePersonYaml;
   pic: TPic;
-  tags: TTag[];
 }) => {
   return (
     <header>
@@ -19,11 +15,11 @@ export const Heading = (p: {
         <div className={s.notablePersonImageContainer}>
           <Image
             className={s.notablePersonImage}
-            src={p.pic ? p.pic : '/images/avatar-placeholder.png'}
+            src={props.pic ? props.pic : '/images/avatar-placeholder.png'}
             width={200}
             height={250}
             priority
-            alt={p.data.name}
+            alt={props.notablePersonYaml.name}
           />
         </div>
 
@@ -31,28 +27,12 @@ export const Heading = (p: {
           <span className={s.pageTitleLessEmphasized}>
             Religion, politics, and ideas of
           </span>
-          <br /> <span className={s.notablePersonName}>{p.data.name}</span>
+          <br />{' '}
+          <span className={s.notablePersonName}>
+            {props.notablePersonYaml.name}
+          </span>
         </Typography>
       </div>
-
-      {/* <ul className={s.tagsContainer}>
-        {p.tags.map(({ text, icon, alt }) => (
-          <Tag key={text} text={text} icon={icon} alt={alt} />
-        ))}
-
-        <Tag
-          text={`${differenceInCalendarYears(
-            new Date(),
-            parse(p.data.born, 'MM-dd-yyyy', new Date()),
-          )} years old`}
-          icon="hourglass"
-          alt="Hourglass"
-        />
-      </ul> */}
-
-      {/* <div style={{ zIndex: 1, position: 'relative' }}>
-        <EditButton data={p.data} type="tag" />
-      </div> */}
     </header>
   );
 };

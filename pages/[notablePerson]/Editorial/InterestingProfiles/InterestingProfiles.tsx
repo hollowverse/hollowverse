@@ -1,20 +1,20 @@
 import React from 'react';
 import s from '../../notablePerson.module.scss';
-import { TEditorial } from '_r/pages/common/types';
+import { TNotablePersonMd } from '_r/pages/common/types';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 
 export const InterestingProfiles = (p: {
-  interestingProfiles: TEditorial['data']['interestingProfiles'];
+  relatedPeople: TNotablePersonMd['data']['relatedPeople'];
 }) => {
   return (
     <>
-      {p.interestingProfiles.map((notablePersonData) => {
+      {p.relatedPeople.map((notablePersonData) => {
         return (
           <a
             className={s.interestingProfile}
             href={`/${notablePersonData.slug}`}
-            key={notablePersonData.id}
+            key={notablePersonData.slug}
           >
             <span className={s.interestingProfileImageContainer}>
               <Image

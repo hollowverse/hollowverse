@@ -1,48 +1,34 @@
 import { Container } from '@mui/material';
 import Head from 'next/head';
-// import Script from 'next/script';
 import 'normalize.css';
 import React from 'react';
-// import CommentsAlt from '_i/icons/comments-alt.svg';
-// import { Icon } from '_r/pages/common/Icon';
-import { TEditorial, TNotablePersonData, TPic } from '_r/pages/common/types';
+import {
+  TNotablePersonMd,
+  TNotablePersonYaml,
+  TPic,
+  TSlug,
+} from '_r/pages/common/types';
 import { Editorial } from './[notablePerson]/Editorial/Editorial';
 import { Heading } from './[notablePerson]/Heading/Heading';
 import s from './[notablePerson]/notablePerson.module.scss';
-// import { Quotes } from './[notablePerson]/Quotes/Quotes';
 
 const NotablePerson = (p: {
-  data: TNotablePersonData;
+  notablePersonYaml: TNotablePersonYaml;
   pic: TPic;
-  editorial: TEditorial;
-  tags: any;
-  slug: string;
+  notablePersonMd: TNotablePersonMd;
+  slug: TSlug;
 }) => {
   return (
     <main>
-      {/* <Script
-        id="discourse-embed"
-        dangerouslySetInnerHTML={{
-          __html: `
-          DiscourseEmbed = { discourseUrl: 'https://discuss.hollowverse.com/',
-          topicId: '${p.data['discourse-topic-id']}' };
-
-          (function() {
-            var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-            d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
-          })();
-        `,
-        }}
-      /> */}
       <Head>
         <title>
-          {p.data.name}&apos;s religion and political view | Hollowverse
+          {p.notablePersonYaml.name}&apos;s religion and political view |
+          Hollowverse
         </title>
-        {p.editorial?.data?.summaries && (
+        {p.notablePersonMd.data?.summaries && (
           <meta
             name="description"
-            content={`Religion: ${p.editorial.data.summaries.religion}; political views: ${p.editorial.data.summaries.politicalViews}`}
+            content={`Religion: ${p.notablePersonMd.data.summaries.religion}; political views: ${p.notablePersonMd.data.summaries.politicalViews}`}
           ></meta>
         )}
         <link rel="canonical" href={`https://hollowverse.com/${p.slug}`} />
@@ -50,35 +36,16 @@ const NotablePerson = (p: {
 
       <Container maxWidth="md" style={{ padding: 0 }}>
         <section className={s.fancyBackgroundContainer}>
-          <Heading data={p.data} pic={p.pic} tags={p.tags} />
+          <Heading notablePersonYaml={p.notablePersonYaml} pic={p.pic} />
         </section>
       </Container>
 
       <Container maxWidth="md">
-        {/* <section className={s.quotesContainer}>
-          <Quotes data={p.data} pic={p.pic} />
-        </section> */}
-
-        {p.editorial && (
+        {p.notablePersonMd && (
           <section className={s.editorialContainer}>
-            <Editorial editorial={p.editorial} />
+            <Editorial editorial={p.notablePersonMd} />
           </section>
         )}
-
-        {/* <section className={s.discussionContainer}>
-          <Typography variant="h1" component="h2">
-            <Icon component={CommentsAlt} />
-            <span style={{ marginLeft: 5 }}>
-              Discuss the beliefs and ideas of {p.data.name}
-            </span>
-          </Typography>
-
-          <div
-            className={s.discourseElement}
-            id="discourse-comments"
-            title="Comments"
-          ></div>
-        </section> */}
       </Container>
     </main>
   );
