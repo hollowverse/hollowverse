@@ -1,4 +1,4 @@
-import { publishedNotablePeople } from '_r/publishedNotablePeople';
+import { publishedNotablePeople } from 'publishedNotablePeople';
 
 export const getStaticPaths = async () => {
   return {

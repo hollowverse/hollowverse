@@ -1,12 +1,12 @@
 import React from 'react';
 // import s from '../notablePerson.module.scss';
 // import { Divider, Typography } from '@mui/material';
-// import { TNotablePersonData, TPic } from '_r/pages/common/types';
+// import { TNotablePersonData, TPic } from '~/pages/common/types';
 // import Image from 'next/image';
 // import { format, parse } from 'date-fns';
 // import { EditButton } from '../common/EditButton/EditButton';
-// import QuoteIcon from '_i/icons/quote.svg';
-// import { Icon } from '_r/pages/common/Icon';
+// import QuoteIcon from '~/public/images/icons/quote.svg';
+// import { Icon } from '~/pages/common/Icon';
 
 // export const Quotes = (p: { data: TNotablePersonData; pic: TPic }) => {
 //   return (
