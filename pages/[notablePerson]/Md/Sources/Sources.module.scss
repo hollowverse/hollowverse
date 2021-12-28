@@ -1,11 +1,6 @@
 @import '~pages/common/common';
 
 .Sources {
-  .titleContainer {
-    display: flex;
-    align-items: center;
-  }
-
   .listItem {
     & + .listItem {
       margin-top: $s4;
