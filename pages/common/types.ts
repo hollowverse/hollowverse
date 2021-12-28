@@ -1,6 +1,7 @@
 export type TNotablePersonYaml = {
   id: string;
   name: string;
+  discourseTopicId: number;
 };
 
 export type TTag = {

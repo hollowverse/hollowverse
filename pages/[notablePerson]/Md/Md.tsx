@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Link, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import { Article } from './Article/Article';
@@ -14,10 +14,19 @@ export const Md = (p: NotablePersonProps) => {
 
   return (
     <Container maxWidth="md" component="section" style={{ marginTop: 32 }}>
-      <Article
-        notablePersonMd={p.notablePersonMd}
-        setShowSources={setShowSources}
-      />
+      {(p.notablePersonMd.content && (
+        <Article
+          notablePersonMd={p.notablePersonMd}
+          setShowSources={setShowSources}
+        />
+      )) || (
+        <div>
+          <Typography variant="h4" component="p">
+            Share what you know about {p.notablePersonYaml.name} in the{' '}
+            <Link href="#discussion">discussion forum</Link> below!
+          </Typography>
+        </div>
+      )}
 
       {p.notablePersonMd.data?.sources?.length > 0 && (
         <Sources
