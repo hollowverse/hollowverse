@@ -11,7 +11,7 @@ export const InterestingProfiles = (p: {
 }) => {
   return (
     <div className={s.InterestingProfiles}>
-      <Typography variant="h1" component="h3">
+      <Typography variant="h2" component="h3">
         <Icon component={StarsIcon} />
         Other interesting profiles
       </Typography>

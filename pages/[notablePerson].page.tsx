@@ -5,6 +5,7 @@ import {
   TPic,
   TSlug,
 } from '~/pages/common/types';
+import { Discussion } from './[notablePerson]/Discussion/Discussion';
 import { Md } from './[notablePerson]/Md/Md';
 import { PageHead } from './[notablePerson]/PageHead/PageHead';
 import { TopSection } from './[notablePerson]/TopSection/TopSection';
@@ -24,6 +25,8 @@ const NotablePerson = (p: NotablePersonProps) => {
       <TopSection {...p} />
 
       {p.notablePersonMd && <Md {...p} />}
+
+      <Discussion {...p} />
     </main>
   );
 };
