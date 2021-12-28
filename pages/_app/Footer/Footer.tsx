@@ -1,77 +1,86 @@
-import React from 'react';
+import { Container, Divider, Link, Typography } from '@mui/material';
 import Image from 'next/image';
-import { Icon } from '_r/pages/common/Icon';
-import InfoCircle from '_i/icons/info-circle.svg';
-import CommentDots from '_i/icons/comment-dots.svg';
-import GiftIcon from '_i/icons/gift.svg';
-import s from '../_app.module.scss';
-import { Link, Typography } from '@mui/material';
+import React from 'react';
+import { Icon } from '~/pages/common/Icon';
+import CommentDots from '~/public/images/icons/comment-dots.svg';
+import InfoCircle from '~/public/images/icons/info-circle.svg';
+import GiftIcon from '~/public/images/icons/gift.svg';
+import s from './Footer.module.scss';
 
 export const Footer = () => {
   return (
-    <footer className={s.footer}>
-      <div className={s.footerImage}>
-        <Image
-          width={50}
-          height={50}
-          alt="Hollowverse"
-          src="/images/icons/letter-logo.png"
-        />
-      </div>
-      <div className={s.footerItems}>
-        {(
-          [
-            [
-              InfoCircle,
-              <>About</>,
-              <>Hollowverse is about the important people and their beliefs.</>,
-            ],
-            [
-              CommentDots,
-              <>Contact</>,
-              <>
-                Email us at{' '}
-                <Link
-                  rel="noopener"
-                  href="mailto:hollowverse@hollowverse.com"
-                  target="_blank"
-                  color="inherit"
-                >
-                  hollowverse@hollowverse.com
-                </Link>
-                .
-              </>,
-            ],
-            [
-              GiftIcon,
-              <>Copyrights</>,
-              <>
-                We reserve none. Everything here is free, including{' '}
-                <Link
-                  href="https://github.com/hollowverse/"
-                  target="_blank"
-                  color="inherit"
-                  rel="noopener"
-                >
-                  the code
-                </Link>
-                .
-              </>,
-            ],
-          ] as const
-        ).map(([IconComponent, title, text], i) => {
-          return (
-            <div key={i}>
-              <Typography variant="h4" component="p">
-                <Icon component={IconComponent} style={{ fontSize: 17 }} />{' '}
-                {title}
-              </Typography>
+    <Container maxWidth="md" className={s.Footer} component="footer">
+      <Divider />
 
-              <Typography variant="body1">{text}</Typography>
-            </div>
-          );
-        })}
+      <div className={s.content}>
+        <div className={s.image}>
+          <Image
+            width={50}
+            height={50}
+            alt="Hollowverse"
+            src="/images/icons/letter-logo.png"
+          />
+        </div>
+
+        <div className={s.items}>
+          {(
+            [
+              [
+                InfoCircle,
+                <>About</>,
+                <>
+                  Hollowverse is about the important people and their beliefs.
+                </>,
+              ],
+              [
+                CommentDots,
+                <>Contact</>,
+                <>
+                  Email us at{' '}
+                  <Link
+                    rel="noopener"
+                    href="mailto:hollowverse@hollowverse.com"
+                    target="_blank"
+                    color="inherit"
+                  >
+                    hollowverse@hollowverse.com
+                  </Link>
+                  .
+                </>,
+              ],
+              [
+                GiftIcon,
+                <>Copyrights</>,
+                <>
+                  We reserve none. Everything here is free, including{' '}
+                  <Link
+                    href="https://github.com/hollowverse/"
+                    target="_blank"
+                    color="inherit"
+                    rel="noopener"
+                  >
+                    the code
+                  </Link>
+                  .
+                </>,
+              ],
+            ] as const
+          ).map(([IconComponent, title, text], i) => {
+            return (
+              <div key={i}>
+                <Typography variant="h4" component="p">
+                  <Icon component={IconComponent} style={{ fontSize: 17 }} />{' '}
+                  {title}
+                </Typography>
+
+                <Typography variant="body1">{text}</Typography>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </footer>
+
+      <div style={{ marginTop: '100px' }} />
+    </Container>
   );
 };

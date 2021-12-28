@@ -1,13 +1,6 @@
-export type TNotablePersonData = {
+export type TNotablePersonYaml = {
   id: string;
   name: string;
-  slug: string;
-  pic: string;
-  // born: string;
-  // tags: string[];
-  // occupations: string[];
-  // quotes: [string, string, string, string][];
-  // 'discourse-topic-id': number;
 };
 
 export type TTag = {
@@ -18,11 +11,17 @@ export type TTag = {
 
 export type TPic = string;
 
-export type TEditorial = {
+export type TSlug = string;
+
+export type TNotablePersonMd = {
   data: {
     sources: { sourceUrl: string; sourceTitle: string }[];
-    interestingProfiles: TNotablePersonData[];
-    summaries: {
+    relatedPeople: {
+      slug: TSlug;
+      pic: TPic;
+      name: string;
+    }[];
+    summaries?: {
       religion: string;
       politicalViews: string;
     };
