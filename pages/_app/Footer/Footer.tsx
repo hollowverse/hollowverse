@@ -1,11 +1,11 @@
-import React from 'react';
-import Image from 'next/image';
-import { Icon } from 'pages/common/Icon';
-import InfoCircle from 'public/images/icons/info-circle.svg';
-import CommentDots from 'public/images/icons/comment-dots.svg';
-import GiftIcon from 'public/images/icons/gift.svg';
-import s from './Footer.module.scss';
 import { Container, Divider, Link, Typography } from '@mui/material';
+import Image from 'next/image';
+import React from 'react';
+import { Icon } from '~/pages/common/Icon';
+import CommentDots from '~/public/images/icons/comment-dots.svg';
+import InfoCircle from '~/public/images/icons/info-circle.svg';
+import GiftIcon from '~/public/images/icons/gift.svg';
+import s from './Footer.module.scss';
 
 export const Footer = () => {
   return (

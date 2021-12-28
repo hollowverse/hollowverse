@@ -1,8 +1,8 @@
 import { Button, Typography } from '@mui/material';
 import React from 'react';
-import BookOpenIcon from 'public/images/icons/book-open.svg';
-import { Icon } from 'pages/common/Icon';
-import { NotablePersonProps } from 'pages/[notablePerson].page';
+import BookOpenIcon from '~/public/images/icons/book-open.svg';
+import { Icon } from '~/pages/common/Icon';
+import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import s from './Sources.module.scss';
 
 export const Sources = (p: {

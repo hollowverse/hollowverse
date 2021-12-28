@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
-import EditRegularSvg from 'public/images/icons/edit-regular.svg';
-import { Icon } from 'pages/common/Icon';
+import EditRegularSvg from '~/public/images/icons/edit-regular.svg';
+import { Icon } from '~/pages/common/Icon';
 
 export const getTypePlural = (type: string) => {
   return type === 'tag' ? 'tags' : 'quotes';

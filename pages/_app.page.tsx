@@ -4,11 +4,11 @@ import {
   unstable_createMuiStrictModeTheme,
 } from '@mui/material';
 import type { AppProps } from 'next/app';
-import { theme } from 'pages/common/theme';
-import { Footer } from 'pages/_app/Footer/Footer';
-import 'pages/_app/globalStyles.css';
-import { Head } from 'pages/_app/Head/Head';
 import React from 'react';
+import { theme } from '~/pages/common/theme';
+import { Footer } from '~/pages/_app/Footer/Footer';
+import '~/pages/_app/globalStyles.css';
+import { Head } from '~/pages/_app/Head/Head';
 import { AppBar } from './_app/AppBar/AppBar';
 
 const App = ({ Component, pageProps }: AppProps) => {

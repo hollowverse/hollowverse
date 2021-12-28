@@ -6,9 +6,9 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Icon } from 'pages/common/Icon';
-import SearchIcon from 'public/images/icons/search-regular.svg';
-import TimesIcon from 'public/images/icons/times-regular.svg';
+import { Icon } from '~/pages/common/Icon';
+import SearchIcon from '~/public/images/icons/search-regular.svg';
+import TimesIcon from '~/public/images/icons/times-regular.svg';
 import s from './AppBar.module.scss';
 
 export const AppBar = () => {

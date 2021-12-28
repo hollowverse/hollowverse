@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import React, { useState } from 'react';
-import { NotablePersonProps } from 'pages/[notablePerson].page';
+import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import { Article } from './Article/Article';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { Sources } from './Sources/Sources';

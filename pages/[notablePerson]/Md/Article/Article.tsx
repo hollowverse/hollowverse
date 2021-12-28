@@ -1,6 +1,6 @@
 import { Paper } from '@mui/material';
 import React from 'react';
-import { NotablePersonProps } from 'pages/[notablePerson].page';
+import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import s from './Article.module.scss';
 
 export const Article = (p: {

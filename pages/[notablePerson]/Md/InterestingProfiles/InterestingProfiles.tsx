@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './InterestingProfiles.module.scss';
-import { TNotablePersonMd } from 'pages/common/types';
+import { TNotablePersonMd } from '~/pages/common/types';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { Icon } from 'pages/common/Icon';
-import StarsIcon from 'public/images/icons/stars.svg';
+import { Icon } from '~/pages/common/Icon';
+import StarsIcon from '~/public/images/icons/stars.svg';
 
 export const InterestingProfiles = (p: {
   relatedPeople: TNotablePersonMd['data']['relatedPeople'];
