@@ -4,7 +4,7 @@ import {
   TNotablePersonYaml,
   TPic,
   TSlug,
-} from '_r/pages/common/types';
+} from 'pages/common/types';
 import { Md } from './[notablePerson]/Md/Md';
 import { PageHead } from './[notablePerson]/PageHead/PageHead';
 import { TopSection } from './[notablePerson]/TopSection/TopSection';

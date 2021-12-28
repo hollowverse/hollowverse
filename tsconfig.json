@@ -25,9 +25,7 @@
     "resolveJsonModule": true,
     "rootDir": ".",
     "paths": {
-      "_l/*": ["lib/*"],
-      "_i/*": ["public/images/*"],
-      "_r/*": ["*"]
+      "*": ["*"]
     },
     "lib": ["es5", "es6", "dom", "dom.iterable"],
     "noEmit": true,

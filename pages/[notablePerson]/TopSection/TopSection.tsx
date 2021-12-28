@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { NotablePersonProps } from '_r/pages/[notablePerson].page';
+import { NotablePersonProps } from 'pages/[notablePerson].page';
 import s from './TopSection.module.scss';
 
 export const TopSection = (p: NotablePersonProps) => (

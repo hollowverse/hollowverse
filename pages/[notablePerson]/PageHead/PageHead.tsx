@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { NotablePersonProps } from '_r/pages/[notablePerson].page';
+import { NotablePersonProps } from 'pages/[notablePerson].page';
 
 export const PageHead = (p: NotablePersonProps) => (
   <Head>
