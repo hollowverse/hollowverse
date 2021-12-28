@@ -3,7 +3,7 @@ import {
   ThemeProvider,
   unstable_createMuiStrictModeTheme,
 } from '@mui/material';
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import React from 'react';
 import { theme } from '~/pages/common/theme';
 import { Footer } from '~/pages/_app/Footer/Footer';
