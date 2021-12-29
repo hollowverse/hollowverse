@@ -11,19 +11,15 @@ export const Sources = (p: {
   showSources: boolean;
 }) => (
   <section className={s.Sources}>
-    <div className={s.titleContainer}>
-      <Typography variant="h3" component="h4" />
-
-      <Button
-        color="inherit"
-        variant="text"
-        size="large"
-        onClick={() => p.setShowSources(!p.showSources)}
-        startIcon={<Icon component={BookOpenIcon} />}
-      >
-        {p.showSources ? 'Hide' : 'Show'} sources for the editorial
-      </Button>
-    </div>
+    <Button
+      color="inherit"
+      variant="text"
+      size="large"
+      onClick={() => p.setShowSources(!p.showSources)}
+      startIcon={<Icon component={BookOpenIcon} />}
+    >
+      {p.showSources ? 'Hide' : 'Show'} sources for the editorial
+    </Button>
 
     {p.showSources && (
       <ul>
