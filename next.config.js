@@ -17,6 +17,13 @@ module.exports = {
 
   async rewrites() {
     return {
+      beforeFiles: [
+        {
+          source: '~/studio/(.*)',
+          destination: '/studio/index.html',
+        },
+      ],
+
       fallback: [
         {
           source: '/',

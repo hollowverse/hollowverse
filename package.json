@@ -6,7 +6,7 @@
   "author": "M.K. Safi",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "echo 'Building Sanity to public/studio' && cd studio && sanity build ../public/studio -y && cd .. && next build",
     "start": "next start",
     "export": "next export",
     "next": "next"
