@@ -2,11 +2,17 @@
 
 .Article {
   font-size: 110%;
+  padding: $s4;
 
   :global(.source-citation) {
     vertical-align: super;
     font-size: 75%;
     color: #1769aa;
+  }
+
+  .separator {
+    margin-left: -$s4;
+    margin-right: -$s4;
   }
 
   blockquote {

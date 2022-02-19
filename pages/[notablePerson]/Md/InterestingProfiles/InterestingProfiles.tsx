@@ -5,16 +5,19 @@ import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { Icon } from '~/pages/common/Icon';
 import StarsIcon from '~/public/images/icons/stars.svg';
+import { Separator } from '~/components/Separator';
 
 export const InterestingProfiles = (p: {
   relatedPeople: TNotablePersonMd['data']['relatedPeople'];
 }) => {
   return (
     <div className={s.InterestingProfiles}>
-      <Typography variant="h2" component="h3">
+      <Separator title="Other interesting profiles" />
+
+      {/* <Typography variant="h2" component="h3">
         <Icon component={StarsIcon} />
         Other interesting profiles
-      </Typography>
+      </Typography> */}
 
       <div className={s.content}>
         {p.relatedPeople.map((notablePersonData) => {

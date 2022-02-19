@@ -5,12 +5,14 @@ import s from './Discussion.module.scss';
 import CommentsAlt from '~/public/images/icons/comments-alt.svg';
 import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import Script from 'next/script';
+import { Separator } from '~/components/Separator';
 
 export const Discussion = (p: NotablePersonProps) => (
   <Container
     maxWidth="md"
     component="section"
     className={s.Discussion}
+    disableGutters
     id="discussion"
   >
     <Script
@@ -27,12 +29,14 @@ export const Discussion = (p: NotablePersonProps) => (
         `,
       }}
     />
-    <Typography variant="h2" component="h3" style={{ display: 'flex' }}>
+    {/* <Typography variant="h2" component="h3" style={{ display: 'flex' }}>
       <Icon component={CommentsAlt} />
       <span style={{ marginLeft: 5 }}>
         Discuss the beliefs and ideas of {p.notablePersonYaml.name}
       </span>
-    </Typography>
+    </Typography> */}
+
+    <Separator title="Discussion" />
 
     <div className={s.element} id="discourse-comments" title="Comments" />
   </Container>

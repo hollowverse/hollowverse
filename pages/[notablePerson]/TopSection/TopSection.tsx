@@ -1,6 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
+import { Separator } from '~/components/Separator';
 import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import s from './TopSection.module.scss';
 

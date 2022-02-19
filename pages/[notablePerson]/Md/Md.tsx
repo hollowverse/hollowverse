@@ -13,7 +13,7 @@ export const Md = (p: NotablePersonProps) => {
   }
 
   return (
-    <Container maxWidth="md" component="section" style={{ marginTop: 32 }}>
+    <Container maxWidth="md" component="section" disableGutters>
       {(p.notablePersonMd.content && (
         <Article
           notablePersonMd={p.notablePersonMd}

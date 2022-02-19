@@ -1,5 +1,6 @@
 import { Paper } from '@mui/material';
 import React from 'react';
+import { Separator } from '~/components/Separator';
 import { NotablePersonProps } from '~/pages/[notablePerson].page';
 import s from './Article.module.scss';
 
@@ -16,12 +17,14 @@ export const Article = (p: {
     }}
   >
     {p.notablePersonMd.data.summaries && (
-      <Paper style={{ padding: 10 }} variant="outlined">
+      <div className={s.summary}>
+        <Separator title="Summary" className={s.separator} />
         <p>{p.notablePersonMd.data.summaries.religion}</p>
         <p>{p.notablePersonMd.data.summaries.politicalViews}</p>
-      </Paper>
+      </div>
     )}
 
+    <Separator title="Editorial" className={s.separator} />
     <div dangerouslySetInnerHTML={{ __html: p.notablePersonMd.content }} />
   </article>
 );

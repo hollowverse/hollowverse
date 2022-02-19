@@ -6,11 +6,17 @@ import CommentDots from '~/public/images/icons/comment-dots.svg';
 import InfoCircle from '~/public/images/icons/info-circle.svg';
 import GiftIcon from '~/public/images/icons/gift.svg';
 import s from './Footer.module.scss';
+import { Separator } from '~/components/Separator';
 
 export const Footer = () => {
   return (
-    <Container maxWidth="md" className={s.Footer} component="footer">
-      <Divider />
+    <Container
+      maxWidth="md"
+      className={s.Footer}
+      component="footer"
+      disableGutters
+    >
+      <Separator />
 
       <div className={s.content}>
         <div className={s.image}>
