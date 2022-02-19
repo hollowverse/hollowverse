@@ -1,4 +1,5 @@
 import React from 'react';
+import { HelpUs } from '~/components/HelpUs';
 import {
   TNotablePersonMd,
   TNotablePersonYaml,
@@ -23,6 +24,8 @@ const NotablePerson = (p: NotablePersonProps) => {
       <PageHead {...p} />
 
       <TopSection {...p} />
+
+      <HelpUs />
 
       {p.notablePersonMd && <Md {...p} />}
 
