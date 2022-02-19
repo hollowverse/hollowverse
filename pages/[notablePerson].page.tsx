@@ -21,15 +21,15 @@ export type NotablePersonProps = {
 const NotablePerson = (p: NotablePersonProps) => {
   return (
     <main>
-      <PageHead {...p} />
+      <PageHead />
 
-      <TopSection {...p} />
+      <TopSection />
 
       <HelpUs />
 
-      {p.notablePersonMd && <Md {...p} />}
+      {p.notablePersonMd && <Md />}
 
-      <Discussion {...p} />
+      <Discussion />
     </main>
   );
 };
