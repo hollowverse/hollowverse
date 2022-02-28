@@ -9,7 +9,12 @@ export const Separator: React.FC<{ title?: string; className?: string }> = (
   <div className={clsx(s.Separator, p.className)}>
     <Container maxWidth="md" disableGutters>
       {p.title && (
-        <Typography variant="h3" fontWeight={500} className={s.title}>
+        <Typography
+          variant="h3"
+          component="h2"
+          fontWeight={500}
+          className={s.title}
+        >
           {p.title}
         </Typography>
       )}
