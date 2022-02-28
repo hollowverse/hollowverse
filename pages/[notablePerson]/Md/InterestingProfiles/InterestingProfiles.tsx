@@ -1,23 +1,20 @@
-import React from 'react';
-import s from './InterestingProfiles.module.scss';
-import { TNotablePersonMd } from '~/pages/common/types';
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
-import { Icon } from '~/pages/common/Icon';
-import StarsIcon from '~/public/images/icons/stars.svg';
+import React from 'react';
+import { Separator } from '~/components/Separator';
+import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
+import s from './InterestingProfiles.module.scss';
 
-export const InterestingProfiles = (p: {
-  relatedPeople: TNotablePersonMd['data']['relatedPeople'];
-}) => {
+export const InterestingProfiles = () => {
+  const context = useNotablePersonContext();
+  const relatedPeople = context.notablePersonMd.data.relatedPeople;
+
   return (
     <div className={s.InterestingProfiles}>
-      <Typography variant="h2" component="h3">
-        <Icon component={StarsIcon} />
-        Other interesting profiles
-      </Typography>
+      <Separator title="Other interesting profiles" />
 
-      <div className={s.content}>
-        {p.relatedPeople.map((notablePersonData) => {
+      <Container maxWidth="md" className={s.content}>
+        {relatedPeople.map((notablePersonData) => {
           return (
             <a
               className={s.link}
@@ -49,7 +46,7 @@ export const InterestingProfiles = (p: {
             </a>
           );
         })}
-      </div>
+      </Container>
     </div>
   );
 };

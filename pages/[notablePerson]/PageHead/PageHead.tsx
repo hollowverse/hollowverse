@@ -1,19 +1,23 @@
-import React from 'react';
 import Head from 'next/head';
-import { NotablePersonProps } from '~/pages/[notablePerson].page';
+import React from 'react';
+import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
 
-export const PageHead = (p: NotablePersonProps) => (
-  <Head>
-    <title>
-      {p.notablePersonYaml.name}&apos;s religion and political view |
-      Hollowverse
-    </title>
-    {p.notablePersonMd?.data?.summaries && (
-      <meta
-        name="description"
-        content={`Religion: ${p.notablePersonMd.data.summaries.religion}; political views: ${p.notablePersonMd.data.summaries.politicalViews}`}
-      />
-    )}
-    <link rel="canonical" href={`https://hollowverse.com/${p.slug}`} />
-  </Head>
-);
+export const PageHead = () => {
+  const context = useNotablePersonContext();
+
+  return (
+    <Head>
+      <title>
+        {context.notablePersonYaml.name}&apos;s religion and political view |
+        Hollowverse
+      </title>
+      {context.notablePersonMd?.data?.summaries && (
+        <meta
+          name="description"
+          content={`Religion: ${context.notablePersonMd.data.summaries.religion}; political views: ${context.notablePersonMd.data.summaries.politicalViews}`}
+        />
+      )}
+      <link rel="canonical" href={`https://hollowverse.com/${context.slug}`} />
+    </Head>
+  );
+};

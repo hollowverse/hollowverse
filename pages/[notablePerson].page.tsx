@@ -1,4 +1,5 @@
 import React from 'react';
+import { HelpUs } from '~/components/HelpUs';
 import {
   TNotablePersonMd,
   TNotablePersonYaml,
@@ -20,13 +21,15 @@ export type NotablePersonProps = {
 const NotablePerson = (p: NotablePersonProps) => {
   return (
     <main>
-      <PageHead {...p} />
+      <PageHead />
 
-      <TopSection {...p} />
+      <TopSection />
 
-      {p.notablePersonMd && <Md {...p} />}
+      {/* <HelpUs /> */}
 
-      <Discussion {...p} />
+      {p.notablePersonMd && <Md />}
+
+      <Discussion />
     </main>
   );
 };

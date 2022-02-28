@@ -29,3 +29,10 @@ export type TNotablePersonMd = {
   };
   content: string;
 };
+
+export type NotablePersonProps = {
+  slug: TSlug;
+  notablePersonYaml: TNotablePersonYaml;
+  notablePersonMd: TNotablePersonMd;
+  pic: TPic;
+};

@@ -1,44 +1,32 @@
 import { Container, Link, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NotablePersonProps } from '~/pages/[notablePerson].page';
+import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
 import { Article } from './Article/Article';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { Sources } from './Sources/Sources';
 
-export const Md = (p: NotablePersonProps) => {
+export const Md = () => {
   const [showSources, setShowSources] = useState(false);
-
-  if (!p.notablePersonMd) {
-    return null;
-  }
+  const context = useNotablePersonContext();
 
   return (
-    <Container maxWidth="md" component="section" style={{ marginTop: 32 }}>
-      {(p.notablePersonMd.content && (
-        <Article
-          notablePersonMd={p.notablePersonMd}
-          setShowSources={setShowSources}
-        />
+    <section>
+      {(context.notablePersonMd.content && (
+        <Article setShowSources={setShowSources} />
       )) || (
-        <div>
+        <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Typography variant="h4" component="p">
-            Share what you know about {p.notablePersonYaml.name} in the{' '}
+            Share what you know about {context.notablePersonYaml.name} in the{' '}
             <Link href="#discussion">discussion forum</Link> below!
           </Typography>
-        </div>
+        </Container>
       )}
 
-      {p.notablePersonMd.data?.sources?.length > 0 && (
-        <Sources
-          showSources={showSources}
-          notablePersonMd={p.notablePersonMd}
-          setShowSources={setShowSources}
-        />
+      {context.notablePersonMd.data?.sources?.length > 0 && (
+        <Sources showSources={showSources} setShowSources={setShowSources} />
       )}
 
-      <InterestingProfiles
-        relatedPeople={p.notablePersonMd.data.relatedPeople}
-      />
-    </Container>
+      <InterestingProfiles />
+    </section>
   );
 };
