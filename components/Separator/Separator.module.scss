@@ -1,0 +1,12 @@
+@import '~pages/common/common';
+
+.Separator {
+  background-color: $lessEmphasis300;
+  padding: $s2;
+  min-height: 10px;
+  margin-top: $s4;
+
+  .title {
+    margin-top: $s2;
+  }
+}

@@ -6,6 +6,7 @@ import {
 import { AppProps } from 'next/app';
 import 'normalize.css';
 import React from 'react';
+import { StaticPropsContextProvider } from '~/components/StaticPropsContextProvider';
 import { theme } from '~/pages/common/theme';
 import { Footer } from '~/pages/_app/Footer/Footer';
 import '~/pages/_app/globalStyles.css';
@@ -17,10 +18,12 @@ const App = ({ Component, pageProps }: AppProps) => {
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={unstable_createMuiStrictModeTheme(theme)}>
-          <Head />
-          <AppBar />
-          <Component {...pageProps} />
-          <Footer />
+          <StaticPropsContextProvider value={pageProps}>
+            <Head />
+            <AppBar />
+            <Component {...pageProps} />
+            <Footer />
+          </StaticPropsContextProvider>
         </ThemeProvider>
       </StyledEngineProvider>
     </React.StrictMode>
