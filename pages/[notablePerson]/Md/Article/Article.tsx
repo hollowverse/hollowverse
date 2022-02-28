@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+import { Container, Paper } from '@mui/material';
 import React from 'react';
 import { Separator } from '~/components/Separator';
 import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
@@ -22,13 +22,16 @@ export const Article = (p: {
       {context.notablePersonMd.data.summaries && (
         <div className={s.summary}>
           <Separator title="Summary" className={s.separator} />
-          <p>{context.notablePersonMd.data.summaries.religion}</p>
-          <p>{context.notablePersonMd.data.summaries.politicalViews}</p>
+          <Container maxWidth="md">
+            <p>{context.notablePersonMd.data.summaries.religion}</p>
+            <p>{context.notablePersonMd.data.summaries.politicalViews}</p>
+          </Container>
         </div>
       )}
 
       <Separator title="Editorial" className={s.separator} />
-      <div
+      <Container
+        maxWidth="md"
         dangerouslySetInnerHTML={{ __html: context.notablePersonMd.content }}
       />
     </article>

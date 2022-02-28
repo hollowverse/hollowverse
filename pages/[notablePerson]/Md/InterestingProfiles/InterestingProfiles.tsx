@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import { Separator } from '~/components/Separator';
@@ -13,7 +13,7 @@ export const InterestingProfiles = () => {
     <div className={s.InterestingProfiles}>
       <Separator title="Other interesting profiles" />
 
-      <div className={s.content}>
+      <Container maxWidth="md" className={s.content}>
         {relatedPeople.map((notablePersonData) => {
           return (
             <a
@@ -46,7 +46,7 @@ export const InterestingProfiles = () => {
             </a>
           );
         })}
-      </div>
+      </Container>
     </div>
   );
 };

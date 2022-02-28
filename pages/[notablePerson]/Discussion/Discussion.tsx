@@ -9,13 +9,7 @@ export const Discussion = () => {
   const context = useNotablePersonContext();
 
   return (
-    <Container
-      maxWidth="md"
-      component="section"
-      className={s.Discussion}
-      disableGutters
-      id="discussion"
-    >
+    <section className={s.Discussion} id="discussion">
       <Script
         id="discourse-embed"
         dangerouslySetInnerHTML={{
@@ -32,7 +26,12 @@ export const Discussion = () => {
       />
       <Separator title="Discussion" />
 
-      <div className={s.element} id="discourse-comments" title="Comments" />
-    </Container>
+      <Container
+        maxWidth="md"
+        className={s.element}
+        id="discourse-comments"
+        title="Comments"
+      />
+    </section>
   );
 };

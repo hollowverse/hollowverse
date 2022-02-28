@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import React from 'react';
 import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
 import { Icon } from '~/pages/common/Icon';
@@ -12,7 +12,7 @@ export const Sources = (p: {
   const context = useNotablePersonContext();
 
   return (
-    <section className={s.Sources}>
+    <Container maxWidth="md" component="section" className={s.Sources}>
       <Button
         color="inherit"
         variant="text"
@@ -44,6 +44,6 @@ export const Sources = (p: {
           )}
         </ul>
       )}
-    </section>
+    </Container>
   );
 };

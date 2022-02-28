@@ -10,15 +10,10 @@ import { Separator } from '~/components/Separator';
 
 export const Footer = () => {
   return (
-    <Container
-      maxWidth="md"
-      className={s.Footer}
-      component="footer"
-      disableGutters
-    >
+    <footer className={s.Footer}>
       <Separator />
 
-      <div className={s.content}>
+      <Container maxWidth="md" className={s.content}>
         <div className={s.image}>
           <Image
             width={50}
@@ -84,9 +79,9 @@ export const Footer = () => {
             );
           })}
         </div>
-      </div>
+      </Container>
 
       <div style={{ marginTop: '100px' }} />
-    </Container>
+    </footer>
   );
 };

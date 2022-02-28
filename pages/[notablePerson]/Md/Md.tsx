@@ -10,16 +10,16 @@ export const Md = () => {
   const context = useNotablePersonContext();
 
   return (
-    <Container maxWidth="md" component="section" disableGutters>
+    <section>
       {(context.notablePersonMd.content && (
         <Article setShowSources={setShowSources} />
       )) || (
-        <div>
+        <Container maxWidth="md" style={{ margin: '40px 40px' }}>
           <Typography variant="h4" component="p">
             Share what you know about {context.notablePersonYaml.name} in the{' '}
             <Link href="#discussion">discussion forum</Link> below!
           </Typography>
-        </div>
+        </Container>
       )}
 
       {context.notablePersonMd.data?.sources?.length > 0 && (
@@ -27,6 +27,6 @@ export const Md = () => {
       )}
 
       <InterestingProfiles />
-    </Container>
+    </section>
   );
 };

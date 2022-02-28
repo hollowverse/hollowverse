@@ -25,7 +25,7 @@ const NotablePerson = (p: NotablePersonProps) => {
 
       <TopSection />
 
-      <HelpUs />
+      {/* <HelpUs /> */}
 
       {p.notablePersonMd && <Md />}
 

@@ -8,7 +8,7 @@ export const TopSection = () => {
   const context = useNotablePersonContext();
 
   return (
-    <Container maxWidth="md" style={{ padding: 0 }} className={s.TopSection}>
+    <div className={s.TopSection}>
       <section className={s.fancyBackground}>
         <header className={s.header}>
           <div className={s.imageContainer}>
@@ -31,6 +31,6 @@ export const TopSection = () => {
           </Typography>
         </header>
       </section>
-    </Container>
+    </div>
   );
 };
