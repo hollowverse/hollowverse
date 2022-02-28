@@ -14,7 +14,7 @@ export const Md = () => {
       {(context.notablePersonMd.content && (
         <Article setShowSources={setShowSources} />
       )) || (
-        <Container maxWidth="md" style={{ margin: '40px 40px' }}>
+        <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Typography variant="h4" component="p">
             Share what you know about {context.notablePersonYaml.name} in the{' '}
             <Link href="#discussion">discussion forum</Link> below!
