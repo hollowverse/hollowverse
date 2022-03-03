@@ -26,7 +26,7 @@ const NotablePerson = (p: NotablePersonProps) => {
 
       <TopSection />
 
-      {featureFlags.editButton && <AddFactButton />}
+      {featureFlags.addFactButton && <AddFactButton />}
 
       {p.notablePersonMd && <Md />}
 
