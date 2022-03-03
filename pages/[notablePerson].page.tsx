@@ -1,5 +1,6 @@
 import React from 'react';
-import { HelpUs } from '~/components/HelpUs';
+import { featureFlags } from '~/components/featureFlags';
+import { AddFactButton } from '~/components/AddFactButton';
 import {
   TNotablePersonMd,
   TNotablePersonYaml,
@@ -25,7 +26,7 @@ const NotablePerson = (p: NotablePersonProps) => {
 
       <TopSection />
 
-      {/* <HelpUs /> */}
+      {featureFlags.editButton && <AddFactButton />}
 
       {p.notablePersonMd && <Md />}
 

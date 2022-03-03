@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material';
 import React from 'react';
 import { Separator } from '~/components/Separator';
-import s from './HelpUs.module.scss';
+import s from './AddFactButton.module.scss';
 
-export const HelpUs = () => (
+export const AddFactButton = () => (
   <div className={s.HelpUs}>
     <Separator title="Help us get the facts" className={s.separator} />
 
