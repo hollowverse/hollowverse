@@ -10,7 +10,7 @@ export const AddFactButton = () => {
 
   const bodyContent = `Fill out the template below to submit a fact about the religion, political views or beliefs of ${name}:
 
-**What did the ${name} say or do?**
+**What did ${name} say or do?**
 
 **What is the source for this information?**`;
 
@@ -24,7 +24,7 @@ export const AddFactButton = () => {
           name,
         )}&body=${encodeURIComponent(bodyContent)}&category=facts`}
       >
-        Add a fact
+        Add info to this page
       </Button>
     </div>
   );
