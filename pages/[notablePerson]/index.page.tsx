@@ -1,6 +1,6 @@
 import React from 'react';
 import { featureFlags } from '~/pages/components/featureFlags';
-import { EditPageButton } from '~/pages/[notablePerson]/EditPageButton';
+import { AddFactButton } from '~/pages/[notablePerson]/AddFactButton';
 import {
   TNotablePersonMd,
   TNotablePersonYaml,
@@ -26,7 +26,7 @@ const NotablePerson = (p: NotablePersonProps) => {
 
       <TopSection />
 
-      {featureFlags.EditPageButton && <EditPageButton />}
+      {featureFlags.AddFactButton && <AddFactButton />}
 
       {p.notablePersonMd && <Md />}
 

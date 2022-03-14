@@ -1,3 +1,3 @@
 export const featureFlags = {
-  EditPageButton: true,
+  AddFactButton: true,
 } as const;

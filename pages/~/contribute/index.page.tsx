@@ -16,12 +16,12 @@ const Contribute = () => {
 
   return (
     <Container className={s.Contribute} maxWidth="md">
-      <Typography variant="h1">Edit {name}&apos;s page</Typography>
+      <Typography variant="h1">Add to {name}&apos;s page</Typography>
 
       <Typography>
-        Contributing to Hollowverse is as easy as posting to a discussion board
-        because that&apos;s actually how it works! Let me just very briefly give
-        you a few more details...
+        We are collecting new facts about {name}&apos;s religion, politics, and
+        social views. If you know something about {name}, you can share it by
+        posting on the discussion board. Here&apos;s some quick details...
       </Typography>
 
       <Heading2 icon={<PersonIcon />}>First create an account</Heading2>
@@ -54,8 +54,8 @@ const Contribute = () => {
       </Typography>
 
       <Typography>
-        Thanks for wanting to contribute. The thousands of readers that visit
-        Hollowverse everyday will appreciate it!
+        Thanks for contributing! The thousands of readers that visit Hollowverse
+        everyday will appreciate it!
       </Typography>
 
       <Typography>
