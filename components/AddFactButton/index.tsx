@@ -3,29 +3,23 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { useNotablePersonContext } from '../StaticPropsContextProvider';
 import s from './AddFactButton.module.scss';
+import Link from 'next/link';
 
 export const AddFactButton = () => {
   const context = useNotablePersonContext();
   const name = context.notablePersonYaml.name;
-
-  const bodyContent = `Fill out the template below to submit a fact about the religion, political views or beliefs of ${name}:
-
-**What did ${name} say or do?**
-
-**What is the source for this information?**`;
+  const slug = context.slug;
 
   return (
     <div className={s.AddFactButton}>
-      <Button
-        variant="outlined"
-        target="_blank"
-        endIcon={<EditIcon />}
-        href={`https://discuss.hollowverse.com/new-topic?title=${encodeURIComponent(
-          name,
-        )}&body=${encodeURIComponent(bodyContent)}&category=facts`}
+      <Link
+        href={{ pathname: '/~/contribute', query: { name, slug } }}
+        passHref
       >
-        Add info to this page
-      </Button>
+        <Button variant="outlined" endIcon={<EditIcon />}>
+          Add info to this page
+        </Button>
+      </Link>
     </div>
   );
 };

@@ -1,0 +1,33 @@
+@import '~pages/common/common';
+
+.HowToContribute {
+  margin-top: $s4;
+
+  p {
+    margin-top: $s2;
+  }
+
+  p + p {
+    margin-top: $s4;
+  }
+
+  .heading2 {
+    margin-top: $s8;
+
+    .heading2Text {
+      margin-left: $s2;
+    }
+  }
+
+  .openDiscussionBoardButton {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: $s8 0;
+  }
+
+  .backdrop {
+    z-index: 1000;
+    color: #fff;
+  }
+}
