@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { NotablePersonProps } from '~/pages/types';
+import { NotablePersonProps } from '~/pages/components/types';
 
 const StaticPropsContext = createContext(null);
 

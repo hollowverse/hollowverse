@@ -1,12 +1,12 @@
 import React from 'react';
-import { featureFlags } from '~/pages/featureFlags';
+import { featureFlags } from '~/pages/components/featureFlags';
 import { AddFactButton } from '~/pages/[notablePerson]/AddFactButton';
 import {
   TNotablePersonMd,
   TNotablePersonYaml,
   TPic,
   TSlug,
-} from '~/pages/types';
+} from '~/pages/components/types';
 import { Discussion } from '~/pages/[notablePerson]/Discussion/Discussion';
 import { Md } from '~/pages/[notablePerson]/Md/Md';
 import { PageHead } from '~/pages/[notablePerson]/PageHead/PageHead';

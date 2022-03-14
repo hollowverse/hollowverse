@@ -7,7 +7,7 @@ import { AppProps } from 'next/app';
 import 'normalize.css';
 import React from 'react';
 import { StaticPropsContextProvider } from '~/pages/components/StaticPropsContextProvider';
-import { theme } from '~/pages/theme';
+import { theme } from '~/pages/_app/theme';
 import { Footer } from '~/pages/_app/Footer/Footer';
 import '~/pages/_app/globalStyles.css';
 import { Head } from '~/pages/_app/Head/Head';
