@@ -8,7 +8,7 @@ export const getContributeLink = (name: string) => {
 <!--
 If you know more facts about ${name}, you can copy/paste the questions above and answer them again to add multiple facts to this post.
 
-A Hollowverse staff member will review these facts and add them ${name}'s page :)
+A moderator will review these facts and add them to ${name}'s page :)
 -->`;
   const href = `https://discuss.hollowverse.com/new-topic?title=${encodeURIComponent(
     name,

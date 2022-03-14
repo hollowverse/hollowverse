@@ -9,13 +9,13 @@ import { getContributeLink } from '~/pages/components/getContributeLink';
 import { Heading2 } from './Heading2';
 import s from './styles.module.scss';
 
-export const HowToContribute = () => {
+const Contribute = () => {
   const router = useRouter();
   const name = router.query.name;
   const href = getContributeLink(name as string);
 
   return (
-    <Container className={s.HowToContribute} maxWidth="md">
+    <Container className={s.Contribute} maxWidth="md">
       <Typography variant="h1">Edit {name}&apos;s page</Typography>
 
       <Typography>
@@ -48,8 +48,8 @@ export const HowToContribute = () => {
       <Heading2 icon={<WifiIcon />}>Wait for your post to go live</Heading2>
 
       <Typography>
-        After you submit the post, one of our team members will validate that
-        everything looks good then we will publish the information on {name}
+        After you submit the post, a moderator will validate that everything
+        looks good then we will publish the information on {name}
         &apos;s page. And we will give you credit for the contribution!
       </Typography>
 
@@ -85,4 +85,4 @@ export const HowToContribute = () => {
   );
 };
 
-export default HowToContribute;
+export default Contribute;
