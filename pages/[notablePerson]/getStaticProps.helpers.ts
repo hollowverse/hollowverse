@@ -2,7 +2,7 @@ import yml from 'js-yaml';
 import fs from 'fs-extra';
 import { notablePeoplePath, publicDir } from '~/pages/[notablePerson]/paths';
 import { join } from 'path';
-import { TNotablePersonYaml } from '../common/types';
+import { TNotablePersonYaml } from '~/pages/components/types';
 import matter from 'gray-matter';
 
 export const withPubDir = (s: string) => `${publicDir}/${s}`;

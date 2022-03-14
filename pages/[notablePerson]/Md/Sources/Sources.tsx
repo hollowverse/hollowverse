@@ -1,7 +1,7 @@
 import { Button, Container } from '@mui/material';
 import React from 'react';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
-import { Icon } from '~/pages/common/Icon';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { Icon } from '~/pages/components/Icon';
 import BookOpenIcon from '~/public/images/icons/book-open.svg';
 import s from './Sources.module.scss';
 
