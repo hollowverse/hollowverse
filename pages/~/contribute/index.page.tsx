@@ -13,7 +13,6 @@ import { Heading2 } from './Heading2';
 export const HowToContribute = () => {
   const router = useRouter();
   const name = router.query.name;
-  const slug = router.query.slug;
   const href = getContributeLink(name as string);
 
   return (

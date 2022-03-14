@@ -6,14 +6,14 @@ import s from './styles.module.scss';
 import { getContributeLink } from '~/pages/components/getContributeLink';
 import { useRouter } from 'next/router';
 
-export const AddFactButton = () => {
+export const EditPageButton = () => {
   const context = useNotablePersonContext();
   const router = useRouter();
   const name = context.notablePersonYaml.name;
   const slug = context.slug;
 
   return (
-    <div className={s.AddFactButton}>
+    <div className={s.EditPageButton}>
       <Button
         variant="outlined"
         endIcon={<EditIcon />}
