@@ -21,21 +21,17 @@ export const HowToContribute = () => {
       <Typography variant="h1">Edit {name}&apos;s page</Typography>
 
       <Typography>
-        Thanks for wanting to contribute to {name}&apos;s page! Thousands of
-        people read Hollowverse everyday. I&apos;m sure they&apos;ll appreciate
-        your contribution!
+        Contributing to Hollowverse is as easy as posting to a discussion board
+        because that&apos;s actually how it works! Let me just very briefly give
+        you a few more details...
       </Typography>
 
-      <Typography>
-        Let me explain a few things then you&apos;ll be on your way!
-      </Typography>
-
-      <Heading2 icon={<PersonIcon />}>First, create an account</Heading2>
+      <Heading2 icon={<PersonIcon />}>First create an account</Heading2>
 
       <Typography>
         There&apos;s a button at the bottom that will open the Hollowverse
         discussion board. If this is your first time, you will be asked to
-        sign-up because you need to have a user account to contribute.
+        sign-up.
       </Typography>
 
       <Heading2 icon={<ForumIcon />}>Then submit a post</Heading2>
@@ -43,15 +39,12 @@ export const HowToContribute = () => {
       <Typography>
         After you complete the sign-up and verify your email address, the text
         editor will be displayed. That&apos;s where you can submit the content.
-        If the text editor doesn&apos;t open, go back to{' '}
-        <a href={`/${slug}`}>{name}&apos;s page</a> and click on the
-        &quot;Edit&quot; button again.
       </Typography>
 
       <Typography>
         The text editor will be pre-filled with some information to give you a
-        bit more help with the process. Go ahead and add your stuff then submit
-        the post.
+        bit more help with the process. When you&apos;re finished, submit the
+        post.
       </Typography>
 
       <Heading2 icon={<WifiIcon />}>Wait for your post to go live</Heading2>
@@ -62,17 +55,9 @@ export const HowToContribute = () => {
         &apos;s page. And we will give you credit for the contribution!
       </Typography>
 
-      <Heading2 icon={<SummarizeIcon />}>So, basically...</Heading2>
-
       <Typography>
-        So basically, you&apos;ll be making a post on the Hollowverse discussion
-        board then we will take the information you submit and display it on the
-        page.
-      </Typography>
-
-      <Typography>
-        Thanks again for wanting to contribute. I&apos;m sure thousands of
-        readers will appreciate it!
+        Thanks for wanting to contribute. The thousands of readers that visit
+        Hollowverse everyday will appreciate it!
       </Typography>
 
       <Typography>
