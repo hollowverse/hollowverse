@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import React, { ReactElement } from 'react';
-import s from './contribute.module.scss';
+import s from './styles.module.scss';
 
 export const Heading2 = ({
   children,

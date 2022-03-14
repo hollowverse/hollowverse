@@ -29,7 +29,7 @@ export const AddFactButton = () => {
           );
         }}
       >
-        Add info to this page
+        Edit this page
       </Button>
     </div>
   );
