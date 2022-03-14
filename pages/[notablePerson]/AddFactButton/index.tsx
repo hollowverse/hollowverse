@@ -1,25 +1,36 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Button } from '@mui/material';
 import React from 'react';
-import { useNotablePersonContext } from '../../components/StaticPropsContextProvider';
-import s from './AddFactButton.module.scss';
-import Link from 'next/link';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import s from './styles.module.scss';
+import { getContributeLink } from '~/pages/components/getContributeLink';
+import { useRouter } from 'next/router';
 
 export const AddFactButton = () => {
   const context = useNotablePersonContext();
+  const router = useRouter();
   const name = context.notablePersonYaml.name;
   const slug = context.slug;
 
   return (
     <div className={s.AddFactButton}>
-      <Link
-        href={{ pathname: '/~/contribute', query: { name, slug } }}
-        passHref
+      <Button
+        variant="outlined"
+        endIcon={<EditIcon />}
+        onClick={() => {
+          const hasReadInstructions = JSON.parse(
+            localStorage.getItem('hasReadInstructions') || 'false',
+          );
+
+          router.push(
+            hasReadInstructions
+              ? getContributeLink(name)
+              : { pathname: '/~/contribute', query: { name, slug } },
+          );
+        }}
       >
-        <Button variant="outlined" endIcon={<EditIcon />}>
-          Add info to this page
-        </Button>
-      </Link>
+        Add info to this page
+      </Button>
     </div>
   );
 };
