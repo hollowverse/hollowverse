@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 import Script from 'next/script';
 import React from 'react';
-import { Separator } from '~/components/Separator';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
+import { Separator } from '~/pages/components/Separator';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './Discussion.module.scss';
 
 export const Discussion = () => {

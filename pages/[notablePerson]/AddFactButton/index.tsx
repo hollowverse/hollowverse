@@ -1,7 +1,7 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Button } from '@mui/material';
 import React from 'react';
-import { useNotablePersonContext } from '../StaticPropsContextProvider';
+import { useNotablePersonContext } from '../../components/StaticPropsContextProvider';
 import s from './AddFactButton.module.scss';
 import Link from 'next/link';
 

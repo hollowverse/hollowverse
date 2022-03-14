@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './TopSection.module.scss';
 
 export const TopSection = () => {

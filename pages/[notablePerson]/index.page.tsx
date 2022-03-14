@@ -1,16 +1,16 @@
 import React from 'react';
-import { featureFlags } from '~/components/featureFlags';
-import { AddFactButton } from '~/components/AddFactButton';
+import { featureFlags } from '~/pages/featureFlags';
+import { AddFactButton } from '~/pages/[notablePerson]/AddFactButton';
 import {
   TNotablePersonMd,
   TNotablePersonYaml,
   TPic,
   TSlug,
 } from '~/pages/common/types';
-import { Discussion } from './[notablePerson]/Discussion/Discussion';
-import { Md } from './[notablePerson]/Md/Md';
-import { PageHead } from './[notablePerson]/PageHead/PageHead';
-import { TopSection } from './[notablePerson]/TopSection/TopSection';
+import { Discussion } from '~/pages/[notablePerson]/Discussion/Discussion';
+import { Md } from '~/pages/[notablePerson]/Md/Md';
+import { PageHead } from '~/pages/[notablePerson]/PageHead/PageHead';
+import { TopSection } from '~/pages/[notablePerson]/TopSection/TopSection';
 
 export type NotablePersonProps = {
   notablePersonYaml: TNotablePersonYaml;
@@ -37,5 +37,5 @@ const NotablePerson = (p: NotablePersonProps) => {
 
 export default NotablePerson;
 
-export { getStaticPaths } from './[notablePerson]/getStaticPaths';
-export { getStaticProps } from './[notablePerson]/getStaticProps';
+export { getStaticPaths } from './getStaticPaths';
+export { getStaticProps } from './getStaticProps';
