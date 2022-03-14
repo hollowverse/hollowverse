@@ -1,6 +1,6 @@
 import { Container, Link, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
 import { Article } from './Article/Article';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { Sources } from './Sources/Sources';

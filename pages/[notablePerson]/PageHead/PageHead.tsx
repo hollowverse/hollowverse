@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
 
 export const PageHead = () => {
   const context = useNotablePersonContext();

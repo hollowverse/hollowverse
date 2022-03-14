@@ -1,8 +1,8 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { Separator } from '~/components/Separator';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
+import { Separator } from '~/pages/components/Separator';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './InterestingProfiles.module.scss';
 
 export const InterestingProfiles = () => {

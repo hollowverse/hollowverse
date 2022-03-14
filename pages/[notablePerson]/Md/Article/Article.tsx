@@ -1,8 +1,8 @@
 import { Container, Paper } from '@mui/material';
 import React from 'react';
-import { Separator } from '~/components/Separator';
-import { useNotablePersonContext } from '~/components/StaticPropsContextProvider';
-import { NotablePersonProps } from '~/pages/[notablePerson].page';
+import { Separator } from '~/pages/components/Separator';
+import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { NotablePersonProps } from '~/pages/[notablePerson]/index.page';
 import s from './Article.module.scss';
 
 export const Article = (p: {
