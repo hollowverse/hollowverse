@@ -6,7 +6,7 @@ import {
   TNotablePersonYaml,
   TPic,
   TSlug,
-} from '~/pages/common/types';
+} from '~/pages/types';
 import { Discussion } from '~/pages/[notablePerson]/Discussion/Discussion';
 import { Md } from '~/pages/[notablePerson]/Md/Md';
 import { PageHead } from '~/pages/[notablePerson]/PageHead/PageHead';
