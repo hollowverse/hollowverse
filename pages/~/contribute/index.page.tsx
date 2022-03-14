@@ -2,13 +2,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import ForumIcon from '@mui/icons-material/Forum';
 import PersonIcon from '@mui/icons-material/Person';
 import WifiIcon from '@mui/icons-material/Wifi';
-import SummarizeIcon from '@mui/icons-material/Summarize';
 import { Button, Container, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { getContributeLink } from '~/pages/components/getContributeLink';
-import s from './styles.module.scss';
 import { Heading2 } from './Heading2';
+import s from './styles.module.scss';
 
 export const HowToContribute = () => {
   const router = useRouter();
