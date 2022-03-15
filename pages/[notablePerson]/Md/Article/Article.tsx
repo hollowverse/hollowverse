@@ -55,7 +55,12 @@ export const Article = (p: {
               }}
               passHref
             >
-              <Button endIcon={<LoginIcon />}>Learn more</Button>
+              <Button
+                aria-label="Learn about the steps required to start contributing to Hollowverse"
+                endIcon={<LoginIcon />}
+              >
+                Learn more
+              </Button>
             </Link>
           </div>
         </Container>
