@@ -1,9 +1,10 @@
-import { Container, Paper } from '@mui/material';
+import { Button, Container, Grid } from '@mui/material';
 import React from 'react';
 import { Separator } from '~/pages/components/Separator';
 import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
-import { NotablePersonProps } from '~/pages/[notablePerson]/index.page';
-import s from './Article.module.scss';
+import s from './styles.module.scss';
+import LoginIcon from '@mui/icons-material/Login';
+import Link from 'next/link';
 
 export const Article = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,16 +30,33 @@ export const Article = (p: {
         </div>
       )}
 
-      <div>
+      <div className={s.contributePromo}>
         <Separator
-          title="👋 Hey! Do you think a lot about politics and religion? 🧠"
+          title="Hi! 👋 Do you think a lot about politics and religion? 🧠"
           className={s.separator}
         />
-        <Container maxWidth="md">
-          <p>
-            Win a $20 Amazon gift card by becoming a top contributor on
-            Hollowverse!
-          </p>
+        <Container maxWidth="md" className={s.contributePromoContent}>
+          <div className={s.contributePromoText}>
+            <p>
+              Receive a $25 Amazon® gift card by becoming a top contributor on
+              Hollowverse!
+            </p>
+          </div>
+
+          <div className={s.contributePromoButtonContainer}>
+            <Link
+              href={{
+                pathname: '/~/contribute',
+                query: {
+                  name: context.notablePersonYaml.name,
+                  slug: context.slug,
+                },
+              }}
+              passHref
+            >
+              <Button endIcon={<LoginIcon />}>Learn more</Button>
+            </Link>
+          </div>
         </Container>
       </div>
 
