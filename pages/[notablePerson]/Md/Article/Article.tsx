@@ -59,7 +59,7 @@ export const Article = (p: {
                 aria-label="Learn about the steps required to start contributing to Hollowverse"
                 endIcon={<LoginIcon />}
               >
-                Learn more
+                Learn how
               </Button>
             </Link>
           </div>

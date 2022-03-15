@@ -3,7 +3,7 @@ import ForumIcon from '@mui/icons-material/Forum';
 import PersonIcon from '@mui/icons-material/Person';
 import WifiIcon from '@mui/icons-material/Wifi';
 import CelebrationIcon from '@mui/icons-material/Celebration';
-import { Button, Container, Typography } from '@mui/material';
+import { Button, Container, Link, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { getContributeLink } from '~/pages/components/getContributeLink';
@@ -102,8 +102,8 @@ const Contribute = () => {
 
         <p>
           If you need more help,{' '}
-          <a href="mailto:hollowverse@hollowverse.com">email us</a>. We&apos;d
-          be happy to hear from you!
+          <Link href="mailto:hollowverse@hollowverse.com">email us</Link>.
+          We&apos;d be happy to hear from you!
         </p>
       </Container>
     </>
