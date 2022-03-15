@@ -20,7 +20,7 @@ export const Article = (p: {
       }}
     >
       {context.notablePersonMd.data.summaries && (
-        <div className={s.summary}>
+        <div>
           <Separator title="Summary" className={s.separator} />
           <Container maxWidth="md">
             <p>{context.notablePersonMd.data.summaries.religion}</p>
@@ -28,6 +28,19 @@ export const Article = (p: {
           </Container>
         </div>
       )}
+
+      <div>
+        <Separator
+          title="👋 Hey! Do you think a lot about politics and religion? 🧠"
+          className={s.separator}
+        />
+        <Container maxWidth="md">
+          <p>
+            Win a $20 Amazon gift card by becoming a top contributor on
+            Hollowverse!
+          </p>
+        </Container>
+      </div>
 
       <Separator title="Editorial" className={s.separator} />
       <Container
