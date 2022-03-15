@@ -6,9 +6,9 @@ export const getContributeLink = (name: string) => {
 <!-- The source has to be credible. For a controversial fact, the source needs stronger credibility. -->
 
 <!--
-If you know more facts about ${name}, you can copy/paste the questions above and answer them again to add multiple facts to this post.
+If you know more facts about ${name}, create a new post for each fact.
 
-A moderator will review these facts and add them to ${name}'s page :)
+A moderator will review your posts and add them to ${name}'s page :)
 -->`;
   const href = `https://discuss.hollowverse.com/new-topic?title=${encodeURIComponent(
     name,

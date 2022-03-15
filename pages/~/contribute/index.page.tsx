@@ -2,6 +2,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ForumIcon from '@mui/icons-material/Forum';
 import PersonIcon from '@mui/icons-material/Person';
 import WifiIcon from '@mui/icons-material/Wifi';
+import CelebrationIcon from '@mui/icons-material/Celebration';
 import { Button, Container, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -23,6 +24,12 @@ const Contribute = () => {
 
       <Container className={s.Contribute} maxWidth="md">
         <Typography variant="h1">Add to {name}&apos;s page</Typography>
+
+        <Typography>
+          To show our appreciation for your contributions, we are offering a $25
+          Amazon® gift card to each of the <strong>3 most active</strong>{' '}
+          contributors to Hollowverse.
+        </Typography>
 
         <Typography>
           We are collecting new facts about {name}&apos;s religion, politics,
@@ -58,6 +65,16 @@ const Contribute = () => {
           After you submit the post, a moderator will validate that everything
           looks good then we will publish the information on {name}
           &apos;s page. And we will give you credit for the contribution!
+        </Typography>
+
+        <Heading2 icon={<CelebrationIcon />}>
+          Top contributors receive a gift card
+        </Heading2>
+
+        <Typography>
+          At the end of each month, we tally up contributor posts across all
+          pages. The 3 contributors with the most posts receive a $25 Amazon®
+          gift card each.
         </Typography>
 
         <Typography>
