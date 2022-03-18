@@ -1,23 +1,29 @@
 import { Container, Typography } from '@mui/material';
 import React from 'react';
-import s from './Separator.module.scss';
+import s from './styles.module.scss';
 import clsx from 'clsx';
 
-export const Separator: React.FC<{ title?: string; className?: string }> = (
-  p,
-) => (
-  <div className={clsx(s.Separator, p.className)}>
-    <Container maxWidth="md" disableGutters>
-      {p.title && (
-        <Typography
-          variant="h3"
-          component="h2"
-          fontWeight={500}
-          className={s.title}
-        >
-          {p.title}
-        </Typography>
-      )}
-    </Container>
-  </div>
-);
+export const Separator: React.FC<{
+  title?: string;
+  className?: string;
+  minor?: boolean;
+}> = (p) => {
+  const minor = p.minor || false;
+
+  return (
+    <div className={clsx(s.Separator, p.className, minor ? s.minor : s.major)}>
+      <Container maxWidth="md" disableGutters>
+        {p.title && (
+          <Typography
+            variant="h3"
+            component="h2"
+            fontWeight={500}
+            className={s.title}
+          >
+            {p.title}
+          </Typography>
+        )}
+      </Container>
+    </div>
+  );
+};

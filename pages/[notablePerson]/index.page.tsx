@@ -11,6 +11,7 @@ import { Discussion } from '~/pages/[notablePerson]/Discussion/Discussion';
 import { Md } from '~/pages/[notablePerson]/Md/Md';
 import { PageHead } from '~/pages/[notablePerson]/PageHead/PageHead';
 import { TopSection } from '~/pages/[notablePerson]/TopSection/TopSection';
+import { Facts } from './Facts';
 
 export type NotablePersonProps = {
   notablePersonYaml: TNotablePersonYaml;
@@ -27,6 +28,8 @@ const NotablePerson = (p: NotablePersonProps) => {
       <TopSection />
 
       {featureFlags.AddFactButton && <AddFactButton />}
+
+      <Facts />
 
       {p.notablePersonMd && <Md />}
 
