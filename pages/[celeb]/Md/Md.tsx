@@ -11,18 +11,18 @@ export const Md = () => {
 
   return (
     <section>
-      {(context.celebMd.content && (
+      {(context.celebOldContent.article && (
         <Article setShowSources={setShowSources} />
       )) || (
         <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Typography variant="h4" component="p">
-            Share what you know about {context.celebYaml.name} in the{' '}
+            Share what you know about {context.celeb.name} in the{' '}
             <Link href="#discussion">discussion forum</Link> below!
           </Typography>
         </Container>
       )}
 
-      {context.celebMd.data?.sources?.length > 0 && (
+      {context.celebOldContent.sources?.length > 0 && (
         <Sources showSources={showSources} setShowSources={setShowSources} />
       )}
 

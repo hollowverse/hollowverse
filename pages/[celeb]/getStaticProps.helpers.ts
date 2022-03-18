@@ -2,7 +2,7 @@ import yml from 'js-yaml';
 import fs from 'fs-extra';
 import { celebsPath, publicDir } from '~/pages/[celeb]/paths';
 import { join } from 'path';
-import { TCelebYaml } from '~/pages/components/types';
+import { TCeleb } from '~/pages/components/types';
 import matter from 'gray-matter';
 
 export const withPubDir = (s: string) => `${publicDir}/${s}`;
@@ -23,10 +23,10 @@ export const getImageLink = (celebId: string) => {
     : '';
 };
 
-export const loadCelebYaml = (slug: string) =>
+export const loadCeleb = (slug: string) =>
   yml.load(
     fs.readFileSync(join(celebsPath, slug, `${slug}.yaml`), 'utf8'),
-  ) as TCelebYaml;
+  ) as TCeleb;
 
-export const loadCelebMd = (slug: string) =>
+export const loadCelebOldContent = (slug: string) =>
   matter(fs.readFileSync(join(celebsPath, slug, `${slug}.md`)));

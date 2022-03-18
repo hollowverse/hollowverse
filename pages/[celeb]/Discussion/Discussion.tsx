@@ -15,7 +15,7 @@ export const Discussion = () => {
         dangerouslySetInnerHTML={{
           __html: `
           DiscourseEmbed = { discourseUrl: 'https://discuss.hollowverse.com/',
-          topicId: '${context.celebYaml.discourseTopicId}' };
+          topicId: '${context.celeb.discourseTopicId}' };
           (function() {
             var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
             d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';

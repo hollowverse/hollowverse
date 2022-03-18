@@ -1,4 +1,4 @@
-export type TCelebYaml = {
+export type TCeleb = {
   id: string;
   name: string;
   discourseTopicId: number;
@@ -14,25 +14,23 @@ export type TPic = string;
 
 export type TSlug = string;
 
-export type TCelebMd = {
-  data: {
-    sources: { sourceUrl: string; sourceTitle: string }[];
-    relatedPeople: {
-      slug: TSlug;
-      pic: TPic;
-      name: string;
-    }[];
-    summaries?: {
-      religion: string;
-      politicalViews: string;
-    };
+export type TCelebOldContent = {
+  sources: { sourceUrl: string; sourceTitle: string }[];
+  relatedPeople: {
+    slug: TSlug;
+    pic: TPic;
+    name: string;
+  }[];
+  summaries?: {
+    religion: string;
+    politicalViews: string;
   };
-  content: string;
+  article: string;
 };
 
 export type CelebProps = {
   slug: TSlug;
-  celebYaml: TCelebYaml;
-  celebMd: TCelebMd;
+  celeb: TCeleb;
+  celebOldContent: TCelebOldContent;
   pic: TPic;
 };

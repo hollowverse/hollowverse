@@ -7,7 +7,7 @@ import s from './InterestingProfiles.module.scss';
 
 export const InterestingProfiles = () => {
   const context = useCelebContext();
-  const relatedPeople = context.celebMd.data.relatedPeople;
+  const relatedPeople = context.celebOldContent.relatedPeople;
 
   return (
     <div className={s.InterestingProfiles}>

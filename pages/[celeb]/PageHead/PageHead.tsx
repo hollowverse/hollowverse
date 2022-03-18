@@ -8,13 +8,12 @@ export const PageHead = () => {
   return (
     <Head>
       <title>
-        {context.celebYaml.name}&apos;s religion and political view |
-        Hollowverse
+        {context.celeb.name}&apos;s religion and political view | Hollowverse
       </title>
-      {context.celebMd?.data?.summaries && (
+      {context.celebOldContent?.summaries && (
         <meta
           name="description"
-          content={`Religion: ${context.celebMd.data.summaries.religion}; political views: ${context.celebMd.data.summaries.politicalViews}`}
+          content={`Religion: ${context.celebOldContent.summaries.religion}; political views: ${context.celebOldContent.summaries.politicalViews}`}
         />
       )}
       <link rel="canonical" href={`https://hollowverse.com/${context.slug}`} />

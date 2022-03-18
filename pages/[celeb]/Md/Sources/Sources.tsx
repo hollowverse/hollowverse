@@ -25,7 +25,7 @@ export const Sources = (p: {
 
       {p.showSources && (
         <ul>
-          {context.celebMd.data.sources.map(({ sourceTitle, sourceUrl }) => {
+          {context.celebOldContent.sources.map(({ sourceTitle, sourceUrl }) => {
             const encoded = encodeURIComponent(sourceUrl);
             return (
               <li key={encoded} id={encoded} className={s.listItem}>

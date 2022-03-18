@@ -20,12 +20,12 @@ export const Article = (p: {
         }
       }}
     >
-      {context.celebMd.data.summaries && (
+      {context.celebOldContent.summaries && (
         <div>
           <Separator title="Summary" className={s.separator} />
           <Container maxWidth="md">
-            <p>{context.celebMd.data.summaries.religion}</p>
-            <p>{context.celebMd.data.summaries.politicalViews}</p>
+            <p>{context.celebOldContent.summaries.religion}</p>
+            <p>{context.celebOldContent.summaries.politicalViews}</p>
           </Container>
         </div>
       )}
@@ -49,7 +49,7 @@ export const Article = (p: {
               href={{
                 pathname: '/~/contribute',
                 query: {
-                  name: context.celebYaml.name,
+                  name: context.celeb.name,
                   slug: context.slug,
                 },
               }}
@@ -69,7 +69,7 @@ export const Article = (p: {
       <Separator title="Editorial" className={s.separator} />
       <Container
         maxWidth="md"
-        dangerouslySetInnerHTML={{ __html: context.celebMd.content }}
+        dangerouslySetInnerHTML={{ __html: context.celebOldContent.article }}
       />
     </article>
   );

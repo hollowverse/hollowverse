@@ -2,8 +2,8 @@ import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 import {
   getImageLink,
-  loadCelebMd,
-  loadCelebYaml,
+  loadCelebOldContent,
+  loadCeleb,
 } from './getStaticProps.helpers';
 
 export const getStaticProps = async ({
@@ -11,36 +11,35 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  const celebYaml = loadCelebYaml(params.celeb);
-  const preCelebMd = loadCelebMd(params.celeb);
-  const celebMd = {
-    content: (
+  const celeb = loadCeleb(params.celeb);
+  const celebOldContentRaw = loadCelebOldContent(params.celeb);
+  const celebOldContent = {
+    ...celebOldContentRaw.data,
+
+    article: (
       await remark()
         .use(remarkHtml, { sanitize: false })
-        .process(preCelebMd.content)
+        .process(celebOldContentRaw.content)
     ).toString(),
 
-    data: {
-      ...preCelebMd.data,
-      relatedPeople: preCelebMd.data.relatedPeople.map((slug: string) => {
-        const celebYaml = loadCelebYaml(slug);
+    relatedPeople: celebOldContentRaw.data.relatedPeople.map((slug: string) => {
+      const celebYaml = loadCeleb(slug);
 
-        return {
-          name: celebYaml.name,
-          slug,
-          pic: getImageLink(celebYaml.id),
-        };
-      }),
-    },
+      return {
+        name: celebYaml.name,
+        slug,
+        pic: getImageLink(celebYaml.id),
+      };
+    }),
   };
 
-  const imagePath = getImageLink(celebYaml.id);
+  const imagePath = getImageLink(celeb.id);
 
   return {
     props: {
       slug: params.celeb,
-      celebYaml,
-      celebMd,
+      celeb,
+      celebOldContent,
       pic: imagePath,
     },
   };

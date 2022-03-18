@@ -18,7 +18,7 @@ export const TopSection = () => {
               width={200}
               height={250}
               priority
-              alt={context.celebYaml.name}
+              alt={context.celeb.name}
             />
           </div>
 
@@ -26,7 +26,7 @@ export const TopSection = () => {
             <span className={s.titleLessEmphasized}>
               Religion, politics, and ideas of
             </span>
-            <br /> <span className={s.name}>{context.celebYaml.name}</span>
+            <br /> <span className={s.name}>{context.celeb.name}</span>
           </Typography>
         </header>
       </section>

@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 export const AddFactButton = () => {
   const context = useCelebContext();
   const router = useRouter();
-  const name = context.celebYaml.name;
+  const name = context.celeb.name;
   const slug = context.slug;
 
   return (
