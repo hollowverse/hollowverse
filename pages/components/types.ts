@@ -1,4 +1,4 @@
-export type TNotablePersonYaml = {
+export type TCelebYaml = {
   id: string;
   name: string;
   discourseTopicId: number;
@@ -14,7 +14,7 @@ export type TPic = string;
 
 export type TSlug = string;
 
-export type TNotablePersonMd = {
+export type TCelebMd = {
   data: {
     sources: { sourceUrl: string; sourceTitle: string }[];
     relatedPeople: {
@@ -30,9 +30,9 @@ export type TNotablePersonMd = {
   content: string;
 };
 
-export type NotablePersonProps = {
+export type CelebProps = {
   slug: TSlug;
-  notablePersonYaml: TNotablePersonYaml;
-  notablePersonMd: TNotablePersonMd;
+  celebYaml: TCelebYaml;
+  celebMd: TCelebMd;
   pic: TPic;
 };

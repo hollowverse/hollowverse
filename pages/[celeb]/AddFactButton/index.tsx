@@ -1,15 +1,15 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Button } from '@mui/material';
 import React from 'react';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './styles.module.scss';
 import { getContributeLink } from '~/pages/components/getContributeLink';
 import { useRouter } from 'next/router';
 
 export const AddFactButton = () => {
-  const context = useNotablePersonContext();
+  const context = useCelebContext();
   const router = useRouter();
-  const name = context.notablePersonYaml.name;
+  const name = context.celebYaml.name;
   const slug = context.slug;
 
   return (

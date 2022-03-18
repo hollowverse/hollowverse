@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { NotablePersonProps } from '~/pages/components/types';
+import { CelebProps } from '~/pages/components/types';
 
 const StaticPropsContext = createContext(null);
 
@@ -13,6 +13,6 @@ export const StaticPropsContextProvider = (props: any) => {
   );
 };
 
-export const useNotablePersonContext = () => {
-  return useContext<NotablePersonProps>(StaticPropsContext as any);
+export const useCelebContext = () => {
+  return useContext<CelebProps>(StaticPropsContext as any);
 };

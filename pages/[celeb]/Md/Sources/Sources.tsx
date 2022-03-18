@@ -1,6 +1,6 @@
 import { Button, Container } from '@mui/material';
 import React from 'react';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import { Icon } from '~/pages/components/Icon';
 import BookOpenIcon from '~/public/images/icons/book-open.svg';
 import s from './Sources.module.scss';
@@ -9,7 +9,7 @@ export const Sources = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
   showSources: boolean;
 }) => {
-  const context = useNotablePersonContext();
+  const context = useCelebContext();
 
   return (
     <Container maxWidth="md" component="section" className={s.Sources}>
@@ -25,23 +25,21 @@ export const Sources = (p: {
 
       {p.showSources && (
         <ul>
-          {context.notablePersonMd.data.sources.map(
-            ({ sourceTitle, sourceUrl }) => {
-              const encoded = encodeURIComponent(sourceUrl);
-              return (
-                <li key={encoded} id={encoded} className={s.listItem}>
-                  <a
-                    href={sourceUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                    className={s.source}
-                  >
-                    {sourceTitle}
-                  </a>
-                </li>
-              );
-            },
-          )}
+          {context.celebMd.data.sources.map(({ sourceTitle, sourceUrl }) => {
+            const encoded = encodeURIComponent(sourceUrl);
+            return (
+              <li key={encoded} id={encoded} className={s.listItem}>
+                <a
+                  href={sourceUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                  className={s.source}
+                >
+                  {sourceTitle}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       )}
     </Container>

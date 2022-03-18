@@ -129,6 +129,8 @@ export const Facts = () => {
           </div>
         </div>
       </Container>
+
+      <Separator minor />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Button, Container, Grid } from '@mui/material';
 import React from 'react';
 import { Separator } from '~/pages/components/Separator';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './styles.module.scss';
 import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import Link from 'next/link';
 export const Article = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const context = useNotablePersonContext();
+  const context = useCelebContext();
 
   return (
     <article
@@ -20,12 +20,12 @@ export const Article = (p: {
         }
       }}
     >
-      {context.notablePersonMd.data.summaries && (
+      {context.celebMd.data.summaries && (
         <div>
           <Separator title="Summary" className={s.separator} />
           <Container maxWidth="md">
-            <p>{context.notablePersonMd.data.summaries.religion}</p>
-            <p>{context.notablePersonMd.data.summaries.politicalViews}</p>
+            <p>{context.celebMd.data.summaries.religion}</p>
+            <p>{context.celebMd.data.summaries.politicalViews}</p>
           </Container>
         </div>
       )}
@@ -49,7 +49,7 @@ export const Article = (p: {
               href={{
                 pathname: '/~/contribute',
                 query: {
-                  name: context.notablePersonYaml.name,
+                  name: context.celebYaml.name,
                   slug: context.slug,
                 },
               }}
@@ -69,7 +69,7 @@ export const Article = (p: {
       <Separator title="Editorial" className={s.separator} />
       <Container
         maxWidth="md"
-        dangerouslySetInnerHTML={{ __html: context.notablePersonMd.content }}
+        dangerouslySetInnerHTML={{ __html: context.celebMd.content }}
       />
     </article>
   );

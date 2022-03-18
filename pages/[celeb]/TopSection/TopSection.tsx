@@ -1,11 +1,11 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './TopSection.module.scss';
 
 export const TopSection = () => {
-  const context = useNotablePersonContext();
+  const context = useCelebContext();
 
   return (
     <div className={s.TopSection}>
@@ -18,7 +18,7 @@ export const TopSection = () => {
               width={200}
               height={250}
               priority
-              alt={context.notablePersonYaml.name}
+              alt={context.celebYaml.name}
             />
           </div>
 
@@ -26,8 +26,7 @@ export const TopSection = () => {
             <span className={s.titleLessEmphasized}>
               Religion, politics, and ideas of
             </span>
-            <br />{' '}
-            <span className={s.name}>{context.notablePersonYaml.name}</span>
+            <br /> <span className={s.name}>{context.celebYaml.name}</span>
           </Typography>
         </header>
       </section>
