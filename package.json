@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.2.3",
     "@sanity/client": "^3.2.2",
+    "@sanity/image-url": "^1.0.1",
     "@svgr/webpack": "^6.1.2",
     "@types/app-root-path": "^1.2.4",
     "@types/fs-extra": "^9.0.13",
