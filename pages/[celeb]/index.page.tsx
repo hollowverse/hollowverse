@@ -6,19 +6,13 @@ import {
   TCeleb,
   TPic,
   TSlug,
+  CelebProps,
 } from '~/pages/components/types';
 import { Discussion } from '~/pages/[celeb]/Discussion/Discussion';
 import { Md } from '~/pages/[celeb]/Md/Md';
 import { PageHead } from '~/pages/[celeb]/PageHead/PageHead';
 import { TopSection } from '~/pages/[celeb]/TopSection/TopSection';
 import { Facts } from './Facts';
-
-export type CelebProps = {
-  celebYaml: TCeleb;
-  pic: TPic;
-  celebMd?: TCelebOldContent;
-  slug: TSlug;
-};
 
 const Celeb = (p: CelebProps) => {
   return (
@@ -29,9 +23,9 @@ const Celeb = (p: CelebProps) => {
 
       {featureFlags.AddFactButton && <AddFactButton />}
 
-      <Facts />
+      {/* <Facts /> */}
 
-      {p.celebMd && <Md />}
+      {p.celebOldContent && <Md />}
 
       <Discussion />
     </main>

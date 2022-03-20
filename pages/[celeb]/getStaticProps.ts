@@ -1,45 +1,53 @@
+import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import {
-  getImageLink,
-  loadCelebOldContent,
-  loadCeleb,
-} from './getStaticProps.helpers';
+import { sanityClient } from '../components/sanityClient';
+import { getImageLink } from './getStaticProps.helpers';
 
 export const getStaticProps = async ({
   params,
 }: {
   params: { celeb: string };
 }) => {
-  const celeb = loadCeleb(params.celeb);
-  const celebOldContentRaw = loadCelebOldContent(params.celeb);
-  const celebOldContent = {
-    ...celebOldContentRaw.data,
+  const celeb = await sanityClient.fetch(
+    `*[_type == 'celeb' && slug.current == $slug][0]{
+      ...,
+      'slug': slug.current,
+      'picture': picture.asset._ref
+    }`,
+    { slug: params.celeb },
+  );
+  const { oldContent, ...rest } = celeb;
+  const { data: oldContentFrontMatter, content: oldContentMarkdown } =
+    matter(oldContent);
+  const relatedPeople = await sanityClient.fetch(
+    `*[_type == 'celeb' && slug.current in $slug][0..3]{
+        name,
+        'slug': slug.current,
+        'picture': picture.asset._ref
+      }`,
+    { slug: oldContentFrontMatter.relatedPeople },
+  );
+
+  const parsedOldContent = {
+    ...oldContentFrontMatter,
 
     article: (
       await remark()
         .use(remarkHtml, { sanitize: false })
-        .process(celebOldContentRaw.content)
+        .process(oldContentMarkdown)
     ).toString(),
 
-    relatedPeople: celebOldContentRaw.data.relatedPeople.map((slug: string) => {
-      const celebYaml = loadCeleb(slug);
-
-      return {
-        name: celebYaml.name,
-        slug,
-        pic: getImageLink(celebYaml.id),
-      };
-    }),
+    relatedPeople,
   };
 
-  const imagePath = getImageLink(celeb.id);
+  const imagePath = getImageLink(celeb.wikipediaId);
 
   return {
     props: {
       slug: params.celeb,
-      celeb,
-      celebOldContent,
+      celeb: rest,
+      celebOldContent: parsedOldContent,
       pic: imagePath,
     },
   };

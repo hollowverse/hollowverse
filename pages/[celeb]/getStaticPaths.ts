@@ -1,4 +1,4 @@
-import { publishedCelebs } from '~/publishedCelebs';
+// import { publishedCelebs } from '~/publishedCelebs';
 
 export const getStaticPaths = async () => {
   return {
