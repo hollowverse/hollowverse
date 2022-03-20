@@ -11,19 +11,21 @@ export const Separator: React.FC<{
   const minor = p.minor || false;
 
   return (
-    <div className={clsx(s.Separator, p.className, minor ? s.minor : s.major)}>
-      <Container maxWidth="md" disableGutters>
-        {p.title && (
-          <Typography
-            variant="h3"
-            component="h2"
-            fontWeight={500}
-            className={s.title}
-          >
-            {p.title}
-          </Typography>
-        )}
-      </Container>
-    </div>
+    <Container
+      maxWidth="md"
+      disableGutters
+      className={clsx(s.Separator, p.className, minor ? s.minor : s.major)}
+    >
+      {p.title && (
+        <Typography
+          variant="h3"
+          component="h2"
+          fontWeight={500}
+          className={s.title}
+        >
+          {p.title}
+        </Typography>
+      )}
+    </Container>
   );
 };
