@@ -17,10 +17,12 @@ export const getStaticProps = async ({
     { slug: params.celeb },
   );
 
+  let crap = false;
   if (!celeb) {
-    return {
-      notFound: true,
-    };
+    crap = true;
+    // return {
+    //   notFound: true,
+    // };
   }
 
   const { oldContent, ...rest } = celeb;
