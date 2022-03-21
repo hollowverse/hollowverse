@@ -1,0 +1,57 @@
+name: 'Martin Freeman'
+id: 'Martin_Freeman'
+discourseTopicId: 911
+pronoun: he
+
+facts:
+  - id: 1d1a4bb8-64b9-4b8a-97a9-012d2fd2ed79
+    dateAdded: 03-17-2022
+    date: 03-30-2015
+    type: quote
+    context: During the 2015 UK general election, Martin Freeman said
+    content: |
+      Really, for me, there's only one choice, and I choose Labour
+    tags:
+      - Labour supporter
+    issue: Political Party Affiliation
+    source: https://www.theguardian.com/politics/2015/mar/30/hobbit-star-martin-freeman-appears-in-labour-election-broadcast
+    forumLink: https://discuss.hollowverse.com/t/martin-freeman-political-views/1432
+
+  - id: a92a00fe-0755-47d2-8bb8-34b00e714127
+    dateAdded: 03-17-2022
+    date: 08-13-2015
+    type: quote
+    context: In an interview about his support for the Labour party, about  Jeremy Corbyn
+    content: |
+      I happen to think he is the most impressive one of the four [candidates]
+
+      I respect all of them because I wouldn't do it and they are all on my team but he is the most impressive as an individual.
+    tags:
+      - Labour supporter
+    issue: Political Party Affiliation
+    source: https://www.radiotimes.com/tv/drama/filming-sherlock-all-year-round-oh-christ-really-says-martin-freeman/
+    forumLink: https://discuss.hollowverse.com/t/martin-freemans-thoughts-about-jeremy-corbyn/1433
+
+  - id: 07dfdda4-49be-48fd-bda1-ce815eb8642b
+    dateAdded: 03-17-2022
+    date: background
+    type: fact
+    content: According to an interview with The Guardian, Martin Freeman went to a Catholic secondary school
+    tags:
+      - Catholic background
+    issue: Religion
+    source: https://www.theguardian.com/film/2005/apr/17/features.magazine
+    forumLink: https://discuss.hollowverse.com/t/martin-freemans-religious-beliefs/1435
+
+  - id: 9663fcd4-e182-4a66-83d5-46494aac4d70
+    dateAdded: 03-17-2022
+    date: 04-16-2005
+    type: quote
+    context: In an interview with The Guardian
+    content: |
+      I'm not a practising Catholic or I wouldn't be living unwed with a woman, and I don't think all poofs are going to hell, and I don't think everyone who's had an abortion is damned, most of my friends are atheists and I understand atheism, I get it, but I happen to be a theist. I believe in our answerableness to something else. You're not the only cunt in the world.
+    issue: Religion
+    tags:
+      - Theist
+    source: https://www.theguardian.com/film/2005/apr/17/features.magazine
+    forumLink: https://discuss.hollowverse.com/t/martin-freemans-religious-beliefs/1435

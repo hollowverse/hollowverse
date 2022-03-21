@@ -1,0 +1,17 @@
+name: 'Warren Buffett'
+id: 'Warren_Buffett'
+discourseTopicId: 1359
+
+facts:
+  - id: 2a625813-f2d0-44fe-998a-8a9d286bfc72
+    dateAdded: 03-17-2022
+    date: 02-24-2020
+    type: quote
+    context: In an interview with CNBC
+    content: |
+      I'm a Democrat, but I'm not a card-carrying Democrat
+    tags:
+      - Democrat
+    issue: Political Party Affiliation
+    source: https://www.youtube.com/watch?v=JvEas_zZ4fM
+    contributionLink: https://discuss.hollowverse.com/t/warren-buffets-political-views/1438
