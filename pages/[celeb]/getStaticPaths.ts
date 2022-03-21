@@ -1,14 +1,12 @@
 import { sanityClient } from '~/pages/components/sanityio';
 
 export const getStaticPaths = async () => {
-  const celebs = await sanityClient.fetch(
-    `*[_type == "celeb"]{'celeb': slug.current}`,
+  const paths = await sanityClient.fetch(
+    `*[_type == "celeb"]{'params': {'celeb': slug.current}}`,
   );
 
   return {
-    paths: celebs.map((celeb: string) => ({
-      params: [{ celeb }],
-    })),
+    paths,
     fallback: true,
   };
 };
