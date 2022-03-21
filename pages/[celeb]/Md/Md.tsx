@@ -8,12 +8,11 @@ import { Sources } from './Sources/Sources';
 export const Md = () => {
   const [showSources, setShowSources] = useState(false);
   const context = useCelebContext();
+  const oldContent = context.celeb.oldContent!;
 
   return (
     <section>
-      {(context.celebOldContent.article && (
-        <Article setShowSources={setShowSources} />
-      )) || (
+      {(oldContent.article && <Article setShowSources={setShowSources} />) || (
         <Container maxWidth="md" style={{ marginTop: 40, marginBottom: 40 }}>
           <Typography variant="h4" component="p">
             Share what you know about {context.celeb.name} in the{' '}
@@ -22,7 +21,7 @@ export const Md = () => {
         </Container>
       )}
 
-      {context.celebOldContent.sources?.length > 0 && (
+      {oldContent.sources?.length > 0 && (
         <Sources showSources={showSources} setShowSources={setShowSources} />
       )}
 

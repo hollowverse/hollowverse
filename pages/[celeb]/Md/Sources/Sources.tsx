@@ -10,6 +10,7 @@ export const Sources = (p: {
   showSources: boolean;
 }) => {
   const context = useCelebContext();
+  const oldContent = context.celeb.oldContent!;
 
   return (
     <Container maxWidth="md" component="section" className={s.Sources}>
@@ -25,7 +26,7 @@ export const Sources = (p: {
 
       {p.showSources && (
         <ul>
-          {context.celebOldContent.sources.map(({ sourceTitle, sourceUrl }) => {
+          {oldContent.sources.map(({ sourceTitle, sourceUrl }) => {
             const encoded = encodeURIComponent(sourceUrl);
             return (
               <li key={encoded} id={encoded} className={s.listItem}>

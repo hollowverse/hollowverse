@@ -10,6 +10,7 @@ export const Article = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const context = useCelebContext();
+  const oldContent = context.celeb.oldContent!;
 
   return (
     <article
@@ -20,12 +21,12 @@ export const Article = (p: {
         }
       }}
     >
-      {context.celebOldContent.summaries && (
+      {oldContent.summaries && (
         <div>
           <Separator title="Summary" className={s.separator} />
           <Container maxWidth="md">
-            <p>{context.celebOldContent.summaries.religion}</p>
-            <p>{context.celebOldContent.summaries.politicalViews}</p>
+            <p>{oldContent.summaries.religion}</p>
+            <p>{oldContent.summaries.politicalViews}</p>
           </Container>
         </div>
       )}
@@ -50,7 +51,7 @@ export const Article = (p: {
                 pathname: '/~/contribute',
                 query: {
                   name: context.celeb.name,
-                  slug: context.slug,
+                  slug: context.celeb.slug,
                 },
               }}
               passHref
@@ -69,7 +70,7 @@ export const Article = (p: {
       <Separator title="Editorial" className={s.separator} />
       <Container
         maxWidth="md"
-        dangerouslySetInnerHTML={{ __html: context.celebOldContent.article }}
+        dangerouslySetInnerHTML={{ __html: oldContent.article }}
       />
     </article>
   );

@@ -4,9 +4,8 @@ import { AddFactButton } from '~/pages/[celeb]/AddFactButton';
 import {
   TCelebOldContent,
   TCeleb,
-  TPic,
   TSlug,
-  CelebProps,
+  CelebPageProps,
 } from '~/pages/components/types';
 import { Discussion } from '~/pages/[celeb]/Discussion/Discussion';
 import { Md } from '~/pages/[celeb]/Md/Md';
@@ -14,7 +13,7 @@ import { PageHead } from '~/pages/[celeb]/PageHead/PageHead';
 import { TopSection } from '~/pages/[celeb]/TopSection/TopSection';
 import { Facts } from './Facts';
 
-const Celeb = (p: CelebProps) => {
+const Celeb = (p: CelebPageProps) => {
   return (
     <main>
       <PageHead />
@@ -25,7 +24,7 @@ const Celeb = (p: CelebProps) => {
 
       {/* <Facts /> */}
 
-      {p.celebOldContent && <Md />}
+      {p.celeb.oldContent && <Md />}
 
       <Discussion />
     </main>

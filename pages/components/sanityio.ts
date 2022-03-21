@@ -1,5 +1,6 @@
 import sanityClient_ from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
 export const sanityClient = sanityClient_({
   projectId: 'ge8aosp3', // you can find this in sanity.json
@@ -9,4 +10,4 @@ export const sanityClient = sanityClient_({
 });
 
 const builder = imageUrlBuilder(sanityClient);
-export const sanityImage = (source: string) => builder.image(source);
+export const sanityImage = (source: SanityImageObject) => builder.image(source);

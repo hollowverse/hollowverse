@@ -47,9 +47,10 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      slug: params.celeb,
-      celeb: rest,
-      celebOldContent: parsedOldContent,
+      celeb: {
+        ...rest,
+        oldContent: parsedOldContent,
+      },
       placeholderImage,
     },
   };

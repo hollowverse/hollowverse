@@ -9,8 +9,7 @@ import { useRouter } from 'next/router';
 export const AddFactButton = () => {
   const context = useCelebContext();
   const router = useRouter();
-  const name = context.celeb.name;
-  const slug = context.slug;
+  const { name, slug } = context.celeb;
 
   return (
     <div className={s.AddFactButton}>

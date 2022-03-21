@@ -10,13 +10,16 @@ export const PageHead = () => {
       <title>
         {context.celeb.name}&apos;s religion and political view | Hollowverse
       </title>
-      {context.celebOldContent?.summaries && (
+      {context.celeb.oldContent?.summaries && (
         <meta
           name="description"
-          content={`Religion: ${context.celebOldContent.summaries.religion}; political views: ${context.celebOldContent.summaries.politicalViews}`}
+          content={`Religion: ${context.celeb.oldContent.summaries.religion}; political views: ${context.celeb.oldContent.summaries.politicalViews}`}
         />
       )}
-      <link rel="canonical" href={`https://hollowverse.com/${context.slug}`} />
+      <link
+        rel="canonical"
+        href={`https://hollowverse.com/${context.celeb.slug}`}
+      />
     </Head>
   );
 };

@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { CelebProps } from '~/pages/components/types';
+import { CelebPageProps } from '~/pages/components/types';
 
 const StaticPropsContext = createContext(null);
 
@@ -14,5 +14,5 @@ export const StaticPropsContextProvider = (props: any) => {
 };
 
 export const useCelebContext = () => {
-  return useContext<CelebProps>(StaticPropsContext as any);
+  return useContext<CelebPageProps>(StaticPropsContext as any);
 };
