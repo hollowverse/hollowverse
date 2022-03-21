@@ -1,6 +1,14 @@
-export const getStaticPaths = () => {
+import { sanityClient } from '~/pages/components/sanityio';
+
+export const getStaticPaths = async () => {
+  const celebs = await sanityClient.fetch(
+    `*[_type == "celeb"]{'celeb': slug.current}`,
+  );
+
   return {
-    paths: [{ params: { celeb: 'alyson-hannigan' } }],
-    fallback: 'blocking',
+    paths: celebs.map((celeb: string) => ({
+      params: [{ celeb }],
+    })),
+    fallback: true,
   };
 };
