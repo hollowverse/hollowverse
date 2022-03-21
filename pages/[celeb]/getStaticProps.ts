@@ -1,8 +1,7 @@
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { sanityClient } from '../components/sanityio';
-import { getImageLink } from './getStaticProps.helpers';
+import { sanityClient } from '~/pages/components/sanityio';
 
 export const getStaticProps = async ({
   params,
@@ -13,21 +12,26 @@ export const getStaticProps = async ({
     `*[_type == 'celeb' && slug.current == $slug][0]{
       ...,
       'slug': slug.current,
-      'picture': picture.asset._ref
+      'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
     }`,
     { slug: params.celeb },
   );
   const { oldContent, ...rest } = celeb;
   const { data: oldContentFrontMatter, content: oldContentMarkdown } =
     matter(oldContent);
-  const relatedPeople = await sanityClient.fetch(
-    `*[_type == 'celeb' && slug.current in $slug][0..3]{
-        name,
-        'slug': slug.current,
-        'picture': picture.asset._ref
-      }`,
-    { slug: oldContentFrontMatter.relatedPeople },
-  );
+  const [relatedPeople, placeholderImage] = await Promise.all([
+    sanityClient.fetch(
+      `*[_type == 'celeb' && slug.current in $slug][0..3]{
+          name,
+          'slug': slug.current,
+          'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
+        }`,
+      { slug: oldContentFrontMatter.relatedPeople },
+    ),
+    sanityClient.getDocument(
+      'image-98dc320a756a3f0f5dc40a59ced1194619719a60-225x225-png',
+    ),
+  ]);
 
   const parsedOldContent = {
     ...oldContentFrontMatter,
@@ -41,14 +45,12 @@ export const getStaticProps = async ({
     relatedPeople,
   };
 
-  const imagePath = getImageLink(celeb.wikipediaId);
-
   return {
     props: {
       slug: params.celeb,
       celeb: rest,
       celebOldContent: parsedOldContent,
-      pic: imagePath,
+      placeholderImage,
     },
   };
 };

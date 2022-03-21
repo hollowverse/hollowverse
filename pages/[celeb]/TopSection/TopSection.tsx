@@ -1,11 +1,14 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
+import { sanityImage } from '~/pages/components/sanityio';
 import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './TopSection.module.scss';
 
 export const TopSection = () => {
   const context = useCelebContext();
+
+  const picture = context.celeb.picture || context.placeholderImage;
 
   return (
     <div className={s.TopSection}>
@@ -14,7 +17,9 @@ export const TopSection = () => {
           <div className={s.imageContainer}>
             <Image
               className={s.image}
-              src={context.pic ? context.pic : '/images/avatar-placeholder.png'}
+              blurDataURL={picture.metadata.lqip}
+              placeholder="blur"
+              src={sanityImage(picture).width(200).height(250).url()}
               width={200}
               height={250}
               priority

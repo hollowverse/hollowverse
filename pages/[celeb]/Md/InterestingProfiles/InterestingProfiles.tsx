@@ -1,6 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
+import { sanityImage } from '~/pages/components/sanityio';
 import { Separator } from '~/pages/components/Separator';
 import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './InterestingProfiles.module.scss';
@@ -15,6 +16,8 @@ export const InterestingProfiles = () => {
 
       <Container maxWidth="md" className={s.content}>
         {relatedPeople.map((celebData) => {
+          const picture = celebData.picture || context.placeholderImage;
+
           return (
             <a
               className={s.link}
@@ -25,7 +28,9 @@ export const InterestingProfiles = () => {
                 <Image
                   objectFit="cover"
                   objectPosition="top"
-                  src={celebData.pic || '/images/avatar-placeholder.png'}
+                  blurDataURL={picture.metadata.lqip}
+                  placeholder="blur"
+                  src={sanityImage(picture).width(200).height(250).url()}
                   alt={celebData.name}
                   layout="fixed"
                   width={160}

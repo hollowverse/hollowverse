@@ -1,6 +1,10 @@
 module.exports = {
   pageExtensions: ['page.tsx', 'page.ts'],
 
+  images: {
+    domains: ['cdn.sanity.io'],
+  },
+
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
