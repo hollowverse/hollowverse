@@ -1,8 +1,6 @@
-// import { publishedCelebs } from '~/publishedCelebs';
-
 export const getStaticPaths = async () => {
   return {
-    paths: [],
+    paths: [{ params: { celeb: 'alyson-hannigan' } }],
     fallback: 'blocking',
   };
 };
