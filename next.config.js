@@ -19,7 +19,7 @@ module.exports = {
     defaultLocale: 'en',
   },
 
-  rewrites() {
+  async rewrites() {
     return {
       fallback: [
         {
