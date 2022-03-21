@@ -1,7 +1,37 @@
-export type TNotablePersonYaml = {
-  id: string;
+import {
+  SanityImageObject,
+  SanityImageSource,
+} from '@sanity/image-url/lib/types/types';
+
+export type TSlug = string;
+
+export type TPicture = SanityImageObject & {
+  metadata: {
+    lqip: string;
+  };
+};
+
+export type TCelebOldContent = {
+  sources: { sourceUrl: string; sourceTitle: string }[];
+  relatedPeople: {
+    slug: TSlug;
+    picture: TPicture;
+    name: string;
+  }[];
+  summaries?: {
+    religion: string;
+    politicalViews: string;
+  };
+  article: string;
+};
+
+export type TCeleb = {
+  wikipediaId: string;
   name: string;
+  slug: TSlug;
+  picture: TPicture;
   discourseTopicId: number;
+  oldContent?: TCelebOldContent;
 };
 
 export type TTag = {
@@ -10,29 +40,7 @@ export type TTag = {
   alt: string;
 };
 
-export type TPic = string;
-
-export type TSlug = string;
-
-export type TNotablePersonMd = {
-  data: {
-    sources: { sourceUrl: string; sourceTitle: string }[];
-    relatedPeople: {
-      slug: TSlug;
-      pic: TPic;
-      name: string;
-    }[];
-    summaries?: {
-      religion: string;
-      politicalViews: string;
-    };
-  };
-  content: string;
-};
-
-export type NotablePersonProps = {
-  slug: TSlug;
-  notablePersonYaml: TNotablePersonYaml;
-  notablePersonMd: TNotablePersonMd;
-  pic: TPic;
+export type CelebPageProps = {
+  celeb: TCeleb;
+  placeholderImage: SanityImageSource;
 };
