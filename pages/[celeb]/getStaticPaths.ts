@@ -1,6 +1,6 @@
-export const getStaticPaths = async () => {
+export const getStaticPaths = () => {
   return {
     paths: [{ params: { celeb: 'alyson-hannigan' } }],
-    fallback: false,
+    fallback: 'blocking',
   };
 };
