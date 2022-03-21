@@ -2,11 +2,11 @@ import { Container } from '@mui/material';
 import Script from 'next/script';
 import React from 'react';
 import { Separator } from '~/pages/components/Separator';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './Discussion.module.scss';
 
 export const Discussion = () => {
-  const context = useNotablePersonContext();
+  const context = useCelebContext();
 
   return (
     <section className={s.Discussion} id="discussion">
@@ -15,7 +15,7 @@ export const Discussion = () => {
         dangerouslySetInnerHTML={{
           __html: `
           DiscourseEmbed = { discourseUrl: 'https://discuss.hollowverse.com/',
-          topicId: '${context.notablePersonYaml.discourseTopicId}' };
+          topicId: '${context.celeb.discourseTopicId}' };
           (function() {
             var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
             d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';

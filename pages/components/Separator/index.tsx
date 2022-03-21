@@ -1,13 +1,21 @@
 import { Container, Typography } from '@mui/material';
 import React from 'react';
-import s from './Separator.module.scss';
+import s from './styles.module.scss';
 import clsx from 'clsx';
 
-export const Separator: React.FC<{ title?: string; className?: string }> = (
-  p,
-) => (
-  <div className={clsx(s.Separator, p.className)}>
-    <Container maxWidth="md" disableGutters>
+export const Separator: React.FC<{
+  title?: string;
+  className?: string;
+  minor?: boolean;
+}> = (p) => {
+  const minor = p.minor || false;
+
+  return (
+    <Container
+      maxWidth="md"
+      disableGutters
+      className={clsx(s.Separator, p.className, minor ? s.minor : s.major)}
+    >
       {p.title && (
         <Typography
           variant="h3"
@@ -19,5 +27,5 @@ export const Separator: React.FC<{ title?: string; className?: string }> = (
         </Typography>
       )}
     </Container>
-  </div>
-);
+  );
+};

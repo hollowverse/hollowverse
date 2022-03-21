@@ -1,34 +1,37 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
+import { sanityImage } from '~/pages/components/sanityio';
 import { Separator } from '~/pages/components/Separator';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './InterestingProfiles.module.scss';
 
 export const InterestingProfiles = () => {
-  const context = useNotablePersonContext();
-  const relatedPeople = context.notablePersonMd.data.relatedPeople;
+  const context = useCelebContext();
+  const relatedPeople = context.celeb.oldContent!.relatedPeople;
 
   return (
     <div className={s.InterestingProfiles}>
       <Separator title="Other interesting profiles" />
 
       <Container maxWidth="md" className={s.content}>
-        {relatedPeople.map((notablePersonData) => {
+        {relatedPeople.map((celebData) => {
+          const picture = celebData.picture || context.placeholderImage;
+
           return (
             <a
               className={s.link}
-              href={`/${notablePersonData.slug}`}
-              key={notablePersonData.slug}
+              href={`/${celebData.slug}`}
+              key={celebData.slug}
             >
               <span className={s.image}>
                 <Image
                   objectFit="cover"
                   objectPosition="top"
-                  src={
-                    notablePersonData.pic || '/images/avatar-placeholder.png'
-                  }
-                  alt={notablePersonData.name}
+                  blurDataURL={picture.metadata.lqip}
+                  placeholder="blur"
+                  src={sanityImage(picture).width(200).height(250).url()}
+                  alt={celebData.name}
                   layout="fixed"
                   width={160}
                   height={200}
@@ -41,7 +44,7 @@ export const InterestingProfiles = () => {
                 component="p"
                 className={s.name}
               >
-                {notablePersonData.name}
+                {celebData.name}
               </Typography>
             </a>
           );

@@ -1,18 +1,12 @@
 @import '~pages/components/common';
 
 .Article {
-  padding: $s4;
   padding-top: 0;
 
   :global(.source-citation) {
     vertical-align: super;
     font-size: 75%;
     color: #1769aa;
-  }
-
-  .separator {
-    margin-left: -$s4;
-    margin-right: -$s4;
   }
 
   blockquote {

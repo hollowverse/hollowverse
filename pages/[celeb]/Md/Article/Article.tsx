@@ -1,7 +1,7 @@
 import { Button, Container, Grid } from '@mui/material';
 import React from 'react';
 import { Separator } from '~/pages/components/Separator';
-import { useNotablePersonContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
 import s from './styles.module.scss';
 import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link';
@@ -9,7 +9,8 @@ import Link from 'next/link';
 export const Article = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const context = useNotablePersonContext();
+  const context = useCelebContext();
+  const oldContent = context.celeb.oldContent!;
 
   return (
     <article
@@ -20,21 +21,18 @@ export const Article = (p: {
         }
       }}
     >
-      {context.notablePersonMd.data.summaries && (
+      {oldContent.summaries && (
         <div>
-          <Separator title="Summary" className={s.separator} />
+          <Separator title="Summary" />
           <Container maxWidth="md">
-            <p>{context.notablePersonMd.data.summaries.religion}</p>
-            <p>{context.notablePersonMd.data.summaries.politicalViews}</p>
+            <p>{oldContent.summaries.religion}</p>
+            <p>{oldContent.summaries.politicalViews}</p>
           </Container>
         </div>
       )}
 
       <div className={s.contributePromo}>
-        <Separator
-          title="Hi! 👋 Do you think a lot about politics and religion? 🧠"
-          className={s.separator}
-        />
+        <Separator title="Hi! 👋 Do you think a lot about politics and religion? 🧠" />
         <Container maxWidth="md" className={s.contributePromoContent}>
           <div className={s.contributePromoText}>
             <p>
@@ -49,8 +47,8 @@ export const Article = (p: {
               href={{
                 pathname: '/~/contribute',
                 query: {
-                  name: context.notablePersonYaml.name,
-                  slug: context.slug,
+                  name: context.celeb.name,
+                  slug: context.celeb.slug,
                 },
               }}
               passHref
@@ -59,17 +57,17 @@ export const Article = (p: {
                 aria-label="Learn about the steps required to start contributing to Hollowverse"
                 endIcon={<LoginIcon />}
               >
-                Learn more
+                Learn how
               </Button>
             </Link>
           </div>
         </Container>
       </div>
 
-      <Separator title="Editorial" className={s.separator} />
+      <Separator title="Editorial" />
       <Container
         maxWidth="md"
-        dangerouslySetInnerHTML={{ __html: context.notablePersonMd.content }}
+        dangerouslySetInnerHTML={{ __html: oldContent.article }}
       />
     </article>
   );
