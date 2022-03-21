@@ -23,7 +23,7 @@ export const Article = (p: {
     >
       {oldContent.summaries && (
         <div>
-          <Separator title="Summary" className={s.separator} />
+          <Separator title="Summary" />
           <Container maxWidth="md">
             <p>{oldContent.summaries.religion}</p>
             <p>{oldContent.summaries.politicalViews}</p>
@@ -32,10 +32,7 @@ export const Article = (p: {
       )}
 
       <div className={s.contributePromo}>
-        <Separator
-          title="Hi! 👋 Do you think a lot about politics and religion? 🧠"
-          className={s.separator}
-        />
+        <Separator title="Hi! 👋 Do you think a lot about politics and religion? 🧠" />
         <Container maxWidth="md" className={s.contributePromoContent}>
           <div className={s.contributePromoText}>
             <p>
@@ -67,7 +64,7 @@ export const Article = (p: {
         </Container>
       </div>
 
-      <Separator title="Editorial" className={s.separator} />
+      <Separator title="Editorial" />
       <Container
         maxWidth="md"
         dangerouslySetInnerHTML={{ __html: oldContent.article }}
