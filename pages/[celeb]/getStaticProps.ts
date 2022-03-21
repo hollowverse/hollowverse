@@ -16,6 +16,13 @@ export const getStaticProps = async ({
     }`,
     { slug: params.celeb },
   );
+
+  if (!celeb) {
+    return {
+      notFound: true,
+    };
+  }
+
   const { oldContent, ...rest } = celeb;
   const { data: oldContentFrontMatter, content: oldContentMarkdown } =
     matter(oldContent);
