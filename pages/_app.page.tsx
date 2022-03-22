@@ -1,3 +1,4 @@
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import {
   StyledEngineProvider,
   ThemeProvider,
@@ -6,17 +7,24 @@ import {
 import { AppProps } from 'next/app';
 import 'normalize.css';
 import React from 'react';
+import { createEmotionCache } from '~/pages/components/createEmotionCache';
 import { StaticPropsContextProvider } from '~/pages/components/StaticPropsContextProvider';
-import { theme } from '~/pages/_app/theme';
+import { AppBar } from '~/pages/_app/AppBar/AppBar';
 import { Footer } from '~/pages/_app/Footer/Footer';
 import '~/pages/_app/globalStyles.css';
 import { Head } from '~/pages/_app/Head/Head';
-import { AppBar } from '~/pages/_app/AppBar/AppBar';
+import { theme } from '~/pages/_app/theme';
 
-const App = ({ Component, pageProps }: AppProps) => {
+const clientSideEmotionCache = createEmotionCache();
+
+const App = ({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}: AppProps & { emotionCache: EmotionCache }) => {
   return (
     <React.StrictMode>
-      <StyledEngineProvider injectFirst>
+      <CacheProvider value={emotionCache}>
         <ThemeProvider theme={unstable_createMuiStrictModeTheme(theme)}>
           <StaticPropsContextProvider value={pageProps}>
             <Head />
@@ -25,7 +33,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Footer />
           </StaticPropsContextProvider>
         </ThemeProvider>
-      </StyledEngineProvider>
+      </CacheProvider>
     </React.StrictMode>
   );
 };

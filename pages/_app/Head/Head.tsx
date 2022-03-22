@@ -20,6 +20,7 @@ export const Head = () => (
     `}</Script>
 
     <NextjsHead>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
       <meta charSet="utf-8" />
       <title>Hollowverse: Important people and facts</title>
       <meta
