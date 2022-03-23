@@ -1,9 +1,9 @@
 import EditIcon from '@mui/icons-material/Edit';
 import { Button } from '@mui/material';
 import React from 'react';
-import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
 import s from './styles.module.scss';
-import { getContributeLink } from '~/pages/components/getContributeLink';
+import { getContributeLink } from '~/src/components/getContributeLink';
 import { useRouter } from 'next/router';
 
 export const AddFactButton = () => {

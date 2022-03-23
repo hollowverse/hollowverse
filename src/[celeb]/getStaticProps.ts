@@ -1,7 +1,7 @@
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { sanityClient } from '~/pages/components/sanityio';
+import { sanityClient } from '~/src/components/sanityio';
 
 export const getStaticProps = async ({
   params,

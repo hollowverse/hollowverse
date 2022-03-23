@@ -1,12 +1,12 @@
 import { Container, Divider, Link, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { Icon } from '~/pages/components/Icon';
+import { Icon } from '~/src/components/Icon';
 import CommentDots from '~/public/images/icons/comment-dots.svg';
 import InfoCircle from '~/public/images/icons/info-circle.svg';
 import GiftIcon from '~/public/images/icons/gift.svg';
 import s from './Footer.module.scss';
-import { Separator } from '~/pages/components/Separator';
+import { Separator } from '~/src/components/Separator';
 
 export const Footer = () => {
   return (

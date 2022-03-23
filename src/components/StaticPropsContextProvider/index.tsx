@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react';
-import { CelebPageProps } from '~/pages/components/types';
+import { CelebPageProps } from '~/src/components/types';
 
 const StaticPropsContext = createContext(null);
 

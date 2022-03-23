@@ -1,7 +1,7 @@
 import { Button, Container, Grid } from '@mui/material';
 import React from 'react';
-import { Separator } from '~/pages/components/Separator';
-import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
+import { Separator } from '~/src/components/Separator';
+import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
 import s from './styles.module.scss';
 import LoginIcon from '@mui/icons-material/Login';
 import Link from 'next/link';

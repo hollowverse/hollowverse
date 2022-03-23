@@ -1,9 +1,9 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { sanityImage } from '~/pages/components/sanityio';
-import { Separator } from '~/pages/components/Separator';
-import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
+import { sanityImage } from '~/src/components/sanityio';
+import { Separator } from '~/src/components/Separator';
+import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
 import s from './InterestingProfiles.module.scss';
 
 export const InterestingProfiles = () => {

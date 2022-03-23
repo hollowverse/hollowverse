@@ -1,23 +1,21 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import {
-  StyledEngineProvider,
   ThemeProvider,
   unstable_createMuiStrictModeTheme,
 } from '@mui/material';
 import { AppProps } from 'next/app';
 import 'normalize.css';
 import React from 'react';
-import { createEmotionCache } from '~/pages/components/createEmotionCache';
-import { StaticPropsContextProvider } from '~/pages/components/StaticPropsContextProvider';
-import { AppBar } from '~/pages/_app/AppBar/AppBar';
-import { Footer } from '~/pages/_app/Footer/Footer';
-import '~/pages/_app/globalStyles.css';
-import { Head } from '~/pages/_app/Head/Head';
-import { theme } from '~/pages/_app/theme';
+import { createEmotionCache } from '~/src/components/createEmotionCache';
+import { StaticPropsContextProvider } from '~/src/components/StaticPropsContextProvider';
+import { AppBar } from '~/src/_app/AppBar/AppBar';
+import { Footer } from '~/src/_app/Footer/Footer';
+import { Head } from '~/src/_app/Head/Head';
+import { theme } from '~/src/_app/theme';
 
 const clientSideEmotionCache = createEmotionCache();
 
-const App = ({
+export const App = ({
   Component,
   pageProps,
   emotionCache = clientSideEmotionCache,
@@ -37,5 +35,3 @@ const App = ({
     </React.StrictMode>
   );
 };
-
-export default App;

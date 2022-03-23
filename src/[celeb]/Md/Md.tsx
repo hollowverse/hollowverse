@@ -1,6 +1,6 @@
 import { Container, Link, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
 import { Article } from './Article/Article';
 import { InterestingProfiles } from './InterestingProfiles/InterestingProfiles';
 import { Sources } from './Sources/Sources';

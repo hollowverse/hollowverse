@@ -1,6 +1,6 @@
 import { Chip, Container, Typography } from '@mui/material';
 import React from 'react';
-import { Separator } from '~/pages/components/Separator';
+import { Separator } from '~/src/components/Separator';
 import s from './styles.module.scss';
 import clsx from 'clsx';
 

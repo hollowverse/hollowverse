@@ -1,19 +1,19 @@
 import React from 'react';
-import { featureFlags } from '~/pages/components/featureFlags';
-import { AddFactButton } from '~/pages/[celeb]/AddFactButton';
+import { featureFlags } from '~/src/components/featureFlags';
+import { AddFactButton } from '~/src/[celeb]/AddFactButton';
 import {
   TCelebOldContent,
   TCeleb,
   TSlug,
   CelebPageProps,
-} from '~/pages/components/types';
-import { Discussion } from '~/pages/[celeb]/Discussion/Discussion';
-import { Md } from '~/pages/[celeb]/Md/Md';
-import { PageHead } from '~/pages/[celeb]/PageHead/PageHead';
-import { TopSection } from '~/pages/[celeb]/TopSection/TopSection';
+} from '~/src/components/types';
+import { Discussion } from '~/src/[celeb]/Discussion/Discussion';
+import { Md } from '~/src/[celeb]/Md/Md';
+import { PageHead } from '~/src/[celeb]/PageHead/PageHead';
+import { TopSection } from '~/src/[celeb]/TopSection/TopSection';
 import { Facts } from './Facts';
 
-const Celeb = (p: CelebPageProps) => {
+export const Celeb = (p: CelebPageProps) => {
   return (
     <main>
       <PageHead />

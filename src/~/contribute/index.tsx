@@ -6,12 +6,12 @@ import CelebrationIcon from '@mui/icons-material/Celebration';
 import { Button, Container, Link, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { getContributeLink } from '~/pages/components/getContributeLink';
+import { getContributeLink } from '~/src/components/getContributeLink';
 import { Heading2 } from './Heading2';
 import s from './styles.module.scss';
 import Head from 'next/head';
 
-const Contribute = () => {
+export const Contribute = () => {
   const router = useRouter();
   const name = router.query.name;
   const href = getContributeLink(name as string);
@@ -109,5 +109,3 @@ const Contribute = () => {
     </>
   );
 };
-
-export default Contribute;

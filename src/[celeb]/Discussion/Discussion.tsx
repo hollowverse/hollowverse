@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
 import Script from 'next/script';
 import React from 'react';
-import { Separator } from '~/pages/components/Separator';
-import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
+import { Separator } from '~/src/components/Separator';
+import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
 import s from './Discussion.module.scss';
 
 export const Discussion = () => {

@@ -1,4 +1,4 @@
-import { sanityClient } from '~/pages/components/sanityio';
+import { sanityClient } from '~/src/components/sanityio';
 
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(

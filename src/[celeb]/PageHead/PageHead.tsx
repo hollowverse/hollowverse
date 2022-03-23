@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import { useCelebContext } from '~/pages/components/StaticPropsContextProvider';
+import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
 
 export const PageHead = () => {
   const context = useCelebContext();
