@@ -1,6 +1,4 @@
 module.exports = {
-  pageExtensions: ['page.tsx', 'page.ts'],
-
   images: {
     domains: ['cdn.sanity.io'],
   },
