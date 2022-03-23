@@ -21,17 +21,15 @@ export const App = ({
   emotionCache = clientSideEmotionCache,
 }: AppProps & { emotionCache: EmotionCache }) => {
   return (
-    <React.StrictMode>
-      <CacheProvider value={emotionCache}>
-        <ThemeProvider theme={unstable_createMuiStrictModeTheme(theme)}>
-          <StaticPropsContextProvider value={pageProps}>
-            <Head />
-            <AppBar />
-            <Component {...pageProps} />
-            <Footer />
-          </StaticPropsContextProvider>
-        </ThemeProvider>
-      </CacheProvider>
-    </React.StrictMode>
+    <CacheProvider value={emotionCache}>
+      <Head />
+      <ThemeProvider theme={unstable_createMuiStrictModeTheme(theme)}>
+        <StaticPropsContextProvider value={pageProps}>
+          <AppBar />
+          <Component {...pageProps} />
+          <Footer />
+        </StaticPropsContextProvider>
+      </ThemeProvider>
+    </CacheProvider>
   );
 };
