@@ -1,0 +1,13 @@
+@import '~src/components/common';
+
+.Sources {
+  .listItem {
+    & + .listItem {
+      margin-top: $s4;
+    }
+
+    .source {
+      color: #1769aa;
+    }
+  }
+}

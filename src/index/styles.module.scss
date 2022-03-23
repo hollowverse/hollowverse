@@ -1,0 +1,37 @@
+@import '~src/components/common';
+
+.Index {
+  margin-top: $s8;
+
+  .container {
+    margin: $s4 $s4;
+  }
+}
+
+.fancy {
+  height: 0;
+  overflow: visible;
+
+  .fancyBackground {
+    text-align: center;
+    padding: 0;
+    position: relative;
+    background: linear-gradient(-90deg, #4535f74f, #fbc9546f, #4cfde838);
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+    z-index: 0;
+    height: 300px;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 80%;
+      display: block;
+      background: linear-gradient(0deg, #fff 10%, rgba(255, 255, 255, 0) 100%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+    }
+  }
+}

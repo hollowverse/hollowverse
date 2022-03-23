@@ -1,0 +1,32 @@
+@import '~src/components/common';
+
+.CelebGallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .link {
+    margin-top: $s4;
+    text-align: center;
+    color: $textColor;
+    text-decoration: none;
+
+    .image {
+      width: 160px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      border: 1px solid lightgray;
+      padding: 5px;
+
+      img {
+        border: 1px solid lightgray !important;
+      }
+    }
+
+    .name {
+      margin-top: $s2;
+    }
+  }
+}
