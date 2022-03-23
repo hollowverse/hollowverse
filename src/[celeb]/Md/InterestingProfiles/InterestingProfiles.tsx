@@ -1,10 +1,9 @@
-import { Container, Typography } from '@mui/material';
-import Image from 'next/image';
+import { Container } from '@mui/material';
 import React from 'react';
-import { sanityImage } from '~/src/components/sanityio';
+import { CelebGallery } from '~/src/components/CelebGallery';
 import { Separator } from '~/src/components/Separator';
 import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
-import s from './InterestingProfiles.module.scss';
+import s from './styles.module.scss';
 
 export const InterestingProfiles = () => {
   const context = useCelebContext();
@@ -14,41 +13,8 @@ export const InterestingProfiles = () => {
     <div className={s.InterestingProfiles}>
       <Separator title="Other interesting profiles" />
 
-      <Container maxWidth="md" className={s.content}>
-        {relatedPeople.map((celebData) => {
-          const picture = celebData.picture || context.placeholderImage;
-
-          return (
-            <a
-              className={s.link}
-              href={`/${celebData.slug}`}
-              key={celebData.slug}
-            >
-              <span className={s.image}>
-                <Image
-                  objectFit="cover"
-                  objectPosition="top"
-                  blurDataURL={picture.metadata.lqip}
-                  placeholder="blur"
-                  src={sanityImage(picture).width(200).height(250).url()}
-                  alt={celebData.name}
-                  layout="fixed"
-                  width={160}
-                  height={200}
-                  className={s.image}
-                />
-              </span>
-              <Typography
-                fontWeight={500}
-                variant="h4"
-                component="p"
-                className={s.name}
-              >
-                {celebData.name}
-              </Typography>
-            </a>
-          );
-        })}
+      <Container maxWidth="md">
+        <CelebGallery celebGalleryItems={relatedPeople} />
       </Container>
     </div>
   );

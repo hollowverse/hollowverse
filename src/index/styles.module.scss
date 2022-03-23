@@ -1,5 +1,9 @@
 @import '~src/components/common';
 
 .Index {
-  margin-top: $s4;
+  margin-top: $s8;
+
+  .container {
+    margin: $s4 $s4;
+  }
 }

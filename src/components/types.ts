@@ -11,13 +11,15 @@ export type TPicture = SanityImageObject & {
   };
 };
 
+export type TCelebGalleryItem = {
+  slug: TSlug;
+  picture: TPicture;
+  name: string;
+};
+
 export type TCelebOldContent = {
   sources: { sourceUrl: string; sourceTitle: string }[];
-  relatedPeople: {
-    slug: TSlug;
-    picture: TPicture;
-    name: string;
-  }[];
+  relatedPeople: TCelebGalleryItem[];
   summaries?: {
     religion: string;
     politicalViews: string;

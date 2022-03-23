@@ -1,25 +1,35 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React from 'react';
+import { CelebGallery } from '~/src/components/CelebGallery';
 import { sanityClient } from '~/src/components/sanityio';
 import s from './styles.module.scss';
 import { top100CelebSlugs } from './top100CelebSlugs';
 
-export const Index = (p) => {
+export const Index = (p: any) => {
   return (
     <Container className={s.Index} maxWidth="md">
-      IM HOME!!!
+      <Typography variant="h1">Top 100 celebs</Typography>
+
+      <div className={s.container}>
+        <CelebGallery celebGalleryItems={p.top100Celebs} />
+      </div>
     </Container>
   );
 };
 
 export const getStaticProps = async () => {
-  const top100Celebs = await sanityClient.fetch(
+  const top100Celebs = (await sanityClient.fetch(
     `*[_type == 'celeb' && slug.current in $slugs]{
+      name,
       'slug': slug.current,
       'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
     }`,
     { slugs: top100CelebSlugs },
-  );
+  )) as any[];
+
+  top100Celebs.sort((a, b) => {
+    return top100CelebSlugs.indexOf(a.slug) - top100CelebSlugs.indexOf(b.slug);
+  });
 
   return {
     props: {

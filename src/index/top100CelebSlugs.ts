@@ -98,4 +98,6 @@ export const top100CelebSlugs = [
   'nicki-minaj',
   'nina-dobrev',
   'audrey-hepburn',
+  'michael-douglas',
+  'sylvester-stallone',
 ];

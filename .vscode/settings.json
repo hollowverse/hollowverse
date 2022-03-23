@@ -1,4 +1,5 @@
 {
   "cSpell.words": ["clsx"],
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }
