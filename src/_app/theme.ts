@@ -1,7 +1,7 @@
-import { ThemeOptions } from '@mui/material';
+import { createTheme } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
-export const theme: ThemeOptions = {
+export const theme = createTheme({
   spacing: 4,
 
   palette: {
@@ -76,4 +76,4 @@ export const theme: ThemeOptions = {
       },
     },
   },
-};
+});
