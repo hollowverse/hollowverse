@@ -1,0 +1,19 @@
+@import '~src/components/common';
+
+.Separator {
+  background-color: $lessEmphasis300;
+
+  &.major {
+    padding: $s2;
+    min-height: 10px;
+    margin-top: $s4;
+  }
+
+  &.minor {
+    height: $s2;
+  }
+
+  .title {
+    margin-top: $s2;
+  }
+}
