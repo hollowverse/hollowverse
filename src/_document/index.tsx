@@ -1,8 +1,7 @@
-import React from 'react';
-// eslint-disable-next-line @next/next/no-document-import-in-page
-import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import { theme } from '~/src/_app/theme';
+// eslint-disable-next-line @next/next/no-document-import-in-page
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import React from 'react';
 import { createEmotionCache } from '~/src/components/createEmotionCache';
 
 export class MyDocument extends Document {
@@ -10,11 +9,6 @@ export class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* PWA primary color */}
-          <meta
-            name="theme-color"
-            content={(theme as any).palette.primary.main}
-          />
           <link rel="shortcut icon" href="/images/icons/letter-logo.png" />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
