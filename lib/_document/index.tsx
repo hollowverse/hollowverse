@@ -2,7 +2,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 // eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
-import { createEmotionCache } from '~/src/components/createEmotionCache';
+import { createEmotionCache } from '~/lib/components/createEmotionCache';
 
 export class MyDocument extends Document {
   render() {

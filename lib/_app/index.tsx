@@ -6,12 +6,12 @@ import {
 import { AppProps } from 'next/app';
 import 'normalize.css';
 import React from 'react';
-import { createEmotionCache } from '~/src/components/createEmotionCache';
-import { StaticPropsContextProvider } from '~/src/components/StaticPropsContextProvider';
-import { AppBar } from '~/src/_app/AppBar/AppBar';
-import { Footer } from '~/src/_app/Footer/Footer';
-import { Head } from '~/src/_app/Head/Head';
-import { theme } from '~/src/_app/theme';
+import { createEmotionCache } from '~/lib/components/createEmotionCache';
+import { StaticPropsContextProvider } from '~/lib/components/StaticPropsContextProvider';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
+import { Footer } from '~/lib/_app/Footer/Footer';
+import { Head } from '~/lib/_app/Head/Head';
+import { theme } from '~/lib/_app/theme';
 
 const clientSideEmotionCache = createEmotionCache();
 

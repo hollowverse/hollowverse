@@ -1,8 +1,8 @@
 import { Container, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { sanityImage } from '~/src/components/sanityio';
-import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
+import { sanityImage } from '~/lib/components/sanityio';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import s from './TopSection.module.scss';
 
 export const TopSection = () => {

@@ -1,7 +1,7 @@
 import { Button, Container } from '@mui/material';
 import React from 'react';
-import { useCelebContext } from '~/src/components/StaticPropsContextProvider';
-import { Icon } from '~/src/components/Icon';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import { Icon } from '~/lib/components/Icon';
 import BookOpenIcon from '~/public/images/icons/book-open.svg';
 import s from './Sources.module.scss';
 

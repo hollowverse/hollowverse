@@ -1,3 +1,3 @@
-export { Celeb as default } from '~/src/[celeb]';
-export { getStaticPaths } from '~/src/[celeb]/getStaticPaths';
-export { getStaticProps } from '~/src/[celeb]/getStaticProps';
+export { Celeb as default } from '~/lib/[celeb]';
+export { getStaticPaths } from '~/lib/[celeb]/getStaticPaths';
+export { getStaticProps } from '~/lib/[celeb]/getStaticProps';

@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Icon } from '~/src/components/Icon';
+import { Icon } from '~/lib/components/Icon';
 import SearchIcon from '~/public/images/icons/search-regular.svg';
 import TimesIcon from '~/public/images/icons/times-regular.svg';
 import s from './AppBar.module.scss';

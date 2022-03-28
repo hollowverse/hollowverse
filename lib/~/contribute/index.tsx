@@ -6,7 +6,7 @@ import CelebrationIcon from '@mui/icons-material/Celebration';
 import { Button, Container, Link, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { getContributeLink } from '~/src/components/getContributeLink';
+import { getContributeLink } from '~/lib/components/getContributeLink';
 import { Heading2 } from './Heading2';
 import s from './styles.module.scss';
 import Head from 'next/head';

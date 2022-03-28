@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import React from 'react';
-import { CelebGallery } from '~/src/components/CelebGallery';
-import { sanityClient } from '~/src/components/sanityio';
+import { CelebGallery } from '~/lib/components/CelebGallery';
+import { sanityClient } from '~/lib/components/sanityio';
 import s from './styles.module.scss';
 import { top100CelebSlugs } from './top100CelebSlugs';
 
