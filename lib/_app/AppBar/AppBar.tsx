@@ -30,15 +30,17 @@ export const AppBar = () => {
 
           <div style={{ display: showSearch ? 'none' : 'block' }}>
             <Link passHref href="/">
-              <Image
-                src="/images/logo.svg"
-                width={250}
-                height={30}
-                alt="Hollowverse"
-              />
-              <Typography variant="body2" className={s.subtitle}>
-                Important people and facts
-              </Typography>
+              <a>
+                <Image
+                  src="/images/logo.svg"
+                  width={250}
+                  height={30}
+                  alt="Hollowverse"
+                />
+                <Typography variant="body2" className={s.subtitle}>
+                  Important people and facts
+                </Typography>
+              </a>
             </Link>
           </div>
         </div>
