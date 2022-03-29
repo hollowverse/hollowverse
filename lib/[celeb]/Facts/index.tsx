@@ -3,8 +3,14 @@ import React from 'react';
 import { Separator } from '~/lib/components/Separator';
 import s from './styles.module.scss';
 import clsx from 'clsx';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
 export const Facts = () => {
+  const context = useCelebContext();
+  const facts = context.celeb.facts!;
+
+  console.log('facts', facts);
+
   return (
     <div className={s.Facts}>
       <Separator title="Religion" />

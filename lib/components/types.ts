@@ -5,6 +5,26 @@ import {
 
 export type TSlug = string;
 
+export type Issue = string;
+
+export type Fact = {
+  dateAdded: string;
+  date: string;
+  source: string;
+  forumLink: string;
+  issue: Issue;
+} & (
+  | {
+      type: 'quote';
+      context: string;
+      quote: string;
+    }
+  | {
+      type: 'fact';
+      content: string;
+    }
+);
+
 export type TPicture = SanityImageObject & {
   metadata: {
     lqip: string;
@@ -34,6 +54,7 @@ export type TCeleb = {
   picture: TPicture;
   discourseTopicId: number;
   oldContent?: TCelebOldContent;
+  facts?: Fact[];
 };
 
 export type TTag = {
@@ -45,4 +66,5 @@ export type TTag = {
 export type CelebPageProps = {
   celeb: TCeleb;
   placeholderImage: SanityImageSource;
+  issues: Issue[];
 };
