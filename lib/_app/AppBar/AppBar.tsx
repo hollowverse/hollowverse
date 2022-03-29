@@ -10,6 +10,7 @@ import { Icon } from '~/lib/components/Icon';
 import SearchIcon from '~/public/images/icons/search-regular.svg';
 import TimesIcon from '~/public/images/icons/times-regular.svg';
 import s from './AppBar.module.scss';
+import Link from 'next/link';
 
 export const AppBar = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -28,7 +29,7 @@ export const AppBar = () => {
           </div>
 
           <div style={{ display: showSearch ? 'none' : 'block' }}>
-            <a href="/">
+            <Link passHref href="/">
               <Image
                 src="/images/logo.svg"
                 width={250}
@@ -38,7 +39,7 @@ export const AppBar = () => {
               <Typography variant="body2" className={s.subtitle}>
                 Important people and facts
               </Typography>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -58,3 +59,21 @@ export const AppBar = () => {
     </MuiAppBar>
   );
 };
+/*
+const _ = require('lodash')
+
+const fact = {a: 'stuff'}
+
+const goal = [
+  ['issue', [fact, fact, fact]],
+  ['issue', [fact, fact, fact]],
+]
+
+export const factsDataTransform = (facts, orderOfIssues) => {
+  const orderedFacts = facts.sort((a, b) => {
+    return orderOfIssues.indexOf(a.issue) - orderOfIssues.indexOf(b.issue);
+  });
+
+
+};
+*/
