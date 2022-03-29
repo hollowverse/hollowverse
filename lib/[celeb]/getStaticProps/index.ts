@@ -12,15 +12,6 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  console.log(
-    matter,
-    groq,
-    remark,
-    remarkHtml,
-    groqCeleb,
-    groqRelatedPeople,
-    sanityClient,
-  );
   const celeb = await sanityClient.fetch(groqCeleb, { slug: params.celeb });
 
   const { oldContent, facts, ...rest } = celeb;
