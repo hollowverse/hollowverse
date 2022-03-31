@@ -4,6 +4,7 @@ import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 import { sanityClient } from '~/lib/components/sanityio';
 import { Fact } from '~/lib/components/types';
+import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
 import { groqCeleb } from '~/lib/[celeb]/getStaticProps/groqCeleb';
 import { groqRelatedPeople } from '~/lib/[celeb]/getStaticProps/groqRelatedPeople';
 
@@ -51,7 +52,7 @@ export const getStaticProps = async ({
     props: {
       celeb: {
         ...rest,
-        // facts: factsDataTransform(facts, orderOfIssues),
+        facts: factsDataTransform(facts, orderOfIssues),
         oldContent: parsedOldContent,
       },
       placeholderImage,

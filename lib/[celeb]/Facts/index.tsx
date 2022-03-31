@@ -9,11 +9,21 @@ export const Facts = () => {
   const context = useCelebContext();
   const facts = context.celeb.facts!;
 
-  console.log('facts', facts);
-
   return (
     <div className={s.Facts}>
-      <Separator title="Religion" />
+      {facts.map(([factTitle, factRecords], i) => {
+        return (
+          <div key={i}>
+            <Separator title={factTitle} />
+
+            <Container maxWidth="md" className={clsx(s.fact, s.backgroundFact)}>
+              {factRecords.map((record, i) => {
+                return <pre key={i}>{JSON.stringify(record, null, 2)}</pre>;
+              })}
+            </Container>
+          </div>
+        );
+      })}
 
       <Container maxWidth="md" className={clsx(s.fact, s.backgroundFact)}>
         <Typography>

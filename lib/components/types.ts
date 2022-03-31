@@ -25,6 +25,8 @@ export type Fact = {
     }
 );
 
+export type OrderedFacts = [string, Fact[]][];
+
 export type TPicture = SanityImageObject & {
   metadata: {
     lqip: string;
@@ -54,7 +56,7 @@ export type TCeleb = {
   picture: TPicture;
   discourseTopicId: number;
   oldContent?: TCelebOldContent;
-  facts?: Fact[];
+  facts?: OrderedFacts;
 };
 
 export type TTag = {
@@ -66,5 +68,4 @@ export type TTag = {
 export type CelebPageProps = {
   celeb: TCeleb;
   placeholderImage: SanityImageSource;
-  issues: Issue[];
 };
