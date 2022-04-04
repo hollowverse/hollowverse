@@ -15,16 +15,16 @@ export const groqCeleb = groq`
         'palette': metadata.palette
       }
     },
-    facts[] {
-      date,
-      context,
-      quote,
-      content,
-      'issue': issue->{name}.name,
-      tags[]-> {
-        'name': tag,
-        'issue': issue->{name}.name
-      }
+    'facts': *[_type == 'fact' && celeb._ref == ^._id]{
+      ...,
+      tags[]{
+        ...,
+        tag->{
+          ...,
+          topic->
+        }
+      },
+      topics[]->
     }
   }
 `;

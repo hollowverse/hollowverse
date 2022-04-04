@@ -61,21 +61,3 @@ export const AppBar = () => {
     </MuiAppBar>
   );
 };
-/*
-const _ = require('lodash')
-
-const fact = {a: 'stuff'}
-
-const goal = [
-  ['issue', [fact, fact, fact]],
-  ['issue', [fact, fact, fact]],
-]
-
-export const factsDataTransform = (facts, orderOfIssues) => {
-  const orderedFacts = facts.sort((a, b) => {
-    return orderOfIssues.indexOf(a.issue) - orderOfIssues.indexOf(b.issue);
-  });
-
-
-};
-*/

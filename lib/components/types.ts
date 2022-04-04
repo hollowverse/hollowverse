@@ -5,14 +5,14 @@ import {
 
 export type TSlug = string;
 
-export type Issue = string;
+export type Topic = string;
 
 export type Fact = {
   dateAdded: string;
   date: string;
   source: string;
   forumLink: string;
-  issue: Issue;
+  topic: Topic;
 } & (
   | {
       type: 'quote';

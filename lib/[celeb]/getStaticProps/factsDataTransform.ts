@@ -1,11 +1,11 @@
 import { groupBy, orderBy, toPairs } from 'lodash-es';
 import { Fact } from '~/lib/components/types';
 
-export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
+export const factsDataTransform = (_facts: Fact[], orderOfTopics: string[]) => {
   // Copy the Facts array
   const facts = [..._facts];
 
-  // Group the Facts by their issues
+  // Group the Facts by their topics
   /*
     {
       Religion: [
@@ -21,7 +21,7 @@ export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
       ...
     }
   */
-  const groupedByIssue = groupBy(facts, 'issue');
+  const groupedByTopic = groupBy(facts, 'topic');
 
   /*
   Pair
@@ -30,16 +30,16 @@ export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
     ['Political Party Affiliation', ppaFactsArray]
   ]
   */
-  const paired = toPairs(groupedByIssue);
+  const paired = toPairs(groupedByTopic);
 
-  // Sort entries to match the `orderOfIssues` array
-  const orderedIssues = paired.sort((a, b) => {
-    return orderOfIssues.indexOf(a[0]) - orderOfIssues.indexOf(b[0]);
+  // Sort entries to match the `orderOfTopics` array
+  const orderedTopics = paired.sort((a, b) => {
+    return orderOfTopics.indexOf(a[0]) - orderOfTopics.indexOf(b[0]);
   });
 
   // Sort the Facts inside entries by date. More recent Facts first
-  const orderedFacts = orderedIssues.map((orderedIssue) => {
-    return [orderedIssue[0], orderBy(orderedIssue[1], 'date', 'desc')];
+  const orderedFacts = orderedTopics.map((orderedTopic) => {
+    return [orderedTopic[0], orderBy(orderedTopic[1], 'date', 'desc')];
   });
 
   return orderedFacts;

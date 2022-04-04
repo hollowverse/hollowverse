@@ -20,7 +20,7 @@ export const getStaticProps = async ({
   const { data: oldContentFrontMatter, content: oldContentMarkdown } =
     matter(oldContent);
 
-  const [relatedPeople, placeholderImage, orderOfIssues] = await Promise.all([
+  const [relatedPeople, placeholderImage, orderOfTopics] = await Promise.all([
     sanityClient.fetch(groqRelatedPeople, {
       slug: oldContentFrontMatter.relatedPeople,
     }),
@@ -29,9 +29,9 @@ export const getStaticProps = async ({
     ),
     sanityClient.fetch(
       groq`
-        *[_type == 'orderOfIssues'][0]{
-          'issues': issues[]->{name}.name
-        }.issues
+        *[_type == 'orderOfTopics'][0]{
+          'topics': topics[]->{name}.name
+        }.topics
       `,
     ),
   ]);
@@ -52,7 +52,7 @@ export const getStaticProps = async ({
     props: {
       celeb: {
         ...rest,
-        facts: factsDataTransform(facts, orderOfIssues),
+        facts: factsDataTransform(facts, orderOfTopics),
         oldContent: parsedOldContent,
       },
       placeholderImage,

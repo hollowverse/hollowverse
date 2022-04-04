@@ -2,11 +2,11 @@ import { Fact } from '~/lib/components/types';
 import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
 
 test('transformation', () => {
-  expect(factsDataTransform(mockFacts as Fact[], mockOrderOfIssues)).toEqual(
+  expect(factsDataTransform(mockFacts as Fact[], mockOrderOfTopics)).toEqual(
     // prettier-ignore
     [
       [
-        mockFacts[2].issue,
+        mockFacts[2].topic,
         [
           mockFacts[3],
           mockFacts[2],
@@ -14,7 +14,7 @@ test('transformation', () => {
       ],
 
       [
-        mockFacts[0].issue,
+        mockFacts[0].topic,
         [
           mockFacts[1],
           mockFacts[0],
@@ -25,13 +25,13 @@ test('transformation', () => {
 });
 
 const mockFacts = [
-  { content: 'a', date: '2015-03-15', issue: 'Political Party Affiliation' },
-  { content: 'b', date: '2015-08-13', issue: 'Political Party Affiliation' },
-  { content: 'c', date: '0000-03-02', issue: 'Religion' },
-  { content: 'd', date: '2005-04-16', issue: 'Religion' },
+  { content: 'a', date: '2015-03-15', topic: 'Political Party Affiliation' },
+  { content: 'b', date: '2015-08-13', topic: 'Political Party Affiliation' },
+  { content: 'c', date: '0000-03-02', topic: 'Religion' },
+  { content: 'd', date: '2005-04-16', topic: 'Religion' },
 ];
 
-const mockOrderOfIssues = [
+const mockOrderOfTopics = [
   'Religion',
   'Political Party Affiliation',
   'Gun Control',
