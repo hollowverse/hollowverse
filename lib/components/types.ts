@@ -2,6 +2,7 @@ import {
   SanityImageObject,
   SanityImageSource,
 } from '@sanity/image-url/lib/types/types';
+import { Overwrite } from '~/lib/components/typeHelpers';
 
 export type TSlug = string;
 
@@ -12,7 +13,7 @@ export type Fact = {
   date: string;
   source: string;
   forumLink: string;
-  topic: Topic;
+  topics: Topic[];
 } & (
   | {
       type: 'quote';
@@ -24,6 +25,10 @@ export type Fact = {
       content: string;
     }
 );
+
+export type RawFact = Omit<Fact, 'topics'> & {
+  topics: { name: string }[];
+};
 
 export type OrderedFacts = [string, Fact[]][];
 

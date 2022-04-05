@@ -15,16 +15,21 @@ export const groqCeleb = groq`
         'palette': metadata.palette
       }
     },
-    'facts': *[_type == 'fact' && celeb._ref == ^._id]{
-      ...,
+    'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {
+      content,
+      quote,
+      date,
+      forumLink,
+      source,
+      type,
       tags[]{
-        ...,
+        isLowConfidence,
         tag->{
-          ...,
-          topic->
+          name,
+          topic->{name}
         }
       },
-      topics[]->
+      topics[]->{name}
     }
   }
 `;
