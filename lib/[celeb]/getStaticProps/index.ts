@@ -1,12 +1,8 @@
-import matter from 'gray-matter';
 import groq from 'groq';
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
 import { sanityClient } from '~/lib/components/sanityio';
-import { Fact } from '~/lib/components/types';
 import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
+import { getParsedOldContent } from '~/lib/[celeb]/getStaticProps/getParsedOldContent';
 import { groqCeleb } from '~/lib/[celeb]/getStaticProps/groqCeleb';
-import { groqRelatedPeople } from '~/lib/[celeb]/getStaticProps/groqRelatedPeople';
 
 export const getStaticProps = async ({
   params,
@@ -14,39 +10,22 @@ export const getStaticProps = async ({
   params: { celeb: string };
 }) => {
   const celeb = await sanityClient.fetch(groqCeleb, { slug: params.celeb });
-
   const { oldContent, facts, ...rest } = celeb;
-
-  const { data: oldContentFrontMatter, content: oldContentMarkdown } =
-    matter(oldContent);
-
-  const [relatedPeople, placeholderImage, orderOfTopics] = await Promise.all([
-    sanityClient.fetch(groqRelatedPeople, {
-      slug: oldContentFrontMatter.relatedPeople,
-    }),
-    sanityClient.getDocument(
-      'image-98dc320a756a3f0f5dc40a59ced1194619719a60-225x225-png',
-    ),
-    sanityClient.fetch(
-      groq`
+  const [placeholderImage, orderOfTopics, parsedOldContent] = await Promise.all(
+    [
+      sanityClient.getDocument(
+        'image-98dc320a756a3f0f5dc40a59ced1194619719a60-225x225-png',
+      ),
+      sanityClient.fetch(
+        groq`
         *[_type == 'orderOfTopics'][0]{
           'topics': topics[]->{name}.name
         }.topics
       `,
-    ),
-  ]);
-
-  const parsedOldContent = {
-    ...oldContentFrontMatter,
-
-    article: (
-      await remark()
-        .use(remarkHtml, { sanitize: false })
-        .process(oldContentMarkdown)
-    ).toString(),
-
-    relatedPeople,
-  };
+      ),
+      oldContent ? await getParsedOldContent(oldContent) : null,
+    ],
+  );
 
   return {
     props: {
