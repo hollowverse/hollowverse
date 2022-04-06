@@ -1,12 +1,4 @@
-import {
-  difference,
-  flatten,
-  identity,
-  intersection,
-  orderBy,
-  uniq,
-  without,
-} from 'lodash-es';
+import { difference, flatten, intersection, uniq, without } from 'lodash-es';
 import { RawFact } from '~/lib/components/types';
 
 export const factsDataTransform = (

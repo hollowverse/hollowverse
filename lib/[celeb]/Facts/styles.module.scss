@@ -1,62 +1,12 @@
 @import '~lib/components/common';
 
 .Facts {
-  .fact {
-    padding: $s2;
-
-    .footer,
-    .header {
-      & p {
-        color: $lessEmphasis500;
-        font-size: 95%;
-      }
-    }
-
-    .footer {
-      display: flex;
-      justify-content: end;
-
-      p + p {
-        margin-left: $s4;
-      }
-    }
+  .separator {
+    margin-top: $s8;
   }
 
-  .tags {
+  .minorSeparator {
     margin-top: $s4;
-    display: flex;
-
-    p {
-      color: $lessEmphasis500;
-      font-size: 80%;
-    }
-
-    p + p {
-      margin-left: $s4;
-    }
+    margin-bottom: $s4;
   }
-
-  .quote {
-    .body {
-      margin-top: $s2;
-
-      blockquote {
-        margin-left: $s2;
-        padding: 1px 0 1px $s4;
-        border-left: 10px solid $lessEmphasis300;
-
-        p {
-          font-size: 105%;
-        }
-
-        p + p {
-          margin-top: $s4;
-        }
-      }
-    }
-  }
-
-  // .backgroundFact {
-  //   padding: $s2;
-  // }
 }

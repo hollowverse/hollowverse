@@ -17,6 +17,7 @@ export const groqCeleb = groq`
     },
     'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {
       content,
+      context,
       quote,
       date,
       forumLink,
