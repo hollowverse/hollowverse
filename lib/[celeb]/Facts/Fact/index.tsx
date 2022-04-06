@@ -28,11 +28,12 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
               <Typography>{value.quote}</Typography>
             </blockquote>
           </div>
-        )) || (
-          <div className={s.quote}>
-            <Typography>{value.content}</Typography>
-          </div>
-        )}
+        )) ||
+          (value.type == 'fact' && (
+            <div className={s.quote}>
+              <Typography>{value.content}</Typography>
+            </div>
+          ))}
       </div>
       <div className={s.tags}>
         {value.tags.map((t) => {

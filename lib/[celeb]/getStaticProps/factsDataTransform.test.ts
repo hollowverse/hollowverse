@@ -24,6 +24,17 @@ const commonRawFactsProps: RawFact = {
   source: 'string',
   forumLink: 'string',
   type: 'quote',
+  tags: [
+    {
+      isLowConfidence: null,
+      tag: {
+        name: 'string',
+        topic: {
+          name: 'string',
+        },
+      },
+    },
+  ],
   topics: [{ name: '' }],
 };
 
