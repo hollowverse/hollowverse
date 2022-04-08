@@ -6,6 +6,7 @@ import { Discussion } from '~/lib/[celeb]/Discussion/Discussion';
 import { Facts } from '~/lib/[celeb]/Facts';
 import { Md } from '~/lib/[celeb]/Md/Md';
 import { PageHead } from '~/lib/[celeb]/PageHead/PageHead';
+import { TagCollection } from '~/lib/[celeb]/TagCollection';
 import { TopSection } from '~/lib/[celeb]/TopSection/TopSection';
 
 export const Celeb = (p: CelebPageProps) => {
@@ -15,9 +16,11 @@ export const Celeb = (p: CelebPageProps) => {
 
       <TopSection />
 
-      {featureFlags.AddFactButton && <AddFactButton />}
+      {p.celeb.tags && <TagCollection />}
 
       {p.celeb.facts && <Facts />}
+
+      {featureFlags.AddFactButton && <AddFactButton />}
 
       {p.celeb.oldContent && <Md />}
 
@@ -27,6 +30,3 @@ export const Celeb = (p: CelebPageProps) => {
 };
 
 export default Celeb;
-
-// export { getStaticPaths } from './getStaticPaths';
-// export { getStaticProps } from './getStaticProps';

@@ -1,10 +1,9 @@
-import { Fact as TFact } from '~/lib/components/types';
-import React from 'react';
 import { Container, Typography } from '@mui/material';
-import s from './styles.module.scss';
-import clsx from 'clsx';
-import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import React from 'react';
 import Link from '~/lib/components/Link';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import { Fact as TFact } from '~/lib/components/types';
+import s from './styles.module.scss';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const {
@@ -35,9 +34,15 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
             </div>
           ))}
       </div>
+
       <div className={s.tags}>
         {value.tags.map((t) => {
-          return <Typography key={t.tag.name}># {t.tag.name}</Typography>;
+          return (
+            <Typography key={t.tag.name}>
+              # {t.isLowConfidence && 'Possibly '}
+              {t.tag.name}
+            </Typography>
+          );
         })}
       </div>
 

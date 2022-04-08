@@ -1,13 +1,17 @@
 import { difference, flatten, intersection, uniq, without } from 'lodash-es';
-import { RawFact } from '~/lib/components/types';
+import { OrderedFacts, RawFact } from '~/lib/components/types';
+import { format, parse } from 'date-fns';
 
 export const factsDataTransform = (
   _facts: RawFact[],
   orderOfTopics: string[],
 ) => {
-  // Copy the Facts array.
+  // Copy the Facts array, and rewrite certain keys
   // THIS ARRAY IS EXPECTED TO BE ALREADY SORTED BY DATE
-  const facts = [..._facts];
+  const facts = _facts.map((f) => ({
+    ...f,
+    date: format(parse(f.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
+  }));
 
   /*
   Facts array looks something like this
@@ -135,5 +139,5 @@ export const factsDataTransform = (
   return {
     facts,
     topics,
-  };
+  } as any as OrderedFacts;
 };

@@ -8,7 +8,7 @@ export const PageHead = () => {
   return (
     <Head>
       <title>
-        {context.celeb.name}&apos;s religion and political view | Hollowverse
+        {context.celeb.name}&apos;s religion and political views | Hollowverse
       </title>
       {context.celeb.oldContent?.summaries && (
         <meta

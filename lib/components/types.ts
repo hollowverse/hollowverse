@@ -7,23 +7,23 @@ export type TSlug = string;
 
 export type Topic = string;
 
+export type Tag = {
+  isLowConfidence: boolean | null;
+  tag: {
+    name: string;
+    topic: {
+      name: string;
+    };
+  };
+};
+
 export type Fact = {
   dateAdded: string;
   date: string;
   source: string;
   forumLink: string;
   topics: Topic[];
-  tags: [
-    {
-      isLowConfidence: null;
-      tag: {
-        name: string;
-        topic: {
-          name: string;
-        };
-      };
-    },
-  ];
+  tags: Tag[];
 } & (
   | {
       type: 'quote';
@@ -74,14 +74,12 @@ export type TCeleb = {
   slug: TSlug;
   picture: TPicture;
   discourseTopicId: number;
+  tags?: {
+    regular: Tag[];
+    lowConfidence: Tag[];
+  };
   oldContent?: TCelebOldContent;
   facts?: OrderedFacts;
-};
-
-export type TTag = {
-  text: string;
-  icon: string;
-  alt: string;
 };
 
 export type CelebPageProps = {

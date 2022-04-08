@@ -12,17 +12,17 @@ export const Facts = () => {
     <div className={s.Facts}>
       {topics.map(([topic, factIndexes], i) => {
         return (
-          <div key={i}>
+          <div key={`${topic}-${i}`}>
             <Separator title={topic} className={s.separator} />
 
             {factIndexes.map((factIndex, i) => {
               return (
-                <>
+                <div key={`${factIndex}-${i}`}>
                   <Fact key={factIndex} value={facts[factIndex]} />
                   {i !== factIndexes.length - 1 && (
                     <Separator minor className={s.minorSeparator} />
                   )}
-                </>
+                </div>
               );
             })}
           </div>
