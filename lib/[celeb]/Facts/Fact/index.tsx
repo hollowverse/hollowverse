@@ -1,9 +1,10 @@
-import { Container, Typography } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import React from 'react';
 import Link from '~/lib/components/Link';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Fact as TFact } from '~/lib/components/types';
 import s from './styles.module.scss';
+import ShowMoreText from 'react-show-more-text';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const {
@@ -24,7 +25,14 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
             </Typography>
 
             <blockquote className={s.content}>
-              <Typography>{value.quote}</Typography>
+              <ShowMoreText
+                lines={5}
+                more={<Button>Read more</Button>}
+                less={<Button>Show less</Button>}
+                truncatedEndingComponent={'... '}
+              >
+                <Typography>{value.quote}</Typography>
+              </ShowMoreText>
             </blockquote>
           </div>
         )) ||
