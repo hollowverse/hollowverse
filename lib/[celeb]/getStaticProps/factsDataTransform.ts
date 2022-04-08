@@ -1,17 +1,21 @@
-import { difference, flatten, intersection, uniq, without } from 'lodash-es';
-import { OrderedFacts, RawFact } from '~/lib/components/types';
 import { format, parse } from 'date-fns';
+import { difference, flatten, intersection, reduce, uniq } from 'lodash-es';
+import { OrderedFacts, RawFact } from '~/lib/components/types';
+
+export const copyFacts = (facts: RawFact[]) =>
+  facts.map((f) => ({
+    ...f,
+    date: format(parse(f.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
+  }));
 
 export const factsDataTransform = (
   _facts: RawFact[],
   orderOfTopics: string[],
+  options: { removeDuplicates: boolean } = { removeDuplicates: false },
 ) => {
   // Copy the Facts array, and rewrite certain keys
   // THIS ARRAY IS EXPECTED TO BE ALREADY SORTED BY DATE
-  const facts = _facts.map((f) => ({
-    ...f,
-    date: format(parse(f.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
-  }));
+  const facts = copyFacts(_facts);
 
   /*
   Facts array looks something like this
@@ -120,21 +124,42 @@ export const factsDataTransform = (
 
   So we map over the sorted topics to return the tuples
   */
-  const topics = sortedTopics.map((t) => {
-    const topicFactIndexes = facts.map((f, i) => {
-      // Replace each fact with its index if it is relevant for that topic
-      const relevantFact = f.topics.some((tObj) => tObj.name === t);
+  const previousIndexes: number[] = [];
+  const topics = reduce(
+    sortedTopics,
+    (topicsWithPotentiallyEmptyFacts, sortedTopic) => {
+      const topicFactIndexes = reduce(
+        facts,
+        (topicFactIndexes, fact, index) => {
+          const isRelevant = fact.topics.some(
+            (factTopic) => factTopic.name === sortedTopic,
+          );
 
-      return relevantFact ? i : null;
-    });
+          if (
+            !isRelevant ||
+            (options.removeDuplicates && previousIndexes.includes(index))
+          ) {
+            return topicFactIndexes;
+          }
 
-    return [
-      t,
+          previousIndexes.push(index);
+          topicFactIndexes.push(index);
 
-      // Remove null values for irrelevant facts
-      without(topicFactIndexes, null),
-    ];
-  });
+          return topicFactIndexes;
+        },
+        [] as number[],
+      );
+
+      if (topicFactIndexes.length === 0) {
+        return topicsWithPotentiallyEmptyFacts;
+      }
+
+      topicsWithPotentiallyEmptyFacts.push([sortedTopic, topicFactIndexes]);
+
+      return topicsWithPotentiallyEmptyFacts;
+    },
+    [] as [string, number[]][],
+  );
 
   return {
     facts,

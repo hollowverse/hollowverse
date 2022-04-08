@@ -28,7 +28,9 @@ export const getStaticProps = async ({
     ],
   );
 
-  const transformedFacts = factsDataTransform(facts, orderOfTopics);
+  const transformedFacts = factsDataTransform(facts, orderOfTopics, {
+    removeDuplicates: true,
+  });
   const tags = getTags(transformedFacts);
 
   return {

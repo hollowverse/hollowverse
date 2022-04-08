@@ -9,3 +9,7 @@ p {
   font-size: 1rem;
   margin-bottom: 0;
 }
+
+a {
+  text-decoration: none;
+}

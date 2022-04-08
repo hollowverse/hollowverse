@@ -5,6 +5,7 @@ import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Fact as TFact } from '~/lib/components/types';
 import s from './styles.module.scss';
 import ShowMoreText from 'react-show-more-text';
+import { noop } from 'lodash-es';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const {
@@ -27,8 +28,8 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
             <blockquote className={s.content}>
               <ShowMoreText
                 lines={5}
-                more={<Button>Read more</Button>}
-                less={<Button>Show less</Button>}
+                more={<Button onClick={noop}>Read more</Button>}
+                less={<Button onClick={noop}>Show less</Button>}
                 truncatedEndingComponent={'... '}
               >
                 <Typography>{value.quote}</Typography>

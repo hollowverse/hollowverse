@@ -1,16 +1,38 @@
 import { orderBy } from 'lodash-es';
 import { Fact, RawFact } from '~/lib/components/types';
-import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
+import {
+  copyFacts,
+  factsDataTransform,
+} from '~/lib/[celeb]/getStaticProps/factsDataTransform';
 
-test('transformation', () => {
+test('transformation while keeping duplicates', () => {
   expect(factsDataTransform(mockFacts, mockOrderOfTopics)).toEqual(
     // prettier-ignore
     {
-      facts: [...mockFacts],
+      facts: copyFacts(mockFacts),
       topics: [
         ['Religion', [0, 5]],
         ['Political Party Affiliation', [1, 3, 5]],
         ['Gun Control', [5]],
+        ['Elections', [4]],
+        ['Russia-Ukraine War', [2]],
+      ]
+    },
+  );
+});
+
+test('transformation while removing duplicates', () => {
+  expect(
+    factsDataTransform(mockFacts, mockOrderOfTopics, {
+      removeDuplicates: true,
+    }),
+  ).toEqual(
+    // prettier-ignore
+    {
+      facts: copyFacts(mockFacts),
+      topics: [
+        ['Religion', [0, 5]],
+        ['Political Party Affiliation', [1, 3]],
         ['Elections', [4]],
         ['Russia-Ukraine War', [2]],
       ]
