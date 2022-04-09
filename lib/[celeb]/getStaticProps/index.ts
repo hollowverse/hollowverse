@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { sanityClient } from '~/lib/components/sanityio';
-import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform2';
+import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
 import { getParsedOldContent } from '~/lib/[celeb]/getStaticProps/getParsedOldContent';
 import { getTags } from '~/lib/[celeb]/getStaticProps/getTags';
 import { groqCeleb } from '~/lib/[celeb]/getStaticProps/groqCeleb';

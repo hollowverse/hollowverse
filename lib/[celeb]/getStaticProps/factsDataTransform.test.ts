@@ -4,39 +4,24 @@ import {
   factsDataTransform,
 } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
 
-test('transformation while keeping duplicates', () => {
-  expect(factsDataTransform(mockFacts, mockOrderOfTopics)).toEqual(
-    // prettier-ignore
-    {
-      facts: copyFacts(mockFacts),
-      topics: [
-        ['Religion', [0, 5]],
-        ['Political Party Affiliation', [1, 3, 5]],
-        ['Gun Control', [5]],
-        ['Elections', [4]],
-        ['Russia-Ukraine War', [2]],
-      ]
+test.only('transformation while keeping duplicates', () => {
+  const copiedFacts = copyFacts(mockFacts);
+  expect(factsDataTransform(mockFacts, mockOrderOfTopics)).toEqual({
+    groups: {
+      Religion: [copiedFacts[0]],
+      'Political Party Affiliation': [copiedFacts[1], copiedFacts[3]],
+      'Russia-Ukraine War': [copiedFacts[2]],
+      Elections: [copiedFacts[4]],
+      'Gun Control': [copiedFacts[5]],
     },
-  );
-});
-
-test('transformation while removing duplicates', () => {
-  expect(
-    factsDataTransform(mockFacts, mockOrderOfTopics, {
-      removeDuplicates: true,
-    }),
-  ).toEqual(
-    // prettier-ignore
-    {
-      facts: copyFacts(mockFacts),
-      topics: [
-        ['Religion', [0, 5]],
-        ['Political Party Affiliation', [1, 3]],
-        ['Elections', [4]],
-        ['Russia-Ukraine War', [2]],
-      ]
-    },
-  );
+    topics: [
+      'Religion',
+      'Political Party Affiliation',
+      'Gun Control',
+      'Elections',
+      'Russia-Ukraine War',
+    ],
+  });
 });
 
 const commonRawFactsProps: Fact = {
@@ -91,9 +76,10 @@ const mockFacts: Fact[] = [
     ...commonRawFactsProps,
     date: '2005-04-16',
     topics: [
+      { name: 'Gun Control' },
       { name: 'Religion' },
       { name: 'Political Party Affiliation' },
-      { name: 'Gun Control' },
+      { name: 'LGBT' },
     ],
   },
 ];
@@ -103,4 +89,5 @@ const mockOrderOfTopics = [
   'COVID-19',
   'Political Party Affiliation',
   'Gun Control',
+  'LGBT',
 ];
