@@ -1,5 +1,4 @@
-import { orderBy } from 'lodash-es';
-import { Fact, RawFact } from '~/lib/components/types';
+import { Fact } from '~/lib/components/types';
 import {
   copyFacts,
   factsDataTransform,
@@ -40,12 +39,14 @@ test('transformation while removing duplicates', () => {
   );
 });
 
-const commonRawFactsProps: RawFact = {
+const commonRawFactsProps: Fact = {
   date: 'a',
   dateAdded: 'a',
   source: 'string',
   forumLink: 'string',
   type: 'quote',
+  context: 'string',
+  quote: 'string',
   tags: [
     {
       isLowConfidence: null,
@@ -60,7 +61,7 @@ const commonRawFactsProps: RawFact = {
   topics: [{ name: '' }],
 };
 
-const mockFacts: RawFact[] = [
+const mockFacts: Fact[] = [
   {
     ...commonRawFactsProps,
     date: '9999-03-02',

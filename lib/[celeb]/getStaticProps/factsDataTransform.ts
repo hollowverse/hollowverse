@@ -1,15 +1,15 @@
 import { format, parse } from 'date-fns';
 import { difference, flatten, intersection, reduce, uniq } from 'lodash-es';
-import { OrderedFacts, RawFact } from '~/lib/components/types';
+import { OrderedFacts, Fact } from '~/lib/components/types';
 
-export const copyFacts = (facts: RawFact[]) =>
+export const copyFacts = (facts: Fact[]) =>
   facts.map((f) => ({
     ...f,
     date: format(parse(f.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
   }));
 
 export const factsDataTransform = (
-  _facts: RawFact[],
+  _facts: Fact[],
   orderOfTopics: string[],
   options: { removeDuplicates: boolean } = { removeDuplicates: false },
 ) => {

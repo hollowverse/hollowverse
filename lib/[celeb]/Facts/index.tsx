@@ -6,20 +6,22 @@ import s from './styles.module.scss';
 
 export const Facts = () => {
   const context = useCelebContext();
-  const { facts, topics } = context.celeb.facts!;
+  const { groups, topics } = context.celeb.facts!;
 
   return (
     <div className={s.Facts}>
-      {topics.map(([topic, factIndexes], i) => {
+      {topics.map((topic, i) => {
+        const factGroup = groups[topic];
+
         return (
           <div key={`${topic}-${i}`}>
             <Separator title={topic} className={s.separator} />
 
-            {factIndexes.map((factIndex, i) => {
+            {factGroup.map((fact, innerI) => {
               return (
-                <div key={`${factIndex}-${i}`}>
-                  <Fact key={factIndex} value={facts[factIndex]} />
-                  {i !== factIndexes.length - 1 && (
+                <div key={`${topic}-${i}-${innerI}`}>
+                  <Fact value={fact} />
+                  {i !== factGroup.length - 1 && (
                     <Separator minor className={s.minorSeparator} />
                   )}
                 </div>

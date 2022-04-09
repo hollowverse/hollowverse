@@ -1,20 +1,20 @@
-import { OrderedFacts, Tag } from '~/lib/components/types';
+import { GroupedFacts, Tag } from '~/lib/components/types';
 
 const tagExists = (tagsArr: Tag[], tag: Tag) =>
   tagsArr.some((t) => t.tag.name === tag.tag.name);
 
-export const getTags = (transformedFacts: OrderedFacts) => {
-  const { topics, facts } = transformedFacts;
+export const getTags = (transformedFacts: GroupedFacts) => {
+  const { topics, groups } = transformedFacts;
 
   const tags: { regular: Tag[]; lowConfidence: Tag[] } = {
     regular: [],
     lowConfidence: [],
   };
 
-  topics.forEach(([, factIndexes]) => {
-    factIndexes.forEach((i) => {
-      const fact = facts[i];
+  topics.forEach((topic) => {
+    const group = groups[topic];
 
+    group.forEach((fact) => {
       fact.tags.forEach((t) => {
         if (t.isLowConfidence) {
           !tagExists(tags.lowConfidence, t) && tags.lowConfidence.push(t);

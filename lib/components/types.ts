@@ -2,10 +2,11 @@ import {
   SanityImageObject,
   SanityImageSource,
 } from '@sanity/image-url/lib/types/types';
+import { Dictionary } from 'lodash';
 
 export type TSlug = string;
 
-export type Topic = string;
+export type Topic = { name: string };
 
 export type Tag = {
   isLowConfidence: boolean | null;
@@ -36,10 +37,6 @@ export type Fact = {
     }
 );
 
-export type RawFact = Omit<Fact, 'topics'> & {
-  topics: { name: string }[];
-};
-
 // export type OrderedFacts = [string, Fact[]][];
 export type OrderedFacts = {
   facts: Fact[];
@@ -68,6 +65,11 @@ export type TCelebOldContent = {
   article: string;
 };
 
+export type GroupedFacts = {
+  groups: Dictionary<Fact[]>;
+  topics: string[];
+};
+
 export type TCeleb = {
   wikipediaId: string;
   name: string;
@@ -79,7 +81,8 @@ export type TCeleb = {
     lowConfidence: Tag[];
   };
   oldContent?: TCelebOldContent;
-  facts?: OrderedFacts;
+  // facts?: OrderedFacts;
+  facts?: GroupedFacts;
 };
 
 export type CelebPageProps = {

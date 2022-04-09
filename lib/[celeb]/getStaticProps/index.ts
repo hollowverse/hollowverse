@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { sanityClient } from '~/lib/components/sanityio';
-import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
+import { factsDataTransform } from '~/lib/[celeb]/getStaticProps/factsDataTransform2';
 import { getParsedOldContent } from '~/lib/[celeb]/getStaticProps/getParsedOldContent';
 import { getTags } from '~/lib/[celeb]/getStaticProps/getTags';
 import { groqCeleb } from '~/lib/[celeb]/getStaticProps/groqCeleb';
@@ -28,9 +28,7 @@ export const getStaticProps = async ({
     ],
   );
 
-  const transformedFacts = factsDataTransform(facts, orderOfTopics, {
-    removeDuplicates: true,
-  });
+  const transformedFacts = factsDataTransform(facts, orderOfTopics);
   const tags = getTags(transformedFacts);
 
   return {

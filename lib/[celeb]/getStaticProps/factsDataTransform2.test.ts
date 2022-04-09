@@ -1,4 +1,4 @@
-import { RawFact } from '~/lib/components/types';
+import { Fact } from '~/lib/components/types';
 import {
   copyFacts,
   factsDataTransform,
@@ -7,7 +7,7 @@ import {
 test.only('transformation while keeping duplicates', () => {
   const copiedFacts = copyFacts(mockFacts);
   expect(factsDataTransform(mockFacts, mockOrderOfTopics)).toEqual({
-    facts: {
+    groups: {
       Religion: [copiedFacts[0]],
       'Political Party Affiliation': [copiedFacts[1], copiedFacts[3]],
       'Russia-Ukraine War': [copiedFacts[2]],
@@ -24,12 +24,14 @@ test.only('transformation while keeping duplicates', () => {
   });
 });
 
-const commonRawFactsProps: RawFact = {
+const commonRawFactsProps: Fact = {
   date: 'a',
   dateAdded: 'a',
   source: 'string',
   forumLink: 'string',
   type: 'quote',
+  context: 'string',
+  quote: 'string',
   tags: [
     {
       isLowConfidence: null,
@@ -44,7 +46,7 @@ const commonRawFactsProps: RawFact = {
   topics: [{ name: '' }],
 };
 
-const mockFacts: RawFact[] = [
+const mockFacts: Fact[] = [
   {
     ...commonRawFactsProps,
     date: '9999-03-02',
@@ -77,6 +79,7 @@ const mockFacts: RawFact[] = [
       { name: 'Gun Control' },
       { name: 'Religion' },
       { name: 'Political Party Affiliation' },
+      { name: 'LGBT' },
     ],
   },
 ];
@@ -86,4 +89,5 @@ const mockOrderOfTopics = [
   'COVID-19',
   'Political Party Affiliation',
   'Gun Control',
+  'LGBT',
 ];
