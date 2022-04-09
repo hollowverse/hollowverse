@@ -29,7 +29,7 @@ export const getStaticProps = async ({
   );
 
   const transformedFacts = factsDataTransform(facts, orderOfTopics);
-  const tags = getTags(transformedFacts);
+  const tags = getTags(transformedFacts, orderOfTopics);
 
   return {
     props: {
