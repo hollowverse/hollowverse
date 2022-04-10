@@ -21,7 +21,7 @@ export const Facts = () => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
                   <Fact value={fact} />
-                  {i !== factGroup.length - 1 && (
+                  {innerI !== factGroup.length - 1 && (
                     <Separator minor className={s.minorSeparator} />
                   )}
                 </div>

@@ -4,7 +4,7 @@ import {
   factsDataTransform,
 } from '~/lib/[celeb]/getStaticProps/factsDataTransform';
 
-test.only('transformation while keeping duplicates', () => {
+test('transformation while keeping duplicates', () => {
   const copiedFacts = copyFacts(mockFacts);
   expect(factsDataTransform(mockFacts, mockOrderOfTopics)).toEqual({
     groups: {
