@@ -33,31 +33,16 @@ export const getTags = (
     });
   });
 
-  const regIntersection = intersectionWith(
-    tags.regular,
-    orderOfTopics,
-    comparator,
-  );
-  const regDifference = differenceWith(tags.regular, orderOfTopics, comparator);
-  const lowConIntersection = intersectionWith(
-    tags.lowConfidence,
-    orderOfTopics,
-    comparator,
-  );
-  const lowConDifference = differenceWith(
-    tags.lowConfidence,
-    orderOfTopics,
-    comparator,
-  );
+  (['lowConfidence', 'regular'] as const).forEach((type) => {
+    const intersection = intersectionWith(
+      tags[type],
+      orderOfTopics,
+      comparator,
+    );
+    const difference = differenceWith(tags[type], orderOfTopics, comparator);
 
-  tags.regular = [
-    ...regIntersection.sort(sortComparator),
-    ...regDifference.sort(),
-  ];
-  tags.lowConfidence = [
-    ...lowConIntersection.sort(sortComparator),
-    ...lowConDifference.sort(),
-  ];
+    tags[type] = [...intersection.sort(sortComparator), ...difference.sort()];
+  });
 
   return tags;
 };
