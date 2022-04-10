@@ -11,6 +11,13 @@ export const getStaticProps = async ({
   params: { celeb: string };
 }) => {
   const celeb = await sanityClient.fetch(groqCeleb, { slug: params.celeb });
+
+  if (!celeb) {
+    return {
+      notFound: true,
+    };
+  }
+
   const { oldContent, facts, ...rest } = celeb;
   const [placeholderImage, orderOfTopics, parsedOldContent] = await Promise.all(
     [
