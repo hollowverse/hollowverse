@@ -1,3 +1,3 @@
-import '~/src/_app/globalStyles.css';
+import '~/lib/_app/globalStyles.css';
 
-export { App as default } from '~/src/_app';
+export { App as default } from '~/lib/_app';

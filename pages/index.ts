@@ -1,2 +1,2 @@
-export { Index as default } from '~/src/index';
-export { getStaticProps } from '~/src/index';
+export { Index as default } from '~/lib/index';
+export { getStaticProps } from '~/lib/index';

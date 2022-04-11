@@ -1,0 +1,12 @@
+@import '~lib/components/common';
+
+.Facts {
+  .separator {
+    margin-top: $s8;
+  }
+
+  .minorSeparator {
+    margin-top: $s4;
+    margin-bottom: $s4;
+  }
+}
