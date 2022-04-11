@@ -1,0 +1,5 @@
+http://localhost:3000/elon-musk
+http://localhost:3000/~/contribute?name=Meat+Loaf&slug=meat-loaf
+http://localhost:3000/martin-freeman
+http://localhost:3000/
+http://localhost:3000/lucille-ball

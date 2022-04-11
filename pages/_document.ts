@@ -1,1 +1,1 @@
-export { MyDocument as default } from '~/src/_document';
+export { MyDocument as default } from '~/lib/_document';
