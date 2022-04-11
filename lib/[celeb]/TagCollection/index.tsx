@@ -21,7 +21,12 @@ export const TagCollection = () => {
 
       {tags.lowConfidence.length > 0 && (
         <Container className={s.lowConfidence}>
-          <Typography variant="h3" className={s.tag} display="inline">
+          <Typography
+            component="p"
+            variant="h3"
+            className={s.tag}
+            display="inline"
+          >
             Maybe
           </Typography>
           {tags.lowConfidence.map((t) => (

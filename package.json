@@ -10,7 +10,9 @@
     "start": "next build && next start",
     "export": "next export",
     "next": "next",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "lighthouse": "lighthouse-batch -f ${LIGHTHOUSE_FILE:-lighthouse-pages.txt} --html --params '--only-categories accessibility,best-practices,performance,seo'",
+    "lighthouse-single-page": "LIGHTHOUSE_FILE='lighthouse-single-page.txt' npm run lighthouse"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",
@@ -28,7 +30,6 @@
     "@types/fs-extra": "^9.0.13",
     "@types/js-yaml": "^4.0.5",
     "@types/lodash-es": "^4.17.6",
-    "@types/react-show-more-text": "^1.4.2",
     "app-root-path": "^3.0.0",
     "date-fns": "^2.28.0",
     "eslint-plugin-react": "^7.28.0",
@@ -37,12 +38,12 @@
     "groq": "^2.15.0",
     "jest": "^27.5.1",
     "js-yaml": "^4.1.0",
+    "lighthouse-batch": "^8.1.1",
     "lodash-es": "^4.17.21",
     "next": "^12.1.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-show-more-text": "^1.5.2",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "tsconfig-paths-jest": "^0.0.1",
