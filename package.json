@@ -11,8 +11,9 @@
     "export": "next export",
     "next": "next",
     "test": "jest --watch",
-    "lighthouse": "lighthouse-batch -f ${LIGHTHOUSE_FILE:-lighthouse-pages.txt} --html --params '--only-categories accessibility,best-practices,performance,seo'",
-    "lighthouse-single-page": "LIGHTHOUSE_FILE='lighthouse-single-page.txt' npm run lighthouse"
+    "lighthouse": "lighthouse-batch -f ${LIGHTHOUSE_FILE:-lighthouse/local.txt} --html --no-report --params '--only-categories accessibility,best-practices,performance,seo'; open report/lighthouse",
+    "lighthouse-single": "LIGHTHOUSE_FILE='lighthouse/single-local.txt' npm run lighthouse",
+    "lighthouse-live": "LIGHTHOUSE_FILE='lighthouse/live.txt' npm run lighthouse"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",
@@ -47,9 +48,7 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "tsconfig-paths-jest": "^0.0.1",
-    "typescript": "^4.5.4"
-  },
-  "devDependencies": {
+    "typescript": "^4.5.4",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7"
   }
