@@ -2,7 +2,6 @@ import groq from 'groq';
 
 export const groqCeleb = groq`
   *[_type == 'celeb' && slug.current == $slug][0]{
-    discourseTopicId,
     name,
     oldContent,
     pronoun,

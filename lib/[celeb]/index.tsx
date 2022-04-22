@@ -2,7 +2,6 @@ import React from 'react';
 import { featureFlags } from '~/lib/components/featureFlags';
 import { CelebPageProps } from '~/lib/components/types';
 import { AddFactButton } from '~/lib/[celeb]/AddFactButton';
-import { Discussion } from '~/lib/[celeb]/Discussion/Discussion';
 import { Facts } from '~/lib/[celeb]/Facts';
 import { Md } from '~/lib/[celeb]/Md/Md';
 import { PageHead } from '~/lib/[celeb]/PageHead/PageHead';
@@ -23,8 +22,6 @@ export const Celeb = (p: CelebPageProps) => {
       {featureFlags.AddFactButton && <AddFactButton />}
 
       {p.celeb.oldContent && <Md />}
-
-      <Discussion />
     </main>
   );
 };
