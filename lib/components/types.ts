@@ -75,7 +75,6 @@ export type TCeleb = {
   name: string;
   slug: TSlug;
   picture: TPicture;
-  discourseTopicId: number;
   tags?: {
     regular: Tag[];
     lowConfidence: Tag[];
