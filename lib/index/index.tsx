@@ -1,26 +1,17 @@
-import { Container, Typography } from '@mui/material';
-import React from 'react';
-import { CelebGallery } from '~/lib/components/CelebGallery';
-import { sanityClient } from '~/lib/components/sanityio';
-import s from './styles.module.scss';
-import { top100CelebSlugs } from './top100CelebSlugs';
+import React from "react";
+import { CelebGallery } from "~/lib/components/CelebGallery";
+import { sanityClient } from "~/lib/components/sanityio";
+import { top100CelebSlugs } from "./top100CelebSlugs";
 
 export const Index = (p: any) => {
   return (
     <>
-      <div className={s.fancy}>
-        <div className={s.fancyBackground} />
+      <div className="bg-gray-100 text-neutral-700">
+        <div className="mx-auto max-w-5xl pt-5 pb-10 pl-3 text-2xl font-semibold tracking-tight lg:pl-0">
+          Top 100 Celebs
+        </div>
+        <CelebGallery celebGalleryItems={p.top100Celebs} />
       </div>
-
-      <Container>
-        <Typography>
-          Top 100 celebs
-        </Typography>
-
-        <div className="">
-          <CelebGallery celebGalleryItems={p.top100Celebs} />
-        </div> 
-      </Container>
     </>
   );
 };
@@ -32,7 +23,7 @@ export const getStaticProps = async () => {
       'slug': slug.current,
       'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
     }`,
-    { slugs: top100CelebSlugs },
+    { slugs: top100CelebSlugs }
   )) as any[];
 
   top100Celebs.sort((a, b) => {

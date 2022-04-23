@@ -1,63 +1,35 @@
-import {
-  AppBar as MuiAppBar,
-  Container,
-  IconButton,
-  Typography,
-} from '@mui/material';
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { Icon } from '~/lib/components/Icon';
-import SearchIcon from '~/public/images/icons/search-regular.svg';
-import TimesIcon from '~/public/images/icons/times-regular.svg';
-import s from './AppBar.module.scss';
-import Link from 'next/link';
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
 export const AppBar = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <MuiAppBar
-      elevation={1}
-      color="transparent"
-      position="static"
-      className={s.AppBar}
-    >
-      <Container maxWidth="md" className={s.container}>
-        <div className={s.logo}>
-          <div style={{ display: showSearch ? 'block' : 'none' }}>
-            <div title="Google search results" className="gcse-search" />
+    <>
+      <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400"></div>
+      <nav className="NAV-CONTAINER flex w-full border-b bg-white py-4 px-4 text-neutral-600">
+        <div className="NAV mx-auto flex w-full max-w-5xl items-center justify-between">
+          <div className="NAV-LOGO bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">
+            HOLLOWVERSE
           </div>
-
-          <div style={{ display: showSearch ? 'none' : 'block' }}>
-            <Link passHref href="/">
-              <a>
-                <Image
-                  src="/images/logo.svg"
-                  width={250}
-                  height={30}
-                  alt="Hollowverse"
-                />
-                <Typography variant="body2" className={s.subtitle}>
-                  Important people and facts
-                </Typography>
-              </a>
-            </Link>
+          <div className="NAV-LINKS flex gap-2.5">
+            {showSearch && (
+              <input
+                className="h-[32px] w-40 rounded-lg bg-gray-100 px-2.5 placeholder-gray-400 transition hover:bg-gray-200"
+                placeholder="Search..."
+              />
+            )}
+            <button
+              onClick={() => {
+                !showSearch ? setShowSearch(true) : setShowSearch(false);
+              }}
+              className="rounded-lg bg-gray-100 p-2 transition hover:bg-gray-200 active:bg-gray-300"
+            >
+              <FaSearch />
+            </button>
           </div>
         </div>
-
-        <div className={s.search}>
-          <IconButton
-            aria-label="Search"
-            onClick={() => setShowSearch(!showSearch)}
-            style={{ opacity: showSearch ? 0.5 : 1 }}
-          >
-            <Icon
-              component={showSearch ? TimesIcon : SearchIcon}
-              fontSize="large"
-            />
-          </IconButton>
-        </div>
-      </Container>
-    </MuiAppBar>
+      </nav>
+    </>
   );
 };
