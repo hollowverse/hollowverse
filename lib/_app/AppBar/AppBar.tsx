@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 
 export const AppBar = () => {
@@ -9,13 +10,15 @@ export const AppBar = () => {
       <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400"></div>
       <nav className="NAV-CONTAINER flex w-full border-b bg-white py-4 px-4 text-neutral-600">
         <div className="NAV mx-auto flex w-full max-w-5xl items-center justify-between">
-          <div className="NAV-LOGO bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">
-            HOLLOWVERSE
-          </div>
+          <Link passHref href="/">
+            <div className="NAV-LOGO cursor-pointer select-none bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text sm:text-xl font-extrabold tracking-tight text-transparent lg:text-2xl">
+              HOLLOWVERSE
+            </div>
+          </Link>
           <div className="NAV-LINKS flex gap-2.5">
             {showSearch && (
               <input
-                className="h-[32px] w-40 rounded-lg bg-gray-100 px-2.5 placeholder-gray-400 transition hover:bg-gray-200"
+                className="h-[32px] w-24 rounded-lg bg-gray-100 px-2.5 placeholder-gray-400 transition hover:bg-gray-200 md:w-40"
                 placeholder="Search..."
               />
             )}

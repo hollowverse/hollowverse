@@ -16,7 +16,7 @@ export const CelebGallery: React.FC<{
 
         return (
           <>
-            <div className="relative -my-4 overflow-hidden shadow-sm">
+            <div className="relative -my-5 overflow-hidden shadow-sm">
               <a
                 className="flex flex-col items-center overflow-hidden"
                 href={`/${celebData.slug}`}
@@ -38,7 +38,7 @@ export const CelebGallery: React.FC<{
                   />
                 </span>
               </a>
-              <div className="relative bottom-10 left-3 z-[9999] inline-flex bg-black p-1.5 px-3 font-medium text-white">
+              <div className="relative text-xs sm:text-sm lg:text-base bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 font-medium text-white">
                 {celebData.name}
               </div>
             </div>
