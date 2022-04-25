@@ -8,16 +8,12 @@ import { top100CelebSlugs } from './top100CelebSlugs';
 export const Index = (p: any) => {
   return (
     <>
-      {/* <div className={s.fancy}>
-        <div className={s.fancyBackground} />
-      </div> */}
-
       <Container className="{s.Index}" maxWidth="md">
         <div className="container mx-auto px-4 md:px-0">
           <Typography className="font-primary text-black font-semibold text-xl md:text-2xl py-4" variant="h1" fontWeight={400}>
             Top 100 Celebrities
           </Typography>
-          
+
           <div className={s.container}>
             <CelebGallery celebGalleryItems={p.top100Celebs} />
           </div>
