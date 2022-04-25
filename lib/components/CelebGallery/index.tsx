@@ -12,41 +12,46 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <div className={s.CelebGallery}>
-      {p.celebGalleryItems.map((celebData) => {
-        const picture = celebData.picture || context.placeholderImage;
+    <div className="container mx-auto w-full h-auto items-center justify-center">
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-center justify-center w-full">
+        {p.celebGalleryItems.map((celebData) => {
+          const picture = celebData.picture || context.placeholderImage;
 
-        return (
-          <a
-            className={s.link}
-            href={`/${celebData.slug}`}
-            key={celebData.slug}
-          >
-            <span className={s.image}>
-              <Image
-                objectFit="cover"
-                objectPosition="top"
-                blurDataURL={picture.metadata.lqip}
-                placeholder="blur"
-                src={sanityImage(picture).width(200).height(250).url()}
-                alt={celebData.name}
-                layout="fixed"
-                width={160}
-                height={200}
-                className={s.image}
-              />
-            </span>
-            <Typography
-              fontWeight={500}
-              variant="h4"
-              component="p"
-              className={s.name}
+          return (
+            <a
+              className="transition-all duration-[400ms] overflow-hidden rounded-xl w-full"
+              href={`/${celebData.slug}`}
+              key={celebData.slug}
             >
-              {celebData.name}
-            </Typography>
-          </a>
-        );
-      })}
+              <span className="relative block w-full h-auto" width={200} height={230}>
+                <Image
+                  objectFit="cover"
+                  objectPosition="center"
+                  blurDataURL={picture.metadata.lqip}
+                  placeholder="blur"
+                  src={sanityImage(picture).url()}
+                  alt={celebData.name}
+                  layout="responsive"
+                  width={200}
+                  height={230}
+                  className="rounded-lg w-full h-auto block"
+                />
+
+                <Typography
+                  variant="h4"
+                  component="p"
+                  className="font-primary absolute bottom-4 left-4 font-semibold text-white z-10 text-sm"
+                >
+                  {celebData.name}
+                </Typography>
+              
+                <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black block" />
+              </span>
+              
+            </a>
+          );
+        })}
+      </div>
     </div>
   );
 };

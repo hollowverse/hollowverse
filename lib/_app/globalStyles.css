@@ -17,3 +17,7 @@ p {
 a {
   text-decoration: none;
 }
+
+.image-overlay {
+  @apply absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black block;
+}

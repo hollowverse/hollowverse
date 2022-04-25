@@ -8,9 +8,9 @@ import { top100CelebSlugs } from './top100CelebSlugs';
 export const Index = (p: any) => {
   return (
     <>
-      <div className={s.fancy}>
+      {/* <div className={s.fancy}>
         <div className={s.fancyBackground} />
-      </div>
+      </div> */}
 
       <Container className={s.Index} maxWidth="md">
         <Typography variant="h1" fontWeight={400}>
