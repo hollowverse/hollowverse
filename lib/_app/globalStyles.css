@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); */
-
 body {
   color: rgba(0, 0, 0, 0.75);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
