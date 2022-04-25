@@ -4,6 +4,7 @@ import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Icon } from '~/lib/components/Icon';
 import BookOpenIcon from '~/public/images/icons/book-open.svg';
 import s from './Sources.module.scss';
+import clsx from 'clsx';
 
 export const Sources = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,7 +14,11 @@ export const Sources = (p: {
   const oldContent = context.celeb.oldContent!;
 
   return (
-    <Container maxWidth="md" component="section" className={s.Sources}>
+    <Container
+      maxWidth="md"
+      component="section"
+      className={clsx('prose prose-lg', s.Sources)}
+    >
       <Button
         color="inherit"
         variant="text"
