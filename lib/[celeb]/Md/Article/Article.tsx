@@ -24,7 +24,7 @@ export const Article = (p: {
       {oldContent.summaries && (
         <div>
           <Separator title="Summary" />
-          <Container maxWidth="md">
+          <Container maxWidth="md" className="prose prose-lg">
             <p>{oldContent.summaries.religion}</p>
             <p>{oldContent.summaries.politicalViews}</p>
           </Container>
@@ -67,6 +67,7 @@ export const Article = (p: {
       <Separator title="Editorial" />
       <Container
         maxWidth="md"
+        className="prose prose-lg"
         dangerouslySetInnerHTML={{ __html: oldContent.article }}
       />
     </article>
