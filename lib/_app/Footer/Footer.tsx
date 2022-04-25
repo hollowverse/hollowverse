@@ -11,19 +11,32 @@ import { Separator } from '~/lib/components/Separator';
 export const Footer = () => {
   return (
     <footer className={s.Footer}>
-      <Separator />
+      {/* <Separator /> */}
 
       <Container maxWidth="md" className={s.content}>
-        <div className={s.image}>
+        <div className="pt-28 pb-10 flex flex-col items-center justify-center w-full h-auto">
           <Image
             width={50}
             height={50}
             alt="Hollowverse"
             src="/images/icons/letter-logo.png"
           />
+
+          <Typography className="font-primary text-[#747474] text-base mt-4 text-center" variant="h4" component="p">
+           Hollowverse is about the important <br />people and their beliefs.
+          </Typography>
+
+          <div className="mt-6">
+            <Typography className="font-primary text-[#747474] text-sm mt-4 text-center" variant="h4" component="p">
+              Email us at <a href="mailto:hollowverse@hollowverse.com" className="text-black font-medium">hollowverse@hollowverse.com</a>.
+            </Typography>
+            <Typography className="font-primary text-[#747474] text-sm mt-4 text-center" variant="h4" component="p">
+              We reserve none. Everything here is free, <br />including <a className="text-black font-medium" href="https://github.com/hollowverse/" target="_blank" rel="noreferrer noopener">the code.</a>
+            </Typography>
+          </div>
         </div>
 
-        <div className={s.items}>
+        {/* <div className={s.items}>
           {(
             [
               [
@@ -78,10 +91,8 @@ export const Footer = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </Container>
-
-      <div style={{ marginTop: '100px' }} />
     </footer>
   );
 };
