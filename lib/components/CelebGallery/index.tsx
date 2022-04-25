@@ -6,8 +6,6 @@ import s from './styles.module.scss';
 import { TCelebGalleryItem } from '~/lib/components/types';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
-
-
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
 }> = (p) => {
@@ -35,14 +33,14 @@ export const CelebGallery: React.FC<{
                   alt={celebData.name}
                   layout="responsive"
                   width={200}
-                  height={230}
+                  height={219}
                   className="rounded-lg w-full h-auto block"
                 />
 
                 <Typography
                   variant="h4"
                   component="p"
-                  className="font-primary absolute bottom-4 left-4 font-semibold text-white z-10 text-sm"
+                  className="font-primary absolute bottom-3 left-3 font-semibold text-white z-10 text-sm"
                 >
                   {celebData.name}
                 </Typography>

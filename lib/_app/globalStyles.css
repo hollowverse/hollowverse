@@ -31,3 +31,11 @@ a {
 .celeb-card:hover img {
   @apply scale-110;
 }
+
+.search-bar::hover {
+  @apply border-black;
+}
+
+.search-bar::placeholder {
+  @apply font-normal text-sm text-[#E6E6E6];
+}
