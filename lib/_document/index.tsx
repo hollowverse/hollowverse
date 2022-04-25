@@ -9,10 +9,22 @@ export class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* Google Font */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          />
+
           <link rel="shortcut icon" href="/images/icons/letter-logo.png" />
+
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
-
         </Head>
         <body>
           <Main />
