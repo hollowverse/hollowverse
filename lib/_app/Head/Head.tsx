@@ -27,7 +27,11 @@ export const Head = () => (
         name="description"
         content="The religion, politics, and ideas of important people"
       />
+      {/* Google Font */}
       <link rel="shortcut icon" href="/images/icons/letter-logo.png" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
     </NextjsHead>
   </>
 );

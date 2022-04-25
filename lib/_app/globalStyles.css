@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); */
+
 body {
   color: rgba(0, 0, 0, 0.75);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -20,4 +22,12 @@ a {
 
 .image-overlay {
   @apply absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black block;
+}
+
+.celeb-card img {
+  @apply scale-100 transform transition-all duration-[400ms];
+}
+
+.celeb-card:hover img {
+  @apply scale-110;
 }

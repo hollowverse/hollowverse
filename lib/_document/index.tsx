@@ -12,6 +12,7 @@ export class MyDocument extends Document {
           <link rel="shortcut icon" href="/images/icons/letter-logo.png" />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {(this.props as any).emotionStyleTags}
+
         </Head>
         <body>
           <Main />

@@ -6,6 +6,8 @@ import s from './styles.module.scss';
 import { TCelebGalleryItem } from '~/lib/components/types';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
+
+
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
 }> = (p) => {
@@ -19,11 +21,11 @@ export const CelebGallery: React.FC<{
 
           return (
             <a
-              className="transition-all duration-[400ms] overflow-hidden rounded-xl w-full"
+              className="celeb-card overflow-hidden rounded-xl w-full"
               href={`/${celebData.slug}`}
               key={celebData.slug}
             >
-              <span className="relative block w-full h-auto" width={200} height={230}>
+              <span className="relative block w-full h-auto">
                 <Image
                   objectFit="cover"
                   objectPosition="center"
@@ -44,8 +46,9 @@ export const CelebGallery: React.FC<{
                 >
                   {celebData.name}
                 </Typography>
-              
-                <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black block" />
+
+                {/* overlay */}
+                <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black block" />
               </span>
               
             </a>

@@ -12,13 +12,15 @@ export const Index = (p: any) => {
         <div className={s.fancyBackground} />
       </div> */}
 
-      <Container className={s.Index} maxWidth="md">
-        <Typography variant="h1" fontWeight={400}>
-          Top 100 celebs
-        </Typography>
-
-        <div className={s.container}>
-          <CelebGallery celebGalleryItems={p.top100Celebs} />
+      <Container className="{s.Index}" maxWidth="md">
+        <div className="container mx-auto px-4 md:px-0">
+          <Typography className="font-primary text-black font-bold text-xl md:text-2xl py-4" variant="h1" fontWeight={400}>
+            Top 100 Celebrities
+          </Typography>
+          
+          <div className={s.container}>
+            <CelebGallery celebGalleryItems={p.top100Celebs} />
+          </div>
         </div>
       </Container>
     </>
