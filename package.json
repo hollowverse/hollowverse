@@ -15,7 +15,12 @@
     "lighthouse-single": "URL_FILE='lighthouse/single-local.txt' npm run lighthouse",
     "lighthouse-live": "URL_FILE='lighthouse/live.txt' npm run lighthouse",
     "manual-validation": "URL_FILE='lighthouse/local.txt' playwright test",
-    "manual-validation-live": "URL_FILE='lighthouse/live.txt' playwright test"
+    "manual-validation-live": "URL_FILE='lighthouse/live.txt' playwright test",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",
@@ -41,17 +46,21 @@
     "date-fns": "^2.28.0",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.28.0",
     "fs-extra": "^10.0.0",
     "gray-matter": "^4.0.3",
     "groq": "^2.15.0",
+    "husky": "^7.0.4",
     "jest": "^27.5.1",
     "js-yaml": "^4.1.0",
     "lighthouse-batch": "^8.1.1",
+    "lint-staged": "^12.4.1",
     "lodash-es": "^4.17.21",
     "next": "^12.1.0",
     "normalize.css": "^8.0.1",
     "postcss": "^8.4.12",
+    "prettier": "^2.6.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "remark": "^14.0.2",

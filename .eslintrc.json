@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:react/recommended"],
+  "extends": ["next/core-web-vitals", "plugin:react/recommended", "prettier"],
   "rules": {
     "react/prop-types": "off",
     "react/self-closing-comp": [
