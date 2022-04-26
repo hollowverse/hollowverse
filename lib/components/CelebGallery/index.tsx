@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { sanityImage } from '~/lib/components/sanityio';
-import { Typography } from '@mui/material';
-import s from './styles.module.scss';
 import { TCelebGalleryItem } from '~/lib/components/types';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
@@ -13,7 +11,7 @@ export const CelebGallery: React.FC<{
 
   return (
     <div className="container mx-auto w-full h-auto items-center justify-center">
-      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 items-center justify-center w-full h-auto">
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-center justify-center w-full">
         {p.celebGalleryItems.map((celebData) => {
           const picture = celebData.picture || context.placeholderImage;
 
@@ -33,17 +31,13 @@ export const CelebGallery: React.FC<{
                   alt={celebData.name}
                   layout="responsive"
                   width={200}
-                  height={219}
+                  height={225}
                   className="rounded-lg w-full h-auto block"
                 />
 
-                <Typography
-                  variant="h4"
-                  component="p"
-                  className="font-primary absolute bottom-3 left-3 font-semibold text-white z-10 text-sm"
-                >
+                <p className="font-primary absolute bottom-3 left-3 font-semibold text-white z-10 text-sm">
                   {celebData.name}
-                </Typography>
+                </p>
 
                 {/* overlay */}
                 <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black block" />
