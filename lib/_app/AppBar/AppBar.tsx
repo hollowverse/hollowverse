@@ -1,27 +1,16 @@
-import {
-  AppBar as MuiAppBar,
-  Container, Typography
-} from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import s from './AppBar.module.scss';
-
 export const AppBar = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <MuiAppBar
-      elevation={0}
-      color="transparent"
-      position="static"
-      className={s.AppBar}
-    >
-      <Container maxWidth="md" className="px-4 container mx-auto flex flex-col gap-4 items-center justify-center w-full h-auto">
+    <nav className="py-10">
+      <section className="px-4 container mx-auto flex flex-col gap-4 items-center justify-center w-full h-auto">
         <div className="w-full h-auto block">
-          <div style={{ display: showSearch ? 'block' : 'none' }}>
+          {/* <div style={{ display: showSearch ? 'block' : 'none' }}>
             <div title="Google search results" className="gcse-search" />
-          </div>
+          </div> */}
 
           <div style={{ display: showSearch ? 'none' : 'block' }}>
             <Link passHref href="/">
@@ -33,9 +22,9 @@ export const AppBar = () => {
                   className=""
                   alt="Hollowverse"
                 />
-                <Typography variant="body2" className="font-primary mt-2 font-medium">
+                <p className="font-primary mt-2 text-sm font-medium">
                   Important people and facts
-                </Typography>
+                </p>
               </a>
             </Link>
           </div>
@@ -47,7 +36,7 @@ export const AppBar = () => {
             <input placeholder="Search by tag, issue or name" className="ml-2 bg-transparent border-0 search-bar font-medium w-full h-auto p-3 px-4 pl-0 outline-none" type="text" />
           </div>
         </div>
-      </Container>
-    </MuiAppBar>
+      </section>
+    </nav>
   );
 };
