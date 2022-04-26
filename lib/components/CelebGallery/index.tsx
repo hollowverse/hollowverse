@@ -13,7 +13,7 @@ export const CelebGallery: React.FC<{
 
   return (
     <div className="container mx-auto w-full h-auto items-center justify-center">
-      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-center justify-center w-full">
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 items-center justify-center w-full h-auto">
         {p.celebGalleryItems.map((celebData) => {
           const picture = celebData.picture || context.placeholderImage;
 
