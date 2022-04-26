@@ -1,9 +1,7 @@
-import { Container } from '@mui/material';
 import React from 'react';
 import { CelebGallery } from '~/lib/components/CelebGallery';
 import { Separator } from '~/lib/components/Separator';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
-import s from './styles.module.scss';
 
 export const InterestingProfiles = () => {
   const context = useCelebContext();
