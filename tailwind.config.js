@@ -6,7 +6,9 @@ module.exports = {
         primary: "'Poppins', sans-serif"
       },
       colors: {
-        lg: '#E6E6E6'
+        // light gray
+        'lg-1': '#E6E6E6',
+        'lg-2': '#747474'
       },
       width: {
         '400' : '25rem'
