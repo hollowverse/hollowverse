@@ -12,7 +12,7 @@ export const Celeb = (p: CelebPageProps) => {
   return (
     <main>
       <PageHead />
-      
+
       <TopSection />
 
       {p.celeb.tags && <TagCollection />}
