@@ -1,25 +1,21 @@
-import { Container, Typography } from '@mui/material';
 import React from 'react';
 import { CelebGallery } from '~/lib/components/CelebGallery';
 import { sanityClient } from '~/lib/components/sanityio';
-import s from './styles.module.scss';
 import { top100CelebSlugs } from './top100CelebSlugs';
 
 export const Index = (p: any) => {
   return (
-    <>
-      <Container className="{s.Index}" maxWidth="md">
-        <div className="container mx-auto px-4 md:px-0">
-          <Typography className="font-primary text-black font-semibold text-xl md:text-2xl py-4" variant="h1" fontWeight={400}>
-            Top 100 Celebrities
-          </Typography>
+    <main className="mx-auto max-w-home-container">
+      <div className="container mx-auto px-4 md:px-0">
+        <h2 className="font-primary text-black font-semibold text-xl md:text-2xl py-4">
+          Top 100 Celebrities
+        </h2>
 
-          <div className={s.container}>
-            <CelebGallery celebGalleryItems={p.top100Celebs} />
-          </div>
+        <div className="w-full h-auto py-4">
+          <CelebGallery celebGalleryItems={p.top100Celebs} />
         </div>
-      </Container>
-    </>
+      </div>
+    </main>
   );
 };
 

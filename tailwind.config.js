@@ -11,7 +11,10 @@ module.exports = {
         'lg-2': '#747474'
       },
       width: {
-        '400' : '25rem'
+        '400' : '25rem',
+      },
+      maxWidth: {
+        'home-container' : '56.25rem'
       }
     },
   },
