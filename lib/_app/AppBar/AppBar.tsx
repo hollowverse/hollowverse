@@ -30,25 +30,14 @@ export const AppBar = () => {
                 isHomepage ? 'items-center' : 'items-start',
               )}
             >
-              <div className="hidden md:block">
-                <Image
-                  src="/images/logo.svg"
-                  width={250}
-                  height={30}
-                  alt="Hollowverse"
-                  layout="fixed"
-                />
-              </div>
+              <Image
+                src="/images/logo.svg"
+                width={250}
+                height={30}
+                alt="Hollowverse"
+                layout="fixed"
+              />
 
-              <div className="block md:hidden">
-                <Image
-                  src="/images/logo.svg"
-                  width={190}
-                  height={30}
-                  alt="Hollowverse"
-                  layout="fixed"
-                />
-              </div>
               {isHomepage && (
                 <p className="font-primary mt-2 text-sm font-medium">
                   Important people and facts
