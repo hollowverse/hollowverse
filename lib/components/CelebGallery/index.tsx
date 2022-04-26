@@ -3,15 +3,19 @@ import Image from 'next/image';
 import { sanityImage } from '~/lib/components/sanityio';
 import { TCelebGalleryItem } from '~/lib/components/types';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import {useRouter} from 'next/router';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
 }> = (p) => {
   const context = useCelebContext();
+  const router = useRouter()
 
+  // dynamic classes
+  let grid_class = ['grid', 'gap-4', router.pathname == '/' ? 'grid-cols-2' : 'grid-cols-3', router.pathname == '/' ? 'sm:grid-cols-3' : 'sm:grid-cols-4', 'lg:grid-cols-4', 'items-center', 'justify-center', 'w-full'].join(' ')
   return (
     <div className="container mx-auto w-full h-auto items-center justify-center">
-      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 items-center justify-center w-full">
+      <div className={grid_class}>
         {p.celebGalleryItems.map((celebData) => {
           const picture = celebData.picture || context.placeholderImage;
 

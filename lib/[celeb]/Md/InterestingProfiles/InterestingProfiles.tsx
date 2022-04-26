@@ -10,12 +10,12 @@ export const InterestingProfiles = () => {
   const relatedPeople = context.celeb.oldContent!.relatedPeople;
 
   return (
-    <div className={s.InterestingProfiles}>
+    <div className="px-4 lg:px-0 max-w-home-container mx-auto">
       <Separator title="Other interesting profiles" />
 
-      <Container maxWidth="md">
+      <div className="mt-4">
         <CelebGallery celebGalleryItems={relatedPeople} />
-      </Container>
+      </div>
     </div>
   );
 };
