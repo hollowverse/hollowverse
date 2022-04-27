@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className="text-lg-2 font-primary bg-white pt-28 pb-10 flex flex-col items-center justify-center w-full h-auto">
+    <footer className="text-lg-2 text-center font-primary bg-white pt-28 pb-10 flex flex-col items-center justify-center w-full h-auto">
       <Image
         width={50}
         height={50}
@@ -11,12 +11,12 @@ export const Footer = () => {
         src="/images/icons/letter-logo.png"
       />
 
-      <p className="text-base mt-4 text-center">
+      <p className="text-base mt-4">
         Hollowverse is about the important <br />
         people and their beliefs.
       </p>
 
-      <p className="mt-10 text-sm text-center">
+      <p className="mt-10 text-sm">
         Email us at{' '}
         <a
           href="mailto:hollowverse@hollowverse.com"
