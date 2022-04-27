@@ -11,9 +11,7 @@ export const Index = (p: any) => {
           Top 100 Celebrities
         </h2>
 
-        <div className="w-full h-auto block">
-          <CelebGallery celebGalleryItems={p.top100Celebs} />
-        </div>
+        <CelebGallery celebGalleryItems={p.top100Celebs} />
       </div>
     </main>
   );
