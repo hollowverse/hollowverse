@@ -3,19 +3,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: "'Poppins', sans-serif"
+        primary: "'Poppins', sans-serif",
       },
       colors: {
         // light gray
         'lg-1': '#E6E6E6',
-        'lg-2': '#747474'
+        'lg-2': '#747474',
       },
       width: {
-        '400' : '25rem',
+        400: '25rem',
       },
       maxWidth: {
-        'home-container' : '56.25rem'
-      }
+        'home-container': '56.25rem',
+        'celeb-image': '12.5rem',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
