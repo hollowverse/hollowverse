@@ -11,7 +11,7 @@ export const InterestingProfiles = () => {
     <div className="px-4 lg:px-0 max-w-home-container mx-auto">
       <Separator title="Other interesting profiles" />
 
-      <div className="mt-4">
+      <div className="mt-5 lg:mt-7">
         <CelebGallery celebGalleryItems={relatedPeople} />
       </div>
     </div>
