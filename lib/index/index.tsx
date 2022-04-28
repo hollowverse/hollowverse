@@ -7,7 +7,7 @@ export const Index = (p: any) => {
   return (
     <main className="mx-auto max-w-home-container">
       <div className="container mx-auto px-4 lg:px-0">
-        <h2 className="font-primary text-black font-semibold text-xl md:text-2xl py-4">
+        <h2 className="font-primary text-black font-semibold text-xl py-4 ml-[3%]">
           Top 100 Celebrities
         </h2>
 

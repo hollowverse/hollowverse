@@ -26,6 +26,10 @@ a {
   @apply scale-110;
 }
 
+.celeb-card:active img {
+  @apply scale-100;
+}
+
 .search-bar::hover {
   @apply border-black;
 }
