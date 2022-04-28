@@ -3,15 +3,12 @@ import Image from 'next/image';
 import { sanityImage } from '~/lib/components/sanityio';
 import { TCelebGalleryItem } from '~/lib/components/types';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
-import { useRouter } from 'next/router';
 import clsx from 'clsx';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
 }> = (p) => {
   const context = useCelebContext();
-  const router = useRouter();
-  const isHomepage = router.pathname == '/';
 
   return (
     <div
