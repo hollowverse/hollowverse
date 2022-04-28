@@ -52,8 +52,7 @@ export const AppBar = () => {
         >
           <div
             className={clsx(
-              showSearch ? 'flex' : isHomepage ? 'flex' : 'hidden',
-              'md:flex items-center justify-between rounded-md pl-2 border border-lg-1 w-full md:w-400 h-auto',
+              'flex flex-row items-center justify-between rounded-md pl-2 border border-lg-1 w-400',
             )}
           >
             <Image
@@ -88,6 +87,7 @@ export const AppBar = () => {
             </button>
           )}
 
+          {/* search bar close button */}
           {!isHomepage && showSearch && (
             <button
               onClick={() => {
