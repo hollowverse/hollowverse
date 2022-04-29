@@ -5,8 +5,8 @@ import { top100CelebSlugs } from './top100CelebSlugs';
 
 export const Index = (p: any) => {
   return (
-    <main className="mx-auto max-w-home-container ">
-      <h2 className="px-4 font-primary text-black font-semibold text-xl py-4">
+    <main className="mx-auto max-w-home-container">
+      <h2 className="font-primary text-black font-semibold text-xl p-4">
         Top 100 Celebrities
       </h2>
 

@@ -13,7 +13,7 @@ export const CelebGallery: React.FC<{
   return (
     <div
       className={clsx(
-        'transition-all duration-[400ms] flex flex-wrap gap-4 items-center justify-center w-full',
+        'transition-all duration-[400ms] flex flex-wrap items-center justify-center w-full',
       )}
     >
       {p.celebGalleryItems.map((celebData) => {
@@ -21,7 +21,7 @@ export const CelebGallery: React.FC<{
 
         return (
           <a
-            className="celeb-card flex flex-grow flex-shrink sm:basis-1/4 items-center justify-center overflow-hidden rounded-xl max-w-celeb-image min-w-[100px] w-full"
+            className="m-2 celeb-card flex flex-grow flex-shrink sm:basis-1/4 items-center justify-center overflow-hidden rounded-xl max-w-celeb-image min-w-[100px] w-full"
             href={`/${celebData.slug}`}
             key={celebData.slug}
           >
