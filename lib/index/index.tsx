@@ -2,12 +2,15 @@ import { Container, Typography } from '@mui/material';
 import React from 'react';
 import { CelebGallery } from '~/lib/components/CelebGallery';
 import { sanityClient } from '~/lib/components/sanityio';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
 import s from './styles.module.scss';
 import { top100CelebSlugs } from './top100CelebSlugs';
 
 export const Index = (p: any) => {
   return (
     <>
+      <AppBar />
+
       <div className={s.fancy}>
         <div className={s.fancyBackground} />
       </div>

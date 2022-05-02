@@ -24,7 +24,7 @@ export const Search = () => {
           inputRef={inputRef}
           autoFocus
           minLength={2}
-          debounceTimeout={300}
+          debounceTimeout={600}
           onChange={(event) => setVal(event.target.value)}
         />
 

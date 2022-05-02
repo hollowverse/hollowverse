@@ -25,7 +25,6 @@ export const App = ({
       <Head />
       <ThemeProvider theme={unstable_createMuiStrictModeTheme(theme)}>
         <StaticPropsContextProvider value={pageProps}>
-          <AppBar />
           <Component {...pageProps} />
           <Footer />
         </StaticPropsContextProvider>

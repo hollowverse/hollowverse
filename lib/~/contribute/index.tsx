@@ -10,6 +10,7 @@ import { getContributeLink } from '~/lib/components/getContributeLink';
 import { Heading2 } from './Heading2';
 import s from './styles.module.scss';
 import Head from 'next/head';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
 
 export const Contribute = () => {
   const router = useRouter();
@@ -21,6 +22,8 @@ export const Contribute = () => {
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <AppBar />
 
       <Container className={s.Contribute} maxWidth="md">
         <Typography variant="h1">Add to {name}&apos;s page</Typography>

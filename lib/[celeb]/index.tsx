@@ -7,22 +7,26 @@ import { Md } from '~/lib/[celeb]/Md/Md';
 import { PageHead } from '~/lib/[celeb]/PageHead/PageHead';
 import { TagCollection } from '~/lib/[celeb]/TagCollection';
 import { TopSection } from '~/lib/[celeb]/TopSection/TopSection';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
 
 export const Celeb = (p: CelebPageProps) => {
   return (
-    <main>
-      <PageHead />
+    <>
+      <AppBar />
+      <main>
+        <PageHead />
 
-      <TopSection />
+        <TopSection />
 
-      {p.celeb.tags && <TagCollection />}
+        {p.celeb.tags && <TagCollection />}
 
-      {p.celeb.facts && <Facts />}
+        {p.celeb.facts && <Facts />}
 
-      {featureFlags.AddFactButton && <AddFactButton />}
+        {featureFlags.AddFactButton && <AddFactButton />}
 
-      {p.celeb.oldContent && <Md />}
-    </main>
+        {p.celeb.oldContent && <Md />}
+      </main>
+    </>
   );
 };
 
