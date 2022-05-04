@@ -15,7 +15,8 @@
     "lighthouse-single": "URL_FILE='lighthouse/single-local.txt' npm run lighthouse",
     "lighthouse-live": "URL_FILE='lighthouse/live.txt' npm run lighthouse",
     "manual-validation": "URL_FILE='lighthouse/local.txt' playwright test",
-    "manual-validation-live": "URL_FILE='lighthouse/live.txt' playwright test"
+    "manual-validation-live": "URL_FILE='lighthouse/live.txt' playwright test",
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",
@@ -48,6 +49,7 @@
     "lighthouse-batch": "^8.1.1",
     "lodash-es": "^4.17.21",
     "next": "^12.1.0",
+    "next-sitemap": "^2.5.20",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
