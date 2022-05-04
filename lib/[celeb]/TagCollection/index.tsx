@@ -1,45 +1,30 @@
-import { Chip, Container, Typography } from '@mui/material';
-import React from 'react';
-import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
-import s from './styles.module.scss';
+import { Chip } from "@mui/material";
+import React from "react";
+import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
 
 export const TagCollection = () => {
   const tags = useCelebContext().celeb.tags!;
 
   return (
-    <Container maxWidth="md" className={s.TagCollection}>
-      <Container>
+    <div className="f-full">
+      <div className="mx-auto flex flex-wrap gap-2.5">
         {tags.regular.map((t) => (
-          <Chip
-            key={t.tag.name}
-            label={t.tag.name}
-            className={s.tag}
-            variant="outlined"
-          />
+          <Chip key={t.tag.name} label={t.tag.name} className="bg-white" />
         ))}
-      </Container>
+      </div>
 
       {tags.lowConfidence.length > 0 && (
-        <Container className={s.lowConfidence}>
-          <Typography
-            component="p"
-            variant="h3"
-            className={s.tag}
-            display="inline"
-          >
-            Maybe
-          </Typography>
-          {tags.lowConfidence.map((t) => (
-            <Chip
-              key={t.tag.name}
-              label={t.tag.name}
-              className={s.tag}
-              variant="outlined"
-            />
-          ))}
-        </Container>
+        <div className="mt-2.5 flex items-center gap-1.5">
+          <div className="text-xs tracking-wide text-neutral-400">Maybe:</div>
+
+          <div className="flex flex-wrap gap-2.5">
+            {tags.lowConfidence.map((t) => (
+              <Chip key={t.tag.name} label={t.tag.name} className="bg-white" />
+            ))}{" "}
+          </div>
+        </div>
       )}
-    </Container>
+    </div>
   );
 
   // return <pre>{JSON.stringify(tags, null, 2)}</pre>;

@@ -1,7 +1,4 @@
-import { Container, Typography } from '@mui/material';
-import React from 'react';
-import s from './styles.module.scss';
-import clsx from 'clsx';
+import React from "react";
 
 export const Separator: React.FC<{
   title?: string;
@@ -11,21 +8,12 @@ export const Separator: React.FC<{
   const minor = p.minor || false;
 
   return (
-    <Container
-      maxWidth="md"
-      disableGutters
-      className={clsx(s.Separator, p.className, minor ? s.minor : s.major)}
+    <div
+      className={
+        !minor && "border-y bg-white p-5 font-bold lg:border-0 lg:border-b"
+      }
     >
-      {p.title && (
-        <Typography
-          variant="h3"
-          component="h2"
-          fontWeight={500}
-          className={s.title}
-        >
-          {p.title}
-        </Typography>
-      )}
-    </Container>
+      {p.title}
+    </div>
   );
 };
