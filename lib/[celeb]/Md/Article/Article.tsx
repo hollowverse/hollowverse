@@ -1,10 +1,10 @@
-import { Button, Container, Grid } from '@mui/material';
-import React from 'react';
-import { Separator } from '~/lib/components/Separator';
-import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
-import s from './styles.module.scss';
-import LoginIcon from '@mui/icons-material/Login';
-import Link from 'next/link';
+import { Button } from "@mui/material";
+import React from "react";
+import { Separator } from "~/lib/components/Separator";
+import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
+import s from "./styles.module.scss";
+import LoginIcon from "@mui/icons-material/Login";
+import Link from "next/link";
 
 export const Article = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,24 +16,30 @@ export const Article = (p: {
     <article
       className={s.Article}
       onClick={(e) => {
-        if ((e.target as Element).classList.contains('source-citation')) {
+        if ((e.target as Element).classList.contains("source-citation")) {
           p.setShowSources(true);
         }
       }}
     >
       {oldContent.summaries && (
-        <div>
+        <div className="">
           <Separator title="Summary" />
-          <Container maxWidth="md">
+          <div className="mb-5 border-b bg-white p-5 lg:border-0">
             <p>{oldContent.summaries.religion}</p>
             <p>{oldContent.summaries.politicalViews}</p>
-          </Container>
+          </div>
         </div>
       )}
 
       <div className={s.contributePromo}>
         <Separator title="Hi! 👋 Do you think a lot about politics and religion? 🧠" />
-        <Container maxWidth="md" className={s.contributePromoContent}>
+        <div
+          className={
+            s.contributePromoContent +
+            " " +
+            "mb-5 border-b bg-white p-5 lg:border-0"
+          }
+        >
           <div className={s.contributePromoText}>
             <p>
               Receive a $25 Amazon® gift card by becoming a top contributor on
@@ -45,7 +51,7 @@ export const Article = (p: {
             <Link
               aria-label="Learn about the steps required to start contributing to Hollowverse"
               href={{
-                pathname: '/~/contribute',
+                pathname: "/~/contribute",
                 query: {
                   name: context.celeb.name,
                   slug: context.celeb.slug,
@@ -61,12 +67,12 @@ export const Article = (p: {
               </Button>
             </Link>
           </div>
-        </Container>
+        </div>
       </div>
 
       <Separator title="Editorial" />
-      <Container
-        maxWidth="md"
+      <div
+        className="break-normal border-b bg-white p-5 leading-relaxed"
         dangerouslySetInnerHTML={{ __html: oldContent.article }}
       />
     </article>

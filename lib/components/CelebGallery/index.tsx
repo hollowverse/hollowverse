@@ -38,7 +38,7 @@ export const CelebGallery: React.FC<{
                   />
                 </span>
               </a>
-              <div className="relative text-xs sm:text-sm lg:text-base bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 font-medium text-white">
+              <div className="relative bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 text-xs font-medium text-white sm:text-sm lg:text-base">
                 {celebData.name}
               </div>
             </div>

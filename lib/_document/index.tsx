@@ -1,8 +1,8 @@
-import createEmotionServer from '@emotion/server/create-instance';
+import createEmotionServer from "@emotion/server/create-instance";
 // eslint-disable-next-line @next/next/no-document-import-in-page
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import React from 'react';
-import { createEmotionCache } from '~/lib/components/createEmotionCache';
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import React from "react";
+import { createEmotionCache } from "~/lib/components/createEmotionCache";
 
 export class MyDocument extends Document {
   render() {
@@ -68,7 +68,7 @@ MyDocument.getInitialProps = async (ctx) => {
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      data-emotion={`${style.key} ${style.ids.join(" ")}`}
       key={style.key}
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: style.css }}

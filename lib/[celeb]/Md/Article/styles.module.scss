@@ -11,14 +11,13 @@
 
   blockquote {
     margin-left: $s2;
-    padding: 1px 0 1px $s4;
+    padding-left: 1rem;
     border-left: 10px solid $lessEmphasis300;
   }
 
   .contributePromo {
     .contributePromoContent {
       display: flex;
-      margin-top: $s4;
 
       .contributePromoText {
         flex: 0.7;
