@@ -7,3 +7,4 @@ playwright-report/
 .vercel
 .env*.local
 public/sitemap*
+robots.txt
