@@ -1,15 +1,15 @@
-import React from 'react';
-import { Separator } from '~/lib/components/Separator';
-import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
-import { Fact } from '~/lib/[celeb]/Facts/Fact';
-import s from './styles.module.scss';
+import React from "react";
+import { Separator } from "~/lib/components/Separator";
+import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
+import { Fact } from "~/lib/[celeb]/Facts/Fact";
+import s from "./styles.module.scss";
 
 export const Facts = () => {
   const context = useCelebContext();
   const { groups, topics } = context.celeb.facts!;
 
   return (
-    <div className={s.Facts}>
+    <div className="flex flex-col gap-5">
       {topics.map((topic, i) => {
         const factGroup = groups[topic];
 
