@@ -5,13 +5,16 @@ import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
 import { Fact as TFact } from "~/lib/components/types";
 import s from "./styles.module.scss";
 
+// logan's comment, fact page layout
+
+
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const {
     celeb: { name },
   } = useCelebContext();
 
   return (
-    <div className={s.Fact + " " + "flex flex-col border-b bg-white !p-5"}>
+    <div className={s.Fact + " " + "flex flex-col border-b bg-white !p-5 lg:border-x"}>
       <div className="mb-5 flex flex-wrap gap-2.5">
         {value.tags.map((t) => {
           return (

@@ -8,30 +8,36 @@ import { PageHead } from "~/lib/[celeb]/PageHead/PageHead";
 import { TagCollection } from "~/lib/[celeb]/TagCollection";
 import { TopSection } from "~/lib/[celeb]/TopSection/TopSection";
 
+// logan's comment, celeb page component layout
+
 export const Celeb = (p: CelebPageProps) => {
   return (
     <main className="flex flex-col bg-gray-100">
       <div className="mx-auto max-w-5xl">
         <PageHead />
-
-        <TopSection />
-
+        <div className={p.celeb.tags.regular.length === 0 && "border-b"}>
+          <TopSection />
+        </div>
         {p.celeb.tags.regular.length > 0 && (
-          <div className="bg-gray-100 py-5 pl-5 lg:mb-5">
+          <div className="border-b bg-white pb-5 pl-5 lg:border-x">
             <TagCollection />
           </div>
         )}
 
-        {p.celeb.facts.topics.length > 0 && <Facts />}
-
         {featureFlags.AddFactButton && (
-          <div className="m-5 flex items-center justify-end self-center lg:my-0 lg:mb-5">
+          <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-0 lg:my-5">
             <AddFactButton />
           </div>
         )}
 
+        {p.celeb.facts.topics.length > 0 && (
+          <div className="mb-5">
+            <Facts />
+          </div>
+        )}
+
         {p.celeb.oldContent && <Md />}
-      </div>{" "}
+      </div>
     </main>
   );
 };

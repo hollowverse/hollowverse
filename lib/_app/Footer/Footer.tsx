@@ -10,8 +10,7 @@ import { Separator } from '~/lib/components/Separator';
 
 export const Footer = () => {
   return (
-    <footer className={s.Footer}>
-      <Separator />
+    <footer className={s.Footer + " " + "border-t"}>
 
       <Container maxWidth="md" className={s.content}>
         <div className={s.image}>

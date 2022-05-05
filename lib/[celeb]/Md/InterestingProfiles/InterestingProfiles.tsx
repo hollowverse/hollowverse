@@ -1,21 +1,21 @@
-import { Container } from "@mui/material";
 import React from "react";
 import { CelebGallery } from "~/lib/components/CelebGallery";
-import { Separator } from "~/lib/components/Separator";
 import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
-import s from "./styles.module.scss";
+
+// logan's comment
 
 export const InterestingProfiles = () => {
   const context = useCelebContext();
   const relatedPeople = context.celeb.oldContent!.relatedPeople;
 
   return (
-    <div className="">
-      <div className="border-y bg-white p-5 font-bold lg:rounded-t-md lg:border-0 lg:border-b">
+    <div className="mb-5">
+            <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400"></div>
+      <div className="border-y bg-white p-5 font-bold lg:border-0 lg:border-x">
         Other interesting profiles
       </div>
 
-      <div className="mt-5">
+      <div className="border-b lg:border-x">
         <CelebGallery celebGalleryItems={relatedPeople} />
       </div>
     </div>
