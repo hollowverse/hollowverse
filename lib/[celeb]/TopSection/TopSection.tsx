@@ -23,7 +23,7 @@ export const TopSection = () => {
           />
         </div>
         <h2 className="">
-          <span className="text-sm font-normal text-neutral-400">
+          <span className="text-sm font-normal text-neutral-400 tracking-wide">
             Religion, politics, and ideas of
           </span>
           <br />
