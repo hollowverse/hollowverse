@@ -24,7 +24,7 @@ export const Article = (p: {
       {oldContent.summaries && (
         <div className="">
           <Separator title="Summary" />
-          <div className="mb-5 border-b bg-white p-5 lg:border-0">
+          <div className="mb-5 border-b bg-white p-5 lg:border-x">
             <p>{oldContent.summaries.religion}</p>
             <p>{oldContent.summaries.politicalViews}</p>
           </div>
@@ -37,7 +37,7 @@ export const Article = (p: {
           className={
             s.contributePromoContent +
             " " +
-            "mb-5 border-b bg-white p-5 lg:border-0"
+            "mb-5 border-b bg-white p-5 lg:border-x"
           }
         >
           <div className={s.contributePromoText}>
@@ -72,7 +72,7 @@ export const Article = (p: {
 
       <Separator title="Editorial" />
       <div
-        className="break-normal border-b bg-white p-5 leading-relaxed"
+        className="break-normal border-b bg-white p-5 leading-relaxed lg:border-x"
         dangerouslySetInnerHTML={{ __html: oldContent.article }}
       />
     </article>
