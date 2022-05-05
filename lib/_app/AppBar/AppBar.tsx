@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { FaSearch } from "react-icons/fa";
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
 export const AppBar = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
     <>
-      <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400"></div>
+      <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400" />
       <nav className="NAV-CONTAINER flex w-full border-b bg-white py-4 px-4 text-neutral-600">
         <div className="NAV mx-auto flex w-full max-w-5xl items-center justify-between">
           <Link passHref href="/">

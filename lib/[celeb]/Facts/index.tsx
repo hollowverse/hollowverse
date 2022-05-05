@@ -1,8 +1,8 @@
-import React from "react";
-import { Separator } from "~/lib/components/Separator";
-import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
-import { Fact } from "~/lib/[celeb]/Facts/Fact";
-import s from "./styles.module.scss";
+import React from 'react';
+import { Separator } from '~/lib/components/Separator';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import { Fact } from '~/lib/[celeb]/Facts/Fact';
+import s from './styles.module.scss';
 
 export const Facts = () => {
   const context = useCelebContext();

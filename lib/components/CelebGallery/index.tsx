@@ -1,12 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { sanityImage } from "~/lib/components/sanityio";
-import { TCelebGalleryItem } from "~/lib/components/types";
-import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
-
-
-// logan's comment, gallery
-
+import Image from 'next/image';
+import React from 'react';
+import { sanityImage } from '~/lib/components/sanityio';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import { TCelebGalleryItem } from '~/lib/components/types';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
@@ -14,13 +10,13 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <main className="mx-auto grid max-w-5xl grid-cols-2 bg-gray-100 sm:grid-cols-3 md:grid-cols-4 border-b lg:border-x">
+    <main className="mx-auto grid max-w-5xl grid-cols-2 border-b bg-gray-100 sm:grid-cols-3 md:grid-cols-4 lg:border-x">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 
         return (
           <>
-            <div className="relative overflow-hidden shadow-sm aspect-square">
+            <div className="relative aspect-square overflow-hidden shadow-sm">
               <a
                 className="flex flex-col items-center overflow-hidden"
                 href={`/${celebData.slug}`}
@@ -28,9 +24,9 @@ export const CelebGallery: React.FC<{
               >
                 <span
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    position: "relative",
+                    width: '100%',
+                    height: '100%',
+                    position: 'relative',
                   }}
                   className="flex aspect-square items-center"
                 >

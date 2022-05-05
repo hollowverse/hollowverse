@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
-import React from "react";
-import { Separator } from "~/lib/components/Separator";
-import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
-import s from "./styles.module.scss";
-import LoginIcon from "@mui/icons-material/Login";
-import Link from "next/link";
+import LoginIcon from '@mui/icons-material/Login';
+import { Button } from '@mui/material';
+import Link from 'next/link';
+import React from 'react';
+import { Separator } from '~/lib/components/Separator';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import s from './styles.module.scss';
 
 export const Article = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,7 +16,7 @@ export const Article = (p: {
     <article
       className={s.Article}
       onClick={(e) => {
-        if ((e.target as Element).classList.contains("source-citation")) {
+        if ((e.target as Element).classList.contains('source-citation')) {
           p.setShowSources(true);
         }
       }}
@@ -36,8 +36,8 @@ export const Article = (p: {
         <div
           className={
             s.contributePromoContent +
-            " " +
-            "mb-5 border-b bg-white p-5 lg:border-x"
+            ' ' +
+            'mb-5 border-b bg-white p-5 lg:border-x'
           }
         >
           <div className={s.contributePromoText}>
@@ -51,7 +51,7 @@ export const Article = (p: {
             <Link
               aria-label="Learn about the steps required to start contributing to Hollowverse"
               href={{
-                pathname: "/~/contribute",
+                pathname: '/~/contribute',
                 query: {
                   name: context.celeb.name,
                   slug: context.celeb.slug,

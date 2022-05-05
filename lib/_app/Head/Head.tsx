@@ -1,6 +1,6 @@
-import React from "react";
-import NextjsHead from "next/head";
-import Script from "next/script";
+import NextjsHead from 'next/head';
+import Script from 'next/script';
+import React from 'react';
 
 export const Head = () => (
   <>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const Separator: React.FC<{
   title?: string;
@@ -11,8 +11,8 @@ export const Separator: React.FC<{
     <>
       {!minor && (
         <>
-          <div className="h-1 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400"></div>
-          <div className="border-y bg-white p-5 font-bold lg:border-0 lg:border-b lg:border-x">
+          <div className="h-1 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400" />
+          <div className="border-y bg-white p-5 font-bold lg:border-0 lg:border-x lg:border-b">
             {p.title}
           </div>
         </>

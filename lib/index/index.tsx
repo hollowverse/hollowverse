@@ -1,7 +1,7 @@
-import React from "react";
-import { CelebGallery } from "~/lib/components/CelebGallery";
-import { sanityClient } from "~/lib/components/sanityio";
-import { top100CelebSlugs } from "./top100CelebSlugs";
+import React from 'react';
+import { CelebGallery } from '~/lib/components/CelebGallery';
+import { sanityClient } from '~/lib/components/sanityio';
+import { top100CelebSlugs } from './top100CelebSlugs';
 
 export const Index = (p: any) => {
   return (
@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
       'slug': slug.current,
       'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
     }`,
-    { slugs: top100CelebSlugs }
+    { slugs: top100CelebSlugs },
   )) as any[];
 
   top100Celebs.sort((a, b) => {

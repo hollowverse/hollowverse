@@ -1,7 +1,6 @@
-import { Chip } from "@mui/material";
-import React from "react";
-import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
-
+import { Chip } from '@mui/material';
+import React from 'react';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
 export const TagCollection = () => {
   const tags = useCelebContext().celeb.tags!;
@@ -22,8 +21,12 @@ export const TagCollection = () => {
 
           <div className="flex flex-wrap gap-2.5">
             {tags.lowConfidence.map((t) => (
-              <Chip key={t.tag.name} label={t.tag.name} className="bg-gray-100" />
-            ))}{" "}
+              <Chip
+                key={t.tag.name}
+                label={t.tag.name}
+                className="bg-gray-100"
+              />
+            ))}{' '}
           </div>
         </div>
       )}

@@ -1,7 +1,6 @@
-import React from "react";
-import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
-import { FaChevronDown } from "react-icons/fa";
-
+import React from 'react';
+import { FaChevronDown } from 'react-icons/fa';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
 export const Sources = (p: {
   setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,16 +13,16 @@ export const Sources = (p: {
     <div className="p-5 lg:px-0">
       <button
         className={`bg-black ${
-          p.showSources && "bg-opacity-10"
+          p.showSources && 'bg-opacity-10'
         } flex min-w-[275px] items-center justify-center gap-1.5 rounded-md bg-opacity-5 px-3.5 py-2.5 font-medium transition hover:bg-opacity-10 active:bg-opacity-10`}
         onClick={() => p.setShowSources(!p.showSources)}
       >
-        {p.showSources ? "Hide" : "Show"} sources for the editorial
+        {p.showSources ? 'Hide' : 'Show'} sources for the editorial
         <FaChevronDown
           className={
             p.showSources
-              ? "-rotate-180 text-sm transition duration-300"
-              : "text-sm transition duration-300"
+              ? '-rotate-180 text-sm transition duration-300'
+              : 'text-sm transition duration-300'
           }
         />
       </button>
