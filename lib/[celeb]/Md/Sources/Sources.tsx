@@ -10,14 +10,14 @@ export const Sources = (p: {
   const oldContent = context.celeb.oldContent!;
 
   return (
-    <div className="p-5">
+    <div className="p-5 lg:px-0">
       <button
         className={`bg-black ${
           p.showSources && "bg-opacity-10"
-        } flex min-w-[275px] items-center justify-center gap-1.5 rounded-lg bg-opacity-5 px-3.5 py-2 transition hover:bg-opacity-10 active:bg-opacity-10`}
+        } flex min-w-[275px] items-center justify-center gap-1.5 rounded-md bg-opacity-5 px-3.5 py-2.5 font-medium transition hover:bg-opacity-10 active:bg-opacity-10`}
         onClick={() => p.setShowSources(!p.showSources)}
       >
-        {p.showSources ? "Hide" : "Show"} sources for the editorial{" "}
+        {p.showSources ? "Hide" : "Show"} sources for the editorial
         <FaChevronDown
           className={
             p.showSources

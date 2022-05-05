@@ -4,19 +4,23 @@ import { sanityImage } from "~/lib/components/sanityio";
 import { TCelebGalleryItem } from "~/lib/components/types";
 import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
 
+
+// logan's comment, gallery
+
+
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
 }> = (p) => {
   const context = useCelebContext();
 
   return (
-    <main className="mx-auto grid max-w-5xl grid-cols-2 bg-gray-100 sm:grid-cols-3 md:grid-cols-4">
+    <main className="mx-auto grid max-w-5xl grid-cols-2 bg-gray-100 sm:grid-cols-3 md:grid-cols-4 border-b lg:border-x">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 
         return (
           <>
-            <div className="relative -my-5 overflow-hidden shadow-sm">
+            <div className="relative overflow-hidden shadow-sm aspect-square">
               <a
                 className="flex flex-col items-center overflow-hidden"
                 href={`/${celebData.slug}`}
