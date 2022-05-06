@@ -7,37 +7,42 @@ import { Md } from '~/lib/[celeb]/Md/Md';
 import { PageHead } from '~/lib/[celeb]/PageHead/PageHead';
 import { TagCollection } from '~/lib/[celeb]/TagCollection';
 import { TopSection } from '~/lib/[celeb]/TopSection/TopSection';
+import { useCeleb } from '~/lib/[celeb]/useCeleb';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
 
 export const Celeb = (p: CelebPageProps) => {
+  useCeleb(p.celeb.name, p.celeb.facts);
+
   return (
-    <main className="flex flex-col bg-gray-100">
-      <div className="mx-auto max-w-5xl">
-        <PageHead />
-        <div className={p.celeb.tags.regular.length === 0 && 'border-b'}>
-          <TopSection />
-        </div>
-        {p.celeb.tags.regular.length > 0 && (
-          <div className="border-b bg-white pb-5 pl-5 lg:border-x">
-            <TagCollection />
-          </div>
-        )}
+    <>
+        <AppBar />
+        <main className="flex flex-col bg-gray-100">
+          <div className="mx-auto max-w-5xl">
+            <PageHead />
+            <div className={p.celeb.tags.regular.length === 0 && 'border-b'}>
+              <TopSection />
+            </div>
+            {p.celeb.tags.regular.length > 0 && (
+              <div className="border-b bg-white pb-5 pl-5 lg:border-x">
+                <TagCollection />
+              </div>
+            )}
 
-        {featureFlags.AddFactButton && (
-          <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">
-            <AddFactButton />
-          </div>
-        )}
+            {featureFlags.AddFactButton && (
+              <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">
+                <AddFactButton />
+              </div>
+            )}
 
-        {p.celeb.facts.topics.length > 0 && (
-          <div className="mb-5">
-            <Facts />
-          </div>
-        )}
+            {p.celeb.facts.topics.length > 0 && (
+              <div className="mb-5">
+                <Facts />
+              </div>
+            )}
 
-        {p.celeb.oldContent && <Md />}
-      </div>
-    </main>
+            {p.celeb.oldContent && <Md />}
+          </div>
+        </main>
+    </>
   );
 };
-
-export default Celeb;

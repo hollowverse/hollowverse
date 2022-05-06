@@ -1,11 +1,14 @@
 import React from 'react';
 import { CelebGallery } from '~/lib/components/CelebGallery';
 import { sanityClient } from '~/lib/components/sanityio';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
 import { top100CelebSlugs } from './top100CelebSlugs';
 
 export const Index = (p: any) => {
   return (
     <>
+      <AppBar />
+
       <div className="bg-gray-100 text-neutral-600">
         <h1 className="mx-auto max-w-5xl pt-5 pb-5 pl-3 text-2xl font-semibold lg:pl-0">
           Top 100 Celebs
