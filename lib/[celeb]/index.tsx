@@ -7,9 +7,12 @@ import { Md } from '~/lib/[celeb]/Md/Md';
 import { PageHead } from '~/lib/[celeb]/PageHead/PageHead';
 import { TagCollection } from '~/lib/[celeb]/TagCollection';
 import { TopSection } from '~/lib/[celeb]/TopSection/TopSection';
+import { useCeleb } from '~/lib/[celeb]/useCeleb';
 import { AppBar } from '~/lib/_app/AppBar/AppBar';
 
 export const Celeb = (p: CelebPageProps) => {
+  useCeleb(p.celeb.name, p.celeb.facts);
+
   return (
     <>
       <AppBar />
