@@ -1,1 +1,1 @@
-export { Search as default } from '~/lib/~search';
+export { Search as default } from '~/lib/~search/~search';
