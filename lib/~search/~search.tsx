@@ -1,4 +1,3 @@
-import { Container } from '@mui/material';
 import { isArray, isEmpty, isString } from 'lodash-es';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -16,7 +15,7 @@ export const Search = () => {
         <meta name="robots" content="noindex" />
       </Head>
 
-      <Container maxWidth="md">
+      <div>
         <div style={{ display: 'flex' }}>
           <DebounceInput
             value={hook.query}
@@ -45,7 +44,8 @@ export const Search = () => {
                 <Link
                   key={r.result['@id']}
                   href={`/${
-                    r.result.slug || 'kg/' + encodeURIComponent(r.result['@id'])
+                    r.result.slug ||
+                    '~kg/' + encodeURIComponent(r.result['@id'])
                   }`}
                   passHref
                 >
@@ -70,7 +70,7 @@ export const Search = () => {
               );
             })}
         </div>
-      </Container>
+      </div>
     </>
   );
 };

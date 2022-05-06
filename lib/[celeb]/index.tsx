@@ -29,5 +29,3 @@ export const Celeb = (p: CelebPageProps) => {
     </>
   );
 };
-
-export default Celeb;

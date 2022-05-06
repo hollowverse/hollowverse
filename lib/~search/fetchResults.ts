@@ -1,18 +1,6 @@
 import levenshtein from 'fast-levenshtein';
+import { knowledgeGraphClient } from '~/lib/components/knowledgeGraphClient';
 import { sanityClient } from '~/lib/components/sanityio';
-
-const apiKey = 'AIzaSyDiyeA6ZhuHWZd7LNgyI66PS1QEIx0DOQI';
-
-async function kgCall(query: string) {
-  const response = await fetch(
-    `https://kgsearch.googleapis.com/v1/entities:search?query=${encodeURIComponent(
-      query,
-    )}&key=${apiKey}&limit=10&types=Person`,
-  );
-  const results = await response.json();
-
-  return results.itemListElement;
-}
 
 function clean(items: any[]) {
   return items.filter((i: any) => {
@@ -107,7 +95,7 @@ function availabilitySort(results: any[]) {
 }
 
 export async function fetchResults(query: string) {
-  const kgResults = await kgCall(query);
+  const kgResults = await knowledgeGraphClient({ query });
   const cleanedKgResults = clean(kgResults);
   const hvResults = await hvSearch(cleanedKgResults);
   const combinedResults = combine(cleanedKgResults, hvResults);
