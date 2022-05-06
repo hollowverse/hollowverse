@@ -1,15 +1,9 @@
-import EditIcon from '@mui/icons-material/Edit';
-import ForumIcon from '@mui/icons-material/Forum';
-import PersonIcon from '@mui/icons-material/Person';
-import WifiIcon from '@mui/icons-material/Wifi';
-import CelebrationIcon from '@mui/icons-material/Celebration';
-import { Button, Container, Link, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { getContributeLink } from '~/lib/components/getContributeLink';
-import { Heading2 } from './Heading2';
-import s from './styles.module.scss';
 import Head from 'next/head';
+import Link from 'next/link';
+import { FaHourglass, FaPlusCircle, FaStar, FaUser } from 'react-icons/fa';
 
 export const Contribute = () => {
   const router = useRouter();
@@ -21,91 +15,108 @@ export const Contribute = () => {
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
+      <div className="mx-auto flex max-w-5xl flex-col gap-5 py-5 px-5 lg:px-0">
+        <h1 className="text-2xl font-bold">Add to {name}&apos;s page</h1>
+        <main className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2.5 bg-gray-100 p-5">
+            <div className="leading-normal">
+              To show our appreciation for your contributions, we are offering a
+              $25 Amazon® gift card to each of the{' '}
+              <strong>3 most active</strong> contributors to Hollowverse.
+            </div>
 
-      <Container className={s.Contribute} maxWidth="md">
-        <Typography variant="h1">Add to {name}&apos;s page</Typography>
+            <div className="leading-normal">
+              We are collecting new facts about {name}&apos;s religion,
+              politics, and social views. If you know something about {name},
+              you can share it by posting on the discussion board. Here&apos;s
+              some quick details...
+            </div>
+          </div>
+          <div className="border-l-8 border-blue-300 bg-blue-50 p-2.5">
+            <h3 className="mb-2 flex items-baseline gap-1.5 text-xl font-semibold">
+              <FaUser className="text-sm" />
+              First create an account
+            </h3>
 
-        <Typography>
-          To show our appreciation for your contributions, we are offering a $25
-          Amazon® gift card to each of the <strong>3 most active</strong>{' '}
-          contributors to Hollowverse.
-        </Typography>
+            <div className="leading-normal">
+              There&apos;s a button at the bottom that will open the Hollowverse
+              discussion board. If this is your first time, you will be asked to
+              sign-up.
+            </div>
+          </div>
+          <div className="border-l-8 border-blue-300 bg-blue-50 p-2.5">
+            <h3 className="mb-2 flex items-baseline gap-1.5 text-xl font-semibold">
+              <FaPlusCircle className="text-sm" />
+              Then submit a post
+            </h3>
+            <div className="flex flex-col gap-2.5">
+              <div className="leading-normal">
+                After you complete the sign-up and verify your email address,
+                the text editor will be displayed. That&apos;s where you can
+                submit the content.
+              </div>
 
-        <Typography>
-          We are collecting new facts about {name}&apos;s religion, politics,
-          and social views. If you know something about {name}, you can share it
-          by posting on the discussion board. Here&apos;s some quick details...
-        </Typography>
+              <div className="leading-normal">
+                The text editor will be pre-filled with some information to give
+                you a bit more help with the process. When you&apos;re finished,
+                submit the post.
+              </div>
+            </div>
+          </div>
+          <div className="border-l-8 border-blue-300 bg-blue-50 p-2.5">
+            <h3 className="mb-2 flex items-baseline gap-1.5 text-xl font-semibold">
+              <FaHourglass className="text-sm" />
+              Wait for your post to go live
+            </h3>
 
-        <Heading2 icon={<PersonIcon />}>First create an account</Heading2>
+            <div className="leading-rela leading-normal">
+              After you submit the post, a moderator will validate that
+              everything looks good then we will publish the information on{' '}
+              {name}
+              &apos;s page. And we will give you credit for the contribution!
+            </div>
+          </div>
+          <div className="border-l-8 border-blue-300 bg-blue-50 p-2.5">
+            <h3 className="mb-2 flex items-baseline gap-1.5 text-xl font-semibold">
+              <FaStar className="text-sm" />
+              Top contributors receive a gift card
+            </h3>
 
-        <Typography>
-          There&apos;s a button at the bottom that will open the Hollowverse
-          discussion board. If this is your first time, you will be asked to
-          sign-up.
-        </Typography>
+            <div className="leading-rela leading-normal">
+              At the end of each month, we tally up contributor posts across all
+              pages. The 3 contributors with the most posts receive a $25
+              Amazon® gift card each.
+            </div>
+          </div>
 
-        <Heading2 icon={<ForumIcon />}>Then submit a post</Heading2>
+          <div className="leading-normal">
+            Thanks for contributing! The thousands of readers that visit
+            Hollowverse everyday will appreciate it!
+          </div>
 
-        <Typography>
-          After you complete the sign-up and verify your email address, the text
-          editor will be displayed. That&apos;s where you can submit the
-          content.
-        </Typography>
-
-        <Typography>
-          The text editor will be pre-filled with some information to give you a
-          bit more help with the process. When you&apos;re finished, submit the
-          post.
-        </Typography>
-
-        <Heading2 icon={<WifiIcon />}>Wait for your post to go live</Heading2>
-
-        <Typography>
-          After you submit the post, a moderator will validate that everything
-          looks good then we will publish the information on {name}
-          &apos;s page. And we will give you credit for the contribution!
-        </Typography>
-
-        <Heading2 icon={<CelebrationIcon />}>
-          Top contributors receive a gift card
-        </Heading2>
-
-        <Typography>
-          At the end of each month, we tally up contributor posts across all
-          pages. The 3 contributors with the most posts receive a $25 Amazon®
-          gift card each.
-        </Typography>
-
-        <Typography>
-          Thanks for contributing! The thousands of readers that visit
-          Hollowverse everyday will appreciate it!
-        </Typography>
-
-        <Typography>
-          Now you can go to the discussion board to tell us what you know about{' '}
-          {name}!
-        </Typography>
-
-        <div className={s.openDiscussionBoardButton}>
-          <Button
-            variant="outlined"
-            endIcon={<EditIcon />}
+          <div className="leading-normal">
+            Now you can go to the discussion board to tell us what you know
+            about {name}!
+          </div>
+        </main>
+        <section className="">
+          <button
+            className="rounded-lg border-[3.5px] border-gray-100 bg-gray-100 px-3.5 py-2 focus:border-blue-300 active:bg-gray-200"
             onClick={() => {
               localStorage.setItem('hasReadInstructions', JSON.stringify(true));
               router.push(href);
             }}
           >
             Open discussion board
-          </Button>
-        </div>
+          </button>
+        </section>
 
         <p>
           If you need more help,{' '}
           <Link href="mailto:hollowverse@hollowverse.com">email us</Link>.
           We&apos;d be happy to hear from you!
         </p>
-      </Container>
+      </div>
     </>
   );
 };

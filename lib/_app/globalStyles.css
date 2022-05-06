@@ -8,6 +8,14 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+.source-citation {
+  color: #4f46e5;
+  margin-left: 1px;
+  position: relative;
+  font-size: 0.8rem;
+  bottom: 3px;
+}
+
 p {
   font-size: 1rem;
   margin-bottom: 1rem;

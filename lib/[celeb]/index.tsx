@@ -23,7 +23,7 @@ export const Celeb = (p: CelebPageProps) => {
         )}
 
         {featureFlags.AddFactButton && (
-          <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-0 lg:my-5">
+          <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">
             <AddFactButton />
           </div>
         )}

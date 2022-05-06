@@ -1,4 +1,3 @@
-import { Chip } from '@mui/material';
 import React from 'react';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
@@ -10,8 +9,13 @@ export const TagCollection = () => {
   return (
     <div className="f-full">
       <div className="mx-auto flex flex-wrap gap-2.5">
-        {tags.regular.map((t) => (
-          <Chip key={t.tag.name} label={t.tag.name} className="bg-gray-100" />
+        {tags.regular.map((t, val) => (
+          <div
+            key={val}
+            className="flex rounded-full bg-gray-100 px-2.5 pb-1 pt-1.5 text-sm"
+          >
+            {t.tag.name}
+          </div>
         ))}
       </div>
 
@@ -20,12 +24,13 @@ export const TagCollection = () => {
           <div className="text-xs tracking-wide text-neutral-400">Maybe:</div>
 
           <div className="flex flex-wrap gap-2.5">
-            {tags.lowConfidence.map((t) => (
-              <Chip
-                key={t.tag.name}
-                label={t.tag.name}
-                className="bg-gray-100"
-              />
+            {tags.lowConfidence.map((t, val) => (
+              <div
+                key={val}
+                className="flex rounded-full bg-gray-100 px-2.5 pb-1 pt-1.5 text-sm"
+              >
+                {t.tag.name}
+              </div>
             ))}{' '}
           </div>
         </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import { Separator } from '~/lib/components/Separator';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Fact } from '~/lib/[celeb]/Facts/Fact';
-import s from './styles.module.scss';
 
 export const Facts = () => {
   const context = useCelebContext();
@@ -15,14 +14,14 @@ export const Facts = () => {
 
         return (
           <div key={`${topic}-${i}`}>
-            <Separator title={topic} className={s.separator} />
+            <Separator title={topic} className="" />
 
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
                   <Fact value={fact} />
                   {innerI !== factGroup.length - 1 && (
-                    <Separator minor className={s.minorSeparator} />
+                    <Separator minor className="" />
                   )}
                 </div>
               );

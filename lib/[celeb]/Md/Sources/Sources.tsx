@@ -14,7 +14,7 @@ export const Sources = (p: {
       <button
         className={`bg-black ${
           p.showSources && 'bg-opacity-10'
-        } flex min-w-[275px] items-center justify-center gap-1.5 rounded-md bg-opacity-5 px-3.5 py-2.5 font-medium transition hover:bg-opacity-10 active:bg-opacity-10`}
+        } flex min-w-[275px] items-center justify-center gap-1.5 rounded-lg border-[3.5px] border-gray-100 bg-opacity-5 px-3.5 py-2.5 font-medium transition hover:bg-opacity-10 focus:border-blue-300 active:bg-opacity-10`}
         onClick={() => p.setShowSources(!p.showSources)}
       >
         {p.showSources ? 'Hide' : 'Show'} sources for the editorial
@@ -37,7 +37,7 @@ export const Sources = (p: {
                   href={sourceUrl}
                   rel="noreferrer"
                   target="_blank"
-                  className="rounded-md p-1 active:bg-black active:bg-opacity-5"
+                  className="rounded-lg p-1 active:bg-black active:bg-opacity-5"
                 >
                   {sourceTitle}
                 </a>

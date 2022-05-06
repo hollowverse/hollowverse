@@ -1,4 +1,3 @@
-import { Container, Link, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Article } from './Article/Article';

@@ -32,15 +32,18 @@ export const CelebGallery: React.FC<{
                 >
                   <Image
                     src={sanityImage(picture).width(260).height(290).url()}
-                    alt={celebData.name}
+                    alt={'Popular Celebrity:' + ' ' + celebData.name}
                     layout="fill"
                     objectFit="cover"
                   />
                 </span>
               </a>
-              <div className="relative bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 text-xs font-medium text-white sm:text-sm lg:text-base">
+              <h2
+                aria-label="Celebrity"
+                className="relative bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white lg:text-base"
+              >
                 {celebData.name}
-              </div>
+              </h2>
             </div>
           </>
         );

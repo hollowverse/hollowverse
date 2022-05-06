@@ -1,7 +1,7 @@
-import Image from "next/image";
-import React from "react";
-import { sanityImage } from "~/lib/components/sanityio";
-import { useCelebContext } from "~/lib/components/StaticPropsContextProvider";
+import Image from 'next/image';
+import React from 'react';
+import { sanityImage } from '~/lib/components/sanityio';
+import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
 // logan's comment, celeb page top content
 
@@ -19,18 +19,18 @@ export const TopSection = () => {
             width="100%"
             height="100%"
             priority
-            alt=""
+            alt="Popular Celebrity"
           />
         </div>
-        <h2 className="">
-          <span className="text-sm font-normal text-neutral-400 tracking-wide">
+        <h1 className="">
+          <span className="text-sm font-normal tracking-wide text-neutral-500">
             Religion, politics, and ideas of
           </span>
           <br />
           <span className="text-3xl font-extrabold tracking-tight">
             {context.celeb.name}
           </span>
-        </h2>
+        </h1>
       </div>
     </div>
   );

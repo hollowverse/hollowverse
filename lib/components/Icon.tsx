@@ -1,6 +1,11 @@
 import React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/material';
 
+
+
+//removemui
+
+
 export const Icon = <C extends React.ElementType>(
   props: SvgIconProps<C, { component?: C }>,
 ) => {
