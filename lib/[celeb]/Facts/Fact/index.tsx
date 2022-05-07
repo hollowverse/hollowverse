@@ -33,7 +33,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
               {value.context}, {name} said
             </div>
 
-            <blockquote className="mb-0 border-l-4 border-blue-400 bg-blue-50">
+            <blockquote className="block mb-0 border-l-4 border-blue-400 bg-blue-50">
               <div>{value.quote}</div>
             </blockquote>
           </div>

@@ -39,6 +39,7 @@ blockquote {
   margin-left: 0px !important;
   margin-bottom: 20px;
   margin-top: 10px;
+  border-left:20px;
   background: #f3f4f6;
   padding: 10px !important;
 }

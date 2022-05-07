@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import React from 'react';
-import { FaEnvelope, FaInfoCircle } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaEnvelope, FaHeart, FaInfoCircle } from 'react-icons/fa';
 
 export const Footer = () => {
+  const [hover, setHover] = useState(false);
+
   return (
     <footer aria-label="footer" role="Footer" className="w-full border-t">
       <div className="mx-auto w-full max-w-5xl px-5 lg:p-0">
@@ -46,6 +48,35 @@ export const Footer = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        onMouseOver={() => {
+          setHover(true);
+        }}
+        onMouseOut={() => {
+          setHover(false);
+        }}
+        className="flex w-full justify-center bg-gray-50 px-5"
+      >
+        <div className="flex w-full max-w-5xl justify-start text-neutral-400">
+          <a
+            href="https://rlogank.com/"
+            target="_blank"
+            className={`flex w-full items-center gap-1 py-5 text-xs font-light tracking-wider transition duration-300 ${
+              hover && 'text-neutral-700'
+            }`}
+          >
+            Designed with
+            <FaHeart
+              className={
+                hover
+                  ? 'text-rose-500 transition duration-300'
+                  : 'transition duration-300'
+              }
+            />
+            by Logan
+          </a>
         </div>
       </div>
     </footer>
