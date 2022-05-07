@@ -11,7 +11,7 @@ export const AppBar = () => {
         aria-label="Main Navigation"
         className="NAV-CONTAINER flex w-full border-b bg-white py-4 px-4 text-neutral-600"
       >
-        <div className="NAV mx-auto flex w-full max-w-5xl items-center justify-between">
+        <div className="NAV mx-auto flex w-full max-w-4xl items-center justify-between">
           <Link passHref href="/">
             <a className="NAV-LOGO cursor-pointer select-none bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text font-extrabold uppercase tracking-tight text-transparent sm:text-xl lg:text-2xl">
               Hollowverse

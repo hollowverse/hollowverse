@@ -9,7 +9,7 @@ export const Footer = () => {
   return (
     <footer aria-label="footer" role="Footer" className="w-full border-y">
       <div className="border-b px-5">
-        <div className="mx-auto w-full max-w-5xl py-5">
+        <div className="mx-auto w-full max-w-4xl py-5">
           <div className="mb-5">
             <Image
               width={50}
@@ -52,7 +52,7 @@ export const Footer = () => {
       </div>
 
       <div className="flex w-full justify-center bg-gray-50 px-5">
-        <div className="flex w-full max-w-5xl justify-start text-neutral-500">
+        <div className="flex w-full max-w-4xl justify-start text-neutral-500">
           <a
             href="https://rlogank.com/"
             rel="noreferrer"

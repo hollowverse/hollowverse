@@ -10,7 +10,7 @@ export const Index = (p: any) => {
       <AppBar />
 
       <div className="bg-gray-100 text-neutral-600">
-        <h1 className="mx-auto max-w-5xl pt-5 pb-5 pl-3 text-2xl font-semibold lg:pl-0">
+        <h1 className="mx-auto max-w-4xl pt-5 pb-5 pl-3 text-2xl font-semibold lg:pl-0">
           Top 100 Celebs
         </h1>
         <CelebGallery celebGalleryItems={p.top100Celebs} />

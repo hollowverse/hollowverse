@@ -19,7 +19,7 @@ export const Celeb = (p: CelebPageProps) => {
       <AppBar />
 
       <main className="flex flex-col bg-gray-100">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-4xl">
           <PageHead />
 
           <TopSection />
