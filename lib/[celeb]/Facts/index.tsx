@@ -8,7 +8,7 @@ export const Facts = () => {
   const { groups, topics } = context.celeb.facts!;
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="gap-5">
       {topics.map((topic, i) => {
         const factGroup = groups[topic];
 

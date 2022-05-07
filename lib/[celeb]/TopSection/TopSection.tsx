@@ -6,8 +6,6 @@ import { sanityImage } from '~/lib/components/sanityio';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { TagCollection } from '~/lib/[celeb]/TagCollection';
 
-// logan's comment, celeb page top content
-
 export const TopSection = () => {
   const context = useCelebContext();
   const picture = context.celeb.picture || context.placeholderImage;

@@ -14,7 +14,7 @@ export const Footer = () => {
             <Image
               width={50}
               height={50}
-              alt="Hollowverse: Import people and their beliefs"
+              alt="Hollowverse: Important people and their beliefs"
               src="/images/icons/letter-logo.png"
             />
           </div>
@@ -22,34 +22,35 @@ export const Footer = () => {
           <div className="flex flex-col gap-5">
             <div className="space-y-1">
               <div className="flex items-baseline gap-1.5">
-                <div>
-                  <FaInfoCircle className="text-xs" />
-                </div>
-                <div>About</div>
+                <FaInfoCircle className="text-xs" />
+                <p>About</p>
               </div>
-              <div>
+
+              <p>
                 Hollowverse is about the important people and their beliefs.
-              </div>
+              </p>
             </div>
+
             <div className="space-y-1">
               <div className="flex items-baseline gap-1.5">
-                <div>
-                  <FaEnvelope className="text-xs" />
-                </div>
-                <div>Email us</div>
+                <FaEnvelope className="text-xs" />
+
+                <p>Email us</p>
               </div>
-              <div className="flex gap-1">
+
+              <p className="flex gap-1">
                 You can contact us at{' '}
-                <div className="flex bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
+                <span className="flex bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
                   <Link href="mailto:hollowverse@hollowverse.com">
                     hollowverse@hollowverse.com
                   </Link>
-                </div>
-              </div>
+                </span>
+              </p>
             </div>
           </div>
         </div>
       </div>
+
       <div className="flex w-full justify-center bg-gray-50 px-5">
         <div className="flex w-full max-w-5xl justify-start text-neutral-500">
           <a
