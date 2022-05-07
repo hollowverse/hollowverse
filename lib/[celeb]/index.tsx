@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { featureFlags } from '~/lib/components/featureFlags';
 import { CelebPageProps } from '~/lib/components/types';
@@ -15,34 +16,37 @@ export const Celeb = (p: CelebPageProps) => {
 
   return (
     <>
-        <AppBar />
-        <main className="flex flex-col bg-gray-100">
-          <div className="mx-auto max-w-5xl">
-            <PageHead />
-            <div className={p.celeb.tags.regular.length === 0 && 'border-b'}>
-              <TopSection />
-            </div>
-            {p.celeb.tags.regular.length > 0 && (
-              <div className="border-b bg-white pb-5 pl-5 lg:border-x">
-                <TagCollection />
-              </div>
-            )}
+      <AppBar />
 
-            {featureFlags.AddFactButton && (
-              <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">
-                <AddFactButton />
-              </div>
-            )}
+      <main className="flex flex-col bg-gray-100">
+        <div className="mx-auto max-w-5xl">
+          <PageHead />
 
-            {p.celeb.facts.topics.length > 0 && (
-              <div className="mb-5">
-                <Facts />
-              </div>
-            )}
-
-            {p.celeb.oldContent && <Md />}
+          <div className={(isEmpty(p.celeb.tags.regular) && 'border-b') || ''}>
+            <TopSection />
           </div>
-        </main>
+
+          {!isEmpty(p.celeb.tags.regular) && (
+            <div className="border-b bg-white pb-5 pl-5 lg:border-x">
+              <TagCollection />
+            </div>
+          )}
+
+          {featureFlags.AddFactButton && (
+            <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">
+              <AddFactButton />
+            </div>
+          )}
+
+          {!isEmpty(p.celeb.facts) && (
+            <div className="mb-5">
+              <Facts />
+            </div>
+          )}
+
+          {p.celeb.oldContent && <Md />}
+        </div>
+      </main>
     </>
   );
 };
