@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { LovelyTopBorder } from '~/lib/components/LovelyTopBorder';
 
 export const AppBar = () => {
   return (
     <>
-      <aside className="h-1 w-full bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400" />
+      <LovelyTopBorder />
       <nav
         role="navigation"
         aria-label="Main Navigation"
