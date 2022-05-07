@@ -103,7 +103,7 @@ export const Contribute = () => {
             about {name}!
           </div>
         </main>
-        <section className="">
+        <section>
           <button
             className="rounded-lg border-[3.5px] border-gray-100 bg-gray-100 px-3.5 py-2 focus:border-blue-300 active:bg-gray-200"
             onClick={() => {

@@ -14,15 +14,13 @@ export const Facts = () => {
 
         return (
           <div key={`${topic}-${i}`}>
-            <Separator title={topic} className="" />
+            <Separator title={topic} />
 
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
                   <Fact value={fact} />
-                  {innerI !== factGroup.length - 1 && (
-                    <Separator minor className="" />
-                  )}
+                  {innerI !== factGroup.length - 1 && <Separator minor />}
                 </div>
               );
             })}

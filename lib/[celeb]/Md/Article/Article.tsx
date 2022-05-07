@@ -12,7 +12,6 @@ export const Article = (p: {
 
   return (
     <article
-      className=""
       onClick={(e) => {
         if ((e.target as Element).classList.contains('source-citation')) {
           p.setShowSources(true);
@@ -20,7 +19,7 @@ export const Article = (p: {
       }}
     >
       {oldContent.summaries && (
-        <div className="">
+        <div>
           <Separator title="Summary" />
           <div className="mb-5 border-b bg-white p-5 lg:border-x">
             <p>{oldContent.summaries.religion}</p>
@@ -29,17 +28,17 @@ export const Article = (p: {
         </div>
       )}
 
-      <div className="">
+      <div>
         <Separator title="Hi! 👋 Do you think a lot about politics and religion? 🧠" />
         <div className="mb-5 flex items-center justify-between gap-5 border-b bg-white p-5 lg:border-x">
-          <div className="">
+          <div>
             <p>
               Receive a $25 Amazon® gift card by becoming a top contributor on
               Hollowverse!
             </p>
           </div>
 
-          <div className="">
+          <div>
             <Link
               aria-label="Learn about the steps required to start contributing to Hollowverse"
               href={{

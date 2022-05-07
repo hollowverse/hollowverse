@@ -8,9 +8,9 @@ export const Heading2 = ({
   icon: ReactElement;
 }) => {
   return (
-    <div className="">
+    <div>
       <div>{icon}</div>
-      <div className="">
+      <div>
         <div>{children}</div>
       </div>
     </div>

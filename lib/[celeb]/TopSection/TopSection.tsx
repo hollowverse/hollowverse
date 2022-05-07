@@ -12,7 +12,7 @@ export const TopSection = () => {
   return (
     <div className="flex w-full flex-col gap-2.5 lg:mt-5 lg:border-x lg:border-t">
       <div className="flex items-center gap-5 bg-white p-5 lg:border-0">
-        <div className="">
+        <div>
           <Image
             className="rounded-full object-cover"
             src={sanityImage(picture).url()}
@@ -22,7 +22,7 @@ export const TopSection = () => {
             alt="Popular Celebrity"
           />
         </div>
-        <h1 className="">
+        <h1>
           <span className="text-sm font-normal tracking-wide text-neutral-500">
             Religion, politics, and ideas of
           </span>
