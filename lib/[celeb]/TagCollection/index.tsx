@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+
+function Tag(params: { children: ReactNode }) {
+  return (
+    <div className="flex rounded-full bg-gray-100 px-3 py-1.5 text-sm">
+      {params.children}
+    </div>
+  );
+}
 
 export const TagCollection = () => {
   const tags = useCelebContext().celeb.tags!;
-
-  //logan's comment, celeb tags
 
   return (
     <div className="f-full">
       <div className="mx-auto flex flex-wrap gap-2.5">
         {tags.regular.map((t, val) => (
-          <div
-            key={val}
-            className="flex rounded-full bg-gray-100 px-2.5 pb-1 pt-1.5 text-sm"
-          >
-            {t.tag.name}
-          </div>
+          <Tag key={val}>{t.tag.name}</Tag>
         ))}
       </div>
 
@@ -25,13 +26,8 @@ export const TagCollection = () => {
 
           <div className="flex flex-wrap gap-2.5">
             {tags.lowConfidence.map((t, val) => (
-              <div
-                key={val}
-                className="flex rounded-full bg-gray-100 px-2.5 pb-1 pt-1.5 text-sm"
-              >
-                {t.tag.name}
-              </div>
-            ))}{' '}
+              <Tag key={val}>{t.tag.name}</Tag>
+            ))}
           </div>
         </div>
       )}

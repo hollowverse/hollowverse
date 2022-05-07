@@ -22,15 +22,7 @@ export const Celeb = (p: CelebPageProps) => {
         <div className="mx-auto max-w-5xl">
           <PageHead />
 
-          <div className={(isEmpty(p.celeb.tags.regular) && 'border-b') || ''}>
-            <TopSection />
-          </div>
-
-          {!isEmpty(p.celeb.tags.regular) && (
-            <div className="border-b bg-white pb-5 pl-5 lg:border-x">
-              <TagCollection />
-            </div>
-          )}
+          <TopSection />
 
           {featureFlags.AddFactButton && (
             <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">

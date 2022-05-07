@@ -1,7 +1,10 @@
+import { isEmpty } from 'lodash-es';
 import Image from 'next/image';
 import React from 'react';
+import { Card } from '~/lib/components/Card';
 import { sanityImage } from '~/lib/components/sanityio';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
+import { TagCollection } from '~/lib/[celeb]/TagCollection';
 
 // logan's comment, celeb page top content
 
@@ -10,18 +13,16 @@ export const TopSection = () => {
   const picture = context.celeb.picture || context.placeholderImage;
 
   return (
-    <div className="flex w-full flex-col gap-2.5 lg:mt-5 lg:border-x lg:border-t">
-      <div className="flex items-center gap-5 bg-white p-5 lg:border-0">
-        <div>
-          <Image
-            className="rounded-full object-cover"
-            src={sanityImage(picture).url()}
-            width="100%"
-            height="100%"
-            priority
-            alt="Popular Celebrity"
-          />
-        </div>
+    <Card className="TOP-SECTION lg:mt-5 lg:border-t">
+      <div className="flex items-center gap-5 bg-white lg:border-0">
+        <Image
+          className="rounded-full object-cover"
+          src={sanityImage(picture).url()}
+          width="100%"
+          height="100%"
+          priority
+          alt="Popular Celebrity"
+        />
         <h1>
           <span className="text-sm font-normal tracking-wide text-neutral-500">
             Religion, politics, and ideas of
@@ -32,6 +33,12 @@ export const TopSection = () => {
           </span>
         </h1>
       </div>
-    </div>
+
+      {!isEmpty(context.celeb.tags.regular) && (
+        <div className="bg-white pt-5">
+          <TagCollection />
+        </div>
+      )}
+    </Card>
   );
 };

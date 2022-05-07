@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { FaChevronRight } from 'react-icons/fa';
+import { Card } from '~/lib/components/Card';
 import { Separator } from '~/lib/components/Separator';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 
@@ -19,18 +20,14 @@ export const Article = (p: {
       }}
     >
       {oldContent.summaries && (
-        <div>
-          <Separator title="Summary" />
-          <div className="mb-5 border-b bg-white p-5 lg:border-x">
-            <p>{oldContent.summaries.religion}</p>
-            <p>{oldContent.summaries.politicalViews}</p>
-          </div>
-        </div>
+        <Card title="Summary">
+          <p>{oldContent.summaries.religion}</p>
+          <p>{oldContent.summaries.politicalViews}</p>
+        </Card>
       )}
 
-      <div>
-        <Separator title="Hi! 👋 Do you think a lot about politics and religion? 🧠" />
-        <div className="mb-5 flex items-center justify-between gap-5 border-b bg-white p-5 lg:border-x">
+      <Card title="Hi! 👋 Do you think a lot about politics and religion? 🧠">
+        <div className="flex items-center justify-between gap-5">
           <div>
             <p>
               Receive a $25 Amazon® gift card by becoming a top contributor on
@@ -60,13 +57,14 @@ export const Article = (p: {
             </Link>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <Separator title="Editorial" />
-      <div
-        className="break-normal border-b bg-white p-5 leading-relaxed lg:border-x"
-        dangerouslySetInnerHTML={{ __html: oldContent.article }}
-      />
+      <Card title="Editorial">
+        <div
+          className="break-normal leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: oldContent.article }}
+        />
+      </Card>
     </article>
   );
 };
