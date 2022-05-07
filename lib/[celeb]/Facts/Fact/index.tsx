@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Fact as TFact } from '~/lib/components/types';
+import { Tag } from '~/lib/[celeb]/Tag';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const {
@@ -16,13 +17,12 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
       <div className="mb-5 flex flex-wrap gap-2.5">
         {value.tags.map((t) => {
           return (
-            <div
-              className="inline-flex rounded-full bg-gray-100 px-3.5 py-2 text-xs text-neutral-500"
-              key={t.tag.name}
-            >
-              # {t.isLowConfidence && 'Possibly '}
-              {t.tag.name}
-            </div>
+            <Tag key={t.tag.name}>
+              <span className="text-neutral-500">
+                # {t.isLowConfidence && 'Possibly '}
+                {t.tag.name}
+              </span>
+            </Tag>
           );
         })}
       </div>

@@ -1,13 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
-
-function Tag(params: { children: ReactNode }) {
-  return (
-    <div className="flex rounded-full bg-gray-100 px-3 py-1.5 text-sm">
-      {params.children}
-    </div>
-  );
-}
+import { Tag } from '~/lib/[celeb]/Tag';
 
 export const TagCollection = () => {
   const tags = useCelebContext().celeb.tags!;
@@ -33,6 +26,4 @@ export const TagCollection = () => {
       )}
     </div>
   );
-
-  // return <pre>{JSON.stringify(tags, null, 2)}</pre>;
 };
