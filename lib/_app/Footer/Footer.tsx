@@ -7,9 +7,9 @@ export const Footer = () => {
   const [hover, setHover] = useState(false);
 
   return (
-    <footer aria-label="footer" role="Footer" className="w-full border-t">
-      <div className="mx-auto w-full max-w-5xl border-b px-5 lg:p-0">
-        <div className="py-5">
+    <footer aria-label="footer" role="Footer" className="w-full border-y">
+      <div className="border-b px-5">
+        <div className="mx-auto w-full max-w-5xl py-5">
           <div className="mb-5">
             <Image
               width={50}

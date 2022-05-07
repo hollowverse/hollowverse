@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from '~/lib/components/Card';
-import { Separator } from '~/lib/components/Separator';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Fact } from '~/lib/[celeb]/Facts/Fact';
 
