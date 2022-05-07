@@ -15,37 +15,38 @@ export const CelebGallery: React.FC<{
         const picture = celebData.picture || context.placeholderImage;
 
         return (
-          <>
-            <div className="relative aspect-square overflow-hidden shadow-sm">
-              <a
-                className="flex flex-col items-center overflow-hidden"
-                href={`/${celebData.slug}`}
-                key={celebData.slug}
+          <div
+            key={celebData.slug}
+            className="relative aspect-square overflow-hidden shadow-sm"
+          >
+            <a
+              className="flex flex-col items-center overflow-hidden"
+              href={`/${celebData.slug}`}
+              key={celebData.slug}
+            >
+              <span
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  position: 'relative',
+                }}
+                className="flex aspect-square items-center"
               >
-                <span
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    position: 'relative',
-                  }}
-                  className="flex aspect-square items-center"
-                >
-                  <Image
-                    src={sanityImage(picture).width(260).height(290).url()}
-                    alt={'Popular Celebrity:' + ' ' + celebData.name}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </span>
-              </a>
-              <h2
-                aria-label="Celebrity"
-                className="relative bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white lg:text-base"
-              >
-                {celebData.name}
-              </h2>
-            </div>
-          </>
+                <Image
+                  src={sanityImage(picture).width(260).height(290).url()}
+                  alt={'Popular Celebrity:' + ' ' + celebData.name}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </span>
+            </a>
+            <h2
+              aria-label="Celebrity"
+              className="relative bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white lg:text-base"
+            >
+              {celebData.name}
+            </h2>
+          </div>
         );
       })}
     </main>

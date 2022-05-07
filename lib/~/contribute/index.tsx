@@ -4,6 +4,7 @@ import { getContributeLink } from '~/lib/components/getContributeLink';
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaHourglass, FaPlusCircle, FaStar, FaUser } from 'react-icons/fa';
+import { AppBar } from '~/lib/_app/AppBar/AppBar';
 
 export const Contribute = () => {
   const router = useRouter();
@@ -15,6 +16,9 @@ export const Contribute = () => {
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
+
+      <AppBar />
+
       <div className="mx-auto flex max-w-5xl flex-col gap-5 py-5 px-5 lg:px-0">
         <h1 className="text-2xl font-bold">Add to {name}&apos;s page</h1>
         <main className="flex flex-col gap-5">

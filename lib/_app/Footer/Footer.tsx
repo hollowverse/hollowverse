@@ -3,14 +3,6 @@ import Image from 'next/image';
 import React from 'react';
 import { FaEnvelope, FaInfoCircle } from 'react-icons/fa';
 
-const footerInfo = [
-  {
-    title: 'About',
-    icon: <FaInfoCircle className="text-xs" />,
-    body: 'Hollowverse is about the important people and their beliefs.',
-  },
-];
-
 export const Footer = () => {
   return (
     <footer aria-label="footer" role="Footer" className="w-full border-t">
@@ -26,17 +18,17 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-5">
-            {footerInfo.map((x) => {
-              return (
-                <div className="space-y-1">
-                  <div className="flex items-baseline gap-1.5">
-                    <div>{x.icon}</div>
-                    <div>{x.title}</div>
-                  </div>
-                  <div>{x.body}</div>
+            <div className="space-y-1">
+              <div className="flex items-baseline gap-1.5">
+                <div>
+                  <FaInfoCircle className="text-xs" />
                 </div>
-              );
-            })}
+                <div>About</div>
+              </div>
+              <div>
+                Hollowverse is about the important people and their beliefs.
+              </div>
+            </div>
             <div className="space-y-1">
               <div className="flex items-baseline gap-1.5">
                 <div>
