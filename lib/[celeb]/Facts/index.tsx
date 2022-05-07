@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from '~/lib/components/Card';
 import { Separator } from '~/lib/components/Separator';
 import { useCelebContext } from '~/lib/components/StaticPropsContextProvider';
 import { Fact } from '~/lib/[celeb]/Facts/Fact';
@@ -13,18 +14,18 @@ export const Facts = () => {
         const factGroup = groups[topic];
 
         return (
-          <div key={`${topic}-${i}`}>
-            <Separator title={topic} />
-
+          <Card title={topic} key={`${topic}-${i}`} disablePadding>
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
                   <Fact value={fact} />
-                  {innerI !== factGroup.length - 1 && <Separator minor />}
+                  {innerI !== factGroup.length - 1 && (
+                    <div className="border-b" />
+                  )}
                 </div>
               );
             })}
-          </div>
+          </Card>
         );
       })}
     </div>

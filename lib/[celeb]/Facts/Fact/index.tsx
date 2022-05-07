@@ -10,10 +10,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   } = useCelebContext();
 
   return (
-    <section
-      aria-label="Celebrity Fact"
-      className="flex flex-col border-b bg-white !p-5 lg:border-x"
-    >
+    <section aria-label="Celebrity Fact" className="p-5">
       <div className="mb-5 flex flex-wrap gap-2.5">
         {value.tags.map((t) => {
           return (
