@@ -8,7 +8,7 @@ export const Footer = () => {
 
   return (
     <footer aria-label="footer" role="Footer" className="w-full border-t">
-      <div className="mx-auto w-full max-w-5xl px-5 lg:p-0">
+      <div className="mx-auto w-full max-w-5xl border-b px-5 lg:p-0">
         <div className="py-5">
           <div className="mb-5">
             <Image
@@ -50,22 +50,19 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <div
-        onMouseOver={() => {
-          setHover(true);
-        }}
-        onMouseOut={() => {
-          setHover(false);
-        }}
-        className="flex w-full justify-center bg-gray-50 px-5"
-      >
-        <div className="flex w-full max-w-5xl justify-start text-neutral-400">
+      <div className="flex w-full justify-center bg-gray-50 px-5">
+        <div className="flex w-full max-w-5xl justify-start text-neutral-500">
           <a
             href="https://rlogank.com/"
+            rel="noreferrer"
             target="_blank"
-            className={`flex w-full items-center gap-1 py-5 text-xs font-light tracking-wider transition duration-300 ${
-              hover && 'text-neutral-700'
-            }`}
+            className="my-5 flex items-center gap-1 text-xs font-light tracking-wider transition duration-300 hover:text-neutral-700"
+            onMouseOver={() => {
+              setHover(true);
+            }}
+            onMouseOut={() => {
+              setHover(false);
+            }}
           >
             Designed with
             <FaHeart
