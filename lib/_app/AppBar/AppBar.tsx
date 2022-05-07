@@ -12,9 +12,9 @@ export const AppBar = () => {
       >
         <div className="NAV mx-auto flex w-full max-w-5xl items-center justify-between">
           <Link passHref href="/">
-            <div className="NAV-LOGO cursor-pointer select-none bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text font-extrabold tracking-tight text-transparent sm:text-xl lg:text-2xl">
-              HOLLOWVERSE
-            </div>
+            <a className="NAV-LOGO cursor-pointer select-none bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text font-extrabold uppercase tracking-tight text-transparent sm:text-xl lg:text-2xl">
+              Hollowverse
+            </a>
           </Link>
           <div className="NAV-LINKS flex items-center gap-2.5">
             <input
