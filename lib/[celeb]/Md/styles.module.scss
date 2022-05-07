@@ -1,0 +1,40 @@
+.Md {
+  :global {
+    .source-citation {
+      color: #4f46e5;
+      margin-left: 1px;
+      position: relative;
+      font-size: 0.8rem;
+      bottom: 3px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    p:last-child {
+      font-size: 1rem;
+      margin-bottom: 0rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    blockquote {
+      margin-left: 0px !important;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      border-left:20px;
+      background: #f3f4f6;
+      padding: 10px !important;
+    }
+  }
+}
