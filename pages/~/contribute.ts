@@ -1,1 +1,1 @@
-export { Contribute as default } from '~/lib/~/contribute';
+export { Contribute as default } from '~/lib/pages/Contribute/Contribute';

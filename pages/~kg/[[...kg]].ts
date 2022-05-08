@@ -1,3 +1,3 @@
-export { KnowledgeGraphCeleb as default } from '~/lib/KnowledgeGraphCeleb/KnowledgeGraphCeleb';
-export { getStaticPaths } from '~/lib/KnowledgeGraphCeleb/getStaticPaths';
-export { getStaticProps } from '~/lib/KnowledgeGraphCeleb/getStaticProps';
+export { KnowledgeGraphCeleb as default } from '~/lib/pages/KnowledgeGraphCeleb/KnowledgeGraphCeleb';
+export { getStaticPaths } from '~/lib/pages/KnowledgeGraphCeleb/getStaticPaths';
+export { getStaticProps } from '~/lib/pages/KnowledgeGraphCeleb/getStaticProps';
