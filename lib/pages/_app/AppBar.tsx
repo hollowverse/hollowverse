@@ -15,7 +15,7 @@ export const AppBar = () => {
         aria-label="Main Navigation"
         className={`NAV-CONTAINER flex w-full border-b bg-white py-4 px-4 text-neutral-600 ${s.AppBar} h-[70px]`}
       >
-        <div className="NAV mx-auto flex w-full max-w-4xl flex-row items-center justify-between gap-6">
+        <div className="NAV mx-auto flex w-full max-w-4xl flex-row items-center justify-between gap-2">
           <div className="NAV-CONTENT-CONTAINER w-full">
             <Link passHref href="/">
               <a
@@ -36,7 +36,7 @@ export const AppBar = () => {
             >
               <div
                 title="Google search results"
-                data-mobileLayout="forced"
+                data-mobilelayout="forced"
                 className="gcse-search"
               />
             </div>

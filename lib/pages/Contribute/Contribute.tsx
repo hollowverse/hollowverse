@@ -17,8 +17,6 @@ export const Contribute = () => {
         <meta name="robots" content="noindex" />
       </Head>
 
-      <AppBar />
-
       <div className="mx-auto flex max-w-4xl flex-col gap-5 py-5 px-5 lg:px-0">
         <h1 className="text-2xl font-bold">Add to {name}&apos;s page</h1>
 
