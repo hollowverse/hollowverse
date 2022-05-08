@@ -20,7 +20,7 @@ export const AddFactButton = () => {
         router.push(
           hasReadInstructions
             ? getContributeLink(name)
-            : { pathname: '/~/contribute', query: { name, slug } },
+            : { pathname: '/~contribute', query: { name, slug } },
         );
       }}
     >

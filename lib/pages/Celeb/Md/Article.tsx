@@ -36,7 +36,7 @@ export const Article = (p: {
             <Link
               aria-label="Learn about the steps required to start contributing to Hollowverse"
               href={{
-                pathname: '/~/contribute',
+                pathname: '/~contribute',
                 query: {
                   name: context.celeb.name,
                   slug: context.celeb.slug,
