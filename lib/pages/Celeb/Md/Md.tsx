@@ -3,7 +3,7 @@ import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvid
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 import { Sources } from './Sources';
-import s from './styles.module.scss';
+import s from '~/lib/pages/styles.module.scss';
 
 export const Md = () => {
   const [showSources, setShowSources] = useState(false);

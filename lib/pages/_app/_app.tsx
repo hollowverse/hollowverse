@@ -35,6 +35,10 @@ export const App = ({
   return (
     <>
       <Script
+        src="https://cse.google.com/cse.js?cx=b70c7f6ba6a334ff2"
+        strategy="lazyOnload"
+      />
+      <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
