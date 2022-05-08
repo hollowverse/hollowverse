@@ -3,6 +3,7 @@ import React from 'react';
 import { sanityImage } from '~/lib/pages/utils/sanityio';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { TCelebGalleryItem } from '~/lib/pages/utils/types';
+import Link from 'next/link';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
@@ -10,7 +11,7 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-2 border-b sm:grid-cols-3 md:grid-cols-4 lg:border-x">
+    <div className="sm:grid-cols-3 md:grid-cols-4 mx-auto grid max-w-4xl grid-cols-2 border-b lg:border-x">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 
@@ -19,23 +20,21 @@ export const CelebGallery: React.FC<{
             key={celebData.slug}
             className="relative aspect-square overflow-hidden shadow-sm"
           >
-            <a
-              className="flex aspect-square flex-col items-center overflow-hidden"
-              href={`/${celebData.slug}`}
-              key={celebData.slug}
-            >
-              <Image
-                src={sanityImage(picture).width(260).height(290).url()}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top"
-                blurDataURL={picture.metadata.lqip}
-                placeholder="blur"
-                alt={celebData.name}
-                width={160}
-                height={200}
-              />
-            </a>
+            <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
+              <a className="flex aspect-square flex-col items-center overflow-hidden">
+                <Image
+                  src={sanityImage(picture).width(260).height(290).url()}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="top"
+                  blurDataURL={picture.metadata.lqip}
+                  placeholder="blur"
+                  alt={celebData.name}
+                  width={160}
+                  height={200}
+                />
+              </a>
+            </Link>
 
             <h2
               aria-label="Celebrity"
