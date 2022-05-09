@@ -13,7 +13,7 @@ export const TopSection = () => {
   return (
     <Card className="TOP-SECTION bg-white">
       <div className="mx-auto max-w-4xl">
-        <div className="flex flex-col items-center gap-5">
+        <div className="items-center gap-5">
           <div className="aspect-square h-[200px] w-[200px] rounded-md ">
             <Image
               key={context.celeb.name + '-topSection-image'}
@@ -28,12 +28,12 @@ export const TopSection = () => {
               alt="Popular Celebrity"
             />
           </div>
-          <h1>
+          <h1 className="text-center">
             <span className="text-sm font-normal tracking-wide text-neutral-500">
               Religion, politics, and ideas of
             </span>
             <br />
-            <span className="flex justify-center text-center text-4xl font-extrabold tracking-tight">
+            <span className="text-4xl font-extrabold tracking-tight">
               {context.celeb.name}
             </span>
           </h1>
