@@ -11,14 +11,14 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <div className="sm:grid-cols-3 md:grid-cols-4 mx-auto grid max-w-4xl grid-cols-2 border-b lg:border-x">
+    <div className="lg:border-x mx-auto grid max-w-4xl grid-cols-2 border-b xs:grid-cols-3 sm:grid-cols-4">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 
         return (
           <div
             key={celebData.slug}
-            className="relative aspect-square overflow-hidden shadow-sm"
+            className="relative aspect-square overflow-hidden"
           >
             <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
               <a className="flex aspect-square flex-col items-center overflow-hidden">
@@ -35,13 +35,14 @@ export const CelebGallery: React.FC<{
                 />
               </a>
             </Link>
-
-            <h2
-              aria-label="Celebrity"
-              className="relative bottom-12 left-3 z-[9999] inline-flex bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white lg:text-base"
-            >
-              {celebData.name}
-            </h2>
+            <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
+              <h2
+                aria-label="Celebrity"
+                className="lg:text-base relative bottom-12 left-3 z-[9999] inline-flex cursor-pointer select-none bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white"
+              >
+                {celebData.name}
+              </h2>
+            </Link>
           </div>
         );
       })}

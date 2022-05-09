@@ -16,14 +16,14 @@ export function Card(_params: {
       {params.title && (
         <>
           <LovelyTopBorder />
-          <div className="border-b bg-white p-5 font-bold lg:border-0 lg:border-x lg:border-b">
+          <div className="lg:border-0 lg:border-b border-b bg-white p-5 font-bold xs:border-x">
             {params.title}
           </div>
         </>
       )}
 
       <div
-        className={clsx(' border-b bg-white lg:border-x', {
+        className={clsx(' border-b bg-white xs:border-x', {
           'p-5': !params.disablePadding,
         })}
       >

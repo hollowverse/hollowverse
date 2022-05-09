@@ -11,32 +11,36 @@ export const TopSection = () => {
   const picture = context.celeb.picture || context.placeholderImage;
 
   return (
-    <Card className="TOP-SECTION lg:mt-5 lg:border-t">
-      <div className="flex items-center gap-5 bg-white lg:border-0">
-        <Image
-          className="rounded-full object-cover"
-          src={sanityImage(picture).url()}
-          width="100%"
-          height="100%"
-          priority
-          alt="Popular Celebrity"
-        />
-        <h1>
-          <span className="text-sm font-normal tracking-wide text-neutral-500">
-            Religion, politics, and ideas of
-          </span>
-          <br />
-          <span className="text-3xl font-extrabold tracking-tight">
-            {context.celeb.name}
-          </span>
-        </h1>
-      </div>
-
-      {!isEmpty(context.celeb.tags.regular) && (
-        <div className="bg-white pt-5">
-          <TagCollection />
+    <Card className="TOP-SECTION bg-white">
+      <div className="mx-auto max-w-4xl">
+        <div className="lg:border-0 flex flex-col items-center gap-5">
+          <div className="aspect-square  h-[200px] w-[200px] rounded-md ">
+            <Image
+              className="rounded-md object-cover"
+              src={sanityImage(picture).url()}
+              width="200px"
+              height="200px"
+              priority
+              alt="Popular Celebrity"
+            />
+          </div>
+          <h1>
+            <span className="text-sm font-normal tracking-wide text-neutral-500">
+              Religion, politics, and ideas of
+            </span>
+            <br />
+            <span className="flex justify-center text-center text-4xl font-extrabold tracking-tight">
+              {context.celeb.name}
+            </span>
+          </h1>
         </div>
-      )}
+
+        {!isEmpty(context.celeb.tags.regular) && (
+          <div className="flex justify-center pt-5">
+            <TagCollection />
+          </div>
+        )}
+      </div>
     </Card>
   );
 };

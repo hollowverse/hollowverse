@@ -45,7 +45,7 @@ export const Article = (p: {
               passHref
             >
               <a
-                className="flex w-[130px] items-center gap-1 rounded-lg border-[3.5px] border-white bg-gray-100 px-3.5 py-2 transition focus:border-blue-300 active:bg-gray-200"
+                className="flex w-[130px] items-center gap-1 rounded-lg border-2 border-white bg-gray-100 py-2 px-3.5 transition  hover:bg-gray-200 focus:border-blue-300"
                 aria-label="Learn about the steps required to start contributing to Hollowverse"
               >
                 Learn how

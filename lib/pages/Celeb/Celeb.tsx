@@ -14,17 +14,9 @@ export const Celeb = (p: CelebPageProps) => {
 
   return (
     <main className="flex flex-col bg-gray-100">
+      <PageHead />
+      <TopSection />
       <div className="mx-auto max-w-4xl">
-        <PageHead />
-
-        <TopSection />
-
-        {featureFlags.AddFactButton && (
-          <div className="m-5 flex items-center justify-end self-center lg:m-0 lg:my-5">
-            <AddFactButton />
-          </div>
-        )}
-
         {!isEmpty(p.celeb.facts) && (
           <div className="mb-5">
             <Facts />
