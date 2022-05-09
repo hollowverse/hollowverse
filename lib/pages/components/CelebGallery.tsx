@@ -11,7 +11,7 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <div className="lg:border-x mx-auto grid max-w-4xl grid-cols-2 border-b xs:grid-cols-3 sm:grid-cols-4">
+    <div className="mx-auto grid max-w-4xl grid-cols-2 border-b lg:border-x xs:grid-cols-3 sm:grid-cols-4">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 
@@ -20,28 +20,32 @@ export const CelebGallery: React.FC<{
             key={celebData.slug}
             className="relative aspect-square overflow-hidden"
           >
-            <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
-              <a className="flex aspect-square flex-col items-center overflow-hidden">
-                <Image
-                  src={sanityImage(picture).width(260).height(290).url()}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="top"
-                  blurDataURL={picture.metadata.lqip}
-                  placeholder="blur"
-                  alt={celebData.name}
-                  width={160}
-                  height={200}
-                />
-              </a>
-            </Link>
-            <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
-              <h2
+            <div>
+              <Link href={`/${celebData.slug}`} passHref>
+                <a className="relative aspect-square overflow-hidden">
+                  <Image
+                    key={celebData.slug + '-image'}
+                    src={sanityImage(picture).width(260).height(290).url()}
+                    layout="responsive"
+                    width={260}
+                    height={290}
+                    objectFit="cover"
+                    objectPosition="top"
+                    blurDataURL={picture.metadata.lqip}
+                    placeholder="blur"
+                    alt={celebData.name}
+                  />
+                </a>
+              </Link>
+            </div>
+
+            <Link href={`/${celebData.slug}`} passHref>
+              <a
                 aria-label="Celebrity"
-                className="lg:text-base relative bottom-12 left-3 z-[9999] inline-flex cursor-pointer select-none bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white"
+                className="relative bottom-20 left-3 z-[9999] inline-flex cursor-pointer select-none bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white lg:text-base"
               >
                 {celebData.name}
-              </h2>
+              </a>
             </Link>
           </div>
         );

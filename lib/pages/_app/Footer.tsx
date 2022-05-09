@@ -6,8 +6,11 @@ import { FaEnvelope, FaHeart, FaInfoCircle } from 'react-icons/fa';
 export const Footer = () => {
   const [hover, setHover] = useState(false);
 
+  const setHoverFalse = () => setHover(false);
+  const setHoverTrue = () => setHover(true);
+
   return (
-    <footer aria-label="footer" role="Footer" className="w-full border-y">
+    <footer aria-label="footer" className="w-full border-y">
       <div className="border-b px-5">
         <div className="mx-auto w-full max-w-4xl py-5">
           <div className="mb-5">
@@ -58,12 +61,10 @@ export const Footer = () => {
             rel="noreferrer"
             target="_blank"
             className="my-5 flex items-center gap-1 text-xs font-light tracking-wider transition duration-300 hover:text-neutral-700"
-            onMouseOver={() => {
-              setHover(true);
-            }}
-            onMouseOut={() => {
-              setHover(false);
-            }}
+            onFocus={setHoverTrue}
+            onMouseOver={setHoverTrue}
+            onMouseOut={setHoverFalse}
+            onBlur={setHoverFalse}
           >
             Designed with
             <FaHeart
