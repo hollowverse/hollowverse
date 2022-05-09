@@ -16,10 +16,14 @@ export const TopSection = () => {
         <div className="flex flex-col items-center gap-5">
           <div className="aspect-square h-[200px] w-[200px] rounded-md ">
             <Image
+              key={context.celeb.name + '-topSection-image'}
               className="rounded-md object-cover"
-              src={sanityImage(picture).url()}
-              width="200px"
-              height="200px"
+              src={sanityImage(picture).width(200).height(200).url()}
+              layout="responsive"
+              blurDataURL={picture.metadata.lqip}
+              placeholder="blur"
+              width={200}
+              height={200}
               priority
               alt="Popular Celebrity"
             />
