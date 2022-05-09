@@ -11,7 +11,7 @@ export const AddFactButton = () => {
 
   return (
     <button
-      className="flex items-baseline gap-2 rounded-lg border-[3.5px] border-gray-100 bg-gradient-to-r from-blue-500 to-blue-600 px-3.5 py-2 text-white transition hover:hue-rotate-30 focus:border-blue-300"
+      className="flex items-baseline gap-2 rounded-lg border-2 border-gray-100 bg-gradient-to-r from-blue-500 to-blue-600 px-3.5 py-2 text-white transition hover:hue-rotate-30 focus:border-blue-300"
       onClick={() => {
         const hasReadInstructions = JSON.parse(
           localStorage.getItem('hasReadInstructions') || 'false',

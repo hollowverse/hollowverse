@@ -31,7 +31,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
               {value.context}, {name} said
             </p>
 
-            <blockquote className="mb-0 block border-l-4 border-blue-400 bg-blue-50">
+            <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 ">
               {value.quote}
             </blockquote>
           </div>
@@ -44,13 +44,13 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
 
         <div className="flex gap-2.5 text-sm text-neutral-500">
           <Link href={value.source}>
-            <a className="cursor-pointer select-none rounded-lg border-[3.5px] border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
+            <a className="cursor-pointer select-none rounded-lg border-2 border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
               Source
             </a>
           </Link>
 
           <Link href={value.forumLink}>
-            <a className="cursor-pointer select-none rounded-lg border-[3.5px] border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
+            <a className="cursor-pointer select-none rounded-lg border-2 border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
               Forum link
             </a>
           </Link>

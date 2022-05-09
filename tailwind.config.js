@@ -6,9 +6,15 @@ module.exports = {
     },
   },
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        md: '0 4px 6px -1px rgb(0 0 0 / 0.025), 0 2px 4px -2px rgb(0 0 0 / 0.05);',
+      },
+    },
     screens: {
-      lg: '896px',
+      xxs: '384px',
+      xs: '512px',
+      sm: '768px',
     },
   },
   plugins: [],
