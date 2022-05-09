@@ -13,8 +13,8 @@ export const TopSection = () => {
   return (
     <Card className="TOP-SECTION bg-white">
       <div className="mx-auto max-w-4xl">
-        <div className="lg:border-0 flex flex-col items-center gap-5">
-          <div className="aspect-square  h-[200px] w-[200px] rounded-md ">
+        <div className="flex flex-col items-center gap-5">
+          <div className="aspect-square h-[200px] w-[200px] rounded-md ">
             <Image
               className="rounded-md object-cover"
               src={sanityImage(picture).url()}
