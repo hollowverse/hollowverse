@@ -20,7 +20,6 @@ export const Search = () => {
           <DebounceInput
             value={hook.query}
             inputRef={hook.inputRef}
-            autoFocus
             minLength={2}
             debounceTimeout={600}
             onChange={hook.onQueryChange}

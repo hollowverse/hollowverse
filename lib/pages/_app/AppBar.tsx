@@ -39,6 +39,7 @@ export const AppBar = () => {
           </div>
 
           <button
+            aria-label={searchOpen ? 'Close search' : 'Open search'}
             onClick={() => setSearchOpen(searchOpen ? false : true)}
             className="TOGGLE-BUTTON flex self-center rounded-md border-2 border-white bg-gray-100 p-2 transition hover:bg-gray-200 focus:border-blue-300"
           >
