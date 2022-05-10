@@ -86,6 +86,7 @@ export const Search = () => {
                     <div>
                       <p>Name: {r.result.name}</p>
                       <p>Description: {r.result.description}</p>
+                      <p>Exists: {r.result.slug ? 'yes' : 'no'}</p>
                     </div>
                   </a>
                 </Link>
