@@ -18,9 +18,7 @@ export function Card(_params: {
       {params.title && (
         <>
           <LovelyTopBorder />
-          <div className="border-b p-5 font-bold lg:border-0">
-            {params.title}
-          </div>
+          <div className="border-b p-5 font-bold">{params.title}</div>
         </>
       )}
 
