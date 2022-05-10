@@ -1,10 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { isArray, isEmpty, isString } from 'lodash-es';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { DebounceInput } from 'react-debounce-input';
+import { Page } from '~/lib/pages/components/Page';
 import { useSearch } from '~/lib/pages/Search/useSearch';
+import * as AppBar from '~/lib/pages/components/AppBar';
 
 export const Search = () => {
   const hook = useSearch();
@@ -15,23 +20,41 @@ export const Search = () => {
         <meta name="robots" content="noindex" />
       </Head>
 
-      <div>
-        <div style={{ display: 'flex' }}>
-          <DebounceInput
-            value={hook.query}
-            inputRef={hook.inputRef}
-            minLength={2}
-            debounceTimeout={600}
-            onChange={hook.onQueryChange}
-          />
+      <Page
+        appBar={
+          <AppBar.Container>
+            <div style={{ display: 'flex' }}>
+              <DebounceInput
+                className="border"
+                value={hook.query}
+                inputRef={hook.inputRef}
+                minLength={2}
+                debounceTimeout={600}
+                onChange={hook.onQueryChange}
+              />
 
-          <button onClick={hook.onClearResultsClick}>X</button>
+              {!isEmpty(hook.query) && (
+                <button onClick={hook.onClearResultsClick}>Clear search</button>
+              )}
 
-          {isString(hook.previousUrl) && (
-            <Link href={hook.previousUrl}>Go back</Link>
-          )}
-        </div>
-
+              <div style={{ marginLeft: 10 }}>
+                <Link href="/" passHref>
+                  <a
+                    onClick={(e) => {
+                      if (hook.isInternalNavigation) {
+                        e.preventDefault();
+                        hook.goBack();
+                      }
+                    }}
+                  >
+                    Cancel
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </AppBar.Container>
+        }
+      >
         <div>
           {(hook.loading && <div>loading...</div>) ||
             (!isArray(hook.searchResults) && (
@@ -69,7 +92,7 @@ export const Search = () => {
               );
             })}
         </div>
-      </div>
+      </Page>
     </>
   );
 };

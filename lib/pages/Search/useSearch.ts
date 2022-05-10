@@ -4,9 +4,10 @@ import { fetchResults } from '~/lib/pages/Search/fetchResults';
 
 export function useSearch() {
   const [loading, setLoading] = useState(false);
+  const [isInternalNavigation, setInternalNavigation] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<any>(null);
-  const { previousUrl } = useRouter().query;
+  const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,7 +28,14 @@ export function useSearch() {
       }
     }
 
+    if (router.query.local === 'true') {
+      setInternalNavigation(true);
+    }
+
+    router.replace(router.basePath, router.basePath, { shallow: true });
+
     runQuery();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return {
@@ -40,7 +48,8 @@ export function useSearch() {
       setQuery('');
       setResults(null);
     },
-    previousUrl,
+    goBack: router.back,
+    isInternalNavigation,
     loading,
     searchResults: results,
   };

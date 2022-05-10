@@ -6,26 +6,31 @@ import { Md } from '~/lib/pages/Celeb/Md/Md';
 import { PageHead } from '~/lib/pages/Celeb/PageHead';
 import { TopSection } from '~/lib/pages/Celeb/TopSection';
 import { useCeleb } from '~/lib/pages/Celeb/useCeleb';
+import { Page } from '~/lib/pages/components/Page';
 import { CelebPageProps } from '~/lib/pages/utils/types';
 
 export const Celeb = (p: CelebPageProps) => {
   useCeleb(p.celeb.name, p.celeb.facts.groups);
 
   return (
-    <main className="flex flex-col bg-gray-100">
+    <>
       <PageHead />
-      <TopSection />
-      <div className="mx-auto max-w-4xl">
-        {!isEmpty(p.celeb.facts.groups) && (
-          <div className="mb-5">
-            <Facts />
-          </div>
-        )}
 
-        {p.celeb.oldContent && <Md />}
+      <Page>
+        <TopSection />
 
-        <ForumInvite name={p.celeb.name} />
-      </div>
-    </main>
+        <div className="mx-auto max-w-4xl">
+          {!isEmpty(p.celeb.facts.groups) && (
+            <div className="mb-5">
+              <Facts />
+            </div>
+          )}
+
+          {p.celeb.oldContent && <Md />}
+
+          <ForumInvite name={p.celeb.name} />
+        </div>
+      </Page>
+    </>
   );
 };

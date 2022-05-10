@@ -6,9 +6,15 @@ import { gaPageView, GA_TRACKING_ID } from '~/lib/pages/utils/gtag';
 import { StaticPropsContextProvider } from '~/lib/pages/components/StaticPropsContextProvider';
 import { Footer } from '~/lib/pages/_app/Footer';
 import { Head } from '~/lib/pages/_app/Head';
-import { AppBar } from '~/lib/pages/_app/AppBar';
+import { AppBar } from '~/lib/pages/components/AppBar';
 
-export const App = ({ Component, pageProps }: AppProps) => {
+const clientSideEmotionCache = createEmotionCache();
+
+export const App = ({
+  Component,
+  pageProps,
+  emotionCache = clientSideEmotionCache,
+}: AppProps & { emotionCache: EmotionCache }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -52,9 +58,7 @@ export const App = ({ Component, pageProps }: AppProps) => {
 
       <Head />
       <StaticPropsContextProvider value={pageProps}>
-        <AppBar />
         <Component {...pageProps} />
-        <Footer />
       </StaticPropsContextProvider>
     </>
   );
