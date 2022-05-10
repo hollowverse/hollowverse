@@ -9,3 +9,6 @@ playwright-report/
 public/sitemap*
 robots.txt
 .DS_Store
+
+# Sentry
+.sentryclirc
