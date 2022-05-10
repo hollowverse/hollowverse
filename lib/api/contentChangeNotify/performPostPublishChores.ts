@@ -1,5 +1,5 @@
 import { uniq } from 'lodash-es';
-import { discourseClient } from '~/lib/api/discourseClient';
+import { discourseClient } from '~/lib/api/utils/discourseClient';
 
 function getTopicId(forumLink: string) {
   return forumLink.substring(forumLink.lastIndexOf('/') + 1);

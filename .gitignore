@@ -8,3 +8,4 @@ playwright-report/
 .env*.local
 public/sitemap*
 robots.txt
+.DS_Store
