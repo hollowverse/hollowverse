@@ -13,7 +13,7 @@ export const TopSection = () => {
   return (
     <Card className="TOP-SECTION bg-white">
       <div className="mx-auto max-w-4xl">
-        <div className="items-center gap-5">
+        <div className="flex flex-col items-center gap-5">
           <div className="aspect-square h-[200px] w-[200px] rounded-md ">
             <Image
               key={context.celeb.name + '-topSection-image'}
