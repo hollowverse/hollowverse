@@ -1,12 +1,11 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { AddFactButton } from '~/lib/pages/Celeb/AddFactButton';
 import { Facts } from '~/lib/pages/Celeb/Facts/Facts';
+import { ForumInvite } from '~/lib/pages/Celeb/ForumInvite';
 import { Md } from '~/lib/pages/Celeb/Md/Md';
 import { PageHead } from '~/lib/pages/Celeb/PageHead';
 import { TopSection } from '~/lib/pages/Celeb/TopSection';
 import { useCeleb } from '~/lib/pages/Celeb/useCeleb';
-import { featureFlags } from '~/lib/pages/utils/featureFlags';
 import { CelebPageProps } from '~/lib/pages/utils/types';
 
 export const Celeb = (p: CelebPageProps) => {
@@ -24,6 +23,8 @@ export const Celeb = (p: CelebPageProps) => {
         )}
 
         {p.celeb.oldContent && <Md />}
+
+        <ForumInvite name={p.celeb.name} />
       </div>
     </main>
   );

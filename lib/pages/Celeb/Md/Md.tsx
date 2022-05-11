@@ -3,7 +3,6 @@ import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvid
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 import { Sources } from './Sources';
-import s from '~/lib/pages/styles.module.scss';
 
 export const Md = () => {
   const [showSources, setShowSources] = useState(false);
@@ -11,7 +10,7 @@ export const Md = () => {
   const oldContent = context.celeb.oldContent!;
 
   return (
-    <section className={s.Md}>
+    <section>
       {oldContent.article && <Article setShowSources={setShowSources} />}
 
       {oldContent.sources?.length > 0 && (

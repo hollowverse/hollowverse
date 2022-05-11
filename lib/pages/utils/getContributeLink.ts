@@ -1,18 +1,12 @@
 export const getContributeLink = (name: string) => {
-  const bodyContent = `**What's a fact about ${name} that indicates their religion, politics, or social views?**
-<!-- Keep the answer short and sweet. -->
+  const unencodedBodyContent = `Tell us about ${name}'s political views or religion! And share a link to the source, if you've got one!
 
-**What is the source for this information?**
-<!-- The source has to be credible. For a controversial fact, the source needs stronger credibility. -->
+<!-- Don't forget to update the title. Make it more specific! -->`;
 
-<!--
-If you know more facts about ${name}, create a new post for each fact.
+  const body = encodeURIComponent(unencodedBodyContent);
+  const title = encodeURIComponent(`${name}'s political views and religion`);
 
-A moderator will review your posts and add them to ${name}'s page :)
--->`;
-  const href = `https://discuss.hollowverse.com/new-topic?title=${encodeURIComponent(
-    name,
-  )}&body=${encodeURIComponent(bodyContent)}&category=facts`;
+  const href = `https://discuss.hollowverse.com/new-topic?title=${title}&body=${body}&category=comments`;
 
   return href;
 };
