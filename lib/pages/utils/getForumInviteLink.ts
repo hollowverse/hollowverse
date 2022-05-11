@@ -1,4 +1,4 @@
-export const getContributeLink = (name: string) => {
+export const getForumInviteLink = (name: string) => {
   const unencodedBodyContent = `Tell us about ${name}'s political views or religion! And share a link to the source, if you've got one!
 
 <!-- Don't forget to update the title. Make it more specific! -->`;
