@@ -1,11 +1,9 @@
+import { withSentry } from '@sentry/nextjs';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { isValidRequest } from '@sanity/webhook';
 import { performPostPublishChores } from '~/lib/api/contentChangeNotify/performPostPublishChores';
 
-export async function contentChangeNotify(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+async function _contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
@@ -20,3 +18,5 @@ export async function contentChangeNotify(
 
   return res.json({ revalidated: true });
 }
+
+export const contentChangeNotify = withSentry(_contentChangeNotify);
