@@ -15,7 +15,7 @@ export const TopSection = () => {
     <Card className="TOP-SECTION bg-white">
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-col items-center gap-5">
-          <div className="aspect-square h-[200px] w-[200px] rounded-md ">
+          <div className="aspect-square h-[200px] w-[200px] rounded-md">
             <CelebImage
               className="rounded-md object-cover"
               key={context.celeb.name + '-topSection-image'}
@@ -24,12 +24,11 @@ export const TopSection = () => {
               name={context.celeb.name}
             />
           </div>
-          <h1 className="text-center">
-            <span className="text-sm font-normal tracking-wide text-neutral-500">
+          <h1 className="mt-5 text-center">
+            <span className="text-base font-normal tracking-wide text-neutral-500">
               Religion, politics, and ideas of
             </span>
-            <br />
-            <span className="text-4xl font-extrabold tracking-tight">
+            <span className="mt-2 block text-4xl font-extrabold tracking-tight">
               {context.celeb.name}
             </span>
           </h1>
