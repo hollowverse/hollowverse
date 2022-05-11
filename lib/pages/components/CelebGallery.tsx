@@ -4,6 +4,7 @@ import { sanityImage } from '~/lib/pages/utils/sanityio';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { TCelebGalleryItem } from '~/lib/pages/utils/types';
 import Link from 'next/link';
+import { CelebImage } from '~/lib/pages/components/CelebImage';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
@@ -23,17 +24,11 @@ export const CelebGallery: React.FC<{
             <div>
               <Link href={`/${celebData.slug}`} passHref>
                 <a className="relative aspect-square overflow-hidden">
-                  <Image
+                  <CelebImage
                     key={celebData.slug + '-image'}
-                    src={sanityImage(picture).width(260).height(290).url()}
-                    layout="responsive"
-                    width={260}
-                    height={290}
-                    objectFit="cover"
-                    objectPosition="top"
-                    blurDataURL={picture.metadata.lqip}
-                    placeholder="blur"
-                    alt={celebData.name}
+                    picture={picture}
+                    slug={celebData.slug}
+                    name={celebData.name}
                   />
                 </a>
               </Link>

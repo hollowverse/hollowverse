@@ -5,6 +5,7 @@ import { Card } from '~/lib/pages/components/Card';
 import { sanityImage } from '~/lib/pages/utils/sanityio';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { TagCollection } from '~/lib/pages/Celeb/TagCollection';
+import { CelebImage } from '~/lib/pages/components/CelebImage';
 
 export const TopSection = () => {
   const context = useCelebContext();
@@ -15,17 +16,12 @@ export const TopSection = () => {
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-col items-center gap-5">
           <div className="aspect-square h-[200px] w-[200px] rounded-md ">
-            <Image
-              key={context.celeb.name + '-topSection-image'}
+            <CelebImage
               className="rounded-md object-cover"
-              src={sanityImage(picture).width(200).height(200).url()}
-              layout="responsive"
-              blurDataURL={picture.metadata.lqip}
-              placeholder="blur"
-              width={200}
-              height={200}
-              priority
-              alt="Popular Celebrity"
+              key={context.celeb.name + '-topSection-image'}
+              picture={picture}
+              slug={context.celeb.slug}
+              name={context.celeb.name}
             />
           </div>
           <h1 className="text-center">
