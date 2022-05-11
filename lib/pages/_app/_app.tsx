@@ -1,22 +1,14 @@
-import { CacheProvider, EmotionCache } from '@emotion/react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
-import { createEmotionCache } from '~/lib/pages/utils/createEmotionCache';
 import { gaPageView, GA_TRACKING_ID } from '~/lib/pages/utils/gtag';
 import { StaticPropsContextProvider } from '~/lib/pages/components/StaticPropsContextProvider';
 import { Footer } from '~/lib/pages/_app/Footer';
 import { Head } from '~/lib/pages/_app/Head';
 import { AppBar } from '~/lib/pages/_app/AppBar';
 
-const clientSideEmotionCache = createEmotionCache();
-
-export const App = ({
-  Component,
-  pageProps,
-  emotionCache = clientSideEmotionCache,
-}: AppProps & { emotionCache: EmotionCache }) => {
+export const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -58,14 +50,12 @@ export const App = ({
         }}
       />
 
-      <CacheProvider value={emotionCache}>
-        <Head />
-        <StaticPropsContextProvider value={pageProps}>
-          <AppBar />
-          <Component {...pageProps} />
-          <Footer />
-        </StaticPropsContextProvider>
-      </CacheProvider>
+      <Head />
+      <StaticPropsContextProvider value={pageProps}>
+        <AppBar />
+        <Component {...pageProps} />
+        <Footer />
+      </StaticPropsContextProvider>
     </>
   );
 };

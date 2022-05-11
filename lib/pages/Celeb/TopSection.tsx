@@ -1,11 +1,9 @@
 import { isEmpty } from 'lodash-es';
-import Image from 'next/image';
 import React from 'react';
-import { Card } from '~/lib/pages/components/Card';
-import { sanityImage } from '~/lib/pages/utils/sanityio';
-import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { TagCollection } from '~/lib/pages/Celeb/TagCollection';
+import { Card } from '~/lib/pages/components/Card';
 import { CelebImage } from '~/lib/pages/components/CelebImage';
+import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 
 export const TopSection = () => {
   const context = useCelebContext();
