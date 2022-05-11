@@ -9,14 +9,14 @@ import { useCeleb } from '~/lib/pages/Celeb/useCeleb';
 import { CelebPageProps } from '~/lib/pages/utils/types';
 
 export const Celeb = (p: CelebPageProps) => {
-  useCeleb(p.celeb.name, p.celeb.facts);
+  useCeleb(p.celeb.name, p.celeb.facts.groups);
 
   return (
     <main className="flex flex-col bg-gray-100">
       <PageHead />
       <TopSection />
       <div className="mx-auto max-w-4xl">
-        {!isEmpty(p.celeb.facts) && (
+        {!isEmpty(p.celeb.facts.groups) && (
           <div className="mb-5">
             <Facts />
           </div>

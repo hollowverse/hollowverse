@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { ForumInvite } from '~/lib/pages/Celeb/ForumInvite';
 import { Card } from '~/lib/pages/components/Card';
@@ -28,7 +29,9 @@ export const Article = (p: {
         </Card>
       )}
 
-      <ForumInvite name={context.celeb.name} />
+      {isEmpty(context.celeb.facts.groups) && (
+        <ForumInvite name={context.celeb.name} />
+      )}
 
       <Card title="Editorial">
         <div

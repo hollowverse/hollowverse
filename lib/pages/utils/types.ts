@@ -81,7 +81,7 @@ export type TCeleb = {
   };
   oldContent?: TCelebOldContent;
   // facts?: OrderedFacts;
-  facts?: GroupedFacts;
+  facts: GroupedFacts;
 };
 
 export type CelebPageProps = {
