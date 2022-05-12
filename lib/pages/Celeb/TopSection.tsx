@@ -10,7 +10,7 @@ export const TopSection = () => {
   const picture = context.celeb.picture || context.placeholderImage;
 
   return (
-    <Card className="TOP-SECTION bg-white">
+    <Card className="TOP-SECTION">
       <div className="mx-auto max-w-4xl">
         <div className="flex flex-col items-center gap-5">
           <div className="aspect-square h-[200px] w-[200px] rounded-md">

@@ -54,8 +54,6 @@ export const getStaticProps = async ({
   }
 
   return {
-    props: {
-      kgCeleb: kgCeleb[0],
-    },
+    props: kgCeleb[0].result,
   };
 };

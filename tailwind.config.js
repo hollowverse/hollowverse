@@ -14,5 +14,10 @@ module.exports = {
       sm: '768px',
     },
   },
-  plugins: [],
+  plugins: [
+    // See https://github.com/richardtallent/tailwindcss-def
+    (function () {
+      return ({ addVariant }) => addVariant('default', ':where(&)');
+    })(),
+  ],
 };

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Card } from '~/lib/pages/components/Card';
+import { LovelyTopBorder } from '~/lib/pages/components/LovelyTopBorder';
+import { c } from '~/lib/pages/utils/c';
 
 type Inputs = {
   forumPost: string;
@@ -16,7 +18,7 @@ export const getForumInviteLink = (name: string, data: Inputs) => {
   return href;
 };
 
-export function ForumInvite(params: { name: string }) {
+export function ForumInvite(params: { name: string; cta?: ReactNode }) {
   const {
     register,
     handleSubmit,
@@ -28,11 +30,16 @@ export function ForumInvite(params: { name: string }) {
 
   return (
     <>
-      <div className="h-2 w-full bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400" />
+      <LovelyTopBorder className="h-2" />
+
       <Card>
         <p className="text-base">
-          Hey! Know something about {params.name}&apos;s religion or political
-          views? Post it to the forum!
+          {params.cta || (
+            <>
+              Hey! Know something about {params.name}&apos;s religion or
+              political views? Tell us!
+            </>
+          )}
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
