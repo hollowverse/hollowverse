@@ -4,7 +4,7 @@ export async function discourseClient(
     method: 'GET',
   },
 ) {
-  const res = await fetch(`https://discuss.hollowverse.com/${apiEndPoint}`, {
+  const res = await fetch(`https://forum.hollowverse.com/${apiEndPoint}`, {
     method: payload.method,
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
