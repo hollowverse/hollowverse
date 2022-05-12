@@ -10,8 +10,8 @@ export const Footer = () => {
   const setHoverTrue = () => setHover(true);
 
   return (
-    <footer aria-label="footer" className="w-full border-y">
-      <div className="border-b px-5">
+    <footer aria-label="footer" className="w-full">
+      <div className="border-y bg-white px-5">
         <div className="mx-auto w-full max-w-4xl py-5">
           <div className="mb-5">
             <Image
@@ -54,7 +54,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="flex w-full justify-center bg-gray-50 px-5">
+      <div className="flex w-full justify-center px-5">
         <div className="flex w-full max-w-4xl justify-start text-neutral-500">
           <a
             href="https://rlogank.com/"

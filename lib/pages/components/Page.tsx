@@ -10,14 +10,12 @@ export function Page(params: {
   footer?: ReactElement;
 }) {
   return (
-    <>
+    <div className={c('min-h-screen bg-gray-100', params.className)}>
       {params.appBar || <AppBar />}
 
-      <main className={c('bg-gray-100', params.className)}>
-        {params.children}
-      </main>
+      <main>{params.children}</main>
 
       {params.footer || <Footer />}
-    </>
+    </div>
   );
 }
