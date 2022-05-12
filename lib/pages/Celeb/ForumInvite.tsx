@@ -11,7 +11,7 @@ export const getForumInviteLink = (name: string, data: Inputs) => {
   const encodedTitle = encodeURIComponent(title);
   const encodedBody = encodeURIComponent(data.forumPost);
 
-  const href = `https://discuss.hollowverse.com/new-topic?title=${encodedTitle}&body=${encodedBody}&category=comments`;
+  const href = `https://forum.hollowverse.com/new-topic?title=${encodedTitle}&body=${encodedBody}&category=comments`;
 
   return href;
 };
