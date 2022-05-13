@@ -10,6 +10,9 @@ import { DebounceInput } from 'react-debounce-input';
 import { Page } from '~/lib/pages/components/Page';
 import { useSearch } from '~/lib/pages/Search/useSearch';
 import * as AppBar from '~/lib/pages/components/AppBar';
+import { MdCancel } from 'react-icons/md';
+import { ThreeDots } from 'react-loading-icons';
+import { FaChevronCircleLeft, FaChevronLeft } from 'react-icons/fa';
 
 export const Search = () => {
   const hook = useSearch();
@@ -23,9 +26,24 @@ export const Search = () => {
       <Page
         appBar={
           <AppBar.Container>
-            <div style={{ display: 'flex' }}>
+            <div className="relative flex w-full items-center text-neutral-700">
+              <Link href="/" passHref>
+                <a
+                  onClick={(e) => {
+                    if (hook.isInternalNavigation) {
+                      e.preventDefault();
+                      hook.goBack();
+                    }
+                  }}
+                  className="mr-2.5 rounded-md bg-gray-100 p-2.5 hover:bg-gray-200 active:bg-gray-200"
+                >
+                  <FaChevronLeft />
+                </a>
+              </Link>
+
               <DebounceInput
-                className="border"
+                placeholder="Search Hollowverse"
+                className="w-full rounded-md border-2 px-3 pb-1 pt-1.5 text-[1rem] placeholder-neutral-400 outline-none transition focus-within:border-2 focus-within:border-blue-300"
                 value={hook.query}
                 inputRef={hook.inputRef}
                 minLength={2}
@@ -34,33 +52,25 @@ export const Search = () => {
               />
 
               {!isEmpty(hook.query) && (
-                <button onClick={hook.onClearResultsClick}>Clear search</button>
+                <button
+                  onClick={hook.onClearResultsClick}
+                  className="absolute right-2.5"
+                >
+                  <MdCancel className="text-lg text-neutral-500" />
+                </button>
               )}
-
-              <div style={{ marginLeft: 10 }}>
-                <Link href="/" passHref>
-                  <a
-                    onClick={(e) => {
-                      if (hook.isInternalNavigation) {
-                        e.preventDefault();
-                        hook.goBack();
-                      }
-                    }}
-                  >
-                    Cancel
-                  </a>
-                </Link>
-              </div>
             </div>
           </AppBar.Container>
         }
       >
-        <div>
-          {(hook.loading && <div>loading...</div>) ||
+        <div className="flex min-h-[calc(75vh-323.5px-70px)] flex-col items-center justify-center text-neutral-600 sm:gap-5 sm:p-5">
+          {(hook.loading && <ThreeDots fill="#9c9c9c" width="2.5rem" />) ||
             (!isArray(hook.searchResults) && (
-              <div>Search for something!</div>
+              <div className="text-neutral-400">Search for something!</div>
             )) ||
-            (isEmpty(hook.searchResults) && <div>No results</div>) ||
+            (isEmpty(hook.searchResults) && (
+              <div className="text-neutral-400">No results</div>
+            )) ||
             hook.searchResults?.map((r: any) => {
               return (
                 <Link
@@ -71,21 +81,21 @@ export const Search = () => {
                   }`}
                   passHref
                 >
-                  <a style={{ display: 'flex' }}>
-                    <div style={{ width: 100 }}>
+                  <a className="mx-auto flex w-full max-w-4xl items-center border-b bg-white p-5 last:border-0 sm:rounded-md">
+                    <div className="h-full w-1/4 overflow-hidden rounded-md shadow-md">
                       <Image
                         src={r.result.image?.contentUrl}
                         layout="responsive"
                         objectFit="cover"
-                        objectPosition="top"
+                        objectPosition="center"
                         width={150}
                         height={150}
                         alt={r.result.name}
                       />
                     </div>
-                    <div>
-                      <p>Name: {r.result.name}</p>
-                      <p>Description: {r.result.description}</p>
+                    <div className="px-5">
+                      <p className="text-lg font-semibold">{r.result.name}</p>
+                      <p>{r.result.description}</p>
                       <p>Exists: {r.result.slug ? 'yes' : 'no'}</p>
                     </div>
                   </a>

@@ -41,9 +41,9 @@ export const Footer = () => {
                 <p>Email us</p>
               </div>
 
-              <p className="flex gap-1">
+              <p className="">
                 You can contact us at{' '}
-                <span className="flex bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
                   <Link href="mailto:hollowverse@hollowverse.com">
                     hollowverse@hollowverse.com
                   </Link>
