@@ -9,7 +9,7 @@ module.exports = {
     SENTRY_DSN ||
     'https://6a07cc3eb45f4cfb83d71106c0af4f75@o1240855.ingest.sentry.io/6394200',
   // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1.0,
+  tracesSampleRate: 0,
   denyUrls: [/localhost:\d+/],
   // ...
   // Note: if you want to override the automatic release value, do not set a
