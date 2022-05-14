@@ -44,8 +44,8 @@ export function SearchButton() {
       }}
       passHref
     >
-      <a className="TOGGLE-BUTTON flex self-center rounded-md border-2 border-white bg-gray-100 p-2 transition hover:bg-gray-200 focus:border-blue-300">
-        <FaSearch />
+      <a className="TOGGLE-BUTTON flex self-center rounded-md border-2 border-white bg-gray-100 p-1.5 transition hover:bg-gray-200 focus:border-blue-300">
+        <FaSearch className="text-xl" />
       </a>
     </Link>
   );

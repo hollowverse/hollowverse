@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { isArray, isEmpty, isString } from 'lodash-es';
+import { isArray, isEmpty } from 'lodash-es';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { DebounceInput } from 'react-debounce-input';
+import { FaChevronLeft } from 'react-icons/fa';
+import { MdCancel } from 'react-icons/md';
+import * as AppBar from '~/lib/pages/components/AppBar';
 import { Page } from '~/lib/pages/components/Page';
 import { useSearch } from '~/lib/pages/Search/useSearch';
-import * as AppBar from '~/lib/pages/components/AppBar';
-import { MdCancel } from 'react-icons/md';
 import { ThreeDots } from 'react-loading-icons';
-import { FaChevronCircleLeft, FaChevronLeft } from 'react-icons/fa';
 
 export const Search = () => {
   const hook = useSearch();
@@ -43,7 +43,7 @@ export const Search = () => {
 
               <DebounceInput
                 placeholder="Search Hollowverse"
-                className="w-full rounded-md border-2 px-3 pb-1 pt-1.5 text-[1rem] placeholder-neutral-400 outline-none transition focus-within:border-2 focus-within:border-blue-300"
+                className="textbox-border w-full px-3 pb-1 pt-1.5 text-[1rem]"
                 value={hook.query}
                 inputRef={hook.inputRef}
                 minLength={2}

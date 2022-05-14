@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { Facts } from '~/lib/pages/Celeb/Facts/Facts';
-import { ForumInvite } from '~/lib/pages/Celeb/ForumInvite';
+import { ForumInvite } from '~/lib/pages/components/ForumInvite';
 import { Md } from '~/lib/pages/Celeb/Md/Md';
 import { PageHead } from '~/lib/pages/Celeb/PageHead';
 import { TopSection } from '~/lib/pages/Celeb/TopSection';

@@ -1,10 +1,10 @@
 import React from 'react';
-import { ForumInvite } from '~/lib/pages/Celeb/ForumInvite';
+import { ForumInvite } from '~/lib/pages/components/ForumInvite';
 import { Card } from '~/lib/pages/components/Card';
 import { CelebImage } from '~/lib/pages/components/CelebImage';
 import { Page } from '~/lib/pages/components/Page';
 import { useKnowledgeGraphCeleb } from '~/lib/pages/KnowledgeGraphCeleb/useKnowledgeGraphCeleb';
-import { BsPatchCheck } from 'react-icons/Bs';
+import { FaRegCheckCircle } from 'react-icons/fa';
 
 export function KnowledgeGraphCeleb(params: any) {
   useKnowledgeGraphCeleb(params.name);
@@ -17,7 +17,10 @@ export function KnowledgeGraphCeleb(params: any) {
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex w-0 flex-1 items-center">
                 <span className="flex rounded-lg p-2">
-                  <BsPatchCheck stroke="10" className="text-xl text-white" />
+                  <FaRegCheckCircle
+                    stroke="10"
+                    className="text-xl text-white"
+                  />
                 </span>
                 <p className="ml-3 text-white">
                   We&apos;ve recorded your request to add{' '}
@@ -49,7 +52,6 @@ export function KnowledgeGraphCeleb(params: any) {
             </span>
           </h1>
         </div>
-        {/* <pre>{JSON.stringify(params, null, 2)}</pre> */}
       </Card>
 
       <div className="mx-auto max-w-4xl">
@@ -57,9 +59,9 @@ export function KnowledgeGraphCeleb(params: any) {
           name={params.name}
           cta={
             <>
-              Help us get started by sharing anything you know about{' '}
-              <span className="font-bold">{params.name}</span>. You can write it
-              in the box below!
+              Help us get started! Know anything about{' '}
+              <span className="font-bold">{params.name}</span>&apos;s religion
+              or political views? Tell us!
             </>
           }
         />

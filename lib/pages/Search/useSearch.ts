@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchResults } from '~/lib/pages/Search/fetchResults';
 
 export function useSearch() {
@@ -11,7 +11,7 @@ export function useSearch() {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     inputRef?.current?.focus();
   }, []);
 
