@@ -20,7 +20,7 @@ export function SearchResults(params: { results: any; hasHvResults: boolean }) {
             <a
               className={c(
                 'relative grid w-full grid-cols-10 items-stretch overflow-hidden bg-white lg:border-x lg:border-t',
-                { 'opacity-[70%]': !r.result.slug && hasHvResults },
+                { 'opacity-[80%]': !r.result.slug && hasHvResults },
               )}
             >
               <div className="col-span-2 overflow-hidden lg:border-b">
@@ -43,7 +43,7 @@ export function SearchResults(params: { results: any; hasHvResults: boolean }) {
                 </p>
               </div>
               {!r.result.slug && (
-                <div className="absolute right-0 top-1 bottom-1 my-auto mr-[3%] flex flex-col justify-center bg-gradient-to-r from-transparent via-white to-white pl-20">
+                <div className="absolute right-0 top-1 bottom-1 my-auto mr-[3%] flex flex-col justify-center bg-gradient-to-r from-transparent via-white to-white pl-24">
                   <div className="rounded-full border border-gray-300 bg-white px-5 py-1 text-xs text-gray-500 xs:text-sm">
                     Request
                   </div>

@@ -13,7 +13,7 @@ export function KnowledgeGraphCeleb(params: any) {
     <Page>
       <Card>
         <div className="mx-auto max-w-3xl rounded-md bg-gradient-to-r from-blue-500 to-purple-500">
-          <div className="py-3 px-3 lg:px-8 sm:px-6">
+          <div className="py-3 px-3 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex w-0 flex-1 items-center">
                 <span className="flex rounded-lg p-2">
@@ -23,7 +23,7 @@ export function KnowledgeGraphCeleb(params: any) {
                   />
                 </span>
                 <p className="ml-3 text-white">
-                  We&apos;ve recorded your request to add{' '}
+                  We&apos;ve received your request to add{' '}
                   <span className="font-bold">{params.name}</span>
                 </p>
               </div>
