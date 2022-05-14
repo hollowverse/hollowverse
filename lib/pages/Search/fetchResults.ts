@@ -1,4 +1,5 @@
 import levenshtein from 'fast-levenshtein';
+import { isEmpty } from 'lodash-es';
 import { knowledgeGraphClient } from '~/lib/pages/utils/knowledgeGraphClient';
 import { sanityClient } from '~/lib/pages/utils/sanityio';
 
@@ -17,15 +18,27 @@ async function hvSearch(cleanedKgResults: any[]) {
 }
 
 function combine(kgResults: any[], hvResults: any[]) {
-  return kgResults.map((kgItem) => ({
-    ...kgItem,
-    result: {
-      ...kgItem.result,
-      slug: hvResults.find(
-        (hvItem) => hvItem.knowledgeGraphId === kgItem.result['@id'],
-      )?.slug,
-    },
-  }));
+  const hasHvResults = !isEmpty(hvResults);
+
+  if (!hasHvResults) {
+    return {
+      hasHvResults,
+      results: kgResults,
+    };
+  }
+
+  return {
+    hasHvResults,
+    results: kgResults.map((kgItem) => ({
+      ...kgItem,
+      result: {
+        ...kgItem.result,
+        slug: hvResults.find(
+          (hvItem) => hvItem.knowledgeGraphId === kgItem.result['@id'],
+        )?.slug,
+      },
+    })),
+  };
 }
 
 function levenshteinSort(query: string, results: any[]) {
@@ -78,9 +91,22 @@ function levenshteinSort(query: string, results: any[]) {
   return results;
 }
 
+function isPorno(kgResult: any) {
+  return kgResult.result?.description?.toLowerCase().includes('porno');
+}
+
 function availabilitySort(results: any[]) {
   results.sort((a, b) => {
     if (a.result.slug && !b.result.slug) {
+      return -1;
+    }
+
+    // Nothing against the porn industry. It's just very distracting.
+    if (isPorno(a) && !isPorno(b)) {
+      return 1;
+    }
+
+    if (isPorno(b) && !isPorno(a)) {
       return -1;
     }
 
@@ -98,9 +124,12 @@ export async function fetchResults(query: string) {
   const kgResults = await knowledgeGraphClient({ query });
   const cleanedKgResults = clean(kgResults);
   const hvResults = await hvSearch(cleanedKgResults);
-  const combinedResults = combine(cleanedKgResults, hvResults);
+  const { hasHvResults, results: combinedResults } = combine(
+    cleanedKgResults,
+    hvResults,
+  );
   const levenshteinSorted = levenshteinSort(query, combinedResults);
   const availabilitySorted = availabilitySort(levenshteinSorted);
 
-  return availabilitySorted;
+  return { results: availabilitySorted, hasHvResults };
 }

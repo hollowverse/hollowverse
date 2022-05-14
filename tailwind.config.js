@@ -6,12 +6,11 @@ module.exports = {
     },
   },
   theme: {
-    extend: {},
-    screens: {
-      lg: '896px',
-      xxs: '384px',
-      xs: '512px',
-      sm: '768px',
+    extend: {
+      screens: {
+        lg: '768px',
+        xs: '399px',
+      },
     },
   },
   plugins: [

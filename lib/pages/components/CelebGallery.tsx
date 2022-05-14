@@ -12,7 +12,7 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-2 border-b lg:border-x xs:grid-cols-3 sm:grid-cols-4">
+    <div className="mx-auto grid max-w-3xl grid-cols-2 border-b sm:grid-cols-4 lg:border-x">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 

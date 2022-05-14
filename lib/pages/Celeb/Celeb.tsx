@@ -19,7 +19,7 @@ export const Celeb = (p: CelebPageProps) => {
       <Page>
         <TopSection />
 
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-3xl">
           {!isEmpty(p.celeb.facts.groups) && (
             <div className="mb-5">
               <Facts />

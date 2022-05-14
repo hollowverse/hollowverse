@@ -10,10 +10,15 @@ export function Page(params: {
   footer?: ReactElement;
 }) {
   return (
-    <div className={c('min-h-screen bg-gray-100', params.className)}>
+    <div
+      className={c(
+        'flex min-h-screen min-w-[320px] flex-col overflow-scroll bg-gray-100',
+        params.className,
+      )}
+    >
       {params.appBar || <AppBar />}
 
-      <main>{params.children}</main>
+      <main className="flex flex-1 flex-col">{params.children}</main>
 
       {params.footer || <Footer />}
     </div>

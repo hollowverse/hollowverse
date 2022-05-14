@@ -8,7 +8,7 @@ export const Index = (p: any) => {
   return (
     <Page className="text-neutral-600">
       <div className="mx-5">
-        <h1 className="mx-auto max-w-4xl pt-5 pb-5 text-2xl font-semibold">
+        <h1 className="mx-auto max-w-3xl pt-5 pb-5 text-2xl font-semibold">
           Top 100 Celebs
         </h1>
       </div>

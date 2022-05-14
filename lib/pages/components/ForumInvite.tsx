@@ -30,9 +30,9 @@ export function ForumInvite(params: { name: string; cta?: ReactNode }) {
     setModal(true);
 
     setTimeout(() => {
+      window.open(getForumInviteLink(params.name, data));
       setModal(false);
-      // window.open(getForumInviteLink(params.name, data));
-    }, 3000);
+    }, 5000);
   };
 
   return (
