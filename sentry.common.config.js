@@ -21,7 +21,7 @@ module.exports = {
 
     // Supported browsers
     if (
-      (browser.os === 'ios' && semver.gt(browser.version, '12.0.0')) ||
+      (browser.name === 'ios' && semver.gt(browser.version, '12.0.0')) ||
       (browser.name === 'safari' && semver.gt(browser.version, '12.0.0')) ||
       (browser.name === 'chrome' && semver.gt(browser.version, '71.0.0'))
     ) {
