@@ -23,7 +23,7 @@ export class MyError extends NextErrorComponent<{
 MyError.getInitialProps = async (context) => {
   const errorInitialProps = await NextErrorComponent.getInitialProps(context);
 
-  const { res, err, asPath } = context;
+  const { res, err } = context;
 
   // Workaround for https://github.com/vercel/next.js/issues/8592, mark when
   // getInitialProps has run
@@ -58,13 +58,8 @@ MyError.getInitialProps = async (context) => {
   }
 
   // If this point is reached, getInitialProps was called without any
-  // information about what the error might be. This is unexpected and may
-  // indicate a bug introduced in Next.js, so record it in Sentry
-  Sentry.captureException(
-    new Error(`_error.js getInitialProps missing data at path: ${asPath}`),
-  );
-  await Sentry.flush(2000);
-
+  // information about what the error might be. This can be caused by
+  // a falsy value being thrown e.g. throw undefined
   return errorInitialProps;
 };
 
