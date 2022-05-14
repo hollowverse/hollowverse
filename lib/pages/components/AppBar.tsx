@@ -25,7 +25,7 @@ export function Logo() {
   return (
     <div className="LOGO flex w-full items-center">
       <Link passHref href="/">
-        <a className="w-fit cursor-pointer select-none bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-2xl font-extrabold uppercase tracking-tight text-transparent">
+        <a className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text text-2xl font-extrabold uppercase tracking-tight text-transparent">
           Hollowverse
         </a>
       </Link>
