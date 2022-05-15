@@ -54,7 +54,7 @@ export function KnowledgeGraphCeleb(params: any) {
         </div>
       </Card>
 
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto w-full max-w-3xl">
         <ForumInvite
           name={params.name}
           cta={

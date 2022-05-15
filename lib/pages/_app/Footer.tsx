@@ -18,7 +18,7 @@ export const Footer = () => {
               width={50}
               height={50}
               alt="Hollowverse: Important people and their beliefs"
-              src="/images/icons/letter-logo.png"
+              src="/images/logo.svg"
             />
           </div>
 

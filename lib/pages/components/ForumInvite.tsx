@@ -85,8 +85,8 @@ export function ForumInvite(params: { name: string; cta?: ReactNode }) {
 
           <p>
             <input
-              className="mt-5 inline-flex cursor-pointer justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 py-2 px-4 text-sm font-medium text-white shadow-sm"
               type="submit"
+              className="mt-5 inline-flex cursor-pointer justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 py-2 px-4 text-sm font-medium text-white shadow-sm transition hover:hue-rotate-15 active:hue-rotate-30"
               value="Log-in and post"
             />
           </p>

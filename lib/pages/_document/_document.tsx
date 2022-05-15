@@ -6,7 +6,7 @@ export class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/images/icons/letter-logo.png" />
+          <link rel="shortcut icon" href="/images/logo-no-border.svg" />
         </Head>
         <body>
           <Main />
