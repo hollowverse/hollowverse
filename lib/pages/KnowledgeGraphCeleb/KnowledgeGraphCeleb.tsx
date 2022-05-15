@@ -13,23 +13,13 @@ export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
   return (
     <Page>
       <Card>
-        <div className="mx-auto max-w-3xl rounded-md bg-gradient-to-r from-blue-500 to-purple-500">
-          <div className="py-3 px-3 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center justify-between">
-              <div className="flex w-0 flex-1 items-center">
-                <span className="flex rounded-lg p-2">
-                  <FaRegCheckCircle
-                    stroke="10"
-                    className="text-xl text-white"
-                  />
-                </span>
-                <p className="ml-3 text-white">
-                  We&apos;ve received your request to add{' '}
-                  <span className="font-bold">{params.name}</span>
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="mx-auto flex max-w-3xl items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-6">
+          <FaRegCheckCircle className="text-xl text-white" />
+
+          <p className="text-white">
+            We&apos;ve received your request to add{' '}
+            <span className="font-bold">{params.name}</span>
+          </p>
         </div>
 
         <div className="mt-5 flex flex-col items-center gap-5">
