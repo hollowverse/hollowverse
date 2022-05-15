@@ -21,7 +21,6 @@ export const CelebGallery: React.FC<{
                 <CelebImage
                   key={celebData.slug + '-image'}
                   picture={picture}
-                  slug={celebData.slug}
                   name={celebData.name}
                 />
 
