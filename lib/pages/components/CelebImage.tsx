@@ -9,13 +9,17 @@ type Params = (
       picture: TPicture;
       src?: undefined;
     })
-  | (ImageProps & { picture?: undefined })
+  | (Optional<ImageProps, 'src'> & { picture?: undefined })
 ) & {
   name: string;
 };
 
 export function CelebImage(params: Params) {
   const { src, picture, name, ...rest } = params;
+
+  if (!src && !picture) {
+    return null;
+  }
 
   return (
     <Image

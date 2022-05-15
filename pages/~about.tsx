@@ -7,7 +7,7 @@ export default function About() {
   return (
     <Page>
       <Card className="mt-5 border-t text-neutral-500">
-        <div className="flex flex-col gap-8">
+        <div className="mx-auto flex max-w-3xl flex-col gap-8">
           <div className="flex flex-col gap-2">
             <h2 className="flex items-center gap-2 text-lg font-medium">
               <RiHome2Line />

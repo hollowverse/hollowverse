@@ -17,7 +17,6 @@ import { useSearch } from '~/lib/pages/Search/useSearch';
 
 export const Search = () => {
   const hook = useSearch();
-  const { results, hasHvResults } = hook.searchResults || {};
 
   return (
     <>
@@ -71,18 +70,16 @@ export const Search = () => {
               <Spinner />
             </BeforeResultsContainer>
           )) ||
-            (!isArray(results) && (
+            (!isArray(hook.searchResults?.results) && (
               <BeforeResultsContainer>
                 Search for a celebrity!
               </BeforeResultsContainer>
             )) ||
-            (isEmpty(results) && (
+            (isEmpty(hook.searchResults?.results) && (
               <BeforeResultsContainer>
                 We couldn&apos;t find anyone by that name!
               </BeforeResultsContainer>
-            )) || (
-              <SearchResults results={results} hasHvResults={hasHvResults} />
-            )}
+            )) || <SearchResults {...hook.searchResults!} />}
         </div>
       </Page>
     </>

@@ -1,50 +1,50 @@
-import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { c } from '~/lib/pages/utils/c';
+import React from 'react';
 import { CelebImage } from '~/lib/pages/components/CelebImage';
+import { SearchResults } from '~/lib/pages/Search/useSearch';
+import { c } from '~/lib/pages/utils/c';
 
-export function SearchResults(params: { results: any; hasHvResults: boolean }) {
+export function SearchResults(params: NonNullable<SearchResults>) {
   const { results, hasHvResults } = params;
 
   return (
-    <div className="grid w-full lg:my-5 lg:gap-5">
-      {results?.map((r: any) => {
+    <div className="grid w-full lg:my-5 lg:gap-5 lg:px-2">
+      {results.map((r) => {
+        const { result } = r;
+
         return (
           <Link
-            key={r.result['@id']}
+            key={result['@id']}
             href={`/${
-              r.result.slug || '~kg/' + encodeURIComponent(r.result['@id'])
+              result.slug || '~kg/' + encodeURIComponent(result['@id'])
             }`}
             passHref
           >
             <a
               className={c(
                 'relative grid w-full grid-cols-10 overflow-hidden border-b bg-white lg:border-x lg:border-t',
-                { 'opacity-[80%]': !r.result.slug && hasHvResults },
+                { 'opacity-[80%]': !result.slug && hasHvResults },
               )}
             >
               <div className="col-span-2">
                 <CelebImage
-                  name={r.result.name}
-                  src={r.result.image?.contentUrl}
+                  name={result.name}
+                  src={result.image.contentUrl}
                   layout="responsive"
                   objectFit="cover"
                   objectPosition="center"
                   width={150}
                   height={150}
-                  alt={r.result.name}
+                  alt={result.name}
                 />
               </div>
               <div className="align-center relative col-span-8 flex flex-col justify-center px-5">
-                <p className="truncate text-lg font-semibold">
-                  {r.result.name}
-                </p>
+                <p className="truncate text-lg font-semibold">{result.name}</p>
                 <p className="text-xs text-gray-500 xs:text-base">
-                  {r.result.description}
+                  {result.description}
                 </p>
               </div>
-              {!r.result.slug && (
+              {!result.slug && (
                 <div className="absolute top-5 bottom-5 right-0 my-auto mr-[3%] flex h-[99%] flex-col justify-center bg-gradient-to-r from-transparent via-white to-white pl-24">
                   <div className="rounded-full border border-gray-300 bg-white px-5 py-1 text-xs text-gray-500 transition hover:border-gray-400 hover:text-gray-600 active:border-gray-500 active:text-gray-700 xs:text-sm">
                     Request

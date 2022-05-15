@@ -1,12 +1,15 @@
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
+import { PromiseType } from 'utility-types';
 import { fetchResults } from '~/lib/pages/Search/fetchResults';
+
+export type SearchResults = PromiseType<ReturnType<typeof fetchResults>> | null;
 
 export function useSearch() {
   const [loading, setLoading] = useState(false);
   const [isInternalNavigation, setInternalNavigation] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<SearchResults>(null);
   const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);

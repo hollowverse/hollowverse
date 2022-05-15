@@ -18,7 +18,6 @@ export const TopSection = () => {
               className="rounded-md object-cover"
               key={context.celeb.name + '-topSection-image'}
               picture={picture}
-              slug={context.celeb.slug}
               name={context.celeb.name}
             />
           </div>

@@ -2,6 +2,19 @@ import { defaults } from 'lodash-es';
 
 const apiKey = 'AIzaSyDiyeA6ZhuHWZd7LNgyI66PS1QEIx0DOQI';
 
+export type KnowledgeGraphCeleb = {
+  name: string;
+  image?: {
+    contentUrl: string;
+  };
+  description?: string;
+  '@id': string;
+};
+
+export type KnowledgeGraphCelebResult = {
+  result: KnowledgeGraphCeleb;
+};
+
 export async function knowledgeGraphClient(
   params: { limit?: number; apiKey?: string } & (
     | { query: string; id?: undefined }
@@ -22,5 +35,5 @@ export async function knowledgeGraphClient(
   );
   const results = await response.json();
 
-  return results.itemListElement;
+  return results.itemListElement as KnowledgeGraphCelebResult[];
 }

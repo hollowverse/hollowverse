@@ -5,8 +5,9 @@ import { CelebImage } from '~/lib/pages/components/CelebImage';
 import { Page } from '~/lib/pages/components/Page';
 import { useKnowledgeGraphCeleb } from '~/lib/pages/KnowledgeGraphCeleb/useKnowledgeGraphCeleb';
 import { FaRegCheckCircle } from 'react-icons/fa';
+import { KnowledgeGraphCeleb } from '~/lib/pages/utils/knowledgeGraphClient';
 
-export function KnowledgeGraphCeleb(params: any) {
+export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
   useKnowledgeGraphCeleb(params.name);
 
   return (
@@ -36,9 +37,8 @@ export function KnowledgeGraphCeleb(params: any) {
             <CelebImage
               className="rounded-md object-cover"
               key={params.name + '-topSection-image'}
-              slug={params.slug}
               name={params.name}
-              src={params.image.contentUrl}
+              src={params.image?.contentUrl}
               priority
             />
           </div>
@@ -47,9 +47,11 @@ export function KnowledgeGraphCeleb(params: any) {
               {params.name}
             </span>
 
-            <span className="text-base font-normal tracking-wide text-neutral-500">
-              {params.description}
-            </span>
+            {params.description && (
+              <span className="text-base font-normal tracking-wide text-neutral-500">
+                {params.description}
+              </span>
+            )}
           </h1>
         </div>
       </Card>

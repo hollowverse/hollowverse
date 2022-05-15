@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { isEmpty } from 'lodash-es';
 import { knowledgeGraphClient } from '~/lib/pages/utils/knowledgeGraphClient';
 import { sanityClient } from '~/lib/pages/utils/sanityio';
 
@@ -43,17 +44,17 @@ export const getStaticProps = async ({
     return notFound;
   }
 
-  const kgCeleb = await knowledgeGraphClient({
+  const kgCelebs = await knowledgeGraphClient({
     limit: 1,
     id: searchId,
     apiKey: process.env.KG_API_KEY || 'AIzaSyCDgM-p1fhbsf5HuRGCfZP2M9l_JQ0Vmbo',
   });
 
-  if (!kgCeleb?.[0]) {
+  if (isEmpty(kgCelebs)) {
     return notFound;
   }
 
   return {
-    props: kgCeleb[0].result,
+    props: kgCelebs[0].result,
   };
 };
