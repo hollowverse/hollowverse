@@ -6,7 +6,8 @@ import { GroupedFacts } from '~/lib/pages/utils/types';
 export function useCeleb(name: string, factGroups: GroupedFacts['groups']) {
   useEffect(() => {
     if (isEmpty(factGroups)) {
-      logMissingCeleb(name);
+      // Don't log these for now. Let's focus on entirely new celebs
+      // logMissingCeleb(name);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
