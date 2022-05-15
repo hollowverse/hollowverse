@@ -8,6 +8,9 @@ export function gaPageView(url: string) {
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export function gaEvent(name: string, params: { [name: string]: string }) {
-  (window as any).gtag('event', name, params);
+export function gaEvent(name: string, label: string) {
+  (window as any).gtag('event', name, {
+    event_category: 'general',
+    event_label: label,
+  });
 }
