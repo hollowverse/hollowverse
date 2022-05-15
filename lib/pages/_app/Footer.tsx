@@ -1,7 +1,8 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
-import { FaEnvelope, FaHeart, FaInfoCircle } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
+import { RiQuillPenLine } from 'react-icons/ri';
 
 export const Footer = () => {
   const [hover, setHover] = useState(false);
@@ -10,52 +11,29 @@ export const Footer = () => {
   const setHoverTrue = () => setHover(true);
 
   return (
-    <footer aria-label="footer" className="w-full">
+    <footer aria-label="footer" className="mt-5 w-full">
       <div className="border-y bg-white px-5">
-        <div className="mx-auto w-full max-w-3xl py-5">
-          <div className="mb-5">
-            <Image
-              width={50}
-              height={50}
-              alt="Hollowverse: Important people and their beliefs"
-              src="/images/logo.svg"
-            />
-          </div>
+        <div className="align-center mx-auto flex w-full max-w-3xl justify-center py-5">
+          <Image
+            width={50}
+            height={50}
+            alt="Hollowverse: Important people and their beliefs"
+            src="/images/logo.svg"
+          />
 
-          <div className="flex flex-col gap-5">
-            <div className="space-y-1">
-              <div className="flex items-baseline gap-1.5">
-                <FaInfoCircle className="text-xs" />
-                <p>About</p>
-              </div>
+          <div className="flex-1" />
 
-              <p>
-                Hollowverse is about the important people and their beliefs.
-              </p>
-            </div>
-
-            <div className="space-y-1">
-              <div className="flex items-baseline gap-1.5">
-                <FaEnvelope className="text-xs" />
-
-                <p>Email us</p>
-              </div>
-
-              <p className="">
-                You can contact us at{' '}
-                <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-violet-600 bg-clip-text text-transparent">
-                  <Link href="mailto:hollowverse@hollowverse.com">
-                    hollowverse@hollowverse.com
-                  </Link>
-                </span>
-              </p>
-            </div>
-          </div>
+          <Link href="/~about" passHref>
+            <a className="align-center flex h-fit justify-center gap-1 self-center text-xs uppercase leading-loose text-neutral-400">
+              <RiQuillPenLine className="self-center text-base" />
+              About Hollowverse
+            </a>
+          </Link>
         </div>
       </div>
 
       <div className="flex w-full justify-center px-5">
-        <div className="flex w-full max-w-3xl justify-start text-neutral-500">
+        <div className="flex w-full max-w-3xl justify-start text-neutral-400">
           <a
             href="https://rlogank.com/"
             rel="noreferrer"
