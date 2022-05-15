@@ -1,9 +1,8 @@
+import { useRouter } from 'next/router';
 import React, { ReactNode, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Card } from '~/lib/pages/components/Card';
 import { LovelyTopBorder } from '~/lib/pages/components/LovelyTopBorder';
-import { Modal } from '~/lib/pages/components/Modal';
-import { Spinner } from '~/lib/pages/components/Spinner';
 
 type Inputs = {
   forumPost: string;
@@ -20,32 +19,18 @@ export const getForumInviteLink = (name: string, data: Inputs) => {
 };
 
 export function ForumInvite(params: { name: string; cta?: ReactNode }) {
-  const [showModal, setModal] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    setModal(true);
-
-    setTimeout(() => {
-      window.open(getForumInviteLink(params.name, data));
-      setModal(false);
-    }, 5000);
+    router.push(getForumInviteLink(params.name, data));
   };
 
   return (
     <>
-      <Modal isOpen={showModal} className="flex flex-col gap-4 text-center">
-        <p className="text-2xl text-gray-700">
-          You will be redirected to the forum to post
-        </p>
-        <p className="text-lg text-gray-500">Redirecting...</p>
-        <p className="flex justify-center">
-          <Spinner />
-        </p>
-      </Modal>
       <LovelyTopBorder className="h-2" />
 
       <Card>
