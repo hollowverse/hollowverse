@@ -13,7 +13,7 @@ export default function About() {
               <RiHome2Line />
               About
             </h2>
-            <p>We are about the important people and their views.</p>
+            <p>Hollowverse is about the important people and their views.</p>
           </div>
 
           <div className="flex flex-col gap-2">

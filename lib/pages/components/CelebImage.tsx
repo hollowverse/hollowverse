@@ -11,12 +11,11 @@ type Params = (
     })
   | (ImageProps & { picture?: undefined })
 ) & {
-  slug: string;
   name: string;
 };
 
 export function CelebImage(params: Params) {
-  const { src, picture, slug, name, ...rest } = params;
+  const { src, picture, name, ...rest } = params;
 
   return (
     <Image

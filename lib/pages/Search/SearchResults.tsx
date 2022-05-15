@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { c } from '~/lib/pages/utils/c';
+import { CelebImage } from '~/lib/pages/components/CelebImage';
 
 export function SearchResults(params: { results: any; hasHvResults: boolean }) {
   const { results, hasHvResults } = params;
@@ -24,7 +25,8 @@ export function SearchResults(params: { results: any; hasHvResults: boolean }) {
               )}
             >
               <div className="col-span-2">
-                <Image
+                <CelebImage
+                  name={r.result.name}
                   src={r.result.image?.contentUrl}
                   layout="responsive"
                   objectFit="cover"
