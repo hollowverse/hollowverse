@@ -2,11 +2,9 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
-import { gaPageView, GA_TRACKING_ID } from '~/lib/pages/utils/gtag';
 import { StaticPropsContextProvider } from '~/lib/pages/components/StaticPropsContextProvider';
-import { Footer } from '~/lib/pages/_app/Footer';
+import { gaPageView, GA_TRACKING_ID } from '~/lib/pages/utils/gtag';
 import { Head } from '~/lib/pages/_app/Head';
-import { AppBar } from '~/lib/pages/_app/AppBar';
 
 export const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -52,9 +50,7 @@ export const App = ({ Component, pageProps }: AppProps) => {
 
       <Head />
       <StaticPropsContextProvider value={pageProps}>
-        <AppBar />
         <Component {...pageProps} />
-        <Footer />
       </StaticPropsContextProvider>
     </>
   );

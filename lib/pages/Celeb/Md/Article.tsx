@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { ForumInvite } from '~/lib/pages/Celeb/ForumInvite';
+import { ForumInvite } from '~/lib/pages/components/ForumInvite';
 import { Card } from '~/lib/pages/components/Card';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import s from '~/lib/pages/styles.module.scss';

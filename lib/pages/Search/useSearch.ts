@@ -1,16 +1,20 @@
 import { useRouter } from 'next/router';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { PromiseType } from 'utility-types';
 import { fetchResults } from '~/lib/pages/Search/fetchResults';
+
+export type SearchResults = PromiseType<ReturnType<typeof fetchResults>> | null;
 
 export function useSearch() {
   const [loading, setLoading] = useState(false);
+  const [isInternalNavigation, setInternalNavigation] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<any>(null);
-  const { previousUrl } = useRouter().query;
+  const [results, setResults] = useState<SearchResults>(null);
+  const router = useRouter();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     inputRef?.current?.focus();
   }, []);
 
@@ -27,7 +31,14 @@ export function useSearch() {
       }
     }
 
+    if (router.query.local === 'true') {
+      setInternalNavigation(true);
+    }
+
+    router.replace(router.basePath, router.basePath, { shallow: true });
+
     runQuery();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return {
@@ -40,7 +51,8 @@ export function useSearch() {
       setQuery('');
       setResults(null);
     },
-    previousUrl,
+    goBack: router.back,
+    isInternalNavigation,
     loading,
     searchResults: results,
   };

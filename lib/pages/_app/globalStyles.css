@@ -6,3 +6,13 @@ body {
   color: rgba(0, 0, 0, 0.75);
   font-family: sans-serif;
 }
+
+@layer components {
+  .textbox-border {
+    @apply rounded-md border-2 placeholder-neutral-400 outline-none transition focus-within:border-2 focus-within:border-blue-300;
+  }
+
+  .lovely-gradient {
+    @apply bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400;
+  }
+}

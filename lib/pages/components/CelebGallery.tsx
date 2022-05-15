@@ -1,10 +1,8 @@
-import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
-import { sanityImage } from '~/lib/pages/utils/sanityio';
+import { CelebImage } from '~/lib/pages/components/CelebImage';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { TCelebGalleryItem } from '~/lib/pages/utils/types';
-import Link from 'next/link';
-import { CelebImage } from '~/lib/pages/components/CelebImage';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: TCelebGalleryItem[];
@@ -12,37 +10,29 @@ export const CelebGallery: React.FC<{
   const context = useCelebContext();
 
   return (
-    <div className="mx-auto grid max-w-4xl grid-cols-2 border-b lg:border-x xs:grid-cols-3 sm:grid-cols-4">
+    <div className="flex flex-wrap justify-center">
       {p.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture || context.placeholderImage;
 
         return (
-          <div
-            key={celebData.slug}
-            className="relative aspect-square overflow-hidden"
-          >
-            <div>
-              <Link href={`/${celebData.slug}`} passHref>
-                <a className="relative aspect-square overflow-hidden">
-                  <CelebImage
-                    key={celebData.slug + '-image'}
-                    picture={picture}
-                    slug={celebData.slug}
-                    name={celebData.name}
-                  />
-                </a>
-              </Link>
-            </div>
+          <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
+            <a className="m-2 w-full min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl">
+              <div className="relative w-full">
+                <CelebImage
+                  key={celebData.slug + '-image'}
+                  picture={picture}
+                  name={celebData.name}
+                />
 
-            <Link href={`/${celebData.slug}`} passHref>
-              <a
-                aria-label="Celebrity"
-                className="relative bottom-20 left-3 z-[9999] inline-flex cursor-pointer select-none bg-black bg-opacity-75 p-1.5 px-3 text-sm font-medium text-white lg:text-base"
-              >
-                {celebData.name}
-              </a>
-            </Link>
-          </div>
+                <p className="font-primary absolute bottom-3 left-3 z-10 text-sm font-semibold text-white">
+                  {celebData.name}
+                </p>
+
+                {/* overlay */}
+                <div className="pointer-events-none absolute top-0 left-0 block h-full w-full bg-gradient-to-b from-transparent via-transparent to-black" />
+              </div>
+            </a>
+          </Link>
         );
       })}
     </div>

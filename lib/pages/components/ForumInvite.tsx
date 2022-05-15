@@ -1,6 +1,8 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { ReactNode } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Card } from '~/lib/pages/components/Card';
+import { LovelyTopBorder } from '~/lib/pages/components/LovelyTopBorder';
 
 type Inputs = {
   forumPost: string;
@@ -16,23 +18,29 @@ export const getForumInviteLink = (name: string, data: Inputs) => {
   return href;
 };
 
-export function ForumInvite(params: { name: string }) {
+export function ForumInvite(params: { name: string; cta?: ReactNode }) {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    window.open(getForumInviteLink(params.name, data));
+    router.push(getForumInviteLink(params.name, data));
   };
 
   return (
     <>
-      <div className="h-2 w-full bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400" />
+      <LovelyTopBorder className="h-2" />
+
       <Card>
         <p className="text-base">
-          Hey! Know something about {params.name}&apos;s religion or political
-          views? Post it to the forum!
+          {params.cta || (
+            <>
+              Hey! Know something about {params.name}&apos;s religion or
+              political views? Tell us!
+            </>
+          )}
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -41,7 +49,7 @@ export function ForumInvite(params: { name: string }) {
               placeholder={`What about ${params.name}?`}
               id="celeb-fact"
               rows={3}
-              className="block w-full rounded-md border border-gray-500 p-2 text-base shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="textbox-border block w-full p-2 text-base shadow-sm sm:text-sm"
               {...register('forumPost', {
                 required: {
                   message: 'Can you write something first?',
@@ -62,9 +70,9 @@ export function ForumInvite(params: { name: string }) {
 
           <p>
             <input
-              className="mt-5 inline-flex cursor-pointer justify-center rounded-md border border-transparent bg-gradient-to-r from-blue-500 to-purple-500 py-2 px-4 text-sm font-bold text-white shadow-sm"
               type="submit"
-              value="Go to Forum &amp; Post It"
+              className="mt-5 inline-flex cursor-pointer justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-500 py-2 px-4 text-sm font-medium text-white shadow-sm transition hover:hue-rotate-15 active:hue-rotate-30"
+              value="Log-in and post"
             />
           </p>
         </form>

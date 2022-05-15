@@ -1,9 +1,18 @@
-import { isArray, isEmpty, isString } from 'lodash-es';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { isArray, isEmpty } from 'lodash-es';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { DebounceInput } from 'react-debounce-input';
+import { FaChevronLeft } from 'react-icons/fa';
+import { MdCancel } from 'react-icons/md';
+import * as AppBar from '~/lib/pages/components/AppBar';
+import { Page } from '~/lib/pages/components/Page';
+import { Spinner } from '~/lib/pages/components/Spinner';
+import { BeforeResultsContainer } from '~/lib/pages/Search/BeforeResultsContainer';
+import { SearchResults } from '~/lib/pages/Search/SearchResults';
 import { useSearch } from '~/lib/pages/Search/useSearch';
 
 export const Search = () => {
@@ -15,61 +24,64 @@ export const Search = () => {
         <meta name="robots" content="noindex" />
       </Head>
 
-      <div>
-        <div style={{ display: 'flex' }}>
-          <DebounceInput
-            value={hook.query}
-            inputRef={hook.inputRef}
-            minLength={2}
-            debounceTimeout={600}
-            onChange={hook.onQueryChange}
-          />
-
-          <button onClick={hook.onClearResultsClick}>X</button>
-
-          {isString(hook.previousUrl) && (
-            <Link href={hook.previousUrl}>Go back</Link>
-          )}
-        </div>
-
-        <div>
-          {(hook.loading && <div>loading...</div>) ||
-            (!isArray(hook.searchResults) && (
-              <div>Search for something!</div>
-            )) ||
-            (isEmpty(hook.searchResults) && <div>No results</div>) ||
-            hook.searchResults?.map((r: any) => {
-              return (
-                <Link
-                  key={r.result['@id']}
-                  href={`/${
-                    r.result.slug ||
-                    '~kg/' + encodeURIComponent(r.result['@id'])
-                  }`}
-                  passHref
+      <Page
+        appBar={
+          <AppBar.Container>
+            <div className="relative flex w-full items-center text-neutral-700">
+              <Link href="/" passHref>
+                <a
+                  onClick={(e) => {
+                    if (hook.isInternalNavigation) {
+                      e.preventDefault();
+                      hook.goBack();
+                    }
+                  }}
+                  className="mr-2.5 rounded-md bg-gray-100 p-2.5 hover:bg-gray-200 active:bg-gray-200"
                 >
-                  <a style={{ display: 'flex' }}>
-                    <div style={{ width: 100 }}>
-                      <Image
-                        src={r.result.image?.contentUrl}
-                        layout="responsive"
-                        objectFit="cover"
-                        objectPosition="top"
-                        width={150}
-                        height={150}
-                        alt={r.result.name}
-                      />
-                    </div>
-                    <div>
-                      <p>Name: {r.result.name}</p>
-                      <p>Description: {r.result.description}</p>
-                    </div>
-                  </a>
-                </Link>
-              );
-            })}
+                  <FaChevronLeft />
+                </a>
+              </Link>
+
+              <DebounceInput
+                placeholder="Search Hollowverse"
+                className="textbox-border w-full px-3 pb-1 pt-1.5 text-[1rem]"
+                value={hook.query}
+                inputRef={hook.inputRef}
+                minLength={2}
+                debounceTimeout={600}
+                onChange={hook.onQueryChange}
+              />
+
+              {!isEmpty(hook.query) && (
+                <button
+                  onClick={hook.onClearResultsClick}
+                  className="absolute right-2.5"
+                >
+                  <MdCancel className="text-lg text-neutral-500" />
+                </button>
+              )}
+            </div>
+          </AppBar.Container>
+        }
+      >
+        <div className="mx-auto mb-5 flex min-h-full w-full max-w-3xl flex-1 flex-col items-stretch text-neutral-600">
+          {(hook.loading && (
+            <BeforeResultsContainer>
+              <Spinner />
+            </BeforeResultsContainer>
+          )) ||
+            (!isArray(hook.searchResults?.results) && (
+              <BeforeResultsContainer>
+                Search for a celebrity!
+              </BeforeResultsContainer>
+            )) ||
+            (isEmpty(hook.searchResults?.results) && (
+              <BeforeResultsContainer>
+                We couldn&apos;t find anyone by that name!
+              </BeforeResultsContainer>
+            )) || <SearchResults {...hook.searchResults!} />}
         </div>
-      </div>
+      </Page>
     </>
   );
 };

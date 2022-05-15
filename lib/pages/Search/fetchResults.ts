@@ -1,34 +1,49 @@
 import levenshtein from 'fast-levenshtein';
-import { knowledgeGraphClient } from '~/lib/pages/utils/knowledgeGraphClient';
+import { isEmpty } from 'lodash-es';
+import { Required } from 'utility-types';
+import {
+  KnowledgeGraphCeleb,
+  KnowledgeGraphCelebResult,
+  knowledgeGraphClient,
+} from '~/lib/pages/utils/knowledgeGraphClient';
 import { sanityClient } from '~/lib/pages/utils/sanityio';
 
-function clean(items: any[]) {
-  return items.filter((i: any) => {
+type CleanedResult = { result: Required<KnowledgeGraphCeleb, 'image'> };
+function clean(items: KnowledgeGraphCelebResult[]) {
+  return items.filter((i) => {
     return i.result.image;
-  });
+  }) as CleanedResult[];
 }
 
-async function hvSearch(cleanedKgResults: any[]) {
-  return await sanityClient.fetch(
+type HvResult = { knowledgeGraphId: string; slug: string };
+
+async function hvSearch(cleanedKgResults: KnowledgeGraphCelebResult[]) {
+  return (await sanityClient.fetch(
     `*[_type == 'celeb' && knowledgeGraphId in ${JSON.stringify(
       cleanedKgResults.map((i) => i.result['@id']),
     )}]{knowledgeGraphId, 'slug': slug.current}`,
-  );
+  )) as HvResult[];
 }
 
-function combine(kgResults: any[], hvResults: any[]) {
-  return kgResults.map((kgItem) => ({
-    ...kgItem,
-    result: {
-      ...kgItem.result,
-      slug: hvResults.find(
-        (hvItem) => hvItem.knowledgeGraphId === kgItem.result['@id'],
-      )?.slug,
-    },
-  }));
+type Combined = ReturnType<typeof combine>;
+function combine(kgResults: CleanedResult[], hvResults: HvResult[]) {
+  const hasHvResults = !isEmpty(hvResults);
+
+  return {
+    hasHvResults,
+    results: kgResults.map((kgItem) => ({
+      ...kgItem,
+      result: {
+        ...kgItem.result,
+        slug: hvResults.find(
+          (hvItem) => hvItem?.knowledgeGraphId === kgItem.result['@id'],
+        )?.slug,
+      },
+    })),
+  };
 }
 
-function levenshteinSort(query: string, results: any[]) {
+function levenshteinSort(query: string, results: Combined['results']) {
   function getDistance(a: string, b: string) {
     /**
      * On Google Knowledge Graph, if you search for `birdman`, you'd get a bunch
@@ -60,7 +75,7 @@ function levenshteinSort(query: string, results: any[]) {
     return head <= tail ? head : tail;
   }
 
-  results.sort((a: any, b: any) => {
+  results.sort((a, b) => {
     const aDistance = getDistance(query, a.result.name);
     const bDistance = getDistance(query, b.result.name);
 
@@ -78,9 +93,22 @@ function levenshteinSort(query: string, results: any[]) {
   return results;
 }
 
-function availabilitySort(results: any[]) {
+function isPorno(kgResult: Combined['results'][0]) {
+  return kgResult.result?.description?.toLowerCase().includes('porno');
+}
+
+function availabilitySort(results: Combined['results']) {
   results.sort((a, b) => {
     if (a.result.slug && !b.result.slug) {
+      return -1;
+    }
+
+    // Nothing against the porn industry. It's just very distracting.
+    if (isPorno(a) && !isPorno(b)) {
+      return 1;
+    }
+
+    if (isPorno(b) && !isPorno(a)) {
       return -1;
     }
 
@@ -98,9 +126,12 @@ export async function fetchResults(query: string) {
   const kgResults = await knowledgeGraphClient({ query });
   const cleanedKgResults = clean(kgResults);
   const hvResults = await hvSearch(cleanedKgResults);
-  const combinedResults = combine(cleanedKgResults, hvResults);
+  const { hasHvResults, results: combinedResults } = combine(
+    cleanedKgResults,
+    hvResults,
+  );
   const levenshteinSorted = levenshteinSort(query, combinedResults);
   const availabilitySorted = availabilitySort(levenshteinSorted);
 
-  return availabilitySorted;
+  return { results: availabilitySorted, hasHvResults };
 }
