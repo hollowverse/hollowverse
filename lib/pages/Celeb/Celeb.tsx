@@ -7,7 +7,7 @@ import { TopSection } from '~/lib/pages/Celeb/TopSection';
 import {
   getHeadDescription,
   useCeleb,
-} from '~/lib/pages/Celeb/celebPagePartials';
+} from '~/lib/pages/Celeb/celebPageHelpers';
 import { Page } from '~/lib/pages/components/Page';
 import { CelebPageProps } from '~/lib/pages/utils/types';
 
