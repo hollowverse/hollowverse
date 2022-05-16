@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { Fact as TFact } from '~/lib/pages/utils/types';
 import { Tag } from '~/lib/pages/Celeb/Tag';
-import { BiMessage, BiMessageRounded, BiLink } from 'react-icons/bi';
+import { BiMessage, BiMessageRounded, BiLink, BiHash } from 'react-icons/bi';
 import { FaLink } from 'react-icons/fa';
 import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
 
@@ -13,13 +13,13 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   } = useCelebContext();
 
   return (
-    <section aria-label="Celebrity Fact" className="p-5">
-      <div className="mb-5 flex flex-wrap items-center gap-2.5">
+    <section aria-label="Celebrity Fact" className="flex flex-col gap-5 p-5">
+      <div className="flex flex-wrap items-center gap-2.5">
         {value.tags.map((t) => {
           return (
             <Tag key={t.tag.name}>
-              <span className="text-neutral-500">
-                # {t.isLowConfidence && 'Possibly '}
+              <span className="flex items-center gap-1 text-neutral-500">
+                <BiHash /> {t.isLowConfidence && 'Possibly '}
                 {t.tag.name}
               </span>
             </Tag>
@@ -27,7 +27,6 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
         })}{' '}
         <p className="text-sm text-neutral-500">{value.date}</p>
       </div>
-
       <div>
         {(value.type === 'quote' && (
           <>
@@ -43,7 +42,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
           (value.type == 'fact' && <p>{value.content}</p>)}
       </div>
 
-      <div className="mt-5 flex gap-2.5 text-base text-neutral-600">
+      <div className="mx-2 -mt-3 flex gap-2.5 text-base text-neutral-600">
         <Link href={value.forumLink} passHref>
           <a className="flex select-none items-center gap-1 text-neutral-500 transition focus:border-blue-300">
             <BiMessage className="text-lg" />
