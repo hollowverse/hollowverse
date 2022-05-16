@@ -5,7 +5,12 @@ import { Page } from '~/lib/pages/components/Page';
 
 export default function About() {
   return (
-    <Page>
+    <Page
+      title={`About`}
+      description={``}
+      pathname={`~about`}
+      allowSearchEngines={false}
+    >
       <Card className="mt-5 border-t text-neutral-500">
         <div className="mx-auto flex max-w-3xl flex-col gap-8">
           <div className="flex flex-col gap-2">

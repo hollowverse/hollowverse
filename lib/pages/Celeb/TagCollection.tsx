@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
+import { FaQuestionCircle } from 'react-icons/fa';
 import { Tag } from '~/lib/pages/Celeb/Tag';
-import { FaPlusCircle, FaQuestionCircle } from 'react-icons/fa';
+import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 
 export const TagCollection = () => {
   const tags = useCelebContext().celeb.tags!;
