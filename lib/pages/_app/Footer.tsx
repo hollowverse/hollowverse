@@ -34,17 +34,14 @@ export const Footer = () => {
 
       <div className="flex w-full justify-center px-5">
         <div className="flex w-full max-w-3xl justify-start text-neutral-400">
-          <a
-            href="https://rlogank.com/"
-            rel="noreferrer"
-            target="_blank"
-            className="my-5 flex items-center gap-1 text-xs font-light tracking-wider transition duration-300 hover:text-neutral-700"
+          <p
+            className="my-5 flex cursor-default items-center gap-1 text-xs font-light tracking-wider transition duration-300 hover:text-neutral-700"
             onFocus={setHoverTrue}
             onMouseOver={setHoverTrue}
             onMouseOut={setHoverFalse}
             onBlur={setHoverFalse}
           >
-            Designed with
+            Made with
             <FaHeart
               className={
                 hover
@@ -52,8 +49,7 @@ export const Footer = () => {
                   : 'transition duration-300'
               }
             />
-            by Logan
-          </a>
+          </p>
         </div>
       </div>
     </footer>

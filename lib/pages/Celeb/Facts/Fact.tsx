@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { Fact as TFact } from '~/lib/pages/utils/types';
 import { Tag } from '~/lib/pages/Celeb/Tag';
+import { BiMessage, BiMessageRounded, BiLink } from 'react-icons/bi';
+import { FaLink } from 'react-icons/fa';
+import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const {
@@ -11,7 +14,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
 
   return (
     <section aria-label="Celebrity Fact" className="p-5">
-      <div className="mb-5 flex flex-wrap gap-2.5">
+      <div className="mb-5 flex flex-wrap items-center gap-2.5">
         {value.tags.map((t) => {
           return (
             <Tag key={t.tag.name}>
@@ -21,40 +24,45 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
               </span>
             </Tag>
           );
-        })}
+        })}{' '}
+        <p className="text-sm text-neutral-500">{value.date}</p>
       </div>
 
       <div>
         {(value.type === 'quote' && (
-          <div>
-            <p>
+          <>
+            <p className="text-base">
               {value.context}, {name} said
             </p>
 
-            <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 ">
+            <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 text-base ">
               {value.quote}
             </blockquote>
-          </div>
+          </>
         )) ||
           (value.type == 'fact' && <p>{value.content}</p>)}
       </div>
 
-      <div className="mt-5 flex items-center justify-between">
-        <p className="text-xs text-neutral-500">{value.date}</p>
+      <div className="mt-5 flex gap-2.5 text-base text-neutral-600">
+        <Link href={value.forumLink} passHref>
+          <a className="flex select-none items-center gap-1 text-neutral-500 transition focus:border-blue-300">
+            <BiMessage className="text-lg" />
+            Comments
+          </a>
+        </Link>
 
-        <div className="flex gap-2.5 text-sm text-neutral-500">
-          <Link href={value.source}>
-            <a className="cursor-pointer select-none rounded-lg border-2 border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
-              Source
-            </a>
-          </Link>
+        <div className="flex-1" />
 
-          <Link href={value.forumLink}>
-            <a className="cursor-pointer select-none rounded-lg border-2 border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
-              Forum link
-            </a>
-          </Link>
-        </div>
+        <Link href={value.source} passHref>
+          <a
+            rel="noreferrer"
+            target="_blank"
+            className="flex select-none items-center gap-1 text-xs text-neutral-500 transition focus:border-blue-300"
+          >
+            <BiLink className="text-base" />
+            {getSourceHost(value.source)}
+          </a>
+        </Link>
       </div>
     </section>
   );
