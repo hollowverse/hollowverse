@@ -5,7 +5,7 @@ const tagExists = (tagsArr: Tag[], tag: Tag) =>
   tagsArr.some((t) => t.tag.name === tag.tag.name);
 
 export const getTags = (
-  transformedFacts: GroupedFacts,
+  groupedFacts: GroupedFacts,
   orderOfTopics: string[],
 ) => {
   const comparator = (tag: Tag, topic: string) => tag.tag.topic.name === topic;
@@ -13,7 +13,7 @@ export const getTags = (
     orderOfTopics.indexOf(a.tag.topic.name) -
     orderOfTopics.indexOf(b.tag.topic.name);
 
-  const { topics, groups } = transformedFacts;
+  const { topics, groups } = groupedFacts;
   const tags: { regular: Tag[]; lowConfidence: Tag[] } = {
     regular: [],
     lowConfidence: [],
@@ -44,5 +44,5 @@ export const getTags = (
     tags[type] = [...intersection.sort(sortComparator), ...difference.sort()];
   });
 
-  return tags;
+  return [...tags.regular, ...tags.lowConfidence];
 };
