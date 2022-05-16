@@ -41,6 +41,12 @@ export function Page(params: {
           rel="canonical"
           href={`https://hollowverse.com/${params.pathname}`}
         />
+
+        <link
+          key="head-favicon"
+          rel="shortcut icon"
+          href="/images/logo-no-border.svg"
+        />
       </Head>
 
       <div
