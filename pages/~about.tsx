@@ -7,7 +7,7 @@ export default function About() {
   return (
     <Page
       title={`About`}
-      description={``}
+      description={`About Hollowverse and contact info`}
       pathname={`~about`}
       allowSearchEngines={false}
     >

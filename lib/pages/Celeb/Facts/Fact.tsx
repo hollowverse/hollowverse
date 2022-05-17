@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
 import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
-import { Tag } from '~/lib/pages/Celeb/Tag';
-import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
-import { Fact as TFact } from '~/lib/pages/utils/types';
-import { useInView } from 'react-intersection-observer';
 import { useFact } from '~/lib/pages/Celeb/Facts/useFact';
+import { Tag } from '~/lib/pages/Celeb/Tag';
 import { pluralize } from '~/lib/pages/utils/pluralize';
+import { Fact as TFact } from '~/lib/pages/utils/types';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
   const { name, ref, commentCount } = useFact(value);

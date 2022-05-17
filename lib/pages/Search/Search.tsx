@@ -22,7 +22,7 @@ export const Search = () => {
       title={`Search the religions and political views of celebrities`}
       description={`Search the religions and political views of celebrities`}
       pathname={`~search`}
-      allowSearchEngines={false}
+      allowSearchEngines
       appBar={
         <AppBar.Container>
           <div className="relative flex w-full items-center text-neutral-700">

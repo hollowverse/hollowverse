@@ -4,6 +4,4 @@ export function getSourceHost(source: string) {
   const length = parts.length;
 
   return `${parts[length - 2].toUpperCase()}.${parts[length - 1]}`;
-
-  // return url.hostname.split('.').slice(-2).join('.');
 }
