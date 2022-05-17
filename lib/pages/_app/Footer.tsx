@@ -1,17 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { FaHeart } from 'react-icons/fa';
+import React from 'react';
 import { RiQuillPenLine } from 'react-icons/ri';
 
 export const Footer = () => {
-  const [hover, setHover] = useState(false);
-
-  const setHoverFalse = () => setHover(false);
-  const setHoverTrue = () => setHover(true);
-
   return (
-    <footer aria-label="footer" className="mt-5 w-full">
+    <footer aria-label="footer" className="my-5 w-full">
       <div className="border-y bg-white px-5">
         <div className="align-center mx-auto flex w-full max-w-3xl justify-center py-5">
           <Image
@@ -29,27 +23,6 @@ export const Footer = () => {
               About Hollowverse
             </a>
           </Link>
-        </div>
-      </div>
-
-      <div className="flex w-full justify-center px-5">
-        <div className="flex w-full max-w-3xl justify-start text-neutral-400">
-          <p
-            className="my-5 flex cursor-default items-center gap-1 text-xs font-light tracking-wider transition duration-300 hover:text-neutral-700"
-            onFocus={setHoverTrue}
-            onMouseOver={setHoverTrue}
-            onMouseOut={setHoverFalse}
-            onBlur={setHoverFalse}
-          >
-            Made with
-            <FaHeart
-              className={
-                hover
-                  ? 'text-rose-500 transition duration-300'
-                  : 'transition duration-300'
-              }
-            />
-          </p>
         </div>
       </div>
     </footer>
