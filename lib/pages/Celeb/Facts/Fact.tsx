@@ -1,19 +1,23 @@
-import React from 'react';
 import Link from 'next/link';
+import React, { useEffect } from 'react';
+import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
+import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
+import { Tag } from '~/lib/pages/Celeb/Tag';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import { Fact as TFact } from '~/lib/pages/utils/types';
-import { Tag } from '~/lib/pages/Celeb/Tag';
-import { BiMessage, BiMessageRounded, BiLink, BiHash } from 'react-icons/bi';
-import { FaLink } from 'react-icons/fa';
-import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
+import { useInView } from 'react-intersection-observer';
+import { useFact } from '~/lib/pages/Celeb/Facts/useFact';
+import { pluralize } from '~/lib/pages/utils/pluralize';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
-  const {
-    celeb: { name },
-  } = useCelebContext();
+  const { name, ref, commentCount } = useFact(value);
 
   return (
-    <section aria-label="Celebrity Fact" className="flex flex-col gap-5 p-5">
+    <section
+      aria-label="Celebrity Fact"
+      className="flex flex-col gap-5 p-5"
+      ref={ref}
+    >
       <div className="flex flex-wrap items-center gap-2.5">
         {value.tags.map((t) => {
           return (
@@ -42,11 +46,17 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
           (value.type == 'fact' && <p>{value.content}</p>)}
       </div>
 
-      <div className="mx-2 -mt-3 flex gap-2.5 text-base text-neutral-600">
+      <div className="mx-2 -mt-3 flex gap-2.5 text-neutral-600">
         <Link href={value.forumLink} passHref>
-          <a className="flex select-none items-center gap-1 text-neutral-500 transition focus:border-blue-300">
+          <a className="flex select-none items-center gap-1 text-base text-neutral-500 transition focus:border-blue-300">
             <BiMessage className="text-lg" />
-            Comments
+            {commentCount > 0 ? (
+              <>
+                {commentCount} {pluralize(commentCount, 'comment', 'comments')}
+              </>
+            ) : (
+              <>Leave a comment</>
+            )}
           </a>
         </Link>
 
