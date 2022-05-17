@@ -3,9 +3,11 @@ import React from 'react';
 import { Facts } from '~/lib/pages/Celeb/Facts/Facts';
 import { ForumInvite } from '~/lib/pages/components/ForumInvite';
 import { Md } from '~/lib/pages/Celeb/Md/Md';
-import { PageHead } from '~/lib/pages/Celeb/PageHead';
 import { TopSection } from '~/lib/pages/Celeb/TopSection';
-import { useCeleb } from '~/lib/pages/Celeb/useCeleb';
+import {
+  getHeadDescription,
+  useCeleb,
+} from '~/lib/pages/Celeb/celebPageHelpers';
 import { Page } from '~/lib/pages/components/Page';
 import { CelebPageProps } from '~/lib/pages/utils/types';
 
@@ -13,24 +15,29 @@ export const Celeb = (p: CelebPageProps) => {
   useCeleb(p.celeb.name, p.celeb.facts.groups);
 
   return (
-    <>
-      <PageHead />
+    <Page
+      title={`${p.celeb.name}'s religion and political views`}
+      description={getHeadDescription(
+        p.celeb.name,
+        p.celeb.tags,
+        p.celeb.oldContent,
+      )}
+      allowSearchEngines
+      pathname={p.celeb.slug}
+    >
+      <TopSection />
 
-      <Page>
-        <TopSection />
+      <div className="mx-auto max-w-3xl">
+        {!isEmpty(p.celeb.facts.groups) && (
+          <div className="mb-5">
+            <Facts />
+          </div>
+        )}
 
-        <div className="mx-auto max-w-3xl">
-          {!isEmpty(p.celeb.facts.groups) && (
-            <div className="mb-5">
-              <Facts />
-            </div>
-          )}
+        {p.celeb.oldContent && <Md />}
 
-          {p.celeb.oldContent && <Md />}
-
-          <ForumInvite name={p.celeb.name} />
-        </div>
-      </Page>
-    </>
+        <ForumInvite name={p.celeb.name} />
+      </div>
+    </Page>
   );
 };

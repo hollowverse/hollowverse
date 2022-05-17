@@ -31,7 +31,7 @@ export const TopSection = () => {
           </h1>
         </div>
 
-        {!isEmpty(context.celeb.tags.regular) && (
+        {!isEmpty(context.celeb.tags) && (
           <div className="flex justify-center pt-5">
             <TagCollection />
           </div>

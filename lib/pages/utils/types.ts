@@ -65,6 +65,19 @@ export type TCelebOldContent = {
   article: string;
 };
 
+/**
+ * We have groups of Facts, keyed by their topics. I.e.
+ *
+ * {
+ *  religion: Fact[]
+ * }
+ *
+ * An object is not sorted. But we need the topics to be sorted because they are ranked
+ * by importance. So we also have a `topics` array for that purpose.
+ *
+ * When we want to iterate over `groups` by importance, we usually go by the order which
+ * appears in the `topics` array.
+ */
 export type GroupedFacts = {
   groups: Dictionary<Fact[]>;
   topics: string[];
@@ -75,10 +88,7 @@ export type TCeleb = {
   name: string;
   slug: TSlug;
   picture: TPicture;
-  tags: {
-    regular: Tag[];
-    lowConfidence: Tag[];
-  };
+  tags: Tag[];
   oldContent?: TCelebOldContent;
   // facts?: OrderedFacts;
   facts: GroupedFacts;

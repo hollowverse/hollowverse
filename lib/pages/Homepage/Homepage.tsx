@@ -6,7 +6,13 @@ import { top100CelebSlugs } from './top100CelebSlugs';
 
 export const Index = (p: any) => {
   return (
-    <Page className="text-neutral-600 ">
+    <Page
+      title="The religions and political views of celebrities"
+      description="Hollowverse tracks the religions and political views of celebrities"
+      pathname=""
+      allowSearchEngines
+      className="text-neutral-600"
+    >
       <div className="mx-auto w-full max-w-3xl">
         <div className="mx-5">
           <h1 className="pt-5 pb-5 text-2xl font-semibold">

@@ -1,4 +1,4 @@
-export async function discourseClient(
+export async function discourseClientApi(
   apiEndPoint: string,
   payload: { method: 'POST' | 'PUT' | 'GET'; body?: any } = {
     method: 'GET',

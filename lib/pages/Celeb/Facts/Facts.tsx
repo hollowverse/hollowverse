@@ -14,21 +14,18 @@ export const Facts = () => {
         const factGroup = groups[topic];
 
         return (
-          <div key={`${topic}-${i}`}>
-            <Card title={topic} disablePadding>
-              {factGroup.map((fact, innerI) => {
-                return (
-                  <div key={`${topic}-${i}-${innerI}`}>
-                    <Fact value={fact} />
-                    {innerI !== factGroup.length - 1 && (
-                      <div className="border-b" />
-                    )}
-                  </div>
-                );
-              })}
-            </Card>
-            {i === 0 && <ForumInvite name={context.celeb.name} />}
-          </div>
+          <Card title={topic} disablePadding key={`${topic}-${i}`}>
+            {factGroup.map((fact, innerI) => {
+              return (
+                <div key={`${topic}-${i}-${innerI}`}>
+                  <Fact value={fact} />
+                  {innerI !== factGroup.length - 1 && (
+                    <div className="border-b" />
+                  )}
+                </div>
+              );
+            })}
+          </Card>
         );
       })}
     </div>

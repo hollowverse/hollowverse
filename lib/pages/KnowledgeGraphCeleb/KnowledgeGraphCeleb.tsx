@@ -11,7 +11,12 @@ export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
   useKnowledgeGraphCeleb(params.name);
 
   return (
-    <Page>
+    <Page
+      title={`Request to add ${params.name}`}
+      description={`Request to add ${params.name} to Hollowverse`}
+      pathname={`~kg/${encodeURIComponent(params['@id'])}`}
+      allowSearchEngines={false}
+    >
       <Card>
         <div className="mx-auto flex max-w-3xl items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-6">
           <FaRegCheckCircle className="text-xl text-white" />

@@ -1,12 +1,12 @@
 import { uniq } from 'lodash-es';
-import { discourseClient } from '~/lib/api/utils/discourseClient';
+import { discourseClientApi } from '~/lib/api/utils/discourseClientApi';
 
 function getTopicId(forumLink: string) {
   return forumLink.substring(forumLink.lastIndexOf('/') + 1);
 }
 
 function getTopic(topicId: string) {
-  return discourseClient(`t/-/${topicId}.json`);
+  return discourseClientApi(`t/-/${topicId}.json`);
 }
 
 function addAcceptedTag(topic: any) {
@@ -14,7 +14,7 @@ function addAcceptedTag(topic: any) {
   tags.push('accepted');
   const newTags = uniq(tags);
 
-  return discourseClient(`t/-/${topic.id}.json`, {
+  return discourseClientApi(`t/-/${topic.id}.json`, {
     method: 'PUT',
     body: {
       keep_existing_draft: true,
@@ -34,7 +34,7 @@ You, and all of Hollowverse's readers, can see it here ${celebPageUrl}
 Thanks!
 Hollowverse`;
 
-  return discourseClient('posts.json', {
+  return discourseClientApi('posts.json', {
     method: 'POST',
     body: {
       title: 'Your submission has been accepted and published!',

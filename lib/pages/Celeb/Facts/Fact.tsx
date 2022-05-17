@@ -1,60 +1,75 @@
-import React from 'react';
 import Link from 'next/link';
-import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
-import { Fact as TFact } from '~/lib/pages/utils/types';
+import React from 'react';
+import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
+import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
+import { useFact } from '~/lib/pages/Celeb/Facts/useFact';
 import { Tag } from '~/lib/pages/Celeb/Tag';
+import { pluralize } from '~/lib/pages/utils/pluralize';
+import { Fact as TFact } from '~/lib/pages/utils/types';
 
 export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
-  const {
-    celeb: { name },
-  } = useCelebContext();
+  const { name, ref, commentCount } = useFact(value);
 
   return (
-    <section aria-label="Celebrity Fact" className="p-5">
-      <div className="mb-5 flex flex-wrap gap-2.5">
+    <section
+      aria-label="Celebrity Fact"
+      className="flex flex-col gap-5 p-5"
+      ref={ref}
+    >
+      <div className="flex flex-wrap items-center gap-2.5">
         {value.tags.map((t) => {
           return (
             <Tag key={t.tag.name}>
-              <span className="text-neutral-500">
-                # {t.isLowConfidence && 'Possibly '}
+              <span className="flex items-center gap-1 text-neutral-500">
+                <BiHash /> {t.isLowConfidence && 'Possibly '}
                 {t.tag.name}
               </span>
             </Tag>
           );
-        })}
+        })}{' '}
+        <p className="text-sm text-neutral-500">{value.date}</p>
       </div>
-
       <div>
         {(value.type === 'quote' && (
-          <div>
-            <p>
+          <>
+            <p className="text-base">
               {value.context}, {name} said
             </p>
 
-            <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 ">
+            <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 text-base ">
               {value.quote}
             </blockquote>
-          </div>
+          </>
         )) ||
           (value.type == 'fact' && <p>{value.content}</p>)}
       </div>
 
-      <div className="mt-5 flex items-center justify-between">
-        <p className="text-xs text-neutral-500">{value.date}</p>
+      <div className="mx-2 -mt-3 flex gap-2.5 text-neutral-600">
+        <Link href={value.forumLink} passHref>
+          <a className="flex select-none items-center gap-1 text-base text-neutral-500 transition focus:border-blue-300">
+            <BiMessage className="text-lg" />
+            {commentCount > 0 ? (
+              <>
+                {commentCount} {pluralize(commentCount, 'comment', 'comments')}
+              </>
+            ) : (
+              <>Leave a comment</>
+            )}
+          </a>
+        </Link>
 
-        <div className="flex gap-2.5 text-sm text-neutral-500">
-          <Link href={value.source}>
-            <a className="cursor-pointer select-none rounded-lg border-2 border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
-              Source
-            </a>
-          </Link>
+        <div className="flex-1" />
 
-          <Link href={value.forumLink}>
-            <a className="cursor-pointer select-none rounded-lg border-2 border-white bg-gray-100 px-3.5 py-2 text-xs text-neutral-500 no-underline transition hover:text-black focus:border-blue-300 active:bg-gray-200">
-              Forum link
-            </a>
-          </Link>
-        </div>
+        <Link href={value.source} passHref>
+          <a
+            rel="noreferrer"
+            target="_blank"
+            className="flex select-none items-center gap-1 text-xs text-neutral-500 transition focus:border-blue-300"
+          >
+            <BiLink className="text-base" />
+            {getSourceHost(value.source)}
+          </a>
+        </Link>
       </div>
     </section>
   );
