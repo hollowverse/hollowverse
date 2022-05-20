@@ -42,8 +42,8 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
           <div className="flex flex-col gap-2 text-base">
             <p>Hey! 👋</p>
             <p>
-              Did you see anything recently about {params.name}'s religion or
-              political views? Send us a tip!
+              Did you see anything recently about {params.name}&apos;s religion
+              or political views? Send us a tip!
             </p>
             <p>
               <Link
