@@ -1,5 +1,5 @@
 import React from 'react';
-import { ForumInvite } from '~/lib/pages/components/ForumInvite';
+import { ContributeCta } from '~/lib/pages/components/ContributeCta';
 import { Card } from '~/lib/pages/components/Card';
 import { CelebImage } from '~/lib/pages/components/CelebImage';
 import { Page } from '~/lib/pages/components/Page';
@@ -52,7 +52,7 @@ export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
       </Card>
 
       <div className="mx-auto w-full max-w-3xl">
-        <ForumInvite
+        <ContributeCta
           name={params.name}
           cta={
             <>

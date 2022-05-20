@@ -4,7 +4,7 @@
 
 body {
   color: rgba(0, 0, 0, 0.75);
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 @layer components {
@@ -14,5 +14,9 @@ body {
 
   .lovely-gradient {
     @apply bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400;
+  }
+
+  .h-link {
+    @apply text-blue-500 hover:text-blue-400;
   }
 }
