@@ -69,7 +69,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
             htmlFor="contribute-body"
             className="block text-base font-medium text-neutral-500"
           >
-            An {params.name} quote or action
+            A quote or action by {params.name}
           </label>
           <textarea
             placeholder={`On twitter ${params.name} posted...In an interview ${params.name} said...${params.name} threw a fund raiser for X politician...etc`}
