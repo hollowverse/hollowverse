@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { ForumInvite } from '~/lib/pages/components/ForumInvite';
 import { Card } from '~/lib/pages/components/Card';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 import s from '~/lib/pages/styles.module.scss';
@@ -27,10 +25,6 @@ export const Article = (p: {
           <p>{oldContent.summaries.religion}</p>
           <p className="mt-3">{oldContent.summaries.politicalViews}</p>
         </Card>
-      )}
-
-      {isEmpty(context.celeb.facts.groups) && (
-        <ForumInvite name={context.celeb.name} />
       )}
 
       <Card title="Editorial">

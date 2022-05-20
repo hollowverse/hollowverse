@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { Facts } from '~/lib/pages/Celeb/Facts/Facts';
-import { ForumInvite } from '~/lib/pages/components/ForumInvite';
+import { ContributeCta } from '~/lib/pages/components/ContributeCta';
 import { Md } from '~/lib/pages/Celeb/Md/Md';
 import { TopSection } from '~/lib/pages/Celeb/TopSection';
 import {
@@ -36,7 +36,7 @@ export const Celeb = (p: CelebPageProps) => {
 
         {p.celeb.oldContent && <Md />}
 
-        <ForumInvite name={p.celeb.name} />
+        <ContributeCta name={p.celeb.name} />
       </div>
     </Page>
   );

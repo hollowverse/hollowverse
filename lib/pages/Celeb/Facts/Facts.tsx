@@ -1,8 +1,7 @@
 import React from 'react';
+import { Fact } from '~/lib/pages/Celeb/Facts/Fact';
 import { Card } from '~/lib/pages/components/Card';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
-import { Fact } from '~/lib/pages/Celeb/Facts/Fact';
-import { ForumInvite } from '~/lib/pages/components/ForumInvite';
 
 export const Facts = () => {
   const context = useCelebContext();

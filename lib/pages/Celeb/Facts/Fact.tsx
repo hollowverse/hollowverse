@@ -40,8 +40,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
               {value.quote}
             </blockquote>
           </>
-        )) ||
-          (value.type == 'fact' && <p>{value.content}</p>)}
+        )) || <p>{(value as any).content}</p>}
       </div>
 
       <div className="mx-2 -mt-3 flex gap-2.5 text-neutral-600">
