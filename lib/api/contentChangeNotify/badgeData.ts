@@ -5,22 +5,28 @@ export const badgeData = {
     stardustThreshold: 0,
   },
 
+  theMoon: {
+    name: 'The Moon',
+    id: 114,
+    stardustThreshold: 1,
+  },
+
   mars: {
     name: 'Mars',
     id: 106,
-    stardustThreshold: 10,
+    stardustThreshold: 5,
   },
 
   venus: {
     name: 'Venus',
     id: 107,
-    stardustThreshold: 20,
+    stardustThreshold: 10,
   },
 
   mercury: {
     name: 'Mercury',
     id: 108,
-    stardustThreshold: 30,
+    stardustThreshold: 25,
   },
 
   jupiter: {
