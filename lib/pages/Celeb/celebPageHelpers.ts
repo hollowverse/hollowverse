@@ -20,7 +20,7 @@ export function getHeadDescription(
   if (!isEmpty(tags)) {
     return `${name}: ${tags
       .map((t) => `${t.isLowConfidence ? ' Possibly' : ''} ${t.tag.name}`)
-      .join(',')
+      .join(', ')
       .substring(0, 200)
       .trim()}...`;
   }
