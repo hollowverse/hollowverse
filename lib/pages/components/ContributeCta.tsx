@@ -43,14 +43,28 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
             <p>Hey! 👋</p>
             <p>
               Did you see anything recently about {params.name}&apos;s religion
-              or political views? Send us a tip!
+              or political views?
             </p>
+
+            <p>
+              Send us a tip and claim your{' '}
+              <span className="font-semibold">$50 Amazon gift card</span> when
+              you reach the{' '}
+              <a
+                className="h-link"
+                href="https://forum.hollowverse.com/badges/109/jupiter"
+              >
+                <span className="font-semibold">Jupiter badge</span>
+              </a>
+              !
+            </p>
+
             <p>
               <Link
                 passHref
                 href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse/1929"
               >
-                <a className="h-link text-sm">
+                <a className="h-link font-semibold">
                   Learn more about how to contribute!
                 </a>
               </Link>

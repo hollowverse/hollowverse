@@ -6,6 +6,7 @@ import { Page } from '~/lib/pages/components/Page';
 import { useKnowledgeGraphCeleb } from '~/lib/pages/KnowledgeGraphCeleb/useKnowledgeGraphCeleb';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { KnowledgeGraphCeleb } from '~/lib/pages/utils/knowledgeGraphClient';
+import Link from 'next/link';
 
 export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
   useKnowledgeGraphCeleb(params.name);
@@ -55,11 +56,37 @@ export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
         <ContributeCta
           name={params.name}
           cta={
-            <>
-              Help us get started! Know anything about{' '}
-              <span className="font-bold">{params.name}</span>&apos;s religion
-              or political views? Tell us!
-            </>
+            <div className="flex flex-col gap-2 text-base">
+              <p>Hey! 👋 Help us get started!</p>
+              <p>
+                Do you know anything about {params.name}&apos;s religion or
+                political views?
+              </p>
+
+              <p>
+                Send us a tip and claim your{' '}
+                <span className="font-semibold">$50 Amazon gift card</span> when
+                you reach the{' '}
+                <a
+                  className="h-link"
+                  href="https://forum.hollowverse.com/badges/109/jupiter"
+                >
+                  <span className="font-semibold">Jupiter badge</span>
+                </a>
+                !
+              </p>
+
+              <p>
+                <Link
+                  passHref
+                  href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse/1929"
+                >
+                  <a className="h-link font-semibold">
+                    Learn more about how to contribute!
+                  </a>
+                </Link>
+              </p>
+            </div>
           }
         />
       </div>

@@ -1,8 +1,11 @@
+import { uniq } from 'lodash-es';
 import React from 'react';
 import { CelebGallery } from '~/lib/pages/components/CelebGallery';
 import { Page } from '~/lib/pages/components/Page';
 import { sanityClient } from '~/lib/pages/utils/sanityio';
-import { top100CelebSlugs } from './top100CelebSlugs';
+import { top100CelebSlugs as _top100CelebSlugs } from './top100CelebSlugs';
+
+const top100CelebSlugs = uniq(_top100CelebSlugs);
 
 export const Index = (p: any) => {
   return (
