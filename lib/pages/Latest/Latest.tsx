@@ -13,10 +13,10 @@ import { Fact as TFact } from '~/lib/pages/utils/types';
 export const Latest = (p: any) => {
   return (
     <Page
-      title="The religions and political views of celebrities"
-      description="Hollowverse tracks the religions and political views of celebrities"
-      pathname=""
-      allowSearchEngines
+      title="The latest celebrity religion and politics information in Hollowverse"
+      description="The latest Facts added to Hollowverse"
+      pathname="~latest"
+      allowSearchEngines={false}
       className="text-neutral-600"
     >
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
