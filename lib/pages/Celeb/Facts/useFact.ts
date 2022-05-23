@@ -13,7 +13,7 @@ export function useFact(value: Fact) {
       .then((data) => {
         setCommentCount(data.reply_count);
         setCommentAuthor(data.username);
-      })
+      });
   };
 
   useEffect(() => {

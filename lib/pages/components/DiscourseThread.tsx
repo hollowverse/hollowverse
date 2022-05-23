@@ -18,8 +18,6 @@ export const DiscourseThread: React.FC<DiscourseThreadProps> = ({ threadUrl }) =
   }, [threadUrl]);
 
   return (
-    <>
-      <div id="discourse-comments" />
-    </>
-  )
+    <div id="discourse-comments" />
+  );
 }
