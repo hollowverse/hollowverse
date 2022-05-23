@@ -19,6 +19,7 @@ export type Tag = {
 };
 
 export type Fact = {
+  _id: string;
   dateAdded: string;
   date: string;
   source: string;
@@ -87,7 +88,7 @@ export type TCeleb = {
   wikipediaId: string;
   name: string;
   slug: TSlug;
-  picture: TPicture;
+  picture?: TPicture;
   tags: Tag[];
   oldContent?: TCelebOldContent;
   // facts?: OrderedFacts;
@@ -96,5 +97,4 @@ export type TCeleb = {
 
 export type CelebPageProps = {
   celeb: TCeleb;
-  placeholderImage: SanityImageSource;
 };

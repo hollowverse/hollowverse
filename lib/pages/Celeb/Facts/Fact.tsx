@@ -7,8 +7,11 @@ import { Tag } from '~/lib/pages/Celeb/Tag';
 import { pluralize } from '~/lib/utils/pluralize';
 import { Fact as TFact } from '~/lib/pages/utils/types';
 
-export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
-  const { name, ref, commentCount } = useFact(value);
+export const Fact: React.FC<{ value: TFact; celebName: string }> = ({
+  value,
+  celebName,
+}) => {
+  const { ref, commentCount } = useFact(value);
 
   return (
     <section
@@ -33,7 +36,7 @@ export const Fact: React.FC<{ value: TFact }> = ({ value }) => {
         {(value.type === 'quote' && (
           <>
             <p className="text-base">
-              {value.context}, {name} said
+              {value.context}, {celebName} said
             </p>
 
             <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 text-base ">

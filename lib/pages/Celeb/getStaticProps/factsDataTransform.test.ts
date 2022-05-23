@@ -25,6 +25,7 @@ test('transformation while keeping duplicates', () => {
 });
 
 const commonRawFactsProps: Fact = {
+  _id: 'a',
   date: 'a',
   dateAdded: 'a',
   source: 'string',

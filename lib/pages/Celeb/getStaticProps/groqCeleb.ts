@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { factPartialGroq } from '~/lib/pages/components/fact.partialGroq';
 
 export const groqCeleb = groq`
   *[_type == 'celeb' && slug.current == $slug][0]{
@@ -14,22 +15,6 @@ export const groqCeleb = groq`
         'palette': metadata.palette
       }
     },
-    'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {
-      content,
-      context,
-      quote,
-      date,
-      forumLink,
-      source,
-      type,
-      tags[]{
-        isLowConfidence,
-        tag->{
-          name,
-          topic->{name}
-        }
-      },
-      topics[]->{name}
-    }
+    'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {${factPartialGroq}}
   }
 `;

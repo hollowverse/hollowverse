@@ -11,6 +11,7 @@ async function _contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   const { body } = req;
 
   await res.unstable_revalidate(`/${body.slug}`);
+  await res.unstable_revalidate(`/~latest`);
 
   if (body.operation === 'create') {
     await performPostPublishChores(body.forumLink, body.slug);

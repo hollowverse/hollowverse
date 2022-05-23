@@ -47,7 +47,6 @@ export const getStaticProps = async ({
         facts: transformedFacts,
         oldContent: parsedOldContent,
       },
-      placeholderImage,
     },
   };
 };
