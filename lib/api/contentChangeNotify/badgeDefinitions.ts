@@ -35,6 +35,12 @@ export const badgeData = {
     stardustThreshold: 50,
   },
 
+  hypotheticalMoonOfMercury: {
+    name: 'Hypothetical Moon of Mercury',
+    id: 116,
+    stardustThreshold: 55,
+  },
+
   mars: {
     name: 'Mars',
     id: 110,
