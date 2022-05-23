@@ -52,9 +52,9 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
               you reach the{' '}
               <a
                 className="h-link"
-                href="https://forum.hollowverse.com/badges/109/jupiter"
+                href="https://forum.hollowverse.com/badges/112/saturn"
               >
-                <span className="font-semibold">Jupiter badge</span>
+                <span className="font-semibold">Saturn badge</span>
               </a>
               !
             </p>
