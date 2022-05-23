@@ -98,3 +98,22 @@ export type TCeleb = {
 export type CelebPageProps = {
   celeb: TCeleb;
 };
+
+export type FactPageProps = {
+  celeb: {
+    name: string;
+    slug: TSlug;
+    picture: TPicture;
+  };
+  fact: Fact;
+  placeholderImage: SanityImageSource;
+};
+
+declare global {
+  interface Window {
+    DiscourseEmbed: {
+      discourseUrl?: string;
+      discourseEmbedUrl?: string;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fact } from '~/lib/pages/Celeb/Facts/Fact';
+import { Fact } from '~/lib/pages/components/Fact';
 import { Card } from '~/lib/pages/components/Card';
 import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvider';
 
@@ -17,7 +17,12 @@ export const Facts = () => {
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
-                  <Fact value={fact} celebName={context.celeb.name} />
+                  <Fact
+                    fact={fact}
+                    celebName={context.celeb.name}
+                    celebSlug={context.celeb.slug}
+                    linkToFactPage
+                  />
                   {innerI !== factGroup.length - 1 && (
                     <div className="border-b" />
                   )}
