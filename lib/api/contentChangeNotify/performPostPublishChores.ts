@@ -5,8 +5,6 @@ import { discourseClientApi } from '~/lib/api/utils/discourseClientApi';
 import { ordinal } from '~/lib/utils/ordinal';
 import { pluralize } from '~/lib/utils/pluralize';
 
-const badgesLink = 'https://forum.hollowverse.com/badges';
-
 function getTopicId(forumLink: string) {
   return forumLink.substring(forumLink.lastIndexOf('/') + 1);
 }
@@ -42,9 +40,9 @@ Your contribution ${forumLink} has been accepted and published on Hollowverse!
 
 You, and all of Hollowverse's readers, can see it here ${celebPageUrl}
 
-You've been awarded your <a href="${badgesLink}">${ordinal(
-    newBadges.stardustCount,
-  )} Stardust${
+You've been awarded your <a href="https://forum.hollowverse.com/u/${
+    contributor.username
+  }/badges">${ordinal(newBadges.stardustCount)} Stardust${
     !isEmpty(newBadges.others)
       ? ` and ${newBadges.others.join(', ')} ${pluralize(
           newBadges.others.length,
