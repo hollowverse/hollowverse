@@ -6,6 +6,9 @@ import { CelebImage } from '~/lib/pages/components/CelebImage';
 import { factPartialGroq } from '~/lib/pages/components/fact.partialGroq';
 import { Page } from '~/lib/pages/components/Page';
 import { sanityClient, sanityImage } from '~/lib/pages/utils/sanityio';
+import Link from 'next/link';
+import { formatFactDate } from '~/lib/utils/date';
+import { Fact as TFact } from '~/lib/pages/utils/types';
 
 export const Latest = (p: any) => {
   return (
@@ -24,35 +27,36 @@ export const Latest = (p: any) => {
         {p.firstBatch.map((f: any) => (
           <Card
             title={
-              <div className="flex flex-row items-center gap-3">
-                <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
-                  <CelebImage
-                    width={150}
-                    height={150}
-                    name={f.celeb.name}
-                    src={sanityImage(f.celeb.picture)
-                      .fit('crop')
-                      .crop('top')
-                      .width(150)
-                      .height(150)
-                      .url()}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  <p>{f.celeb.name}</p>
-
-                  <p className="text-base text-neutral-500">
-                    {f.topics[0].name}
-                  </p>
-                </div>
-              </div>
+              <Link passHref href={`/${f.celeb.slug}`}>
+                <a>
+                  <div className="flex flex-row items-center gap-3">
+                    <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
+                      <CelebImage
+                        width={150}
+                        height={150}
+                        name={f.celeb.name}
+                        src={sanityImage(f.celeb.picture)
+                          .fit('crop')
+                          .crop('top')
+                          .width(150)
+                          .height(150)
+                          .url()}
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <p>{f.celeb.name}</p>
+                      <p className="text-base text-neutral-500">
+                        {f.topics[0].name}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </Link>
             }
             key={f._id}
             disablePadding
           >
             <Fact value={f} celebName={f.celeb.name} />
-            {/* <pre>{JSON.stringify(p.firstBatch, null, 2)}</pre> */}
           </Card>
         ))}
       </div>
@@ -71,7 +75,8 @@ export const getStaticProps = async () => {
             'lqip': metadata.lqip,
             'palette': metadata.palette
           }
-        }
+        },
+        'slug': slug.current
       },
       ${factPartialGroq}
     }`,
@@ -79,7 +84,10 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      firstBatch,
+      firstBatch: firstBatch.map((f: TFact) => ({
+        ...f,
+        date: formatFactDate(f.date),
+      })),
     },
   };
 };
