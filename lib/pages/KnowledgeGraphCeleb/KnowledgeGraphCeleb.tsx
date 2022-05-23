@@ -69,9 +69,9 @@ export function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
                 you reach the{' '}
                 <a
                   className="h-link"
-                  href="https://forum.hollowverse.com/badges/115/neptune"
+                  href="https://forum.hollowverse.com/badges/112/saturn"
                 >
-                  <span className="font-semibold">Neptune badge</span>
+                  <span className="font-semibold">Saturn badge</span>
                 </a>
                 !
               </p>
