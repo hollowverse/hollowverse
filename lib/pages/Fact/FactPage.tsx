@@ -14,15 +14,12 @@ import { FactPageProps } from '~/lib/pages/utils/types';
 export const FactPage: NextPage<FactPageProps> = ({ celeb, fact, placeholderImage }) => {
   const { ref, commentAuthor } = useFact(fact);
 
+  const sourceHost = getSourceHost(fact.source);
+
   return (
     <Page
-      title={`${celeb.name}'s religion and political views`}
-      // description={getHeadDescription(
-      //   p.celeb.name,
-      //   p.celeb.tags,
-      //   p.celeb.oldContent,
-      // )}
-      description="lol"
+      title={`${celeb.name}'s views on ${fact.topics[0].name}`}
+      description={`${celeb.name} on ${sourceHost}: ${fact.tags.map((t) => t.tag.name).join(', ')}`}
       allowSearchEngines
       pathname={celeb.slug}
     >
@@ -38,7 +35,7 @@ export const FactPage: NextPage<FactPageProps> = ({ celeb, fact, placeholderImag
           </div>
           <div>
             <h1 className="text-xl font-bold">{celeb.name}</h1>
-            <h3 className="text-neutral-500">on {getSourceHost(fact.source)}</h3>
+            <h3 className="text-neutral-500">on {sourceHost}</h3>
           </div>
         </div>
         <Card disablePadding title={fact.topics[0].name}>
@@ -68,7 +65,7 @@ export const FactPage: NextPage<FactPageProps> = ({ celeb, fact, placeholderImag
                     target="_blank"
                     className="select-none gap-1 transition focus:border-blue-300"
                   >
-                    {getSourceHost(fact.source)}
+                    {sourceHost}
                   </a>
                 </Link>
               </p>
