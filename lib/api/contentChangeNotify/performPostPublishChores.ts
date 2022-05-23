@@ -1,6 +1,6 @@
 import { countBy, find, isEmpty, uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-import { badgeData } from '~/lib/api/contentChangeNotify/badgeData';
+import { badgeData } from '~/lib/api/contentChangeNotify/badgeDefinitions';
 import { discourseClientApi } from '~/lib/api/utils/discourseClientApi';
 import { ordinal } from '~/lib/utils/ordinal';
 import { pluralize } from '~/lib/utils/pluralize';

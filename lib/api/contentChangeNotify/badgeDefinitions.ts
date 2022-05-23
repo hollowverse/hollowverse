@@ -11,8 +11,8 @@ export const badgeData = {
     stardustThreshold: 1,
   },
 
-  mars: {
-    name: 'Mars',
+  halleysComet: {
+    name: "Halley's Comet",
     id: 106,
     stardustThreshold: 5,
   },
@@ -23,39 +23,45 @@ export const badgeData = {
     stardustThreshold: 10,
   },
 
-  mercury: {
-    name: 'Mercury',
+  theSun: {
+    name: 'The Sun',
     id: 108,
     stardustThreshold: 25,
   },
 
-  jupiter: {
-    name: 'Jupiter',
+  mercury: {
+    name: 'Mercury',
     id: 109,
     stardustThreshold: 50,
   },
 
-  saturn: {
-    name: 'Saturn',
+  mars: {
+    name: 'Mars',
     id: 110,
     stardustThreshold: 100,
   },
 
-  uranus: {
-    name: 'Uranus',
+  jupiter: {
+    name: 'Jupiter',
     id: 111,
     stardustThreshold: 150,
   },
 
-  neptune: {
-    name: 'Neptune',
+  saturn: {
+    name: 'Saturn',
     id: 112,
     stardustThreshold: 200,
   },
 
-  theSun: {
-    name: 'The Sun',
+  uranus: {
+    name: 'Uranus',
     id: 113,
     stardustThreshold: 300,
+  },
+
+  neptune: {
+    name: 'Neptune',
+    id: 115,
+    stardustThreshold: 500,
   },
 };
