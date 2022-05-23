@@ -12,7 +12,7 @@ export const CelebGallery: React.FC<{
   return (
     <div className="flex flex-wrap justify-center">
       {p.celebGalleryItems.map((celebData) => {
-        const picture = celebData.picture || context.placeholderImage;
+        const picture = celebData.picture;
 
         return (
           <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>

@@ -7,7 +7,7 @@ import { useCelebContext } from '~/lib/pages/components/StaticPropsContextProvid
 
 export const TopSection = () => {
   const context = useCelebContext();
-  const picture = context.celeb.picture || context.placeholderImage;
+  const picture = context.celeb.picture;
 
   return (
     <Card className="TOP-SECTION">

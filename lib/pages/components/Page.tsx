@@ -12,6 +12,9 @@ export function Page(params: {
   title: string;
   allowSearchEngines: boolean;
   description: string;
+  /**
+   * Should not have a leading slash
+   */
   pathname: string;
 }) {
   return (

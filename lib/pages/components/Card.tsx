@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { LovelyTopBorder } from '~/lib/pages/components/LovelyTopBorder';
 
 export function Card(_params: {
-  title?: string;
+  title?: ReactNode;
   children: ReactNode;
   disablePadding?: boolean;
   className?: string;

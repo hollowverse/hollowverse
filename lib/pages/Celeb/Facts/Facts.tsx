@@ -17,7 +17,7 @@ export const Facts = () => {
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
-                  <Fact value={fact} />
+                  <Fact value={fact} celebName={context.celeb.name} />
                   {innerI !== factGroup.length - 1 && (
                     <div className="border-b" />
                   )}

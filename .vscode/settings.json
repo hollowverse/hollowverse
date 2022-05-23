@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["clsx", "nextjs", "vercel"],
+  "cSpell.words": ["clsx", "Groq", "lqip", "nextjs", "vercel"],
   "editor.formatOnSave": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "search.exclude": {
