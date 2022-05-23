@@ -13,6 +13,8 @@ type Params = (
   | (Optional<ImageProps, 'src'> & { picture?: undefined })
 ) & {
   name: string;
+  width?: number;
+  height?: number;
 };
 
 export function CelebImage(params: Params) {
@@ -26,8 +28,8 @@ export function CelebImage(params: Params) {
         sanityImage(picture)
           .fit('crop')
           .crop('top')
-          .width(260)
-          .height(290)
+          .width(rest.width || 260)
+          .height(rest.height || 290)
           .url()
       }
       layout="responsive"

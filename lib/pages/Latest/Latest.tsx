@@ -1,14 +1,14 @@
 import groq from 'groq';
+import Link from 'next/link';
 import React from 'react';
 import { Fact } from '~/lib/pages/Celeb/Facts/Fact';
 import { Card } from '~/lib/pages/components/Card';
 import { CelebImage } from '~/lib/pages/components/CelebImage';
 import { factPartialGroq } from '~/lib/pages/components/fact.partialGroq';
 import { Page } from '~/lib/pages/components/Page';
-import { sanityClient, sanityImage } from '~/lib/pages/utils/sanityio';
-import Link from 'next/link';
-import { formatFactDate } from '~/lib/utils/date';
+import { sanityClient } from '~/lib/pages/utils/sanityio';
 import { Fact as TFact } from '~/lib/pages/utils/types';
+import { formatFactDate } from '~/lib/utils/date';
 
 export const Latest = (p: any) => {
   return (
@@ -35,12 +35,7 @@ export const Latest = (p: any) => {
                         width={150}
                         height={150}
                         name={f.celeb.name}
-                        src={sanityImage(f.celeb.picture)
-                          .fit('crop')
-                          .crop('top')
-                          .width(150)
-                          .height(150)
-                          .url()}
+                        picture={f.celeb.picture}
                       />
                     </div>
                     <div className="flex flex-col gap-1">
