@@ -9,13 +9,9 @@ import { DiscourseThread } from '~/components/DiscourseThread';
 import { CelebImage } from '~/components/CelebImage';
 import { getSourceHost } from '~/lib/factHelpers';
 import { useFact } from '~/components/hooks/useFact';
-import { FactPageProps } from '~/lib/types';
+import { FactPageProps } from '~/pages/[celeb]/fact/getStaticProps';
 
-export const FactPage: NextPage<FactPageProps> = ({
-  celeb,
-  fact,
-  placeholderImage,
-}) => {
+export const FactPage: NextPage<FactPageProps> = ({ celeb, fact }) => {
   const { ref, commentAuthor } = useFact(fact);
 
   const sourceHost = getSourceHost(fact.source);
@@ -35,7 +31,7 @@ export const FactPage: NextPage<FactPageProps> = ({
             <CelebImage
               className="rounded-xl object-cover"
               layout="fill"
-              picture={celeb.picture || placeholderImage}
+              picture={celeb.picture}
               name={celeb.name}
             />
           </div>

@@ -1,30 +1,40 @@
 import { sanityClient } from '~/lib/sanityio';
-import { factPageCelebGroq } from '~/lib/groq/factPageCeleb.groq';
-import { factPageGroq } from '~/lib/groq/factPage.groq';
+import {
+  FactPageCelebGroq,
+  factPageCelebGroq,
+} from '~/lib/groq/factPageCeleb.groq';
+import { FactPageGroq, factPageGroq } from '~/lib/groq/factPage.groq';
 import { format, parse } from 'date-fns';
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+
+export type FactPageProps = NonNullable<
+  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
+>;
 
 export const getStaticProps = async ({
   params,
 }: {
   params: { celeb: string; factId: string };
 }) => {
-  const celeb = await sanityClient.fetch(factPageCelebGroq, {
+  const celeb = (await sanityClient.fetch(factPageCelebGroq, {
     slug: params.celeb,
-  });
-  const fact = await sanityClient.fetch(factPageGroq, {
-    factId: params.factId,
-    celebId: celeb._id,
-  });
+  })) as FactPageCelebGroq | null;
 
   if (!celeb) {
     return {
       notFound: true,
     };
   }
+  const fact = (await sanityClient.fetch(factPageGroq, {
+    factId: params.factId,
+    celebId: celeb._id,
+  })) as FactPageGroq | null;
 
-  const placeholderImage = await sanityClient.getDocument(
-    'image-98dc320a756a3f0f5dc40a59ced1194619719a60-225x225-png',
-  );
+  if (!fact) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -33,7 +43,6 @@ export const getStaticProps = async ({
         ...fact,
         date: format(parse(fact.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
       },
-      placeholderImage,
     },
   };
 };
