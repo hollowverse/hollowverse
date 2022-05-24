@@ -1,16 +1,23 @@
-import groq from 'groq';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
-import { groqCeleb } from '~/lib/groqCeleb';
+import { CelebGroqResponse, groqCeleb } from '~/lib/groq/celeb.groq';
+import {
+  orderOfTopicsGroq,
+  OrderOfTopicsGroqResponse,
+} from '~/lib/groq/orderOfTopics.groq';
 import { sanityClient } from '~/lib/sanityio';
+
+export type CelebPageProps = ReturnType<typeof getStaticProps>;
 
 export const getStaticProps = async ({
   params,
 }: {
   params: { celeb: string };
 }) => {
-  const celeb = await sanityClient.fetch(groqCeleb, { slug: params.celeb });
+  const celeb = (await sanityClient.fetch(groqCeleb, {
+    slug: params.celeb,
+  })) as CelebGroqResponse | null;
 
   if (!celeb) {
     return {
@@ -20,13 +27,7 @@ export const getStaticProps = async ({
 
   const { oldContent, facts, ...rest } = celeb;
   const [orderOfTopics, parsedOldContent] = await Promise.all([
-    sanityClient.fetch(
-      groq`
-        *[_type == 'orderOfTopics'][0]{
-          'topics': topics[]->{name}.name
-        }.topics
-      `,
-    ),
+    sanityClient.fetch(orderOfTopicsGroq) as Promise<OrderOfTopicsGroqResponse>,
     oldContent ? await getParsedOldContent(oldContent) : null,
   ]);
 

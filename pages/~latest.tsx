@@ -4,7 +4,7 @@ import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
-import { factPartialGroq } from '~/components/fact.partialGroq';
+import { factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Page } from '~/components/Page';
 import { sanityClient } from '~/lib/sanityio';
 import { Fact as TFact } from '~/lib/types';

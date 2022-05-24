@@ -18,26 +18,6 @@ export type Tag = {
   };
 };
 
-export type Fact = {
-  _id: string;
-  dateAdded: string;
-  date: string;
-  source: string;
-  forumLink: string;
-  topics: Topic[];
-  tags: Tag[];
-} & (
-  | {
-      type: 'quote';
-      context: string;
-      quote: string;
-    }
-  | {
-      type: 'fact';
-      content: string;
-    }
-);
-
 // export type OrderedFacts = [string, Fact[]][];
 export type OrderedFacts = {
   facts: Fact[];
@@ -114,6 +94,6 @@ declare global {
     DiscourseEmbed: {
       discourseUrl?: string;
       discourseEmbedUrl?: string;
-    }
+    };
   }
 }

@@ -1,4 +1,5 @@
 import { differenceWith, intersectionWith } from 'lodash-es';
+import { OrderOfTopicsGroqResponse } from '~/lib/groq/orderOfTopics.groq';
 import { GroupedFacts, Tag } from '~/lib/types';
 
 const tagExists = (tagsArr: Tag[], tag: Tag) =>
@@ -6,7 +7,7 @@ const tagExists = (tagsArr: Tag[], tag: Tag) =>
 
 export const getTags = (
   groupedFacts: GroupedFacts,
-  orderOfTopics: string[],
+  orderOfTopics: OrderOfTopicsGroqResponse,
 ) => {
   const comparator = (tag: Tag, topic: string) => tag.tag.topic.name === topic;
   const sortComparator = (a: Tag, b: Tag) =>

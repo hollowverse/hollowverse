@@ -2,15 +2,38 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 import { sanityClient } from '~/lib/sanityio';
-import { groqRelatedPeople } from '~/lib/groqRelatedPeople';
+import {
+  relatedPeopleGroq,
+  RelatedPeopleGroqResponse,
+} from '~/lib/groq/relatedPeople.groq';
+import { CelebGroqResponse } from '~/lib/groq/celeb.groq';
 
-export const getParsedOldContent = async (oldContent: any) => {
-  const { data: oldContentFrontMatter, content: oldContentMarkdown } =
-    matter(oldContent);
+export type Summaries = {
+  religion: string;
+  politicalViews: string;
+};
 
-  const relatedPeople = await sanityClient.fetch(groqRelatedPeople, {
-    slug: oldContentFrontMatter.relatedPeople,
-  });
+export type Source = { sourceUrl: string; sourceTitle: string };
+
+export type OldContentFrontMatter = {
+  summaries: Summaries;
+  relatedPeople: string[];
+  sources: Source[];
+};
+
+export const getParsedOldContent = async (
+  oldContent: CelebGroqResponse['oldContent'],
+) => {
+  const { data: oldContentFrontMatter, content: oldContentMarkdown } = matter(
+    oldContent,
+  ) as any as {
+    data: OldContentFrontMatter;
+    content: string;
+  };
+
+  const relatedPeople = (await sanityClient.fetch(relatedPeopleGroq, {
+    slugs: oldContentFrontMatter.relatedPeople,
+  })) as RelatedPeopleGroqResponse;
 
   const parsedOldContent = {
     ...oldContentFrontMatter,

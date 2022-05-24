@@ -1,5 +1,21 @@
 import groq from 'groq';
-import { factPartialGroq } from '~/components/fact.partialGroq';
+import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
+
+export type CelebGroqResponse = {
+  name: string;
+  oldContent: string;
+  pronoun: string;
+  wikipediaId: string;
+  slug: string;
+  picture: {
+    _id: string;
+    metadata: {
+      lqip: string;
+      palette: any;
+    };
+  };
+  facts: Fact[];
+};
 
 export const groqCeleb = groq`
   *[_type == 'celeb' && slug.current == $slug][0]{
