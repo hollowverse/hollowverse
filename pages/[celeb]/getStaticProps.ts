@@ -1,3 +1,4 @@
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
@@ -8,7 +9,9 @@ import {
 } from '~/lib/groq/orderOfTopics.groq';
 import { sanityClient } from '~/lib/sanityio';
 
-export type CelebPageProps = ReturnType<typeof getStaticProps>;
+export type CelebPageProps = NonNullable<
+  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
+>;
 
 export const getStaticProps = async ({
   params,

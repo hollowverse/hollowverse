@@ -6,7 +6,7 @@ import { Md } from '~/components/Md';
 import { TopSection } from '~/components/TopSection';
 import { getHeadDescription, useCeleb } from '~/lib/celebPageHelpers';
 import { Page } from '~/components/Page';
-import { CelebPageProps } from '~/lib/types';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
 export default function Celeb(p: CelebPageProps) {
   useCeleb(p.celeb.name, p.celeb.facts.groups);

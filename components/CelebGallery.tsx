@@ -2,10 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { useCelebContext } from '~/components/StaticPropsContextProvider';
-import { TCelebGalleryItem } from '~/lib/types';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
 export const CelebGallery: React.FC<{
-  celebGalleryItems: TCelebGalleryItem[];
+  celebGalleryItems: NonNullable<
+    CelebPageProps['celeb']['oldContent']
+  >['relatedPeople'];
 }> = (p) => {
   const context = useCelebContext();
 

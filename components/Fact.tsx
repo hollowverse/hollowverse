@@ -5,7 +5,7 @@ import { getSourceHost } from '~/lib/factHelpers';
 import { useFact } from '~/components/hooks/useFact';
 import { Tag } from '~/components/Tag';
 import { pluralize } from '~/lib/pluralize';
-import { Fact as TFact } from '~/lib/types';
+import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
 
 export const Fact: React.FC<{ value: TFact; celebName: string }> = ({
   value,

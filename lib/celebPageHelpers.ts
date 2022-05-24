@@ -1,7 +1,9 @@
 import { isEmpty } from 'lodash-es';
 import { useEffect } from 'react';
+import { GroupedFacts } from '~/lib/factsDataTransform';
+import { Tag } from '~/lib/groq/fact.partial.groq';
 import { logMissingFacts } from '~/lib/logMissingCeleb';
-import { GroupedFacts, Tag, TCelebOldContent } from '~/lib/types';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
 export function useCeleb(name: string, factGroups: GroupedFacts['groups']) {
   useEffect(() => {
@@ -15,7 +17,7 @@ export function useCeleb(name: string, factGroups: GroupedFacts['groups']) {
 export function getHeadDescription(
   name: string,
   tags: Tag[],
-  oldContent?: TCelebOldContent,
+  oldContent?: CelebPageProps['celeb']['oldContent'],
 ) {
   if (!isEmpty(tags)) {
     return `${name}: ${tags

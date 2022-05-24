@@ -6,6 +6,7 @@ export type PictureGroq = {
     lqip: string;
     palette: any;
   };
+  asset: any;
 };
 
 export const pictureGroq = groq`{

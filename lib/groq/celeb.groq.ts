@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
+import { pictureGroq, PictureGroq } from '~/lib/groq/picture.partial.groq';
 
 export type CelebGroqResponse = {
   name: string;
@@ -7,13 +8,7 @@ export type CelebGroqResponse = {
   pronoun: string;
   wikipediaId: string;
   slug: string;
-  picture: {
-    _id: string;
-    metadata: {
-      lqip: string;
-      palette: any;
-    };
-  };
+  picture: PictureGroq;
   facts: Fact[];
 };
 
@@ -24,13 +19,7 @@ export const groqCeleb = groq`
     pronoun,
     wikipediaId,
     'slug': slug.current,
-    'picture': picture.asset->{
-      _id,
-      'metadata': {
-        'lqip': metadata.lqip,
-        'palette': metadata.palette
-      }
-    },
+    'picture': picture.asset->${pictureGroq},
     'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {${factPartialGroq}}
   }
 `;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { Fact } from '~/lib/types';
+import { Fact } from '~/lib/groq/fact.partial.groq';
 
 export function useFact(value: Fact) {
   const { ref, inView } = useInView({ triggerOnce: true });

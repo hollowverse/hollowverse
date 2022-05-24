@@ -1,99 +1,64 @@
-import {
-  SanityImageObject,
-  SanityImageSource,
-} from '@sanity/image-url/lib/types/types';
-import { Dictionary } from 'lodash';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { Fact } from '~/lib/groq/fact.partial.groq';
+import { PictureGroq } from '~/lib/groq/picture.partial.groq';
 
-export type TSlug = string;
+type TSlug = string;
 
-export type Topic = { name: string };
+type Topic = { name: string };
 
-export type Tag = {
-  isLowConfidence: boolean | null;
-  tag: {
-    name: string;
-    topic: {
-      name: string;
-    };
-  };
-};
+// export type Tag = {
+//   isLowConfidence: boolean | null;
+//   tag: {
+//     name: string;
+//     topic: {
+//       name: string;
+//     };
+//   };
+// };
 
-// export type OrderedFacts = [string, Fact[]][];
-export type OrderedFacts = {
-  facts: Fact[];
-  topics: [string, number[]][];
-};
+// export type TPicture = SanityImageObject & {
+//   metadata: {
+//     lqip: string;
+//   };
+// };
 
-export type TPicture = SanityImageObject & {
-  metadata: {
-    lqip: string;
-  };
-};
+// export type TCelebGalleryItem = {
+//   slug: TSlug;
+//   picture: TPicture;
+//   name: string;
+// };
 
-export type TCelebGalleryItem = {
-  slug: TSlug;
-  picture: TPicture;
-  name: string;
-};
+// export type TCelebOldContent = {
+//   sources: { sourceUrl: string; sourceTitle: string }[];
+//   relatedPeople: TCelebGalleryItem[];
+//   summaries?: {
+//     religion: string;
+//     politicalViews: string;
+//   };
+//   article: string;
+// };
 
-export type TCelebOldContent = {
-  sources: { sourceUrl: string; sourceTitle: string }[];
-  relatedPeople: TCelebGalleryItem[];
-  summaries?: {
-    religion: string;
-    politicalViews: string;
-  };
-  article: string;
-};
+// export type TCeleb = {
+//   wikipediaId: string;
+//   name: string;
+//   slug: TSlug;
+//   picture?: TPicture;
+//   tags: Tag[];
+//   oldContent?: TCelebOldContent;
+//   // facts?: OrderedFacts;
+//   facts: GroupedFacts;
+// };
 
-/**
- * We have groups of Facts, keyed by their topics. I.e.
- *
- * {
- *  religion: Fact[]
- * }
- *
- * An object is not sorted. But we need the topics to be sorted because they are ranked
- * by importance. So we also have a `topics` array for that purpose.
- *
- * When we want to iterate over `groups` by importance, we usually go by the order which
- * appears in the `topics` array.
- */
-export type GroupedFacts = {
-  groups: Dictionary<Fact[]>;
-  topics: string[];
-};
-
-export type TCeleb = {
-  wikipediaId: string;
-  name: string;
-  slug: TSlug;
-  picture?: TPicture;
-  tags: Tag[];
-  oldContent?: TCelebOldContent;
-  // facts?: OrderedFacts;
-  facts: GroupedFacts;
-};
-
-export type CelebPageProps = {
-  celeb: TCeleb;
-};
+// export type CelebPageProps = {
+//   celeb: TCeleb;
+// };
 
 export type FactPageProps = {
   celeb: {
     name: string;
     slug: TSlug;
-    picture: TPicture;
+    picture: PictureGroq;
   };
   fact: Fact;
   placeholderImage: SanityImageSource;
 };
-
-declare global {
-  interface Window {
-    DiscourseEmbed: {
-      discourseUrl?: string;
-      discourseEmbedUrl?: string;
-    };
-  }
-}

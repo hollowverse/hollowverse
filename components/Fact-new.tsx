@@ -5,7 +5,7 @@ import { getSourceHost } from '~/lib/factHelpers';
 import { useFact } from '~/components/hooks/useFact';
 import { Tag } from '~/components/Tag';
 import { pluralize } from '~/lib/pluralize';
-import { Tag as TTag, Fact as TFact } from '~/lib/types';
+import { Tag as TTag, Fact as TFact } from '~/lib/groq/fact.partial.groq';
 
 interface FactTagsProps {
   tags: TTag[];

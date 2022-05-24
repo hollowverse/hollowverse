@@ -1,4 +1,4 @@
-import { Fact } from '~/lib/types';
+import { Fact } from '~/lib/groq/fact.partial.groq';
 import { copyFacts, factsDataTransform } from '~/lib/factsDataTransform';
 
 test('transformation while keeping duplicates', () => {
@@ -24,7 +24,6 @@ test('transformation while keeping duplicates', () => {
 const commonRawFactsProps: Fact = {
   _id: 'a',
   date: 'a',
-  dateAdded: 'a',
   source: 'string',
   forumLink: 'string',
   type: 'quote',

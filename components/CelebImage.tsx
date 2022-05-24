@@ -1,13 +1,13 @@
 import React from 'react';
 import Image, { ImageProps } from 'next/image';
 import { sanityImage } from '~/lib/sanityio';
-import { TPicture } from '~/lib/types';
 import { Optional } from 'utility-types';
 import { placeholderImage } from '~/lib/placeholderImage';
+import { PictureGroq } from '~/lib/groq/picture.partial.groq';
 
 type Params = (
   | (Omit<ImageProps, 'src'> & {
-      picture: TPicture;
+      picture: PictureGroq;
       src?: undefined;
     })
   | (Optional<ImageProps, 'src'> & { picture?: undefined })

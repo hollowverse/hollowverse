@@ -1,6 +1,7 @@
 import { differenceWith, intersectionWith } from 'lodash-es';
+import { GroupedFacts } from '~/lib/factsDataTransform';
+import { Tag } from '~/lib/groq/fact.partial.groq';
 import { OrderOfTopicsGroqResponse } from '~/lib/groq/orderOfTopics.groq';
-import { GroupedFacts, Tag } from '~/lib/types';
 
 const tagExists = (tagsArr: Tag[], tag: Tag) =>
   tagsArr.some((t) => t.tag.name === tag.tag.name);

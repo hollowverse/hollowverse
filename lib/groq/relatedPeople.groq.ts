@@ -5,7 +5,7 @@ export type RelatedPeopleGroqResponse = {
   name: string;
   slug: string;
   picture: PictureGroq;
-};
+}[];
 
 export const relatedPeopleGroq = groq`
   *[_type == 'celeb' && slug.current in $slugs][0..3]{
