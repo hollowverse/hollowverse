@@ -1,0 +1,59 @@
+import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
+import { PromiseType } from 'utility-types';
+import { fetchResults } from '~/lib/fetchResults';
+
+export type SearchResults = PromiseType<ReturnType<typeof fetchResults>> | null;
+
+export function useSearch() {
+  const [loading, setLoading] = useState(false);
+  const [isInternalNavigation, setInternalNavigation] = useState(false);
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState<SearchResults>(null);
+  const router = useRouter();
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    async function runQuery() {
+      if (query) {
+        setLoading(true);
+        setResults(null);
+
+        const response = await fetchResults(query);
+
+        setResults(response);
+        setLoading(false);
+      }
+    }
+
+    if (router.query.local === 'true') {
+      setInternalNavigation(true);
+    }
+
+    router.replace(router.basePath, router.basePath, { shallow: true });
+
+    runQuery();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
+
+  return {
+    query,
+    inputRef,
+    onQueryChange: async (event: React.ChangeEvent<HTMLInputElement>) => {
+      setQuery(event.target.value);
+    },
+    onClearResultsClick: () => {
+      setQuery('');
+      setResults(null);
+    },
+    goBack: router.back,
+    isInternalNavigation,
+    loading,
+    searchResults: results,
+  };
+}
