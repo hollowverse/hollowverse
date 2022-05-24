@@ -16,5 +16,5 @@ name,
 pronoun,
 wikipediaId,
 'slug': slug.current,
-'picture': picture.asset->${pictureGroq},
+'picture': picture.asset->{${pictureGroq}}
 `;

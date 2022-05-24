@@ -11,6 +11,6 @@ export const relatedPeopleGroq = groq`
   *[_type == 'celeb' && slug.current in $slugs][0..3]{
     name,
     'slug': slug.current,
-    'picture': picture.asset->${pictureGroq}
+    'picture': picture.asset->{${pictureGroq}}
   }
 `;

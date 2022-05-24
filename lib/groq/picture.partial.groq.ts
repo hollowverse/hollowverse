@@ -9,10 +9,10 @@ export type PictureGroq = {
   asset: any;
 };
 
-export const pictureGroq = groq`{
-  _id,
-  'metadata': {
-    'lqip': metadata.lqip,
-    'palette': metadata.palette
-  }
-}`;
+export const pictureGroq = groq`
+_id,
+'metadata': {
+  'lqip': metadata.lqip,
+  'palette': metadata.palette
+}
+`;
