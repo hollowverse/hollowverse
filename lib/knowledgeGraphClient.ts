@@ -2,7 +2,7 @@ import { defaults } from 'lodash-es';
 
 const apiKey = 'AIzaSyDiyeA6ZhuHWZd7LNgyI66PS1QEIx0DOQI';
 
-export type KnowledgeGraphCeleb = {
+export type KnowledgeGraphCelebParams = {
   name: string;
   image?: {
     contentUrl: string;
@@ -12,7 +12,7 @@ export type KnowledgeGraphCeleb = {
 };
 
 export type KnowledgeGraphCelebResult = {
-  result: KnowledgeGraphCeleb;
+  result: KnowledgeGraphCelebParams;
 };
 
 export async function knowledgeGraphClient(

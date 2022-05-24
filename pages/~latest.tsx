@@ -10,7 +10,7 @@ import { sanityClient } from '~/lib/sanityio';
 import { Fact as TFact } from '~/lib/types';
 import { formatFactDate } from '~/lib/date';
 
-export const Latest = (p: any) => {
+export default function Latest(p: any) {
   return (
     <Page
       title="The latest celebrity religion and politics information in Hollowverse"
@@ -57,7 +57,7 @@ export const Latest = (p: any) => {
       </div>
     </Page>
   );
-};
+}
 
 export const getStaticProps = async () => {
   const firstBatch = await sanityClient.fetch(

@@ -2,13 +2,13 @@ import levenshtein from 'fast-levenshtein';
 import { isEmpty } from 'lodash-es';
 import { Required } from 'utility-types';
 import {
-  KnowledgeGraphCeleb,
+  KnowledgeGraphCelebParams,
   KnowledgeGraphCelebResult,
   knowledgeGraphClient,
 } from '~/lib/knowledgeGraphClient';
 import { sanityClient } from '~/lib/sanityio';
 
-type CleanedResult = { result: Required<KnowledgeGraphCeleb, 'image'> };
+type CleanedResult = { result: Required<KnowledgeGraphCelebParams, 'image'> };
 function clean(items: KnowledgeGraphCelebResult[]) {
   return items.filter((i) => {
     return i.result.image;

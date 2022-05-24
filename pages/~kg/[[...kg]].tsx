@@ -5,10 +5,10 @@ import { CelebImage } from '~/components/CelebImage';
 import { Page } from '~/components/Page';
 import { useKnowledgeGraphCeleb } from '~/components/hooks/useKnowledgeGraphCeleb';
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { KnowledgeGraphCeleb } from '~/lib/knowledgeGraphClient';
+import { KnowledgeGraphCelebParams } from '~/lib/knowledgeGraphClient';
 import Link from 'next/link';
 
-export default function KnowledgeGraphCeleb(params: KnowledgeGraphCeleb) {
+export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   useKnowledgeGraphCeleb(params.name);
 
   return (
