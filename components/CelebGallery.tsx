@@ -1,19 +1,16 @@
 import Link from 'next/link';
 import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
-import { useCelebContext } from '~/components/StaticPropsContextProvider';
 import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: NonNullable<
     CelebPageProps['celeb']['oldContent']
   >['relatedPeople'];
-}> = (p) => {
-  const context = useCelebContext();
-
+}> = (props) => {
   return (
     <div className="flex flex-wrap justify-center">
-      {p.celebGalleryItems.map((celebData) => {
+      {props.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture;
 
         return (

@@ -4,8 +4,6 @@ import { PictureGroq } from '~/lib/groq/picture.partial.groq';
 
 type TSlug = string;
 
-type Topic = { name: string };
-
 // export type Tag = {
 //   isLowConfidence: boolean | null;
 //   tag: {

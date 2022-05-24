@@ -1,11 +1,10 @@
 import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
-import { useCelebContext } from '~/components/StaticPropsContextProvider';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
-export const Facts = () => {
-  const context = useCelebContext();
-  const { groups, topics } = context.celeb.facts!;
+export const Facts = (props: CelebPageProps) => {
+  const { groups, topics } = props.celeb.facts!;
 
   return (
     <div className="gap-5">
@@ -17,7 +16,7 @@ export const Facts = () => {
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
-                  <Fact value={fact} celebName={context.celeb.name} />
+                  <Fact value={fact} celebName={props.celeb.name} />
                   {innerI !== factGroup.length - 1 && (
                     <div className="border-b" />
                   )}

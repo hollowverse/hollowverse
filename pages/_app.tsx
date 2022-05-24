@@ -4,7 +4,6 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
-import { StaticPropsContextProvider } from '~/components/StaticPropsContextProvider';
 import { gaPageView, GA_TRACKING_ID } from '~/lib/gtag';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -49,9 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
 
-      <StaticPropsContextProvider value={pageProps}>
-        <Component {...pageProps} />
-      </StaticPropsContextProvider>
+      <Component {...pageProps} />
     </>
   );
 }

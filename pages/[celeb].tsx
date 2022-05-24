@@ -8,32 +8,32 @@ import { getHeadDescription, useCeleb } from '~/lib/celebPageHelpers';
 import { Page } from '~/components/Page';
 import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
-export default function Celeb(p: CelebPageProps) {
-  useCeleb(p.celeb.name, p.celeb.facts.groups);
+export default function Celeb(props: CelebPageProps) {
+  useCeleb(props.celeb.name, props.celeb.facts.groups);
 
   return (
     <Page
-      title={`${p.celeb.name}'s religion and political views`}
+      title={`${props.celeb.name}'s religion and political views`}
       description={getHeadDescription(
-        p.celeb.name,
-        p.celeb.tags,
-        p.celeb.oldContent,
+        props.celeb.name,
+        props.celeb.tags,
+        props.celeb.oldContent,
       )}
       allowSearchEngines
-      pathname={p.celeb.slug}
+      pathname={props.celeb.slug}
     >
-      <TopSection />
+      <TopSection {...props} />
 
       <div className="mx-auto max-w-3xl">
-        {!isEmpty(p.celeb.facts.groups) && (
+        {!isEmpty(props.celeb.facts.groups) && (
           <div className="mb-5">
-            <Facts />
+            <Facts {...props} />
           </div>
         )}
 
-        {p.celeb.oldContent && <Md />}
+        {props.celeb.oldContent && <Md {...props} />}
 
-        <ContributeCta name={p.celeb.name} />
+        <ContributeCta name={props.celeb.name} />
       </div>
     </Page>
   );

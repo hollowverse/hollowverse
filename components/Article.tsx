@@ -2,21 +2,22 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Card } from '~/components/Card';
-import { useCelebContext } from '~/components/StaticPropsContextProvider';
 import s from '~/styles/styles.module.scss';
 import { c } from '~/lib/c';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
-export const Article = (p: {
-  setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  const context = useCelebContext();
-  const oldContent = context.celeb.oldContent!;
+export const Article = (
+  props: CelebPageProps & {
+    setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
+  },
+) => {
+  const oldContent = props.celeb.oldContent!;
 
   return (
     <article
       onClick={(e) => {
         if ((e.target as Element).classList.contains('source-citation')) {
-          p.setShowSources(true);
+          props.setShowSources(true);
         }
       }}
     >

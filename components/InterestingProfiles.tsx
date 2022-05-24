@@ -1,11 +1,10 @@
 import React from 'react';
 import { Card } from '~/components/Card';
 import { CelebGallery } from '~/components/CelebGallery';
-import { useCelebContext } from '~/components/StaticPropsContextProvider';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
-export const InterestingProfiles = () => {
-  const context = useCelebContext();
-  const relatedPeople = context.celeb.oldContent!.relatedPeople;
+export const InterestingProfiles = (props: CelebPageProps) => {
+  const relatedPeople = props.celeb.oldContent!.relatedPeople;
 
   return (
     <Card title="Other interesting profiles" disablePadding>

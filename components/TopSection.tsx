@@ -1,13 +1,12 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { TagCollection } from '~/components/TagCollection';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
-import { useCelebContext } from '~/components/StaticPropsContextProvider';
+import { TagCollection } from '~/components/TagCollection';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
-export const TopSection = () => {
-  const context = useCelebContext();
-  const picture = context.celeb.picture;
+export const TopSection = (props: CelebPageProps) => {
+  const picture = props.celeb.picture;
 
   return (
     <Card className="TOP-SECTION">
@@ -16,9 +15,9 @@ export const TopSection = () => {
           <div className="aspect-square h-[200px] w-[200px] rounded-md">
             <CelebImage
               className="rounded-md object-cover"
-              key={context.celeb.name + '-topSection-image'}
+              key={props.celeb.name + '-topSection-image'}
               picture={picture}
-              name={context.celeb.name}
+              name={props.celeb.name}
             />
           </div>
           <h1 className="mt-5 text-center">
@@ -26,14 +25,14 @@ export const TopSection = () => {
               Religion, politics, and ideas of
             </span>
             <span className="mt-2 block text-4xl font-extrabold tracking-tight">
-              {context.celeb.name}
+              {props.celeb.name}
             </span>
           </h1>
         </div>
 
-        {!isEmpty(context.celeb.tags) && (
+        {!isEmpty(props.celeb.tags) && (
           <div className="flex justify-center pt-5">
-            <TagCollection />
+            <TagCollection {...props} />
           </div>
         )}
       </div>

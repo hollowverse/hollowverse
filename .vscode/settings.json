@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["clsx", "Groq", "lqip", "nextjs", "sanityio", "vercel"],
+  "cSpell.words": [
+    "clsx",
+    "Groq",
+    "gtag",
+    "lqip",
+    "nextjs",
+    "sanityio",
+    "vercel"
+  ],
   "editor.formatOnSave": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "search.exclude": {

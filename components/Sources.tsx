@@ -1,35 +1,36 @@
 import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { useCelebContext } from '~/components/StaticPropsContextProvider';
 import clsx from 'clsx';
+import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
 
-export const Sources = (p: {
-  setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
-  showSources: boolean;
-}) => {
-  const context = useCelebContext();
-  const oldContent = context.celeb.oldContent!;
+export const Sources = (
+  props: CelebPageProps & {
+    setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
+    showSources: boolean;
+  },
+) => {
+  const oldContent = props.celeb.oldContent!;
 
   return (
     <div className="m-5">
       <button
         className={clsx(
           `flex min-w-[275px] items-center justify-center gap-1.5 rounded-lg border-2 border-gray-100 bg-black bg-opacity-5 px-3.5 py-2.5 font-medium transition hover:bg-opacity-10 focus:border-blue-300 active:bg-opacity-10`,
-          { 'bg-opacity-10': p.showSources },
+          { 'bg-opacity-10': props.showSources },
         )}
-        onClick={() => p.setShowSources(!p.showSources)}
+        onClick={() => props.setShowSources(!props.showSources)}
       >
-        {p.showSources ? 'Hide' : 'Show'} sources for the editorial
+        {props.showSources ? 'Hide' : 'Show'} sources for the editorial
         <FaChevronDown
           className={
-            p.showSources
+            props.showSources
               ? '-rotate-180 text-sm transition duration-300'
               : 'text-sm transition duration-300'
           }
         />
       </button>
 
-      {p.showSources && (
+      {props.showSources && (
         <ul className="mt-5 flex flex-col gap-2.5 font-medium text-blue-600">
           {oldContent.sources.map(({ sourceTitle, sourceUrl }) => {
             const encoded = encodeURIComponent(sourceUrl);
