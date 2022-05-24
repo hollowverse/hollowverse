@@ -1,6 +1,6 @@
 import { sanityClient } from '~/lib/sanityio';
-import { groqCeleb } from '~/lib/groqCelebFact';
-import { groqFact } from '~/lib/groqFact';
+import { factPageCelebGroq } from '~/lib/groq/factPageCeleb.groq';
+import { factPageGroq } from '~/lib/groq/factPage.groq';
 import { format, parse } from 'date-fns';
 
 export const getStaticProps = async ({
@@ -8,8 +8,10 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string; factId: string };
 }) => {
-  const celeb = await sanityClient.fetch(groqCeleb, { slug: params.celeb });
-  const fact = await sanityClient.fetch(groqFact, {
+  const celeb = await sanityClient.fetch(factPageCelebGroq, {
+    slug: params.celeb,
+  });
+  const fact = await sanityClient.fetch(factPageGroq, {
     factId: params.factId,
     celebId: celeb._id,
   });

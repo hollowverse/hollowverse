@@ -2,7 +2,7 @@ import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
-import { CelebGroqResponse, groqCeleb } from '~/lib/groq/celeb.groq';
+import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
 import {
   orderOfTopicsGroq,
   OrderOfTopicsGroqResponse,
@@ -18,7 +18,7 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  const celeb = (await sanityClient.fetch(groqCeleb, {
+  const celeb = (await sanityClient.fetch(celebPageGroq, {
     slug: params.celeb,
   })) as CelebGroqResponse | null;
 

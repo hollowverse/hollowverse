@@ -6,7 +6,7 @@ import {
   relatedPeopleGroq,
   RelatedPeopleGroqResponse,
 } from '~/lib/groq/relatedPeople.groq';
-import { CelebGroqResponse } from '~/lib/groq/celeb.groq';
+import { CelebGroqResponse } from '~/lib/groq/celebPage.groq';
 
 export type Summaries = {
   religion: string;
