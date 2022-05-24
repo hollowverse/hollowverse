@@ -11,7 +11,11 @@ import { getSourceHost } from '~/lib/pages/Celeb/Facts/factHelpers';
 import { useFact } from '~/lib/pages/Celeb/Facts/useFact';
 import { FactPageProps } from '~/lib/pages/utils/types';
 
-export const FactPage: NextPage<FactPageProps> = ({ celeb, fact, placeholderImage }) => {
+export const FactPage: NextPage<FactPageProps> = ({
+  celeb,
+  fact,
+  placeholderImage,
+}) => {
   const { ref, commentAuthor } = useFact(fact);
 
   const sourceHost = getSourceHost(fact.source);
@@ -19,13 +23,15 @@ export const FactPage: NextPage<FactPageProps> = ({ celeb, fact, placeholderImag
   return (
     <Page
       title={`${celeb.name}'s views on ${fact.topics[0].name}`}
-      description={`${celeb.name} on ${sourceHost}: ${fact.tags.map((t) => t.tag.name).join(', ')}`}
-      allowSearchEngines
+      description={`${celeb.name} on ${sourceHost}: ${fact.tags
+        .map((t) => t.tag.name)
+        .join(', ')}`}
+      allowSearchEngines={false}
       pathname={celeb.slug}
     >
       <div className="mx-auto max-w-3xl">
-        <div className="flex gap-5 items-center p-5">
-          <div className="relative w-20 aspect-square">
+        <div className="flex items-center gap-5 p-5">
+          <div className="relative aspect-square w-20">
             <CelebImage
               className="rounded-xl object-cover"
               layout="fill"
@@ -57,8 +63,7 @@ export const FactPage: NextPage<FactPageProps> = ({ celeb, fact, placeholderImag
             <div className="inline-flex items-center">
               <BiLink size={22} className="mr-2" />
               <p>
-                Source:
-                {' '}
+                Source:{' '}
                 <Link href={fact.source} passHref>
                   <a
                     rel="noreferrer"
