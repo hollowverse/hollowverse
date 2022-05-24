@@ -62,4 +62,5 @@ async function _getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   });
 }
 
-export const getFactSocialInfo = withSentry(_getFactSocialInfo);
+// export const getFactSocialInfo = withSentry(_getFactSocialInfo);
+export const getFactSocialInfo = _getFactSocialInfo;

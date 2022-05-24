@@ -20,4 +20,5 @@ async function _contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   return res.json({ revalidated: true });
 }
 
-export const contentChangeNotify = withSentry(_contentChangeNotify);
+// export const contentChangeNotify = withSentry(_contentChangeNotify);
+export const contentChangeNotify = _contentChangeNotify;
