@@ -1,9 +1,9 @@
 import React from 'react';
 import { sanityClient } from '~/lib/sanityio';
 
-export const TestBuildError = () => {
+export default function TestBuildError() {
   return <div>This will never render.</div>;
-};
+}
 
 export const getStaticProps = async () => {
   const celeb = await sanityClient.fetch(

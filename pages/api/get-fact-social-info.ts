@@ -32,10 +32,7 @@ const cors = initMiddleware(
 
 const topicIdRegExp = /https?:\/\/.+\/t\/.+\/(\d+)/i;
 
-export default async function _getFactSocialInfo(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
 
   const queryUrl = req.query.url;
@@ -65,5 +62,4 @@ export default async function _getFactSocialInfo(
   });
 }
 
-// export const getFactSocialInfo = withSentry(_getFactSocialInfo);
-// export const getFactSocialInfo = _getFactSocialInfo;
+export default withSentry(getFactSocialInfo);
