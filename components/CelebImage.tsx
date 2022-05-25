@@ -3,11 +3,11 @@ import Image, { ImageProps } from 'next/image';
 import { sanityImage } from '~/lib/sanityio';
 import { Optional } from 'utility-types';
 import { placeholderImage } from '~/lib/placeholderImage';
-import { PictureGroq } from '~/lib/groq/picture.partial.groq';
+import { Picture } from '~/lib/groq/picture.partial.groq';
 
 type Params = (
   | (Omit<ImageProps, 'src'> & {
-      picture: PictureGroq;
+      picture: Picture;
       src?: undefined;
     })
   | (Optional<ImageProps, 'src'> & { picture?: undefined })

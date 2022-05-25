@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { PictureGroq, pictureGroq } from '~/lib/groq/picture.partial.groq';
+import { Picture, pictureGroq } from '~/lib/groq/picture.partial.groq';
 
 export type CelebPartialGroq = {
   _id: string;
@@ -7,7 +7,7 @@ export type CelebPartialGroq = {
   pronoun: string;
   wikipediaId: string;
   slug: string;
-  picture: PictureGroq;
+  picture: Picture;
 };
 
 export const celebPartialGroq = groq`

@@ -1,10 +1,10 @@
 import groq from 'groq';
-import { PictureGroq, pictureGroq } from '~/lib/groq/picture.partial.groq';
+import { Picture, pictureGroq } from '~/lib/groq/picture.partial.groq';
 
 export type RelatedPeopleGroqResponse = {
   name: string;
   slug: string;
-  picture: PictureGroq;
+  picture: Picture;
 }[];
 
 export const relatedPeopleGroq = groq`

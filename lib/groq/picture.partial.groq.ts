@@ -1,6 +1,6 @@
 import groq from 'groq';
 
-export type PictureGroq = {
+export type Picture = {
   _id: string;
   metadata: {
     lqip: string;

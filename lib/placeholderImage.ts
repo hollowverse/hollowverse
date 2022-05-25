@@ -1,4 +1,4 @@
-import { PictureGroq } from '~/lib/groq/picture.partial.groq';
+import { Picture } from '~/lib/groq/picture.partial.groq';
 
 export const placeholderImage = {
   _id: 'image-98dc320a756a3f0f5dc40a59ced1194619719a60-225x225-png',
@@ -57,4 +57,4 @@ export const placeholderImage = {
       },
     },
   },
-} as any as PictureGroq;
+} as any as Picture;
