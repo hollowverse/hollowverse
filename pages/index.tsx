@@ -21,7 +21,7 @@ export default function Index(p: any) {
           <h1 className="pt-5 pb-5 text-2xl font-semibold">
             Top 100 celebrities
           </h1>
-          <CelebGallery celebGalleryItems={p.top100Celebs} />
+          <CelebGallery celebGalleryItems={p.top100Celebs} prefetch={false} />
         </div>
       </div>
     </Page>

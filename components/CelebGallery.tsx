@@ -7,6 +7,7 @@ export const CelebGallery: React.FC<{
   celebGalleryItems: NonNullable<
     CelebPageProps['celeb']['oldContent']
   >['relatedPeople'];
+  prefetch?: boolean;
 }> = (props) => {
   return (
     <div className="flex flex-wrap justify-center">
@@ -14,7 +15,12 @@ export const CelebGallery: React.FC<{
         const picture = celebData.picture;
 
         return (
-          <Link href={`/${celebData.slug}`} passHref key={celebData.slug}>
+          <Link
+            href={`/${celebData.slug}`}
+            passHref
+            key={celebData.slug}
+            prefetch={props.prefetch === false ? false : true}
+          >
             <a className="m-2 w-full min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl">
               <div className="relative w-full">
                 <CelebImage
