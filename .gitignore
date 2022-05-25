@@ -1,9 +1,9 @@
 node_modules
 out
 .next
-report/lighthouse
+misc/report/lighthouse
 test-results/
-playwright-report/
+misc/playwright-report
 .vercel
 .env*.local
 public/sitemap*
