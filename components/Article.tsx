@@ -4,7 +4,7 @@ import React from 'react';
 import { Card } from '~/components/Card';
 import s from '~/styles/styles.module.scss';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const Article = (
   props: CelebPageProps & {

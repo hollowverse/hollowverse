@@ -8,7 +8,7 @@ import { FactQuote, FactTags } from '~/components/Fact-new';
 import { useFact } from '~/components/hooks/useFact';
 import { Page } from '~/components/Page';
 import { getSourceHost } from '~/lib/factHelpers';
-import { FactPageProps } from '~/pages/[celeb]/fact/getStaticProps';
+import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 
 export default function FactPage({ celeb, fact }: FactPageProps) {
   const { ref, commentAuthor } = useFact(fact);
@@ -81,5 +81,5 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
   );
 }
 
-export { getStaticPaths } from '~/pages/[celeb]/fact/getStaticPaths';
-export { getStaticProps } from '~/pages/[celeb]/fact/getStaticProps';
+export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticProps } from '~/lib/getStatic/factPage.getStaticProps';

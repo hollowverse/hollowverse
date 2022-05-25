@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 import { Sources } from './Sources';

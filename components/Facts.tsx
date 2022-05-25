@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
-import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const Facts = (props: CelebPageProps) => {
   const { groups, topics } = props.celeb.facts!;

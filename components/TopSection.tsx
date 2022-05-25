@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { TagCollection } from '~/components/TagCollection';
-import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const TopSection = (props: CelebPageProps) => {
   const picture = props.celeb.picture;

@@ -6,7 +6,7 @@ import { Md } from '~/components/Md';
 import { TopSection } from '~/components/TopSection';
 import { getHeadDescription, useCeleb } from '~/lib/celebPageHelpers';
 import { Page } from '~/components/Page';
-import { CelebPageProps } from '~/pages/[celeb]/getStaticProps';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
   useCeleb(props.celeb.name, props.celeb.facts.groups);
@@ -39,5 +39,5 @@ export default function Celeb(props: CelebPageProps) {
   );
 }
 
-export { getStaticPaths } from '~/pages/[celeb]/getStaticPaths';
-export { getStaticProps } from '~/pages/[celeb]/getStaticProps';
+export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
