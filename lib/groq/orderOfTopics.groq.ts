@@ -1,6 +1,6 @@
 import groq from 'groq';
 
-export type OrderOfTopicsGroqResponse = string[];
+export type OrderOfTopics = string[];
 
 export const orderOfTopicsGroq = groq`
 *[_type == 'orderOfTopics'][0]{

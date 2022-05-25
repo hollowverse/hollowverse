@@ -5,7 +5,7 @@ import { getTags } from '~/lib/getTags';
 import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
 import {
   orderOfTopicsGroq,
-  OrderOfTopicsGroqResponse,
+  OrderOfTopics,
 } from '~/lib/groq/orderOfTopics.groq';
 import { sanityClient } from '~/lib/sanityio';
 
@@ -34,7 +34,7 @@ export const getStaticProps = async ({
     oldContent ? await getParsedOldContent(oldContent) : null,
   ]);
 
-  const transformedFacts = factsDataTransform(facts, orderOfTopics);
+  const transformedFacts = factsDataTransform(facts, OrderOfTopics
   const tags = getTags(transformedFacts, orderOfTopics);
 
   return {
