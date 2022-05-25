@@ -1,11 +1,8 @@
 import groq from 'groq';
-import {
-  CelebPartialGroq,
-  celebPartialGroq,
-} from '~/lib/groq/celeb.partial.groq';
+import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.partial.groq';
 import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 
-export type CelebGroqResponse = CelebPartialGroq & {
+export type CelebGroqResponse = Celeb & {
   oldContent: string;
   facts: Fact[];
 };

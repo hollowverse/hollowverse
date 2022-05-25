@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { Picture, pictureGroq } from '~/lib/groq/picture.partial.groq';
 
-export type CelebPartialGroq = {
+export type Celeb = {
   _id: string;
   name: string;
   pronoun: string;
