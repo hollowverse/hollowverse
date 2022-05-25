@@ -1,17 +1,16 @@
-import React from 'react';
-import { NextPage } from 'next';
 import Link from 'next/link';
+import React from 'react';
 import { BiCalendar, BiLink, BiUserCircle } from 'react-icons/bi';
 import { Card } from '~/components/Card';
-import { Page } from '~/components/Page';
-import { FactQuote, FactTags } from '~/components/Fact-new';
-import { DiscourseThread } from '~/components/DiscourseThread';
 import { CelebImage } from '~/components/CelebImage';
-import { getSourceHost } from '~/lib/factHelpers';
+import { DiscourseThread } from '~/components/DiscourseThread';
+import { FactQuote, FactTags } from '~/components/Fact-new';
 import { useFact } from '~/components/hooks/useFact';
+import { Page } from '~/components/Page';
+import { getSourceHost } from '~/lib/factHelpers';
 import { FactPageProps } from '~/pages/[celeb]/fact/getStaticProps';
 
-export const FactPage: NextPage<FactPageProps> = ({ celeb, fact }) => {
+export default function FactPage({ celeb, fact }: FactPageProps) {
   const { ref, commentAuthor } = useFact(fact);
 
   const sourceHost = getSourceHost(fact.source);
@@ -80,7 +79,7 @@ export const FactPage: NextPage<FactPageProps> = ({ celeb, fact }) => {
       </div>
     </Page>
   );
-};
+}
 
 export { getStaticPaths } from '~/pages/[celeb]/fact/getStaticPaths';
 export { getStaticProps } from '~/pages/[celeb]/fact/getStaticProps';

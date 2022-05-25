@@ -4,6 +4,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextJsConfig = {
+  pageExtensions: ['tsx'],
+
   reactStrictMode: true,
 
   images: {

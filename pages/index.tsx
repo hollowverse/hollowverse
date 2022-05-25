@@ -7,7 +7,7 @@ import { top100CelebSlugs as _top100CelebSlugs } from '../lib/top100CelebSlugs';
 
 const top100CelebSlugs = uniq(_top100CelebSlugs);
 
-export default function (p: any) {
+export default function Index(p: any) {
   return (
     <Page
       title="The religions and political views of celebrities"
