@@ -42,7 +42,7 @@ export default function Search() {
 
             <DebounceInput
               placeholder="Search Hollowverse"
-              className="textbox-border w-full px-3 pb-1 pt-1.5 text-[1rem]"
+              className="textbox-border w-full px-3 pb-1 pt-1.5 text-[1rem] shadow-inner"
               value={hook.query}
               inputRef={hook.inputRef}
               minLength={2}

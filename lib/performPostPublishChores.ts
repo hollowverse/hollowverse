@@ -2,12 +2,9 @@ import { countBy, find, isEmpty, uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { badgeData } from '~/lib/badgeDefinitions';
 import { discourseClientApi } from '~/lib/discourseClientApi';
+import { getForumTopicId } from '~/lib/getForumTopicId';
 import { ordinal } from '~/lib/ordinal';
 import { pluralize } from '~/lib/pluralize';
-
-function getTopicId(forumLink: string) {
-  return forumLink.substring(forumLink.lastIndexOf('/') + 1);
-}
 
 function getTopic(topicId: string) {
   return discourseClientApi(`t/-/${topicId}.json`);
@@ -120,7 +117,12 @@ export async function performPostPublishChores(
   forumLink: string,
   slug: string,
 ) {
-  const topicId = getTopicId(forumLink);
+  const topicId = getForumTopicId(forumLink);
+
+  if (!topicId) {
+    throw new Error('Topic ID not found for link: ' + forumLink);
+  }
+
   const topic = await getTopic(topicId);
 
   await addAcceptedTag(topic);

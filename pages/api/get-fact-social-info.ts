@@ -4,6 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { discourseClientApi } from '~/lib/discourseClientApi';
 import Cors from 'cors';
 import { initMiddleware } from '~/lib/initMiddleware';
+import { getForumTopicId } from '~/lib/getForumTopicId';
 
 const vercelTempDomain = '-hollowverse.vercel.app';
 
@@ -30,8 +31,6 @@ const cors = initMiddleware(
   }),
 );
 
-const topicIdRegExp = /https?:\/\/.+\/t\/.+\/(\d+)/i;
-
 async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
 
@@ -43,8 +42,7 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
     );
   }
 
-  const regexpResults = queryUrl.match(topicIdRegExp);
-  const topicId = regexpResults?.[1];
+  const topicId = getForumTopicId(queryUrl);
 
   if (!topicId) {
     throw new Error(`Cant find post ID in: ${queryUrl}`);
@@ -57,8 +55,8 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   }
 
   return res.json({
-    reply_count: topic.reply_count,
-    username: topic.details.created_by.username,
+    commentCount: topic.posts_count - 1,
+    contributorUsername: topic.details.created_by.username,
   });
 }
 

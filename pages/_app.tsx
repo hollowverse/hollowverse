@@ -1,10 +1,10 @@
-import '~/styles/global.css';
-
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
 import { gaPageView, GA_TRACKING_ID } from '~/lib/gtag';
+import { PageTransitionSpinner } from '~/components/PageTransitionSpinner';
+import '~/styles/global.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-
+      <PageTransitionSpinner />
       <Component {...pageProps} />
     </>
   );

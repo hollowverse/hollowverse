@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import React from 'react';
 import { BiCalendar, BiLink, BiUserCircle } from 'react-icons/bi';
+import { FiMessageSquare } from 'react-icons/fi';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { DiscourseThread } from '~/components/DiscourseThread';
-import { FactQuote, FactTags } from '~/components/Fact-new';
+import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
 import { Page } from '~/components/Page';
-import { getSourceHost } from '~/lib/factHelpers';
+import { Spinner } from '~/components/Spinner';
+import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 
 export default function FactPage({ celeb, fact }: FactPageProps) {
-  const { ref, commentAuthor } = useFact(fact);
+  const { ref, contributorUsername, commentCount } = useFact(fact);
 
   const sourceHost = getSourceHost(fact.source);
 
@@ -22,49 +24,52 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
         .map((t) => t.tag.name)
         .join(', ')}`}
       allowSearchEngines={false}
-      pathname={celeb.slug}
+      pathname={`${celeb.slug}/fact/${fact._id}`}
     >
-      <div className="mx-auto max-w-3xl">
-        <div className="flex items-center gap-5 p-5">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
+        <div className="mx-5 mt-5 flex items-center gap-5">
           <div className="relative aspect-square w-20">
             <CelebImage
               className="rounded-xl object-cover"
-              layout="fill"
               picture={celeb.picture}
               name={celeb.name}
             />
           </div>
           <div>
-            <h1 className="text-xl font-bold">{celeb.name}</h1>
-            <h3 className="text-neutral-500">on {sourceHost}</h3>
+            <Link href={`/${celeb.slug}`} passHref>
+              <a>
+                <h1 className="text-xl font-bold">{celeb.name}</h1>
+              </a>
+            </Link>
+            <p className="text-neutral-500">on {sourceHost}</p>
           </div>
         </div>
+
         <Card disablePadding title={fact.topics[0].name}>
-          <div className="flex flex-col gap-5 p-5">
-            <FactTags tags={fact.tags} date={fact.date} />
-
-            <FactQuote fact={fact} name={celeb.name} />
-
-            <hr />
-
+          <Fact value={fact} celebName={celeb.name} showFooter={false} />
+          <hr />
+          <div className="flex flex-col gap-2 p-5 text-sm text-gray-500">
             <div className="inline-flex items-center">
               <BiCalendar size={22} className="mr-2" />
-              <p>This happened on {fact.date}</p>
+              <p>Happened on {fact.date}</p>
             </div>
             <div className="inline-flex items-center">
               <BiUserCircle size={22} className="mr-2" />
-              <p ref={ref}>Contributed by @{commentAuthor}</p>
+              <p ref={ref}>
+                Contributed by{' '}
+                <Link
+                  href={`https://forum.hollowverse.com/u/${contributorUsername}`}
+                >
+                  <a className="h-gray-link">@{contributorUsername}</a>
+                </Link>
+              </p>
             </div>
             <div className="inline-flex items-center">
               <BiLink size={22} className="mr-2" />
               <p>
                 Source:{' '}
                 <Link href={fact.source} passHref>
-                  <a
-                    rel="noreferrer"
-                    target="_blank"
-                    className="select-none gap-1 transition focus:border-blue-300"
-                  >
+                  <a rel="noreferrer" target="_blank" className="h-gray-link">
                     {sourceHost}
                   </a>
                 </Link>
@@ -74,7 +79,29 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
         </Card>
 
         <Card title="Comments">
-          <DiscourseThread threadUrl={fact.forumLink} />
+          <div>
+            {(commentCount === null && (
+              <div className="w-ful flex justify-center">
+                <Spinner />
+              </div>
+            )) ||
+              (commentCount !== null && commentCount > 0 ? (
+                <DiscourseThread threadUrl={fact.forumLink} />
+              ) : (
+                <div className="flex w-full flex-col gap-5 text-base">
+                  <p>
+                    What are your thoughts on this? Share them in the comments
+                    below.
+                  </p>
+
+                  <Link href={`${fact.forumLink}#reply`}>
+                    <a className="textbox-border flex h-20 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-gray-100 hover:text-gray-500">
+                      <FiMessageSquare /> Start discussion
+                    </a>
+                  </Link>
+                </div>
+              ))}
+          </div>
         </Card>
       </div>
     </Page>

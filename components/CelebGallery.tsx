@@ -19,7 +19,8 @@ export const CelebGallery: React.FC<{
             href={`/${celebData.slug}`}
             passHref
             key={celebData.slug}
-            prefetch={props.prefetch === false ? false : true}
+            /* Next.js `prefetches` by default and complains when you pass `true`, so we pass `undefined`. */
+            prefetch={props.prefetch === false ? false : undefined}
           >
             <a className="m-2 w-full min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl">
               <div className="relative w-full">
