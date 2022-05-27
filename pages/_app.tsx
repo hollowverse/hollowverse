@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React, { useEffect } from 'react';
 import { gaPageView, GA_TRACKING_ID } from '~/lib/gtag';
-import { PageTransitionSpinner } from '~/pages/PageTransitionSpinner';
+import { PageTransitionSpinner } from '~/components/PageTransitionSpinner';
 import '~/styles/global.css';
 
 export default function App({ Component, pageProps }: AppProps) {
