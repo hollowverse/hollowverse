@@ -24,12 +24,8 @@ export default function Celeb(props: CelebPageProps) {
     >
       <TopSection {...props} />
 
-      <div className="mx-auto max-w-3xl">
-        {!isEmpty(props.celeb.facts.groups) && (
-          <div className="mb-5">
-            <Facts {...props} />
-          </div>
-        )}
+      <div className="mx-auto mt-5 flex max-w-3xl flex-col gap-5">
+        {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}
 

@@ -7,7 +7,7 @@ export const Facts = (props: CelebPageProps) => {
   const { groups, topics } = props.celeb.facts!;
 
   return (
-    <div className="gap-5">
+    <div className="FACTS-CONTAINER mt-5 flex flex-col gap-5">
       {topics.map((topic, i) => {
         const factGroup = groups[topic];
 
@@ -16,7 +16,11 @@ export const Facts = (props: CelebPageProps) => {
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
-                  <Fact value={fact} celebName={props.celeb.name} />
+                  <Fact
+                    value={fact}
+                    celebName={props.celeb.name}
+                    linkSlug={props.celeb.slug}
+                  />
                   {innerI !== factGroup.length - 1 && (
                     <div className="border-b" />
                   )}

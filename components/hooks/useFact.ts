@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Fact } from '~/lib/groq/fact.partial.groq';
 
-export function useFact(value: Fact) {
+export function useFact(fact: Fact) {
   const { ref, inView } = useInView({ triggerOnce: true });
-  const [commentCount, setCommentCount] = useState(0);
-  const [commentAuthor, setCommentAuthor] = useState('');
+  const [commentCount, setCommentCount] = useState<number | null>(null);
+  const [contributorUsername, setContributor] = useState<string | null>(null);
 
   const request = () => {
-    fetch(`api/get-fact-social-info?url=${encodeURIComponent(value.forumLink)}`)
+    fetch(`/api/get-fact-social-info?url=${encodeURIComponent(fact.forumLink)}`)
       .then((res) => res.json())
       .then((data) => {
-        setCommentCount(data.reply_count);
-        setCommentAuthor(data.username);
+        setCommentCount(data.commentCount);
+        setContributor(data.contributorUsername);
       });
   };
 
@@ -27,6 +27,6 @@ export function useFact(value: Fact) {
     ref,
     inView,
     commentCount,
-    commentAuthor,
+    contributorUsername,
   };
 }

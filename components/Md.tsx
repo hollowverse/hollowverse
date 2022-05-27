@@ -9,7 +9,7 @@ export const Md = (props: CelebPageProps) => {
   const oldContent = props.celeb.oldContent!;
 
   return (
-    <section>
+    <section className="flex flex-col gap-5">
       {oldContent.article && (
         <Article setShowSources={setShowSources} {...props} />
       )}

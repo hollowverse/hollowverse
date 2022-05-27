@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { getForumTopicId } from '~/lib/getForumTopicId';
 
 interface DiscourseThreadProps {
   threadUrl: string;
@@ -8,7 +9,7 @@ declare global {
   interface Window {
     DiscourseEmbed: {
       discourseUrl?: string;
-      discourseEmbedUrl?: string;
+      topicId?: string;
     };
   }
 }
@@ -19,7 +20,7 @@ export const DiscourseThread: React.FC<DiscourseThreadProps> = ({
   useEffect(() => {
     window.DiscourseEmbed = {
       discourseUrl: 'https://forum.hollowverse.com/',
-      discourseEmbedUrl: threadUrl,
+      topicId: getForumTopicId(threadUrl),
     };
     const d = document.createElement('script');
     d.type = 'text/javascript';

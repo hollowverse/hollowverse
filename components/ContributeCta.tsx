@@ -37,8 +37,8 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
 
   return (
     <Card title="Contribute to Hollowverse">
-      <p className="text-base">
-        {params.cta || (
+      <div className="text-base">
+        {<p>params.cta</p> || (
           <div className="flex flex-col gap-2 text-base">
             <p>Hey! 👋</p>
             <p>
@@ -71,7 +71,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
             </p>
           </div>
         )}
-      </p>
+      </div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -89,7 +89,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
             placeholder={`On twitter ${params.name} posted...In an interview ${params.name} said...${params.name} threw a fund raiser for X politician...etc`}
             id="contribute-body"
             rows={3}
-            className="textbox-border block w-full p-2 text-base shadow-sm"
+            className="textbox-border block w-full p-2 text-base shadow-inner"
             {...register('body', {
               required: {
                 message: 'Can you write something first?',
@@ -115,7 +115,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
           </label>
 
           <input
-            className="textbox-border block w-full p-2 text-base shadow-sm"
+            className="textbox-border block w-full p-2 text-base shadow-inner"
             placeholder={`instagram.com, cnbc.com, youtube.com, twitter.com, etc`}
             type="url"
             id="contribute-url"
@@ -146,7 +146,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
           </label>
 
           <input
-            className="textbox-border block w-full p-2 text-base shadow-sm"
+            className="textbox-border block w-full p-2 text-base shadow-inner"
             placeholder="Democrat, Republican, Supports Biden, Pro Small Government, etc"
             type="text"
             id="contribute-tags"

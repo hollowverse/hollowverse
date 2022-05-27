@@ -15,6 +15,7 @@ export const Article = (
 
   return (
     <article
+      className="flex flex-col gap-5"
       onClick={(e) => {
         if ((e.target as Element).classList.contains('source-citation')) {
           props.setShowSources(true);

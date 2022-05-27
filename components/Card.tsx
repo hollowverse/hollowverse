@@ -12,9 +12,7 @@ export function Card(_params: {
   const params = defaults({}, _params, { disablePadding: false });
 
   return (
-    <div
-      className={clsx('mb-5 border-b bg-white lg:border-x', params.className)}
-    >
+    <div className={clsx('border-b bg-white lg:border-x', params.className)}>
       {params.title && (
         <>
           <LovelyTopBorder />
