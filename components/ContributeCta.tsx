@@ -11,7 +11,7 @@ type Inputs = {
 };
 
 export const getContributeCtaLink = (name: string, data: Inputs) => {
-  const title = `[${name}] ${data.body.substring(0, 20)}`;
+  const title = `[${name}] ${data.body.substring(0, 80)}`;
   const encodedTitle = encodeURIComponent(title);
   const encodedBody = encodeURIComponent(`${data.body}
 
