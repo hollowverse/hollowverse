@@ -52,7 +52,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto mt-5 w-full max-w-3xl">
         <ContributeCta
           name={params.name}
           cta={
