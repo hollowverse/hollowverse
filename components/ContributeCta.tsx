@@ -38,7 +38,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
   return (
     <Card title="Contribute to Hollowverse">
       <div className="text-base">
-        {<p>params.cta</p> || (
+        {params.cta || (
           <div className="flex flex-col gap-2 text-base">
             <p>Hey! 👋</p>
             <p>
