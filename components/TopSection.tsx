@@ -21,9 +21,9 @@ export const TopSection = (props: CelebPageProps) => {
             />
           </div>
           <h1 className="mt-5 text-center">
-            <span className="text-base font-normal tracking-wide text-neutral-500">
-              Religion, politics, and ideas of
-            </span>
+            <span className="text-lg font-normal tracking-wide text-neutral-500">
+              The Views of
+            </span>{' '}
             <span className="mt-2 block text-4xl font-extrabold tracking-tight">
               {props.celeb.name}
             </span>
