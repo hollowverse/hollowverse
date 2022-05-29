@@ -42,10 +42,9 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
             <span className="mt-2 block text-4xl font-extrabold tracking-tight">
               {params.name}
             </span>
-
             {params.description && (
               <span className="text-base font-normal tracking-wide text-neutral-500">
-                {params.description}
+                {' ' + params.description}
               </span>
             )}
           </h1>
