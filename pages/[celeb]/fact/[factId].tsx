@@ -7,6 +7,7 @@ import { CelebImage } from '~/components/CelebImage';
 import { DiscourseThread } from '~/components/DiscourseThread';
 import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
+import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { getSourceHost } from '~/lib/getSourceHost';
@@ -14,7 +15,6 @@ import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 
 export default function FactPage({ celeb, fact }: FactPageProps) {
   const { ref, contributorUsername, commentCount } = useFact(fact);
-
   const sourceHost = getSourceHost(fact.source);
 
   return (
@@ -38,14 +38,17 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
           <div>
             <Link href={`/${celeb.slug}`} passHref>
               <a>
-                <h1 className="text-xl font-bold">{celeb.name}</h1>
+                <h1 className="text-2xl font-bold">{celeb.name}</h1>
               </a>
             </Link>
-            <p className="text-neutral-500">on {sourceHost}</p>
+            <h2 className="text-xl text-neutral-500">
+              on {fact.topics[0].name}
+            </h2>
           </div>
         </div>
 
-        <Card disablePadding title={fact.topics[0].name}>
+        <Card disablePadding>
+          <LovelyTopBorder />
           <Fact value={fact} celebName={celeb.name} showFooter={false} />
           <hr />
           <div className="flex flex-col gap-2 p-5 text-sm text-gray-500">
