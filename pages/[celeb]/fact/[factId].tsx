@@ -49,7 +49,13 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
 
         <Card disablePadding>
           <LovelyTopBorder />
-          <Fact value={fact} celebName={celeb.name} showFooter={false} />
+          <Fact
+            inViewRef={ref}
+            commentCount={commentCount}
+            value={fact}
+            celebName={celeb.name}
+            showFooter={false}
+          />
           <hr />
           <div className="flex flex-col gap-2 p-5 text-sm text-gray-500">
             <div className="inline-flex items-center">
