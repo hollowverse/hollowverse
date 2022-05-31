@@ -4,6 +4,7 @@ export type Topic = { name: string };
 
 export type Tag = {
   isLowConfidence: boolean | null;
+  isBackground: boolean | null;
   tag: {
     name: string;
     topic: {
@@ -42,6 +43,7 @@ source,
 type,
 tags[]{
   isLowConfidence,
+  isBackground,
   tag->{
     name,
     topic->{name}

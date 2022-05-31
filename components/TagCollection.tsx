@@ -11,6 +11,7 @@ export const TagCollection = (props: CelebPageProps) => {
       {tags.map((t, val) => (
         <Tag key={val}>
           {t.tag.name}
+          {t.isBackground && ' Background'}
           {t.isLowConfidence && (
             <FaQuestionCircle className="self-center text-xs text-neutral-400" />
           )}
