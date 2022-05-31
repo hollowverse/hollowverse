@@ -1,6 +1,4 @@
-import pThrottle from 'p-throttle';
-
-async function _getFactSocialInfo(forumLink: string) {
+export async function getFactSocialInfo(forumLink: string) {
   const res = await fetch(
     `/api/get-fact-social-info?url=${encodeURIComponent(forumLink)}`,
   );
@@ -11,7 +9,3 @@ async function _getFactSocialInfo(forumLink: string) {
     contributorUsername: data.contributorUsername,
   };
 }
-
-export const getFactSocialInfo = pThrottle({ limit: 1, interval: 3000 })(
-  _getFactSocialInfo,
-);

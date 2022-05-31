@@ -2,6 +2,7 @@ import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { FactWithHook } from '~/components/FactWithHook';
 
 export const Facts = (props: CelebPageProps) => {
   const { groups, topics } = props.celeb.facts!;
@@ -16,8 +17,8 @@ export const Facts = (props: CelebPageProps) => {
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
-                  <Fact
-                    value={fact}
+                  <FactWithHook
+                    fact={fact}
                     celebName={props.celeb.name}
                     linkSlug={props.celeb.slug}
                   />

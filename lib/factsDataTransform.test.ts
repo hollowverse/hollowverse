@@ -31,6 +31,7 @@ const commonRawFactsProps: Fact = {
   quote: 'string',
   tags: [
     {
+      isBackground: null,
       isLowConfidence: null,
       tag: {
         name: 'string',
