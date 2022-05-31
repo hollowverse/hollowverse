@@ -28,6 +28,7 @@ export const Fact: React.FC<{
                 <span className="flex items-center gap-1 text-neutral-500">
                   <BiHash /> {t.isLowConfidence && 'Possibly '}
                   {t.tag.name}
+                  {t.isBackground && ' Background'}
                 </span>
               </Tag>
             );
