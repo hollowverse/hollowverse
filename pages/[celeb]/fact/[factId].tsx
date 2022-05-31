@@ -50,7 +50,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
         <Card disablePadding>
           <LovelyTopBorder />
           <Fact
-            ref={ref}
+            inViewRef={ref}
             commentCount={commentCount}
             value={fact}
             celebName={celeb.name}

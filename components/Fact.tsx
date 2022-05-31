@@ -16,13 +16,13 @@ export const Fact: React.FC<{
   celebName: string;
   showFooter?: boolean;
   linkSlug?: Celeb['slug'];
-  ref: HookReturnType['ref'];
+  inViewRef: HookReturnType['ref'];
   commentCount: HookReturnType['commentCount'];
 }> = (props) => {
   const showFooter = defaultTo(props.showFooter, true);
 
   return (
-    <section className="relative m-5 flex flex-col gap-5" ref={props.ref}>
+    <section className="relative m-5 flex flex-col gap-5" ref={props.inViewRef}>
       <div className="pointer-events-none z-10 flex flex-col gap-5">
         <div className="flex flex-wrap items-center gap-2.5">
           {props.value.tags.map((t) => {

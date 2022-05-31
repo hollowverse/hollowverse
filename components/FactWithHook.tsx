@@ -14,7 +14,7 @@ export function FactWithHook(props: {
   return (
     <Fact
       celebName={props.celebName}
-      ref={ref}
+      inViewRef={ref}
       linkSlug={props.linkSlug}
       commentCount={commentCount}
       value={props.fact}
