@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { getFactSocialInfo } from '~/lib/getFactSocialInfo';
 import { Fact } from '~/lib/groq/fact.partial.groq';
 
 export function useFact(fact: Fact) {
@@ -7,14 +8,12 @@ export function useFact(fact: Fact) {
   const [commentCount, setCommentCount] = useState<number | null>(null);
   const [contributorUsername, setContributor] = useState<string | null>(null);
 
-  const request = () => {
-    fetch(`/api/get-fact-social-info?url=${encodeURIComponent(fact.forumLink)}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCommentCount(data.commentCount);
-        setContributor(data.contributorUsername);
-      });
-  };
+  async function request() {
+    const data = await getFactSocialInfo(fact.forumLink);
+
+    setCommentCount(data.commentCount);
+    setContributor(data.contributorUsername);
+  }
 
   useEffect(() => {
     if (inView) {
