@@ -1,9 +1,9 @@
 import { isEmpty } from 'lodash-es';
 import { useEffect } from 'react';
 import { GroupedFacts } from '~/lib/factsDataTransform';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { Tag } from '~/lib/groq/fact.partial.groq';
 import { logMissingFacts } from '~/lib/logMissingCeleb';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export function useCeleb(name: string, factGroups: GroupedFacts['groups']) {
   useEffect(() => {

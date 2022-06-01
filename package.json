@@ -22,6 +22,7 @@
     "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999"
   },
   "dependencies": {
+    "@logtail/js": "^0.1.12",
     "@next/bundle-analyzer": "^12.1.2",
     "@playwright/test": "^1.21.0",
     "@sanity/client": "^3.2.2",
