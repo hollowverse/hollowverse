@@ -1,4 +1,5 @@
-import { Browser as BrowserLogger, Node as NodeLogger } from '@logtail/js';
+import { Logtail as BrowserLogger } from '@logtail/browser';
+import { Logtail as NodeLogger } from '@logtail/node';
 import { determineServerOrClient } from '~/lib/determineServerOrClient';
 import { isArray } from 'lodash-es';
 import { getEnvironment } from '~/lib/getNodeEnv';
@@ -10,7 +11,7 @@ interface ILogtailLog {
   [key: string]: any;
 }
 
-const sourceToken = 'pfNU5f3ybtYG51PNYR3an6Lb';
+const sourceToken = 'PxGcePL5nLz1mXY8yvqKEf9P';
 
 const browserLogger = new BrowserLogger(sourceToken);
 const nodeLogger = new NodeLogger(sourceToken);

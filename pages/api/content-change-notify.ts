@@ -1,6 +1,7 @@
-import { withSentry } from '@sentry/nextjs';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { isValidRequest } from '@sanity/webhook';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
+import { log } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
@@ -10,14 +11,17 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
 
   const { body } = req;
 
-  await res.unstable_revalidate(`/${body.slug}`);
-  await res.unstable_revalidate(`/~latest`);
+  log().info('content-change-notified', { body });
 
-  if (body.operation === 'create') {
-    await performPostPublishChores(body.forumLink, body.slug);
-  }
+  await Promise.all([
+    res.unstable_revalidate(`/${body.slug}`),
+    res.unstable_revalidate(`/~latest`),
+    body.operation === 'create'
+      ? performPostPublishChores(body.forumLink, body.slug)
+      : null,
+  ]);
 
   return res.json({ revalidated: true });
 }
 
-export default withSentry(contentChangeNotify);
+export default apiHandlerWithErrorLogging(contentChangeNotify);
