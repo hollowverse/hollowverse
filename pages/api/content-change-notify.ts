@@ -11,7 +11,7 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
 
   const { body } = req;
 
-  log().info('content-change-notified', { body });
+  log().info('content-change-notify', { body });
 
   await Promise.all([
     res.unstable_revalidate(`/${body.slug}`),

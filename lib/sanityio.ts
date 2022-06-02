@@ -26,7 +26,6 @@ export const sanityClient = {
   ) => {
     log().info('Sanity fetch', {
       id,
-      query,
       params: params || null,
     });
 

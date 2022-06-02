@@ -1,4 +1,5 @@
 import { defaults } from 'lodash-es';
+import { hFetch } from '~/lib/hFetch';
 
 const apiKey = 'AIzaSyDiyeA6ZhuHWZd7LNgyI66PS1QEIx0DOQI';
 
@@ -30,7 +31,7 @@ export async function knowledgeGraphClient(
     ? `query=${encodeURIComponent(params.query)}`
     : `ids=${encodeURIComponent(params.id!)}`;
 
-  const response = await fetch(
+  const response = await hFetch(
     `https://kgsearch.googleapis.com/v1/entities:search?key=${params.apiKey}&limit=${params.limit}&types=Person&prefix=true&${append}`,
   );
   const results = await response.json();

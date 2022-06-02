@@ -5,6 +5,7 @@ import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { discourseClientApi } from '~/lib/discourseClientApi';
 import { getForumTopicId } from '~/lib/getForumTopicId';
 import { initMiddleware } from '~/lib/initMiddleware';
+import { log } from '~/lib/log';
 
 const vercelTempDomain = '-hollowverse.vercel.app';
 
@@ -35,6 +36,8 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
 
   const queryUrl = req.query.url;
+
+  log().info('get-fact-social-info', { queryUrl: queryUrl as any });
 
   if (!queryUrl || !isString(queryUrl)) {
     throw new Error(
