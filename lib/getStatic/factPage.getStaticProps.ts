@@ -16,16 +16,20 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string; factId: string };
 }) => {
-  const celeb = (await sanityClient.fetch(factPageCelebGroq, {
-    slug: params.celeb,
-  })) as FactPageCelebGroq | null;
+  const celeb = (await sanityClient.fetch(
+    'fact-page-celeb-data',
+    factPageCelebGroq,
+    {
+      slug: params.celeb,
+    },
+  )) as FactPageCelebGroq | null;
 
   if (!celeb) {
     return {
       notFound: true,
     };
   }
-  const fact = (await sanityClient.fetch(factPageGroq, {
+  const fact = (await sanityClient.fetch('fact-page-fact-data', factPageGroq, {
     factId: params.factId,
     celebId: celeb._id,
   })) as FactPageGroq | null;

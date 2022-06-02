@@ -28,6 +28,7 @@ export default function Index(p: any) {
 
 export const getStaticProps = async () => {
   const top100Celebs = (await sanityClient.fetch(
+    'homepage-top-100-celebs',
     `*[_type == 'celeb' && slug.current in $slugs]{
       name,
       'slug': slug.current,

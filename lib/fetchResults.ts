@@ -19,6 +19,7 @@ type HvResult = { knowledgeGraphId: string; slug: string };
 
 async function hvSearch(cleanedKgResults: KnowledgeGraphCelebResult[]) {
   return (await sanityClient.fetch(
+    'hv-search',
     `*[_type == 'celeb' && knowledgeGraphId in $cleanedKgResults]{knowledgeGraphId, 'slug': slug.current}`,
     { cleanedKgResults: cleanedKgResults.map((i) => i.result['@id']) },
   )) as HvResult[];

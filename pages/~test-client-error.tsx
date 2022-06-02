@@ -1,4 +1,5 @@
 import React from 'react';
+import { hFetch } from '~/lib/hFetch';
 
 export default function TestClientErrors() {
   return (
@@ -18,7 +19,7 @@ export default function TestClientErrors() {
         <button
           type="button"
           onClick={async () => {
-            const res = await fetch('https://example.com');
+            const res = await hFetch('https://example.com');
             const val = res.json() as any;
 
             console.log(val.hello.there);

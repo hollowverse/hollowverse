@@ -1,11 +1,11 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { Facts } from '~/components/Facts';
 import { ContributeCta } from '~/components/ContributeCta';
+import { Facts } from '~/components/Facts';
 import { Md } from '~/components/Md';
+import { Page } from '~/components/Page';
 import { TopSection } from '~/components/TopSection';
 import { getHeadDescription, useCeleb } from '~/lib/celebPageHelpers';
-import { Page } from '~/components/Page';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
@@ -35,5 +35,5 @@ export default function Celeb(props: CelebPageProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
 export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
+export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';

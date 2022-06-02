@@ -31,9 +31,13 @@ export const getParsedOldContent = async (
     content: string;
   };
 
-  const relatedPeople = (await sanityClient.fetch(relatedPeopleGroq, {
-    slugs: oldContentFrontMatter.relatedPeople,
-  })) as RelatedPeopleGroqResponse;
+  const relatedPeople = (await sanityClient.fetch(
+    'old-content-related-people',
+    relatedPeopleGroq,
+    {
+      slugs: oldContentFrontMatter.relatedPeople,
+    },
+  )) as RelatedPeopleGroqResponse;
 
   const parsedOldContent = {
     ...oldContentFrontMatter,

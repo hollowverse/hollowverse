@@ -1,10 +1,11 @@
-import { withSentry } from '@sentry/nextjs';
+import Cors from 'cors';
 import { endsWith, isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { discourseClientApi } from '~/lib/discourseClientApi';
-import Cors from 'cors';
-import { initMiddleware } from '~/lib/initMiddleware';
 import { getForumTopicId } from '~/lib/getForumTopicId';
+import { initMiddleware } from '~/lib/initMiddleware';
+import { log } from '~/lib/log';
 
 const vercelTempDomain = '-hollowverse.vercel.app';
 
@@ -36,6 +37,8 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
 
   const queryUrl = req.query.url;
 
+  log().info('get-fact-social-info', { queryUrl: queryUrl as any });
+
   if (!queryUrl || !isString(queryUrl)) {
     throw new Error(
       `URL query param required. Received ${JSON.stringify(queryUrl)}`,
@@ -60,4 +63,4 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   });
 }
 
-export default withSentry(getFactSocialInfo);
+export default apiHandlerWithErrorLogging(getFactSocialInfo);

@@ -7,6 +7,7 @@ import {
   orderOfTopicsGroq,
   OrderOfTopics as TOrderOfTopics,
 } from '~/lib/groq/orderOfTopics.groq';
+import { log } from '~/lib/log';
 import { sanityClient } from '~/lib/sanityio';
 
 export type CelebPageProps = NonNullable<
@@ -18,7 +19,9 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  const celeb = (await sanityClient.fetch(celebPageGroq, {
+  log().info('celebPage getStaticProps called', { celeb: params.celeb });
+
+  const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
     slug: params.celeb,
   })) as CelebGroqResponse | null;
 
@@ -30,7 +33,10 @@ export const getStaticProps = async ({
 
   const { oldContent, facts, ...rest } = celeb;
   const [orderOfTopics, parsedOldContent] = await Promise.all([
-    sanityClient.fetch(orderOfTopicsGroq) as Promise<TOrderOfTopics>,
+    sanityClient.fetch(
+      'order-of-topics',
+      orderOfTopicsGroq,
+    ) as Promise<TOrderOfTopics>,
     oldContent ? await getParsedOldContent(oldContent) : null,
   ]);
 

@@ -62,6 +62,7 @@ export default function Latest(p: any) {
 
 export const getStaticProps = async () => {
   const firstBatch = await sanityClient.fetch(
+    'latest-page-facts',
     groq`*[_type == 'fact'] | order(_updatedAt desc, _createdAt desc)[0..49] {
       'celeb': celeb->{
         name,
