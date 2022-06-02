@@ -1,5 +1,5 @@
 import groq from 'groq';
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';

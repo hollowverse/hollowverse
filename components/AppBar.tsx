@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import { useRouter } from 'next/router';
 import React, { ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import React from 'react';
 import { RiQuillPenLine } from 'react-icons/ri';
 

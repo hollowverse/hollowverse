@@ -1,5 +1,5 @@
 import { defaultTo } from 'lodash-es';
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import React from 'react';
 import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
 import { useFact } from '~/components/hooks/useFact';

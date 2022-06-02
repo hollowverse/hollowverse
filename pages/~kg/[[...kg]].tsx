@@ -6,7 +6,7 @@ import { Page } from '~/components/Page';
 import { useKnowledgeGraphCeleb } from '~/components/hooks/useKnowledgeGraphCeleb';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { KnowledgeGraphCelebParams } from '~/lib/knowledgeGraphClient';
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   useKnowledgeGraphCeleb(params.name);

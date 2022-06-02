@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { SearchResults } from '~/components/hooks/useSearch';
