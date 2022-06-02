@@ -1,6 +1,5 @@
 import { isValidRequest } from '@sanity/webhook';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { log } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
 
@@ -24,4 +23,25 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   return res.json({ revalidated: true });
 }
 
-export default apiHandlerWithErrorLogging(contentChangeNotify);
+export default async function withErrorHandling(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  try {
+    return await contentChangeNotify(req, res);
+  } catch (e) {
+    log().error(e as any, {
+      message: 'content-change-notify-error',
+    });
+
+    /**
+     * This `content-change-notify` API handler triggered by a Sanity webhook.
+     * And the Sanity webhook will keep retrying infinitely if we return
+     * anything but success.
+     *
+     * So we just log whatever the issue is and tell the webhook "ok" to shut it
+     * up.
+     */
+    return res.json({ ok: true });
+  }
+}
