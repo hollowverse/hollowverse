@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import React from 'react';
 import { BiCalendar, BiLink, BiUserCircle } from 'react-icons/bi';
 import { FiMessageSquare } from 'react-icons/fi';

@@ -1,7 +1,7 @@
 import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
 import { determineServerOrClient } from '~/lib/determineServerOrClient';
-import { isArray } from 'lodash-es';
+import { isArray, noop } from 'lodash-es';
 import { getEnvironment } from '~/lib/getNodeEnv';
 
 interface ILogtailLog {
@@ -43,3 +43,23 @@ export function log() {
 
   return browserLogger;
 }
+
+// const dummyBrowserLogger = new BrowserLogger(sourceToken);
+// const dummyNodeLogger = new NodeLogger(sourceToken);
+// dummyBrowserLogger.setSync(noop as any);
+// dummyNodeLogger.setSync(noop as any);
+// export function log(ifTrue?: boolean) {
+//   if (ifTrue) {
+//     if (determineServerOrClient() === 'server') {
+//       return nodeLogger;
+//     }
+
+//     return browserLogger;
+//   }
+
+//   if (determineServerOrClient() === 'server') {
+//     return dummyBrowserLogger;
+//   }
+
+//   return browserLogger;
+// }

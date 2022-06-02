@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { isArray, isEmpty } from 'lodash-es';
-import Link from 'next/link';
+import { Link } from '~/lib/Link';
 import React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { FaChevronLeft } from 'react-icons/fa';
