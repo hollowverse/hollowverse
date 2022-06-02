@@ -36,7 +36,7 @@ if (getEnvironment() !== 'production') {
   nodeLogger.setSync(consoleLogger as any);
 }
 
-export function log() {
+function logAll() {
   if (determineServerOrClient() === 'server') {
     return nodeLogger;
   }
@@ -44,22 +44,25 @@ export function log() {
   return browserLogger;
 }
 
-// const dummyBrowserLogger = new BrowserLogger(sourceToken);
-// const dummyNodeLogger = new NodeLogger(sourceToken);
-// dummyBrowserLogger.setSync(noop as any);
-// dummyNodeLogger.setSync(noop as any);
-// export function log(ifTrue?: boolean) {
-//   if (ifTrue) {
-//     if (determineServerOrClient() === 'server') {
-//       return nodeLogger;
-//     }
+const dummyBrowserLogger = new BrowserLogger(sourceToken);
+const dummyNodeLogger = new NodeLogger(sourceToken);
+dummyBrowserLogger.setSync(noop as any);
+dummyNodeLogger.setSync(noop as any);
+function selectiveLog(ifTrue?: boolean) {
+  if (ifTrue) {
+    if (determineServerOrClient() === 'server') {
+      return nodeLogger;
+    }
 
-//     return browserLogger;
-//   }
+    return browserLogger;
+  }
 
-//   if (determineServerOrClient() === 'server') {
-//     return dummyBrowserLogger;
-//   }
+  if (determineServerOrClient() === 'server') {
+    return dummyBrowserLogger;
+  }
 
-//   return browserLogger;
-// }
+  return browserLogger;
+}
+
+export const log = logAll;
+// export const log = selectiveLog;
