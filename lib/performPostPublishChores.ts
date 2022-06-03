@@ -1,10 +1,15 @@
 import { countBy, find, isEmpty, uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
 import { badgeData } from '~/lib/badgeDefinitions';
 import { discourseClientApi } from '~/lib/discourseClientApi';
 import { getForumTopicId } from '~/lib/getForumTopicId';
+import { Topic } from '~/lib/groq/fact.partial.groq';
 import { ordinal } from '~/lib/ordinal';
 import { pluralize } from '~/lib/pluralize';
+import { SanityWebhookPayload } from '~/pages/api/content-change-notify';
 
 function getTopic(topicId: string) {
   return discourseClientApi(`t/-/${topicId}.json`);
@@ -113,24 +118,66 @@ async function grantBadges(contributor: any, forumLink: string) {
   };
 }
 
-export async function performPostPublishChores(
-  forumLink: string,
-  slug: string,
+async function updateAndLockPost(
+  topic: any,
+  webhookPayload: SanityWebhookPayload,
 ) {
-  const topicId = getForumTopicId(forumLink);
+  const topicOpId = topic.post_stream.posts[0].id;
+  const fact = ReactDOMServer.renderToStaticMarkup(
+    React.createElement(DiscourseTopicFact, webhookPayload),
+  );
+
+  await Promise.all([
+    discourseClientApi(`posts/${topicOpId}.json`, {
+      method: 'PUT',
+      body: {
+        post: {
+          raw: fact,
+        },
+      },
+    }),
+    // discourseClientApi(`posts/${topicOpId}/locked`, {
+    //   method: 'PUT',
+    //   body: {
+    //     locked: true,
+    //   },
+    // }),
+  ]);
+}
+
+async function rewardUser(topic: any, webhookPayload: SanityWebhookPayload) {
+  const contributor = topic.details.created_by;
+
+  const newBadges = await grantBadges(contributor, webhookPayload.forumLink);
+  await notifyContributor(
+    contributor,
+    webhookPayload.forumLink,
+    webhookPayload.slug,
+    newBadges,
+  );
+}
+
+export async function performPostPublishChores(
+  webhookPayload: SanityWebhookPayload,
+) {
+  const topicId = getForumTopicId(webhookPayload.forumLink);
 
   if (!topicId) {
-    throw new Error('Topic ID not found for link: ' + forumLink);
+    throw new Error('Topic ID not found for link: ' + webhookPayload.forumLink);
   }
 
   const topic = await getTopic(topicId);
 
-  await addAcceptedTag(topic);
+  const performUpdateAndLockPost =
+    webhookPayload.operation === 'update' ||
+    webhookPayload.operation === 'create';
+  const performRewardUser = webhookPayload.operation === 'create';
 
-  const contributor = topic.details.created_by;
-
-  const newBadges = await grantBadges(contributor, forumLink);
-  await notifyContributor(contributor, forumLink, slug, newBadges);
+  await Promise.all([
+    addAcceptedTag(topic),
+    performUpdateAndLockPost ? updateAndLockPost(topic, webhookPayload) : null,
+    performRewardUser ? rewardUser(topic, webhookPayload) : null,
+  ]);
 
   return true;
 }
