@@ -15,7 +15,10 @@ export function DiscourseTopicFact(
 ) {
   return (
     <div data-theme="fact-wrapper">
-      <a href={`/${props.slug}`} data-theme="fact-heading">
+      <a
+        href={`https://hollowverse.com/${props.slug}`}
+        data-theme="fact-heading"
+      >
         <div data-theme="fact-heading-inner">
           <div data-theme="fact-heading-image">
             <img
