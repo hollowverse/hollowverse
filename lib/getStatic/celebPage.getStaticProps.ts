@@ -19,7 +19,9 @@ export const getStaticProps = async ({
   params: { celeb: string };
 }) => {
   console.log('=\nFILE: celebPage.getStaticProps.ts\nLINE: 15\n=');
-  log(true).info('celebPage getStaticProps called', { celeb: params.celeb });
+  await log(true).info('celebPage getStaticProps called', {
+    celeb: params.celeb,
+  });
 
   const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
     slug: params.celeb,
