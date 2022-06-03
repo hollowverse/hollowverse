@@ -1,7 +1,4 @@
 const { withSentryConfig } = require('@sentry/nextjs');
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
 
 const nextJsConfig = {
   typescript: {
@@ -19,19 +16,7 @@ const nextJsConfig = {
   },
 
   images: {
-    domains: [
-      'cdn.sanity.io',
-      'encrypted-tbn0.gstatic.com',
-      'encrypted-tbn1.gstatic.com',
-      'encrypted-tbn2.gstatic.com',
-      'encrypted-tbn3.gstatic.com',
-      'encrypted-tbn4.gstatic.com',
-      'encrypted-tbn5.gstatic.com',
-      'encrypted-tbn6.gstatic.com',
-      'encrypted-tbn7.gstatic.com',
-      'encrypted-tbn8.gstatic.com',
-      'encrypted-tbn9.gstatic.com',
-    ],
+    domains: ['cdn.sanity.io'],
   },
 
   i18n: {
@@ -54,7 +39,4 @@ const sentryWebpackPluginOptions = {
 
 // module.exports = withBundleAnalyzer(nextJsConfig);
 
-module.exports = withSentryConfig(
-  withBundleAnalyzer(nextJsConfig),
-  sentryWebpackPluginOptions,
-);
+module.exports = withSentryConfig(sentryWebpackPluginOptions);

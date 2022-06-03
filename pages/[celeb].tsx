@@ -1,11 +1,7 @@
-import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { ContributeCta } from '~/components/ContributeCta';
-import { Facts } from '~/components/Facts';
-import { Md } from '~/components/Md';
+import { CelebImage } from '~/components/CelebImage';
 import { Page } from '~/components/Page';
-import { TopSection } from '~/components/TopSection';
-import { getHeadDescription, useCeleb } from '~/lib/celebPageHelpers';
+import { getHeadDescription } from '~/lib/celebPageHelpers';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
@@ -20,7 +16,12 @@ export default function Celeb(props: CelebPageProps) {
       allowSearchEngines
       pathname={props.celeb.slug}
     >
-      <TopSection {...props} />
+      <CelebImage
+        className="rounded-md object-cover"
+        key={props.celeb.name + '-topSection-image'}
+        picture={props.celeb.picture}
+        name={props.celeb.name}
+      />
     </Page>
   );
 }
