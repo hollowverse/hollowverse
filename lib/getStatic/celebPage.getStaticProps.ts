@@ -23,22 +23,22 @@ export const getStaticProps = async ({
     celeb: params.celeb,
   });
 
-  const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
-    slug: params.celeb,
-  })) as CelebGroqResponse | null;
+  // const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
+  //   slug: params.celeb,
+  // })) as CelebGroqResponse | null;
 
-  if (!celeb) {
-    return {
-      notFound: true,
-    };
-  }
+  // if (!celeb) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
 
-  const { oldContent, facts, ...rest } = celeb;
+  // const { oldContent, facts, ...rest } = celeb;
 
   return {
     props: {
       celeb: {
-        ...rest,
+        // ...rest,
       } as any,
     },
   };
