@@ -9,8 +9,6 @@ import { getHeadDescription, useCeleb } from '~/lib/celebPageHelpers';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
-  useCeleb(props.celeb.name, props.celeb.facts.groups);
-
   return (
     <Page
       title={`${props.celeb.name}'s religion and political views`}
