@@ -72,7 +72,7 @@ export function DiscourseTopicFact(
       <hr />
 
       <div>
-        This was added to the record of{' '}
+        This user contribution was reformatted and added to the record of{' '}
         <a href={`https://hollowverse.com/${props.slug}`}>
           {props.name}
           &apos;s views
