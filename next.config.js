@@ -6,16 +6,6 @@ const nextJsConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-
-  reactStrictMode: true,
-
-  devIndicators: {
-    buildActivity: false,
-  },
-
-  images: {
-    domains: ['cdn.sanity.io'],
-  },
 };
 
 module.exports = nextJsConfig;
