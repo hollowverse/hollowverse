@@ -1,7 +1,7 @@
 import originalSanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { log } from '~/lib/log';
+// import { log } from '~/lib/log';
 import {
   SanityClient,
   FilteredResponseQueryOptions,
@@ -24,10 +24,10 @@ export const sanityClient = {
     params?: QueryParams,
     options?: FilteredResponseQueryOptions,
   ) => {
-    log().info('Sanity fetch', {
-      id,
-      params: params || null,
-    });
+    // log().info('Sanity fetch', {
+    //   id,
+    //   params: params || null,
+    // });
 
     return configuredSanityClient.fetch(query, params, options as any);
   },
