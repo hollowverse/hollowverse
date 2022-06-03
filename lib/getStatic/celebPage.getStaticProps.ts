@@ -1,37 +1,19 @@
 import { Logtail as NodeLogger } from '@logtail/node';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-// import { log } from '~/lib/log';
 
 const sourceToken = 'dYdFDgoJXDixeVQhTrgob9cA';
 
-// const browserLogger = new BrowserLogger(sourceToken);
 const nodeLogger = new NodeLogger(sourceToken);
 
-export type CelebPageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
-
 export const getStaticProps = async (params: any) => {
-  console.log('=\nFILE: celebPage.getStaticProps.ts\nLINE: 15\n=');
+  try {
+    await fetch('https://vercel.com/why-3-times');
+  } catch (e) {}
+
   await nodeLogger.info('celebPage getStaticProps called', params);
-
-  // const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
-  //   slug: params.celeb,
-  // })) as CelebGroqResponse | null;
-
-  // if (!celeb) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
-
-  // const { oldContent, facts, ...rest } = celeb;
 
   return {
     props: {
-      celeb: {
-        // ...rest,
-      } as any,
+      celeb: {} as any,
     },
   };
 };
