@@ -4,13 +4,13 @@ const sourceToken = 'dYdFDgoJXDixeVQhTrgob9cA';
 
 const nodeLogger = new NodeLogger(sourceToken);
 
-export const getStaticProps = async (params: any) => {
+export const getStaticProps = async (context: any) => {
   try {
-    await fetch(`https://vercel.com/${params.celeb}`);
+    await fetch(`https://vercel.com/${context.params.celeb}`);
   } catch (e) {}
 
   await nodeLogger.info('celebPage getStaticProps called', {
-    params: params.celeb,
+    celeb: context.params.celeb,
   });
 
   return {
