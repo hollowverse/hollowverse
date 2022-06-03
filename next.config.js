@@ -39,4 +39,4 @@ const sentryWebpackPluginOptions = {
 
 // module.exports = withBundleAnalyzer(nextJsConfig);
 
-module.exports = withSentryConfig(sentryWebpackPluginOptions);
+module.exports = withSentryConfig(nextJsConfig, sentryWebpackPluginOptions);
