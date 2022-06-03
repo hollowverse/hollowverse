@@ -10,7 +10,7 @@ export const getStaticProps = async (params: any) => {
   } catch (e) {}
 
   await nodeLogger.info('celebPage getStaticProps called', {
-    celeb: params.celeb,
+    params: params.celeb,
   });
 
   return {
