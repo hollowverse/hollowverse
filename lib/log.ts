@@ -11,7 +11,7 @@ interface ILogtailLog {
   [key: string]: any;
 }
 
-const sourceToken = 'PxGcePL5nLz1mXY8yvqKEf9P';
+const sourceToken = 'dYdFDgoJXDixeVQhTrgob9cA';
 
 const browserLogger = new BrowserLogger(sourceToken);
 const nodeLogger = new NodeLogger(sourceToken);
@@ -31,7 +31,7 @@ function consoleLogger(logs: ILogtailLog[]) {
     });
 }
 
-if (getEnvironment() !== 'production') {
+if (getEnvironment() === 'development') {
   browserLogger.setSync(consoleLogger as any);
   nodeLogger.setSync(consoleLogger as any);
 }
@@ -64,5 +64,5 @@ function selectiveLog(ifTrue?: boolean) {
   return browserLogger;
 }
 
-export const log = logAll;
-// export const log = selectiveLog;
+// export const log = logAll;
+export const log = selectiveLog;
