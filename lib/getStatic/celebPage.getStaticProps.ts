@@ -32,25 +32,12 @@ export const getStaticProps = async ({
   }
 
   const { oldContent, facts, ...rest } = celeb;
-  const [orderOfTopics, parsedOldContent] = await Promise.all([
-    sanityClient.fetch(
-      'order-of-topics',
-      orderOfTopicsGroq,
-    ) as Promise<TOrderOfTopics>,
-    oldContent ? await getParsedOldContent(oldContent) : null,
-  ]);
-
-  const transformedFacts = factsDataTransform(facts, orderOfTopics);
-  const tags = getTags(transformedFacts, orderOfTopics);
 
   return {
     props: {
       celeb: {
         ...rest,
-        tags,
-        facts: transformedFacts,
-        oldContent: parsedOldContent,
-      },
+      } as any,
     },
   };
 };

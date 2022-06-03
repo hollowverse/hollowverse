@@ -23,14 +23,6 @@ export default function Celeb(props: CelebPageProps) {
       pathname={props.celeb.slug}
     >
       <TopSection {...props} />
-
-      <div className="mx-auto mt-5 flex max-w-3xl flex-col gap-5">
-        {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
-
-        {props.celeb.oldContent && <Md {...props} />}
-
-        <ContributeCta name={props.celeb.name} />
-      </div>
     </Page>
   );
 }

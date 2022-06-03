@@ -20,21 +20,7 @@ export const TopSection = (props: CelebPageProps) => {
               name={props.celeb.name}
             />
           </div>
-          <h1 className="mt-5 text-center">
-            <span className="text-lg font-normal tracking-wide text-neutral-500">
-              The Views of
-            </span>{' '}
-            <span className="mt-2 block text-4xl font-extrabold tracking-tight">
-              {props.celeb.name}
-            </span>
-          </h1>
         </div>
-
-        {!isEmpty(props.celeb.tags) && (
-          <div className="flex justify-center pt-5">
-            <TagCollection {...props} />
-          </div>
-        )}
       </div>
     </Card>
   );
