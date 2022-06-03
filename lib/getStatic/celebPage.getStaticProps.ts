@@ -12,12 +12,7 @@ export type CelebPageProps = NonNullable<
 >;
 
 export const getStaticProps = async (params: any) => {
-  try {
-    await fetch(
-      'http://d7dd-2600-1700-2ec0-ce70-c023-978d-5a86-26ac.ngrok.io/',
-    );
-  } catch (e) {}
-
+  console.log('=\nFILE: celebPage.getStaticProps.ts\nLINE: 15\n=');
   await nodeLogger.info('celebPage getStaticProps called', params);
 
   // const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
