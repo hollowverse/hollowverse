@@ -1,5 +1,3 @@
-const { withSentryConfig } = require('@sentry/nextjs');
-
 const nextJsConfig = {
   typescript: {
     // !! WARN !!
