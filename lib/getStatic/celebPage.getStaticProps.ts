@@ -1,6 +1,6 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
-import { log } from '~/lib/log';
+// import { log } from '~/lib/log';
 import { sanityClient } from '~/lib/sanityio';
 import { Logtail as NodeLogger } from '@logtail/node';
 
@@ -18,7 +18,6 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  console.log('=\nFILE: celebPage.getStaticProps.ts\nLINE: 15\n=');
   await nodeLogger.info('celebPage getStaticProps called', {
     celeb: params.celeb,
   });
