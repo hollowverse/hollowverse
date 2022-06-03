@@ -20,6 +20,8 @@ const nextJsConfig = {
   },
 
   i18n: {
+    locales: ['default'],
+    defaultLocale: 'default',
     localeDetection: false,
   },
 };
