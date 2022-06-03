@@ -18,10 +18,6 @@ const nextJsConfig = {
   images: {
     domains: ['cdn.sanity.io'],
   },
-
-  i18n: {
-    localeDetection: false,
-  },
 };
 
 module.exports = nextJsConfig;
