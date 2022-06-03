@@ -1,17 +1,10 @@
 import React from 'react';
+import { CelebImage } from '~/components/CelebImage';
 import { Page } from '~/components/Page';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: {}) {
-  return (
-    <Page
-      title={`'s religion and political views`}
-      description={'asdf'}
-      allowSearchEngines
-      pathname={'props.celeb.slug'}
-    >
-      test
-    </Page>
-  );
+  return <div>test</div>;
 }
 
 export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
