@@ -1,6 +1,6 @@
 import { Logtail as NodeLogger } from '@logtail/node';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-import { log } from '~/lib/log';
+// import { log } from '~/lib/log';
 
 const sourceToken = 'dYdFDgoJXDixeVQhTrgob9cA';
 
@@ -17,7 +17,7 @@ export const getStaticProps = async ({
   params: { celeb: string };
 }) => {
   console.log('=\nFILE: celebPage.getStaticProps.ts\nLINE: 15\n=');
-  await log(true).info('celebPage getStaticProps called', {
+  await nodeLogger.info('celebPage getStaticProps called', {
     celeb: params.celeb,
   });
 
