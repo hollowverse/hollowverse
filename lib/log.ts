@@ -31,10 +31,10 @@ function consoleLogger(logs: ILogtailLog[]) {
     });
 }
 
-if (getEnvironment() === 'development') {
-  browserLogger.setSync(consoleLogger as any);
-  nodeLogger.setSync(consoleLogger as any);
-}
+// if (getEnvironment() === 'development') {
+//   browserLogger.setSync(consoleLogger as any);
+//   nodeLogger.setSync(consoleLogger as any);
+// }
 
 function logAll() {
   if (determineServerOrClient() === 'server') {
