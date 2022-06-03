@@ -1,26 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
   color: rgba(0, 0, 0, 0.75);
   font-family: Arial, sans-serif;
-}
-
-@layer components {
-  .textbox-border {
-    @apply rounded-md border-2 placeholder-neutral-400 outline-none transition focus-within:border-2 focus-within:border-blue-300;
-  }
-
-  .lovely-gradient {
-    @apply bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400;
-  }
-
-  .h-link {
-    @apply text-blue-500 hover:text-blue-600 hover:underline;
-  }
-
-  .h-gray-link {
-    @apply text-gray-500 hover:text-gray-600 hover:underline;
-  }
 }

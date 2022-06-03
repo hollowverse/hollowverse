@@ -1,4 +1,0 @@
-http://localhost:3000/elon-musk
-http://localhost:3000/martin-freeman
-http://localhost:3000/
-http://localhost:3000/lucille-ball

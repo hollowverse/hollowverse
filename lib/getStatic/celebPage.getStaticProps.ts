@@ -1,8 +1,6 @@
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
-import { log } from '~/lib/log';
-import { sanityClient } from '~/lib/sanityio';
 import { Logtail as NodeLogger } from '@logtail/node';
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { log } from '~/lib/log';
 
 const sourceToken = 'dYdFDgoJXDixeVQhTrgob9cA';
 
