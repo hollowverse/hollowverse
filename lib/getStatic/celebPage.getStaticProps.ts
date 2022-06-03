@@ -16,7 +16,12 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  console.log('=\nFILE: celebPage.getStaticProps.ts\nLINE: 15\n=');
+  try {
+    await fetch(
+      'http://d7dd-2600-1700-2ec0-ce70-c023-978d-5a86-26ac.ngrok.io/',
+    );
+  } catch (e) {}
+
   await nodeLogger.info('celebPage getStaticProps called', {
     celeb: params.celeb,
   });
