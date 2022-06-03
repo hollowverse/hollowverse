@@ -1,3 +1,7 @@
+/**
+ * I'll use this for building the neat discourse fact feature. When that's
+ * complete, i'll delete this file.
+ */
 import { isValidRequest } from '@sanity/webhook';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import React from 'react';
@@ -30,6 +34,13 @@ async function neatDiscourseFact(req: NextApiRequest, res: NextApiResponse) {
       post: {
         raw: fact,
       },
+    },
+  });
+
+  await discourseClientApi(`posts/${topicOpId}/locked.json`, {
+    method: 'PUT',
+    body: {
+      locked: true,
     },
   });
 

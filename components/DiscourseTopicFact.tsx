@@ -38,14 +38,14 @@ export function DiscourseTopicFact(
       <div data-theme="fact-tags">
         {props.tags.map((t) => {
           return (
-            <p data-theme="fact-tag" key={t.tag.name}>
+            <div data-theme="fact-tag" key={t.tag.name}>
               # {t.isLowConfidence && 'Possibly '}
               {t.tag.name}
               {t.isBackground && ' Background'}
-            </p>
+            </div>
           );
         })}{' '}
-        <p data-theme="fact-date">{formatFactDate(props.date)}</p>
+        <div data-theme="fact-date">{formatFactDate(props.date)}</div>
       </div>
 
       <div data-theme="fact-body">
@@ -58,6 +58,12 @@ export function DiscourseTopicFact(
             <blockquote data-theme="fact-quote">{props.quote}</blockquote>
           </>
         )) || <p data-theme="fact-content">{(props as any).content}</p>}
+      </div>
+
+      <div data-theme="fact-source">
+        <a rel="noreferrer" target="_blank" href={props.source}>
+          Source &gt;
+        </a>
       </div>
 
       <hr />

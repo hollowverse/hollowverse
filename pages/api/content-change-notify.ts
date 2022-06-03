@@ -1,24 +1,54 @@
 import { isValidRequest } from '@sanity/webhook';
+import { isEmpty } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { collectErrors } from '~/lib/collectErrors';
+import { FactTypes, Tag, Topic } from '~/lib/groq/fact.partial.groq';
+import { Picture } from '~/lib/groq/picture.partial.groq';
 import { log } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
+
+export type SanityWebhookPayload = {
+  _id: string;
+  _createdAt: string;
+  content: string;
+  context: string;
+  quote: string;
+  date: string;
+  forumLink: string;
+  source: string;
+  type: FactTypes;
+  tags: Tag[];
+  topics: Topic[];
+  name: string;
+  slug: string;
+  picture: Picture;
+  operation: 'create' | 'update' | 'delete';
+};
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  const { body } = req;
+  const errors: any[] = [];
+  const { body: webhookPayload } = req as { body: SanityWebhookPayload };
 
-  log().info('content-change-notify', { body });
+  log().info('content-change-notify', {
+    webhookPayload: webhookPayload as any,
+  });
 
   await Promise.all([
-    res.unstable_revalidate(`/${body.slug}`),
-    res.unstable_revalidate(`/~latest`),
-    body.operation === 'create'
-      ? performPostPublishChores(body.forumLink, body.slug)
-      : null,
+    collectErrors(
+      () => res.unstable_revalidate(`/${webhookPayload.slug}`),
+      errors,
+    ),
+    collectErrors(() => res.unstable_revalidate(`/~latest`), errors),
+    collectErrors(() => performPostPublishChores(webhookPayload), errors),
   ]);
+
+  if (!isEmpty(errors)) {
+    throw errors;
+  }
 
   return res.json({ revalidated: true });
 }

@@ -32,6 +32,8 @@ export type Fact = {
     }
 );
 
+export type FactTypes = Fact['type'];
+
 export const factPartialGroq = groq`
 _id,
 content,
