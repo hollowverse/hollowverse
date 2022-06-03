@@ -6,10 +6,12 @@ const nodeLogger = new NodeLogger(sourceToken);
 
 export const getStaticProps = async (params: any) => {
   try {
-    await fetch('https://vercel.com/why-3-times');
+    await fetch(`https://vercel.com/${params.celeb}`);
   } catch (e) {}
 
-  await nodeLogger.info('celebPage getStaticProps called', params);
+  await nodeLogger.info('celebPage getStaticProps called', {
+    celeb: params.celeb,
+  });
 
   return {
     props: {
