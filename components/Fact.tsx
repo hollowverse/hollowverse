@@ -52,7 +52,7 @@ export const Fact: React.FC<{
             <Link href={`${props.fact.forumLink}#reply`} passHref>
               <a className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300">
                 <BiMessage className="text-lg" />
-                <>Leave a comment</>
+                Comments
               </a>
             </Link>
 
