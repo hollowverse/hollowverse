@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { getFactSocialInfo } from '~/lib/getFactSocialInfo';
 import { Fact } from '~/lib/groq/fact.partial.groq';
 
 export function useFact(fact: Fact) {
-  const { ref, inView } = useInView({ triggerOnce: true });
   const [commentCount, setCommentCount] = useState<number | null>(null);
   const [contributorUsername, setContributor] = useState<string | null>(null);
 
@@ -16,15 +14,11 @@ export function useFact(fact: Fact) {
   }
 
   useEffect(() => {
-    if (inView) {
-      request();
-    }
+    request();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView]);
+  }, []);
 
   return {
-    ref,
-    inView,
     commentCount,
     contributorUsername,
   };
