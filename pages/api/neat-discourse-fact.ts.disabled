@@ -11,36 +11,28 @@ import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { discourseClientApi } from '~/lib/discourseClientApi';
 
 async function neatDiscourseFact(req: NextApiRequest, res: NextApiResponse) {
-  if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-
-  const { body } = req;
-
-  console.log('body', body);
-
   const topicId = 1619;
 
   const topic = await discourseClientApi(`t/-/${topicId}.json`);
   const topicOpId = topic.post_stream.posts[0].id;
 
-  const fact = ReactDOMServer.renderToStaticMarkup(
-    React.createElement(DiscourseTopicFact, body),
-  );
+  // const fact = ReactDOMServer.renderToStaticMarkup(
+  //   React.createElement(DiscourseTopicFact, body),
+  // );
 
-  await discourseClientApi(`posts/${topicOpId}.json`, {
-    method: 'PUT',
-    body: {
-      post: {
-        raw: fact,
-      },
-    },
-  });
+  // await discourseClientApi(`posts/${topicOpId}.json`, {
+  //   method: 'PUT',
+  //   body: {
+  //     post: {
+  //       raw: fact,
+  //     },
+  //   },
+  // });
 
   await discourseClientApi(`posts/${topicOpId}/locked.json`, {
     method: 'PUT',
     body: {
-      locked: true,
+      locked: 'true',
     },
   });
 
