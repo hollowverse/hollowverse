@@ -9,7 +9,6 @@ import { Page } from '~/components/Page';
 import { sanityClient } from '~/lib/sanityio';
 import { formatFactDate } from '~/lib/date';
 import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
-import { FactWithHook } from '~/components/FactWithHook';
 
 export default function Latest(p: any) {
   return (
@@ -52,7 +51,7 @@ export default function Latest(p: any) {
             key={f._id}
             disablePadding
           >
-            <FactWithHook fact={f} celebName={f.celeb.name} />
+            <Fact fact={f} celebName={f.celeb.name} />
           </Card>
         ))}
       </div>

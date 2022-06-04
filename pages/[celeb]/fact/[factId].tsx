@@ -14,7 +14,7 @@ import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 
 export default function FactPage({ celeb, fact }: FactPageProps) {
-  const { ref, contributorUsername, commentCount } = useFact(fact);
+  const { contributorUsername, commentCount } = useFact(fact);
   const sourceHost = getSourceHost(fact.source);
 
   return (
@@ -49,13 +49,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
 
         <Card disablePadding>
           <LovelyTopBorder />
-          <Fact
-            inViewRef={ref}
-            commentCount={commentCount}
-            value={fact}
-            celebName={celeb.name}
-            showFooter={false}
-          />
+          <Fact fact={fact} celebName={celeb.name} showFooter={false} />
           <hr />
           <div className="flex flex-col gap-2 p-5 text-sm text-gray-500">
             <div className="inline-flex items-center">
@@ -64,7 +58,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
             </div>
             <div className="inline-flex items-center">
               <BiUserCircle size={22} className="mr-2" />
-              <p ref={ref}>
+              <p>
                 Contributed by{' '}
                 <Link
                   href={`https://forum.hollowverse.com/u/${contributorUsername}`}

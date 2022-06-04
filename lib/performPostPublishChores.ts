@@ -136,12 +136,12 @@ async function updateAndLockPost(
         },
       },
     }),
-    // discourseClientApi(`posts/${topicOpId}/locked`, {
-    //   method: 'PUT',
-    //   body: {
-    //     locked: true,
-    //   },
-    // }),
+    discourseClientApi(`posts/${topicOpId}/locked`, {
+      method: 'PUT',
+      body: {
+        locked: 'true',
+      },
+    }),
   ]);
 }
 
