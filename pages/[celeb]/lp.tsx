@@ -38,8 +38,6 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
             })}
           </div>
         </Card>
-
-        {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
       </div>
     </Page>
   );
