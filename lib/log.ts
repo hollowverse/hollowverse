@@ -52,14 +52,16 @@ function getEnvShortName(longName: 'development' | 'production' | 'preview') {
   return 'prod';
 }
 
+type StringJson = {
+  [name: string]: string | StringJson;
+};
+
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
   return function (
     level: 'info' | 'error',
     message: string | Error,
     dimensions?: [string?, string?, string?],
-    other?: {
-      [name: string]: string;
-    },
+    other?: StringJson,
   ) {
     const logger =
       determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
@@ -75,7 +77,7 @@ function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
     return logger[level](message, {
       ...dimObject,
       env: getEnvShortName(getVercelEnv() || getNodeEnv()),
-      commit: process.env.VERCEL_GIT_COMMIT_REF || 'unknown',
+      branch: process.env.VERCEL_GIT_COMMIT_REF || 'unknown',
       ...other,
     });
   };

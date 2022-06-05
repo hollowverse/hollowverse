@@ -33,7 +33,12 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   const errors: any[] = [];
   const { body: webhookPayload } = req as { body: SanityWebhookPayload };
 
-  log('info', 'content-change-notify', [loggerStringify(webhookPayload)]);
+  log(
+    'info',
+    'content-change-notify',
+    [loggerStringify(webhookPayload)],
+    webhookPayload as any,
+  );
 
   await Promise.all([
     collectErrors(
