@@ -93,5 +93,5 @@ dummyNodeLogger.setSync(noop as any);
  * Use `flog` where you still need logs during development
  */
 export const log = createLogger(nodeLogger, browserLogger);
-// export const log = createLogger(dummyNodeLogger, dummyBrowserLogger)
-// export const flog = createLogger(nodeLogger, browserLogger)
+// export const log = createLogger(dummyNodeLogger, dummyBrowserLogger);
+// export const flog = createLogger(nodeLogger, browserLogger);

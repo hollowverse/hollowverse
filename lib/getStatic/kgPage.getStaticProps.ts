@@ -10,11 +10,23 @@ const notFound = {
 function queryHv(kgId: string) {
   return sanityClient.fetch(
     'knowledge-graph-page-celeb-check',
-    groq`*[_type == 'celeb' && knowledgeGraphId == '$kg'][0]{'slug': slug.current}`,
+    groq`*[_type == 'celeb' && knowledgeGraphId == $kgId][0]{'slug': slug.current}`,
     {
-      kg: kgId,
+      kgId: kgId,
     },
   );
+}
+
+export function getKgSearchId(kgId: string) {
+  return kgId.split(':')[1];
+}
+
+export function requestKgResult(kgSearchId: string) {
+  return knowledgeGraphClient({
+    limit: 1,
+    id: kgSearchId,
+    apiKey: process.env.KG_API_KEY || 'AIzaSyCDgM-p1fhbsf5HuRGCfZP2M9l_JQ0Vmbo',
+  });
 }
 
 export const getStaticProps = async ({
@@ -22,11 +34,7 @@ export const getStaticProps = async ({
 }: {
   params: { kg: string };
 }) => {
-  const kg = params?.kg[0];
-
-  if (!kg) {
-    return notFound;
-  }
+  const kg = params.kg;
 
   const celeb = await queryHv(kg);
 
@@ -39,17 +47,13 @@ export const getStaticProps = async ({
     };
   }
 
-  const searchId = kg.split(':')[1];
+  const searchId = getKgSearchId(kg);
 
   if (!searchId) {
     return notFound;
   }
 
-  const kgCelebs = await knowledgeGraphClient({
-    limit: 1,
-    id: searchId,
-    apiKey: process.env.KG_API_KEY || 'AIzaSyCDgM-p1fhbsf5HuRGCfZP2M9l_JQ0Vmbo',
-  });
+  const kgCelebs = await requestKgResult(searchId);
 
   if (isEmpty(kgCelebs)) {
     return notFound;
