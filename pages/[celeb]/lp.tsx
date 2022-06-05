@@ -11,7 +11,7 @@ export type ResearcherLaunchPadProps = {
 export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
   return (
     <Page
-      title={`${props.celebName}'s religion and political views`}
+      title={`Research ${props.celebName}'s religion and political views`}
       description={`Hollowverse researcher's launch pad for researching ${props.celebName}`}
       allowSearchEngines={false}
       pathname={props.pathname}
