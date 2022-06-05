@@ -52,7 +52,7 @@ function getEnvShortName(longName: 'development' | 'production' | 'preview') {
 }
 
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
-  return function logAll(
+  return function (
     level: 'info' | 'error',
     message: string | Error,
     dimensions?: [string?, string?, string?],
