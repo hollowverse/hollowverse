@@ -37,7 +37,7 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
 
   const queryUrl = req.query.url;
 
-  log().info('get-fact-social-info', { queryUrl: queryUrl as any });
+  log('info', 'get-fact-social-info', [queryUrl as string]);
 
   if (!queryUrl || !isString(queryUrl)) {
     throw new Error(
@@ -63,4 +63,7 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   });
 }
 
-export default apiHandlerWithErrorLogging(getFactSocialInfo);
+export default apiHandlerWithErrorLogging(
+  'get-fact-social-info',
+  getFactSocialInfo,
+);

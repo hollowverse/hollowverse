@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { collectErrors } from '~/lib/collectErrors';
 import { FactTypes, Tag, Topic } from '~/lib/groq/fact.partial.groq';
 import { Picture } from '~/lib/groq/picture.partial.groq';
-import { log } from '~/lib/log';
+import { log, loggerStringify } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
 
 export type SanityWebhookPayload = {
@@ -33,9 +33,12 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   const errors: any[] = [];
   const { body: webhookPayload } = req as { body: SanityWebhookPayload };
 
-  log().info('content-change-notify', {
-    webhookPayload: webhookPayload as any,
-  });
+  log(
+    'info',
+    'content-change-notify',
+    [loggerStringify(webhookPayload)],
+    webhookPayload as any,
+  );
 
   await Promise.all([
     collectErrors(
@@ -59,10 +62,8 @@ export default async function withErrorHandling(
 ) {
   try {
     return await contentChangeNotify(req, res);
-  } catch (e) {
-    log().error(e as any, {
-      message: 'content-change-notify-error',
-    });
+  } catch (e: any) {
+    log('error', e, ['content-change-notify-error']);
 
     /**
      * This `content-change-notify` API handler triggered by a Sanity webhook.

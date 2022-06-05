@@ -3,6 +3,8 @@
     "clsx",
     "Groq",
     "gtag",
+    "logtail",
+    "Logtail",
     "lqip",
     "nextjs",
     "prefetch",
