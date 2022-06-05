@@ -8,7 +8,8 @@ import { getVercelEnv } from '~/lib/getVercelEnv';
 export function loggerStringify(obj: any) {
   const stringified = JSON.stringify(obj);
 
-  return stringified.substring(0, 50) + (stringified.length > 50 ? '...' : '');
+  // The dot at the end prevents Logtail from parsing of otherwise proper JSON strings.
+  return stringified.substring(0, 50) + '.';
 }
 
 interface ILogtailLog {
