@@ -1,5 +1,5 @@
 const env = process.env.NODE_ENV;
 
-export function getEnvironment() {
+export function getNodeEnv() {
   return env;
 }

@@ -1,8 +1,15 @@
 import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
-import { determineServerOrClient } from '~/lib/determineServerOrClient';
 import { isArray, noop } from 'lodash-es';
-import { getEnvironment } from '~/lib/getNodeEnv';
+import { determineServerOrClient } from '~/lib/determineServerOrClient';
+import { getNodeEnv } from '~/lib/getNodeEnv';
+import { getVercelEnv } from '~/lib/getVercelEnv';
+
+export function loggerStringify(obj: any) {
+  const stringified = JSON.stringify(obj);
+
+  return stringified.substring(0, 50) + (stringified.length > 50 ? '...' : '');
+}
 
 interface ILogtailLog {
   dt: Date;
@@ -11,7 +18,7 @@ interface ILogtailLog {
   [key: string]: any;
 }
 
-const sourceToken = 'PxGcePL5nLz1mXY8yvqKEf9P';
+const sourceToken = 'sESCAEUG8a8iEqMSJk1gJPZb';
 
 const browserLogger = new BrowserLogger(sourceToken);
 const nodeLogger = new NodeLogger(sourceToken);
@@ -31,38 +38,57 @@ function consoleLogger(logs: ILogtailLog[]) {
     });
 }
 
-if (getEnvironment() !== 'production') {
+if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
   browserLogger.setSync(consoleLogger as any);
   nodeLogger.setSync(consoleLogger as any);
 }
 
-function logAll() {
-  if (determineServerOrClient() === 'server') {
-    return nodeLogger;
+function getEnvShortName(longName: 'development' | 'production' | 'preview') {
+  if (longName === 'development' || longName === 'preview') {
+    return 'dev';
   }
 
-  return browserLogger;
+  return 'prod';
+}
+
+function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
+  return function logAll(
+    level: 'info' | 'error',
+    message: string | Error,
+    dimensions?: [string?, string?, string?],
+    other?: {
+      [name: string]: string;
+    },
+  ) {
+    const logger =
+      determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
+
+    let dimObject: { [name: string]: string } = {};
+
+    dimensions?.forEach((dim, i) => {
+      if (dim) {
+        dimObject['dim' + (i + 1)] = dim;
+      }
+    });
+
+    return logger[level](message, {
+      ...dimObject,
+      env: getEnvShortName(getVercelEnv() || getNodeEnv()),
+      commit: process.env.VERCEL_GIT_COMMIT_REF || 'unknown',
+      ...other,
+    });
+  };
 }
 
 const dummyBrowserLogger = new BrowserLogger(sourceToken);
 const dummyNodeLogger = new NodeLogger(sourceToken);
 dummyBrowserLogger.setSync(noop as any);
 dummyNodeLogger.setSync(noop as any);
-function selectiveLog(ifTrue?: boolean) {
-  if (ifTrue) {
-    if (determineServerOrClient() === 'server') {
-      return nodeLogger;
-    }
 
-    return browserLogger;
-  }
-
-  if (determineServerOrClient() === 'server') {
-    return dummyBrowserLogger;
-  }
-
-  return browserLogger;
-}
-
-export const log = logAll;
-// export const log = selectiveLog;
+/**
+ * Invert the comments below to silence the logs during development.
+ * Use `flog` where you still need logs during development
+ */
+export const log = createLogger(nodeLogger, browserLogger);
+// export const log = createLogger(dummyNodeLogger, dummyBrowserLogger)
+// export const flog = createLogger(nodeLogger, browserLogger)

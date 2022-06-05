@@ -1,12 +1,15 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { log } from '~/lib/log';
 
-export function apiHandlerWithErrorLogging(fn: NextApiHandler<any>) {
+export function apiHandlerWithErrorLogging(
+  apiRouteName: string,
+  fn: NextApiHandler<any>,
+) {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     try {
       return await fn(req, res);
     } catch (e: any) {
-      log().error(e);
+      log('error', e, [apiRouteName]);
       throw e;
     }
   };
