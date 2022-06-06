@@ -1,18 +1,27 @@
 import React from 'react';
-import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
+import { Fact } from '~/components/Fact';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const Facts = (props: CelebPageProps) => {
   const { groups, topics } = props.celeb.facts!;
 
   return (
-    <div className="FACTS-CONTAINER mt-5 flex flex-col gap-5">
+    <div className="FACTS-CONTAINER mt-5 flex max-w-full flex-col gap-5">
       {topics.map((topic, i) => {
         const factGroup = groups[topic];
 
         return (
-          <Card title={topic} disablePadding key={`${topic}-${i}`}>
+          <Card
+            title={
+              <h2 className="overflow-hidden text-ellipsis whitespace-nowrap">
+                {props.celeb.name} / {topic}
+              </h2>
+            }
+            stickyTitle
+            disablePadding
+            key={`${topic}-${i}`}
+          >
             {factGroup.map((fact, innerI) => {
               return (
                 <div key={`${topic}-${i}-${innerI}`}>
