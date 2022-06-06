@@ -77,7 +77,7 @@ function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
     return logger[level](message, {
       ...dimObject,
       env: getEnvShortName(getVercelEnv() || getNodeEnv()),
-      branch: process.env.VERCEL_GIT_COMMIT_REF || 'unknown',
+      commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
       ...other,
     });
   };
