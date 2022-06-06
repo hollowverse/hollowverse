@@ -19,7 +19,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
       allowSearchEngines={false}
     >
       <Card>
-        <div className="mx-auto flex max-w-3xl items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-6">
+        <div className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-6">
           <FaRegCheckCircle className="text-xl text-white" />
 
           <p className="text-white">
@@ -51,7 +51,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      <div className="mx-auto mt-5 w-full max-w-3xl">
+      <div className="h-container mt-5">
         <ContributeCta
           name={params.name}
           cta={

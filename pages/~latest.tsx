@@ -19,7 +19,7 @@ export default function Latest(p: any) {
       allowSearchEngines={false}
       className="text-neutral-600"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
+      <div className="h-container flex flex-col gap-5">
         <h1 className="mt-5 px-5 text-xl font-bold">
           Most recent additions...
         </h1>

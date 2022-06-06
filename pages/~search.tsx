@@ -62,7 +62,7 @@ export default function Search() {
         </AppBar.Container>
       }
     >
-      <div className="mx-auto mb-5 flex min-h-full w-full max-w-3xl flex-1 flex-col items-stretch text-neutral-600">
+      <div className="h-container mb-5 flex min-h-full flex-1 flex-col items-stretch text-neutral-600">
         {(hook.loading && (
           <BeforeResultsContainer>
             <Spinner />

@@ -16,7 +16,7 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
       allowSearchEngines={false}
       pathname={props.pathname}
     >
-      <div className="mx-auto mt-5 flex w-full max-w-3xl flex-col gap-5">
+      <div className="h-container mt-5 flex flex-col gap-5">
         <Card
           title={`Suggested Google searches to research ${props.celebName}'s views`}
         >

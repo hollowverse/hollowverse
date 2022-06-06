@@ -23,4 +23,9 @@ body {
   .h-gray-link {
     @apply text-gray-500 hover:text-gray-600 hover:underline;
   }
+
+  .h-container {
+    width: min(theme('screens.lg'), 100%);
+    @apply mx-auto;
+  }
 }
