@@ -1,28 +1,20 @@
 import { isValidRequest } from '@sanity/webhook';
+import groq from 'groq';
 import { isEmpty } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { collectErrors } from '~/lib/collectErrors';
-import { FactTypes, Tag, Topic } from '~/lib/groq/fact.partial.groq';
-import { Picture } from '~/lib/groq/picture.partial.groq';
-import { log, loggerStringify } from '~/lib/log';
+import {
+  ContentChangeData,
+  contentChangeProjection,
+} from '~/lib/groq/contentChange.groq';
+import { log } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
+import { sanityClientNoCdn } from '~/lib/sanityio';
 
-export type SanityWebhookPayload = {
-  _id: string;
-  _createdAt: string;
-  content: string;
-  context: string;
-  quote: string;
-  date: string;
-  forumLink: string;
-  source: string;
-  type: FactTypes;
-  tags: Tag[];
-  topics: Topic[];
-  name: string;
-  slug: string;
-  picture: Picture;
+export type SanityWebhookProps = {
   operation: 'create' | 'update' | 'delete';
+  _id: string;
+  slug: string;
 };
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
@@ -30,23 +22,25 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  const errors: any[] = [];
-  const { body: webhookPayload } = req as { body: SanityWebhookPayload };
+  const { body: webhookPayload } = req as { body: SanityWebhookProps };
 
-  log(
-    'info',
-    'content-change-notify',
-    [loggerStringify(webhookPayload)],
-    webhookPayload as any,
-  );
+  log('info', 'content-change-notify', [webhookPayload.slug]);
+
+  const errors: any[] = [];
+
+  const data = (await sanityClientNoCdn.fetch(
+    'content-change-data',
+    groq`*[_id == $_id][0]{${contentChangeProjection}}`,
+    { _id: webhookPayload._id },
+  )) as ContentChangeData;
 
   await Promise.all([
+    collectErrors(() => res.unstable_revalidate(`/${data.slug}`), errors),
+    collectErrors(() => res.unstable_revalidate(`/~latest`), errors),
     collectErrors(
-      () => res.unstable_revalidate(`/${webhookPayload.slug}`),
+      () => performPostPublishChores(data, webhookPayload.operation),
       errors,
     ),
-    collectErrors(() => res.unstable_revalidate(`/~latest`), errors),
-    collectErrors(() => performPostPublishChores(webhookPayload), errors),
   ]);
 
   if (!isEmpty(errors)) {
