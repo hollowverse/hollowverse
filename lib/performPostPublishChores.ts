@@ -6,10 +6,10 @@ import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
 import { badgeData } from '~/lib/badgeDefinitions';
 import { discourseClientApi } from '~/lib/discourseClientApi';
 import { getForumTopicId } from '~/lib/getForumTopicId';
-import { Topic } from '~/lib/groq/fact.partial.groq';
+import { ContentChangeData } from '~/lib/groq/contentChange.groq';
 import { ordinal } from '~/lib/ordinal';
 import { pluralize } from '~/lib/pluralize';
-import { SanityWebhookPayload } from '~/pages/api/content-change-notify';
+import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 
 function getTopic(topicId: string) {
   return discourseClientApi(`t/-/${topicId}.json`);
@@ -120,11 +120,11 @@ async function grantBadges(contributor: any, forumLink: string) {
 
 async function updateAndLockPost(
   topic: any,
-  webhookPayload: SanityWebhookPayload,
+  contentChangeData: ContentChangeData,
 ) {
   const topicOpId = topic.post_stream.posts[0].id;
   const fact = ReactDOMServer.renderToStaticMarkup(
-    React.createElement(DiscourseTopicFact, webhookPayload),
+    React.createElement(DiscourseTopicFact, contentChangeData),
   );
 
   await Promise.all([
@@ -145,38 +145,42 @@ async function updateAndLockPost(
   ]);
 }
 
-async function rewardUser(topic: any, webhookPayload: SanityWebhookPayload) {
+async function rewardUser(topic: any, contentChangeData: ContentChangeData) {
   const contributor = topic.details.created_by;
 
-  const newBadges = await grantBadges(contributor, webhookPayload.forumLink);
+  const newBadges = await grantBadges(contributor, contentChangeData.forumLink);
   await notifyContributor(
     contributor,
-    webhookPayload.forumLink,
-    webhookPayload.slug,
+    contentChangeData.forumLink,
+    contentChangeData.slug,
     newBadges,
   );
 }
 
 export async function performPostPublishChores(
-  webhookPayload: SanityWebhookPayload,
+  contentChangeData: ContentChangeData,
+  operation: SanityWebhookProps['operation'],
 ) {
-  const topicId = getForumTopicId(webhookPayload.forumLink);
+  const topicId = getForumTopicId(contentChangeData.forumLink);
 
   if (!topicId) {
-    throw new Error('Topic ID not found for link: ' + webhookPayload.forumLink);
+    throw new Error(
+      'Topic ID not found for link: ' + contentChangeData.forumLink,
+    );
   }
 
   const topic = await getTopic(topicId);
 
   const performUpdateAndLockPost =
-    webhookPayload.operation === 'update' ||
-    webhookPayload.operation === 'create';
-  const performRewardUser = webhookPayload.operation === 'create';
+    operation === 'update' || operation === 'create';
+  const performRewardUser = operation === 'create';
 
   await Promise.all([
     addAcceptedTag(topic),
-    performUpdateAndLockPost ? updateAndLockPost(topic, webhookPayload) : null,
-    performRewardUser ? rewardUser(topic, webhookPayload) : null,
+    performUpdateAndLockPost
+      ? updateAndLockPost(topic, contentChangeData)
+      : null,
+    performRewardUser ? rewardUser(topic, contentChangeData) : null,
   ]);
 
   return true;
