@@ -24,7 +24,10 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
 
   const { body: webhookPayload } = req as { body: SanityWebhookProps };
 
-  log('info', 'content-change-notify', [webhookPayload.slug]);
+  log('info', 'content-change-notify', [
+    webhookPayload.slug,
+    webhookPayload._id,
+  ]);
 
   const errors: any[] = [];
 
@@ -32,13 +35,16 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     'content-change-data',
     groq`*[_id == $_id][0]{${contentChangeProjection}}`,
     { _id: webhookPayload._id },
-  )) as ContentChangeData;
+  )) as ContentChangeData | null;
 
   await Promise.all([
-    collectErrors(() => res.unstable_revalidate(`/${data.slug}`), errors),
+    collectErrors(
+      () => res.unstable_revalidate(`/${webhookPayload.slug}`),
+      errors,
+    ),
     collectErrors(() => res.unstable_revalidate(`/~latest`), errors),
     collectErrors(
-      () => performPostPublishChores(data, webhookPayload.operation),
+      () => data && performPostPublishChores(data, webhookPayload.operation),
       errors,
     ),
   ]);
