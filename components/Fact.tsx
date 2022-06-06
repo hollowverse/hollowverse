@@ -16,8 +16,16 @@ export const Fact: React.FC<{
   const showFooter = defaultTo(props.showFooter, true);
 
   return (
-    <section className="relative m-5 flex flex-col gap-5">
-      <div className="pointer-events-none z-10 flex flex-col gap-5">
+    <section className="relative z-0 m-5 flex flex-col gap-5">
+      {props.linkSlug && (
+        <Link href={`/${props.linkSlug}/fact/${props.fact._id}`} passHref>
+          <a className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50">
+            <span className="invisible">Fact details</span>
+          </a>
+        </Link>
+      )}
+
+      <div className="pointer-events-none flex flex-col gap-5">
         <div className="flex flex-wrap items-center gap-2.5">
           {props.fact.tags.map((t) => {
             return (
@@ -71,14 +79,6 @@ export const Fact: React.FC<{
           </div>
         )}
       </div>
-
-      {props.linkSlug && (
-        <Link href={`/${props.linkSlug}/fact/${props.fact._id}`} passHref>
-          <a className="absolute -inset-5 hover:bg-gray-50 focus:bg-gray-50">
-            <span className="invisible">Fact details</span>
-          </a>
-        </Link>
-      )}
     </section>
   );
 };

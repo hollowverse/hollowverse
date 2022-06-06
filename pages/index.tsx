@@ -16,7 +16,7 @@ export default function Index(p: any) {
       allowSearchEngines
       className="text-neutral-600"
     >
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="h-container">
         <div className="mx-5">
           <h1 className="pt-5 pb-5 text-2xl font-semibold">Top Celebrities</h1>
           <CelebGallery prefetch={false} celebGalleryItems={p.top100Celebs} />

@@ -26,7 +26,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
       allowSearchEngines={false}
       pathname={`${celeb.slug}/fact/${fact._id}`}
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
+      <div className="h-container flex flex-col gap-5">
         <div className="mx-5 mt-5 flex items-center gap-5">
           <div className="relative aspect-square w-20">
             <CelebImage

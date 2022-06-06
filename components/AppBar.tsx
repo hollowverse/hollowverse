@@ -13,7 +13,7 @@ export function Container(params: { children: ReactNode }) {
         aria-label="Main Navigation"
         className="NAV-CONTAINER flex h-[70px] w-full border-b bg-white py-5 px-5 text-neutral-600"
       >
-        <div className="NAV mx-auto flex w-full max-w-3xl flex-row items-center justify-between gap-2">
+        <div className="NAV h-container flex flex-row items-center justify-between gap-2">
           {params.children}
         </div>
       </nav>
