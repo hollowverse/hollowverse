@@ -7,6 +7,18 @@ body {
   font-family: Arial, sans-serif;
 }
 
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 @layer components {
   .textbox-border {
     @apply rounded-md border-2 placeholder-neutral-400 outline-none transition focus-within:border-2 focus-within:border-blue-300;

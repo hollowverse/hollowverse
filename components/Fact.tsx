@@ -56,7 +56,7 @@ export const Fact: React.FC<{
         </div>
 
         {showFooter && (
-          <div className="FACT-FOOTER mx-5 -mt-3 flex gap-2.5 text-neutral-600">
+          <div className="FACT-FOOTER -mt-3 flex gap-2.5 text-neutral-600">
             <Link href={`${props.fact.forumLink}#reply`} passHref>
               <a className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300">
                 <BiMessage className="text-lg" />

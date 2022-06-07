@@ -2,15 +2,22 @@ import { Link } from '~/lib/Link';
 import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { c } from '~/lib/c';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: NonNullable<
     CelebPageProps['celeb']['oldContent']
   >['relatedPeople'];
   prefetch?: boolean;
+  className?: string;
 }> = (props) => {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div
+      className={c(
+        'default:flex default:flex-wrap default:justify-center',
+        props.className,
+      )}
+    >
       {props.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture;
 
@@ -22,7 +29,7 @@ export const CelebGallery: React.FC<{
             /* Next.js `prefetches` by default and complains when you pass `true`, so we pass `undefined`. */
             prefetch={props.prefetch === false ? false : undefined}
           >
-            <a className="m-2 w-full min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl">
+            <a className="m-2 min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl">
               <div className="relative w-full">
                 <CelebImage
                   key={celebData.slug + '-image'}
