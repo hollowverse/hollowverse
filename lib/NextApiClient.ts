@@ -8,10 +8,12 @@ export async function NextApiClient(...args: Parameters<typeof fetch>) {
     const isJson =
       contentType && contentType.indexOf('application/json') !== -1;
 
-    log('error', 'fetch failed', [
+    log('error', 'Next API call failed', [
       `url: ${args[0]}; status code: ${res.status}; text: ${res.statusText}`,
       JSON.stringify(isJson ? await res.json() : await res.text()),
     ]);
+
+    return null;
   }
 
   return res;

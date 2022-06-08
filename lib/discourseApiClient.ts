@@ -1,5 +1,4 @@
 import { log } from '~/lib/log';
-import { JsonObj } from '~/lib/types';
 
 export async function discourseApiClient(
   requestId: string,
@@ -37,5 +36,5 @@ export async function discourseApiClient(
     return null;
   }
 
-  return (await res.json()) as JsonObj;
+  return (await res.json()) as { [name: string]: any };
 }

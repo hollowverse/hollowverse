@@ -1,6 +1,6 @@
 import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
-import { isArray, noop } from 'lodash-es';
+import { isArray, isString, noop } from 'lodash-es';
 import { determineServerOrClient } from '~/lib/determineServerOrClient';
 import { getNodeEnv } from '~/lib/getNodeEnv';
 import { getVercelEnv } from '~/lib/getVercelEnv';
@@ -58,6 +58,14 @@ export type StringJson = {
 
 type Dimension = string | number;
 
+function formatMessage(message: string | Error) {
+  if (isString(message)) {
+    return message.toLowerCase();
+  }
+
+  return message;
+}
+
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
   return function (
     level: 'info' | 'error' | 'debug',
@@ -76,7 +84,7 @@ function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
       }
     });
 
-    return logger[level](message, {
+    return logger[level](formatMessage(message), {
       ...dimObject,
       env: getEnvShortName(getVercelEnv() || getNodeEnv()),
       commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
