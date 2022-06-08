@@ -39,11 +39,6 @@ function consoleLogger(logs: ILogtailLog[]) {
     });
 }
 
-if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
-  browserLogger.setSync(consoleLogger as any);
-  nodeLogger.setSync(consoleLogger as any);
-}
-
 function getEnvShortName(longName: 'development' | 'production' | 'preview') {
   if (longName === 'development' || longName === 'preview') {
     return 'dev';
@@ -97,6 +92,11 @@ const dummyBrowserLogger = new BrowserLogger(sourceToken);
 const dummyNodeLogger = new NodeLogger(sourceToken);
 dummyBrowserLogger.setSync(noop as any);
 dummyNodeLogger.setSync(noop as any);
+
+if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
+  browserLogger.setSync(consoleLogger as any);
+  nodeLogger.setSync(consoleLogger as any);
+}
 
 /**
  * Invert the comments below to silence the logs during development.
