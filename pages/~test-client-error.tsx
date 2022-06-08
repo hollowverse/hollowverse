@@ -1,5 +1,4 @@
 import React from 'react';
-import { NextApiClient } from '~/lib/NextApiClient';
 
 export default function TestClientErrors() {
   return (
@@ -19,7 +18,7 @@ export default function TestClientErrors() {
         <button
           type="button"
           onClick={async () => {
-            const res = await NextApiClient('https://example.com');
+            const res = await fetch('https://example.com');
             const val = res.json() as any;
 
             console.log(val.hello.there);
