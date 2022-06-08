@@ -4,23 +4,24 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
 import { badgeData } from '~/lib/badgeDefinitions';
-import { discourseClientApi } from '~/lib/discourseClientApi';
+import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/lib/getForumTopicId';
 import { ContentChangeData } from '~/lib/groq/contentChange.groq';
+import { log } from '~/lib/log';
 import { ordinal } from '~/lib/ordinal';
 import { pluralize } from '~/lib/pluralize';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 
-function getTopic(topicId: string) {
-  return discourseClientApi(`t/-/${topicId}.json`);
+function getTopic(topicId: string, requestId: string) {
+  return discourseApiClient(requestId, `t/-/${topicId}.json`);
 }
 
-function addAcceptedTag(topic: any) {
+function addAcceptedTag(topic: any, requestId: string) {
   const tags = [...topic.tags];
   tags.push('accepted');
   const newTags = uniq(tags);
 
-  return discourseClientApi(`t/-/${topic.id}.json`, {
+  return discourseApiClient(requestId, `t/-/${topic.id}.json`, {
     method: 'PUT',
     body: {
       keep_existing_draft: true,
@@ -33,7 +34,8 @@ function notifyContributor(
   contributor: any,
   forumLink: string,
   slug: string,
-  newBadges: UnwrapPromise<ReturnType<typeof grantBadges>>,
+  newBadges: NonNullable<UnwrapPromise<ReturnType<typeof grantBadges>>>,
+  requestId: string,
 ) {
   const celebPageUrl = `https://hollowverse.com/${slug}`;
   const message = `Hi @${contributor.username}!
@@ -57,7 +59,7 @@ You've been awarded your <a href="https://forum.hollowverse.com/u/${
 Thank you for contributing!
 Hollowverse`;
 
-  return discourseClientApi('posts.json', {
+  return discourseApiClient(requestId, 'posts.json', {
     method: 'POST',
     body: {
       title: 'Your submission has been accepted and published!',
@@ -68,11 +70,15 @@ Hollowverse`;
   });
 }
 
-async function grantBadges(contributor: any, forumLink: string) {
+async function grantBadges(
+  contributor: any,
+  forumLink: string,
+  requestId: string,
+) {
   const newBadges: string[] = [];
 
   // Increase Stardust
-  await discourseClientApi('user_badges', {
+  await discourseApiClient(requestId, 'user_badges', {
     method: 'POST',
     body: {
       username: contributor.username,
@@ -81,9 +87,14 @@ async function grantBadges(contributor: any, forumLink: string) {
     },
   });
 
-  const contributorBadges = await discourseClientApi(
+  const contributorBadges = await discourseApiClient(
+    requestId,
     `user-badges/${contributor.username}.json`,
   );
+
+  if (!contributorBadges) {
+    return null;
+  }
 
   const countedBadges = countBy(
     contributorBadges.user_badges,
@@ -101,7 +112,7 @@ async function grantBadges(contributor: any, forumLink: string) {
     thresholdReachedForBadge !== undefined &&
     countedBadges[thresholdReachedForBadge.id] === undefined
   ) {
-    await discourseClientApi('user_badges', {
+    await discourseApiClient(requestId, 'user_badges', {
       method: 'POST',
       body: {
         username: contributor.username,
@@ -121,6 +132,7 @@ async function grantBadges(contributor: any, forumLink: string) {
 async function updateAndLockPost(
   topic: any,
   contentChangeData: ContentChangeData,
+  requestId: string,
 ) {
   const topicOpId = topic.post_stream.posts[0].id;
   const fact = ReactDOMServer.renderToStaticMarkup(
@@ -128,7 +140,7 @@ async function updateAndLockPost(
   );
 
   await Promise.all([
-    discourseClientApi(`posts/${topicOpId}.json`, {
+    discourseApiClient(requestId, `posts/${topicOpId}.json`, {
       method: 'PUT',
       body: {
         post: {
@@ -136,7 +148,7 @@ async function updateAndLockPost(
         },
       },
     }),
-    discourseClientApi(`posts/${topicOpId}/locked`, {
+    discourseApiClient(requestId, `posts/${topicOpId}/locked`, {
       method: 'PUT',
       body: {
         locked: 'true',
@@ -145,42 +157,66 @@ async function updateAndLockPost(
   ]);
 }
 
-async function rewardUser(topic: any, contentChangeData: ContentChangeData) {
+async function rewardUser(
+  topic: any,
+  contentChangeData: ContentChangeData,
+  requestId: string,
+) {
   const contributor = topic.details.created_by;
 
-  const newBadges = await grantBadges(contributor, contentChangeData.forumLink);
+  const newBadges = await grantBadges(
+    contributor,
+    contentChangeData.forumLink,
+    requestId,
+  );
+
+  if (!newBadges) {
+    log('error', 'content-change-notify', [
+      'failed to grant badges',
+      requestId,
+      contentChangeData.forumLink,
+    ]);
+
+    return;
+  }
+
   await notifyContributor(
     contributor,
     contentChangeData.forumLink,
     contentChangeData.slug,
     newBadges,
+    requestId,
   );
 }
 
 export async function performPostPublishChores(
   contentChangeData: ContentChangeData,
   operation: SanityWebhookProps['operation'],
+  requestId: string,
 ) {
   const topicId = getForumTopicId(contentChangeData.forumLink);
 
   if (!topicId) {
-    throw new Error(
-      'Topic ID not found for link: ' + contentChangeData.forumLink,
-    );
+    log('error', 'content-change-notify', [
+      'topic ID not found: ' + contentChangeData.forumLink,
+      requestId,
+    ]);
+
+    return;
   }
 
-  const topic = await getTopic(topicId);
+  const topic = await getTopic(topicId, requestId);
 
   const performUpdateAndLockPost =
     operation === 'update' || operation === 'create';
   const performRewardUser = operation === 'create';
 
   await Promise.all([
-    addAcceptedTag(topic),
+    addAcceptedTag(topic, requestId),
     performUpdateAndLockPost
-      ? updateAndLockPost(topic, contentChangeData)
+      ? updateAndLockPost(topic, contentChangeData, requestId)
       : null,
-    performRewardUser ? rewardUser(topic, contentChangeData) : null,
+    performRewardUser ? rewardUser(topic, contentChangeData, requestId) : null,
   ]);
 
   return true;

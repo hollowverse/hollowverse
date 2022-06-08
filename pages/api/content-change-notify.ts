@@ -1,15 +1,14 @@
 import { isValidRequest } from '@sanity/webhook';
 import groq from 'groq';
-import { isEmpty } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { collectErrors } from '~/lib/collectErrors';
 import {
   ContentChangeData,
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
-import { log, loggerStringify, StringJson } from '~/lib/log';
+import { log } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
 import { sanityClientNoCdn } from '~/lib/sanityio';
+import { v4 as uuid } from 'uuid';
 
 export type SanityWebhookProps = {
   operation: 'create' | 'update' | 'delete';
@@ -18,40 +17,32 @@ export type SanityWebhookProps = {
 };
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
-  const key = req.headers['idempotency-key'] as string | undefined;
+  const requestId = uuid();
   const { body: webhookPayload } = req as { body: SanityWebhookProps };
 
   log(
-    'debug',
+    'info',
     'content-change-notify',
-    ['request received', webhookPayload._id || 'no _id', key || 'no key'],
+    ['request received', requestId, webhookPayload._id || 'no _id'],
     webhookPayload,
   );
 
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
-    log('debug', 'content-change-notify', [
-      'unauthorized',
-      webhookPayload._id || 'no _id',
-    ]);
+    log('info', 'content-change-notify', ['unauthorized', requestId]);
 
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  log('info', 'content-change-notify', [
-    webhookPayload.slug,
-    webhookPayload._id,
-  ]);
-
   const data = (await sanityClientNoCdn.fetch(
-    'content-change-data',
+    requestId,
     groq`*[_id == $_id][0]{${contentChangeProjection}}`,
     { _id: webhookPayload._id },
   )) as ContentChangeData | null;
 
   log(
-    'debug',
+    'info',
     'content-change-notify',
-    ['sanity data received', webhookPayload._id],
+    ['sanity data received', requestId],
     data as any,
   );
 
@@ -67,7 +58,7 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
           'content-change-notify',
           [
             `revalidation failed: ${revalidationRoute}`,
-            webhookPayload._id,
+            requestId,
             JSON.stringify(e),
           ],
           e,
@@ -82,7 +73,7 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
       } catch (e: any) {
         log('error', 'content-change-notify', [
           `revalidation failed: ${revalidationRoute}`,
-          webhookPayload._id,
+          requestId,
           JSON.stringify(e),
         ]);
       }
@@ -90,10 +81,15 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     (async () => {
       if (data) {
         try {
-          await performPostPublishChores(data, webhookPayload.operation);
+          await performPostPublishChores(
+            data,
+            webhookPayload.operation,
+            requestId,
+          );
         } catch (e) {
           log('error', 'content-change-notify', [
             'perform publish chores error',
+            requestId,
             JSON.stringify(e),
           ]);
         }

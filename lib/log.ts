@@ -56,17 +56,19 @@ export type StringJson = {
   [name: string]: string | StringJson;
 };
 
+type Dimension = string | number;
+
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
   return function (
     level: 'info' | 'error' | 'debug',
     message: string | Error,
-    dimensions?: [string?, string?, string?],
+    dimensions?: [Dimension?, Dimension?, Dimension?, Dimension?],
     other?: StringJson,
   ) {
     const logger =
       determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
 
-    let dimObject: { [name: string]: string } = {};
+    let dimObject: { [name: string]: Dimension } = {};
 
     dimensions?.forEach((dim, i) => {
       if (dim) {

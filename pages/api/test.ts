@@ -1,8 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { discourseClientApi } from '~/lib/discourseClientApi';
+import { discourseApiClient } from '~/lib/discourseApiClient';
+import { v4 as uuid } from 'uuid';
 
 async function testApiRoute(req: NextApiRequest, res: NextApiResponse) {
-  const val = await discourseClientApi(`t/-/asdf.json`);
+  console.log('req.headers', req.headers);
+  console.log('req.body', req.body);
+  console.log('uuid()', uuid());
+  const val = await discourseApiClient('test', `t/-/asdf.json`);
 
   return res.json({ ok: val });
 }
