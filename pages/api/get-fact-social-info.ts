@@ -2,7 +2,7 @@ import Cors from 'cors';
 import { endsWith, isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
-import { discourseClientApi } from '~/lib/discourseClientApi';
+import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/lib/getForumTopicId';
 import { initMiddleware } from '~/lib/initMiddleware';
 import { log } from '~/lib/log';
@@ -51,7 +51,10 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
     throw new Error(`Cant find post ID in: ${queryUrl}`);
   }
 
-  const topic = await discourseClientApi(`t/-/${topicId}.json`);
+  const topic = await discourseApiClient(
+    'get-fact-social-info',
+    `t/-/${topicId}.json`,
+  );
 
   if (!topic) {
     throw new Error(`Could not find topic for Topic ID: ${topicId}`);

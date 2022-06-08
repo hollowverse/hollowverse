@@ -1,6 +1,6 @@
 import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
-import { isArray, noop } from 'lodash-es';
+import { isArray, isString, noop } from 'lodash-es';
 import { determineServerOrClient } from '~/lib/determineServerOrClient';
 import { getNodeEnv } from '~/lib/getNodeEnv';
 import { getVercelEnv } from '~/lib/getVercelEnv';
@@ -39,11 +39,6 @@ function consoleLogger(logs: ILogtailLog[]) {
     });
 }
 
-if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
-  browserLogger.setSync(consoleLogger as any);
-  nodeLogger.setSync(consoleLogger as any);
-}
-
 function getEnvShortName(longName: 'development' | 'production' | 'preview') {
   if (longName === 'development' || longName === 'preview') {
     return 'dev';
@@ -52,21 +47,31 @@ function getEnvShortName(longName: 'development' | 'production' | 'preview') {
   return 'prod';
 }
 
-type StringJson = {
+export type StringJson = {
   [name: string]: string | StringJson;
 };
 
+type Dimension = string | number;
+
+function formatMessage(message: string | Error) {
+  if (isString(message)) {
+    return message.toLowerCase();
+  }
+
+  return message;
+}
+
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
   return function (
-    level: 'info' | 'error',
+    level: 'info' | 'error' | 'debug',
     message: string | Error,
-    dimensions?: [string?, string?, string?],
+    dimensions?: [Dimension?, Dimension?, Dimension?, Dimension?],
     other?: StringJson,
   ) {
     const logger =
       determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
 
-    let dimObject: { [name: string]: string } = {};
+    let dimObject: { [name: string]: Dimension } = {};
 
     dimensions?.forEach((dim, i) => {
       if (dim) {
@@ -74,7 +79,7 @@ function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
       }
     });
 
-    return logger[level](message, {
+    return logger[level](formatMessage(message), {
       ...dimObject,
       env: getEnvShortName(getVercelEnv() || getNodeEnv()),
       commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
@@ -87,6 +92,11 @@ const dummyBrowserLogger = new BrowserLogger(sourceToken);
 const dummyNodeLogger = new NodeLogger(sourceToken);
 dummyBrowserLogger.setSync(noop as any);
 dummyNodeLogger.setSync(noop as any);
+
+if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
+  browserLogger.setSync(consoleLogger as any);
+  nodeLogger.setSync(consoleLogger as any);
+}
 
 /**
  * Invert the comments below to silence the logs during development.

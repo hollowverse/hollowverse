@@ -1,13 +1,22 @@
-import { hFetch } from '~/lib/hFetch';
+import { NextApiClient } from '~/lib/NextApiClient';
 
 export async function getFactSocialInfo(forumLink: string) {
-  const res = await hFetch(
+  let commentCount: number | null = null;
+  let contributorUsername: string | null = null;
+
+  const res = await NextApiClient(
     `/api/get-fact-social-info?url=${encodeURIComponent(forumLink)}`,
   );
-  const data = await res.json();
+
+  if (res) {
+    const data = await res.json();
+
+    commentCount = data.commentCount;
+    contributorUsername = data.contributorUsername;
+  }
 
   return {
-    commentCount: data.commentCount,
-    contributorUsername: data.contributorUsername,
+    commentCount,
+    contributorUsername,
   };
 }
