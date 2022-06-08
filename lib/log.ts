@@ -52,13 +52,13 @@ function getEnvShortName(longName: 'development' | 'production' | 'preview') {
   return 'prod';
 }
 
-type StringJson = {
+export type StringJson = {
   [name: string]: string | StringJson;
 };
 
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
   return function (
-    level: 'info' | 'error',
+    level: 'info' | 'error' | 'debug',
     message: string | Error,
     dimensions?: [string?, string?, string?],
     other?: StringJson,

@@ -7,7 +7,7 @@ import {
   ContentChangeData,
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
-import { log } from '~/lib/log';
+import { log, loggerStringify, StringJson } from '~/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
 import { sanityClientNoCdn } from '~/lib/sanityio';
 
@@ -18,18 +18,29 @@ export type SanityWebhookProps = {
 };
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
+  const key = req.headers['idempotency-key'] as string | undefined;
+  const { body: webhookPayload } = req as { body: SanityWebhookProps };
+
+  log(
+    'debug',
+    'content-change-notify',
+    ['request received', webhookPayload._id || 'no _id', key || 'no key'],
+    webhookPayload,
+  );
+
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
+    log('debug', 'content-change-notify', [
+      'unauthorized',
+      webhookPayload._id || 'no _id',
+    ]);
+
     return res.status(401).json({ message: 'Unauthorized' });
   }
-
-  const { body: webhookPayload } = req as { body: SanityWebhookProps };
 
   log('info', 'content-change-notify', [
     webhookPayload.slug,
     webhookPayload._id,
   ]);
-
-  const errors: any[] = [];
 
   const data = (await sanityClientNoCdn.fetch(
     'content-change-data',
@@ -37,21 +48,58 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     { _id: webhookPayload._id },
   )) as ContentChangeData | null;
 
-  await Promise.all([
-    collectErrors(
-      () => res.unstable_revalidate(`/${webhookPayload.slug}`),
-      errors,
-    ),
-    collectErrors(() => res.unstable_revalidate(`/~latest`), errors),
-    collectErrors(
-      () => data && performPostPublishChores(data, webhookPayload.operation),
-      errors,
-    ),
-  ]);
+  log(
+    'debug',
+    'content-change-notify',
+    ['sanity data received', webhookPayload._id],
+    data as any,
+  );
 
-  if (!isEmpty(errors)) {
-    throw errors;
-  }
+  await Promise.all([
+    (async () => {
+      const revalidationRoute = `/${webhookPayload.slug}`;
+
+      try {
+        await res.unstable_revalidate(revalidationRoute);
+      } catch (e: any) {
+        log(
+          'error',
+          'content-change-notify',
+          [
+            `revalidation failed: ${revalidationRoute}`,
+            webhookPayload._id,
+            JSON.stringify(e),
+          ],
+          e,
+        );
+      }
+    })(),
+    (async () => {
+      const revalidationRoute = `/~latest`;
+
+      try {
+        await res.unstable_revalidate(revalidationRoute);
+      } catch (e: any) {
+        log('error', 'content-change-notify', [
+          `revalidation failed: ${revalidationRoute}`,
+          webhookPayload._id,
+          JSON.stringify(e),
+        ]);
+      }
+    })(),
+    (async () => {
+      if (data) {
+        try {
+          await performPostPublishChores(data, webhookPayload.operation);
+        } catch (e) {
+          log('error', 'content-change-notify', [
+            'perform publish chores error',
+            JSON.stringify(e),
+          ]);
+        }
+      }
+    })(),
+  ]);
 
   return res.json({ revalidated: true });
 }
