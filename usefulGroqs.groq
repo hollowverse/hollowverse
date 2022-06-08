@@ -1,0 +1,11 @@
+// Get all the tags applied to Facts
+[...*[_type == 'fact'][0]{'tags': tags[]{'tag':{tag->{name}}.tag.name}.tag}.tags[0]]
+
+// Get all tags for a single fact
+*[_id == '0011e736-4cbf-4e53-aa0a-1b749d1a9696'][0]{'tags': tags[]{'tag': tag->{name}}.tag.name}.tags
+
+// Get all the Facts tagged with 'Religious'
+*[
+  _type == 'fact' &&
+  'Religious' in *[_id == ^._id][0]{'tags': tags[]{'tag': tag->{name}}.tag.name}.tags
+]{'link': 'https://cms.hollowverse.com/desk/fact;' + _id}.link

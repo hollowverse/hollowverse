@@ -84,7 +84,7 @@ export default function Index(props: any) {
             <InfiniteScroll
               className="no-scrollbar flex flex-col gap-5 overflow-hidden"
               dataLength={facts.length}
-              next={async () => {
+              next={() => {
                 if (facts.length >= props.firstBatch.length) {
                   setMore(false);
                 }
