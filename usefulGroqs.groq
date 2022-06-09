@@ -9,3 +9,8 @@
   _type == 'fact' &&
   'Religious' in *[_id == ^._id][0]{'tags': tags[]{'tag': tag->{name}}.tag.name}.tags
 ]{'link': 'https://cms.hollowverse.com/desk/fact;' + _id}.link
+
+// Ordered by _updatedAt
+*[_type == 'fact'] | order(_updatedAt desc)[0..49] {
+  projection
+}

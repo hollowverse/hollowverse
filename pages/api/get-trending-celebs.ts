@@ -1,71 +1,82 @@
-import { isValidRequest } from '@sanity/webhook';
-import groq from 'groq';
-import { isEmpty } from 'lodash-es';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
-import { collectErrors } from '~/lib/collectErrors';
-import {
-  ContentChangeData,
-  contentChangeProjection,
-} from '~/lib/groq/contentChange.groq';
-import { log } from '~/lib/log';
-import { performPostPublishChores } from '~/lib/performPostPublishChores';
-import { sanityClientNoCdn } from '~/lib/sanityio';
-
-/**
- * TODO(developer): Uncomment this variable and replace with your
- *   Google Analytics 4 property ID before running the sample.
- */
-const propertyId = '311007044';
-
 // Imports the Google Analytics Data API client library.
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
+import groq from 'groq';
+import { startsWith } from 'lodash-es';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
+import { GA_TRACKING_ID } from '~/lib/gtag';
+import { sanityClient } from '~/lib/sanityio';
 
-// Using a default constructor instructs the client to use the credentials
-// specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
-    client_email: 'asdf',
-    private_key: 'adsf',
+    client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY,
   },
 });
 
-// Runs a simple report.
-async function runReport() {
+const reportDefinition = {
+  property: `properties/${GA_TRACKING_ID}`,
+  dimensions: [{ name: 'pagePath' }],
+  metrics: [
+    {
+      name: 'screenPageViews',
+    },
+  ],
+  limit: 25,
+};
+
+async function getGaTopPages() {
+  // `runReport` docs https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
   const [response] = await analyticsDataClient.runReport({
-    property: `properties/${propertyId}`,
+    ...reportDefinition,
     dateRanges: [
       {
-        startDate: '2020-03-31',
+        startDate: '7daysAgo',
         endDate: 'today',
       },
     ],
-    dimensions: [
-      {
-        name: 'city',
-      },
-    ],
-    metrics: [
-      {
-        name: 'activeUsers',
-      },
-    ],
   });
 
-  console.log('Report result:');
-  response?.rows?.forEach((row: any) => {
-    console.log(row.dimensionValues[0], row.metricValues[0]);
-  });
+  if (!response || !response.rows) {
+    return null;
+  }
+
+  const pages: any[] = [];
+
+  for (let i = 0; response.rows.length > i; i++) {
+    const row = response.rows[i];
+    const dimensionValues = row.dimensionValues;
+
+    if (!dimensionValues) {
+      continue;
+    }
+
+    const path = dimensionValues[0].value;
+
+    if (!path || path === '/' || startsWith(path, '/~')) {
+      continue;
+    }
+
+    pages.push(path.substring(1, path.length));
+  }
+
+  return pages;
 }
 
-runReport();
-
 async function getTrendingCelebs(_req: NextApiRequest, res: NextApiResponse) {
-  log('info', 'get-trending-celebs');
+  const gaTopPages = await getGaTopPages();
+  console.log('gaTopPages', gaTopPages);
+  const trendingCelebs = await sanityClient.fetch(
+    'trending-celebs',
+    groq`*[_type == 'celeb' && slug.current in $slugs] {
+      name,
+      'slug': slug.current,
+      'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
+    }`,
+    { slugs: gaTopPages },
+  );
 
-  await runReport();
-
-  return res.json({ ok: true });
+  return res.json(trendingCelebs);
 }
 
 export default apiHandlerWithErrorLogging(

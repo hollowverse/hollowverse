@@ -13,6 +13,7 @@ import { Spinner } from '~/components/Spinner';
 import { formatFactDate } from '~/lib/date';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
+import { nextApiClient } from '~/lib/nextApiClient';
 import { sanityClient } from '~/lib/sanityio';
 import { top100CelebSlugs as _top100CelebSlugs } from '../lib/top100CelebSlugs';
 
@@ -64,12 +65,13 @@ export default function Index(props: any) {
             </h2>
 
             <div className="relative z-0">
-              <div className="no-scrollbar overflow-auto pl-5">
+              <div className="no-scrollbar flex flex-row overflow-auto pl-5">
                 <CelebGallery
                   prefetch={false}
                   celebGalleryItems={props.top100Celebs}
                   className="flex flex-row flex-nowrap justify-start"
                 />
+                <div className="FILLER min-w-[50px] flex-grow" />
               </div>
               <div className="LEFT-FADE absolute top-0 left-0 bottom-0 z-10 w-7 bg-gradient-to-r from-gray-100 via-gray-100 to-transparent" />
               <div className="RIGHT-FADE absolute top-0 right-0 bottom-0 z-10 w-7 bg-gradient-to-l from-gray-100 via-gray-100 to-transparent" />
@@ -144,16 +146,11 @@ export default function Index(props: any) {
   );
 }
 
-export const getStaticProps = async () => {
-  const top100Celebs = (await sanityClient.fetch(
-    'homepage-top-100-celebs',
-    `*[_type == 'celeb' && slug.current in $slugs]{
-      name,
-      'slug': slug.current,
-      'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
-    }`,
-    { slugs: top100CelebSlugs },
-  )) as any[];
+export async function getStaticProps() {
+  console.log('name', JSON.stringify(arguments as any, null, 2));
+  const top100Celebs = await nextApiClient('get-trending-celebs');
+
+  console.log('top100Celebs', top100Celebs);
 
   const firstBatch = await sanityClient.fetch(
     'latest-page-facts',
@@ -173,10 +170,6 @@ export const getStaticProps = async () => {
     }`,
   );
 
-  top100Celebs.sort((a, b) => {
-    return top100CelebSlugs.indexOf(a.slug) - top100CelebSlugs.indexOf(b.slug);
-  });
-
   return {
     props: {
       top100Celebs,
@@ -186,4 +179,4 @@ export const getStaticProps = async () => {
       })),
     },
   };
-};
+}

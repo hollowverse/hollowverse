@@ -1,8 +1,10 @@
 import { RequestInit } from 'next/dist/server/web/spec-extension/request';
+import { determineAppUrl } from '~/lib/determineAppUrl';
 import { log } from '~/lib/log';
 
 export async function nextApiClient(pathname: string, init?: RequestInit) {
-  const url = `/api/${pathname}`;
+  const url = `${determineAppUrl()}/api/${pathname}`;
+
   log('info', 'next api call', [url]);
 
   const res = await fetch(url, init);
@@ -20,5 +22,5 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
     return null;
   }
 
-  return res;
+  return (await res.json()) as { [name: string]: any };
 }

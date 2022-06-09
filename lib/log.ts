@@ -2,6 +2,7 @@ import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
 import { isArray, isString, noop } from 'lodash-es';
 import { determineServerOrClient } from '~/lib/determineServerOrClient';
+import { getEnv } from '~/lib/getEnv';
 import { getNodeEnv } from '~/lib/getNodeEnv';
 import { getVercelEnv } from '~/lib/getVercelEnv';
 
@@ -93,7 +94,7 @@ const dummyNodeLogger = new NodeLogger(sourceToken);
 dummyBrowserLogger.setSync(noop as any);
 dummyNodeLogger.setSync(noop as any);
 
-if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
+if (getEnv() === 'development') {
   browserLogger.setSync(consoleLogger as any);
   nodeLogger.setSync(consoleLogger as any);
 }
@@ -102,6 +103,6 @@ if (getVercelEnv() === 'development' || getNodeEnv() === 'development') {
  * Invert the comments below to silence the logs during development.
  * Use `flog` where you still need logs during development
  */
-// export const log = createLogger(nodeLogger, browserLogger);
-export const log = createLogger(dummyNodeLogger, dummyBrowserLogger);
-export const flog = createLogger(nodeLogger, browserLogger);
+export const log = createLogger(nodeLogger, browserLogger);
+// export const log = createLogger(dummyNodeLogger, dummyBrowserLogger);
+// export const flog = createLogger(nodeLogger, browserLogger);
