@@ -85,5 +85,6 @@ export const getStaticProps = async () => {
         date: formatFactDate(f.date),
       })),
     },
+    revalidate: 60 * 60 * 24, // revalidate every 24 hours
   };
 };
