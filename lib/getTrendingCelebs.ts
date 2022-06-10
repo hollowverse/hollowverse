@@ -42,7 +42,7 @@ async function getGaTopPages() {
     ...reportDefinition,
     dateRanges: [
       {
-        startDate: '7daysAgo',
+        startDate: '14daysAgo',
         endDate: 'today',
       },
     ],
