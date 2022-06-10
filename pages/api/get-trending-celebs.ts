@@ -71,13 +71,38 @@ async function getTrendingCelebs(_req: NextApiRequest, res: NextApiResponse) {
   console.log('gaTopPages', gaTopPages);
   const trendingCelebs = await sanityClient.fetch(
     'trending-celebs',
-    groq`*[_type == 'celeb' && slug.current in $slugs] {
+    groq`*[
+      _type == 'celeb' &&
+      slug.current in $slugs
+    ] {
       name,
       'slug': slug.current,
-      'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}}
-    }`,
+      'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}},
+      "latestFact": *[
+        _type == "fact" &&
+        celeb._ref == ^._id
+      ] | order(_updatedAt desc)[0]
+    } | order(latestFact._updatedAt desc){
+      name,
+      picture,
+      slug,
+      latestFact
+    }
+    `,
     { slugs: gaTopPages },
   );
+
+  trendingCelebs.sort((a: any, b: any) => {
+    if (a.latestFact && !b.latestFact) {
+      return -1;
+    }
+
+    if (!a.latestFact && b.latestFact) {
+      return 1;
+    }
+
+    return 0;
+  });
 
   return res.json(trendingCelebs);
 }

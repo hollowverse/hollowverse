@@ -14,3 +14,20 @@
 *[_type == 'fact'] | order(_updatedAt desc)[0..49] {
   projection
 }
+
+// Celebs ordered by having most recently added Facts
+*[
+  _type == 'celeb' &&
+  slug.current in $slugs
+] {
+  name,
+  'slug': slug.current,
+  "latestFact": *[
+    _type == "fact" &&
+    celeb._ref == ^._id
+  ] | order(_updatedAt desc)[0]
+} | order(latestFact._updatedAt desc){
+  name,
+  slug,
+  latestFact
+}
