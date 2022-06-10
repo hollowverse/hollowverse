@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import Script from 'next/script';
 import React from 'react';
 import { PageTransitionSpinner } from '~/components/PageTransitionSpinner';
-import { GA_MEASUREMENT_ID } from '~/lib/gtag';
+import { GA_MEASUREMENT_ID } from '~/lib/googleAnalytics';
 import '~/styles/global.css';
 
 export default function App({ Component, pageProps }: AppProps) {
