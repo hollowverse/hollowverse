@@ -46,38 +46,22 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     data as any,
   );
 
+  async function revalidatePath(path: string) {
+    try {
+      await res.unstable_revalidate(path);
+    } catch (e: any) {
+      log(
+        'error',
+        'content-change-notify',
+        [`revalidation failed: ${path}`, requestId, JSON.stringify(e)],
+        e,
+      );
+    }
+  }
+
   await Promise.all([
-    (async () => {
-      const revalidationRoute = `/${webhookPayload.slug}`;
-
-      try {
-        await res.unstable_revalidate(revalidationRoute);
-      } catch (e: any) {
-        log(
-          'error',
-          'content-change-notify',
-          [
-            `revalidation failed: ${revalidationRoute}`,
-            requestId,
-            JSON.stringify(e),
-          ],
-          e,
-        );
-      }
-    })(),
-    (async () => {
-      const revalidationRoute = `/~latest`;
-
-      try {
-        await res.unstable_revalidate(revalidationRoute);
-      } catch (e: any) {
-        log('error', 'content-change-notify', [
-          `revalidation failed: ${revalidationRoute}`,
-          requestId,
-          JSON.stringify(e),
-        ]);
-      }
-    })(),
+    (async () => revalidatePath(`/${webhookPayload.slug}`))(),
+    (async () => revalidatePath(`/`))(),
     (async () => {
       if (data) {
         try {
