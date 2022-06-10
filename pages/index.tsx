@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { GetStaticProps, GetStaticPropsResult } from 'next';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
@@ -11,15 +12,16 @@ import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { formatFactDate } from '~/lib/date';
-import { getTrendingCelebs } from '~/lib/getTrendingCelebs';
+import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
 import { log } from '~/lib/log';
 import { sanityClient } from '~/lib/sanityio';
 
-type HomepageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
+type HomepageProps = {
+  trendingCelebs: TrendingCelebs;
+  latestFacts: any;
+};
 
 export default function Index(props: HomepageProps) {
   const [facts, setFacts] = useState<TFact[]>(props.latestFacts.slice(0, 10));
@@ -148,7 +150,9 @@ export default function Index(props: HomepageProps) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<HomepageProps>
+> {
   log('info', 'homepage getStaticProps called');
 
   const trendingCelebs = await getTrendingCelebs();
@@ -181,5 +185,6 @@ export async function getStaticProps() {
       trendingCelebs,
       latestFacts: enhancedLatestFacts,
     },
+    revalidate: 60 * 60 * 24, // revalidate every 24 hours
   };
 }
