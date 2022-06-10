@@ -2,10 +2,9 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { Picture } from '~/lib/groq/picture.partial.groq';
 import { GA_TRACKING_ID } from '~/lib/gtag';
+import { log } from '~/lib/log';
 import { sanityClient } from '~/lib/sanityio';
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
@@ -39,6 +38,8 @@ async function getGaTopPages() {
   });
 
   if (!response || !response.rows) {
+    log('error', 'no trending celebs found', [], response as any);
+
     return null;
   }
 
@@ -66,9 +67,9 @@ async function getGaTopPages() {
 
 export type TrendingCelebs = { name: string; slug: string; picture: Picture }[];
 
-async function getTrendingCelebs(_req: NextApiRequest, res: NextApiResponse) {
+export async function getTrendingCelebs() {
   const gaTopPages = await getGaTopPages();
-  console.log('gaTopPages', gaTopPages);
+
   const trendingCelebs = await sanityClient.fetch(
     'trending-celebs',
     groq`*[
@@ -104,10 +105,5 @@ async function getTrendingCelebs(_req: NextApiRequest, res: NextApiResponse) {
     return 0;
   });
 
-  return res.json(trendingCelebs);
+  return trendingCelebs as TrendingCelebs;
 }
-
-export default apiHandlerWithErrorLogging(
-  'get-trending-celebs',
-  getTrendingCelebs,
-);

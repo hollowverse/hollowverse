@@ -11,12 +11,11 @@ import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { formatFactDate } from '~/lib/date';
+import { getTrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
 import { log } from '~/lib/log';
-import { nextApiClient } from '~/lib/nextApiClient';
 import { sanityClient } from '~/lib/sanityio';
-import { TrendingCelebs } from '~/pages/api/get-trending-celebs';
 
 type HomepageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
@@ -152,9 +151,8 @@ export default function Index(props: HomepageProps) {
 export async function getStaticProps() {
   log('info', 'homepage getStaticProps called');
 
-  const trendingCelebs = (await nextApiClient(
-    'get-trending-celebs',
-  )) as TrendingCelebs;
+  const trendingCelebs = await getTrendingCelebs();
+
   const latestFacts = await sanityClient.fetch(
     'latest-page-facts',
     groq`*[_type == 'fact'] | order(date desc)[0..49] {
@@ -172,6 +170,7 @@ export async function getStaticProps() {
       ${factPartialGroq}
     }`,
   );
+
   const enhancedLatestFacts = latestFacts.map((f: TFact) => ({
     ...f,
     date: formatFactDate(f.date),
