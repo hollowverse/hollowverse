@@ -15,31 +15,32 @@ const analyticsDataClient = new BetaAnalyticsDataClient({
 
 const GA_PROPERTY_ID = '311007044';
 
-const reportDefinition = {
-  property: `properties/${GA_PROPERTY_ID}`,
-  dimensions: [{ name: 'pagePath' }],
-  dimensionFilter: {
-    filter: {
-      fieldName: 'pageReferrer',
-      stringFilter: {
-        matchType: 'ENDS_WITH',
-        value: '~search',
-        caseSensitive: false,
-      },
-    },
-  } as const,
-  metrics: [
-    {
-      name: 'screenPageViews',
-    },
-  ],
-  limit: 25,
-};
-
 async function getGaTopPages() {
   // `runReport` docs https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
   const [response] = await analyticsDataClient.runReport({
-    ...reportDefinition,
+    property: `properties/${GA_PROPERTY_ID}`,
+
+    dimensions: [{ name: 'pagePath' }],
+
+    dimensionFilter: {
+      filter: {
+        fieldName: 'pageReferrer',
+        stringFilter: {
+          matchType: 'ENDS_WITH',
+          value: '~search',
+          caseSensitive: false,
+        },
+      },
+    },
+
+    metrics: [
+      {
+        name: 'screenPageViews',
+      },
+    ],
+
+    limit: 25,
+
     dateRanges: [
       {
         startDate: '14daysAgo',
