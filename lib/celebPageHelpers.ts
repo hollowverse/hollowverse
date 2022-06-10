@@ -3,16 +3,6 @@ import { useEffect } from 'react';
 import { GroupedFacts } from '~/lib/factsDataTransform';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { Tag } from '~/lib/groq/fact.partial.groq';
-import { logMissingFacts } from '~/lib/logMissingCeleb';
-
-export function useCeleb(name: string, factGroups: GroupedFacts['groups']) {
-  useEffect(() => {
-    if (isEmpty(factGroups)) {
-      logMissingFacts(name);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-}
 
 export function getHeadDescription(
   name: string,

@@ -3,29 +3,40 @@ import { useRouter } from 'next/router';
 import React, { ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
+import { c } from '~/lib/c';
 
-export function Container(params: { children: ReactNode }) {
+export function Container(props: { children: ReactNode; navClasses?: string }) {
   return (
     <>
       <LovelyTopBorder />
       <nav
         role="navigation"
         aria-label="Main Navigation"
-        className="NAV-CONTAINER flex h-[70px] w-full border-b bg-white py-5 px-5 text-neutral-600"
+        className="NAV-CONTAINER flex w-full border-b bg-white p-3 px-5 text-neutral-600"
       >
-        <div className="NAV h-container flex flex-row items-center justify-between gap-2">
-          {params.children}
+        <div
+          className={c(
+            'NAV h-container flex items-center justify-between default:flex-row default:gap-2',
+            props.navClasses,
+          )}
+        >
+          {props.children}
         </div>
       </nav>
     </>
   );
 }
 
-export function Logo() {
+export function Logo(props: { className?: string } = {}) {
   return (
-    <div className="LOGO flex w-full items-center">
+    <div
+      className={c(
+        'LOGO flex w-full items-center default:text-2xl',
+        props.className,
+      )}
+    >
       <Link passHref href="/">
-        <a className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text text-2xl font-extrabold uppercase tracking-tight text-transparent">
+        <a className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text font-extrabold uppercase tracking-tight text-transparent">
           Hollowverse
         </a>
       </Link>

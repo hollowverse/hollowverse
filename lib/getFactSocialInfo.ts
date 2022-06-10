@@ -1,16 +1,14 @@
-import { NextApiClient } from '~/lib/NextApiClient';
+import { nextApiClient } from '~/lib/nextApiClient';
 
 export async function getFactSocialInfo(forumLink: string) {
   let commentCount: number | null = null;
   let contributorUsername: string | null = null;
 
-  const res = await NextApiClient(
-    `/api/get-fact-social-info?url=${encodeURIComponent(forumLink)}`,
+  const data = await nextApiClient(
+    `get-fact-social-info?url=${encodeURIComponent(forumLink)}`,
   );
 
-  if (res) {
-    const data = await res.json();
-
+  if (data) {
     commentCount = data.commentCount;
     contributorUsername = data.contributorUsername;
   }
