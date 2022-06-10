@@ -1,6 +1,5 @@
 import groq from 'groq';
-import { GetStaticProps, GetStaticPropsResult } from 'next';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { GetStaticPropsResult } from 'next';
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';

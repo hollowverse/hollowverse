@@ -3,7 +3,6 @@ import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
 import { Picture } from '~/lib/groq/picture.partial.groq';
-import { GA_TRACKING_ID } from '~/lib/gtag';
 import { log } from '~/lib/log';
 import { sanityClient } from '~/lib/sanityio';
 
@@ -14,8 +13,10 @@ const analyticsDataClient = new BetaAnalyticsDataClient({
   },
 });
 
+const GA_PROPERTY_ID = '311007044';
+
 const reportDefinition = {
-  property: `properties/${GA_TRACKING_ID}`,
+  property: `properties/${GA_PROPERTY_ID}`,
   dimensions: [{ name: 'pagePath' }],
   metrics: [
     {

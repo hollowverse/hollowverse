@@ -3,14 +3,11 @@ import { ContributeCta } from '~/components/ContributeCta';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { Page } from '~/components/Page';
-import { useKnowledgeGraphCeleb } from '~/components/hooks/useKnowledgeGraphCeleb';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { KnowledgeGraphCelebParams } from '~/lib/knowledgeGraphClient';
 import { Link } from '~/lib/Link';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
-  useKnowledgeGraphCeleb(params.name);
-
   return (
     <Page
       title={`Request to add ${params.name}`}
