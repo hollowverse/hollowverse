@@ -18,6 +18,16 @@ const GA_PROPERTY_ID = '311007044';
 const reportDefinition = {
   property: `properties/${GA_PROPERTY_ID}`,
   dimensions: [{ name: 'pagePath' }],
+  dimensionFilter: {
+    filter: {
+      fieldName: 'pageReferrer',
+      stringFilter: {
+        matchType: 'ENDS_WITH',
+        value: '~search',
+        caseSensitive: false,
+      },
+    },
+  } as const,
   metrics: [
     {
       name: 'screenPageViews',
@@ -69,7 +79,7 @@ async function getGaTopPages() {
 export type TrendingCelebs = { name: string; slug: string; picture: Picture }[];
 
 export async function getTrendingCelebs() {
-  const gaTopPages = await getGaTopPages();
+  const gaTopPages = (await getGaTopPages()) as string[];
 
   const trendingCelebs = await sanityClient.fetch(
     'trending-celebs',
@@ -80,30 +90,13 @@ export async function getTrendingCelebs() {
       name,
       'slug': slug.current,
       'picture': picture.asset->{_id, 'metadata': {'lqip': metadata.lqip, 'palette': metadata.palette}},
-      "latestFact": *[
-        _type == "fact" &&
-        celeb._ref == ^._id
-      ] | order(_updatedAt desc)[0]
-    } | order(latestFact._updatedAt desc){
-      name,
-      picture,
-      slug,
-      latestFact
     }
     `,
     { slugs: gaTopPages },
   );
 
   trendingCelebs.sort((a: any, b: any) => {
-    if (a.latestFact && !b.latestFact) {
-      return -1;
-    }
-
-    if (!a.latestFact && b.latestFact) {
-      return 1;
-    }
-
-    return 0;
+    return gaTopPages.indexOf(a.slug) - gaTopPages.indexOf(b.slug);
   });
 
   return trendingCelebs as TrendingCelebs;
