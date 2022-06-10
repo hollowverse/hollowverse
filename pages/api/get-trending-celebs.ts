@@ -4,6 +4,7 @@ import groq from 'groq';
 import { startsWith } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
+import { Picture } from '~/lib/groq/picture.partial.groq';
 import { GA_TRACKING_ID } from '~/lib/gtag';
 import { sanityClient } from '~/lib/sanityio';
 
@@ -62,6 +63,8 @@ async function getGaTopPages() {
 
   return pages;
 }
+
+export type TrendingCelebs = { name: string; slug: string; picture: Picture }[];
 
 async function getTrendingCelebs(_req: NextApiRequest, res: NextApiResponse) {
   const gaTopPages = await getGaTopPages();

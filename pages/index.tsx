@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { uniq } from 'lodash-es';
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -13,14 +13,17 @@ import { Spinner } from '~/components/Spinner';
 import { formatFactDate } from '~/lib/date';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
+import { log } from '~/lib/log';
 import { nextApiClient } from '~/lib/nextApiClient';
 import { sanityClient } from '~/lib/sanityio';
-import { top100CelebSlugs as _top100CelebSlugs } from '../lib/top100CelebSlugs';
+import { TrendingCelebs } from '~/pages/api/get-trending-celebs';
 
-const top100CelebSlugs = uniq(_top100CelebSlugs);
+type HomepageProps = NonNullable<
+  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
+>;
 
-export default function Index(props: any) {
-  const [facts, setFacts] = useState<TFact[]>(props.firstBatch.slice(0, 10));
+export default function Index(props: HomepageProps) {
+  const [facts, setFacts] = useState<TFact[]>(props.latestFacts.slice(0, 10));
   const [hasMore, setMore] = useState(true);
 
   return (
@@ -68,7 +71,7 @@ export default function Index(props: any) {
               <div className="no-scrollbar flex flex-row overflow-auto pl-5">
                 <CelebGallery
                   prefetch={false}
-                  celebGalleryItems={props.top100Celebs}
+                  celebGalleryItems={props.trendingCelebs}
                   className="flex flex-row flex-nowrap justify-start"
                 />
                 <div className="FILLER min-w-[50px] flex-grow" />
@@ -87,12 +90,12 @@ export default function Index(props: any) {
               className="no-scrollbar flex flex-col gap-5 overflow-hidden"
               dataLength={facts.length}
               next={() => {
-                if (facts.length >= props.firstBatch.length) {
+                if (facts.length >= props.latestFacts.length) {
                   setMore(false);
                 }
 
                 setTimeout(() => {
-                  setFacts(props.firstBatch.slice(0, facts.length + 10));
+                  setFacts(props.latestFacts.slice(0, facts.length + 10));
                 }, 2000);
               }}
               hasMore={hasMore}
@@ -147,12 +150,12 @@ export default function Index(props: any) {
 }
 
 export async function getStaticProps() {
-  console.log('name', JSON.stringify(arguments as any, null, 2));
-  const top100Celebs = await nextApiClient('get-trending-celebs');
+  log('info', 'homepage getStaticProps called');
 
-  console.log('top100Celebs', top100Celebs);
-
-  const firstBatch = await sanityClient.fetch(
+  const trendingCelebs = (await nextApiClient(
+    'get-trending-celebs',
+  )) as TrendingCelebs;
+  const latestFacts = await sanityClient.fetch(
     'latest-page-facts',
     groq`*[_type == 'fact'] | order(date desc)[0..49] {
       'celeb': celeb->{
@@ -169,14 +172,15 @@ export async function getStaticProps() {
       ${factPartialGroq}
     }`,
   );
+  const enhancedLatestFacts = latestFacts.map((f: TFact) => ({
+    ...f,
+    date: formatFactDate(f.date),
+  }));
 
   return {
     props: {
-      top100Celebs,
-      firstBatch: firstBatch.map((f: TFact) => ({
-        ...f,
-        date: formatFactDate(f.date),
-      })),
+      trendingCelebs,
+      latestFacts: enhancedLatestFacts,
     },
   };
 }
