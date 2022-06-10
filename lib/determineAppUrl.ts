@@ -4,7 +4,7 @@ export function determineAppUrl() {
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
 
   if (vercelUrl) {
-    return vercelUrl;
+    return `https://${vercelUrl}`;
   }
 
   const localDevServerUrl =
