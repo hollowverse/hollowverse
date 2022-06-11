@@ -12,3 +12,7 @@ robots.txt
 
 # Sentry
 .sentryclirc
+
+## CMS ignores
+**/public
+**/local-backups

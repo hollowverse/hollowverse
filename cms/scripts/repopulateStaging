@@ -1,0 +1,8 @@
+#!/bin/sh
+mkdir tempRepopStaging
+sanity dataset export production tempRepopStaging/exported.tar.gz --no-assets --no-drafts
+sanity dataset delete staging
+sanity dataset create staging --visibility public
+sanity dataset import tempRepopStaging/exported.tar.gz staging
+rm tempRepopStaging/exported.tar.gz
+rm -r tempRepopStaging
