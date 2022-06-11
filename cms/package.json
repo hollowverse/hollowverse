@@ -2,7 +2,7 @@
   "name": "hollowverse",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.",
   "main": "package.json",
   "author": "Hollowverse",
   "license": "UNLICENSED",
@@ -42,6 +42,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hollowverse/cms.git"
+    "url": "git+ssh://git@github.com/hollowverse/cms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hollowverse/cms/issues"
+  },
+  "homepage": "https://github.com/hollowverse/cms#readme",
+  "directories": {
+    "lib": "lib"
   }
 }
