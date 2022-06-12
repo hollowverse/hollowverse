@@ -10,6 +10,11 @@ const nextJsConfig = {
     buildActivity: false,
   },
 
+  webpack: (config, { buildId, dev }) => {
+    config.resolve.symlinks = false;
+    return config;
+  },
+
   images: {
     domains: [
       'cdn.sanity.io',

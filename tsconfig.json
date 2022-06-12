@@ -23,7 +23,6 @@
     "removeComments": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-    "rootDir": ".",
     "paths": {
       "~/*": ["main-site/*"]
     },
@@ -32,7 +31,5 @@
     "incremental": true,
     "isolatedModules": true,
     "allowJs": true
-  },
-  "exclude": ["node_modules", "next.config.js", "out"],
-  "include": ["."]
+  }
 }
