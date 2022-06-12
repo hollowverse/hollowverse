@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { isEmpty } from 'lodash-es';
-import { knowledgeGraphClient } from '~/lib/knowledgeGraphClient';
+import { knowledgeGraphClient } from '~/shared/knowledgeGraphClient';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 const notFound = {

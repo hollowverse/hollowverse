@@ -4,7 +4,7 @@ import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { Page } from '~/components/Page';
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { KnowledgeGraphCelebParams } from '~/lib/knowledgeGraphClient';
+import { KnowledgeGraphCelebParams } from '~/shared/knowledgeGraphClient';
 import { Link } from '~/lib/Link';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {

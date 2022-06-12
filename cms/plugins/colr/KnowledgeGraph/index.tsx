@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { TestUuid } from '../../../shared/TestComp';
 import { Card } from './Card';
 import { kgCall } from './kgCall';
 import { sort } from './sort';
