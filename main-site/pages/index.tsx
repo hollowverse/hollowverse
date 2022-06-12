@@ -16,7 +16,6 @@ import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
 import { log } from '~/lib/log';
 import { sanityClient } from '~/lib/sanityio';
-import { TestUuid } from '~/shared/TestComp';
 
 type HomepageProps = {
   trendingCelebs: TrendingCelebs;
@@ -47,7 +46,6 @@ export default function Index(props: HomepageProps) {
       }
     >
       <div className="h-container py-5">
-        <TestUuid />
         <div className="flex flex-col gap-7">
           <div className="px-5">
             <Link
