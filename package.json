@@ -20,5 +20,8 @@
     "main-site",
     "cms",
     "shared"
-  ]
+  ],
+  "dependencies": {
+    "react": "^18.1.0"
+  }
 }

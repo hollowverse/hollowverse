@@ -10,9 +10,14 @@ public/sitemap*
 robots.txt
 .DS_Store
 
+# Symlinks
+main-site/shared
+cms/shared
+
 # Sentry
 .sentryclirc
 
 ## CMS ignores
 **/public
 **/local-backups
+

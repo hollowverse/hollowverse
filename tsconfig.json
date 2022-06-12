@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "strict": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "module": "esnext",
+    "target": "ES2017",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "pretty": true,
+    "baseUrl": ".",
+    "declaration": false,
+    "importHelpers": false,
+    "noEmitHelpers": true,
+    "removeComments": true,
+    "stripInternal": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "paths": {
+      "~/*": ["main-site/*"]
+    },
+    "lib": ["es5", "es6", "dom", "dom.iterable"],
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "allowJs": true
+  },
+  "exclude": ["node_modules", "next.config.js", "out"],
+  "include": ["."]
+}

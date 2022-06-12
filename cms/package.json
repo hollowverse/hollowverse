@@ -1,8 +1,8 @@
 {
-  "name": "hollowverse",
+  "name": "cms",
   "private": true,
   "version": "1.0.0",
-  "description": "Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.",
+  "description": "",
   "main": "package.json",
   "author": "Hollowverse",
   "license": "UNLICENSED",
@@ -10,7 +10,8 @@
     "start": "sanity start",
     "test": "sanity check",
     "build": "sanity build public -y",
-    "tailwind": "npx tailwindcss -i ./plugins/colr/styles.css -o ./plugins/colr/output.css --watch"
+    "tailwind": "npx tailwindcss -i ./plugins/colr/styles.css -o ./plugins/colr/output.css --watch",
+    "postinstall": "SYMLINK_DESTINATION=cms node ../symlink-shared.js"
   },
   "keywords": [
     "sanity"
@@ -42,13 +43,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/hollowverse/cms.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hollowverse/cms/issues"
-  },
-  "homepage": "https://github.com/hollowverse/cms#readme",
-  "directories": {
-    "lib": "lib"
+    "url": "git@github.com:hollowverse/cms.git"
   }
 }

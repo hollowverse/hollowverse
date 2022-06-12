@@ -1,5 +1,5 @@
 {
-  "name": "hollowverse",
+  "name": "main-site",
   "version": "1.0.0",
   "private": true,
   "description": "hollowverse",
@@ -19,7 +19,8 @@
     "manual-validation": "cross-env URL_FILE='lighthouse/local.txt' playwright test",
     "manual-validation-live": "cross-env URL_FILE='lighthouse/live.txt' playwright test",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999"
+    "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999",
+    "postinstall": "SYMLINK_DESTINATION=main-site node ../symlink-shared.js"
   },
   "dependencies": {
     "@google-analytics/data": "^2.8.0",
