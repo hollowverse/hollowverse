@@ -6,7 +6,6 @@ import { topic } from './topic';
 import { tag } from './tag';
 import { orderOfTopics } from './orderOfTopics';
 import { tagLink } from './tagLink';
-// import { wildCard } from './wildCard';
 
 export default createSchema({
   name: 'hollowverse',

@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
 import { badgeData } from '~/lib/badgeDefinitions';
 import { discourseApiClient } from '~/lib/discourseApiClient';
-import { getForumTopicId } from '~/lib/getForumTopicId';
+import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { ContentChangeData } from '~/lib/groq/contentChange.groq';
 import { log } from '~/shared/lib/log';
 import { ordinal } from '~/lib/ordinal';

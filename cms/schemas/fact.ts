@@ -1,6 +1,6 @@
-import { isString } from 'lodash-es';
-import { sanityClient } from '../lib/client';
-import { getForumTopicId } from '../lib/getForumTopicId';
+import groq from 'groq';
+import { getForumTopicId } from '../shared/lib/getForumTopicId';
+import { sanityClient } from '../shared/lib/sanityio';
 
 const isNotQuoteType = ({ parent }) => parent?.type !== 'quote';
 const isNotFactType = ({ parent }) => parent?.type !== 'fact';
@@ -64,7 +64,8 @@ export const fact = {
           }
 
           const response = await sanityClient.fetch(
-            `*[
+            'check-forum-link',
+            groq`*[
               _type == 'fact' &&
               forumLink == $forumLink
             ][0]{_id}`,

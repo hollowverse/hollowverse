@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getForumTopicId } from '~/lib/getForumTopicId';
+import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 
 interface DiscourseThreadProps {
   threadUrl: string;

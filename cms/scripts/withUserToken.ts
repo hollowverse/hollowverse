@@ -1,5 +1,4 @@
 import groq from 'groq';
-import { sanityClient } from '../lib/client';
 
 /**
  * Run these scripts with the following command in the terminal
@@ -24,7 +23,7 @@ import { sanityClient } from '../lib/client';
 
 async function run() {
   try {
-    await script();
+    // await script();
   } catch (e) {
     throw e;
   }

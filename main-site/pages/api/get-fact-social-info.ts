@@ -3,7 +3,7 @@ import { endsWith, isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { discourseApiClient } from '~/lib/discourseApiClient';
-import { getForumTopicId } from '~/lib/getForumTopicId';
+import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { initMiddleware } from '~/lib/initMiddleware';
 import { log } from '~/shared/lib/log';
 

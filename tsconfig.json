@@ -16,16 +16,12 @@
     "skipLibCheck": true,
     "jsx": "preserve",
     "pretty": true,
-    "baseUrl": ".",
     "declaration": false,
     "importHelpers": false,
     "noEmitHelpers": true,
     "removeComments": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-    "paths": {
-      "~/*": ["main-site/*"]
-    },
     "lib": ["es5", "es6", "dom", "dom.iterable"],
     "noEmit": true,
     "incremental": true,

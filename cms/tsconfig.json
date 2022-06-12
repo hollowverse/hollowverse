@@ -6,7 +6,8 @@
     "target": "ESNext",
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "rootDir": "."
   },
   "include": [
     "./node_modules/@sanity/base/types/**/*.ts",
