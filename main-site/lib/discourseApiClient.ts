@@ -1,4 +1,4 @@
-import { log } from '~/lib/log';
+import { log } from '~/shared/lib/log';
 
 export async function discourseApiClient(
   requestId: string,

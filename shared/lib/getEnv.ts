@@ -1,5 +1,5 @@
-import { getNodeEnv } from '~/lib/getNodeEnv';
-import { getVercelEnv } from '~/lib/getVercelEnv';
+import { getNodeEnv } from './getNodeEnv';
+import { getVercelEnv } from './getVercelEnv';
 
 export function getEnv() {
   if (getNodeEnv() === getVercelEnv()) {

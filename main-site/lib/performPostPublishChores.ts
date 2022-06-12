@@ -7,7 +7,7 @@ import { badgeData } from '~/lib/badgeDefinitions';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/lib/getForumTopicId';
 import { ContentChangeData } from '~/lib/groq/contentChange.groq';
-import { log } from '~/lib/log';
+import { log } from '~/shared/lib/log';
 import { ordinal } from '~/lib/ordinal';
 import { pluralize } from '~/lib/pluralize';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';

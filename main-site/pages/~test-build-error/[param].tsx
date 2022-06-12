@@ -1,5 +1,5 @@
 import React from 'react';
-import { sanityClient } from '~/lib/sanityio';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 export default function TestBuildError() {
   return <div>This will never render.</div>;

@@ -5,9 +5,9 @@ import {
   ContentChangeData,
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
-import { log } from '~/lib/log';
+import { log } from '~/shared/lib/log';
 import { performPostPublishChores } from '~/lib/performPostPublishChores';
-import { sanityClientNoCdn } from '~/lib/sanityio';
+import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 import { v4 as uuid } from 'uuid';
 
 export type SanityWebhookProps = {

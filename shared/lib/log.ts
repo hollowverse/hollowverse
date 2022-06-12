@@ -1,10 +1,10 @@
 import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
 import { isArray, isString, noop } from 'lodash-es';
-import { determineServerOrClient } from '~/lib/determineServerOrClient';
-import { getEnv } from '~/lib/getEnv';
-import { getNodeEnv } from '~/lib/getNodeEnv';
-import { getVercelEnv } from '~/lib/getVercelEnv';
+import { determineServerOrClient } from './determineServerOrClient';
+import { getEnv } from './getEnv';
+import { getNodeEnv } from './getNodeEnv';
+import { getVercelEnv } from './getVercelEnv';
 
 export function loggerStringify(obj: any) {
   const stringified = JSON.stringify(obj);

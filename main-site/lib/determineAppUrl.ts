@@ -1,4 +1,4 @@
-import { getEnv } from '~/lib/getEnv';
+import { getEnv } from '~/shared/lib/getEnv';
 
 export function determineAppUrl() {
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;

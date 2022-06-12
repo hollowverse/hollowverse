@@ -1,4 +1,4 @@
-import { sanityClient } from '~/lib/sanityio';
+import { sanityClient } from '~/shared/lib/sanityio';
 import {
   FactPageCelebGroq,
   factPageCelebGroq,

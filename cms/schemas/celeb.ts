@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { sanityClient } from '../lib/client';
+import { sanityClient } from '../shared/lib/sanityio';
 
 const isUniqueKnowledgeGraphId = (knowledgeGraphId, context) => {
   const { document } = context;
@@ -18,7 +18,7 @@ const isUniqueKnowledgeGraphId = (knowledgeGraphId, context) => {
     knowledgeGraphId == $knowledgeGraphId
   ][0]._id)`;
 
-  return sanityClient.fetch(query, params);
+  return sanityClient.fetch('check-knowledge-graph-id', query, params);
 };
 
 export const celeb = {

@@ -1,7 +1,7 @@
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { sanityClient } from '~/lib/sanityio';
+import { sanityClient } from '~/shared/lib/sanityio';
 import {
   relatedPeopleGroq,
   RelatedPeopleGroqResponse,

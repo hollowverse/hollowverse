@@ -17,7 +17,10 @@
     "sanity"
   ],
   "dependencies": {
+    "@logtail/browser": "^0.1.12",
+    "@logtail/node": "^0.1.12",
     "@sanity/base": "^2.29.2",
+    "@sanity/client": "^3.3.2",
     "@sanity/core": "^2.28.1",
     "@sanity/default-layout": "^2.29.2",
     "@sanity/default-login": "^2.29.2",

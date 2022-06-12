@@ -5,7 +5,7 @@ import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/lib/getForumTopicId';
 import { initMiddleware } from '~/lib/initMiddleware';
-import { log } from '~/lib/log';
+import { log } from '~/shared/lib/log';
 
 const vercelTempDomain = '-hollowverse.vercel.app';
 

@@ -6,7 +6,7 @@ import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Page } from '~/components/Page';
-import { sanityClient } from '~/lib/sanityio';
+import { sanityClient } from '~/shared/lib/sanityio';
 import { formatFactDate } from '~/lib/date';
 import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
 

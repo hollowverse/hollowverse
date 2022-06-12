@@ -1,7 +1,7 @@
 import originalSanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { log, loggerStringify } from '~/lib/log';
+import { log, loggerStringify } from './log';
 import {
   SanityClient,
   FilteredResponseQueryOptions,
@@ -9,8 +9,8 @@ import {
 
 const sanityClientConfigs = {
   projectId: 'ge8aosp3', // you can find this in sanity.json
-  // dataset: 'staging',
-  dataset: 'production',
+  dataset: 'staging',
+  // dataset: 'production',
   apiVersion: '2022-03-20',
 };
 

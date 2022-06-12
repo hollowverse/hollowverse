@@ -3,7 +3,7 @@ import React from 'react';
 import { formatFactDate } from '~/lib/date';
 import { Fact } from '~/lib/groq/fact.partial.groq';
 import { Picture } from '~/lib/groq/picture.partial.groq';
-import { sanityImage } from '~/lib/sanityio';
+import { sanityImage } from '~/shared/lib/sanityio';
 
 export function DiscourseTopicFact(
   props: Fact & {

@@ -7,8 +7,8 @@ import {
   orderOfTopicsGroq,
   OrderOfTopics as TOrderOfTopics,
 } from '~/lib/groq/orderOfTopics.groq';
-import { log } from '~/lib/log';
-import { sanityClient } from '~/lib/sanityio';
+import { log } from '~/shared/lib/log';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']

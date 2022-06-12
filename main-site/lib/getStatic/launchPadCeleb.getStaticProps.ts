@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
-import { log } from '~/lib/log';
-import { sanityClient } from '~/lib/sanityio';
+import { log } from '~/shared/lib/log';
+import { sanityClient } from '~/shared/lib/sanityio';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 
 export async function getLaunchPadTopics() {

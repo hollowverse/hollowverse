@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { isEmpty } from 'lodash-es';
 import { knowledgeGraphClient } from '~/lib/knowledgeGraphClient';
-import { sanityClient } from '~/lib/sanityio';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 const notFound = {
   notFound: true,

@@ -14,8 +14,8 @@ import { formatFactDate } from '~/lib/date';
 import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
-import { log } from '~/lib/log';
-import { sanityClient } from '~/lib/sanityio';
+import { log } from '~/shared/lib/log';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 type HomepageProps = {
   trendingCelebs: TrendingCelebs;

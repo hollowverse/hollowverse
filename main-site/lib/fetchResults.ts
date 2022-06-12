@@ -6,7 +6,7 @@ import {
   KnowledgeGraphCelebResult,
   knowledgeGraphClient,
 } from '~/lib/knowledgeGraphClient';
-import { sanityClient } from '~/lib/sanityio';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 type CleanedResult = { result: Required<KnowledgeGraphCelebParams, 'image'> };
 function clean(items: KnowledgeGraphCelebResult[]) {

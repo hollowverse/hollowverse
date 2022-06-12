@@ -1,6 +1,6 @@
 import { RequestInit } from 'next/dist/server/web/spec-extension/request';
 import { determineAppUrl } from '~/lib/determineAppUrl';
-import { log } from '~/lib/log';
+import { log } from '~/shared/lib/log';
 
 export async function nextApiClient(pathname: string, init?: RequestInit) {
   const url = `${determineAppUrl()}/api/${pathname}`;
