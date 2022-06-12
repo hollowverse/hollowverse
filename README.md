@@ -21,3 +21,5 @@ After `npm install`, virtual copies of the `shared` folder get created inside `m
 This is done by way of symlinking.
 
 We do this because it's the most convenient way we know to share code between a Next.js project and Sanity Studio project in the same repo.
+
+Note that the source directory `shared` is added to the ignore list of VS Code. So you won't see it. You can, though, see the symlinked versions, `main-site/shared` and `cms/shared`. If you want to expose the root `shared`, edit `.vscode/settings.json`.
