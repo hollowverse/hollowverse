@@ -22,4 +22,7 @@ This is done by way of symlinking.
 
 We do this because it's the most convenient way we know to share code between a Next.js project and Sanity Studio project in the same repo.
 
-Note that the source directory `shared` is added to the ignore list of VS Code. So you won't see it. You can, though, see the symlinked versions, `main-site/shared` and `cms/shared`. If you want to expose the root `shared`, edit `.vscode/settings.json`.
+#### Notes about code sharing
+
+1. The original directory, `shared`, is added to the ignore list of VS Code. So you won't see it. But the symlinked versions are visible, `main-site/shared` and `cms/shared`. If you want to expose the root `shared`, edit `.vscode/settings.json`.
+1. The root `package.json` and `shared/package.json` should not have any dependencies because no `npm install` is run within these folders. Any dependencies that the shared code needs have to exist in both `main-site/package.json` and `cms/package.json`. That way, when `shared` is copied into those projects, the dependencies will be ready for it to consume.
