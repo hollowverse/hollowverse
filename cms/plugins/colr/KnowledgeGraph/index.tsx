@@ -17,7 +17,7 @@ export function KnowledgeGraph() {
           if (e.key === 'Enter') {
             const results = await kgCall(value);
 
-            setResults(sort(value, (await results.json()).itemListElement));
+            setResults(sort(value, results));
           }
         }}
         type="text"

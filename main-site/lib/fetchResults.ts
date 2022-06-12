@@ -5,7 +5,7 @@ import {
   KnowledgeGraphCelebParams,
   KnowledgeGraphCelebResult,
   knowledgeGraphClient,
-} from '~/shared/knowledgeGraphClient';
+} from '~/shared/lib/knowledgeGraphClient';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 type CleanedResult = { result: Required<KnowledgeGraphCelebParams, 'image'> };
