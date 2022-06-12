@@ -5,7 +5,7 @@
   },
   "api": {
     "projectId": "ge8aosp3",
-    "dataset": "staging"
+    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
