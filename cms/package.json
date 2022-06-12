@@ -1,0 +1,51 @@
+{
+  "name": "cms",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Hollowverse",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "test": "sanity check",
+    "build": "sanity build public -y",
+    "tailwind": "npx tailwindcss -i ./plugins/colr/styles.css -o ./plugins/colr/output.css --watch",
+    "postinstall": "SYMLINK_DESTINATION=cms node ../symlink-shared.js"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@logtail/browser": "^0.1.12",
+    "@logtail/node": "^0.1.12",
+    "@sanity/base": "^2.29.2",
+    "@sanity/client": "^3.3.2",
+    "@sanity/core": "^2.28.1",
+    "@sanity/default-layout": "^2.29.2",
+    "@sanity/default-login": "^2.29.2",
+    "@sanity/desk-tool": "^2.29.2",
+    "@sanity/vision": "^2.29.2",
+    "@types/lodash-es": "^4.17.6",
+    "@types/react-icons": "^3.0.0",
+    "fast-levenshtein": "^3.0.0",
+    "groq": "^2.29.3",
+    "lodash-es": "^4.17.21",
+    "node-fetch": "^2.6.7",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-icons": "^4.3.1",
+    "sanity-plugin-media": "^1.4.4",
+    "styled-components": "^5.2.0",
+    "tailwindcss": "^3.0.24",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@sanity/cli": "^2.28.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hollowverse/cms.git"
+  }
+}

@@ -1,14 +1,20 @@
 node_modules
 out
 .next
-misc/report/lighthouse
-test-results/
-misc/playwright-report
 .vercel
 .env*.local
-public/sitemap*
 robots.txt
-.DS_Store
+
+# main-site
+main-site/public/sitemap*
+main-site/shared
+
+## CMS ignores
+cms/public
+cms/local-backups
+cms/shared
 
 # Sentry
 .sentryclirc
+
+

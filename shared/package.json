@@ -1,25 +1,21 @@
 {
-  "name": "hollowverse",
+  "name": "shared",
   "version": "1.0.0",
-  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hollowverse/hollowverse.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollowverse/hollowverse.git"
+  },
   "bugs": {
     "url": "https://github.com/hollowverse/hollowverse/issues"
   },
   "homepage": "https://github.com/hollowverse/hollowverse#readme",
-  "workspaces": [
-    "main-site",
-    "cms",
-    "shared"
-  ],
-  "dependencies": {}
+  "description": ""
 }
