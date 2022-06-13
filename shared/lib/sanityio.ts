@@ -9,8 +9,11 @@ import {
 
 const sanityClientConfigs = {
   projectId: 'ge8aosp3', // you can find this in sanity.json
+
+  // Remember to change this in sanity.json as well
   // dataset: 'staging',
   dataset: 'production',
+
   apiVersion: '2022-03-20',
 };
 
