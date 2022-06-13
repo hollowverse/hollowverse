@@ -6,5 +6,5 @@ export function getEnv() {
     return getNodeEnv();
   }
 
-  return getVercelEnv();
+  return getVercelEnv() || getNodeEnv();
 }

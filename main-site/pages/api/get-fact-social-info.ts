@@ -1,36 +1,10 @@
-import Cors from 'cors';
-import { endsWith, isString } from 'lodash-es';
+import { isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
+import { cors } from '~/lib/cors';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
-import { initMiddleware } from '~/lib/initMiddleware';
 import { log } from '~/shared/lib/log';
-
-const vercelTempDomain = '-hollowverse.vercel.app';
-
-const cors = initMiddleware(
-  Cors({
-    origin: function (origin, callback) {
-      if (origin === undefined) {
-        callback(null, false);
-      }
-
-      const url = new URL(origin!);
-
-      if (
-        url.hostname === 'hollowverse.com' ||
-        url.hostname === 'localhost' ||
-        endsWith(url.hostname, vercelTempDomain)
-      ) {
-        callback(null, true);
-      }
-
-      callback(null, false);
-    },
-    methods: ['GET'],
-  }),
-);
 
 async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
