@@ -1,4 +1,4 @@
-import { nextApiClient } from '~/lib/nextApiClient';
+import { nextApiClient } from '~/shared/lib/nextApiClient';
 
 export async function getFactSocialInfo(forumLink: string) {
   let commentCount: number | null = null;

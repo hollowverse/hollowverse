@@ -1,4 +1,4 @@
-import { getEnv } from '~/shared/lib/getEnv';
+import { getEnv } from './getEnv';
 
 export function determineAppUrl() {
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
@@ -8,7 +8,7 @@ export function determineAppUrl() {
   }
 
   const localDevServerUrl =
-    process.env.SSL_DEV_SERVER_URL || process.env.DEV_SERVER_URL;
+    process.env.DEV_SSL_SERVER_URL || process.env.DEV_SERVER_URL;
 
   if (localDevServerUrl) {
     return localDevServerUrl;
