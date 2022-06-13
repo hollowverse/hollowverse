@@ -1,10 +1,10 @@
-// Helper method to wait for a middleware to execute before continuing
-// And to throw an error when an error happens in a middleware
 import Cors from 'cors';
 import { endsWith } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { VERCEL_TEMP_DOMAIN } from '~/lib/constants';
 
+// Helper method to wait for a middleware to execute before continuing
+// And to throw an error when an error happens in a middleware
 function initMiddleware(middleware: ReturnType<typeof Cors>) {
   return (req: NextApiRequest, res: NextApiResponse) =>
     new Promise((resolve, reject) => {
