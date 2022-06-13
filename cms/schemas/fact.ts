@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { OpenGraphImage } from '../components/OpenGraphImage';
 import { getForumTopicId } from '../shared/lib/getForumTopicId';
 import { sanityClient } from '../shared/lib/sanityio';
 
@@ -48,6 +49,13 @@ export const fact = {
       name: 'source',
       type: 'url',
       validation: (Rule) => Rule.required(),
+    },
+
+    {
+      title: 'Open Graph image',
+      name: 'openGraphImage',
+      type: 'url',
+      inputComponent: OpenGraphImage,
     },
 
     {
