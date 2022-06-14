@@ -28,6 +28,39 @@ function lowercaseFirstLetter(s: string) {
   return s.charAt(0).toLowerCase() + s.slice(1);
 }
 
+function renderQuote(quote: string) {
+  return (
+    <div className="my-3 flex gap-2">
+      <div>
+        <FaQuoteLeft className="text-2xl text-neutral-300" />
+      </div>
+      <blockquote>{quote}</blockquote>
+    </div>
+  );
+}
+
+function renderContext(celebName: string, context: string) {
+  return (
+    <p className="text-base text-neutral-500">
+      {celebName} said, {lowercaseFirstLetter(context)}
+    </p>
+  );
+}
+
+function renderQuoteType(quote: string, context: string, celebName: string) {
+  return quote.length > context.length ? (
+    <>
+      {renderQuote(quote)}
+      {renderContext(celebName, context)}
+    </>
+  ) : (
+    <>
+      {renderContext(celebName, context)}
+      {renderQuote(quote)}
+    </>
+  );
+}
+
 export const Fact: React.FC<{
   fact: TFact;
   celebName: string;
@@ -93,21 +126,12 @@ export const Fact: React.FC<{
         </div>
 
         <div className="FACT-BODY flex flex-col gap-3">
-          {(props.fact.type === 'quote' && (
-            <>
-              <div className="my-3 flex gap-2">
-                <div>
-                  <FaQuoteLeft className="text-2xl text-neutral-300" />
-                </div>
-                <blockquote>{props.fact.quote}</blockquote>
-              </div>
-
-              <p className="text-base text-neutral-500">
-                {props.celebName} said,{' '}
-                {lowercaseFirstLetter(props.fact.context)}
-              </p>
-            </>
-          )) || <p>{(props.fact as any).content}</p>}
+          {(props.fact.type === 'quote' &&
+            renderQuoteType(
+              props.fact.quote,
+              props.fact.context,
+              props.celebName,
+            )) || <p>{(props.fact as any).content}</p>}
         </div>
 
         {showFooter && (
