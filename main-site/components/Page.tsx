@@ -20,7 +20,7 @@ export function Page(params: {
   return (
     <>
       <Head>
-        <title>{params.title} | Hollowverse</title>
+        <title>{params.title} - Hollowverse</title>
 
         {!params.allowSearchEngines && (
           <meta key="head-robots" name="robots" content="noindex" />

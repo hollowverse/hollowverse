@@ -39,7 +39,8 @@ export const OpenGraphImage = React.forwardRef(function OpenGraphImage(
   return (
     <>
       <FormField
-        title={'Open Graph Image'} // Creates label from schema title
+        title="Open Graph Image"
+        description="Click 'Get' to retrieve the Open Graph image"
         id="open-graph-image"
         __unstable_markers={props.markers}
       >

@@ -1,11 +1,65 @@
 import { defaultTo } from 'lodash-es';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
 import { Tag } from '~/components/Tag';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.partial.groq';
 import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
+import Image from 'next/image';
+import { FaQuoteLeft } from 'react-icons/fa';
+import { c } from '~/lib/c';
+
+function UnoptimizedImage(
+  props: PropsWithChildren<{ src: string; alt: string }>,
+) {
+  return (
+    <Image
+      layout="fill"
+      objectFit="cover"
+      loader={({ src }) => src}
+      src={props.src}
+      alt={props.alt}
+    />
+  );
+}
+
+function lowercaseFirstLetter(s: string) {
+  return s.charAt(0).toLowerCase() + s.slice(1);
+}
+
+function renderQuote(quote: string) {
+  return (
+    <div className="my-3 flex gap-2">
+      <div>
+        <FaQuoteLeft className="text-2xl text-neutral-300" />
+      </div>
+      <blockquote>{quote}</blockquote>
+    </div>
+  );
+}
+
+function renderContext(celebName: string, context: string) {
+  return (
+    <p className="text-base text-neutral-500">
+      {celebName} said, {lowercaseFirstLetter(context)}
+    </p>
+  );
+}
+
+function renderQuoteType(quote: string, context: string, celebName: string) {
+  return quote.length > context.length ? (
+    <>
+      {renderQuote(quote)}
+      {renderContext(celebName, context)}
+    </>
+  ) : (
+    <>
+      {renderContext(celebName, context)}
+      {renderQuote(quote)}
+    </>
+  );
+}
 
 export const Fact: React.FC<{
   fact: TFact;
@@ -25,38 +79,63 @@ export const Fact: React.FC<{
         </Link>
       )}
 
-      <div className="pointer-events-none flex flex-col gap-5">
-        <div className="flex flex-wrap items-center gap-2.5">
-          {props.fact.tags.map((t) => {
-            return (
-              <Tag key={t.tag.name}>
-                <span className="flex items-center gap-1 text-neutral-500">
-                  <BiHash /> {t.isLowConfidence && 'Possibly '}
-                  {t.tag.name}
-                  {t.isBackground && ' Background'}
-                </span>
-              </Tag>
-            );
-          })}{' '}
-          <p className="text-sm text-neutral-500">{props.fact.date}</p>
+      <div className="FACT-MAIN-CONTAINER pointer-events-none flex flex-col gap-5">
+        <div
+          className={c('FACT-HEAD', {
+            'relative -mx-5 -mt-5 h-[350px] bg-neutral-700':
+              props.fact.openGraphImage,
+          })}
+        >
+          {props.fact.openGraphImage && (
+            <UnoptimizedImage
+              src={props.fact.openGraphImage!}
+              alt={props.celebName}
+            />
+          )}
+          <div
+            className={c(
+              'FACT-TAGS flex flex-wrap items-center gap-2.5',
+              props.fact.openGraphImage
+                ? c(
+                    'absolute bottom-0 left-0 right-0',
+                    'bg-gradient-to-t from-black via-transparent to-transparent',
+                    'px-4 pb-5 pt-32',
+                  )
+                : '',
+            )}
+          >
+            {props.fact.tags.map((t) => {
+              return (
+                <Tag key={t.tag.name}>
+                  <span className="flex items-center gap-1 text-neutral-700">
+                    <BiHash /> {t.isLowConfidence && 'Possibly '}
+                    {t.tag.name}
+                    {t.isBackground && ' Background'}
+                  </span>
+                </Tag>
+              );
+            })}{' '}
+            <p
+              className={c('text-sm default:text-neutral-700', {
+                ' text-white': props.fact.openGraphImage,
+              })}
+            >
+              {props.fact.date}
+            </p>
+          </div>
         </div>
 
-        <div>
-          {(props.fact.type === 'quote' && (
-            <>
-              <p className="text-base">
-                {props.fact.context}, {props.celebName} said
-              </p>
-
-              <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 text-base ">
-                {props.fact.quote}
-              </blockquote>
-            </>
-          )) || <p>{(props.fact as any).content}</p>}
+        <div className="FACT-BODY flex flex-col gap-3">
+          {(props.fact.type === 'quote' &&
+            renderQuoteType(
+              props.fact.quote,
+              props.fact.context,
+              props.celebName,
+            )) || <p>{(props.fact as any).content}</p>}
         </div>
 
         {showFooter && (
-          <div className="FACT-FOOTER -mt-3 flex gap-2.5 text-neutral-600">
+          <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
             <Link href={`${props.fact.forumLink}#reply`} passHref>
               <a className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300">
                 <BiMessage className="text-lg" />

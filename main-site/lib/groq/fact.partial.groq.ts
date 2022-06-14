@@ -20,6 +20,7 @@ export type Fact = {
   forumLink: string;
   topics: Topic[];
   tags: Tag[];
+  openGraphImage?: string;
 } & (
   | {
       type: 'quote';
@@ -43,6 +44,7 @@ date,
 forumLink,
 source,
 type,
+openGraphImage,
 tags[]{
   isLowConfidence,
   isBackground,

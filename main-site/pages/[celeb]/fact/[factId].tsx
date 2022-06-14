@@ -12,6 +12,19 @@ import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
+import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
+
+function getTextSummary(name: string, fact: TFact, length: number) {
+  let text: string;
+
+  if (fact.type === 'quote') {
+    text = `${name}: ${fact.quote}`;
+  } else {
+    text = fact.content;
+  }
+
+  return text.substring(0, length) + '...';
+}
 
 export default function FactPage({ celeb, fact }: FactPageProps) {
   const { contributorUsername, commentCount } = useFact(fact);
@@ -19,11 +32,9 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
 
   return (
     <Page
-      title={`${celeb.name}'s views on ${fact.topics[0].name}`}
-      description={`${celeb.name} on ${sourceHost}: ${fact.tags
-        .map((t) => t.tag.name)
-        .join(', ')}`}
-      allowSearchEngines={false}
+      title={getTextSummary(celeb.name, fact, 55)}
+      description={getTextSummary(celeb.name, fact, 145)}
+      allowSearchEngines
       pathname={`${celeb.slug}/fact/${fact._id}`}
     >
       <div className="h-container flex flex-col gap-5">
