@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
 import { FormField } from '@sanity/base/components';
-import { TextInput, Flex, Button, Box, Text } from '@sanity/ui';
 import PatchEvent, { set, unset } from '@sanity/form-builder/PatchEvent';
-import { nextApiClient } from '../shared/lib/nextApiClient';
+import { Box, Button, Flex, Text, TextInput } from '@sanity/ui';
+import React, { useState } from 'react';
 import { isUrl } from '../shared/isUrl';
+import { nextApiClient } from '../shared/lib/nextApiClient';
 
 async function getOgImageUrl(source: string) {
   const response = await nextApiClient(
@@ -17,6 +17,8 @@ export const OpenGraphImage = React.forwardRef(function OpenGraphImage(
   props: any,
   ref,
 ) {
+  const [loading, setLoading] = useState(false);
+
   function onChange(imageUrl: string) {
     props.onChange(PatchEvent.from(imageUrl ? set(imageUrl) : unset()));
   }
@@ -33,7 +35,9 @@ export const OpenGraphImage = React.forwardRef(function OpenGraphImage(
       return;
     }
 
+    setLoading(true);
     onChange(await getOgImageUrl(props.parent.source));
+    setLoading(false);
   }, [onChange, props.value]);
 
   return (
@@ -49,7 +53,7 @@ export const OpenGraphImage = React.forwardRef(function OpenGraphImage(
             <TextInput
               id="open-graph-image"
               onChange={handleChange}
-              value={props.value || ''} // Current field value
+              value={props.value || ''}
               ref={ref as any}
             />
           </Box>
@@ -62,6 +66,7 @@ export const OpenGraphImage = React.forwardRef(function OpenGraphImage(
             />
           </Box>
         </Flex>
+        {loading && <Text size={1}>Loading...</Text>}
         {valueIsSet && (
           <Flex gap={2} direction="column" marginTop={3}>
             <Text size={1}>Preview</Text>

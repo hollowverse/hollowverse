@@ -13,6 +13,7 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/vision",
+    "documents-pane",
     "media",
     "colr"
   ],
