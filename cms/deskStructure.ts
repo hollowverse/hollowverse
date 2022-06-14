@@ -26,7 +26,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
       groq`*[
         _type == 'fact' &&
         $param1 in *[_id == ^._id][0]{'tags': tags[]{'tag': tag->{name}}.tag.name}.tags
-      ]`,
+      ] | order(_createdAt desc)`,
       'name',
       'Facts',
     );
@@ -37,7 +37,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
       groq`*[
         _type == 'fact' &&
         $param1 in *[_id == ^._id][0]{'topics': topics[]->{name}.name}.topics[]
-      ]`,
+      ] | order(_createdAt desc)`,
       'name',
       'Facts',
     );
@@ -48,7 +48,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
       groq`*[
         _type == 'fact' &&
         celeb._ref == $param1
-      ]`,
+      ] | order(_createdAt desc)`,
       '_id',
       'Facts',
     );
