@@ -6,6 +6,16 @@ import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.partial.groq';
 import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
 import { Link } from '~/lib/Link';
+import Image from 'next/image';
+import { FaQuoteLeft } from 'react-icons/fa';
+
+function UnoptimizedImage(src: string, alt: string) {
+  return <Image loader={({ src }) => src} src={src} alt={alt} />;
+}
+
+function lowercaseFirstLetter(s: string) {
+  return s.charAt(0).toLowerCase() + s.slice(1);
+}
 
 export const Fact: React.FC<{
   fact: TFact;
@@ -41,22 +51,26 @@ export const Fact: React.FC<{
           <p className="text-sm text-neutral-500">{props.fact.date}</p>
         </div>
 
-        <div>
+        <div className="flex flex-col gap-3">
           {(props.fact.type === 'quote' && (
             <>
-              <p className="text-base">
-                {props.fact.context}, {props.celebName} said
-              </p>
+              <div className="my-3 flex gap-2">
+                <div>
+                  <FaQuoteLeft className="text-2xl text-neutral-300" />
+                </div>
+                <blockquote>{props.fact.quote}</blockquote>
+              </div>
 
-              <blockquote className="my-2.5 block border-l-4 border-blue-400 bg-blue-50 p-5 text-base ">
-                {props.fact.quote}
-              </blockquote>
+              <p className="text-base text-neutral-500">
+                {props.celebName} said,{' '}
+                {lowercaseFirstLetter(props.fact.context)}
+              </p>
             </>
           )) || <p>{(props.fact as any).content}</p>}
         </div>
 
         {showFooter && (
-          <div className="FACT-FOOTER -mt-3 flex gap-2.5 text-neutral-600">
+          <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
             <Link href={`${props.fact.forumLink}#reply`} passHref>
               <a className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300">
                 <BiMessage className="text-lg" />
