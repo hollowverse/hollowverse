@@ -14,9 +14,9 @@ export const tag = {
     },
 
     {
-      title: 'Topic',
+      title: 'Issue',
       name: 'topic',
-      description: 'What is the ideological topic that this TAG is about?',
+      description: 'What is the ideological issue that this TAG is about?',
       type: 'reference',
       to: [{ type: 'topic' }],
     },

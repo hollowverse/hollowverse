@@ -1,5 +1,5 @@
-export const topic = {
-  title: 'Topic',
+export const issue = {
+  title: 'Issue',
 
   name: 'topic',
 

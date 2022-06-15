@@ -1,13 +1,13 @@
 import groq from 'groq';
 
-export type Topic = { name: string };
+export type Issue = { name: string };
 
 export type Tag = {
   isLowConfidence: boolean | null;
   isBackground: boolean | null;
   tag: {
     name: string;
-    topic: {
+    issue: {
       name: string;
     };
   };
@@ -18,7 +18,7 @@ export type Fact = {
   date: string;
   source: string;
   forumLink: string;
-  topics: Topic[];
+  issues: Issue[];
   tags: Tag[];
   openGraphImage?: string;
 } & (
@@ -50,8 +50,8 @@ tags[]{
   isBackground,
   tag->{
     name,
-    topic->{name}
+    'issue': topic->{name}
   }
 },
-topics[]->{name}
+'issues': topics[]->{name}
 `;

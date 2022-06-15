@@ -4,9 +4,9 @@ import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
 import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
 import {
-  orderOfTopicsGroq,
-  OrderOfTopics as TOrderOfTopics,
-} from '~/lib/groq/orderOfTopics.groq';
+  orderOfIssuesGroq,
+  OrderOfIssues as TOrderOfIssues,
+} from '~/lib/groq/orderOfIssues.groq';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -32,16 +32,16 @@ export const getStaticProps = async ({
   }
 
   const { oldContent, facts, ...rest } = celeb;
-  const [orderOfTopics, parsedOldContent] = await Promise.all([
+  const [orderOfIssues, parsedOldContent] = await Promise.all([
     sanityClient.fetch(
-      'order-of-topics',
-      orderOfTopicsGroq,
-    ) as Promise<TOrderOfTopics>,
+      'order-of-issues',
+      orderOfIssuesGroq,
+    ) as Promise<TOrderOfIssues>,
     oldContent ? await getParsedOldContent(oldContent) : null,
   ]);
 
-  const transformedFacts = factsDataTransform(facts, orderOfTopics);
-  const tags = getTags(transformedFacts, orderOfTopics);
+  const transformedFacts = factsDataTransform(facts, orderOfIssues);
+  const tags = getTags(transformedFacts, orderOfIssues);
 
   return {
     props: {
