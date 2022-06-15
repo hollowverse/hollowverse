@@ -70,11 +70,11 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
             webhookPayload.operation,
             requestId,
           );
-        } catch (e) {
-          log('error', 'content-change-notify', [
+        } catch (e: any) {
+          log('error', e, [
+            'content-change-notify',
             'perform publish chores error',
             requestId,
-            JSON.stringify(e),
           ]);
         }
       }
