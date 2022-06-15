@@ -31,3 +31,8 @@
   slug,
   latestFact
 }
+
+// Get a count of different doc types
+distinct(*[]{_type}{
+  'count': _type + ': ' + string(count(*[_type == ^._type]))
+}.count)
