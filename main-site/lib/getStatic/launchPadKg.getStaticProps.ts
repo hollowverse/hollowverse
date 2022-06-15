@@ -3,7 +3,7 @@ import {
   getKgSearchId,
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
-import { getLaunchPadTopics } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
+import { getLaunchPadIssues } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
 import { log } from '~/shared/lib/log';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 
@@ -28,7 +28,7 @@ export const getStaticProps = async ({
 
   const celeb = kgCelebs[0].result;
 
-  const topics = await getLaunchPadTopics();
+  const topics = await getLaunchPadIssues();
 
   return {
     props: {

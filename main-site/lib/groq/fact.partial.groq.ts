@@ -1,6 +1,6 @@
 import groq from 'groq';
 
-export type Topic = { name: string };
+export type Issue = { name: string };
 
 export type Tag = {
   isLowConfidence: boolean | null;
@@ -18,7 +18,7 @@ export type Fact = {
   date: string;
   source: string;
   forumLink: string;
-  topics: Topic[];
+  topics: Issue[];
   tags: Tag[];
   openGraphImage?: string;
 } & (

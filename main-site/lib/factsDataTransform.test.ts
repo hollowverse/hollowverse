@@ -3,7 +3,7 @@ import { copyFacts, factsDataTransform } from '~/lib/factsDataTransform';
 
 test('transformation while keeping duplicates', () => {
   const copiedFacts = copyFacts(mockFacts);
-  expect(factsDataTransform(mockFacts, mockOrderOfTopics)).toEqual({
+  expect(factsDataTransform(mockFacts, mockOrderOfIssues)).toEqual({
     groups: {
       Religion: [copiedFacts[0]],
       'Political Party Affiliation': [copiedFacts[1], copiedFacts[3]],
@@ -82,7 +82,7 @@ const mockFacts: Fact[] = [
   },
 ];
 
-const mockOrderOfTopics = [
+const mockOrderOfIssues = [
   'Religion',
   'COVID-19',
   'Political Party Affiliation',

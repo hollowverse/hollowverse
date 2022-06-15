@@ -23,20 +23,20 @@ export const copyFacts = (facts: Fact[]) =>
  */
 export type GroupedFacts = ReturnType<typeof factsDataTransform>;
 
-export const factsDataTransform = (_facts: Fact[], orderOfTopics: string[]) => {
+export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
   const facts = copyFacts(_facts);
   const groups = groupBy(facts, (f) => f.topics[0].name);
   const topicStrings = keys(groups);
-  const intersectionArr = intersection(topicStrings, orderOfTopics);
-  const differenceArr = difference(topicStrings, orderOfTopics);
+  const intersectionArr = intersection(topicStrings, orderOfIssues);
+  const differenceArr = difference(topicStrings, orderOfIssues);
   const sortedIntersection = intersectionArr.sort(
-    (a, b) => orderOfTopics.indexOf(a) - orderOfTopics.indexOf(b),
+    (a, b) => orderOfIssues.indexOf(a) - orderOfIssues.indexOf(b),
   );
   const sortedDifference = differenceArr.sort();
-  const sortedTopics = [...sortedIntersection, ...sortedDifference];
+  const sortedIssues = [...sortedIntersection, ...sortedDifference];
 
   return {
     groups,
-    topics: sortedTopics,
+    topics: sortedIssues,
   };
 };

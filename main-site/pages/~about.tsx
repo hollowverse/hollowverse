@@ -55,19 +55,19 @@ export default function About() {
               </p>
 
               <p>
-                Once a Fact is accepted, it receives Topics and Tags. Topics are
+                Once a Fact is accepted, it receives Issues and Tags. Issues are
                 the discussion subjects related to the Fact, and the Tag is a
                 way for users to easily understand the position of that
-                celebrity when it comes to the Topic in question.
+                celebrity when it comes to the Issue in question.
               </p>
 
               <p>
                 For example, if a celebrity claims to confess to a priest every
-                week, we would assign the Topic:{' '}
+                week, we would assign the Issue:{' '}
                 <span className="italic">Religion</span> and the Tag:{' '}
                 <span className="italic">Catholic</span>. Or, as another
                 example, if a celebrity has voted for Democrat candidates for
-                the past 20 years, we would assign the Topic:{' '}
+                the past 20 years, we would assign the Issue:{' '}
                 <span className="italic">Political Affiliation</span>, and the
                 Tag: <span className="italic">Democrat</span>.
               </p>
@@ -78,9 +78,9 @@ export default function About() {
                   forum
                 </a>{' '}
                 where you can comment on any Fact. This is our way to stimulate
-                conversations about the Topics and Tags applied to celebrities.
+                conversations about the Issues and Tags applied to celebrities.
                 It&apos;s a place for you to learn with the community, but more
-                importantly, a place to argue and question the Topics and Tags
+                importantly, a place to argue and question the Issues and Tags
                 applied to the Fact. After all, religion and politics are
                 complex subjects close to most people&apos;s hearts, and we want
                 to make sure Hollowverse represents in as objective and clear a

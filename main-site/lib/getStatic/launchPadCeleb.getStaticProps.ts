@@ -4,7 +4,7 @@ import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 
-export async function getLaunchPadTopics() {
+export async function getLaunchPadIssues() {
   return uniq(
     await sanityClient.fetch(
       'launch-pad-page-data',
@@ -33,7 +33,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const topics = await getLaunchPadTopics();
+  const topics = await getLaunchPadIssues();
 
   return {
     props: {

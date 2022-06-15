@@ -1,8 +1,8 @@
 import groq from 'groq';
 
-export type OrderOfTopics = string[];
+export type OrderOfIssues = string[];
 
-export const orderOfTopicsGroq = groq`
+export const orderOfIssuesGroq = groq`
 *[_type == 'orderOfTopics'][0]{
   'topics': topics[]->{name}.name
 }.topics

@@ -1,19 +1,19 @@
 import { differenceWith, intersectionWith } from 'lodash-es';
 import { GroupedFacts } from '~/lib/factsDataTransform';
 import { Tag } from '~/lib/groq/fact.partial.groq';
-import { OrderOfTopics } from '~/lib/groq/orderOfTopics.groq';
+import { OrderOfIssues } from '~/lib/groq/orderOfIssues.groq';
 
 const tagExists = (tagsArr: Tag[], tag: Tag) =>
   tagsArr.some((t) => t.tag.name === tag.tag.name);
 
 export const getTags = (
   groupedFacts: GroupedFacts,
-  orderOfTopics: OrderOfTopics,
+  orderOfIssues: OrderOfIssues,
 ) => {
   const comparator = (tag: Tag, topic: string) => tag.tag.topic.name === topic;
   const sortComparator = (a: Tag, b: Tag) =>
-    orderOfTopics.indexOf(a.tag.topic.name) -
-    orderOfTopics.indexOf(b.tag.topic.name);
+    orderOfIssues.indexOf(a.tag.topic.name) -
+    orderOfIssues.indexOf(b.tag.topic.name);
 
   const { topics, groups } = groupedFacts;
   const tags: { regular: Tag[]; lowConfidence: Tag[] } = {
@@ -38,10 +38,10 @@ export const getTags = (
   (['lowConfidence', 'regular'] as const).forEach((type) => {
     const intersection = intersectionWith(
       tags[type],
-      orderOfTopics,
+      orderOfIssues,
       comparator,
     );
-    const difference = differenceWith(tags[type], orderOfTopics, comparator);
+    const difference = differenceWith(tags[type], orderOfIssues, comparator);
 
     tags[type] = [...intersection.sort(sortComparator), ...difference.sort()];
   });

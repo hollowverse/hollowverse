@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { FactTypes, Tag, Topic } from '~/lib/groq/fact.partial.groq';
+import { FactTypes, Tag, Issue } from '~/lib/groq/fact.partial.groq';
 import { Picture } from '~/lib/groq/picture.partial.groq';
 
 export type ContentChangeData = {
@@ -13,7 +13,7 @@ export type ContentChangeData = {
   source: string;
   type: FactTypes;
   tags: Tag[];
-  topics: Topic[];
+  topics: Issue[];
   name: string;
   slug: string;
   picture: Picture;
