@@ -13,7 +13,7 @@ export type ContentChangeData = {
   source: string;
   type: FactTypes;
   tags: Tag[];
-  topics: Issue[];
+  issues: Issue[];
   name: string;
   slug: string;
   picture: Picture;
@@ -34,10 +34,10 @@ tags[]{
   isBackground,
   tag->{
     name,
-    topic->{name}
+    'issue': topic->{name}
   }
 },
-topics[]->{name},
+'issues': topics[]->{name},
 'name': celeb->name,
 'slug': celeb->slug.current,
 'picture': celeb->picture.asset->

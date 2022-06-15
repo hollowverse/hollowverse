@@ -4,6 +4,6 @@ export type OrderOfIssues = string[];
 
 export const orderOfIssuesGroq = groq`
 *[_type == 'orderOfTopics'][0]{
-  'topics': topics[]->{name}.name
-}.topics
+  'issues': topics[]->{name}.name
+}.issues
 `;

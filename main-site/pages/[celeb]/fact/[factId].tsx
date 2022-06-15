@@ -53,7 +53,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
               </a>
             </Link>
             <h2 className="text-xl text-neutral-500">
-              on {fact.topics[0].name}
+              on {fact.issues[0].name}
             </h2>
           </div>
         </div>

@@ -136,7 +136,7 @@ export const fact = {
       title: 'Issues',
       name: 'topics',
       type: 'array',
-      description: 'What is the ideological topic that this FACT is about?',
+      description: 'What is the ideological issue that this FACT is about?',
       of: [
         {
           type: 'reference',

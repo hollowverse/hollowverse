@@ -1,5 +1,5 @@
 export const orderOfIssues = {
-  title: 'Order of topics',
+  title: 'Order of issues',
 
   name: 'orderOfTopics',
 

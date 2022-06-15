@@ -123,7 +123,7 @@ export default function Index(props: HomepageProps) {
                             <div className="flex flex-col gap-1">
                               <p>{f.celeb.name}</p>
                               <p className="text-base text-neutral-500">
-                                {f.topics[0].name}
+                                {f.issues[0].name}
                               </p>
                             </div>
                           </div>

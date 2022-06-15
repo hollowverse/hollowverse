@@ -9,7 +9,7 @@ declare global {
   interface Window {
     DiscourseEmbed: {
       discourseUrl?: string;
-      topicId?: string;
+      issueId?: string;
     };
   }
 }
@@ -20,7 +20,7 @@ export const DiscourseThread: React.FC<DiscourseThreadProps> = ({
   useEffect(() => {
     window.DiscourseEmbed = {
       discourseUrl: 'https://forum.hollowverse.com/',
-      topicId: getForumTopicId(threadUrl),
+      issueId: getForumTopicId(threadUrl),
     };
     const d = document.createElement('script');
     d.type = 'text/javascript';

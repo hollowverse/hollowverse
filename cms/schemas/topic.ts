@@ -1,4 +1,4 @@
-export const topic = {
+export const issue = {
   title: 'Issue',
 
   name: 'topic',

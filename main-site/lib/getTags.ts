@@ -10,19 +10,19 @@ export const getTags = (
   groupedFacts: GroupedFacts,
   orderOfIssues: OrderOfIssues,
 ) => {
-  const comparator = (tag: Tag, topic: string) => tag.tag.topic.name === topic;
+  const comparator = (tag: Tag, issue: string) => tag.tag.issue.name === issue;
   const sortComparator = (a: Tag, b: Tag) =>
-    orderOfIssues.indexOf(a.tag.topic.name) -
-    orderOfIssues.indexOf(b.tag.topic.name);
+    orderOfIssues.indexOf(a.tag.issue.name) -
+    orderOfIssues.indexOf(b.tag.issue.name);
 
-  const { topics, groups } = groupedFacts;
+  const { issues, groups } = groupedFacts;
   const tags: { regular: Tag[]; lowConfidence: Tag[] } = {
     regular: [],
     lowConfidence: [],
   };
 
-  topics.forEach((topic) => {
-    const group = groups[topic];
+  issues.forEach((issue) => {
+    const group = groups[issue];
 
     group.forEach((fact) => {
       fact.tags.forEach((t) => {

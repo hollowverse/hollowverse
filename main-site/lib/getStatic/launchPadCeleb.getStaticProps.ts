@@ -8,7 +8,7 @@ export async function getLaunchPadIssues() {
   return uniq(
     await sanityClient.fetch(
       'launch-pad-page-data',
-      groq`[...*[_type == 'orderOfTopics'][0]{'topics': topics[]->name}.topics, ...*[_type == 'topic']{name}.name]
+      groq`[...*[_type == 'orderOfTopics'][0]{'issues': topics[]->name}.issues, ...*[_type == 'topic']{name}.name]
   `,
     ),
   ) as string[];
@@ -33,13 +33,13 @@ export const getStaticProps = async ({
     };
   }
 
-  const topics = await getLaunchPadIssues();
+  const issues = await getLaunchPadIssues();
 
   return {
     props: {
       celebName,
       pathname: `${params.celeb}/lp`,
-      topics,
+      issues,
     },
   };
 };

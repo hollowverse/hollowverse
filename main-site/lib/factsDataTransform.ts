@@ -9,26 +9,26 @@ export const copyFacts = (facts: Fact[]) =>
   }));
 
 /**
- * We have groups of Facts, keyed by their topics. I.e.
+ * We have groups of Facts, keyed by their issues. I.e.
  *
  * {
  *  religion: Fact[]
  * }
  *
- * An object is not sorted. But we need the topics to be sorted because they are ranked
- * by importance. So we also have a `topics` array for that purpose.
+ * An object is not sorted. But we need the issues to be sorted because they are ranked
+ * by importance. So we also have a `issues` array for that purpose.
  *
  * When we want to iterate over `groups` by importance, we usually go by the order which
- * appears in the `topics` array.
+ * appears in the `issues` array.
  */
 export type GroupedFacts = ReturnType<typeof factsDataTransform>;
 
 export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
   const facts = copyFacts(_facts);
-  const groups = groupBy(facts, (f) => f.topics[0].name);
-  const topicStrings = keys(groups);
-  const intersectionArr = intersection(topicStrings, orderOfIssues);
-  const differenceArr = difference(topicStrings, orderOfIssues);
+  const groups = groupBy(facts, (f) => f.issues[0].name);
+  const issueStrings = keys(groups);
+  const intersectionArr = intersection(issueStrings, orderOfIssues);
+  const differenceArr = difference(issueStrings, orderOfIssues);
   const sortedIntersection = intersectionArr.sort(
     (a, b) => orderOfIssues.indexOf(a) - orderOfIssues.indexOf(b),
   );
@@ -37,6 +37,6 @@ export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
 
   return {
     groups,
-    topics: sortedIssues,
+    issues: sortedIssues,
   };
 };

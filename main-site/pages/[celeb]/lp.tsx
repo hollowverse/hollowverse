@@ -5,7 +5,7 @@ import { Page } from '~/components/Page';
 export type ResearcherLaunchPadProps = {
   celebName: string;
   pathname: string;
-  topics: string[];
+  issues: string[];
 };
 
 export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
@@ -21,7 +21,7 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
           title={`Suggested Google searches to research ${props.celebName}'s views`}
         >
           <div className="flex flex-wrap gap-5">
-            {props.topics.map((t) => {
+            {props.issues.map((t) => {
               return (
                 <a
                   rel="noreferrer"

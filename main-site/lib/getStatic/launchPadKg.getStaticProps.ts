@@ -28,13 +28,13 @@ export const getStaticProps = async ({
 
   const celeb = kgCelebs[0].result;
 
-  const topics = await getLaunchPadIssues();
+  const issues = await getLaunchPadIssues();
 
   return {
     props: {
       celebName: celeb.name,
       pathname: `~kg/${encodeURIComponent(params.kg)}/lp`,
-      topics,
+      issues,
     },
   };
 };

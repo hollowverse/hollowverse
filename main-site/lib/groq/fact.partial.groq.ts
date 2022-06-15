@@ -7,7 +7,7 @@ export type Tag = {
   isBackground: boolean | null;
   tag: {
     name: string;
-    topic: {
+    issue: {
       name: string;
     };
   };
@@ -18,7 +18,7 @@ export type Fact = {
   date: string;
   source: string;
   forumLink: string;
-  topics: Issue[];
+  issues: Issue[];
   tags: Tag[];
   openGraphImage?: string;
 } & (
@@ -50,8 +50,8 @@ tags[]{
   isBackground,
   tag->{
     name,
-    topic->{name}
+    'issue': topic->{name}
   }
 },
-topics[]->{name}
+'issues': topics[]->{name}
 `;
