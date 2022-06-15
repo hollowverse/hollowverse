@@ -41,7 +41,7 @@ export const getStaticProps = async ({
   ]);
 
   const transformedFacts = factsDataTransform(facts, orderOfIssues);
-  const tags = getTags(transformedFacts, orderOfIssues);
+  const tags = getTags(facts, orderOfIssues);
 
   return {
     props: {

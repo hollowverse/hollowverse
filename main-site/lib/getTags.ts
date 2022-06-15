@@ -1,50 +1,65 @@
-import { differenceWith, intersectionWith } from 'lodash-es';
-import { GroupedFacts } from '~/lib/factsDataTransform';
-import { Tag } from '~/lib/groq/fact.partial.groq';
+import { getYear } from 'date-fns';
+import {
+  flatten,
+  groupBy,
+  mapValues,
+  reverse,
+  sortBy,
+  toPairs,
+  uniqBy,
+} from 'lodash-es';
+import { parseDate } from '~/lib/date';
+import { Fact, Tag } from '~/lib/groq/fact.partial.groq';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.groq';
 
-const tagExists = (tagsArr: Tag[], tag: Tag) =>
-  tagsArr.some((t) => t.tag.name === tag.tag.name);
+export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
+  const noDupes = uniqBy(
+    tags,
+    (t) => `${t.tag.name}-is-low-confidence-${t.isLowConfidence}`,
+  );
 
-export const getTags = (
-  groupedFacts: GroupedFacts,
-  orderOfIssues: OrderOfIssues,
-) => {
-  const comparator = (tag: Tag, issue: string) => tag.tag.issue.name === issue;
-  const sortComparator = (a: Tag, b: Tag) =>
-    orderOfIssues.indexOf(a.tag.issue.name) -
-    orderOfIssues.indexOf(b.tag.issue.name);
+  // Remove lowConfidence tags if a regular one exists
+  const noUnnecessaryLowConfidence = noDupes.filter((t) => {
+    if (!t.isLowConfidence) {
+      return true;
+    }
 
-  const { issues, groups } = groupedFacts;
-  const tags: { regular: Tag[]; lowConfidence: Tag[] } = {
-    regular: [],
-    lowConfidence: [],
-  };
-
-  issues.forEach((issue) => {
-    const group = groups[issue];
-
-    group.forEach((fact) => {
-      fact.tags.forEach((t) => {
-        if (t.isLowConfidence) {
-          !tagExists(tags.lowConfidence, t) && tags.lowConfidence.push(t);
-        } else {
-          !tagExists(tags.regular, t) && tags.regular.push(t);
-        }
-      });
+    const regularExists = noDupes.some((t2) => {
+      return t2.tag.name === t.tag.name && !t2.isLowConfidence;
     });
+
+    if (regularExists) {
+      return false;
+    }
+
+    return true;
   });
 
-  (['lowConfidence', 'regular'] as const).forEach((type) => {
-    const intersection = intersectionWith(
-      tags[type],
-      orderOfIssues,
-      comparator,
+  noUnnecessaryLowConfidence.sort((a, b) => {
+    const index1 = orderOfIssues.indexOf(a.tag.issue.name);
+    const index2 = orderOfIssues.indexOf(b.tag.issue.name);
+
+    return (
+      (index1 > -1 ? index1 : Infinity) - (index2 > -1 ? index2 : Infinity)
     );
-    const difference = differenceWith(tags[type], orderOfIssues, comparator);
-
-    tags[type] = [...intersection.sort(sortComparator), ...difference.sort()];
   });
 
-  return [...tags.regular, ...tags.lowConfidence];
-};
+  return noUnnecessaryLowConfidence;
+}
+
+export function getTags(facts: Fact[], orderOfIssues: OrderOfIssues) {
+  const factsByYear = groupBy(facts, (f) => {
+    return getYear(parseDate(f.date));
+  });
+  const tagsByYearObj = mapValues(factsByYear, (facts) => {
+    return flatten(facts.map((f) => f.tags));
+  });
+
+  const tagsByYearUnsorted = toPairs(tagsByYearObj);
+  const tagsByYear = reverse(sortBy(tagsByYearUnsorted, (pair) => pair[0]));
+  const withSortedTagClouds = tagsByYear.map((tby) => {
+    return [tby[0], sortTags(tby[1], orderOfIssues)];
+  });
+
+  console.log('tagsByYear', JSON.stringify(withSortedTagClouds, null, 2));
+}

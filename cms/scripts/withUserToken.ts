@@ -1,3 +1,4 @@
+import sanityClient from 'part:@sanity/base/client';
 import groq from 'groq';
 
 /**
@@ -13,8 +14,8 @@ import groq from 'groq';
 // async function script() {
 //   const re = await sanityClient.delete({
 //     query: groq`*[
-//       _id == 'drafts.f68fce9b-a5b0-4e22-a1b3-5e82e6d15a9f' ||
-//       _id == 'f68fce9b-a5b0-4e22-a1b3-5e82e6d15a9f'
+//       _id == 'drafts.b969120e-14ae-4109-ab8b-30a001dff579' ||
+//       _id == 'b969120e-14ae-4109-ab8b-30a001dff579'
 //     ]`,
 //   });
 
