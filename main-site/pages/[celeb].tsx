@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { Logo, SearchButton } from '~/components/AppBar';
+import { Container, Logo, Nav, SearchButton } from '~/components/AppBar';
 import { Card } from '~/components/Card';
 import { ContributeCta } from '~/components/ContributeCta';
 import { Facts } from '~/components/Facts';
@@ -23,11 +23,12 @@ export default function Celeb(props: CelebPageProps) {
           stickyTitle
           disablePadding
           disableTitlePadding
+          className="border-x-0"
           title={
-            <div className="NAV h-container flex items-center justify-between px-5 py-3 default:flex-row default:gap-2">
+            <Nav>
               <Logo />
               <SearchButton />
-            </div>
+            </Nav>
           }
         >
           <TopSection {...props} />

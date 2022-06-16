@@ -19,7 +19,9 @@ export function Card(_props: {
   });
 
   return (
-    <div className={clsx('border-b bg-white lg:border-x', props.className)}>
+    <div
+      className={clsx('border-b bg-white default:lg:border-x', props.className)}
+    >
       {props.title && (
         <div
           className={c({
