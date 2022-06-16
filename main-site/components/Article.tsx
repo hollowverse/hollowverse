@@ -24,14 +24,16 @@ export const Article = (
     >
       {oldContent.summaries && (
         <Card title="Summary">
-          <p>{oldContent.summaries.religion}</p>
-          <p className="mt-3">{oldContent.summaries.politicalViews}</p>
+          <div className="p-5">
+            <p>{oldContent.summaries.religion}</p>
+            <p className="mt-3">{oldContent.summaries.politicalViews}</p>
+          </div>
         </Card>
       )}
 
       <Card title="Editorial">
         <div
-          className={c(s.Article, 'break-normal leading-relaxed')}
+          className={c(s.Article, 'break-normal p-5 leading-relaxed')}
           dangerouslySetInnerHTML={{ __html: oldContent.article }}
         />
       </Card>

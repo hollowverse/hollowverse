@@ -1,5 +1,6 @@
 import { Fact } from '~/lib/groq/fact.partial.groq';
 import { copyFacts, factsDataTransform } from '~/lib/factsDataTransform';
+import { mockOrderOfIssues } from '~/lib/tests/mockOrderOfIssues';
 
 test('transformation while keeping duplicates', () => {
   const copiedFacts = copyFacts(mockFacts);
@@ -80,12 +81,4 @@ const mockFacts: Fact[] = [
       { name: 'LGBT' },
     ],
   },
-];
-
-const mockOrderOfIssues = [
-  'Religion',
-  'COVID-19',
-  'Political Party Affiliation',
-  'Gun Control',
-  'LGBT',
 ];

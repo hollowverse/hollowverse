@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sortTags should sort by order of issues 1`] = `
+Array [
+  Object {
+    "isBackground": false,
+    "isLowConfidence": true,
+    "tag": Object {
+      "issue": Object {
+        "name": "Religion",
+      },
+      "name": "Not Religious",
+    },
+  },
+  Object {
+    "isBackground": null,
+    "isLowConfidence": null,
+    "tag": Object {
+      "issue": Object {
+        "name": "LGBT",
+      },
+      "name": "Supports LGBT",
+    },
+  },
+  Object {
+    "isBackground": null,
+    "isLowConfidence": null,
+    "tag": Object {
+      "issue": Object {
+        "name": "Environment",
+      },
+      "name": "Pro Nuclear Power",
+    },
+  },
+]
+`;
+
+exports[`sortTags to remove dupes 1`] = `
+Array [
+  Object {
+    "isBackground": null,
+    "isLowConfidence": null,
+    "tag": Object {
+      "issue": Object {
+        "name": "Environment",
+      },
+      "name": "Environmentalist",
+    },
+  },
+]
+`;
+
+exports[`sortTags to remove unnecessary lowConfidence tags 1`] = `
+Array [
+  Object {
+    "isBackground": null,
+    "isLowConfidence": null,
+    "tag": Object {
+      "issue": Object {
+        "name": "Environment",
+      },
+      "name": "Environmentalist",
+    },
+  },
+]
+`;
+
+exports[`sortTags to remove unnecessary lowConfidence tags 2`] = `
+Array [
+  Object {
+    "isBackground": null,
+    "isLowConfidence": null,
+    "tag": Object {
+      "issue": Object {
+        "name": "Environment",
+      },
+      "name": "Environmentalist",
+    },
+  },
+  Object {
+    "isBackground": null,
+    "isLowConfidence": true,
+    "tag": Object {
+      "issue": Object {
+        "name": "Environment",
+      },
+      "name": "foobar",
+    },
+  },
+]
+`;

@@ -7,8 +7,10 @@ export const InterestingProfiles = (props: CelebPageProps) => {
   const relatedPeople = props.celeb.oldContent!.relatedPeople;
 
   return (
-    <Card title="Other interesting profiles" disablePadding>
-      <CelebGallery celebGalleryItems={relatedPeople} />
+    <Card title="Other interesting profiles">
+      <div className="px-5 py-2">
+        <CelebGallery celebGalleryItems={relatedPeople} />
+      </div>
     </Card>
   );
 };

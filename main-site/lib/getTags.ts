@@ -1,50 +1,109 @@
-import { differenceWith, intersectionWith } from 'lodash-es';
-import { GroupedFacts } from '~/lib/factsDataTransform';
-import { Tag } from '~/lib/groq/fact.partial.groq';
+import { getYear } from 'date-fns';
+import {
+  differenceWith,
+  first,
+  flatten,
+  groupBy,
+  intersectionWith,
+  isEmpty,
+  last,
+  mapValues,
+  pullAt,
+  reverse,
+  sortBy,
+  toPairs,
+  uniqBy,
+} from 'lodash-es';
+import { parseDate } from '~/lib/date';
+import { Fact, Tag } from '~/lib/groq/fact.partial.groq';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.groq';
 
-const tagExists = (tagsArr: Tag[], tag: Tag) =>
-  tagsArr.some((t) => t.tag.name === tag.tag.name);
+export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
+  const noDupes = uniqBy(
+    tags,
+    (t) => `${t.tag.name}-is-low-confidence-${t.isLowConfidence}`,
+  );
 
-export const getTags = (
-  groupedFacts: GroupedFacts,
-  orderOfIssues: OrderOfIssues,
-) => {
-  const comparator = (tag: Tag, issue: string) => tag.tag.issue.name === issue;
-  const sortComparator = (a: Tag, b: Tag) =>
-    orderOfIssues.indexOf(a.tag.issue.name) -
-    orderOfIssues.indexOf(b.tag.issue.name);
+  // Remove lowConfidence tags if a regular one exists
+  const noUnnecessaryLowConfidence = noDupes.filter((t) => {
+    if (!t.isLowConfidence) {
+      return true;
+    }
 
-  const { issues, groups } = groupedFacts;
-  const tags: { regular: Tag[]; lowConfidence: Tag[] } = {
-    regular: [],
-    lowConfidence: [],
-  };
-
-  issues.forEach((issue) => {
-    const group = groups[issue];
-
-    group.forEach((fact) => {
-      fact.tags.forEach((t) => {
-        if (t.isLowConfidence) {
-          !tagExists(tags.lowConfidence, t) && tags.lowConfidence.push(t);
-        } else {
-          !tagExists(tags.regular, t) && tags.regular.push(t);
-        }
-      });
+    const regularExists = noDupes.some((t2) => {
+      return t2.tag.name === t.tag.name && !t2.isLowConfidence;
     });
+
+    if (regularExists) {
+      return false;
+    }
+
+    return true;
   });
 
-  (['lowConfidence', 'regular'] as const).forEach((type) => {
-    const intersection = intersectionWith(
-      tags[type],
-      orderOfIssues,
-      comparator,
+  const diff = differenceWith(
+    noUnnecessaryLowConfidence,
+    orderOfIssues,
+    (t, i) => t.tag.issue.name === i,
+  );
+  const ix = intersectionWith(
+    noUnnecessaryLowConfidence,
+    orderOfIssues,
+    (t, i) => t.tag.issue.name === i,
+  );
+
+  ix.sort(function (a, b) {
+    return (
+      orderOfIssues.indexOf(a.tag.issue.name) -
+      orderOfIssues.indexOf(b.tag.issue.name)
     );
-    const difference = differenceWith(tags[type], orderOfIssues, comparator);
-
-    tags[type] = [...intersection.sort(sortComparator), ...difference.sort()];
   });
 
-  return [...tags.regular, ...tags.lowConfidence];
-};
+  return [...ix, ...diff];
+}
+
+type TagPair = [string, Tag[]];
+
+export function rollUp(tagPairs: TagPair[]) {
+  const pending: TagPair[] = [];
+
+  for (let i = tagPairs.length - 1; i >= 0; i--) {
+    const tagPair = tagPairs[i];
+    const [title, tags] = tagPair;
+
+    if (!isEmpty(pending)) {
+      const preNewTitle = `${title}-${pending[0][0]}`.split('-');
+      const newTitle = `${first(preNewTitle)}-${last(preNewTitle)}`;
+      tagPair[0] = newTitle;
+      tagPair[1] = [...tags, ...pending[0][1]];
+      pending.length = 0;
+    }
+
+    if (tagPair[1].length < 5 && i !== 0) {
+      pending.push(tagPair);
+      pullAt(tagPairs, i);
+    }
+  }
+
+  return tagPairs;
+}
+
+export function getTags(facts: Fact[], orderOfIssues: OrderOfIssues) {
+  const factsByYear = groupBy(facts, (f) => {
+    return getYear(parseDate(f.date));
+  });
+  const tagsByYearObj = mapValues(factsByYear, (facts) => {
+    return flatten(facts.map((f) => f.tags));
+  });
+
+  const tagsByYearUnsorted = toPairs(tagsByYearObj);
+  const tagsByYear = reverse(sortBy(tagsByYearUnsorted, (pair) => pair[0]));
+
+  rollUp(tagsByYear);
+
+  const withSortedTagClouds = tagsByYear.map((tby) => {
+    return [tby[0], sortTags(tby[1], orderOfIssues)] as TagPair;
+  });
+
+  return withSortedTagClouds;
+}

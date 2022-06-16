@@ -31,7 +31,7 @@ export const Facts = (props: CelebPageProps) => {
                     linkSlug={props.celeb.slug}
                   />
                   {innerI !== factGroup.length - 1 && (
-                    <div className="-ml-[1px] -mr-[1px] h-5 border-b border-t bg-gray-100" />
+                    <div className="h-5 border-b border-t bg-gray-100 lg:-ml-[1px] lg:-mr-[1px]" />
                   )}
                 </div>
               );

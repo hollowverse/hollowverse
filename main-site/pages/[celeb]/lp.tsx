@@ -20,7 +20,7 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
         <Card
           title={`Suggested Google searches to research ${props.celebName}'s views`}
         >
-          <div className="flex flex-wrap gap-5">
+          <div className="flex flex-wrap gap-5 p-5">
             {props.issues.map((t) => {
               return (
                 <a

@@ -1,29 +1,31 @@
 import { Link } from '~/lib/Link';
-import { useRouter } from 'next/router';
 import React, { ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { c } from '~/lib/c';
+import { Card } from '~/components/Card';
+
+export function Nav(props: { children: ReactNode; navClasses?: string }) {
+  return (
+    <nav
+      role="navigation"
+      aria-label="Main Navigation"
+      className={c(
+        'NAV h-container flex items-center justify-between py-3 px-5 default:flex-row default:gap-2',
+        props.navClasses,
+      )}
+    >
+      {props.children}
+    </nav>
+  );
+}
 
 export function Container(props: { children: ReactNode; navClasses?: string }) {
   return (
-    <>
+    <Card className="border-x-0">
       <LovelyTopBorder />
-      <nav
-        role="navigation"
-        aria-label="Main Navigation"
-        className="NAV-CONTAINER flex w-full border-b bg-white p-3 px-5 text-neutral-600"
-      >
-        <div
-          className={c(
-            'NAV h-container flex items-center justify-between default:flex-row default:gap-2',
-            props.navClasses,
-          )}
-        >
-          {props.children}
-        </div>
-      </nav>
-    </>
+      <Nav {...props} />
+    </Card>
   );
 }
 

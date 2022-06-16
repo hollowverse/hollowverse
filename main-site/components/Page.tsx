@@ -54,7 +54,7 @@ export function Page(params: {
 
       <div
         className={c(
-          'flex min-h-screen min-w-[320px] flex-col bg-gray-100',
+          'flex min-h-screen flex-col bg-gray-100',
           params.className,
         )}
       >
