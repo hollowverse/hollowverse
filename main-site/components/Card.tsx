@@ -10,10 +10,12 @@ export function Card(_props: {
   disablePadding?: boolean;
   className?: string;
   stickyTitle?: boolean;
+  disableTitlePadding?: boolean;
 }) {
   const props = defaults({}, _props, {
     disablePadding: false,
     stickyTitle: false,
+    disableTitlePadding: false,
   });
 
   return (
@@ -25,7 +27,11 @@ export function Card(_props: {
           })}
         >
           <LovelyTopBorder />
-          <div className="border-b bg-white p-5 text-xl font-bold">
+          <div
+            className={c('border-b bg-white text-xl font-bold', {
+              'p-5': !props.disableTitlePadding,
+            })}
+          >
             {props.title}
           </div>
         </div>
