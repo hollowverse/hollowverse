@@ -12,7 +12,7 @@ export function Container(props: { children: ReactNode; navClasses?: string }) {
       <nav
         role="navigation"
         aria-label="Main Navigation"
-        className="NAV-CONTAINER flex w-full border-b bg-white p-3 px-5 text-neutral-600"
+        className="NAV-CONTAINER flex w-full border-b bg-white py-3 text-neutral-600"
       >
         <div
           className={c(
