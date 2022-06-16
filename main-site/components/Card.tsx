@@ -37,7 +37,7 @@ export function Card(_props: {
         </div>
       )}
 
-      <div className={props.disablePadding ? '' : 'p-5'}>{props.children}</div>
+      <div>{props.children}</div>
     </div>
   );
 }

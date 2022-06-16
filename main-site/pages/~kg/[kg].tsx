@@ -16,35 +16,37 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
       allowSearchEngines={false}
     >
       <Card>
-        <div className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-6">
-          <FaRegCheckCircle className="text-xl text-white" />
+        <div className="p-5">
+          <div className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-5">
+            <FaRegCheckCircle className="text-xl text-white" />
 
-          <p className="text-white">
-            We&apos;ve received your request to add{' '}
-            <span className="font-bold">{params.name}</span>
-          </p>
-        </div>
-
-        <div className="mt-5 flex flex-col items-center gap-5">
-          <div className="aspect-square h-[200px] w-[200px] rounded-md">
-            <CelebImage
-              className="rounded-md object-cover"
-              key={params.name + '-topSection-image'}
-              name={params.name}
-              src={params.image?.contentUrl}
-              priority
-            />
+            <p className="text-white">
+              We&apos;ve received your request to add{' '}
+              <span className="font-bold">{params.name}</span>
+            </p>
           </div>
-          <h1 className="mt-5 text-center">
-            <span className="mt-2 block text-4xl font-extrabold tracking-tight">
-              {params.name}
-            </span>
-            {params.description && (
-              <span className="text-base font-normal tracking-wide text-neutral-500">
-                {' ' + params.description}
+
+          <div className="mt-5 flex flex-col items-center gap-5">
+            <div className="aspect-square h-[200px] w-[200px] rounded-md">
+              <CelebImage
+                className="rounded-md object-cover"
+                key={params.name + '-topSection-image'}
+                name={params.name}
+                src={params.image?.contentUrl}
+                priority
+              />
+            </div>
+            <h1 className="mt-5 text-center">
+              <span className="mt-2 block text-4xl font-extrabold tracking-tight">
+                {params.name}
               </span>
-            )}
-          </h1>
+              {params.description && (
+                <span className="text-base font-normal tracking-wide text-neutral-500">
+                  {' ' + params.description}
+                </span>
+              )}
+            </h1>
+          </div>
         </div>
       </Card>
 

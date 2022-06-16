@@ -11,8 +11,8 @@ export default function About() {
       pathname={`~about`}
       allowSearchEngines={false}
     >
-      <Card className="mt-5 border-t py-5 text-neutral-500">
-        <div className="h-container flex flex-col gap-8">
+      <Card className="mt-5 border-t text-neutral-500">
+        <div className="h-container flex flex-col gap-8 p-5">
           <div className="flex flex-col gap-2">
             <h2 className="flex items-center gap-2 text-xl font-medium">
               <RiHome2Line />

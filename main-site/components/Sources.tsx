@@ -12,7 +12,7 @@ export const Sources = (
   const oldContent = props.celeb.oldContent!;
 
   return (
-    <div>
+    <div className="ml-5">
       <button
         className={clsx(
           `flex min-w-[275px] items-center justify-center gap-1.5 rounded-lg border-2 border-gray-100 bg-black bg-opacity-5 px-3.5 py-2.5 font-medium transition hover:bg-opacity-10 focus:border-blue-300 active:bg-opacity-10`,

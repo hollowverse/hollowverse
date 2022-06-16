@@ -58,7 +58,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
           </div>
         </div>
 
-        <Card disablePadding>
+        <Card>
           <LovelyTopBorder />
           <Fact fact={fact} celebName={celeb.name} showFooter={false} />
           <hr />
@@ -93,7 +93,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
         </Card>
 
         <Card title="Comments">
-          <div>
+          <div className="p-5">
             {(commentCount === null && (
               <div className="w-ful flex justify-center">
                 <Spinner />
