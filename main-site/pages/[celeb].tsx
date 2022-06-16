@@ -5,18 +5,15 @@ import { Facts } from '~/components/Facts';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { TopSection } from '~/components/TopSection';
-import { getHeadDescription } from '~/lib/celebPageHelpers';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
+  const name = props.celeb.name;
+
   return (
     <Page
-      title={`${props.celeb.name}'s religion and political views`}
-      description={getHeadDescription(
-        props.celeb.name,
-        props.celeb.tags,
-        props.celeb.oldContent,
-      )}
+      title={`${name}'s religion and political views`}
+      description={`A collection of everything political or religious that ${name} said or did.`}
       allowSearchEngines
       pathname={props.celeb.slug}
     >

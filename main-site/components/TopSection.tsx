@@ -20,7 +20,7 @@ export const TopSection = (props: CelebPageProps) => {
               name={props.celeb.name}
             />
           </div>
-          <h1 className="mt-5 text-center">
+          <h1 className="mt-5">
             <span className="text-lg font-normal tracking-wide text-neutral-500">
               The Views of
             </span>{' '}
@@ -31,7 +31,7 @@ export const TopSection = (props: CelebPageProps) => {
         </div>
 
         {!isEmpty(props.celeb.tags) && (
-          <div className="flex justify-center pt-5">
+          <div className="pt-5">
             <TagCollection {...props} />
           </div>
         )}
