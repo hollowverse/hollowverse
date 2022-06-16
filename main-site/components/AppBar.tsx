@@ -16,7 +16,7 @@ export function Container(props: { children: ReactNode; navClasses?: string }) {
       >
         <div
           className={c(
-            'NAV h-container flex items-center justify-between default:flex-row default:gap-2',
+            'NAV h-container flex items-center justify-between px-5 default:flex-row default:gap-2',
             props.navClasses,
           )}
         >

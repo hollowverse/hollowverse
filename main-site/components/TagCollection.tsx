@@ -7,19 +7,23 @@ import { FaRegCircle } from 'react-icons/fa';
 
 export const TagCollection = (props: CelebPageProps) => {
   const tags = props.celeb.tags;
+  const showTimeline = tags.length > 1;
 
   return (
     <div className="flex flex-col">
       {tags.map((tpair, i) => (
         <div key={tpair[0]}>
-          <p className="-ml-2 flex items-center gap-3 text-lg tracking-wider text-neutral-500">
-            <FaRegCircle className="text-gray-300" />
-            {tpair[0]}
-          </p>
+          {showTimeline && (
+            <p className="-ml-2 flex items-center gap-3 text-lg tracking-wider text-neutral-500">
+              <FaRegCircle className="text-gray-300" />
+              {tpair[0]}
+            </p>
+          )}
 
           <div
-            className={c('flex flex-wrap gap-2.5 p-5 pt-3', {
+            className={c('flex flex-wrap gap-2.5 pt-3', {
               'border-l-2': i < tags.length - 1,
+              'p-5': showTimeline,
             })}
           >
             {tpair[1].map((t, i2) => (

@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <footer aria-label="footer" className="my-5 w-full">
       <div className="border-y bg-white px-5">
-        <div className="align-center h-container flex justify-center py-5">
+        <div className="align-center h-container flex justify-center p-5">
           <Image
             width={50}
             height={50}
