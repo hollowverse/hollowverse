@@ -63,6 +63,25 @@ export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
 
 type TagPair = [string, Tag[]];
 
+/**
+group the tags by the year. then sort by the most recent years first. but the
+problem is, it doesn't look very good when we have a bunch of years, with each
+one having just one tag.
+
+so here's how i solved that problem:
+
+starting from the oldest year (i.e. from the bottom), if there are less than 5
+facts in that year, roll those up with the next year (so instead of a single
+year now, we have a time period yearX-yearY), then if that time period still has
+less than 5 facts, those too roll them up with the next year. keep rolling up
+until the period has 5 or more tags.
+
+now there's another issue..for many celebs, because they don't have many tags
+per year, when you roll up their tags, they end up with a single time period,
+2022-2019 four tags. showing a timeline with a single time period doesn't look
+good. so in that case, i simply hide the timeline and just display the tags
+without the date.
+ */
 export function rollUp(tagPairs: TagPair[]) {
   const pending: TagPair[] = [];
 
