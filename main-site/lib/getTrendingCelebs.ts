@@ -50,7 +50,9 @@ async function getGaTopPages() {
   });
 
   if (!response || !response.rows) {
-    log('error', 'no trending celebs found', [], response as any);
+    log('error', 'no trending celebs found', {
+      response: response as any,
+    });
 
     return null;
   }
@@ -82,7 +84,13 @@ export type TrendingCelebs = { name: string; slug: string; picture: Picture }[];
 export async function getTrendingCelebs() {
   const gaTopPages = (await getGaTopPages()) as string[];
 
-  const trendingCelebs = await sanityClient.fetch(
+  const trendingCelebs = await sanityClient.fetch<
+    {
+      name: string;
+      slug: string;
+      picture: Picture;
+    }[]
+  >(
     'trending-celebs',
     groq`*[
       _type == 'celeb' &&
@@ -96,7 +104,7 @@ export async function getTrendingCelebs() {
     { slugs: gaTopPages },
   );
 
-  trendingCelebs.sort((a: any, b: any) => {
+  trendingCelebs!.sort((a: any, b: any) => {
     return gaTopPages.indexOf(a.slug) - gaTopPages.indexOf(b.slug);
   });
 

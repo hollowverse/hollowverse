@@ -11,7 +11,7 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
 
   const queryUrl = req.query.url;
 
-  log('info', 'get-fact-social-info', [queryUrl as string]);
+  log('info', `get-fact-social-info: ${queryUrl}`);
 
   if (!queryUrl || !isString(queryUrl)) {
     throw new Error(

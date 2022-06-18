@@ -12,7 +12,7 @@ export const getStaticProps = async ({
 }: {
   params: { kg: string };
 }): Promise<{ props: ResearcherLaunchPadProps } | { notFound: boolean }> => {
-  log('info', 'launchPad KG getStaticProps called', [params.kg]);
+  log('info', `launchPad KG getStaticProps called: ${params.kg}`);
 
   const searchId = getKgSearchId(params.kg);
 

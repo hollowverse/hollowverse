@@ -16,7 +16,7 @@ import {
   logTask as _logTask,
 } from '~/shared/lib/log';
 
-export class PerformPostPublishChores {
+export class NewFactChores {
   private logTask;
   private topic: Json = {};
   private log;

@@ -7,7 +7,7 @@ import {
   ContentChangeData,
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
-import { PerformPostPublishChores } from '~/lib/performPostPublishChores';
+import { NewFactChores } from '~/lib/NewFactChores';
 import { createContextLogger, log, logTask } from '~/shared/lib/log';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
@@ -20,7 +20,7 @@ export type SanityWebhookProps = {
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   /*
   Who ever calls this routine doesn't need to wait around for it to finish.
-  The success and errors of this routine gets reported to the logging system.
+  The success and errors of this routine get reported to the logging system.
   */
   res.json({ ok: true });
 
@@ -71,15 +71,15 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     revalidatePath(`/${webhookPayload.slug}`),
     revalidatePath(`/`),
     logTask(
-      'Post publish chores',
+      'Performing new Fact chores',
       () => {
-        const performPostPublishChores = new PerformPostPublishChores(
+        const newFactChores = new NewFactChores(
           data,
           webhookPayload.operation,
           logContext,
         );
 
-        return performPostPublishChores.run();
+        return newFactChores.run();
       },
       logContext,
     ),

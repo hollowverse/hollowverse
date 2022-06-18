@@ -8,7 +8,7 @@ const notFound = {
 };
 
 function queryHv(kgId: string) {
-  return sanityClient.fetch(
+  return sanityClient.fetch<{ slug: string }>(
     'knowledge-graph-page-celeb-check',
     groq`*[_type == 'celeb' && knowledgeGraphId == $kgId][0]{'slug': slug.current}`,
     {

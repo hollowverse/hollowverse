@@ -13,6 +13,7 @@ import { Spinner } from '~/components/Spinner';
 import { formatFactDate } from '~/lib/date';
 import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
+import { Picture } from '~/lib/groq/picture.partial.groq';
 import { Link } from '~/lib/Link';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
@@ -156,7 +157,9 @@ export async function getStaticProps(): Promise<
 
   const trendingCelebs = await getTrendingCelebs();
 
-  const latestFacts = await sanityClient.fetch(
+  const latestFacts = await sanityClient.fetch<
+    (TFact & { celeb: { name: string; Picture: Picture; slug: string } })[]
+  >(
     'latest-page-facts',
     groq`*[_type == 'fact'] | order(date desc)[0..49] {
       'celeb': celeb->{
@@ -174,7 +177,7 @@ export async function getStaticProps(): Promise<
     }`,
   );
 
-  const enhancedLatestFacts = latestFacts.map((f: TFact) => ({
+  const enhancedLatestFacts = latestFacts!.map((f) => ({
     ...f,
     date: formatFactDate(f.date),
   }));

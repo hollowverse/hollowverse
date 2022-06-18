@@ -37,10 +37,7 @@ function createSanityClient(sanityClient: SanityClient) {
       params?: QueryParams,
       options?: FilteredResponseQueryOptions,
     ) => {
-      log('info', 'sanity fetch', [
-        id,
-        params ? loggerStringify(params) : undefined,
-      ]);
+      log('info', `sanity fetch: ${id}`, params ? { params } : undefined);
 
       return sanityClient.fetch(query, params, options as any) as T | null;
     },

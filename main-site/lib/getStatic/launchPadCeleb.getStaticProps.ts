@@ -19,9 +19,9 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }): Promise<{ props: ResearcherLaunchPadProps } | { notFound: boolean }> => {
-  log('info', 'launchPad celeb getStaticProps called', [params.celeb]);
+  log('info', `launchPad celeb getStaticProps called: ${params.celeb}`);
 
-  const celebName = await sanityClient.fetch(
+  const celebName = await sanityClient.fetch<string>(
     'launch-pad-celeb',
     groq`*[_type == 'celeb' && slug.current == $slug][0]{name}.name`,
     { slug: params.celeb },
