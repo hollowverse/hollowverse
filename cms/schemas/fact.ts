@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { LogLink } from '../components/LogLink';
 import { OpenGraphImage } from '../components/OpenGraphImage';
 import { getForumTopicId } from '../shared/lib/getForumTopicId';
 import { sanityClient } from '../shared/lib/sanityio';
@@ -152,6 +153,13 @@ export const fact = {
       type: 'array',
       of: [{ type: 'tagLink' }],
       validation: (Rule) => Rule.required(),
+    },
+
+    {
+      title: 'logs',
+      name: 'show_system_logs',
+      type: 'string',
+      inputComponent: LogLink,
     },
   ],
 

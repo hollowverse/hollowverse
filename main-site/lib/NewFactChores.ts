@@ -59,12 +59,15 @@ export class NewFactChores {
     });
   }
 
-  private formatPost() {
-    const formattedFact = this.logTask('Build pretty looking post', () => {
-      return ReactDOMServer.renderToStaticMarkup(
-        React.createElement(DiscourseTopicFact, this.contentChangeData),
-      );
-    });
+  private async formatPost() {
+    const formattedFact = await this.logTask(
+      'Build pretty looking post',
+      () => {
+        return ReactDOMServer.renderToStaticMarkup(
+          React.createElement(DiscourseTopicFact, this.contentChangeData),
+        );
+      },
+    );
 
     if (isError(formattedFact)) {
       return formattedFact;

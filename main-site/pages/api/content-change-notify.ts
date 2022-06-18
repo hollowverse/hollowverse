@@ -12,9 +12,10 @@ import { createContextLogger, log, logTask } from '~/shared/lib/log';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
 export type SanityWebhookProps = {
-  operation: 'create' | 'update' | 'delete';
   _id: string;
+  _rev: string;
   slug: string;
+  operation: 'create' | 'update' | 'delete';
 };
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
@@ -29,39 +30,48 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   const logContext = {
     webhookPayload,
     requestId,
-    requestName: `${webhookPayload.slug || 'missing'};${
-      webhookPayload._id || 'missing'
+    requestName: `${webhookPayload._id || 'missing'};${
+      webhookPayload._rev || 'missing'
     }`,
   };
+
+  // return;
+
   const logWithContext = createContextLogger(logContext);
 
-  logWithContext(
+  await logWithContext(
     'info',
     `Received a new content change notification (CCN) for ${webhookPayload.slug}, Fact ID ${webhookPayload._id}`,
   );
 
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
     logWithContext('info', 'The CCN request did not pass authorization');
-    return res.json({ message: 'Unauthorized' });
+    return;
   }
 
   logWithContext('info', 'The CCN request was confirmed to be from Sanity.');
 
   logWithContext('info', 'Attempting to retrieve fresh data from Sanity...');
-  const data = await sanityClientNoCdn.fetch<ContentChangeData>(
-    requestId,
-    groq`*[_id == $_id][0]{${contentChangeProjection}}`,
-    { _id: webhookPayload._id },
+
+  const data = await logTask(
+    'Retrieve fresh data from Sanity',
+    () =>
+      sanityClientNoCdn.fetch<ContentChangeData>(
+        requestId,
+        groq`*[_id == $_id][0]{${contentChangeProjection}}`,
+        { _id: webhookPayload._id },
+      ),
+    logContext,
   );
 
-  if (!data) {
+  if (isError(data) || !data) {
     logWithContext('error', 'Could not retrieve data from Sanity', logContext);
-    return res.json({ revalidated: true });
+    return;
   }
 
   async function revalidatePath(path: string) {
     return logTask(
-      `Refresh path https://hollowverse.com/${path}`,
+      `Refresh path https://hollowverse.com${path}`,
       () => res.unstable_revalidate(path),
       logContext,
     );
