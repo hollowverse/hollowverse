@@ -1,14 +1,15 @@
 import { isValidRequest } from '@sanity/webhook';
 import groq from 'groq';
+import { isError } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { v4 as uuid } from 'uuid';
 import {
   ContentChangeData,
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
-import { log } from '~/shared/lib/log';
-import { performPostPublishChores } from '~/lib/performPostPublishChores';
+import { PerformPostPublishChores } from '~/lib/performPostPublishChores';
+import { createContextLogger, log, logTask } from '~/shared/lib/log';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
-import { v4 as uuid } from 'uuid';
 
 export type SanityWebhookProps = {
   operation: 'create' | 'update' | 'delete';
@@ -17,71 +18,78 @@ export type SanityWebhookProps = {
 };
 
 async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
-  const requestId = uuid();
-  const { body: webhookPayload } = req as { body: SanityWebhookProps };
+  /*
+  Who ever calls this routine doesn't need to wait around for it to finish.
+  The success and errors of this routine gets reported to the logging system.
+  */
+  res.json({ ok: true });
 
-  log(
-    'info',
-    'content-change-notify',
-    ['request received', requestId, webhookPayload._id || 'no _id'],
+  const { body: webhookPayload } = req as { body: SanityWebhookProps };
+  const requestId = uuid();
+  const logContext = {
     webhookPayload,
+    requestId,
+    requestName: `${webhookPayload.slug || 'missing'};${
+      webhookPayload._id || 'missing'
+    }`,
+  };
+  const logWithContext = createContextLogger(logContext);
+
+  logWithContext(
+    'info',
+    `Received a new content change notification (CCN) for ${webhookPayload.slug}, Fact ID ${webhookPayload._id}`,
   );
 
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
-    log('info', 'content-change-notify', ['unauthorized', requestId]);
-
-    return res.status(401).json({ message: 'Unauthorized' });
+    logWithContext('info', 'The CCN request did not pass authorization');
+    return res.json({ message: 'Unauthorized' });
   }
 
-  const data = (await sanityClientNoCdn.fetch(
+  logWithContext('info', 'The CCN request was confirmed to be from Sanity.');
+
+  logWithContext('info', 'Attempting to retrieve fresh data from Sanity...');
+  const data = await sanityClientNoCdn.fetch<ContentChangeData>(
     requestId,
     groq`*[_id == $_id][0]{${contentChangeProjection}}`,
     { _id: webhookPayload._id },
-  )) as ContentChangeData | null;
-
-  log(
-    'info',
-    'content-change-notify',
-    ['sanity data received', requestId],
-    data as any,
   );
 
-  async function revalidatePath(path: string) {
-    try {
-      await res.unstable_revalidate(path);
-    } catch (e: any) {
-      log(
-        'error',
-        'content-change-notify',
-        [`revalidation failed: ${path}`, requestId, JSON.stringify(e)],
-        e,
-      );
-    }
+  if (!data) {
+    logWithContext('error', 'Could not retrieve data from Sanity', logContext);
+    return res.json({ revalidated: true });
   }
 
-  await Promise.all([
-    (async () => revalidatePath(`/${webhookPayload.slug}`))(),
-    (async () => revalidatePath(`/`))(),
-    (async () => {
-      if (data) {
-        try {
-          await performPostPublishChores(
-            data,
-            webhookPayload.operation,
-            requestId,
-          );
-        } catch (e: any) {
-          log('error', e, [
-            'content-change-notify',
-            'perform publish chores error',
-            requestId,
-          ]);
-        }
-      }
-    })(),
+  async function revalidatePath(path: string) {
+    return logTask(
+      `Refresh path https://hollowverse.com/${path}`,
+      () => res.unstable_revalidate(path),
+      logContext,
+    );
+  }
+
+  const results = await Promise.all([
+    revalidatePath(`/${webhookPayload.slug}`),
+    revalidatePath(`/`),
+    logTask(
+      'Post publish chores',
+      () => {
+        const performPostPublishChores = new PerformPostPublishChores(
+          data,
+          webhookPayload.operation,
+          logContext,
+        );
+
+        return performPostPublishChores.run();
+      },
+      logContext,
+    ),
   ]);
 
-  return res.json({ revalidated: true });
+  if (results.some((r) => isError(r))) {
+    await logWithContext('error', 'Finished CCN with errors');
+  } else {
+    await logWithContext('info', 'Success! CCN completed without errors.');
+  }
 }
 
 export default async function withErrorHandling(
@@ -91,16 +99,10 @@ export default async function withErrorHandling(
   try {
     return await contentChangeNotify(req, res);
   } catch (e: any) {
-    log('error', e, ['content-change-notify-error']);
+    log('error', 'Unexpected error occurred while running CCN routine');
+    log('error', e);
 
-    /**
-     * This `content-change-notify` API handler triggered by a Sanity webhook.
-     * And the Sanity webhook will keep retrying infinitely if we return
-     * anything but success.
-     *
-     * So we just log whatever the issue is and tell the webhook "ok" to shut it
-     * up.
-     */
-    return res.json({ ok: true });
+    // No need to res.json() from here since `contentChangeNotify` does that
+    // very first.
   }
 }

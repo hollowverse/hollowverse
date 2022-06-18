@@ -1,6 +1,10 @@
 import { getEnv } from './getEnv';
 
 export function determineAppUrl() {
+  if (getEnv() === 'production') {
+    return 'https://hollowverse.com';
+  }
+
   const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
 
   if (vercelUrl) {
@@ -13,6 +17,7 @@ export function determineAppUrl() {
   if (localDevServerUrl) {
     return localDevServerUrl;
   }
+
   return getEnv() === 'development'
     ? 'http://localhost:3000'
     : 'https://hollowverse.com';

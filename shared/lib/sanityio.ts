@@ -31,7 +31,7 @@ type QueryParams = { [key: string]: any };
 
 function createSanityClient(sanityClient: SanityClient) {
   return {
-    fetch: (
+    fetch: <T extends any>(
       id: string,
       query: string,
       params?: QueryParams,
@@ -42,7 +42,7 @@ function createSanityClient(sanityClient: SanityClient) {
         params ? loggerStringify(params) : undefined,
       ]);
 
-      return sanityClient.fetch(query, params, options as any);
+      return sanityClient.fetch(query, params, options as any) as T | null;
     },
   };
 }
