@@ -1,9 +1,9 @@
-import { countBy, find, isError, uniq } from 'lodash-es';
+import { find, isError, uniq } from 'lodash-es';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { DiscourseContribPm } from '~/components/DiscourseContribPm';
 import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
-import { badgeData } from '~/lib/badgeDefinitions';
+import { badgeDefinitions } from '~/lib/badgeDefinitions';
 import { discourseApiClient as _discourseApiClient } from '~/lib/discourseApiClient';
 import { ContentChangeData } from '~/lib/groq/contentChange.groq';
 import { Json } from '~/lib/types';
@@ -113,7 +113,7 @@ export class NewFactChores {
           method: 'POST',
           body: {
             username: username,
-            badge_id: badgeData.stardust.id,
+            badge_id: badgeDefinitions.stardust.id,
             reason: this.contentChangeData.forumLink,
           },
         });
@@ -136,7 +136,9 @@ export class NewFactChores {
     const contributorBadges = await this.logTaskD(
       `Retrieve ${username}'s current badges`,
       () => {
-        return this.discourseApiClient(`user-badges/${username}.json`);
+        return this.discourseApiClient(
+          `user-badges/${username}.json?grouped=true`,
+        );
       },
     );
 
@@ -144,42 +146,55 @@ export class NewFactChores {
       return contributorBadges;
     }
 
-    const countedBadges = countBy(
+    const stardustCount = find(
       contributorBadges.user_badges,
-      (b) => b.badge_id,
-    );
+      (b) => b.badge_id === badgeDefinitions.stardust.id,
+    )?.count;
 
-    const stardustCount = countedBadges[badgeData.stardust.id] || 0;
-
-    const thresholdReachedForBadge = find(
-      badgeData,
-      (b) => b.stardustThreshold === stardustCount,
-    );
-
-    if (
-      thresholdReachedForBadge !== undefined &&
-      countedBadges[thresholdReachedForBadge.id] === undefined
-    ) {
-      const awardOtherBadgesResults = await this.logTask(
-        `Award ${username} ${thresholdReachedForBadge.name} badge`,
-        () => {
-          return this.discourseApiClient('user_badges', {
-            method: 'POST',
-            body: {
-              username: username,
-              badge_id: thresholdReachedForBadge.id,
-            },
-          });
-        },
+    if (!stardustCount) {
+      const error = new LoggableError(
+        `${username} has no Stardust. The Discourse call failed somehow.`,
+        this.logContext,
       );
 
-      if (isError(awardOtherBadgesResults)) {
-        return awardOtherBadgesResults;
-      }
+      this.log('error', error);
 
-      newBadges.push(thresholdReachedForBadge.name);
-    } else {
-      this.log('info', 'INFO: No other badges need to be awarded');
+      return error;
+    }
+
+    const newBadge = find(
+      badgeDefinitions,
+      (d) => d.stardustThreshold === stardustCount,
+    );
+
+    if (newBadge) {
+      const alreadyHasBadge = find(
+        contributorBadges.user_badges,
+        (b) => b.badge_id === newBadge.id,
+      );
+
+      if (!alreadyHasBadge) {
+        const awardNewBadge = await this.logTask(
+          `Award ${username} ${newBadge.name} badge`,
+          () => {
+            return this.discourseApiClient('user_badges', {
+              method: 'POST',
+              body: {
+                username: username,
+                badge_id: newBadge.id,
+              },
+            });
+          },
+        );
+
+        if (isError(awardNewBadge)) {
+          return awardNewBadge;
+        }
+
+        newBadges.push(newBadge.name);
+      } else {
+        this.log('info', 'INFO: No other badges need to be awarded');
+      }
     }
 
     const celebPageUrl = `https://hollowverse.com/${this.contentChangeData.slug}`;

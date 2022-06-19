@@ -1,4 +1,4 @@
-export const badgeData = {
+export const badgeDefinitions = {
   stardust: {
     name: 'Stardust',
     id: 104,
