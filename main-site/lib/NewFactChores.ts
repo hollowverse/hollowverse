@@ -14,10 +14,12 @@ import {
   createContextLogger,
   LoggableError,
   logTask as _logTask,
+  logTaskD as _logTaskD,
 } from '~/shared/lib/log';
 
 export class NewFactChores {
   private logTask;
+  private logTaskD;
   private topic: Json = {};
   private log;
   private discourseApiClient;
@@ -32,6 +34,9 @@ export class NewFactChores {
     this.logContext = logContext;
     this.logTask = <T>(taskName: string, fn: (...args: any[]) => T) => {
       return _logTask(taskName, fn, logContext);
+    };
+    this.logTaskD = <T>(taskName: string, fn: (...args: any[]) => T) => {
+      return _logTaskD(taskName, fn, logContext);
     };
     this.log = createContextLogger(this.logContext);
     this.discourseApiClient = <T extends Json>(
@@ -53,21 +58,18 @@ export class NewFactChores {
         method: 'PUT',
         body: {
           keep_existing_draft: true,
-          tags: newTags,
+          tag: newTags,
         },
       });
     });
   }
 
   private async formatPost() {
-    const formattedFact = await this.logTask(
-      'Build pretty looking post',
-      () => {
-        return ReactDOMServer.renderToStaticMarkup(
-          React.createElement(DiscourseTopicFact, this.contentChangeData),
-        );
-      },
-    );
+    const formattedFact = await this.logTaskD('Build reformatted post', () => {
+      return ReactDOMServer.renderToStaticMarkup(
+        React.createElement(DiscourseTopicFact, this.contentChangeData),
+      );
+    });
 
     if (isError(formattedFact)) {
       return formattedFact;
@@ -75,7 +77,7 @@ export class NewFactChores {
 
     const topicId = this.topic.post_stream.posts[0].id;
 
-    return this.logTask('Submit pretty looking post', () => {
+    return this.logTask('Reformat post', () => {
       return this.discourseApiClient(`posts/${topicId}.json`, {
         method: 'PUT',
         body: {
@@ -124,7 +126,7 @@ export class NewFactChores {
       return stardustAwareResult;
     }
 
-    const contributorBadges = await this.logTask(
+    const contributorBadges = await this.logTaskD(
       `Retrieve ${username}'s current badges`,
       () => {
         return this.discourseApiClient(`user-badges/${username}.json`);
@@ -135,7 +137,10 @@ export class NewFactChores {
       return contributorBadges;
     }
 
-    this.log('info', `Determine if ${username} should be awarded other badges`);
+    this.log(
+      'info',
+      `INFO: Determine if ${username} should be awarded other badges`,
+    );
 
     const countedBadges = countBy(
       contributorBadges.user_badges,
@@ -172,43 +177,38 @@ export class NewFactChores {
 
       newBadges.push(thresholdReachedForBadge.name);
     } else {
-      this.log('info', 'No other badges need to be awarded');
+      this.log('info', 'INFO: No other badges need to be awarded');
     }
 
-    return this.logTask(
-      `Sending a private message notification to ${username}`,
-      async () => {
-        const celebPageUrl = `https://hollowverse.com/${this.contentChangeData.slug}`;
+    const celebPageUrl = `https://hollowverse.com/${this.contentChangeData.slug}`;
 
-        const pm = await this.logTask('Build private message', () => {
-          return ReactDOMServer.renderToStaticMarkup(
-            React.createElement(DiscourseContribPm, {
-              username: contributor.username,
-              forumLink: this.contentChangeData.forumLink,
-              celebPageUrl,
-              stardustCount: stardustCount,
-              newBadges: newBadges,
-            }),
-          );
-        });
+    const pm = await this.logTaskD('Build private message', () => {
+      return ReactDOMServer.renderToStaticMarkup(
+        React.createElement(DiscourseContribPm, {
+          username: contributor.username,
+          forumLink: this.contentChangeData.forumLink,
+          celebPageUrl,
+          stardustCount: stardustCount,
+          newBadges: newBadges,
+        }),
+      );
+    });
 
-        if (isError(pm)) {
-          return pm;
-        }
+    if (isError(pm)) {
+      return pm;
+    }
 
-        return this.logTask('Submit private message', () => {
-          return this.discourseApiClient('posts.json', {
-            method: 'POST',
-            body: {
-              title: 'Your submission has been accepted and published!',
-              target_recipients: contributor.username,
-              raw: pm,
-              archetype: 'private_message',
-            },
-          });
-        });
-      },
-    );
+    return this.logTask('Send private message', () => {
+      return this.discourseApiClient('posts.json', {
+        method: 'POST',
+        body: {
+          title: 'Your submission has been accepted and published!',
+          target_recipients: contributor.username,
+          raw: pm,
+          archetype: 'private_message',
+        },
+      });
+    });
   }
 
   async run() {
@@ -225,7 +225,7 @@ export class NewFactChores {
       return loggableError;
     }
 
-    this.topic = await this.logTask('Retrieve topic data from Discourse', () =>
+    this.topic = await this.logTaskD('Retrieve topic data from Discourse', () =>
       this.discourseApiClient(`t/-/${topicId}.json`),
     );
 

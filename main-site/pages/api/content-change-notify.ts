@@ -10,6 +10,7 @@ import {
 import { NewFactChores } from '~/lib/NewFactChores';
 import { createContextLogger, log, logTask } from '~/shared/lib/log';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
+import delay from 'delay';
 
 export type SanityWebhookProps = {
   _id: string;
@@ -35,11 +36,9 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     }`,
   };
 
-  // return;
-
   const logWithContext = createContextLogger(logContext);
 
-  await logWithContext(
+  logWithContext(
     'info',
     `Received a new content change notification (CCN) for ${webhookPayload.slug}, Fact ID ${webhookPayload._id}`,
   );
@@ -49,23 +48,35 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
-  logWithContext('info', 'The CCN request was confirmed to be from Sanity.');
+  logWithContext('debug', 'The CCN request was confirmed to be from Sanity.');
 
-  logWithContext('info', 'Attempting to retrieve fresh data from Sanity...');
+  let data: ContentChangeData | null = null;
 
-  const data = await logTask(
-    'Retrieve fresh data from Sanity',
-    () =>
-      sanityClientNoCdn.fetch<ContentChangeData>(
-        requestId,
-        groq`*[_id == $_id][0]{${contentChangeProjection}}`,
-        { _id: webhookPayload._id },
-      ),
-    logContext,
-  );
+  for (let i = 0; i < 5; i++) {
+    logWithContext(
+      'info',
+      `Retrieving Fact data from Sanity, attempt #${i + 1}`,
+    );
+    data = await sanityClientNoCdn.fetch<ContentChangeData>(
+      requestId,
+      groq`*[_id == $_id][0]{${contentChangeProjection}}`,
+      { _id: webhookPayload._id },
+    );
 
-  if (isError(data) || !data) {
-    logWithContext('error', 'Could not retrieve data from Sanity', logContext);
+    if (data && data._id) {
+      break;
+    } else {
+      const ms = 2000;
+      logWithContext(
+        'info',
+        `Sanity data came back empty. Will try again in ${ms}ms`,
+      );
+      await delay(ms);
+    }
+  }
+
+  if (!data) {
+    logWithContext('error', 'Could not retrieve data from Sanity');
     return;
   }
 
@@ -84,7 +95,7 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
       'Performing new Fact chores',
       () => {
         const newFactChores = new NewFactChores(
-          data,
+          data!,
           webhookPayload.operation,
           logContext,
         );

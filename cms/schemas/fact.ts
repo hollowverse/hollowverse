@@ -72,7 +72,7 @@ export const fact = {
             return "This doesn't look like a valid forum link";
           }
 
-          const response = await sanityClient.fetch(
+          const response = await sanityClient.fetch<{ _id: string }>(
             'check-forum-link',
             groq`*[
               _type == 'fact' &&
