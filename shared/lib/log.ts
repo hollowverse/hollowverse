@@ -9,13 +9,6 @@ import { getVercelEnv } from './getVercelEnv';
 
 export type Context = _Context;
 
-export function loggerStringify(obj: any) {
-  const stringified = JSON.stringify(obj);
-
-  // The brackets prevent Logtail from parsing of otherwise proper JSON strings
-  return `<${stringified.substring(0, 50)}>`;
-}
-
 interface ILogtailLog {
   dt: Date;
   level: string;

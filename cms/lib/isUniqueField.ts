@@ -14,7 +14,7 @@ export function isUniqueField(
   const query = groq`!defined(*[
     _type == $type &&
     !(_id in [$draft, $published]) &&
-    $fieldName == $value
+    ${fieldName} == $value
   ][0]._id)`;
 
   return sanityClient.fetch(`check-${fieldName}-uniqueness`, query, {
@@ -22,6 +22,5 @@ export function isUniqueField(
     published: id,
     value,
     type,
-    fieldName,
   });
 }

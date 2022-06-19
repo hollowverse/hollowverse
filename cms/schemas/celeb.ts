@@ -1,5 +1,4 @@
 import { isUniqueField } from '../lib/isUniqueField';
-import { isUniqueKnowledgeGraphId } from '../lib/isUniqueKnowledgeGraphId';
 
 export const celeb = {
   title: 'Celebrity',
