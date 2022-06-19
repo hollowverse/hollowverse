@@ -130,7 +130,7 @@ export class NewFactChores {
 
     this.log(
       'info',
-      `INFO: Determine if ${username} should be awarded other badges`,
+      `INFO: Determine if ${username} has achieved other new badges`,
     );
 
     const contributorBadges = await this.logTaskD(
@@ -167,34 +167,31 @@ export class NewFactChores {
       (d) => d.stardustThreshold === stardustCount,
     );
 
-    if (newBadge) {
-      const alreadyHasBadge = find(
-        contributorBadges.user_badges,
-        (b) => b.badge_id === newBadge.id,
+    const alreadyHasBadge = newBadge
+      ? find(contributorBadges.user_badges, (b) => b.badge_id === newBadge.id)
+      : false;
+
+    if (newBadge && !alreadyHasBadge) {
+      const awardNewBadge = await this.logTask(
+        `Award ${username} ${newBadge.name} badge`,
+        () => {
+          return this.discourseApiClient('user_badges', {
+            method: 'POST',
+            body: {
+              username: username,
+              badge_id: newBadge.id,
+            },
+          });
+        },
       );
 
-      if (!alreadyHasBadge) {
-        const awardNewBadge = await this.logTask(
-          `Award ${username} ${newBadge.name} badge`,
-          () => {
-            return this.discourseApiClient('user_badges', {
-              method: 'POST',
-              body: {
-                username: username,
-                badge_id: newBadge.id,
-              },
-            });
-          },
-        );
-
-        if (isError(awardNewBadge)) {
-          return awardNewBadge;
-        }
-
-        newBadges.push(newBadge.name);
-      } else {
-        this.log('info', 'INFO: No other badges need to be awarded');
+      if (isError(awardNewBadge)) {
+        return awardNewBadge;
       }
+
+      newBadges.push(newBadge.name);
+    } else {
+      this.log('info', `INFO: ${username} hasn't achieved other new badges`);
     }
 
     const celebPageUrl = `https://hollowverse.com/${this.contentChangeData.slug}`;
