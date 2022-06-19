@@ -1,3 +1,4 @@
+import { isUniqueField } from '../lib/isUniqueField';
 import { isUniqueKnowledgeGraphId } from '../lib/isUniqueKnowledgeGraphId';
 
 export const celeb = {
@@ -38,7 +39,12 @@ export const celeb = {
       type: 'string',
       validation: (Rule) =>
         Rule.required().custom(async (value, context) => {
-          const isUnique = await isUniqueKnowledgeGraphId(value, context);
+          const isUnique = await isUniqueField(
+            'celeb',
+            'knowledgeGraphId',
+            value,
+            context,
+          );
 
           if (!isUnique) {
             return 'Knowledge Graph ID is not unique. Use search to find out where it was used.';

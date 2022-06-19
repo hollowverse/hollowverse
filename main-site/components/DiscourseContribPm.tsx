@@ -17,13 +17,13 @@ export function DiscourseContribPm(props: {
       <p>Hi @{props.username}!</p>
 
       <p>
-        Your contribution {props.forumLink} has been accepted and published on
-        Hollowverse!
+        Your contribution <a href={props.forumLink}>{props.forumLink}</a> has
+        been accepted and published on Hollowverse!
       </p>
 
       <p>
         You, and all of Hollowverse&apos;s readers, can see it here{' '}
-        {props.celebPageUrl}
+        <a href={props.celebPageUrl}>{props.celebPageUrl}</a>
       </p>
 
       <p>
@@ -37,8 +37,8 @@ export function DiscourseContribPm(props: {
               {pluralize(props.newBadges.length, 'badge', 'badges')}
             </>
           )}
-          !
         </a>
+        !
       </p>
 
       <p>Thank you for contributing!</p>

@@ -1,6 +1,7 @@
 import groq from 'groq';
 import { LogLink } from '../components/LogLink';
 import { OpenGraphImage } from '../components/OpenGraphImage';
+import { isUniqueField } from '../lib/isUniqueField';
 import { getForumTopicId } from '../shared/lib/getForumTopicId';
 import { sanityClient } from '../shared/lib/sanityio';
 
@@ -65,30 +66,22 @@ export const fact = {
       type: 'url',
       description: 'The link to the forum post where the Fact was submitted',
       validation: (Rule) =>
-        Rule.required().custom(async (field, context) => {
-          const topicId = getForumTopicId(field);
+        Rule.required().custom(async (value, context) => {
+          const topicId = getForumTopicId(value);
 
           if (!topicId) {
             return "This doesn't look like a valid forum link";
           }
 
-          const response = await sanityClient.fetch<{ _id: string }>(
-            'check-forum-link',
-            groq`*[
-              _type == 'fact' &&
-              forumLink == $forumLink
-            ][0]{_id}`,
-            { forumLink: field },
+          const isUnique = await isUniqueField(
+            'fact',
+            'forumLink',
+            value,
+            context,
           );
 
-          if (
-            response &&
-            response._id &&
-            context.parent._id &&
-            response._id !== context.parent._id &&
-            `drafts.${response._id}` !== context.parent._id
-          ) {
-            return `This field has to be unique. But you used this value before. Use Search to find out where.`;
+          if (!isUnique) {
+            return 'Forum link is not unique. Use search to find out where it was used.';
           }
 
           return true;

@@ -124,6 +124,15 @@ export class NewFactChores {
       return stardustAwareResult;
     }
 
+    this.log('debug', 'Stardust award Discourse response', {
+      response: stardustAwareResult,
+    });
+
+    this.log(
+      'info',
+      `INFO: Determine if ${username} should be awarded other badges`,
+    );
+
     const contributorBadges = await this.logTaskD(
       `Retrieve ${username}'s current badges`,
       () => {
@@ -134,11 +143,6 @@ export class NewFactChores {
     if (isError(contributorBadges)) {
       return contributorBadges;
     }
-
-    this.log(
-      'info',
-      `INFO: Determine if ${username} should be awarded other badges`,
-    );
 
     const countedBadges = countBy(
       contributorBadges.user_badges,
