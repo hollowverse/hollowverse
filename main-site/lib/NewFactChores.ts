@@ -257,7 +257,7 @@ export class NewFactChores {
       await this.addAcceptedTag(),
       isUpdateOrCreate ? await this.formatPost() : null,
       isUpdateOrCreate ? await this.lockPost() : null,
-      isCreate ? await this.awardBadgesAndNotifyUser() : null,
+      true ? await this.awardBadgesAndNotifyUser() : null,
     );
 
     const error = results.find((r) => isError(r));
