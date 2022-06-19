@@ -1,11 +1,11 @@
 import originalSanityClient from '@sanity/client';
+import {
+  FilteredResponseQueryOptions,
+  SanityClient,
+} from '@sanity/client/sanityClient';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { log, loggerStringify } from './log';
-import {
-  SanityClient,
-  FilteredResponseQueryOptions,
-} from '@sanity/client/sanityClient';
+import { log } from './log';
 
 const sanityClientConfigs = {
   projectId: 'ge8aosp3', // you can find this in sanity.json

@@ -8,7 +8,8 @@ import {
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
 import { NewFactChores } from '~/lib/NewFactChores';
-import { createContextLogger, log, logTask } from '~/shared/lib/log';
+import { createContextLogger, log } from '~/shared/lib/log';
+import { logTask } from '~/shared/lib/log.server';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 import delay from 'delay';
 

@@ -9,13 +9,11 @@ import { ContentChangeData } from '~/lib/groq/contentChange.groq';
 import { Json } from '~/lib/types';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
+import { Context, createContextLogger, LoggableError } from '~/shared/lib/log';
 import {
-  Context,
-  createContextLogger,
-  LoggableError,
   logTask as _logTask,
   logTaskD as _logTaskD,
-} from '~/shared/lib/log';
+} from '~/shared/lib/log.server';
 
 export class NewFactChores {
   private logTask;
