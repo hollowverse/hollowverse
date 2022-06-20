@@ -72,11 +72,11 @@ async function contentChangeNotify(
   }
 
   if (!data) {
-    logWithContext('error', 'Could not retrieve data from Sanity');
+    logWithContext('error', 'FATAL: Could not retrieve data from Sanity');
     return;
   }
 
-  async function revalidatePath(path: string) {
+  function revalidatePath(path: string) {
     return logTask(
       `Refresh path https://hollowverse.com${path}`,
       () => res.unstable_revalidate(path),
