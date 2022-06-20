@@ -3,7 +3,7 @@ import Image, { ImageProps } from 'next/image';
 import { sanityImage } from '~/shared/lib/sanityio';
 import { Optional } from 'utility-types';
 import { placeholderImage } from '~/lib/placeholderImage';
-import { Picture } from '~/lib/groq/picture.partial.groq';
+import { Picture } from '~/lib/groq/picture.projection';
 
 type Params = (
   | (Omit<ImageProps, 'src'> & {

@@ -1,4 +1,4 @@
-import { Tag } from '~/lib/groq/fact.partial.groq';
+import { Tag } from '~/lib/groq/fact.projection';
 
 export const mockTags: Tag[] = [
   {

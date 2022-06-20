@@ -4,12 +4,12 @@ import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
-import { factPartialGroq } from '~/lib/groq/fact.partial.groq';
+import { factPartialGroq } from '~/lib/groq/fact.projection';
 import { Page } from '~/components/Page';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { formatFactDate } from '~/lib/date';
-import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
-import { Picture } from '~/lib/groq/picture.partial.groq';
+import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { Picture } from '~/lib/groq/picture.projection';
 
 export default function Latest(p: any) {
   return (

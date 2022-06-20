@@ -1,4 +1,4 @@
-import { Fact } from '~/lib/groq/fact.partial.groq';
+import { Fact } from '~/lib/groq/fact.projection';
 import { copyFacts, factsDataTransform } from '~/lib/factsDataTransform';
 import { mockOrderOfIssues } from '~/lib/tests/mockOrderOfIssues';
 

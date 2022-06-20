@@ -12,7 +12,7 @@ import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
-import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
+import { Fact as TFact } from '~/lib/groq/fact.projection';
 
 function getTextSummary(name: string, fact: TFact, length: number) {
   let text: string;

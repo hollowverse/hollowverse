@@ -2,7 +2,7 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
-import { Picture } from '~/lib/groq/picture.partial.groq';
+import { Picture } from '~/lib/groq/picture.projection';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 

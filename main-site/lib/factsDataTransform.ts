@@ -1,6 +1,6 @@
 import { difference, groupBy, intersection, keys } from 'lodash-es';
 import { formatFactDate } from '~/lib/date';
-import { Fact } from '~/lib/groq/fact.partial.groq';
+import { Fact } from '~/lib/groq/fact.projection';
 
 export const copyFacts = (facts: Fact[]) =>
   facts.map((f) => ({

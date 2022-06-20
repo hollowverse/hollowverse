@@ -5,7 +5,7 @@ import { DiscourseContribPm } from '~/components/DiscourseContribPm';
 import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
 import { badgeDefinitions } from '~/lib/badgeDefinitions';
 import { discourseApiClient as _discourseApiClient } from '~/lib/discourseApiClient';
-import { ContentChangeData } from '~/lib/groq/contentChange.groq';
+import { ContentChange } from '~/lib/groq/contentChangeNotification.projection';
 import { Json } from '~/lib/types';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
@@ -23,11 +23,11 @@ export class NewFactChores {
   private discourseApiClient;
 
   constructor(
-    private contentChangeData: ContentChangeData,
+    private contentChange: ContentChange,
     private operation: SanityWebhookProps['operation'],
     private logContext: Context,
   ) {
-    this.contentChangeData = contentChangeData;
+    this.contentChange = contentChange;
     this.operation = operation;
     this.logContext = logContext;
     this.logTask = <T>(taskName: string, fn: (...args: any[]) => T) => {
@@ -65,7 +65,7 @@ export class NewFactChores {
   private async formatPost() {
     const formattedFact = await this.logTaskD('Build reformatted post', () => {
       return ReactDOMServer.renderToStaticMarkup(
-        React.createElement(DiscourseTopicFact, this.contentChangeData),
+        React.createElement(DiscourseTopicFact, this.contentChange),
       );
     });
 
@@ -114,7 +114,7 @@ export class NewFactChores {
           body: {
             username: username,
             badge_id: badgeDefinitions.stardust.id,
-            reason: this.contentChangeData.forumLink,
+            reason: this.contentChange.forumLink,
           },
         });
       },
@@ -194,13 +194,13 @@ export class NewFactChores {
       this.log('info', `INFO: ${username} hasn't achieved other new badges`);
     }
 
-    const celebPageUrl = `https://hollowverse.com/${this.contentChangeData.slug}`;
+    const celebPageUrl = `https://hollowverse.com/${this.contentChange.slug}`;
 
     const pm = await this.logTaskD('Build private message', () => {
       return ReactDOMServer.renderToStaticMarkup(
         React.createElement(DiscourseContribPm, {
           username: contributor.username,
-          forumLink: this.contentChangeData.forumLink,
+          forumLink: this.contentChange.forumLink,
           celebPageUrl,
           stardustCount: stardustCount,
           newBadges: newBadges,
@@ -226,11 +226,11 @@ export class NewFactChores {
   }
 
   async run() {
-    const topicId = getForumTopicId(this.contentChangeData.forumLink);
+    const topicId = getForumTopicId(this.contentChange.forumLink);
 
     if (!topicId) {
       const loggableError = new LoggableError(
-        `Could not get forum topic ID from link ${this.contentChangeData.forumLink}`,
+        `Could not get forum topic ID from link ${this.contentChange.forumLink}`,
         this.logContext,
       );
 

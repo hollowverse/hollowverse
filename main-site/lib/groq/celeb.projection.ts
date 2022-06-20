@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Picture, pictureGroq } from '~/lib/groq/picture.partial.groq';
+import { Picture, pictureGroq } from '~/lib/groq/picture.projection';
 
 export type Celeb = {
   _id: string;

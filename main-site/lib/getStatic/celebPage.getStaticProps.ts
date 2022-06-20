@@ -3,8 +3,8 @@ import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
-import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.partial.groq';
-import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
+import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.projection';
+import { Fact, factPartialGroq } from '~/lib/groq/fact.projection';
 import {
   OrderOfIssues,
   orderOfIssuesProjection,

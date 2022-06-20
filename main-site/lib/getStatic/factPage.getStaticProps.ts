@@ -1,8 +1,8 @@
 import { format, parse } from 'date-fns';
 import groq from 'groq';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.partial.groq';
-import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
+import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.projection';
+import { Fact, factPartialGroq } from '~/lib/groq/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type FactPageProps = NonNullable<

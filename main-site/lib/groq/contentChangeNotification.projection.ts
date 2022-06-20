@@ -1,8 +1,8 @@
 import groq from 'groq';
-import { FactTypes, Tag, Issue } from '~/lib/groq/fact.partial.groq';
-import { Picture } from '~/lib/groq/picture.partial.groq';
+import { FactTypes, Tag, Issue } from '~/lib/groq/fact.projection';
+import { Picture } from '~/lib/groq/picture.projection';
 
-export type ContentChangeData = {
+export type ContentChange = {
   _id: string;
   _createdAt: string;
   content: string;

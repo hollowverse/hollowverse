@@ -15,7 +15,7 @@ import {
   uniqBy,
 } from 'lodash-es';
 import { parseDate } from '~/lib/date';
-import { Fact, Tag } from '~/lib/groq/fact.partial.groq';
+import { Fact, Tag } from '~/lib/groq/fact.projection';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 
 export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
