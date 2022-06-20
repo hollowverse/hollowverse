@@ -1,17 +1,17 @@
 import { isValidRequest } from '@sanity/webhook';
+import delay from 'delay';
 import groq from 'groq';
 import { isError } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { v4 as uuid } from 'uuid';
 import {
   ContentChangeData,
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
 import { NewFactChores } from '~/lib/NewFactChores';
-import { createContextLogger, log } from '~/shared/lib/log';
+import { Json } from '~/lib/types';
+import { createContextLogger } from '~/shared/lib/log';
 import { logTask } from '~/shared/lib/log.server';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
-import delay from 'delay';
 
 export type SanityWebhookProps = {
   _id: string;
@@ -20,24 +20,18 @@ export type SanityWebhookProps = {
   operation: 'create' | 'update' | 'delete';
 };
 
-async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
+async function contentChangeNotify(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  webhookPayload: SanityWebhookProps,
+  logWithContext: ReturnType<typeof createContextLogger>,
+  logContext: Json,
+) {
   /*
   Who ever calls this routine doesn't need to wait around for it to finish.
   The success and errors of this routine get reported to the logging system.
   */
   res.json({ ok: true });
-
-  const { body: webhookPayload } = req as { body: SanityWebhookProps };
-  const requestId = uuid();
-  const logContext = {
-    webhookPayload,
-    requestId,
-    requestName: `${webhookPayload._id || 'missing'};${
-      webhookPayload._rev || 'missing'
-    }`,
-  };
-
-  const logWithContext = createContextLogger(logContext);
 
   logWithContext(
     'info',
@@ -58,8 +52,9 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
       'info',
       `Retrieving Fact data from Sanity, attempt #${i + 1}`,
     );
+
     data = await sanityClientNoCdn.fetch<ContentChangeData>(
-      requestId,
+      'webhook content change data',
       groq`*[_id == $_id][0]{${contentChangeProjection}}`,
       { _id: webhookPayload._id },
     );
@@ -114,17 +109,33 @@ async function contentChangeNotify(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default async function withErrorHandling(
+export default async function contentChangeNotifyWrapper(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  try {
-    return await contentChangeNotify(req, res);
-  } catch (e: any) {
-    log('error', 'Unexpected error occurred while running CCN routine');
-    log('error', e);
+  const { body: webhookPayload } = req as { body: SanityWebhookProps };
+  const logContext = {
+    webhookPayload,
+    requestName: `${webhookPayload._id || 'missing'};${
+      webhookPayload._rev || 'missing'
+    }`,
+  };
 
-    // No need to res.json() from here since `contentChangeNotify` does that
-    // very first.
+  const logWithContext = createContextLogger(logContext);
+
+  try {
+    await contentChangeNotify(
+      req,
+      res,
+      webhookPayload,
+      logWithContext,
+      logContext,
+    );
+  } catch (e: any) {
+    logWithContext(
+      'error',
+      'Unexpected error occurred while running CCN routine',
+    );
+    logWithContext('error', e);
   }
 }

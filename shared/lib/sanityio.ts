@@ -32,12 +32,15 @@ type QueryParams = { [key: string]: any };
 function createSanityClient(sanityClient: SanityClient) {
   return {
     fetch: <T extends any>(
-      id: string,
+      requestName: string,
       query: string,
       params?: QueryParams,
       options?: FilteredResponseQueryOptions,
     ) => {
-      log('info', `sanity fetch: ${id}`, params ? { params } : undefined);
+      log('debug', `sanity fetch: ${requestName}`, {
+        requestName,
+        ...(params ? { params } : undefined),
+      });
 
       return sanityClient.fetch(query, params, options as any) as T | null;
     },
