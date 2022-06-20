@@ -1,11 +1,11 @@
 import originalSanityClient from '@sanity/client';
+import {
+  FilteredResponseQueryOptions,
+  SanityClient,
+} from '@sanity/client/sanityClient';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { log, loggerStringify } from './log';
-import {
-  SanityClient,
-  FilteredResponseQueryOptions,
-} from '@sanity/client/sanityClient';
+import { log } from './log';
 
 const sanityClientConfigs = {
   projectId: 'ge8aosp3', // you can find this in sanity.json
@@ -31,18 +31,18 @@ type QueryParams = { [key: string]: any };
 
 function createSanityClient(sanityClient: SanityClient) {
   return {
-    fetch: (
-      id: string,
+    fetch: <T extends any>(
+      requestName: string,
       query: string,
       params?: QueryParams,
       options?: FilteredResponseQueryOptions,
     ) => {
-      log('info', 'sanity fetch', [
-        id,
-        params ? loggerStringify(params) : undefined,
-      ]);
+      log('debug', `sanity fetch: ${requestName}`, {
+        requestName,
+        ...(params ? { params } : undefined),
+      });
 
-      return sanityClient.fetch(query, params, options as any);
+      return sanityClient.fetch(query, params, options as any) as T | null;
     },
   };
 }

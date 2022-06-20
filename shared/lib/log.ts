@@ -1,17 +1,13 @@
 import { Logtail as BrowserLogger } from '@logtail/browser';
 import { Logtail as NodeLogger } from '@logtail/node';
-import { isArray, isString, noop } from 'lodash-es';
+import { Context as _Context } from '@logtail/types';
+import { isArray, noop } from 'lodash-es';
 import { determineServerOrClient } from './determineServerOrClient';
 import { getEnv } from './getEnv';
 import { getNodeEnv } from './getNodeEnv';
 import { getVercelEnv } from './getVercelEnv';
 
-export function loggerStringify(obj: any) {
-  const stringified = JSON.stringify(obj);
-
-  // The brackets prevent Logtail from parsing of otherwise proper JSON strings
-  return `<${stringified.substring(0, 50)}>`;
-}
+export type Context = _Context;
 
 interface ILogtailLog {
   dt: Date;
@@ -48,43 +44,19 @@ function getEnvShortName(longName: 'development' | 'production' | 'preview') {
   return 'prod';
 }
 
-export type StringJson = {
-  [name: string]: string | StringJson;
-};
-
-type Dimension = string | number;
-
-function formatMessage(message: string | Error) {
-  if (isString(message)) {
-    return message.toLowerCase();
-  }
-
-  return message;
-}
-
 function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
   return function (
     level: 'info' | 'error' | 'debug',
     message: string | Error,
-    dimensions?: [Dimension?, Dimension?, Dimension?, Dimension?],
-    other?: StringJson,
+    context?: Context,
   ) {
     const logger =
       determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
 
-    let dimObject: { [name: string]: Dimension } = {};
-
-    dimensions?.forEach((dim, i) => {
-      if (dim) {
-        dimObject['dim' + (i + 1)] = dim;
-      }
-    });
-
-    return logger[level](formatMessage(message), {
-      ...dimObject,
+    return logger[level](message, {
       env: getEnvShortName(getVercelEnv() || getNodeEnv()),
       commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
-      ...other,
+      ...context,
     });
   };
 }
@@ -106,3 +78,21 @@ if (getEnv() === 'development') {
 export const log = createLogger(nodeLogger, browserLogger);
 // export const log = createLogger(dummyNodeLogger, dummyBrowserLogger);
 // export const flog = createLogger(nodeLogger, browserLogger);
+
+export function createContextLogger(context: Context) {
+  return function contextLogger(...args: Parameters<typeof log>) {
+    return log(args[0], args[1], {
+      ...args[2],
+      ...context,
+    });
+  };
+}
+
+export class LoggableError extends Error {
+  context: Context;
+
+  constructor(message: string, context: Context) {
+    super(message);
+    this.context = context;
+  }
+}

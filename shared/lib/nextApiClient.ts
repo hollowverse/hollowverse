@@ -1,11 +1,18 @@
-import { RequestInit } from 'next/dist/server/web/spec-extension/request';
 import { determineAppUrl } from './determineAppUrl';
-import { log } from './log';
+import { Context, log } from './log';
 
 export async function nextApiClient(pathname: string, init?: RequestInit) {
   const url = `${determineAppUrl()}/api/${pathname}`;
 
-  log('info', 'next api call', [url]);
+  log(
+    'info',
+    `next api call: ${url}`,
+    init
+      ? {
+          payload: init as Context,
+        }
+      : undefined,
+  );
 
   const res = await fetch(url, init);
 
@@ -14,10 +21,11 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
     const isJson =
       contentType && contentType.indexOf('application/json') !== -1;
 
-    log('error', 'Next API call failed', [
-      `url: ${url}; status code: ${res.status}; text: ${res.statusText}`,
-      JSON.stringify(isJson ? await res.json() : await res.text()),
-    ]);
+    log(
+      'error',
+      `next api call failed; url: ${url}; status code: ${res.status}; status: ${res.statusText}`,
+      { response: isJson ? await res.json() : await res.text() },
+    );
 
     return null;
   }

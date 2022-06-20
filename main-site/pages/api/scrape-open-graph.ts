@@ -10,7 +10,7 @@ async function scrapeOpenGraph(req: NextApiRequest, res: NextApiResponse) {
 
   const url = req.query.url;
 
-  log('info', 'scrape-open-graph', [url as string]);
+  log('info', `scrape-open-graph: ${url}`);
 
   if (!url || !isString(url)) {
     throw new Error(

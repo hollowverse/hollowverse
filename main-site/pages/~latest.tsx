@@ -9,6 +9,7 @@ import { Page } from '~/components/Page';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { formatFactDate } from '~/lib/date';
 import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
+import { Picture } from '~/lib/groq/picture.partial.groq';
 
 export default function Latest(p: any) {
   return (
@@ -60,7 +61,9 @@ export default function Latest(p: any) {
 }
 
 export const getStaticProps = async () => {
-  const firstBatch = await sanityClient.fetch(
+  const firstBatch = await sanityClient.fetch<
+    (TFact & { celeb: { name: string; picture: Picture; slug: string } })[]
+  >(
     'latest-page-facts',
     groq`*[_type == 'fact'] | order(_updatedAt desc, _createdAt desc)[0..49] {
       'celeb': celeb->{
@@ -80,7 +83,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      firstBatch: firstBatch.map((f: TFact) => ({
+      firstBatch: firstBatch!.map((f) => ({
         ...f,
         date: formatFactDate(f.date),
       })),

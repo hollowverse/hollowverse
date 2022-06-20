@@ -6,7 +6,7 @@ export default function TestBuildError() {
 }
 
 export const getStaticProps = async () => {
-  const celeb = await sanityClient.fetch(
+  const celeb = await sanityClient.fetch<any>(
     'test-build-error-page',
     `*[_type == 'celeb' && _id == 'hahahahaha!!!111!'][0]{name}`,
   );

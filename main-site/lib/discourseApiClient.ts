@@ -1,15 +1,23 @@
-import { log } from '~/shared/lib/log';
+import { Json } from '~/lib/types';
+import { Context, log, LoggableError } from '~/shared/lib/log';
 
-export async function discourseApiClient(
-  requestId: string,
+export async function discourseApiClient<T extends Json>(
   apiEndPoint: string,
   payload: { method: 'POST' | 'PUT' | 'GET'; body?: any } = {
     method: 'GET',
   },
+  logContext?: Context,
 ) {
   const url = `https://forum.hollowverse.com/${apiEndPoint}`;
 
-  log('info', 'discourse api call', [requestId, url]);
+  log(
+    'debug',
+    `Discourse API call; method: ${payload.method}; end point: ${apiEndPoint}`,
+    {
+      ...logContext,
+      payload,
+    },
+  );
 
   const res = await fetch(url, {
     method: payload.method,
@@ -26,15 +34,18 @@ export async function discourseApiClient(
     const isJson =
       contentType && contentType.indexOf('application/json') !== -1;
 
-    log(
-      'error',
-      'discourse api error',
-      [requestId, res.status, res.statusText, url],
-      isJson ? await res.json() : undefined,
+    throw new LoggableError(
+      `Discourse API ERROR; method: ${payload.method}; end point: ${apiEndPoint}`,
+      {
+        ...logContext,
+        payload,
+        status: res.status,
+        statusText: res.statusText,
+        url,
+        response: isJson ? await res.json() : await res.text(),
+      },
     );
-
-    return null;
   }
 
-  return (await res.json()) as { [name: string]: any };
+  return (await res.json()) as T;
 }

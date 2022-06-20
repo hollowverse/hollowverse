@@ -2,7 +2,7 @@ import { FormField } from '@sanity/base/components';
 import PatchEvent, { set, unset } from '@sanity/form-builder/PatchEvent';
 import { Box, Button, Flex, Text, TextInput } from '@sanity/ui';
 import React, { useState } from 'react';
-import { isUrl } from '../shared/isUrl';
+import { isUrl } from '../shared/lib/isUrl';
 import { nextApiClient } from '../shared/lib/nextApiClient';
 
 async function getOgImageUrl(source: string) {
