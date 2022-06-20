@@ -1,10 +1,10 @@
 import { getYear } from 'date-fns';
 import {
   differenceWith,
+  filter,
   first,
   flatten,
   groupBy,
-  intersectionWith,
   isEmpty,
   last,
   mapValues,
@@ -46,20 +46,19 @@ export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
     orderOfIssues,
     (t, i) => t.tag.issue.name === i,
   );
-  const ix = intersectionWith(
-    noUnnecessaryLowConfidence,
-    orderOfIssues,
-    (t, i) => t.tag.issue.name === i,
-  );
 
-  ix.sort(function (a, b) {
+  const intersection = filter(noUnnecessaryLowConfidence, (t) => {
+    return orderOfIssues.includes(t.tag.issue.name);
+  });
+
+  intersection.sort(function (a, b) {
     return (
       orderOfIssues.indexOf(a.tag.issue.name) -
       orderOfIssues.indexOf(b.tag.issue.name)
     );
   });
 
-  return [...ix, ...diff];
+  return [...intersection, ...diff];
 }
 
 type TagPair = [string, Tag[]];
