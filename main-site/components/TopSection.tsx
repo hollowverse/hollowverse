@@ -28,9 +28,9 @@ export const TopSection = (props: CelebPageProps) => {
         </h1>
       </div>
 
-      {!isEmpty(props.celeb.tags) && (
+      {!isEmpty(props.celeb.tagTimeline) && (
         <div className="pt-5">
-          <TagCollection {...props} />
+          <TagCollection tagTimeline={props.celeb.tagTimeline} />
         </div>
       )}
     </div>

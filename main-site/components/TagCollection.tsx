@@ -1,12 +1,11 @@
 import React from 'react';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { FaRegCircle } from 'react-icons/fa';
+import { TagTimeline } from '~/lib/getTags';
 
-export const TagCollection = (props: CelebPageProps) => {
-  const tags = props.celeb.tags;
+export const TagCollection = (props: { tagTimeline: TagTimeline }) => {
+  const tags = props.tagTimeline;
   const showTimeline = tags.length > 1;
 
   return (

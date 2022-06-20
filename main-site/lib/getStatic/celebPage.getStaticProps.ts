@@ -2,7 +2,7 @@ import groq from 'groq';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
-import { getTags } from '~/lib/getTags';
+import { getTagTimeline as getTagTimeline } from '~/lib/getTags';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import {
@@ -16,11 +16,6 @@ export type CelebPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
 >;
 
-export type CelebGroqResponse = Celeb & {
-  oldContent: string;
-  facts: Fact[];
-};
-
 export const getStaticProps = async ({
   params,
 }: {
@@ -28,7 +23,12 @@ export const getStaticProps = async ({
 }) => {
   log('info', `celebPage getStaticProps called: ${params.celeb}`);
 
-  const celeb = await sanityClient.fetch<CelebGroqResponse>(
+  const celeb = await sanityClient.fetch<
+    Celeb & {
+      oldContent: string;
+      facts: Fact[];
+    }
+  >(
     'celeb-page-data',
     groq`*[_type == 'celeb' && slug.current == $slug][0]{
       ${celebProjection},
@@ -60,13 +60,13 @@ export const getStaticProps = async ({
   ]);
 
   const transformedFacts = factsDataTransform(facts, orderOfIssues);
-  const tags = getTags(facts, orderOfIssues);
+  const tagTimeline = getTagTimeline(facts, orderOfIssues);
 
   return {
     props: {
       celeb: {
         ...rest,
-        tags,
+        tagTimeline: tagTimeline,
         facts: transformedFacts,
         oldContent: parsedOldContent,
       },

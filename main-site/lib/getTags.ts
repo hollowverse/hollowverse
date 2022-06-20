@@ -62,7 +62,8 @@ export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
   return [...intersection, ...diff];
 }
 
-type TagPair = [string, Tag[]];
+export type TagPair = [string, Tag[]];
+export type TagTimeline = TagPair[];
 
 /**
 group the tags by the year. then sort by the most recent years first. but the
@@ -107,7 +108,7 @@ export function rollUp(tagPairs: TagPair[]) {
   return tagPairs;
 }
 
-export function getTags(facts: Fact[], orderOfIssues: OrderOfIssues) {
+export function getTagTimeline(facts: Fact[], orderOfIssues: OrderOfIssues) {
   const factsByYear = groupBy(facts, (f) => {
     return getYear(parseDate(f.date));
   });
