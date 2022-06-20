@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import groq from 'groq';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { Picture, pictureGroq } from '~/lib/groq/picture.projection';
+import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type Summaries = {
@@ -37,7 +37,7 @@ export const getParsedOldContent = async (oldContent: string) => {
     groq`*[_type == 'celeb' && slug.current in $slugs][0..3]{
       name,
       'slug': slug.current,
-      'picture': picture.asset->{${pictureGroq}}
+      'picture': picture.asset->{${pictureProjection}}
     }`,
     {
       slugs: oldContentFrontMatter.relatedPeople,

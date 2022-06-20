@@ -1,6 +1,7 @@
 import groq from 'groq';
 
 export type Tag = {
+  _id: string;
   isLowConfidence: boolean | null;
   isBackground: boolean | null;
   tag: {

@@ -25,7 +25,7 @@ export type Fact = {
 
 export type FactTypes = Fact['type'];
 
-export const factPartialGroq = groq`
+export const factProjection = groq`
 _id,
 content,
 context,

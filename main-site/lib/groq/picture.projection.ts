@@ -9,7 +9,7 @@ export type Picture = {
   asset: any;
 };
 
-export const pictureGroq = groq`
+export const pictureProjection = groq`
 _id,
 'metadata': {
   'lqip': metadata.lqip,

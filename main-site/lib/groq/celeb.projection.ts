@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Picture, pictureGroq } from '~/lib/groq/picture.projection';
+import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
 
 export type Celeb = {
   _id: string;
@@ -10,11 +10,11 @@ export type Celeb = {
   picture: Picture;
 };
 
-export const celebPartialGroq = groq`
+export const celebProjection = groq`
 _id,
 name,
 pronoun,
 wikipediaId,
 'slug': slug.current,
-'picture': picture.asset->{${pictureGroq}}
+'picture': picture.asset->{${pictureProjection}}
 `;

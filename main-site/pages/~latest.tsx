@@ -4,7 +4,7 @@ import React from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
-import { factPartialGroq } from '~/lib/groq/fact.projection';
+import { factProjection } from '~/lib/groq/fact.projection';
 import { Page } from '~/components/Page';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { formatFactDate } from '~/lib/date';
@@ -77,7 +77,7 @@ export const getStaticProps = async () => {
         },
         'slug': slug.current
       },
-      ${factPartialGroq}
+      ${factProjection}
     }`,
   );
 

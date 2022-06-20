@@ -12,7 +12,7 @@ import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { formatFactDate } from '~/lib/date';
 import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
-import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.projection';
+import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { Link } from '~/lib/Link';
 import { log } from '~/shared/lib/log';
@@ -173,7 +173,7 @@ export async function getStaticProps(): Promise<
         },
         'slug': slug.current
       },
-      ${factPartialGroq}
+      ${factProjection}
     }`,
   );
 

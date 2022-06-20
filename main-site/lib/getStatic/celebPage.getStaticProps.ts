@@ -3,8 +3,8 @@ import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
-import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.projection';
-import { Fact, factPartialGroq } from '~/lib/groq/fact.projection';
+import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
+import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import {
   OrderOfIssues,
   orderOfIssuesProjection,
@@ -31,10 +31,10 @@ export const getStaticProps = async ({
   const celeb = await sanityClient.fetch<CelebGroqResponse>(
     'celeb-page-data',
     groq`*[_type == 'celeb' && slug.current == $slug][0]{
-      ${celebPartialGroq},
+      ${celebProjection},
       oldContent,
       'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {
-        ${factPartialGroq}
+        ${factProjection}
       }
     }`,
     {
