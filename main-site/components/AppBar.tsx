@@ -1,5 +1,5 @@
 import { Link } from '~/lib/Link';
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { c } from '~/lib/c';
@@ -71,3 +71,22 @@ export const AppBar = () => {
     </Container>
   );
 };
+
+export function StickyAppBar(props: PropsWithChildren<{}>) {
+  return (
+    <Card
+      stickyTitle
+      disablePadding
+      disableTitlePadding
+      className="border-x-0"
+      title={
+        <Nav>
+          <Logo />
+          <SearchButton />
+        </Nav>
+      }
+    >
+      {props.children}
+    </Card>
+  );
+}

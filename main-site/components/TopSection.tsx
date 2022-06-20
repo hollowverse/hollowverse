@@ -1,6 +1,5 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { TagCollection } from '~/components/TagCollection';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';

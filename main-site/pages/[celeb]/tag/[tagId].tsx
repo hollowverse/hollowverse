@@ -1,14 +1,10 @@
-import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta } from '~/components/ContributeCta';
-import { Facts } from '~/components/Facts';
-import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { TopSection } from '~/components/TopSection';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
-export default function Celeb(props: CelebPageProps) {
+export default function TagPage(props: CelebPageProps) {
   const name = props.celeb.name;
 
   return (
@@ -23,13 +19,7 @@ export default function Celeb(props: CelebPageProps) {
         </StickyAppBar>
       }
     >
-      <div className="h-container mt-5 flex flex-col gap-5">
-        {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
-
-        {props.celeb.oldContent && <Md {...props} />}
-
-        <ContributeCta name={props.celeb.name} />
-      </div>
+      <div className="h-container mt-5 flex flex-col gap-5">TAG PAGE</div>
     </Page>
   );
 }
