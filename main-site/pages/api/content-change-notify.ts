@@ -60,6 +60,8 @@ async function contentChangeNotify(
     );
 
     if (data && data._id) {
+      logWithContext('info', `SUCCESS: Retrieved Fact data from Sanity`);
+
       break;
     } else {
       const ms = 2000;
@@ -84,10 +86,14 @@ async function contentChangeNotify(
     );
   }
 
-  const results = await Promise.all([
-    revalidatePath(`/${webhookPayload.slug}`),
-    revalidatePath(`/`),
-    logTask(
+  const results = [];
+
+  results.push(
+    ...(await Promise.all([
+      revalidatePath(`/${webhookPayload.slug}`),
+      revalidatePath(`/`),
+    ])),
+    await logTask(
       'Performing new Fact chores',
       () => {
         const newFactChores = new NewFactChores(
@@ -100,7 +106,7 @@ async function contentChangeNotify(
       },
       logContext,
     ),
-  ]);
+  );
 
   if (results.some((r) => isError(r))) {
     await logWithContext('error', 'Finished CCN with errors');
