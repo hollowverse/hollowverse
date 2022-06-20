@@ -50,7 +50,7 @@ async function contentChangeNotify(
   for (let i = 0; i < 5; i++) {
     logWithContext(
       'info',
-      `Retrieving Fact data from Sanity, attempt #${i + 1}`,
+      `ATTEMPT #${i + 1}: Retrieving Fact data from Sanity`,
     );
 
     data = await sanityClientNoCdn.fetch<ContentChangeData>(
