@@ -113,12 +113,6 @@ export default async function contentChangeNotifyWrapper(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  /*
-  Who ever calls this routine doesn't need to wait around for it to finish.
-  The success and errors of this routine get reported to the logging system.
-  */
-  res.json({ ok: true });
-
   const { body: webhookPayload } = req as { body: SanityWebhookProps };
   const logContext = {
     webhookPayload,
@@ -138,10 +132,17 @@ export default async function contentChangeNotifyWrapper(
       logContext,
     );
   } catch (e: any) {
-    logWithContext(
+    await logWithContext(
       'error',
       'Unexpected error occurred while running CCN routine',
     );
-    logWithContext('error', e);
+    await logWithContext('error', e);
   }
+
+  /**
+   * This webhook route should never return errors to the caller, since the caller
+   * doesn't care about our errors. We log the errors and successes for
+   * devs to look at.
+   */
+  res.json({ ok: true });
 }
