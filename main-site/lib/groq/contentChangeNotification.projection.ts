@@ -1,6 +1,7 @@
 import groq from 'groq';
-import { FactTypes, Tag, Issue } from '~/lib/groq/fact.projection';
+import { FactTypes, Issue } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
+import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 
 export type ContentChange = {
   _id: string;
@@ -29,14 +30,7 @@ date,
 forumLink,
 source,
 type,
-tags[]{
-  isLowConfidence,
-  isBackground,
-  tag->{
-    name,
-    'issue': topic->{name}
-  }
-},
+${tagProjection},
 'issues': topics[]->{name},
 'name': celeb->name,
 'slug': celeb->slug.current,

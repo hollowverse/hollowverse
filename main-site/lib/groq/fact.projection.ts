@@ -1,17 +1,7 @@
 import groq from 'groq';
+import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 
 export type Issue = { name: string };
-
-export type Tag = {
-  isLowConfidence: boolean | null;
-  isBackground: boolean | null;
-  tag: {
-    name: string;
-    issue: {
-      name: string;
-    };
-  };
-};
 
 export type Fact = {
   _id: string;
@@ -45,13 +35,6 @@ forumLink,
 source,
 type,
 openGraphImage,
-tags[]{
-  isLowConfidence,
-  isBackground,
-  tag->{
-    name,
-    'issue': topic->{name}
-  }
-},
+${tagProjection},
 'issues': topics[]->{name}
 `;
