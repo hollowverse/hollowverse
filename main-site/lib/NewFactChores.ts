@@ -56,7 +56,7 @@ export class NewFactChores {
         method: 'PUT',
         body: {
           keep_existing_draft: true,
-          tag: newTags,
+          tags: newTags,
         },
       });
     });
