@@ -15,8 +15,9 @@ import {
   uniqBy,
 } from 'lodash-es';
 import { parseDate } from '~/lib/date';
-import { Fact, Tag } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/groq/fact.projection';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
+import { Tag } from '~/lib/groq/tag.projection';
 
 export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
   const noDupes = uniqBy(

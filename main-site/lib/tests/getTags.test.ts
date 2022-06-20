@@ -6,6 +6,7 @@ test('sortTags to remove dupes', () => {
     sortTags(
       [
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -16,6 +17,7 @@ test('sortTags to remove dupes', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -36,6 +38,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
     sortTags(
       [
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
@@ -46,6 +49,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -64,6 +68,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
     sortTags(
       [
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -74,6 +79,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
@@ -85,6 +91,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
         },
 
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
@@ -95,6 +102,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
@@ -105,6 +113,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -125,6 +134,7 @@ test('sortTags should sort by order of issues', () => {
     sortTags(
       [
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -135,6 +145,7 @@ test('sortTags should sort by order of issues', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
@@ -145,6 +156,7 @@ test('sortTags should sort by order of issues', () => {
           },
         },
         {
+          _id: 'id',
           isBackground: false,
           isLowConfidence: true,
           tag: {

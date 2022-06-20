@@ -1,7 +1,8 @@
-import { Tag } from '~/lib/groq/fact.projection';
+import { Tag } from '~/lib/groq/tag.projection';
 
 export const mockTags: Tag[] = [
   {
+    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
@@ -12,6 +13,7 @@ export const mockTags: Tag[] = [
     },
   },
   {
+    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
@@ -22,6 +24,7 @@ export const mockTags: Tag[] = [
     },
   },
   {
+    _id: 'id',
     isBackground: false,
     isLowConfidence: true,
     tag: {
@@ -32,6 +35,7 @@ export const mockTags: Tag[] = [
     },
   },
   {
+    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
@@ -42,6 +46,7 @@ export const mockTags: Tag[] = [
     },
   },
   {
+    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
@@ -52,6 +57,7 @@ export const mockTags: Tag[] = [
     },
   },
   {
+    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
