@@ -1,12 +1,9 @@
 import matter from 'gray-matter';
+import groq from 'groq';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
+import { Picture, pictureGroq } from '~/lib/groq/picture.partial.groq';
 import { sanityClient } from '~/shared/lib/sanityio';
-import {
-  relatedPeopleGroq,
-  RelatedPeopleGroqResponse,
-} from '~/lib/groq/relatedPeople.groq';
-import { CelebGroqResponse } from '~/lib/groq/celebPage.groq';
 
 export type Summaries = {
   religion: string;
@@ -21,9 +18,7 @@ export type OldContentFrontMatter = {
   sources: Source[];
 };
 
-export const getParsedOldContent = async (
-  oldContent: CelebGroqResponse['oldContent'],
-) => {
+export const getParsedOldContent = async (oldContent: string) => {
   const { data: oldContentFrontMatter, content: oldContentMarkdown } = matter(
     oldContent,
   ) as any as {
@@ -31,13 +26,23 @@ export const getParsedOldContent = async (
     content: string;
   };
 
-  const relatedPeople = (await sanityClient.fetch(
+  const relatedPeople = await sanityClient.fetch<
+    {
+      name: string;
+      slug: string;
+      picture: Picture;
+    }[]
+  >(
     'old-content-related-people',
-    relatedPeopleGroq,
+    groq`*[_type == 'celeb' && slug.current in $slugs][0..3]{
+      name,
+      'slug': slug.current,
+      'picture': picture.asset->{${pictureGroq}}
+    }`,
     {
       slugs: oldContentFrontMatter.relatedPeople,
     },
-  )) as RelatedPeopleGroqResponse;
+  )!;
 
   const parsedOldContent = {
     ...oldContentFrontMatter,

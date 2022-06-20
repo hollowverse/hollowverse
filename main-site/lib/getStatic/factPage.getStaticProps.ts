@@ -1,11 +1,9 @@
-import { sanityClient } from '~/shared/lib/sanityio';
-import {
-  FactPageCelebGroq,
-  factPageCelebGroq,
-} from '~/lib/groq/factPageCeleb.groq';
-import { FactPageGroq, factPageGroq } from '~/lib/groq/factPage.groq';
 import { format, parse } from 'date-fns';
+import groq from 'groq';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.partial.groq';
+import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 export type FactPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
@@ -16,23 +14,31 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string; factId: string };
 }) => {
-  const celeb = (await sanityClient.fetch(
+  const celeb = await sanityClient.fetch<Celeb>(
     'fact-page-celeb-data',
-    factPageCelebGroq,
+    groq`*[_type == 'celeb' && slug.current == $slug][0]{
+      ${celebPartialGroq}
+    }`,
     {
       slug: params.celeb,
     },
-  )) as FactPageCelebGroq | null;
+  );
 
   if (!celeb) {
     return {
       notFound: true,
     };
   }
-  const fact = (await sanityClient.fetch('fact-page-fact-data', factPageGroq, {
-    factId: params.factId,
-    celebId: celeb._id,
-  })) as FactPageGroq | null;
+  const fact = await sanityClient.fetch<Fact>(
+    'fact-page-fact-data',
+    groq`*[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
+      ${factPartialGroq}
+    }`,
+    {
+      factId: params.factId,
+      celebId: celeb._id,
+    },
+  );
 
   if (!fact) {
     return {

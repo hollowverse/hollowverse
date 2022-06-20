@@ -1,18 +1,25 @@
+import groq from 'groq';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/factsDataTransform';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
 import { getTags } from '~/lib/getTags';
-import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
+import { Celeb, celebPartialGroq } from '~/lib/groq/celeb.partial.groq';
+import { Fact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import {
-  orderOfIssuesGroq,
-  OrderOfIssues as TOrderOfIssues,
-} from '~/lib/groq/orderOfIssues.groq';
+  OrderOfIssues,
+  orderOfIssuesProjection,
+} from '~/lib/groq/orderOfIssues.projection';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
 >;
+
+export type CelebGroqResponse = Celeb & {
+  oldContent: string;
+  facts: Fact[];
+};
 
 export const getStaticProps = async ({
   params,
@@ -21,9 +28,19 @@ export const getStaticProps = async ({
 }) => {
   log('info', `celebPage getStaticProps called: ${params.celeb}`);
 
-  const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
-    slug: params.celeb,
-  })) as CelebGroqResponse | null;
+  const celeb = await sanityClient.fetch<CelebGroqResponse>(
+    'celeb-page-data',
+    groq`*[_type == 'celeb' && slug.current == $slug][0]{
+      ${celebPartialGroq},
+      oldContent,
+      'facts': *[_type == 'fact' && celeb._ref == ^._id]  | order(date desc) {
+        ${factPartialGroq}
+      }
+    }`,
+    {
+      slug: params.celeb,
+    },
+  );
 
   if (!celeb) {
     return {
@@ -33,10 +50,12 @@ export const getStaticProps = async ({
 
   const { oldContent, facts, ...rest } = celeb;
   const [orderOfIssues, parsedOldContent] = await Promise.all([
-    sanityClient.fetch(
+    sanityClient.fetch<OrderOfIssues>(
       'order-of-issues',
-      orderOfIssuesGroq,
-    ) as Promise<TOrderOfIssues>,
+      groq`*[_type == 'orderOfTopics'][0]{
+        'issues': ${orderOfIssuesProjection}
+      }.issues`,
+    )!,
     oldContent ? await getParsedOldContent(oldContent) : null,
   ]);
 
