@@ -27,12 +27,6 @@ async function contentChangeNotify(
   logWithContext: ReturnType<typeof createContextLogger>,
   logContext: Json,
 ) {
-  /*
-  Who ever calls this routine doesn't need to wait around for it to finish.
-  The success and errors of this routine get reported to the logging system.
-  */
-  res.json({ ok: true });
-
   logWithContext(
     'info',
     `Received a new content change notification (CCN) for ${webhookPayload.slug}, Fact ID ${webhookPayload._id}`,
@@ -119,6 +113,12 @@ export default async function contentChangeNotifyWrapper(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  /*
+  Who ever calls this routine doesn't need to wait around for it to finish.
+  The success and errors of this routine get reported to the logging system.
+  */
+  res.json({ ok: true });
+
   const { body: webhookPayload } = req as { body: SanityWebhookProps };
   const logContext = {
     webhookPayload,
