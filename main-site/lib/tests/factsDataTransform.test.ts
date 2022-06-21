@@ -32,10 +32,10 @@ const commonRawFactsProps: Fact = {
   quote: 'string',
   tags: [
     {
-      _id: 'string',
       isBackground: null,
       isLowConfidence: null,
       tag: {
+        _id: 'string',
         name: 'string',
         issue: {
           name: 'string',

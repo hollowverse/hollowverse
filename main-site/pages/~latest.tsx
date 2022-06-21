@@ -52,7 +52,7 @@ export default function Latest(p: any) {
             key={f._id}
             disablePadding
           >
-            <Fact fact={f} celebName={f.celeb.name} />
+            <Fact link slug={f.celeb.slug} fact={f} celebName={f.celeb.name} />
           </Card>
         ))}
       </div>

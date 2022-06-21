@@ -26,9 +26,10 @@ export const Facts = (props: CelebPageProps) => {
               return (
                 <div key={`${issue}-${i}-${innerI}`}>
                   <Fact
+                    link
                     fact={fact}
                     celebName={props.celeb.name}
-                    linkSlug={props.celeb.slug}
+                    slug={props.celeb.slug}
                   />
                   {innerI !== factGroup.length - 1 && (
                     <div className="h-5 border-b border-t bg-gray-100 lg:-ml-[1px] lg:-mr-[1px]" />

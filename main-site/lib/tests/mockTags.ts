@@ -2,10 +2,10 @@ import { Tag } from '~/lib/groq/tag.projection';
 
 export const mockTags: Tag[] = [
   {
-    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      _id: 'id',
       issue: {
         name: 'Environment',
       },
@@ -13,10 +13,10 @@ export const mockTags: Tag[] = [
     },
   },
   {
-    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      _id: 'id',
       issue: {
         name: 'Environment',
       },
@@ -24,10 +24,10 @@ export const mockTags: Tag[] = [
     },
   },
   {
-    _id: 'id',
     isBackground: false,
     isLowConfidence: true,
     tag: {
+      _id: 'id',
       issue: {
         name: 'Religion',
       },
@@ -35,10 +35,10 @@ export const mockTags: Tag[] = [
     },
   },
   {
-    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      _id: 'id',
       issue: {
         name: 'Political Affiliation',
       },
@@ -46,10 +46,10 @@ export const mockTags: Tag[] = [
     },
   },
   {
-    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      _id: 'id',
       issue: {
         name: 'Political Affiliation',
       },
@@ -57,10 +57,10 @@ export const mockTags: Tag[] = [
     },
   },
   {
-    _id: 'id',
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      _id: 'id',
       issue: {
         name: 'Political Views',
       },

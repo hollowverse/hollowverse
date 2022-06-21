@@ -1,4 +1,4 @@
-import { rollUp, sortTags } from '~/lib/getTags';
+import { rollUp, sortTags } from '~/lib/getTagTimeline';
 import { mockOrderOfIssues } from '~/lib/tests/mockOrderOfIssues';
 
 test('sortTags to remove dupes', () => {
@@ -6,10 +6,10 @@ test('sortTags to remove dupes', () => {
     sortTags(
       [
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -17,10 +17,10 @@ test('sortTags to remove dupes', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -38,10 +38,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
     sortTags(
       [
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -49,10 +49,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -68,10 +68,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
     sortTags(
       [
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -79,10 +79,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -91,10 +91,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
         },
 
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -102,10 +102,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -113,10 +113,10 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -134,10 +134,10 @@ test('sortTags should sort by order of issues', () => {
     sortTags(
       [
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'LGBT',
             },
@@ -145,10 +145,10 @@ test('sortTags should sort by order of issues', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Environment',
             },
@@ -156,10 +156,10 @@ test('sortTags should sort by order of issues', () => {
           },
         },
         {
-          _id: 'id',
           isBackground: false,
           isLowConfidence: true,
           tag: {
+            _id: 'id',
             issue: {
               name: 'Religion',
             },

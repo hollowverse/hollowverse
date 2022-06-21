@@ -2,10 +2,10 @@ import React from 'react';
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { TagTimeline } from '~/lib/getTags';
+import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 
-export const TagCollection = (props: { tagTimeline: TagTimeline }) => {
-  const tags = props.tagTimeline;
+export const TagCollection = (props: { celeb: CelebWithTimeline }) => {
+  const tags = props.celeb.tagTimeline;
   const showTimeline = tags.length > 1;
 
   return (
@@ -26,7 +26,7 @@ export const TagCollection = (props: { tagTimeline: TagTimeline }) => {
             })}
           >
             {tpair[1].map((t, i2) => (
-              <Tag key={`${i}-${i2}`}>
+              <Tag key={`${i}-${i2}`} slug={props.celeb.slug} tagId={t.tag._id}>
                 {t.tag.name}
                 {t.isBackground && ' Background'}
                 {t.isLowConfidence && (

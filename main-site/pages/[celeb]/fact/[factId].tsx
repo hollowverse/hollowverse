@@ -60,7 +60,12 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
 
         <Card>
           <LovelyTopBorder />
-          <Fact fact={fact} celebName={celeb.name} showFooter={false} />
+          <Fact
+            slug={celeb.slug}
+            fact={fact}
+            celebName={celeb.name}
+            showFooter={false}
+          />
           <hr />
           <div className="flex flex-col gap-2 p-5 text-sm text-gray-500">
             <div className="inline-flex items-center">

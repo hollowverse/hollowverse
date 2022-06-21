@@ -135,9 +135,10 @@ export default function Index(props: HomepageProps) {
                     disablePadding
                   >
                     <Fact
+                      link
                       fact={f}
                       celebName={f.celeb.name}
-                      linkSlug={f.celeb.slug}
+                      slug={f.celeb.slug}
                     />
                   </Card>
                 );

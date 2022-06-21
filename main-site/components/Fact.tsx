@@ -65,14 +65,16 @@ export const Fact: React.FC<{
   fact: TFact;
   celebName: string;
   showFooter?: boolean;
-  linkSlug?: Celeb['slug'];
+  slug: Celeb['slug'];
+  link?: boolean;
 }> = (props) => {
   const showFooter = defaultTo(props.showFooter, true);
+  const link = defaultTo(props.link, false);
 
   return (
     <section className="relative z-0 m-5 flex flex-col gap-5">
-      {props.linkSlug && (
-        <Link href={`/${props.linkSlug}/fact/${props.fact._id}`} passHref>
+      {link && (
+        <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
           <a className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50">
             <span className="invisible">Fact details</span>
           </a>
@@ -106,7 +108,7 @@ export const Fact: React.FC<{
           >
             {props.fact.tags.map((t) => {
               return (
-                <Tag key={t.tag.name}>
+                <Tag key={t.tag.name} tagId={t.tag._id} slug={props.slug}>
                   <span className="flex items-center gap-1 text-neutral-700">
                     <BiHash /> {t.isLowConfidence && 'Possibly '}
                     {t.tag.name}

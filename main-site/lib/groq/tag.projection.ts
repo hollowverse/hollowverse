@@ -1,10 +1,10 @@
 import groq from 'groq';
 
 export type Tag = {
-  _id: string;
   isLowConfidence: boolean | null;
   isBackground: boolean | null;
   tag: {
+    _id: string;
     name: string;
     issue: {
       name: string;
@@ -14,10 +14,10 @@ export type Tag = {
 
 export const tagProjection = groq`
 tags[]{
-  _id,
   isLowConfidence,
   isBackground,
   tag->{
+    _id,
     name,
     'issue': topic->{name}
   }
