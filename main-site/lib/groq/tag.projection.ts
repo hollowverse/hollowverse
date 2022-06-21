@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 
 export type Tag = {
   isLowConfidence: boolean | null;
@@ -6,9 +7,7 @@ export type Tag = {
   tag: {
     _id: string;
     name: string;
-    issue: {
-      name: string;
-    };
+    issue: Issue;
   };
 };
 
@@ -19,6 +18,6 @@ tags[]{
   tag->{
     _id,
     name,
-    'issue': topic->{name}
+    'issue': topic->{${issueProjection}}
   }
 }`;

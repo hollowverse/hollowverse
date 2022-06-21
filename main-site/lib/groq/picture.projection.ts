@@ -4,7 +4,7 @@ export type Picture = {
   _id: string;
   metadata: {
     lqip: string;
-    palette: any;
+    // palette: any;
   };
   asset: any;
 };
@@ -13,6 +13,6 @@ export const pictureProjection = groq`
 _id,
 'metadata': {
   'lqip': metadata.lqip,
-  'palette': metadata.palette
+  // 'palette': metadata.palette
 }
 `;

@@ -26,7 +26,7 @@ export default function TagPage(props: any) {
       <div className="h-container mt-5 flex flex-col gap-5">
         <pre>
           {JSON.stringify(
-            props.otherCelebsTagFacts.map((f, i) => ({ ...f, i })),
+            props.otherCelebsWithTag.map((f, i) => ({ ...f, i })),
             null,
             2,
           )}

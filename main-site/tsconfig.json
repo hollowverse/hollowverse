@@ -2,12 +2,20 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "rootDir": ".",
-    "jsx": "react",
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": [
+        "./*"
+      ]
     }
   },
-  "exclude": ["node_modules", "next.config.js", "out"],
-  "include": ["."]
+  "exclude": [
+    "node_modules",
+    "next.config.js",
+    "out"
+  ],
+  "include": [
+    "."
+  ]
 }

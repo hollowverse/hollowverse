@@ -5,7 +5,8 @@
   },
   "api": {
     "projectId": "ge8aosp3",
-    "dataset": "production"
+    "dataset": "production",
+    "apiVersion": "2021-10-21"
   },
   "plugins": [
     "@sanity/base",

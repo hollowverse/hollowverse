@@ -1,7 +1,8 @@
 import groq from 'groq';
+import { issueProjection } from '~/lib/groq/issue.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 
-export type Issue = { name: string };
+export type Issue = { name: string; _id: string };
 
 export type Fact = {
   _id: string;
@@ -36,5 +37,5 @@ source,
 type,
 openGraphImage,
 ${tagProjection},
-'issues': topics[]->{name}
+'issues': topics[]->{${issueProjection}}
 `;
