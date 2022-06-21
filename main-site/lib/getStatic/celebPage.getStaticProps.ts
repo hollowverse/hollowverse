@@ -1,6 +1,6 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-import { factsDataTransform } from '~/lib/factsDataTransform';
-import { getParsedOldContent } from '~/lib/getParsedOldContent';
+import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
+import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { log } from '~/shared/lib/log';
 

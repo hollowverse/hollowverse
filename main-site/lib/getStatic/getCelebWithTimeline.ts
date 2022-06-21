@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { getTagTimeline, TagTimeline } from '~/lib/getTagTimeline';
+import { getTagTimeline, TagTimeline } from '~/lib/getStatic/getTagTimeline';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import {

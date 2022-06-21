@@ -4,7 +4,7 @@ import { Page } from '~/components/Page';
 import { TopSection } from '~/components/TopSection';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
-export default function TagPage(props: CelebPageProps) {
+export default function TagPage(props: any) {
   const name = props.celeb.name;
 
   return (
@@ -19,10 +19,22 @@ export default function TagPage(props: CelebPageProps) {
         </StickyAppBar>
       }
     >
-      <div className="h-container mt-5 flex flex-col gap-5">TAG PAGE</div>
+      <div className="h-container mt-5 flex flex-col gap-5">
+        <pre>{JSON.stringify(props.tagFacts, null, 2)}</pre>
+      </div>
+
+      <div className="h-container mt-5 flex flex-col gap-5">
+        <pre>
+          {JSON.stringify(
+            props.otherCelebsTagFacts.map((f, i) => ({ ...f, i })),
+            null,
+            2,
+          )}
+        </pre>
+      </div>
     </Page>
   );
 }
 
-export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
+export { getStaticProps } from '~/lib/getStatic/tagPage.getStaticProps';
 export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
