@@ -5,7 +5,7 @@ import {
 } from '@sanity/client/sanityClient';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { logger } from './log';
+import { log } from './log';
 
 const sanityClientConfigs = {
   projectId: 'ge8aosp3', // you can find this in sanity.json
@@ -37,13 +37,10 @@ function createSanityClient(sanityClient: SanityClient) {
       params?: QueryParams,
       options?: FilteredResponseQueryOptions,
     ) => {
-      logger.debug(
-        {
-          requestName,
-          debugParams: params ? { params } : undefined,
-        },
-        `sanity fetch: ${requestName}`,
-      );
+      log('debug', `sanity fetch: ${requestName}`, {
+        requestName,
+        ...(params ? { params } : undefined),
+      });
 
       return sanityClient.fetch(query, params, options as any) as T | null;
     },

@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
-import { logger } from '~/shared/lib/log';
+import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 
@@ -19,7 +19,7 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }): Promise<{ props: ResearcherLaunchPadProps } | { notFound: boolean }> => {
-  logger.info(`launchPad celeb getStaticProps called: ${params.celeb}`);
+  log('info', `launchPad celeb getStaticProps called: ${params.celeb}`);
 
   const celebName = await sanityClient.fetch<string>(
     'launch-pad-celeb',

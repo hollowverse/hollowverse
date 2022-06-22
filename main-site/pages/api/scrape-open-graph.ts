@@ -2,7 +2,7 @@ import { isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { cors } from '~/lib/cors';
-import { logger } from '~/shared/lib/log';
+import { log } from '~/shared/lib/log';
 import ogs from 'open-graph-scraper';
 
 async function scrapeOpenGraph(req: NextApiRequest, res: NextApiResponse) {
@@ -10,7 +10,7 @@ async function scrapeOpenGraph(req: NextApiRequest, res: NextApiResponse) {
 
   const url = req.query.url;
 
-  logger.info(`scrape-open-graph: ${url}`);
+  log('info', `scrape-open-graph: ${url}`);
 
   if (!url || !isString(url)) {
     throw new Error(

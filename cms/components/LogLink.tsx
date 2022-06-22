@@ -3,15 +3,18 @@ import { Button, Flex } from '@sanity/ui';
 import React from 'react';
 
 export const LogLink = React.forwardRef(function OpenGraphImage(props: any) {
-  const logLevels = 'm.level:~"info|error"';
-  const highLogLevels = ''; // all;
+  const logLevels = '(level_string=info OR level_string=error)';
+  const highLogLevels =
+    '(level_string=info OR level_string=error OR level_string=debug)';
 
   const [link, highLevelLink] = [logLevels, highLogLevels].map(
     (l) =>
-      `https://logflare.app/sources/20962/search?querystring=${encodeURIComponent(
-        [l, `m.requestName:"${props.parent._id};${props.parent._rev}"`]
-          .join(' ')
-          .trim(),
+      `https://logtail.com/team/58257/tail?s=140937&q=${encodeURIComponent(
+        [
+          l,
+          'AND',
+          `requestname_string="${props.parent._id};${props.parent._rev}"`,
+        ].join(' '),
       )}`,
   );
 
