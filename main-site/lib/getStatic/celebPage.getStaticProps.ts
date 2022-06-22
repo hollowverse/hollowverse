@@ -7,7 +7,7 @@ import {
   orderOfIssuesGroq,
   OrderOfIssues as TOrderOfIssues,
 } from '~/lib/groq/orderOfIssues.groq';
-import { logger } from '~/shared/lib/log';
+import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebPageProps = NonNullable<
@@ -19,7 +19,7 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string };
 }) => {
-  logger.info(`celebPage getStaticProps called: ${params.celeb}`);
+  log('info', `celebPage getStaticProps called: ${params.celeb}`);
 
   const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
     slug: params.celeb,

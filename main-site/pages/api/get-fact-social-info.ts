@@ -4,14 +4,14 @@ import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 import { cors } from '~/lib/cors';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
-import { logger } from '~/shared/lib/log';
+import { log } from '~/shared/lib/log';
 
 async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
 
   const queryUrl = req.query.url;
 
-  logger.info(`get-fact-social-info: ${queryUrl}`);
+  log('info', `get-fact-social-info: ${queryUrl}`);
 
   if (!queryUrl || !isString(queryUrl)) {
     throw new Error(
