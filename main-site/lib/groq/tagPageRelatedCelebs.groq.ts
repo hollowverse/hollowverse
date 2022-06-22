@@ -24,6 +24,7 @@ export const tagPageRelatedCelebsGroq = groq`{
 
   'withIssue': *[
     _type == 'celeb' &&
+    _id == 'foobar' &&
     slug.current != $slug
   ]{
     ${celebProjection},

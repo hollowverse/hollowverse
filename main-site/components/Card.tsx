@@ -30,9 +30,12 @@ export function Card(_props: {
         >
           <LovelyTopBorder />
           <div
-            className={c('border-b bg-white text-xl font-bold', {
-              'p-5': !props.disableTitlePadding,
-            })}
+            className={c(
+              'border-b bg-white text-xl font-bold text-neutral-600',
+              {
+                'p-5': !props.disableTitlePadding,
+              },
+            )}
           >
             {props.title}
           </div>

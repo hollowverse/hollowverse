@@ -22,7 +22,7 @@ export const TopSection = (props: CelebPageProps) => {
           <span className="text-lg font-normal tracking-wide text-neutral-500">
             The Views of
           </span>{' '}
-          <span className="mt-1 block text-4xl font-extrabold tracking-tight">
+          <span className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600">
             {props.celeb.name}
           </span>
         </h1>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from '~/components/Card';
-import { Fact } from '~/components/Fact';
+import { FactGroup } from '~/components/FactGroup';
+import { TitleSeparator } from '~/components/TitleSeparator';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const Facts = (props: CelebPageProps) => {
@@ -12,32 +12,17 @@ export const Facts = (props: CelebPageProps) => {
         const factGroup = groups[issue];
 
         return (
-          <Card
+          <FactGroup
+            key={issue}
             title={
-              <h2 className="overflow-hidden text-ellipsis whitespace-nowrap">
-                {props.celeb.name} / {issue}
+              <h2 className="flex gap-2">
+                {props.celeb.name} <TitleSeparator /> {issue}
               </h2>
             }
-            stickyTitle
-            disablePadding
-            key={`${issue}-${i}`}
-          >
-            {factGroup.map((fact, innerI) => {
-              return (
-                <div key={`${issue}-${i}-${innerI}`}>
-                  <Fact
-                    link
-                    fact={fact}
-                    celebName={props.celeb.name}
-                    slug={props.celeb.slug}
-                  />
-                  {innerI !== factGroup.length - 1 && (
-                    <div className="h-5 border-b border-t bg-gray-100 lg:-ml-[1px] lg:-mr-[1px]" />
-                  )}
-                </div>
-              );
-            })}
-          </Card>
+            factGroup={factGroup}
+            celebName={props.celeb.name}
+            slug={props.celeb.slug}
+          />
         );
       })}
     </div>

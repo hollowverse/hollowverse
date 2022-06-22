@@ -65,6 +65,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celeb: results.celeb,
+      tag,
       tagFacts,
       otherCelebsWithTag: [...otherCelebs.withTag, ...otherCelebs.withIssue],
       // otherCelebsWithTag: otherCelebsWithTag,
