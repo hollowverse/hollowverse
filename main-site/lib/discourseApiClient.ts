@@ -1,5 +1,5 @@
 import { Json } from '~/lib/types';
-import { Context, log, LoggableError } from '~/shared/lib/log';
+import { Context, logger, LoggableError } from '~/shared/lib/log';
 
 export async function discourseApiClient<T extends Json>(
   apiEndPoint: string,
@@ -10,13 +10,12 @@ export async function discourseApiClient<T extends Json>(
 ) {
   const url = `https://forum.hollowverse.com/${apiEndPoint}`;
 
-  log(
-    'debug',
-    `Discourse API call; method: ${payload.method}; end point: ${apiEndPoint}`,
+  logger.debug(
     {
       ...logContext,
       payload,
     },
+    `Discourse API call; method: ${payload.method}; end point: ${apiEndPoint}`,
   );
 
   const res = await fetch(url, {

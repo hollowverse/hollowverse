@@ -1,17 +1,16 @@
 import { determineAppUrl } from './determineAppUrl';
-import { Context, log } from './log';
+import { Context, logger } from './log';
 
 export async function nextApiClient(pathname: string, init?: RequestInit) {
   const url = `${determineAppUrl()}/api/${pathname}`;
 
-  log(
-    'info',
-    `next api call: ${url}`,
+  logger.info(
     init
       ? {
           payload: init as Context,
         }
       : undefined,
+    `next api call: ${url}`,
   );
 
   const res = await fetch(url, init);
@@ -21,10 +20,9 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
     const isJson =
       contentType && contentType.indexOf('application/json') !== -1;
 
-    log(
-      'error',
-      `next api call failed; url: ${url}; status code: ${res.status}; status: ${res.statusText}`,
+    logger.error(
       { response: isJson ? await res.json() : await res.text() },
+      `next api call failed; url: ${url}; status code: ${res.status}; status: ${res.statusText}`,
     );
 
     return null;

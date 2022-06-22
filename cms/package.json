@@ -32,6 +32,8 @@
     "groq": "^2.29.3",
     "lodash-es": "^4.17.21",
     "node-fetch": "^2.6.7",
+    "pino": "^8.0.0",
+    "pino-logflare": "^0.3.12",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",

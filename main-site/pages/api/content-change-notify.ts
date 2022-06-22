@@ -9,7 +9,7 @@ import {
 } from '~/lib/groq/contentChange.groq';
 import { NewFactChores } from '~/lib/NewFactChores';
 import { Json } from '~/lib/types';
-import { createContextLogger } from '~/shared/lib/log';
+import { logger } from '~/shared/lib/log';
 import { logTask } from '~/shared/lib/log.server';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
@@ -24,28 +24,24 @@ async function contentChangeNotify(
   req: NextApiRequest,
   res: NextApiResponse,
   webhookPayload: SanityWebhookProps,
-  logWithContext: ReturnType<typeof createContextLogger>,
+  logWithContext: typeof logger,
   logContext: Json,
 ) {
-  logWithContext(
-    'info',
+  logWithContext.info(
     `Received a new content change notification (CCN) for ${webhookPayload.slug}, Fact ID ${webhookPayload._id}`,
   );
 
   if (!isValidRequest(req, process.env.PRIVILEGED_API_SECRET!)) {
-    logWithContext('info', 'The CCN request did not pass authorization');
+    logWithContext.info('The CCN request did not pass authorization');
     return;
   }
 
-  logWithContext('debug', 'The CCN request was confirmed to be from Sanity.');
+  logWithContext.debug('The CCN request was confirmed to be from Sanity.');
 
   let data: ContentChangeData | null = null;
 
   for (let i = 0; i < 5; i++) {
-    logWithContext(
-      'info',
-      `ATTEMPT #${i + 1}: Retrieving Fact data from Sanity`,
-    );
+    logWithContext.info(`ATTEMPT #${i + 1}: Retrieving Fact data from Sanity`);
 
     data = await sanityClientNoCdn.fetch<ContentChangeData>(
       'webhook content change data',
@@ -54,13 +50,12 @@ async function contentChangeNotify(
     );
 
     if (data && data._id) {
-      logWithContext('info', `SUCCESS: Retrieved Fact data from Sanity`);
+      logWithContext.info(`SUCCESS: Retrieved Fact data from Sanity`);
 
       break;
     } else {
       const ms = 2000;
-      logWithContext(
-        'info',
+      logWithContext.info(
         `Sanity data came back empty. Will try again in ${ms}ms`,
       );
       await delay(ms);
@@ -68,7 +63,7 @@ async function contentChangeNotify(
   }
 
   if (!data) {
-    logWithContext('error', 'FATAL: Could not retrieve data from Sanity');
+    logWithContext.error('FATAL: Could not retrieve data from Sanity');
     return;
   }
 
@@ -103,9 +98,9 @@ async function contentChangeNotify(
   );
 
   if (results.some((r) => isError(r))) {
-    await logWithContext('error', 'Finished CCN with errors');
+    await logWithContext.error('Finished CCN with errors');
   } else {
-    await logWithContext('info', 'Success! CCN completed without errors.');
+    await logWithContext.info('Success! CCN completed without errors.');
   }
 }
 
@@ -121,7 +116,7 @@ export default async function contentChangeNotifyWrapper(
     }`,
   };
 
-  const logWithContext = createContextLogger(logContext);
+  const logWithContext = logger.child(logContext);
 
   try {
     await contentChangeNotify(
@@ -132,11 +127,10 @@ export default async function contentChangeNotifyWrapper(
       logContext,
     );
   } catch (e: any) {
-    await logWithContext(
-      'error',
+    await logWithContext.error(
       'Unexpected error occurred while running CCN routine',
     );
-    await logWithContext('error', e);
+    await logWithContext.error(e);
   }
 
   /**

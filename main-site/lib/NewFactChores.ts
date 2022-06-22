@@ -9,7 +9,7 @@ import { ContentChangeData } from '~/lib/groq/contentChange.groq';
 import { Json } from '~/lib/types';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
-import { Context, createContextLogger, LoggableError } from '~/shared/lib/log';
+import { Context, LoggableError, logger } from '~/shared/lib/log';
 import {
   logTask as _logTask,
   logTaskD as _logTaskD,
@@ -36,7 +36,7 @@ export class NewFactChores {
     this.logTaskD = <T>(taskName: string, fn: (...args: any[]) => T) => {
       return _logTaskD(taskName, fn, logContext);
     };
-    this.log = createContextLogger(this.logContext);
+    this.log = logger.child(this.logContext);
     this.discourseApiClient = <T extends Json>(
       apiEndPoint: string,
       payload: { method: 'POST' | 'PUT' | 'GET'; body?: any } = {
@@ -124,12 +124,11 @@ export class NewFactChores {
       return stardustAwareResult;
     }
 
-    this.log('debug', 'Stardust award Discourse response', {
+    this.log.debug('Stardust award Discourse response', {
       response: stardustAwareResult,
     });
 
-    this.log(
-      'info',
+    this.log.info(
       `INFO: Determine if ${username} has achieved other new badges`,
     );
 
@@ -157,7 +156,7 @@ export class NewFactChores {
         this.logContext,
       );
 
-      this.log('error', error);
+      this.log.error(error);
 
       return error;
     }
@@ -191,7 +190,7 @@ export class NewFactChores {
 
       newBadges.push(newBadge.name);
     } else {
-      this.log('info', `INFO: ${username} hasn't achieved other new badges`);
+      this.log.info(`INFO: ${username} hasn't achieved other new badges`);
     }
 
     const celebPageUrl = `https://hollowverse.com/${this.contentChangeData.slug}`;
@@ -234,7 +233,7 @@ export class NewFactChores {
         this.logContext,
       );
 
-      this.log('error', loggableError);
+      this.log.error(loggableError);
 
       return loggableError;
     }
