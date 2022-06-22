@@ -1,5 +1,6 @@
 import { determineAppUrl } from './determineAppUrl';
-import { Context, logger } from './log';
+import { logger } from './log';
+import { Json } from './types';
 
 export async function nextApiClient(pathname: string, init?: RequestInit) {
   const url = `${determineAppUrl()}/api/${pathname}`;
@@ -7,7 +8,7 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
   logger.info(
     init
       ? {
-          debugInfo: { payload: init as Context },
+          debugInfo: { payload: init as Json },
         }
       : undefined,
     `next api call: ${url}`,

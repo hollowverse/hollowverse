@@ -1,6 +1,6 @@
 import pino from 'pino';
 import { createPinoBrowserSend, createWriteStream } from 'pino-logflare';
-import { Json } from '~/lib/types';
+import { Json } from './types';
 import { getNodeEnv } from './getNodeEnv';
 import { getVercelEnv } from './getVercelEnv';
 

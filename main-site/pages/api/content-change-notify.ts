@@ -8,7 +8,7 @@ import {
   contentChangeProjection,
 } from '~/lib/groq/contentChange.groq';
 import { NewFactChores } from '~/lib/NewFactChores';
-import { Json } from '~/lib/types';
+import { Json } from '~/shared/lib/types';
 import { logger } from '~/shared/lib/log';
 import { logTask } from '~/shared/lib/log.server';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';

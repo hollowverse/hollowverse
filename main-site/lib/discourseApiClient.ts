@@ -1,4 +1,4 @@
-import { Json } from '~/lib/types';
+import { Json } from '~/shared/lib/types';
 import {
   logger,
   LoggableError,

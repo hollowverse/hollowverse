@@ -1,11 +1,12 @@
 import { isError } from 'lodash-es';
-import { Context, logger } from './log';
+import { logger } from './log';
+import { Json } from './types';
 
 function createTaskLogger(level: 'debug' | 'info') {
   return async function logTask<T extends any>(
     taskName: string,
     fn: (...args: any[]) => T,
-    context?: Context,
+    context?: Json,
   ): Promise<T | Error> {
     try {
       logger.debug(context, `ATTEMPTING: ${taskName}`);
