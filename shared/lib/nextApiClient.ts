@@ -8,7 +8,7 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
   logger.info(
     init
       ? {
-          debugInfo: { payload: init as Json },
+          debugParams: { payload: init as Json },
         }
       : undefined,
     `next api call: ${url}`,
@@ -22,7 +22,9 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
       contentType && contentType.indexOf('application/json') !== -1;
 
     logger.error(
-      { debugInfo: { response: isJson ? await res.json() : await res.text() } },
+      {
+        debugParams: { response: isJson ? await res.json() : await res.text() },
+      },
       `next api call failed; url: ${url}; status code: ${res.status}; status: ${res.statusText}`,
     );
 
