@@ -1,5 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import { log, LoggableError } from '~/shared/lib/log';
+import { logger } from '~/shared/lib/log';
 
 export function apiHandlerWithErrorLogging(
   apiRouteName: string,
@@ -9,8 +9,8 @@ export function apiHandlerWithErrorLogging(
     try {
       return await fn(req, res);
     } catch (e: any) {
-      log('error', `Route ${apiRouteName} failed`);
-      log('error', e);
+      logger.error(`Route ${apiRouteName} failed`);
+      logger.error(e);
       throw e;
     }
   };

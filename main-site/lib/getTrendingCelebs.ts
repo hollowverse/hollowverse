@@ -3,7 +3,7 @@ import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
 import { Picture } from '~/lib/groq/picture.partial.groq';
-import { log } from '~/shared/lib/log';
+import { logger } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
@@ -50,9 +50,12 @@ async function getGaTopPages() {
   });
 
   if (!response || !response.rows) {
-    log('error', 'no trending celebs found', {
-      response: response as any,
-    });
+    logger.error(
+      {
+        debugParams: { response },
+      },
+      'no trending celebs found',
+    );
 
     return null;
   }

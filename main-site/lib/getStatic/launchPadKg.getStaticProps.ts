@@ -4,7 +4,7 @@ import {
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
 import { getLaunchPadIssues } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
-import { log } from '~/shared/lib/log';
+import { logger } from '~/shared/lib/log';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 
 export const getStaticProps = async ({
@@ -12,7 +12,7 @@ export const getStaticProps = async ({
 }: {
   params: { kg: string };
 }): Promise<{ props: ResearcherLaunchPadProps } | { notFound: boolean }> => {
-  log('info', `launchPad KG getStaticProps called: ${params.kg}`);
+  logger.info(`launchPad KG getStaticProps called: ${params.kg}`);
 
   const searchId = getKgSearchId(params.kg);
 

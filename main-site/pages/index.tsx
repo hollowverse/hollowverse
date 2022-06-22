@@ -15,7 +15,7 @@ import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
 import { Picture } from '~/lib/groq/picture.partial.groq';
 import { Link } from '~/lib/Link';
-import { log } from '~/shared/lib/log';
+import { logger } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 type HomepageProps = {
@@ -153,7 +153,7 @@ export default function Index(props: HomepageProps) {
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<HomepageProps>
 > {
-  log('info', 'homepage getStaticProps called');
+  logger.info('homepage getStaticProps called');
 
   const trendingCelebs = await getTrendingCelebs();
 

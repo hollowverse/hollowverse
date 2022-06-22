@@ -1,28 +1,28 @@
 import { isError } from 'lodash-es';
-import { Context, log } from './log';
+import { logger } from './log';
+import { Json } from './types';
 
 function createTaskLogger(level: 'debug' | 'info') {
   return async function logTask<T extends any>(
     taskName: string,
     fn: (...args: any[]) => T,
-    context?: Context,
+    context?: Json,
   ): Promise<T | Error> {
     try {
-      log('debug', `ATTEMPTING: ${taskName}`, context);
+      logger.debug(context, `ATTEMPTING: ${taskName}`);
 
       const results = await fn();
 
-      log(
-        isError(results) ? 'error' : level,
-        `${isError(results) ? 'FINISHED WITH ERRORS' : 'SUCCESS'}: ${taskName}`,
+      logger[isError(results) ? 'error' : level](
         context,
+        `${isError(results) ? 'FINISHED WITH ERRORS' : 'SUCCESS'}: ${taskName}`,
       );
 
       return results;
     } catch (e: any) {
       const _context = { ...context, ...e.context };
-      log('error', `ERROR: ${taskName}`, _context);
-      log('error', e, _context);
+      logger.error(_context, `ERROR: ${taskName}`);
+      logger.error(e);
 
       return e;
     }

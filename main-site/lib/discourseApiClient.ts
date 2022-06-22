@@ -1,22 +1,25 @@
-import { Json } from '~/lib/types';
-import { Context, log, LoggableError } from '~/shared/lib/log';
+import { Json } from '~/shared/lib/types';
+import {
+  logger,
+  LoggableError,
+  mergeParams as mergeParams,
+} from '~/shared/lib/log';
 
 export async function discourseApiClient<T extends Json>(
   apiEndPoint: string,
   payload: { method: 'POST' | 'PUT' | 'GET'; body?: any } = {
     method: 'GET',
   },
-  logContext?: Context,
+  logContext?: Json,
 ) {
   const url = `https://forum.hollowverse.com/${apiEndPoint}`;
 
-  log(
-    'debug',
-    `Discourse API call; method: ${payload.method}; end point: ${apiEndPoint}`,
+  logger.debug(
     {
       ...logContext,
-      payload,
+      debugParams: mergeParams(logContext, { payload }),
     },
+    `Discourse API call; method: ${payload.method}; end point: ${apiEndPoint}`,
   );
 
   const res = await fetch(url, {
@@ -38,11 +41,13 @@ export async function discourseApiClient<T extends Json>(
       `Discourse API ERROR; method: ${payload.method}; end point: ${apiEndPoint}`,
       {
         ...logContext,
-        payload,
+        debugParams: mergeParams(logContext, {
+          payload,
+          response: isJson ? await res.json() : await res.text(),
+          url,
+        }),
         status: res.status,
         statusText: res.statusText,
-        url,
-        response: isJson ? await res.json() : await res.text(),
       },
     );
   }
