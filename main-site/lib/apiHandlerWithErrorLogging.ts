@@ -1,5 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import { logger, LoggableError } from '~/shared/lib/log';
+import { logger } from '~/shared/lib/log';
 
 export function apiHandlerWithErrorLogging(
   apiRouteName: string,

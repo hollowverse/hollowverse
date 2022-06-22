@@ -40,7 +40,7 @@ function createSanityClient(sanityClient: SanityClient) {
       logger.debug(
         {
           requestName,
-          ...(params ? { params } : undefined),
+          debugInfo: params ? { params } : undefined,
         },
         `sanity fetch: ${requestName}`,
       );

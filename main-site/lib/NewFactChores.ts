@@ -9,7 +9,7 @@ import { ContentChangeData } from '~/lib/groq/contentChange.groq';
 import { Json } from '~/lib/types';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
-import { Context, LoggableError, logger } from '~/shared/lib/log';
+import { LoggableError, logger } from '~/shared/lib/log';
 import {
   logTask as _logTask,
   logTaskD as _logTaskD,
@@ -25,7 +25,7 @@ export class NewFactChores {
   constructor(
     private contentChangeData: ContentChangeData,
     private operation: SanityWebhookProps['operation'],
-    private logContext: Context,
+    private logContext: Json,
   ) {
     this.contentChangeData = contentChangeData;
     this.operation = operation;

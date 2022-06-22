@@ -110,7 +110,7 @@ export default async function contentChangeNotifyWrapper(
 ) {
   const { body: webhookPayload } = req as { body: SanityWebhookProps };
   const logContext = {
-    webhookPayload,
+    debugParams: { webhookPayload },
     requestName: `${webhookPayload._id || 'missing'};${
       webhookPayload._rev || 'missing'
     }`,

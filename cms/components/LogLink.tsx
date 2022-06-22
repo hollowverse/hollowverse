@@ -13,7 +13,7 @@ export const LogLink = React.forwardRef(function OpenGraphImage(props: any) {
         [
           l,
           'AND',
-          `requestname_string="${props.parent._id};${props.parent._rev}"`,
+          `m.requestName="${props.parent._id};${props.parent._rev}"`,
         ].join(' '),
       )}`,
   );

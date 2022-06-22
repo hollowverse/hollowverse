@@ -52,7 +52,7 @@ async function getGaTopPages() {
   if (!response || !response.rows) {
     logger.error(
       {
-        response: response as any,
+        debugParams: { response },
       },
       'no trending celebs found',
     );
