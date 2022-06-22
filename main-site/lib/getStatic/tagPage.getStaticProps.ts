@@ -1,9 +1,7 @@
-import groq from 'groq';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
-import { celebProjection } from '~/lib/groq/celeb.projection';
-import { factProjection } from '~/lib/groq/fact.projection';
+import { tagPageRelatedCelebsGroq } from '~/lib/groq/tagPageRelatedCelebs.groq';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -55,41 +53,8 @@ export const getStaticProps = async ({
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
   const otherCelebs = (await sanityClient.fetch(
-    'other-celebs-with-tag',
-    groq`{
-      'withTag': *[
-        _type == 'celeb' &&
-        slug.current != $slug &&
-        count(*[
-          _type == 'fact' &&
-          $tagId in tags[].tag._ref &&
-          celeb._ref == ^._id
-        ]) > 0
-      ]{
-        ${celebProjection},
-        'facts': *[
-          _type == 'fact' &&
-          celeb._ref == ^.^._id &&
-          $issueId in topics[]->name
-        ]{
-          ${factProjection}
-        }
-      },
-
-      'withIssue': *[
-        _type == 'celeb' &&
-        slug.current != $slug
-      ]{
-        ${celebProjection},
-        'facts': *[
-          _type == 'fact' &&
-          celeb._ref == ^._id &&
-          $issueId in topics[]._ref
-        ][0]{
-          ${factProjection}
-        }
-      }[defined(facts[0])]
-    }`,
+    'tag-page-related-celebs',
+    tagPageRelatedCelebsGroq,
     {
       slug: params.celeb,
       tagId: params.tagId,

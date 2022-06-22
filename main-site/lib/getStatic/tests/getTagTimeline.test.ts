@@ -11,6 +11,7 @@ test('sortTags to remove dupes', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -22,6 +23,7 @@ test('sortTags to remove dupes', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -43,6 +45,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -54,6 +57,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -73,6 +77,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -84,6 +89,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -96,6 +102,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -107,6 +114,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'foobar',
@@ -118,6 +126,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Environmentalist',
@@ -139,6 +148,7 @@ test('sortTags should sort by order of issues', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'LGBT',
             },
             name: 'Supports LGBT',
@@ -150,6 +160,7 @@ test('sortTags should sort by order of issues', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Environment',
             },
             name: 'Pro Nuclear Power',
@@ -161,6 +172,7 @@ test('sortTags should sort by order of issues', () => {
           tag: {
             _id: 'id',
             issue: {
+              _id: 'id',
               name: 'Religion',
             },
             name: 'Not Religious',

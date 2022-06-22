@@ -41,48 +41,49 @@ const commonRawFactsProps: Fact = {
         _id: 'string',
         name: 'string',
         issue: {
+          _id: 'id',
           name: 'string',
         },
       },
     },
   ],
-  issues: [{ name: '' }],
+  issues: [{ _id: 'id', name: '' }],
 };
 
 const mockFacts: Fact[] = [
   {
     ...commonRawFactsProps,
     date: '9999-03-02',
-    issues: [{ name: 'Religion' }],
+    issues: [{ _id: 'id', name: 'Religion' }],
   },
   {
     ...commonRawFactsProps,
     date: '2015-08-13',
-    issues: [{ name: 'Political Party Affiliation' }],
+    issues: [{ _id: 'id', name: 'Political Party Affiliation' }],
   },
   {
     ...commonRawFactsProps,
     date: '2015-03-16',
-    issues: [{ name: 'Russia-Ukraine War' }],
+    issues: [{ _id: 'id', name: 'Russia-Ukraine War' }],
   },
   {
     ...commonRawFactsProps,
     date: '2015-03-15',
-    issues: [{ name: 'Political Party Affiliation' }],
+    issues: [{ _id: 'id', name: 'Political Party Affiliation' }],
   },
   {
     ...commonRawFactsProps,
     date: '2005-04-17',
-    issues: [{ name: 'Elections' }],
+    issues: [{ _id: 'id', name: 'Elections' }],
   },
   {
     ...commonRawFactsProps,
     date: '2005-04-16',
     issues: [
-      { name: 'Gun Control' },
-      { name: 'Religion' },
-      { name: 'Political Party Affiliation' },
-      { name: 'LGBT' },
+      { _id: 'id', name: 'Gun Control' },
+      { _id: 'id', name: 'Religion' },
+      { _id: 'id', name: 'Political Party Affiliation' },
+      { _id: 'id', name: 'LGBT' },
     ],
   },
 ];

@@ -2,7 +2,6 @@ import React from 'react';
 import { StickyAppBar } from '~/components/AppBar';
 import { Page } from '~/components/Page';
 import { TopSection } from '~/components/TopSection';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function TagPage(props: any) {
   const name = props.celeb.name;
@@ -36,5 +35,5 @@ export default function TagPage(props: any) {
   );
 }
 
-export { getStaticProps } from '~/lib/getStatic/tagPage.getStaticProps';
 export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticProps } from '~/lib/getStatic/tagPage.getStaticProps';
