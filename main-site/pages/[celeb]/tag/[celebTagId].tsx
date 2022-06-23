@@ -5,6 +5,7 @@ import { FaChevronDown } from 'react-icons/fa';
 import { StickyAppBar } from '~/components/AppBar';
 import { Card, CardTitle } from '~/components/Card';
 import { CelebGallery } from '~/components/CelebGallery';
+import { CelebImage } from '~/components/CelebImage';
 import { FactGroup } from '~/components/FactGroup';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
@@ -47,7 +48,7 @@ export default function TagPage(props: TagPageProps) {
             <Link href={`/${props.celeb.slug}`} passHref>
               <a
                 className={c(
-                  `ml-5 flex w-fit items-center gap-1.5 rounded-lg border-2 border-gray-100 bg-gray-200 px-3 py-2.5 text-neutral-600 transition hover:bg-opacity-10 focus:border-purple-300 active:bg-opacity-10`,
+                  `ml-5 flex w-fit items-center gap-1.5 rounded-lg bg-gray-200 px-3 py-2.5 text-neutral-600 shadow-sm transition hover:bg-opacity-10 focus:border-purple-300 active:bg-opacity-10`,
                 )}
               >
                 <FaChevronDown
@@ -57,7 +58,7 @@ export default function TagPage(props: TagPageProps) {
               </a>
             </Link>
 
-            {!isEmpty(props.otherCelebsWithTag) ? (
+            {!isEmpty(props.otherCelebsWithTag) && (
               <Card
                 title={
                   <CardTitle>
@@ -73,19 +74,32 @@ export default function TagPage(props: TagPageProps) {
                 />
                 {/* <JsonView src={props.otherCelebsWithTag} /> */}
               </Card>
-            ) : null}
+            )}
 
-            <Card
-              title={
-                <CardTitle>
-                  Others <TitleSeparator /> {props.tag.tag.issue.name}
-                </CardTitle>
-              }
-              stickyTitle
-              disablePadding
-            >
-              <JsonView src={props.otherCelebsWithIssue} />
-            </Card>
+            {!isEmpty(props.otherCelebsWithIssue) && (
+              <Card
+                title={
+                  <CardTitle>
+                    Others <TitleSeparator /> {props.tag.tag.issue.name}
+                  </CardTitle>
+                }
+                stickyTitle
+                disablePadding
+              >
+                <JsonView src={props.otherCelebsWithIssue} collapsed={1} />
+                {props.otherCelebsWithIssue!.map((c) => {
+                  return (
+                    <div className="flex" key={c.slug}>
+                      <div className="w-1/3">
+                        <CelebImage picture={c.picture} name={c.name} />
+                      </div>
+
+                      <div>{c.name}</div>
+                    </div>
+                  );
+                })}
+              </Card>
+            )}
           </div>
         </div>
       </div>
