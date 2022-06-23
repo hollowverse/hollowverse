@@ -19,7 +19,7 @@ export default function Celeb(props: CelebPageProps) {
       pathname={props.celeb.slug}
       appBar={
         <StickyAppBar>
-          <TopSection {...props} />
+          <TopSection {...props.celeb} />
         </StickyAppBar>
       }
     >

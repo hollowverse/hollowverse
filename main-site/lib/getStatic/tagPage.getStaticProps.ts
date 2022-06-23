@@ -9,15 +9,15 @@ import {
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
-export type CelebPageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
-
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
   return tagTimeline.some((tpair) =>
     tpair[1].some((t) => t.tag._id === celebTagId),
   );
 }
+
+export type TagPageProps = NonNullable<
+  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
+>;
 
 /**
  * For the celeb's tag page, we want to show the the celeb with the tag timeline

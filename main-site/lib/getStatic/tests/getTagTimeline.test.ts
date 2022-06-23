@@ -1,4 +1,5 @@
-import { rollUp, sortTags } from '~/lib/getStatic/getTagTimeline';
+import { rollUp } from '~/lib/getStatic/getTagTimeline';
+import { sortTags } from '~/lib/getStatic/sortTags';
 import { mockOrderOfIssues } from '~/lib/getStatic/tests/mockOrderOfIssues';
 
 test('sortTags to remove dupes', () => {

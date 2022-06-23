@@ -2,10 +2,10 @@ import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { TagCollection } from '~/components/TagCollection';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 
-export const TopSection = (props: CelebPageProps) => {
-  const picture = props.celeb.picture;
+export const TopSection = (props: CelebWithTimeline) => {
+  const picture = props.picture;
 
   return (
     <div className="TOP-SECTION h-container p-5">
@@ -13,9 +13,9 @@ export const TopSection = (props: CelebPageProps) => {
         <div className="w-[150px] rounded-md">
           <CelebImage
             className="rounded-md object-cover"
-            key={props.celeb.name + '-topSection-image'}
+            key={props.name + '-topSection-image'}
             picture={picture}
-            name={props.celeb.name}
+            name={props.name}
           />
         </div>
         <h1 className="mt-5">
@@ -23,14 +23,14 @@ export const TopSection = (props: CelebPageProps) => {
             The Views of
           </span>{' '}
           <span className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600">
-            {props.celeb.name}
+            {props.name}
           </span>
         </h1>
       </div>
 
-      {!isEmpty(props.celeb.tagTimeline) && (
+      {!isEmpty(props.tagTimeline) && (
         <div className="pt-5">
-          <TagCollection celeb={props.celeb} />
+          <TagCollection celeb={props} />
         </div>
       )}
     </div>

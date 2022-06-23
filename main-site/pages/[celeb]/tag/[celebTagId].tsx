@@ -6,8 +6,9 @@ import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
+import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 
-export default function TagPage(props: any) {
+export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
 
   return (
@@ -18,7 +19,7 @@ export default function TagPage(props: any) {
       pathname={props.celeb.slug}
       appBar={
         <StickyAppBar>
-          <TopSection {...props} />
+          <TopSection {...props.celeb} />
         </StickyAppBar>
       }
     >
