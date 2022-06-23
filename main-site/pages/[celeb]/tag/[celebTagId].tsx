@@ -1,12 +1,18 @@
+import clsx from 'clsx';
+import { isEmpty } from 'lodash-es';
 import React from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 import { StickyAppBar } from '~/components/AppBar';
 import { Card, CardTitle } from '~/components/Card';
+import { CelebGallery } from '~/components/CelebGallery';
 import { FactGroup } from '~/components/FactGroup';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
+import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
+import { Link } from '~/lib/Link';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -38,19 +44,41 @@ export default function TagPage(props: TagPageProps) {
               }
             />
 
-            <Card
-              title={<CardTitle>Similar Celebrities</CardTitle>}
-              stickyTitle
-              disablePadding
-            >
-              <JsonView src={props.otherCelebsWithTag} />
-            </Card>
+            <Link href={`/${props.celeb.slug}`} passHref>
+              <a
+                className={c(
+                  `ml-5 flex w-fit items-center gap-1.5 rounded-lg border-2 border-gray-100 bg-gray-200 px-3 py-2.5 text-neutral-600 transition hover:bg-opacity-10 focus:border-purple-300 active:bg-opacity-10`,
+                )}
+              >
+                <FaChevronDown
+                  className={'rotate-90 text-xl text-purple-500'}
+                />
+                List of other {props.celeb.name} views
+              </a>
+            </Link>
+
+            {!isEmpty(props.otherCelebsWithTag) ? (
+              <Card
+                title={
+                  <CardTitle>
+                    Others <TitleSeparator /> {props.tag.tag.name}
+                  </CardTitle>
+                }
+                stickyTitle
+                disablePadding
+              >
+                <CelebGallery
+                  small
+                  celebGalleryItems={props.otherCelebsWithTag!}
+                />
+                {/* <JsonView src={props.otherCelebsWithTag} /> */}
+              </Card>
+            ) : null}
 
             <Card
               title={
                 <CardTitle>
-                  Other celebrities <TitleSeparator />{' '}
-                  {props.tag.tag.issue.name}
+                  Others <TitleSeparator /> {props.tag.tag.issue.name}
                 </CardTitle>
               }
               stickyTitle

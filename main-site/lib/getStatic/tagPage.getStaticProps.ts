@@ -70,9 +70,9 @@ export const getStaticProps = async ({
     },
   ))!;
 
-  const otherCelebsWithTag = otherCelebs.withTag?.filter(
-    (cwt: any) => cwt.slug !== params.celeb,
-  );
+  const otherCelebsWithTag = otherCelebs.withTag
+    ?.filter((cwt: any) => cwt.slug !== params.celeb)
+    ?.slice(0, 6);
   const otherCelebsWithIssue = otherCelebs.withIssue
     ? groupCelebTags(otherCelebs.withIssue, results.orderOfIssues).filter(
         (cwt) => cwt.slug !== params.celeb,

@@ -10,6 +10,7 @@ export const CelebGallery: React.FC<{
   >['relatedPeople'];
   prefetch?: boolean;
   className?: string;
+  small?: boolean;
 }> = (props) => {
   return (
     <div
@@ -29,8 +30,16 @@ export const CelebGallery: React.FC<{
             /* Next.js `prefetches` by default and complains when you pass `true`, so we pass `undefined`. */
             prefetch={props.prefetch === false ? false : undefined}
           >
-            <a className="m-2 min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl">
-              <div className="relative w-full">
+            <a
+              className={c(
+                'm-2 min-w-[150px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl',
+                {
+                  'max-w-[160px]': props.small,
+                  'max-w-[200px]': !props.small,
+                },
+              )}
+            >
+              <div className="relative z-0 w-full">
                 <CelebImage
                   key={celebData.slug + '-image'}
                   picture={picture}
