@@ -1,11 +1,15 @@
 import groq from 'groq';
-import { celebProjection } from '~/lib/groq/celeb.projection';
-import { factProjection } from '~/lib/groq/fact.projection';
+import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
+import { Fact, factProjection } from '~/lib/groq/fact.projection';
+
+export type TagPageRelatedCelebsGroq = {
+  withTag: Celeb[] | null;
+  withIssue: (Celeb & { facts: Fact[] })[] | null;
+};
 
 export const tagPageRelatedCelebsGroq = groq`{
   'withTag': *[
     _type == 'celeb' &&
-    slug.current != $slug &&
     count(*[
       _type == 'fact' &&
       $tagId in tags[].tag._ref &&
@@ -13,28 +17,28 @@ export const tagPageRelatedCelebsGroq = groq`{
     ]) > 0
   ]{
     ${celebProjection},
-    'facts': *[
+    'fact': *[
       _type == 'fact' &&
       celeb._ref == ^._id &&
-      $issueId in topics[]->name
-    ]{
-      ${factProjection}
-    }
-  },
+      $tagId in tags[].tag._ref
+    ]{date} | order(date desc)[0]
+  }[0...9] | order(fact.date desc),
 
   'withIssue': *[
     _type == 'celeb' &&
-    _id == 'foobar' &&
-    slug.current != $slug
+    count(*[
+      _type == 'fact' &&
+      celeb._ref == ^._id &&
+      $tagId in tags[].tag._ref // We don't want what's already been included in the "withTag" call
+    ]) == 0
   ]{
     ${celebProjection},
     'facts': *[
       _type == 'fact' &&
       celeb._ref == ^._id &&
-      $issueId in topics[]._ref &&
-      !($tagId in tags[].tag._ref) // We don't want what's already been included in the "withTag" call
-    ]{
+      $issueId in topics[]._ref
+    ] | order(date desc) {
       ${factProjection}
     }
-  }[defined(facts[0])]
+  }[defined(facts[0])][0...9] | order(facts[0].date desc)
 }`;

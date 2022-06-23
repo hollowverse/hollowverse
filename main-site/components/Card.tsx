@@ -1,8 +1,21 @@
 import { defaults } from 'lodash-es';
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren, ReactElement, ReactNode } from 'react';
 import clsx from 'clsx';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { c } from '~/lib/c';
+
+export function CardTitle(
+  props: PropsWithChildren<{ component?: React.ElementType }>,
+) {
+  const Root = 'h2' || props.component;
+
+  return (
+    <Root
+      className="flex gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg"
+      {...props}
+    />
+  );
+}
 
 export function Card(_props: {
   title?: ReactNode;

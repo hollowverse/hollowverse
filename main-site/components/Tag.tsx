@@ -10,7 +10,7 @@ export function Tag(
   }>,
 ) {
   const router = useRouter();
-  const isSelected = router.query.tagId === props.tagId;
+  const isSelected = router.query.celebTagId === props.tagId;
 
   return (
     <Link href={`/${props.slug}/tag/${props.tagId}`} passHref>

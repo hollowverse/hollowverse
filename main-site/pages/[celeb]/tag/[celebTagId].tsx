@@ -1,6 +1,8 @@
 import React from 'react';
 import { StickyAppBar } from '~/components/AppBar';
+import { Card, CardTitle } from '~/components/Card';
 import { FactGroup } from '~/components/FactGroup';
+import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
@@ -28,25 +30,34 @@ export default function TagPage(props: any) {
               celebName={props.celeb.name}
               slug={props.celeb.slug}
               title={
-                <h2 className="flex flex-wrap gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-base">
+                <CardTitle>
                   {props.celeb.name} <TitleSeparator />{' '}
-                  {props.tag.tag.issue.name} <TitleSeparator />{' '}
-                  {props.tag.tag.name}
-                </h2>
+                  {props.tag.tag.issue.name}
+                </CardTitle>
               }
             />
-            {/* <pre>{JSON.stringify(props.tagFacts, null, 2)}</pre> */}
-          </div>
 
-          {/* <div className="h-container mt-5 flex flex-col gap-5">
-            <pre>
-              {JSON.stringify(
-                props.otherCelebsWithTag.map((f, i) => ({ ...f, i })),
-                null,
-                2,
-              )}
-            </pre>
-          </div> */}
+            <Card
+              title={<CardTitle>Similar Celebrities</CardTitle>}
+              stickyTitle
+              disablePadding
+            >
+              <JsonView src={props.otherCelebsWithTag} />
+            </Card>
+
+            <Card
+              title={
+                <CardTitle>
+                  Other celebrities <TitleSeparator />{' '}
+                  {props.tag.tag.issue.name}
+                </CardTitle>
+              }
+              stickyTitle
+              disablePadding
+            >
+              <JsonView src={props.otherCelebsWithIssue} />
+            </Card>
+          </div>
         </div>
       </div>
     </Page>

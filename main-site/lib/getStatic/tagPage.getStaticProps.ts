@@ -1,7 +1,11 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
-import { tagPageRelatedCelebsGroq } from '~/lib/groq/tagPageRelatedCelebs.groq';
+import { groupCelebTags } from '~/lib/getStatic/groupCelebTags';
+import {
+  TagPageRelatedCelebsGroq,
+  tagPageRelatedCelebsGroq,
+} from '~/lib/groq/tagPageRelatedCelebs.groq';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -9,8 +13,10 @@ export type CelebPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
 >;
 
-function tagExists(tagTimeline: TagTimeline, tagId: string) {
-  return tagTimeline.some((tpair) => tpair[1].some((t) => t.tag._id === tagId));
+function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
+  return tagTimeline.some((tpair) =>
+    tpair[1].some((t) => t.tag._id === celebTagId),
+  );
 }
 
 /**
@@ -29,9 +35,12 @@ function tagExists(tagTimeline: TagTimeline, tagId: string) {
 export const getStaticProps = async ({
   params,
 }: {
-  params: { celeb: string; tagId: string };
+  params: { celeb: string; celebTagId: string };
 }) => {
-  log('info', `tagPage getStaticProps called: ${params.celeb}/${params.tagId}`);
+  log(
+    'info',
+    `tagPage getStaticProps called: ${params.celeb}/${params.celebTagId}`,
+  );
 
   const results = await getCelebWithTimeline(params.celeb, true);
 
@@ -41,34 +50,42 @@ export const getStaticProps = async ({
     };
   }
 
-  if (!tagExists(results.celeb.tagTimeline, params.tagId)) {
+  if (!tagExists(results.celeb.tagTimeline, params.celebTagId)) {
     return {
       notFound: true,
     };
   }
 
   const tagFacts = results.celeb.facts.filter((f) =>
-    f.tags.some((t) => t.tag._id === params.tagId),
+    f.tags.some((t) => t.tag._id === params.celebTagId),
   );
-  const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
+  const tag = tagFacts[0].tags.find((t) => t.tag._id === params.celebTagId)!;
 
-  const otherCelebs = (await sanityClient.fetch(
+  const otherCelebs = (await sanityClient.fetch<TagPageRelatedCelebsGroq>(
     'tag-page-related-celebs',
     tagPageRelatedCelebsGroq,
     {
-      slug: params.celeb,
-      tagId: params.tagId,
+      tagId: params.celebTagId,
       issueId: tag.tag.issue._id,
     },
-  )) as any;
+  ))!;
+
+  const otherCelebsWithTag = otherCelebs.withTag?.filter(
+    (cwt: any) => cwt.slug !== params.celeb,
+  );
+  const otherCelebsWithIssue = otherCelebs.withIssue
+    ? groupCelebTags(otherCelebs.withIssue, results.orderOfIssues).filter(
+        (cwt) => cwt.slug !== params.celeb,
+      )
+    : null;
 
   return {
     props: {
       celeb: results.celeb,
       tag,
       tagFacts,
-      otherCelebsWithTag: [...otherCelebs.withTag, ...otherCelebs.withIssue],
-      // otherCelebsWithTag: otherCelebsWithTag,
+      otherCelebsWithTag: otherCelebsWithTag,
+      otherCelebsWithIssue: otherCelebsWithIssue,
     },
   };
 };
