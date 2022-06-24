@@ -45,7 +45,7 @@ export default function TagPage(props: TagPageProps) {
     >
       <div className="h-container py-5">
         <div className="flex flex-col gap-7">
-          <div className="h-container mt-5 flex flex-col gap-5">
+          <div className="flex flex-col gap-5">
             <FactGroup
               factGroup={props.tagFacts}
               celebName={props.celeb.name}

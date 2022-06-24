@@ -7,7 +7,7 @@ export const Facts = (props: CelebPageProps) => {
   const { groups, issues } = props.celeb.facts!;
 
   return (
-    <div className="FACTS-CONTAINER mt-5 flex max-w-full flex-col gap-7">
+    <div className="FACTS-CONTAINER flex max-w-full flex-col gap-7">
       {issues.map((issue, i) => {
         const factGroup = groups[issue];
 

@@ -23,7 +23,7 @@ export default function Celeb(props: CelebPageProps) {
         </StickyAppBar>
       }
     >
-      <div className="h-container mt-5 flex flex-col gap-5">
+      <div className="h-container my-5 flex flex-col gap-5">
         {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}
