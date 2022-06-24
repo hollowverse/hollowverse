@@ -3,8 +3,7 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:jsx-a11y/recommended"
   ],
   "rules": {
     "jsx-a11y/anchor-is-valid": [
