@@ -4,18 +4,6 @@ import { CelebImage, CelebImageProps } from '~/components/CelebImage';
 import { c } from '~/lib/c';
 import { ReactElementProps } from '~/lib/types';
 
-export function CHRContentWrapper(props: ReactElementProps<'div'>) {
-  return (
-    <div
-      {...props}
-      className={c(
-        'relative grid w-full grid-cols-10 overflow-hidden border-b bg-white lg:border-x lg:border-t',
-        props.className,
-      )}
-    />
-  );
-}
-
 export function CHRImage(
   props: ReactElementProps<'div'> & { celebImageProps: CelebImageProps },
 ) {

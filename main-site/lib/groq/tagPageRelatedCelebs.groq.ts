@@ -22,7 +22,7 @@ export const tagPageRelatedCelebsGroq = groq`{
       celeb._ref == ^._id &&
       $tagId in tags[].tag._ref
     ]{date} | order(date desc)[0]
-  }[0...9] | order(fact.date desc),
+  }[0...50] | order(fact.date desc),
 
   'withIssue': *[
     _type == 'celeb' &&
@@ -40,5 +40,5 @@ export const tagPageRelatedCelebsGroq = groq`{
     ] | order(date desc) {
       ${factProjection}
     }
-  }[defined(facts[0])][0...9] | order(facts[0].date desc)
+  }[defined(facts[0])][0...50] | order(facts[0].date desc)
 }`;

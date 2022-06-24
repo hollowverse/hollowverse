@@ -1,3 +1,4 @@
+import { shuffle } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
@@ -70,12 +71,16 @@ export const getStaticProps = async ({
     },
   ))!;
 
-  const otherCelebsWithTag = otherCelebs.withTag
-    ?.filter((cwt: any) => cwt.slug !== params.celeb)
-    ?.slice(0, 6);
+  const otherCelebsWithTag = shuffle(
+    otherCelebs.withTag
+      ?.filter((cwt: any) => cwt.slug !== params.celeb)
+      ?.slice(0, 6),
+  );
   const otherCelebsWithIssue = otherCelebs.withIssue
-    ? groupCelebTags(otherCelebs.withIssue, results.orderOfIssues).filter(
-        (cwt) => cwt.slug !== params.celeb,
+    ? shuffle(
+        groupCelebTags(otherCelebs.withIssue, results.orderOfIssues)
+          ?.filter((cwt) => cwt.slug !== params.celeb)
+          ?.slice(0, 6),
       )
     : null;
 

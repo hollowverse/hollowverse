@@ -1,29 +1,39 @@
-import clsx from 'clsx';
-import { isEmpty } from 'lodash-es';
+import { isEmpty, result } from 'lodash-es';
 import React, { PropsWithChildren } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { StickyAppBar } from '~/components/AppBar';
-import { CelebGallery } from '~/components/CelebGallery';
 import { CelebImage } from '~/components/CelebImage';
 import { FactGroup } from '~/components/FactGroup';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
+import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
+import {
+  CelebHorizontalRect,
+  CHRContainer,
+  CHRContent,
+  CHRImage,
+} from '~/components/ui/CelebHorizontalRect';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 import { Link } from '~/lib/Link';
+import { ReactElementProps } from '~/lib/types';
 
 export function CardTitle(
-  props: PropsWithChildren<{ component?: React.ElementType }>,
+  props: ReactElementProps<'div'> & { component?: React.ElementType },
 ) {
   const Root = 'h2' || props.component;
 
   return (
     <Root
-      className="flex gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg"
       {...props}
+      className={c(
+        'flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg',
+        props.className,
+      )}
     />
   );
 }
@@ -72,48 +82,68 @@ export default function TagPage(props: TagPageProps) {
             </Link>
 
             {!isEmpty(props.otherCelebsWithTag) && (
-              <TitledCard
-                titledContentProps={{
-                  title: (
-                    <CardTitle>
-                      Others <TitleSeparator /> {props.tag.tag.name}
-                    </CardTitle>
-                  ),
-                  stickyTitle: true,
-                }}
+              <TitledContent
+                title={
+                  <CardTitle className="px-5 py-4">
+                    Others <TitleSeparator />{' '}
+                    <Tag slug={props.celeb.slug} tagId={props.tag.tag._id}>
+                      {props.tag.tag.name}
+                    </Tag>
+                  </CardTitle>
+                }
+                stickyTitle
               >
-                <CelebGallery
-                  small
-                  celebGalleryItems={props.otherCelebsWithTag!}
-                />
-                {/* <JsonView src={props.otherCelebsWithTag} /> */}
-              </TitledCard>
+                {props.otherCelebsWithTag!.map((c) => {
+                  return (
+                    <CelebHorizontalRect
+                      className="lg:-mt-[1px]"
+                      key={c._id}
+                      link={`/${c.slug}`}
+                    >
+                      <CHRImage
+                        celebImageProps={{
+                          name: c.name,
+                          picture: c.picture,
+                          alt: c.name,
+                        }}
+                      />
+
+                      <CHRContent title={c.name} body={'Stuff'} />
+                    </CelebHorizontalRect>
+                  );
+                })}
+              </TitledContent>
             )}
 
             {!isEmpty(props.otherCelebsWithIssue) && (
-              <TitledCard
-                titledContentProps={{
-                  title: (
-                    <CardTitle>
-                      Others <TitleSeparator /> {props.tag.tag.issue.name}
-                    </CardTitle>
-                  ),
-                  stickyTitle: true,
-                }}
+              <TitledContent
+                title={
+                  <CardTitle className="px-5 py-4">
+                    Others <TitleSeparator /> {props.tag.tag.issue.name}
+                  </CardTitle>
+                }
+                stickyTitle
               >
-                <JsonView src={props.otherCelebsWithIssue} collapsed={1} />
                 {props.otherCelebsWithIssue!.map((c) => {
                   return (
-                    <div className="flex" key={c.slug}>
-                      <div className="w-1/3">
-                        <CelebImage picture={c.picture} name={c.name} />
-                      </div>
+                    <CelebHorizontalRect
+                      className="lg:-mt-[1px]"
+                      key={c._id}
+                      link={`/${c.slug}`}
+                    >
+                      <CHRImage
+                        celebImageProps={{
+                          name: c.name,
+                          picture: c.picture,
+                          alt: c.name,
+                        }}
+                      />
 
-                      <div>{c.name}</div>
-                    </div>
+                      <CHRContent title={c.name} body={'Stuff'} />
+                    </CelebHorizontalRect>
                   );
                 })}
-              </TitledCard>
+              </TitledContent>
             )}
           </div>
         </div>
