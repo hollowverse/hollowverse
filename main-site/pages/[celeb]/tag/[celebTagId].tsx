@@ -5,7 +5,6 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { Page } from '~/components/Page';
 import { Tag } from '~/components/Tag';
-import { Tags } from '~/components/TagCollection';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import {
@@ -16,6 +15,7 @@ import {
 import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
+import { Tag as TTag } from '~/lib/groq/tag.projection';
 import { Link } from '~/lib/Link';
 import { ReactElementProps } from '~/lib/types';
 
@@ -35,6 +35,14 @@ export function CardTitle(
   );
 }
 
+export function renderTags(tags: TTag[]) {
+  return (
+    <p className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
+      {tags.map((t) => t.tag.name.trim()).join(', ')}
+    </p>
+  );
+}
+
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
 
@@ -50,7 +58,7 @@ export default function TagPage(props: TagPageProps) {
         </StickyAppBar>
       }
     >
-      <div className="h-container py-5">
+      <div id="content" className="h-container py-5">
         <div className="flex flex-col gap-7">
           <div className="flex flex-col gap-5">
             <FactGroup
@@ -105,10 +113,7 @@ export default function TagPage(props: TagPageProps) {
                         }}
                       />
 
-                      <CHRContent
-                        title={c.name}
-                        body={<Tags tags={c.tags} slug={c.slug} />}
-                      />
+                      <CHRContent title={c.name} body={renderTags(c.tags)} />
                     </CelebHorizontalRect>
                   );
                 })}
@@ -139,10 +144,7 @@ export default function TagPage(props: TagPageProps) {
                         }}
                       />
 
-                      <CHRContent
-                        title={c.name}
-                        body={<Tags tags={c.tags} slug={c.slug} />}
-                      />
+                      <CHRContent title={c.name} body={renderTags(c.tags)} />
                     </CelebHorizontalRect>
                   );
                 })}
