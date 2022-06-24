@@ -61,7 +61,7 @@ export default function TagPage(props: TagPageProps) {
             <Link href={`/${props.celeb.slug}`} passHref>
               <a
                 className={c(
-                  `ml-5 flex w-fit items-center gap-1.5 rounded-lg bg-gray-200 px-3 py-2.5 text-neutral-600 shadow-sm transition hover:bg-opacity-10 focus:border-purple-300 active:bg-opacity-10`,
+                  `ml-5 flex w-fit items-center gap-1.5 rounded-lg bg-gray-200 px-3 py-2.5 text-neutral-600 shadow-sm transition focus:border-purple-300 active:bg-opacity-10`,
                 )}
               >
                 <FaChevronDown
