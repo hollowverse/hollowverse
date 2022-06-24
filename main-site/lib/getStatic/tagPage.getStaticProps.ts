@@ -4,9 +4,11 @@ import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
 import { groupCelebTags } from '~/lib/getStatic/groupCelebTags';
 import {
+  TagPageRelatedCeleb,
   TagPageRelatedCelebsGroq,
   tagPageRelatedCelebsGroq,
 } from '~/lib/groq/tagPageRelatedCelebs.groq';
+import { Nullish } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -71,18 +73,22 @@ export const getStaticProps = async ({
     },
   ))!;
 
-  const otherCelebsWithTag = shuffle(
-    otherCelebs.withTag
-      ?.filter((cwt: any) => cwt.slug !== params.celeb)
-      ?.slice(0, 6),
-  );
-  const otherCelebsWithIssue = otherCelebs.withIssue
-    ? shuffle(
-        groupCelebTags(otherCelebs.withIssue, results.orderOfIssues)
-          ?.filter((cwt) => cwt.slug !== params.celeb)
-          ?.slice(0, 6),
-      )
-    : null;
+  const process = (tagPageRelatedCelebs: Nullish<TagPageRelatedCeleb[]>) => {
+    return tagPageRelatedCelebs
+      ? shuffle(
+          groupCelebTags(tagPageRelatedCelebs, results.orderOfIssues)
+            ?.filter((cwt: any) => cwt.slug !== params.celeb)
+            ?.slice(0, 6)
+            ?.map((c) => ({
+              ...c,
+              tags: c.tags.filter((t) => t.tag._id !== tag.tag._id).slice(0, 3),
+            })),
+        )
+      : null;
+  };
+
+  const otherCelebsWithTag = process(otherCelebs.withTag);
+  const otherCelebsWithIssue = process(otherCelebs.withIssue);
 
   return {
     props: {

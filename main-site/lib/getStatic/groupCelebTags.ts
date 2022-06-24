@@ -1,11 +1,15 @@
 import { sortTags } from '~/lib/getStatic/sortTags';
-import { Celeb } from '~/lib/groq/celeb.projection';
-import { Fact } from '~/lib/groq/fact.projection';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { Tag } from '~/lib/groq/tag.projection';
-import { TagPageRelatedCelebsGroq } from '~/lib/groq/tagPageRelatedCelebs.groq';
+import {
+  TagPageRelatedCelebsGroq,
+  TagPageRelatedFact,
+} from '~/lib/groq/tagPageRelatedCelebs.groq';
 
-function collectTags(facts: Fact[], orderOfIssues: OrderOfIssues) {
+function collectTags(
+  facts: TagPageRelatedFact[],
+  orderOfIssues: OrderOfIssues,
+) {
   const tags: Tag[] = [];
 
   facts.forEach((f) => {

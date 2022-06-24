@@ -5,6 +5,7 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { Page } from '~/components/Page';
 import { Tag } from '~/components/Tag';
+import { Tags } from '~/components/TagCollection';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import {
@@ -104,7 +105,10 @@ export default function TagPage(props: TagPageProps) {
                         }}
                       />
 
-                      <CHRContent title={c.name} body={'Stuff'} />
+                      <CHRContent
+                        title={c.name}
+                        body={<Tags tags={c.tags} slug={c.slug} />}
+                      />
                     </CelebHorizontalRect>
                   );
                 })}
@@ -135,7 +139,10 @@ export default function TagPage(props: TagPageProps) {
                         }}
                       />
 
-                      <CHRContent title={c.name} body={'Stuff'} />
+                      <CHRContent
+                        title={c.name}
+                        body={<Tags tags={c.tags} slug={c.slug} />}
+                      />
                     </CelebHorizontalRect>
                   );
                 })}

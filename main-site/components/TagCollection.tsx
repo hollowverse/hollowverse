@@ -3,6 +3,29 @@ import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
 import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { Tag as TTag } from '~/lib/groq/tag.projection';
+import { ReactElementProps } from '~/lib/types';
+
+export function Tags(
+  props: ReactElementProps<'div'> & { tags: TTag[]; slug: string },
+) {
+  return (
+    <div
+      {...props}
+      className={c('flex flex-wrap gap-2.5 pt-3', props.className)}
+    >
+      {props.tags.map((t) => (
+        <Tag key={t.tag._id} slug={props.slug} tagId={t.tag._id}>
+          {t.tag.name}
+          {t.isBackground && ' Background'}
+          {t.isLowConfidence && (
+            <FaQuestionCircle className="self-center text-xs text-neutral-400" />
+          )}
+        </Tag>
+      ))}
+    </div>
+  );
+}
 
 export const TagCollection = (props: { celeb: CelebWithTimeline }) => {
   const tags = props.celeb.tagTimeline;
@@ -19,22 +42,14 @@ export const TagCollection = (props: { celeb: CelebWithTimeline }) => {
             </p>
           )}
 
-          <div
-            className={c('flex flex-wrap gap-2.5 pt-3', {
+          <Tags
+            tags={tpair[1]}
+            slug={props.celeb.slug}
+            className={c({
               'border-l-2': i < tags.length - 1,
               'p-5': showTimeline,
             })}
-          >
-            {tpair[1].map((t, i2) => (
-              <Tag key={`${i}-${i2}`} slug={props.celeb.slug} tagId={t.tag._id}>
-                {t.tag.name}
-                {t.isBackground && ' Background'}
-                {t.isLowConfidence && (
-                  <FaQuestionCircle className="self-center text-xs text-neutral-400" />
-                )}
-              </Tag>
-            ))}
-          </div>
+          />
         </div>
       ))}
     </div>
