@@ -6,7 +6,6 @@ import { CelebImage } from '~/components/CelebImage';
 import { factProjection } from '~/lib/groq/fact.projection';
 import { Page } from '~/components/Page';
 import { sanityClient } from '~/shared/lib/sanityio';
-import { formatFactDate } from '~/lib/date';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { TitledCard } from '~/components/ui/TitledCard';
@@ -90,10 +89,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      firstBatch: firstBatch!.map((f) => ({
-        ...f,
-        date: formatFactDate(f.date),
-      })),
+      firstBatch,
     },
     revalidate: 60 * 60 * 24, // revalidate every 24 hours
   };

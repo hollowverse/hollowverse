@@ -16,7 +16,7 @@ export function Tag(
     <Link href={`/${props.slug}/tag/${props.tagId}`} passHref>
       <a
         className={c(
-          'm-0 box-border flex gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm text-neutral-700',
+          'pointer-events-auto m-0 box-border flex gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm text-neutral-700',
           {
             'border shadow-sm': !isSelected,
             '-m-[1px] border-2 border-purple-300 shadow-inner': isSelected,

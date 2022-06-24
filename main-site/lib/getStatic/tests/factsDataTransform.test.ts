@@ -1,12 +1,9 @@
 import { Fact } from '~/lib/groq/fact.projection';
-import {
-  copyFacts,
-  factsDataTransform,
-} from '~/lib/getStatic/factsDataTransform';
+import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
 import { mockOrderOfIssues } from '~/lib/getStatic/tests/mockOrderOfIssues';
 
 test('transformation while keeping duplicates', () => {
-  const copiedFacts = copyFacts(mockFacts);
+  const copiedFacts = [...mockFacts];
   expect(factsDataTransform(mockFacts, mockOrderOfIssues)).toEqual({
     groups: {
       Religion: [copiedFacts[0]],

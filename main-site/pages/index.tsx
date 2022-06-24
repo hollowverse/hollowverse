@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { GetStaticPropsResult } from 'next';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container, Logo } from '~/components/AppBar';
@@ -10,7 +10,6 @@ import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { formatFactDate } from '~/lib/date';
 import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
@@ -183,15 +182,10 @@ export async function getStaticProps(): Promise<
     }`,
   );
 
-  const enhancedLatestFacts = latestFacts!.map((f) => ({
-    ...f,
-    date: formatFactDate(f.date),
-  }));
-
   return {
     props: {
       trendingCelebs,
-      latestFacts: enhancedLatestFacts,
+      latestFacts: latestFacts,
     },
     revalidate: 60 * 60 * 24, // revalidate every 24 hours
   };

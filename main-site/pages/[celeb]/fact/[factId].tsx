@@ -14,6 +14,7 @@ import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Card2 } from '~/components/ui/Card2';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { formatFactDate } from '~/lib/date';
 
 function getTextSummary(name: string, fact: TFact, length: number) {
   let text: string;
@@ -74,7 +75,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               <div className="inline-flex items-center">
                 <BiCalendar size={22} className="mr-2" />
-                <p>Happened on {fact.date}</p>
+                <p>Happened on {formatFactDate(fact.date)}</p>
               </div>
               <div className="inline-flex items-center">
                 <BiUserCircle size={22} className="mr-2" />

@@ -10,6 +10,7 @@ import Image, { ImageProps } from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { c } from '~/lib/c';
 import { JsxElement } from 'typescript';
+import { formatFactDate } from '~/lib/date';
 
 function UnoptimizedImage(
   props: PropsWithChildren<{
@@ -133,7 +134,7 @@ export const Fact: React.FC<{
                 ' text-white': props.fact.openGraphImage,
               })}
             >
-              {props.fact.date}
+              {formatFactDate(props.fact.date)}
             </p>
           </div>
         </div>

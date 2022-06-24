@@ -1,4 +1,3 @@
-import { format, parse } from 'date-fns';
 import groq from 'groq';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
@@ -49,10 +48,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celeb,
-      fact: {
-        ...fact,
-        date: format(parse(fact.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
-      },
+      fact,
     },
   };
 };

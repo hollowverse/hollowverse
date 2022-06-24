@@ -1,12 +1,5 @@
 import { difference, groupBy, intersection, keys } from 'lodash-es';
-import { formatFactDate } from '~/lib/date';
 import { Fact } from '~/lib/groq/fact.projection';
-
-export const copyFacts = (facts: Fact[]) =>
-  facts.map((f) => ({
-    ...f,
-    date: formatFactDate(f.date),
-  }));
 
 /**
  * We have groups of Facts, keyed by their issues. I.e.
@@ -24,7 +17,7 @@ export const copyFacts = (facts: Fact[]) =>
 export type GroupedFacts = ReturnType<typeof factsDataTransform>;
 
 export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
-  const facts = copyFacts(_facts);
+  const facts = [..._facts];
   const groups = groupBy(facts, (f) => f.issues[0].name);
   const issueStrings = keys(groups);
   const intersectionArr = intersection(issueStrings, orderOfIssues);

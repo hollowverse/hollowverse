@@ -1,21 +1,17 @@
-import { isEmpty, result } from 'lodash-es';
-import React, { PropsWithChildren } from 'react';
+import { isEmpty } from 'lodash-es';
+import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { StickyAppBar } from '~/components/AppBar';
-import { CelebImage } from '~/components/CelebImage';
 import { FactGroup } from '~/components/FactGroup';
-import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import {
   CelebHorizontalRect,
-  CHRContainer,
   CHRContent,
   CHRImage,
 } from '~/components/ui/CelebHorizontalRect';
-import { TitledCard } from '~/components/ui/TitledCard';
 import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
