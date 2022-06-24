@@ -12,7 +12,7 @@ import { Spinner } from '~/components/Spinner';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
-import { Card2 } from '~/components/ui/Card2';
+import { Card } from '~/components/ui/Card';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { formatFactDate } from '~/lib/date';
 
@@ -60,7 +60,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
           </div>
         </div>
 
-        <Card2>
+        <Card>
           <LovelyTopBorder />
           <div className="flex flex-col gap-3 p-5">
             <Fact
@@ -101,7 +101,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
               </div>
             </div>
           </div>
-        </Card2>
+        </Card>
 
         <TitledCard titledContentProps={{ title: 'Comments' }}>
           <div className="p-5">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { RiHome2Line, RiQuillPenLine } from 'react-icons/ri';
 import { Page } from '~/components/Page';
-import { Card2 } from '~/components/ui/Card2';
+import { Card } from '~/components/ui/Card';
 
 export default function About() {
   return (
@@ -12,7 +12,7 @@ export default function About() {
       allowSearchEngines={false}
     >
       <div className="mt-5 text-neutral-500">
-        <Card2>
+        <Card>
           <div className="h-container flex flex-col gap-8 p-5">
             <div className="flex flex-col gap-2">
               <h2 className="flex items-center gap-2 text-xl font-medium">
@@ -117,7 +117,7 @@ export default function About() {
               </p>
             </div>
           </div>
-        </Card2>
+        </Card>
       </div>
     </Page>
   );

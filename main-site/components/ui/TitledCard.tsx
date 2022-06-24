@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Card2, CardProps } from '~/components/ui/Card2';
+import { Card, CardProps } from '~/components/ui/Card';
 import React from 'react';
 import {
   TitledContent,
@@ -17,9 +17,9 @@ export function TitledCard(
       {...props.titledContentProps}
       title={<div className="px-5 py-4">{props.titledContentProps.title}</div>}
     >
-      <Card2 topBorder={false} {...props.cardProps}>
+      <Card topBorder={false} {...props.cardProps}>
         {props.children}
-      </Card2>
+      </Card>
     </TitledContent>
   );
 }

@@ -3,7 +3,7 @@ import { ReactElementProps } from '~/lib/types';
 
 export type CardProps = { topBorder?: boolean };
 
-export function Card2(
+export function Card(
   props: ReactElementProps<'div'> & { topBorder?: boolean },
 ) {
   const { topBorder, ...rest } = props;

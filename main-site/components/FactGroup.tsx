@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Fact } from '~/components/Fact';
-import { Card2 } from '~/components/ui/Card2';
+import { Card } from '~/components/ui/Card';
 import { TitledContent } from '~/components/ui/TitledContent';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 
@@ -18,7 +18,7 @@ export function FactGroup(props: {
       <div className="-mt-[1px] flex flex-col gap-3">
         {props.factGroup.map((fact) => {
           return (
-            <Card2 key={fact._id}>
+            <Card key={fact._id}>
               <div className="p-5">
                 <Fact
                   link
@@ -27,7 +27,7 @@ export function FactGroup(props: {
                   slug={props.slug}
                 />
               </div>
-            </Card2>
+            </Card>
           );
         })}
       </div>

@@ -3,7 +3,7 @@ import React, { PropsWithChildren, ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { c } from '~/lib/c';
-import { Card2 } from '~/components/ui/Card2';
+import { Card } from '~/components/ui/Card';
 import { TitledContent } from '~/components/ui/TitledContent';
 
 export function Nav(props: { children: ReactNode; navClasses?: string }) {
@@ -23,10 +23,10 @@ export function Nav(props: { children: ReactNode; navClasses?: string }) {
 
 export function Container(props: { children: ReactNode; navClasses?: string }) {
   return (
-    <Card2 topBorder={false}>
+    <Card topBorder={false}>
       <LovelyTopBorder />
       <Nav {...props} />
-    </Card2>
+    </Card>
   );
 }
 
@@ -84,7 +84,7 @@ export function StickyAppBar(props: PropsWithChildren<{}>) {
         </Nav>
       }
     >
-      <Card2 topBorder={false}>{props.children}</Card2>
+      <Card topBorder={false}>{props.children}</Card>
     </TitledContent>
   );
 }
