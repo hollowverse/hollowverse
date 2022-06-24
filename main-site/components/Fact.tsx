@@ -72,7 +72,7 @@ export const Fact: React.FC<{
   const link = defaultTo(props.link, false);
 
   return (
-    <section className="relative z-0 m-5 flex flex-col gap-5">
+    <section className="relative z-0 flex flex-col gap-5">
       {link && (
         <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
           <a className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50">

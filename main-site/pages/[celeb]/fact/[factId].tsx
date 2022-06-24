@@ -2,7 +2,6 @@ import { Link } from '~/lib/Link';
 import React from 'react';
 import { BiCalendar, BiLink, BiUserCircle } from 'react-icons/bi';
 import { FiMessageSquare } from 'react-icons/fi';
-import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { DiscourseThread } from '~/components/DiscourseThread';
 import { Fact } from '~/components/Fact';
@@ -13,6 +12,8 @@ import { Spinner } from '~/components/Spinner';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { Card2 } from '~/components/ui/Card2';
+import { TitledCard } from '~/components/ui/TitledCard';
 
 function getTextSummary(name: string, fact: TFact, length: number) {
   let text: string;
@@ -58,46 +59,50 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
           </div>
         </div>
 
-        <Card>
+        <Card2>
           <LovelyTopBorder />
-          <Fact
-            slug={celeb.slug}
-            fact={fact}
-            celebName={celeb.name}
-            showFooter={false}
-          />
-          <hr />
-          <div className="flex flex-col gap-2 p-5 text-sm text-gray-500">
-            <div className="inline-flex items-center">
-              <BiCalendar size={22} className="mr-2" />
-              <p>Happened on {fact.date}</p>
-            </div>
-            <div className="inline-flex items-center">
-              <BiUserCircle size={22} className="mr-2" />
-              <p>
-                Contributed by{' '}
-                <Link
-                  href={`https://forum.hollowverse.com/u/${contributorUsername}`}
-                >
-                  <a className="h-gray-link">@{contributorUsername}</a>
-                </Link>
-              </p>
-            </div>
-            <div className="inline-flex items-center">
-              <BiLink size={22} className="mr-2" />
-              <p>
-                Source:{' '}
-                <Link href={fact.source} passHref>
-                  <a rel="noreferrer" target="_blank" className="h-gray-link">
-                    {sourceHost}
-                  </a>
-                </Link>
-              </p>
+          <div className="flex flex-col gap-3 p-5">
+            <Fact
+              slug={celeb.slug}
+              fact={fact}
+              celebName={celeb.name}
+              showFooter={false}
+            />
+
+            <hr className="-mx-5" />
+
+            <div className="flex flex-col gap-2 text-sm text-gray-500">
+              <div className="inline-flex items-center">
+                <BiCalendar size={22} className="mr-2" />
+                <p>Happened on {fact.date}</p>
+              </div>
+              <div className="inline-flex items-center">
+                <BiUserCircle size={22} className="mr-2" />
+                <p>
+                  Contributed by{' '}
+                  <Link
+                    href={`https://forum.hollowverse.com/u/${contributorUsername}`}
+                  >
+                    <a className="h-gray-link">@{contributorUsername}</a>
+                  </Link>
+                </p>
+              </div>
+              <div className="inline-flex items-center">
+                <BiLink size={22} className="mr-2" />
+                <p>
+                  Source:{' '}
+                  <Link href={fact.source} passHref>
+                    <a rel="noreferrer" target="_blank" className="h-gray-link">
+                      {sourceHost}
+                    </a>
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
-        </Card>
+        </Card2>
 
-        <Card title="Comments">
+        <TitledCard titledContentProps={{ title: 'Comments' }}>
           <div className="p-5">
             {(commentCount === null && (
               <div className="w-ful flex justify-center">
@@ -121,7 +126,7 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
                 </div>
               ))}
           </div>
-        </Card>
+        </TitledCard>
       </div>
     </Page>
   );

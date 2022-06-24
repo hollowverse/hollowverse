@@ -1,11 +1,11 @@
 import React from 'react';
 import { ContributeCta } from '~/components/ContributeCta';
-import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { Page } from '~/components/Page';
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 import { Link } from '~/lib/Link';
+import { Card2 } from '~/components/ui/Card2';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   return (
@@ -15,7 +15,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
       pathname={`~kg/${encodeURIComponent(params['@id'])}`}
       allowSearchEngines={false}
     >
-      <Card>
+      <Card2 topBorder={false}>
         <div className="p-5">
           <div className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-5">
             <FaRegCheckCircle className="text-xl text-white" />
@@ -48,7 +48,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
             </h1>
           </div>
         </div>
-      </Card>
+      </Card2>
 
       <div className="h-container mt-5">
         <ContributeCta

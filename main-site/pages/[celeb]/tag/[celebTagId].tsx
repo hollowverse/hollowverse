@@ -1,9 +1,8 @@
 import clsx from 'clsx';
 import { isEmpty } from 'lodash-es';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { StickyAppBar } from '~/components/AppBar';
-import { Card, CardTitle } from '~/components/Card';
 import { CelebGallery } from '~/components/CelebGallery';
 import { CelebImage } from '~/components/CelebImage';
 import { FactGroup } from '~/components/FactGroup';
@@ -11,9 +10,23 @@ import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 import { Link } from '~/lib/Link';
+
+export function CardTitle(
+  props: PropsWithChildren<{ component?: React.ElementType }>,
+) {
+  const Root = 'h2' || props.component;
+
+  return (
+    <Root
+      className="flex gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg"
+      {...props}
+    />
+  );
+}
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -59,32 +72,34 @@ export default function TagPage(props: TagPageProps) {
             </Link>
 
             {!isEmpty(props.otherCelebsWithTag) && (
-              <Card
-                title={
-                  <CardTitle>
-                    Others <TitleSeparator /> {props.tag.tag.name}
-                  </CardTitle>
-                }
-                stickyTitle
-                disablePadding
+              <TitledCard
+                titledContentProps={{
+                  title: (
+                    <CardTitle>
+                      Others <TitleSeparator /> {props.tag.tag.name}
+                    </CardTitle>
+                  ),
+                  stickyTitle: true,
+                }}
               >
                 <CelebGallery
                   small
                   celebGalleryItems={props.otherCelebsWithTag!}
                 />
                 {/* <JsonView src={props.otherCelebsWithTag} /> */}
-              </Card>
+              </TitledCard>
             )}
 
             {!isEmpty(props.otherCelebsWithIssue) && (
-              <Card
-                title={
-                  <CardTitle>
-                    Others <TitleSeparator /> {props.tag.tag.issue.name}
-                  </CardTitle>
-                }
-                stickyTitle
-                disablePadding
+              <TitledCard
+                titledContentProps={{
+                  title: (
+                    <CardTitle>
+                      Others <TitleSeparator /> {props.tag.tag.issue.name}
+                    </CardTitle>
+                  ),
+                  stickyTitle: true,
+                }}
               >
                 <JsonView src={props.otherCelebsWithIssue} collapsed={1} />
                 {props.otherCelebsWithIssue!.map((c) => {
@@ -98,7 +113,7 @@ export default function TagPage(props: TagPageProps) {
                     </div>
                   );
                 })}
-              </Card>
+              </TitledCard>
             )}
           </div>
         </div>

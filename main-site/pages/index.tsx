@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container, Logo } from '~/components/AppBar';
-import { Card } from '~/components/Card';
 import { CelebGallery } from '~/components/CelebGallery';
 import { CelebImage } from '~/components/CelebImage';
 import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { formatFactDate } from '~/lib/date';
 import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
 import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
@@ -107,40 +107,45 @@ export default function Index(props: HomepageProps) {
               }
             >
               {facts.map((f: any) => {
+                const cardTitle = (
+                  <Link passHref href={`/${f.celeb.slug}`}>
+                    <a>
+                      <div className="flex flex-row items-center gap-3">
+                        <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
+                          <CelebImage
+                            width={150}
+                            height={150}
+                            name={f.celeb.name}
+                            picture={f.celeb.picture}
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <p>{f.celeb.name}</p>
+                          <p className="text-base text-neutral-500">
+                            {f.issues[0].name}
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                );
+
                 return (
-                  <Card
-                    title={
-                      <Link passHref href={`/${f.celeb.slug}`}>
-                        <a>
-                          <div className="flex flex-row items-center gap-3">
-                            <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
-                              <CelebImage
-                                width={150}
-                                height={150}
-                                name={f.celeb.name}
-                                picture={f.celeb.picture}
-                              />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                              <p>{f.celeb.name}</p>
-                              <p className="text-base text-neutral-500">
-                                {f.issues[0].name}
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </Link>
-                    }
+                  <TitledCard
+                    titledContentProps={{
+                      title: cardTitle,
+                    }}
                     key={f._id}
-                    disablePadding
                   >
-                    <Fact
-                      link
-                      fact={f}
-                      celebName={f.celeb.name}
-                      slug={f.celeb.slug}
-                    />
-                  </Card>
+                    <div className="p-5">
+                      <Fact
+                        link
+                        fact={f}
+                        celebName={f.celeb.name}
+                        slug={f.celeb.slug}
+                      />
+                    </div>
+                  </TitledCard>
                 );
               })}
             </InfiniteScroll>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from '~/components/Card';
 import { Page } from '~/components/Page';
+import { TitledCard } from '~/components/ui/TitledCard';
 
 export type ResearcherLaunchPadProps = {
   celebName: string;
@@ -17,8 +17,10 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
       pathname={props.pathname}
     >
       <div className="h-container mt-5 flex flex-col gap-5">
-        <Card
-          title={`Suggested Google searches to research ${props.celebName}'s views`}
+        <TitledCard
+          titledContentProps={{
+            title: `Suggested Google searches to research ${props.celebName}'s views`,
+          }}
         >
           <div className="flex flex-wrap gap-5 p-5">
             {props.issues.map((t) => {
@@ -37,7 +39,7 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
               );
             })}
           </div>
-        </Card>
+        </TitledCard>
       </div>
     </Page>
   );

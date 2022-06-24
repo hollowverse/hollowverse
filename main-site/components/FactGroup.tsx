@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Card } from '~/components/Card';
 import { Fact } from '~/components/Fact';
+import { Card2 } from '~/components/ui/Card2';
+import { TitledContent } from '~/components/ui/TitledContent';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 
 export function FactGroup(props: {
@@ -10,22 +11,26 @@ export function FactGroup(props: {
   slug: string;
 }) {
   return (
-    <Card title={props.title} stickyTitle disablePadding>
-      {props.factGroup.map((fact, i) => {
-        return (
-          <div key={fact._id}>
-            <Fact
-              link
-              fact={fact}
-              celebName={props.celebName}
-              slug={props.slug}
-            />
-            {i !== props.factGroup.length - 1 && (
-              <div className="h-5 border-b border-t bg-gray-100 lg:-ml-[1px] lg:-mr-[1px]" />
-            )}
-          </div>
-        );
-      })}
-    </Card>
+    <TitledContent
+      title={<div className="px-5 py-4">{props.title}</div>}
+      stickyTitle
+    >
+      <div className="-mt-[1px] flex flex-col gap-3">
+        {props.factGroup.map((fact) => {
+          return (
+            <Card2 key={fact._id}>
+              <div className="p-5">
+                <Fact
+                  link
+                  fact={fact}
+                  celebName={props.celebName}
+                  slug={props.slug}
+                />
+              </div>
+            </Card2>
+          );
+        })}
+      </div>
+    </TitledContent>
   );
 }

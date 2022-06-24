@@ -2,7 +2,6 @@ import groq from 'groq';
 import { Link } from '~/lib/Link';
 import React from 'react';
 import { Fact } from '~/components/Fact';
-import { Card } from '~/components/Card';
 import { CelebImage } from '~/components/CelebImage';
 import { factProjection } from '~/lib/groq/fact.projection';
 import { Page } from '~/components/Page';
@@ -10,6 +9,7 @@ import { sanityClient } from '~/shared/lib/sanityio';
 import { formatFactDate } from '~/lib/date';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
+import { TitledCard } from '~/components/ui/TitledCard';
 
 export default function Latest(p: any) {
   return (
@@ -25,36 +25,43 @@ export default function Latest(p: any) {
           Most recent additions...
         </h1>
 
-        {p.firstBatch.map((f: any) => (
-          <Card
-            title={
-              <Link passHref href={`/${f.celeb.slug}`}>
-                <a>
-                  <div className="flex flex-row items-center gap-3">
-                    <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
-                      <CelebImage
-                        width={150}
-                        height={150}
-                        name={f.celeb.name}
-                        picture={f.celeb.picture}
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <p>{f.celeb.name}</p>
-                      <p className="text-base text-neutral-500">
-                        {f.issues[0].name}
-                      </p>
-                    </div>
+        {p.firstBatch.map((f: any) => {
+          const cardTitle = (
+            <Link passHref href={`/${f.celeb.slug}`}>
+              <a>
+                <div className="flex flex-row items-center gap-3">
+                  <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
+                    <CelebImage
+                      width={150}
+                      height={150}
+                      name={f.celeb.name}
+                      picture={f.celeb.picture}
+                    />
                   </div>
-                </a>
-              </Link>
-            }
-            key={f._id}
-            disablePadding
-          >
-            <Fact link slug={f.celeb.slug} fact={f} celebName={f.celeb.name} />
-          </Card>
-        ))}
+                  <div className="flex flex-col gap-1">
+                    <p>{f.celeb.name}</p>
+                    <p className="text-base text-neutral-500">
+                      {f.issues[0].name}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </Link>
+          );
+
+          return (
+            <TitledCard titledContentProps={{ title: cardTitle }} key={f._id}>
+              <div className="p-5">
+                <Fact
+                  link
+                  slug={f.celeb.slug}
+                  fact={f}
+                  celebName={f.celeb.name}
+                />
+              </div>
+            </TitledCard>
+          );
+        })}
       </div>
     </Page>
   );
