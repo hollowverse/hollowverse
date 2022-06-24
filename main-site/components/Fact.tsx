@@ -1,20 +1,26 @@
 import { defaultTo } from 'lodash-es';
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
 import { Tag } from '~/components/Tag';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { c } from '~/lib/c';
+import { JsxElement } from 'typescript';
 
 function UnoptimizedImage(
-  props: PropsWithChildren<{ src: string; alt: string }>,
+  props: PropsWithChildren<{
+    src: string;
+    alt: string;
+    onError?: ImageProps['onError'];
+  }>,
 ) {
   return (
     <Image
+      onError={props.onError}
       layout="fill"
       objectFit="cover"
       loader={({ src }) => src}
@@ -71,6 +77,10 @@ export const Fact: React.FC<{
   const showFooter = defaultTo(props.showFooter, true);
   const link = defaultTo(props.link, false);
 
+  const [showOgImage, setShowOgImage] = useState(true);
+
+  const displayOpenGraphImage = props.fact.openGraphImage && showOgImage;
+
   return (
     <section className="relative z-0 flex flex-col gap-5">
       {link && (
@@ -85,11 +95,12 @@ export const Fact: React.FC<{
         <div
           className={c('FACT-HEAD', {
             'relative -mx-5 -mt-5 h-[350px] bg-neutral-700':
-              props.fact.openGraphImage,
+              displayOpenGraphImage,
           })}
         >
-          {props.fact.openGraphImage && (
+          {displayOpenGraphImage && (
             <UnoptimizedImage
+              onError={() => setShowOgImage(false)}
               src={props.fact.openGraphImage!}
               alt={props.celebName}
             />
@@ -97,7 +108,7 @@ export const Fact: React.FC<{
           <div
             className={c(
               'FACT-TAGS flex flex-wrap items-center gap-2.5',
-              props.fact.openGraphImage
+              displayOpenGraphImage
                 ? c(
                     'absolute bottom-0 left-0 right-0',
                     'bg-gradient-to-t from-black via-transparent to-transparent',
