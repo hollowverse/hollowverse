@@ -12,6 +12,7 @@ import {
   CHRContent,
   CHRImage,
 } from '~/components/ui/CelebHorizontalRect';
+import { CHRList } from '~/components/ui/CHRList';
 import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
@@ -87,68 +88,30 @@ export default function TagPage(props: TagPageProps) {
             </Link>
 
             {!isEmpty(props.otherCelebsWithTag) && (
-              <TitledContent
+              <CHRList
                 title={
-                  <CardTitle className="px-5 py-4">
+                  <>
                     Others <TitleSeparator />{' '}
                     <Tag slug={props.celeb.slug} tagId={props.tag.tag._id}>
                       {props.tag.tag.name}
                     </Tag>
-                  </CardTitle>
+                  </>
                 }
-                stickyTitle
-              >
-                {props.otherCelebsWithTag!.map((c) => {
-                  return (
-                    <CelebHorizontalRect
-                      className="lg:-mt-[1px]"
-                      key={c._id}
-                      link={`/${c.slug}`}
-                    >
-                      <CHRImage
-                        celebImageProps={{
-                          name: c.name,
-                          picture: c.picture,
-                          alt: c.name,
-                        }}
-                      />
-
-                      <CHRContent title={c.name} body={renderTags(c.tags)} />
-                    </CelebHorizontalRect>
-                  );
-                })}
-              </TitledContent>
+                celebs={props.otherCelebsWithTag!}
+                renderBody={(c) => renderTags(c.tags)}
+              />
             )}
 
             {!isEmpty(props.otherCelebsWithIssue) && (
-              <TitledContent
+              <CHRList
                 title={
-                  <CardTitle className="px-5 py-4">
+                  <>
                     Others <TitleSeparator /> {props.tag.tag.issue.name}
-                  </CardTitle>
+                  </>
                 }
-                stickyTitle
-              >
-                {props.otherCelebsWithIssue!.map((c) => {
-                  return (
-                    <CelebHorizontalRect
-                      className="lg:-mt-[1px]"
-                      key={c._id}
-                      link={`/${c.slug}`}
-                    >
-                      <CHRImage
-                        celebImageProps={{
-                          name: c.name,
-                          picture: c.picture,
-                          alt: c.name,
-                        }}
-                      />
-
-                      <CHRContent title={c.name} body={renderTags(c.tags)} />
-                    </CelebHorizontalRect>
-                  );
-                })}
-              </TitledContent>
+                celebs={props.otherCelebsWithIssue!}
+                renderBody={(c) => renderTags(c.tags)}
+              />
             )}
           </div>
         </div>
