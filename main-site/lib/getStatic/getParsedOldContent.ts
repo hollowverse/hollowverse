@@ -18,7 +18,7 @@ export type OldContentFrontMatter = {
   sources: Source[];
 };
 
-export const getParsedOldContent = async (oldContent: string) => {
+export function extractFrontMatter(oldContent: string) {
   const { data: oldContentFrontMatter, content: oldContentMarkdown } = matter(
     oldContent,
   ) as any as {
@@ -26,23 +26,45 @@ export const getParsedOldContent = async (oldContent: string) => {
     content: string;
   };
 
-  const relatedPeople = await sanityClient.fetch<
+  return {
+    oldContentFrontMatter,
+    oldContentMarkdown,
+  };
+}
+
+export const getParsedOldContent = async (oldContent: string) => {
+  const { oldContentFrontMatter, oldContentMarkdown } =
+    extractFrontMatter(oldContent);
+
+  const unprocessedRelatedPeople = await sanityClient.fetch<
     {
       name: string;
       slug: string;
       picture: Picture;
+      oldContent: string;
     }[]
   >(
     'old-content-related-people',
     groq`*[_type == 'celeb' && slug.current in $slugs][0..3]{
       name,
       'slug': slug.current,
-      'picture': picture.asset->{${pictureProjection}}
+      'picture': picture.asset->{${pictureProjection}},
+      oldContent
     }`,
     {
       slugs: oldContentFrontMatter.relatedPeople,
     },
   )!;
+
+  const relatedPeople = unprocessedRelatedPeople.map((rp) => {
+    const { oldContent, ...rest } = rp;
+    const frontMatter = extractFrontMatter(oldContent);
+
+    return {
+      ...rest,
+      summaries: frontMatter.oldContentFrontMatter.summaries,
+    };
+  });
 
   const parsedOldContent = {
     ...oldContentFrontMatter,

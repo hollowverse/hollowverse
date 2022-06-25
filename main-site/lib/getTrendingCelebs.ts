@@ -2,6 +2,7 @@
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
+import { Summaries } from '~/lib/getStatic/getParsedOldContent';
 import { Picture } from '~/lib/groq/picture.projection';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
@@ -79,7 +80,12 @@ async function getGaTopPages() {
   return pages;
 }
 
-export type TrendingCelebs = { name: string; slug: string; picture: Picture }[];
+export type TrendingCelebs = {
+  name: string;
+  slug: string;
+  picture: Picture;
+  summaries: Summaries;
+}[];
 
 export async function getTrendingCelebs() {
   const gaTopPages = (await getGaTopPages()) as string[];
