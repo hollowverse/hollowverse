@@ -1,6 +1,4 @@
-import React from 'react';
 import dynamic from 'next/dynamic';
-import { Json } from '~/lib/types';
 
 const ReactJson = dynamic(() => import('react-json-view'), {
   ssr: false,
