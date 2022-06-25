@@ -36,9 +36,11 @@ export const InterestingProfiles = (props: CelebPageProps) => {
             <CHRContent
               title={c.name}
               body={
-                <p className="overflow-hidden text-ellipsis whitespace-nowrap">
-                  {c.summaries.politicalViews} {c.summaries.religion}
-                </p>
+                c.summaries && (
+                  <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+                    {c.summaries.politicalViews} {c.summaries.religion}
+                  </p>
+                )
               }
             />
           </CelebHorizontalRect>

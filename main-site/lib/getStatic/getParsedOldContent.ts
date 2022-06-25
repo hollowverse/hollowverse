@@ -6,14 +6,14 @@ import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type Summaries = {
-  religion: string;
-  politicalViews: string;
+  religion?: string;
+  politicalViews?: string;
 };
 
 export type Source = { sourceUrl: string; sourceTitle: string };
 
 export type OldContentFrontMatter = {
-  summaries: Summaries;
+  summaries?: Summaries;
   relatedPeople: string[];
   sources: Source[];
 };
