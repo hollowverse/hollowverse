@@ -1,7 +1,11 @@
 import groq from 'groq';
+import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
+import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
+import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type FactPageProps = NonNullable<
@@ -28,16 +32,24 @@ export const getStaticProps = async ({
       notFound: true,
     };
   }
-  const fact = await sanityClient.fetch<Fact>(
+  const results = await sanityClient.fetch<{
+    fact: Fact | null;
+    orderOfIssues: OrderOfIssues;
+  }>(
     'fact-page-fact-data',
-    groq`*[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
-      ${factProjection}
+    groq`{
+      'fact': *[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
+        ${factProjection}
+      },
+      'orderOfIssues': ${orderOfIssuesGroq}
     }`,
     {
       factId: params.factId,
       celebId: celeb._id,
     },
-  );
+  )!;
+
+  const { fact, orderOfIssues } = results;
 
   if (!fact) {
     return {
@@ -45,10 +57,21 @@ export const getStaticProps = async ({
     };
   }
 
+  const tag = fact.tags[0];
+
+  const { otherCelebsWithTag, otherCelebsWithIssue } = await getRelatedCelebs(
+    tag.tag._id,
+    tag.tag.issue._id,
+    params.celeb,
+    uniq([tag.tag.issue.name, ...orderOfIssues]),
+  );
+
   return {
     props: {
       celeb,
       fact,
+      otherCelebsWithIssue,
+      otherCelebsWithTag,
     },
   };
 };

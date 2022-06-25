@@ -1,1 +1,2 @@
-This folder contains Sanity GROQ projections and their type definitions
+This folder contains Sanity GROQ queries, projections
+and their type definitions

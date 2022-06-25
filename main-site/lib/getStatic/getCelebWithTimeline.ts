@@ -2,6 +2,7 @@ import groq from 'groq';
 import { getTagTimeline, TagTimeline } from '~/lib/getStatic/getTagTimeline';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
+import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
 import {
   OrderOfIssues,
   orderOfIssuesProjection,
@@ -32,9 +33,7 @@ export async function getCelebWithTimeline<T extends boolean>(
           ${factProjection}
         }
       },
-      'orderOfIssues': *[_type == 'orderOfTopics'][0]{
-        'issues': ${orderOfIssuesProjection}
-      }.issues
+      'orderOfIssues': ${orderOfIssuesGroq}
     }`,
     { slug },
   )!;

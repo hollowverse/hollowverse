@@ -1,6 +1,7 @@
 import { shuffle, uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
 import { groupCelebTags } from '~/lib/getStatic/groupCelebTags';
 import {
@@ -64,42 +65,20 @@ export const getStaticProps = async ({
   );
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.celebTagId)!;
 
-  const otherCelebs = (await sanityClient.fetch<TagPageRelatedCelebsGroq>(
-    'tag-page-related-celebs',
-    tagPageRelatedCelebsGroq,
-    {
-      tagId: params.celebTagId,
-      issueId: tag.tag.issue._id,
-    },
-  ))!;
-
-  const process = (tagPageRelatedCelebs: Nullish<TagPageRelatedCeleb[]>) => {
-    return tagPageRelatedCelebs
-      ? shuffle(
-          groupCelebTags(
-            tagPageRelatedCelebs,
-            uniq([tag.tag.issue.name, ...results.orderOfIssues]),
-          )
-            ?.filter((cwt: any) => cwt.slug !== params.celeb)
-            ?.slice(0, 6)
-            ?.map((c) => ({
-              ...c,
-              tags: c.tags.filter((t) => t.tag._id !== tag.tag._id).slice(0, 3),
-            })),
-        )
-      : null;
-  };
-
-  const otherCelebsWithTag = process(otherCelebs.withTag);
-  const otherCelebsWithIssue = process(otherCelebs.withIssue);
+  const { otherCelebsWithTag, otherCelebsWithIssue } = await getRelatedCelebs(
+    params.celebTagId,
+    tag.tag.issue._id,
+    params.celeb,
+    uniq([tag.tag.issue.name, ...results.orderOfIssues]),
+  );
 
   return {
     props: {
       celeb: results.celeb,
       tag,
       tagFacts,
-      otherCelebsWithTag: otherCelebsWithTag,
-      otherCelebsWithIssue: otherCelebsWithIssue,
+      otherCelebsWithTag,
+      otherCelebsWithIssue,
     },
   };
 };
