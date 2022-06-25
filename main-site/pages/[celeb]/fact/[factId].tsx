@@ -1,5 +1,4 @@
-import { Link } from '~/lib/Link';
-import React from 'react';
+import { isEmpty } from 'lodash-es';
 import { BiCalendar, BiLink, BiUserCircle } from 'react-icons/bi';
 import { FiMessageSquare } from 'react-icons/fi';
 import { CelebImage } from '~/components/CelebImage';
@@ -9,12 +8,16 @@ import { useFact } from '~/components/hooks/useFact';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
+import { TitleSeparator } from '~/components/TitleSeparator';
+import { Card } from '~/components/ui/Card';
+import { CHRList } from '~/components/ui/CHRList';
+import { TitledCard } from '~/components/ui/TitledCard';
+import { formatFactDate } from '~/lib/date';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
-import { Card } from '~/components/ui/Card';
-import { TitledCard } from '~/components/ui/TitledCard';
-import { formatFactDate } from '~/lib/date';
+import { Link } from '~/lib/Link';
+import { renderTags } from '~/pages/[celeb]/tag/[celebTagId]';
 
 function getTextSummary(name: string, fact: TFact, length: number) {
   let text: string;
@@ -28,7 +31,13 @@ function getTextSummary(name: string, fact: TFact, length: number) {
   return text.substring(0, length) + '...';
 }
 
-export default function FactPage({ celeb, fact }: FactPageProps) {
+export default function FactPage({
+  celeb,
+  fact,
+  otherCelebsWithIssue,
+  otherCelebsWithTag,
+  tag,
+}: FactPageProps) {
   const { contributorUsername, commentCount } = useFact(fact);
   const sourceHost = getSourceHost(fact.source);
 
@@ -39,8 +48,8 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
       allowSearchEngines
       pathname={`${celeb.slug}/fact/${fact._id}`}
     >
-      <div className="h-container flex flex-col gap-5">
-        <div className="mx-5 mt-5 flex items-center gap-5">
+      <div className="h-container my-5 flex flex-col gap-5">
+        <div className="mx-5 flex items-center gap-5">
           <div className="relative aspect-square w-20">
             <CelebImage
               className="rounded-xl object-cover"
@@ -128,6 +137,30 @@ export default function FactPage({ celeb, fact }: FactPageProps) {
               ))}
           </div>
         </TitledCard>
+
+        {!isEmpty(otherCelebsWithTag) && (
+          <CHRList
+            title={
+              <>
+                Others <TitleSeparator /> {tag.tag.name}
+              </>
+            }
+            celebs={otherCelebsWithTag!}
+            renderBody={(c) => renderTags(c.tags)}
+          />
+        )}
+
+        {!isEmpty(otherCelebsWithIssue) && (
+          <CHRList
+            title={
+              <>
+                Others <TitleSeparator /> {tag.tag.issue.name}
+              </>
+            }
+            celebs={otherCelebsWithIssue!}
+            renderBody={(c) => renderTags(c.tags)}
+          />
+        )}
       </div>
     </Page>
   );

@@ -69,6 +69,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celeb,
+      tag,
       fact,
       otherCelebsWithIssue,
       otherCelebsWithTag,

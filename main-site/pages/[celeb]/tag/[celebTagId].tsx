@@ -7,13 +7,7 @@ import { Page } from '~/components/Page';
 import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
-import {
-  CelebHorizontalRect,
-  CHRContent,
-  CHRImage,
-} from '~/components/ui/CelebHorizontalRect';
 import { CHRList } from '~/components/ui/CHRList';
-import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
