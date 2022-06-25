@@ -1,4 +1,4 @@
-import { shuffle } from 'lodash-es';
+import { shuffle, uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
@@ -76,7 +76,10 @@ export const getStaticProps = async ({
   const process = (tagPageRelatedCelebs: Nullish<TagPageRelatedCeleb[]>) => {
     return tagPageRelatedCelebs
       ? shuffle(
-          groupCelebTags(tagPageRelatedCelebs, results.orderOfIssues)
+          groupCelebTags(
+            tagPageRelatedCelebs,
+            uniq([tag.tag.issue.name, ...results.orderOfIssues]),
+          )
             ?.filter((cwt: any) => cwt.slug !== params.celeb)
             ?.slice(0, 6)
             ?.map((c) => ({
