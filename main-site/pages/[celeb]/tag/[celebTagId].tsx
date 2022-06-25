@@ -8,6 +8,7 @@ import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import { CHRList } from '~/components/ui/CHRList';
+import { ReturnToCelebViews } from '~/components/ui/ReturnToCelebViewsButton';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
@@ -68,18 +69,10 @@ export default function TagPage(props: TagPageProps) {
               }
             />
 
-            <Link href={`/${props.celeb.slug}`} passHref>
-              <a
-                className={c(
-                  `ml-5 flex w-fit items-center gap-1.5 rounded-lg bg-gray-200 px-3 py-2.5 text-neutral-600 shadow-sm transition focus:border-purple-300 active:bg-opacity-10`,
-                )}
-              >
-                <FaChevronDown
-                  className={'rotate-90 text-xl text-purple-500'}
-                />
-                List of other {props.celeb.name} views
-              </a>
-            </Link>
+            <ReturnToCelebViews
+              slug={props.celeb.slug}
+              name={props.celeb.name}
+            />
 
             {!isEmpty(props.otherCelebsWithTag) && (
               <CHRList

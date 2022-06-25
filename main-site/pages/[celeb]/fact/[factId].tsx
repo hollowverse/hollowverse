@@ -11,6 +11,7 @@ import { Spinner } from '~/components/Spinner';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { Card } from '~/components/ui/Card';
 import { CHRList } from '~/components/ui/CHRList';
+import { ReturnToCelebViews } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { formatFactDate } from '~/lib/date';
 import { getSourceHost } from '~/lib/getSourceHost';
@@ -49,25 +50,25 @@ export default function FactPage({
       pathname={`${celeb.slug}/fact/${fact._id}`}
     >
       <div className="h-container my-5 flex flex-col gap-5">
-        <div className="mx-5 flex items-center gap-5">
-          <div className="relative aspect-square w-20">
-            <CelebImage
-              className="rounded-xl object-cover"
-              picture={celeb.picture}
-              name={celeb.name}
-            />
-          </div>
-          <div>
-            <Link href={`/${celeb.slug}`} passHref>
-              <a>
+        <Link href={`/${celeb.slug}`} passHref>
+          <a>
+            <div className="mx-5 flex items-center gap-5">
+              <div className="relative aspect-square w-20">
+                <CelebImage
+                  className="rounded-xl object-cover"
+                  picture={celeb.picture}
+                  name={celeb.name}
+                />
+              </div>
+              <div>
                 <h1 className="text-2xl font-bold">{celeb.name}</h1>
-              </a>
-            </Link>
-            <h2 className="text-xl text-neutral-500">
-              on {fact.issues[0].name}
-            </h2>
-          </div>
-        </div>
+                <h2 className="text-xl text-neutral-500">
+                  on {fact.issues[0].name}
+                </h2>
+              </div>
+            </div>
+          </a>
+        </Link>
 
         <Card>
           <LovelyTopBorder />
@@ -111,6 +112,8 @@ export default function FactPage({
             </div>
           </div>
         </Card>
+
+        <ReturnToCelebViews slug={celeb.slug} name={celeb.name} />
 
         <TitledCard titledContentProps={{ title: 'Comments' }}>
           <div className="p-5">
