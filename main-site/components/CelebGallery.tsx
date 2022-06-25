@@ -10,7 +10,6 @@ export const CelebGallery: React.FC<{
   >['relatedPeople'];
   prefetch?: boolean;
   className?: string;
-  small?: boolean;
 }> = (props) => {
   return (
     <div
@@ -32,11 +31,7 @@ export const CelebGallery: React.FC<{
           >
             <a
               className={c(
-                'm-2 min-w-[150px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl',
-                {
-                  'max-w-[160px]': props.small,
-                  'max-w-[200px]': !props.small,
-                },
+                'm-2 min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl',
               )}
             >
               <div className="relative z-0 w-full">
