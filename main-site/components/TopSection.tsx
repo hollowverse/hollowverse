@@ -13,7 +13,7 @@ export const TopSection = (props: CelebWithTimeline) => {
       <Link href={`/${props.slug}`} passHref>
         <a>
           <div className="flex flex-wrap items-end gap-x-5">
-            <div className="w-[150px] rounded-md">
+            <div className="w-[150px]">
               <CelebImage
                 className="rounded-md object-cover"
                 key={props.name + '-topSection-image'}

@@ -31,7 +31,7 @@ export const CelebGallery: React.FC<{
           >
             <a
               className={c(
-                'm-2 min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden rounded-xl',
+                'min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden',
               )}
             >
               <div className="relative z-0 w-full">

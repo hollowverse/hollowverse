@@ -72,7 +72,7 @@ export default function Index(props: HomepageProps) {
                 <CelebGallery
                   prefetch={false}
                   celebGalleryItems={props.trendingCelebs}
-                  className="flex flex-row flex-nowrap justify-start"
+                  className="flex flex-row flex-nowrap justify-start gap-[1px]"
                 />
                 <div className="FILLER min-w-[50px] flex-grow" />
               </div>
