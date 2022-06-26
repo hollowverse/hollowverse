@@ -2,9 +2,9 @@ import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
 import { createGoBack } from '~/e2e-tests/helpers';
 import { relatedCelebsTestFragment } from '~/e2e-tests/relatedCelebs.e2e-test-fragment';
-import { testUrl } from '~/e2e-tests/test-url';
+import { testUrl } from '~/e2e-tests/testUrl';
 
-test.only('Fact page E2E test', async ({ page }) => {
+test('Fact page E2E test', async ({ page }) => {
   await page.goto(
     `${testUrl}/kim-kardashian/fact/3bd2c9a4-2569-4905-be3d-af0ce39be82a`,
   );

@@ -25,7 +25,10 @@ export const TopSection = (props: CelebWithTimeline) => {
               <span className="text-lg font-normal tracking-wide text-neutral-500">
                 The Views of
               </span>{' '}
-              <span className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600">
+              <span
+                id="main-name"
+                className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600"
+              >
                 {props.name}
               </span>
             </h1>

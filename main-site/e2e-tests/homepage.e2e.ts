@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
-import { testUrl } from '~/e2e-tests/test-url';
+import { testUrl } from '~/e2e-tests/testUrl';
 
 test('Homepage E2E test', async ({ page }) => {
   await page.goto(testUrl);

@@ -53,27 +53,29 @@ export default function TagPage(props: TagPageProps) {
         </StickyAppBar>
       }
     >
-      <div id="content" className="h-container py-5">
-        <div className="flex flex-col gap-7">
-          <div className="flex flex-col gap-5">
-            <FactGroup
-              factGroup={props.tagFacts}
-              celebName={props.celeb.name}
-              slug={props.celeb.slug}
-              title={
-                <CardTitle>
-                  {props.celeb.name} <TitleSeparator />{' '}
-                  {props.tag.tag.issue.name}
-                </CardTitle>
-              }
-            />
+      <div
+        id={`celeb-tag-page-${props.tag.tag._id}`}
+        className="h-container py-5"
+      >
+        <div className="flex flex-col gap-5" id="content">
+          <FactGroup
+            factGroup={props.tagFacts}
+            celebName={props.celeb.name}
+            slug={props.celeb.slug}
+            title={
+              <CardTitle>
+                {props.celeb.name} <TitleSeparator /> {props.tag.tag.issue.name}
+              </CardTitle>
+            }
+          />
 
-            <ReturnToCelebViewsButton
-              slug={props.celeb.slug}
-              name={props.celeb.name}
-            />
+          <ReturnToCelebViewsButton
+            slug={props.celeb.slug}
+            name={props.celeb.name}
+          />
 
-            {!isEmpty(props.otherCelebsWithTag) && (
+          {!isEmpty(props.otherCelebsWithTag) && (
+            <div id="related-celebs-tag">
               <CHRList
                 title={
                   <>
@@ -86,9 +88,11 @@ export default function TagPage(props: TagPageProps) {
                 celebs={props.otherCelebsWithTag!}
                 renderBody={(c) => renderTags(c.tags)}
               />
-            )}
+            </div>
+          )}
 
-            {!isEmpty(props.otherCelebsWithIssue) && (
+          {!isEmpty(props.otherCelebsWithIssue) && (
+            <div id="related-celebs-issue">
               <CHRList
                 title={
                   <>
@@ -98,8 +102,8 @@ export default function TagPage(props: TagPageProps) {
                 celebs={props.otherCelebsWithIssue!}
                 renderBody={(c) => renderTags(c.tags)}
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </Page>

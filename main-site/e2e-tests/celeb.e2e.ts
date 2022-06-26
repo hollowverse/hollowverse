@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
-import { testUrl } from '~/e2e-tests/test-url';
+import { testUrl } from '~/e2e-tests/testUrl';
 
 test('Celeb page E2E test', async ({ page }) => {
   await page.goto(`${testUrl}/kim-kardashian`);
