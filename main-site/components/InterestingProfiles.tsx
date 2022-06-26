@@ -5,17 +5,19 @@ export const InterestingProfiles = (props: CelebPageProps) => {
   const relatedPeople = props.celeb.oldContent!.relatedPeople;
 
   return (
-    <CHRList
-      stickyTitle={false}
-      title={<>Other interesting profiles</>}
-      celebs={relatedPeople}
-      renderBody={(c) =>
-        c.summaries ? (
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap">
-            {c.summaries.politicalViews} {c.summaries.religion}
-          </p>
-        ) : null
-      }
-    />
+    <div id="interesting-profiles">
+      <CHRList
+        stickyTitle={false}
+        title={<>Other interesting profiles</>}
+        celebs={relatedPeople}
+        renderBody={(c) =>
+          c.summaries ? (
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+              {c.summaries.politicalViews} {c.summaries.religion}
+            </p>
+          ) : null
+        }
+      />
+    </div>
   );
 };

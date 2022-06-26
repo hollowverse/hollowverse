@@ -21,6 +21,17 @@ test('Celeb page E2E test', async ({ page }) => {
   await page.goBack();
 
   await page.waitForSelector('#celeb-page');
+  await page.waitForSelector('#editorial-summary');
+  await page.waitForSelector('#editorial');
+  await page
+    .locator('#interesting-profiles >> :nth-match(#chr-item, 1)')
+    .click();
+  await page.waitForSelector('#celeb-page-kim-kardashian', {
+    state: 'detached',
+  });
+  await page.goBack();
+
+  await page.waitForSelector('#celeb-page-kim-kardashian');
 
   await factTestFragment(
     page,

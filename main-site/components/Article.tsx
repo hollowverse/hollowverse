@@ -24,7 +24,7 @@ export const Article = (
     >
       {oldContent.summaries && (
         <TitledCard titledContentProps={{ title: 'Summary' }}>
-          <div className="p-5">
+          <div className="p-5" id="editorial-summary">
             <p>{oldContent.summaries.religion}</p>
             <p className="mt-3">{oldContent.summaries.politicalViews}</p>
           </div>
@@ -33,6 +33,7 @@ export const Article = (
 
       <TitledCard titledContentProps={{ title: 'Editorial' }}>
         <div
+          id="editorial"
           className={c(s.Article, 'break-normal p-5 leading-relaxed')}
           dangerouslySetInnerHTML={{ __html: oldContent.article }}
         />

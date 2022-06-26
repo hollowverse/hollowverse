@@ -41,6 +41,7 @@ export function CHRList<T>(props: {
       {props.celebs.map((c) => {
         return (
           <CelebHorizontalRect
+            id="chr-item"
             className="lg:-mt-[1px]"
             key={c.slug}
             link={`/${c.slug}`}
