@@ -2,7 +2,10 @@ import { FaChevronDown } from 'react-icons/fa';
 import { c } from '~/lib/c';
 import { Link } from '~/lib/Link';
 
-export function ReturnToCelebViews(props: { slug: string; name: string }) {
+export function ReturnToCelebViewsButton(props: {
+  slug: string;
+  name: string;
+}) {
   return (
     <Link href={`/${props.slug}`} passHref>
       <a

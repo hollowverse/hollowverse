@@ -1,6 +1,5 @@
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { FaChevronDown } from 'react-icons/fa';
 import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { Page } from '~/components/Page';
@@ -8,11 +7,10 @@ import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import { CHRList } from '~/components/ui/CHRList';
-import { ReturnToCelebViews } from '~/components/ui/ReturnToCelebViewsButton';
+import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
-import { Link } from '~/lib/Link';
 import { ReactElementProps } from '~/lib/types';
 
 export function CardTitle(
@@ -44,10 +42,10 @@ export default function TagPage(props: TagPageProps) {
 
   return (
     <Page
-      title={`${name}'s religion and political views`}
-      description={`A collection of everything political or religious that ${name} said or did.`}
+      title={`${name} - ${props.tag.tag.name}`}
+      description={`${name}'s views on ${props.tag.tag.issue.name}`}
       allowSearchEngines
-      pathname={props.celeb.slug}
+      pathname={`/${props.celeb.slug}/tag/${props.tag.tag._id}`}
       appBar={
         <StickyAppBar>
           <TopSection {...props.celeb} />
@@ -69,7 +67,7 @@ export default function TagPage(props: TagPageProps) {
               }
             />
 
-            <ReturnToCelebViews
+            <ReturnToCelebViewsButton
               slug={props.celeb.slug}
               name={props.celeb.name}
             />

@@ -11,7 +11,7 @@ import { Spinner } from '~/components/Spinner';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { Card } from '~/components/ui/Card';
 import { CHRList } from '~/components/ui/CHRList';
-import { ReturnToCelebViews } from '~/components/ui/ReturnToCelebViewsButton';
+import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { formatFactDate } from '~/lib/date';
 import { getSourceHost } from '~/lib/getSourceHost';
@@ -113,7 +113,7 @@ export default function FactPage({
           </div>
         </Card>
 
-        <ReturnToCelebViews slug={celeb.slug} name={celeb.name} />
+        <ReturnToCelebViewsButton slug={celeb.slug} name={celeb.name} />
 
         <TitledCard titledContentProps={{ title: 'Comments' }}>
           <div className="p-5">
