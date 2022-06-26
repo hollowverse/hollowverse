@@ -13,6 +13,7 @@ import { TitledCard } from '~/components/ui/TitledCard';
 export default function Latest(p: any) {
   return (
     <Page
+      id="latest-facts-page"
       title="The latest celebrity religion and politics information in Hollowverse"
       description="The latest Facts added to Hollowverse"
       pathname="~latest"

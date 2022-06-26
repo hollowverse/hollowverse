@@ -6,6 +6,7 @@ import { Card } from '~/components/ui/Card';
 export default function About() {
   return (
     <Page
+      id="about-page"
       title={`About`}
       description={`About Hollowverse and contact info`}
       pathname={`~about`}

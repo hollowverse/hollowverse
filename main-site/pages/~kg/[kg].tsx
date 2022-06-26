@@ -10,6 +10,7 @@ import { Card } from '~/components/ui/Card';
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   return (
     <Page
+      id="knowledge-graph-page"
       title={`Request to add ${params.name}`}
       description={`Request to add ${params.name} to Hollowverse`}
       pathname={`~kg/${encodeURIComponent(params['@id'])}`}
