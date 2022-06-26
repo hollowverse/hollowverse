@@ -5,7 +5,7 @@ import { createGoBack } from '~/e2e-tests/helpers';
 import { relatedCelebsTestFragment } from '~/e2e-tests/relatedCelebs.e2e-test-fragment';
 import { testUrl } from '~/e2e-tests/testUrl';
 
-test.only('Tag page E2E test', async ({ page }) => {
+test('Tag page E2E test', async ({ page }) => {
   const tagId = '304bc74d-33aa-4133-b7b1-9836c97557fd';
 
   await page.goto(`${testUrl}/kim-kardashian/tag/${tagId}`);

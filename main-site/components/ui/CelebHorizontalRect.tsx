@@ -41,6 +41,7 @@ export function CelebHorizontalRect(
     <Link href={props.link} passHref>
       <a>
         <div
+          id="chr-item"
           {...rest}
           className={c(
             'relative grid w-full grid-cols-10 overflow-hidden border-b bg-white lg:border-x lg:border-t',

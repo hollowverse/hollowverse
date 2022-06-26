@@ -43,6 +43,7 @@ export default function Search() {
             </Link>
 
             <DebounceInput
+              id="search-field"
               placeholder="Search Hollowverse"
               className="textbox-border w-full px-3 pb-1 pt-1.5 text-[1rem] shadow-inner"
               value={hook.query}
@@ -54,6 +55,7 @@ export default function Search() {
 
             {!isEmpty(hook.query) && (
               <button
+                id="clear-search"
                 onClick={hook.onClearResultsClick}
                 className="absolute right-2.5"
               >
@@ -77,7 +79,9 @@ export default function Search() {
           )) ||
           (isEmpty(hook.searchResults?.results) && (
             <BeforeResultsContainer>
-              We couldn&apos;t find anyone by that name!
+              <span id="no-results">
+                We couldn&apos;t find anyone by that name!
+              </span>
             </BeforeResultsContainer>
           )) || <SearchResults {...hook.searchResults!} />}
       </div>
