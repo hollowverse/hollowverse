@@ -83,7 +83,7 @@ export const Fact: React.FC<{
   const displayOpenGraphImage = props.fact.openGraphImage && showOgImage;
 
   return (
-    <section className="relative z-0 flex flex-col gap-5">
+    <section id="fact" className="relative z-0 flex flex-col gap-5">
       {link && (
         <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
           <a

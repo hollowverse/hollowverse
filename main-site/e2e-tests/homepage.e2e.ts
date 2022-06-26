@@ -1,10 +1,8 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { testUrl } from '~/e2e-tests/test-url';
 
 test('Homepage E2E test', async ({ page }) => {
-  page.setDefaultTimeout(15000);
-
   await page.goto(testUrl);
 
   await page.waitForSelector('#homepage');
@@ -31,6 +29,4 @@ test('Homepage E2E test', async ({ page }) => {
     ':nth-match(#homepage-latest-fact, 3)',
     '#homepage',
   );
-
-  await page.pause();
 });
