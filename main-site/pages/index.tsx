@@ -33,6 +33,7 @@ export default function Index(props: HomepageProps) {
       pathname=""
       allowSearchEngines
       className="text-neutral-600"
+      id="homepage"
       appBar={
         <Container navClasses="flex-col py-3">
           <Logo className="justify-center text-3xl" />
@@ -55,7 +56,10 @@ export default function Index(props: HomepageProps) {
               }}
               passHref
             >
-              <a className="textbox-border flex h-16 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-white hover:text-gray-400">
+              <a
+                id="homepage-search"
+                className="textbox-border flex h-16 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-white hover:text-gray-400"
+              >
                 Search for a celebrity{' '}
                 <FaSearch aria-hidden className="text-xl" />
               </a>
@@ -106,9 +110,10 @@ export default function Index(props: HomepageProps) {
               }
             >
               {facts.map((f: any) => {
+                console.log('facts.length', facts.length);
                 const cardTitle = (
                   <Link passHref href={`/${f.celeb.slug}`}>
-                    <a>
+                    <a id="homepage-latest-fact-title">
                       <div className="flex flex-row items-center gap-3">
                         <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
                           <CelebImage
@@ -130,21 +135,22 @@ export default function Index(props: HomepageProps) {
                 );
 
                 return (
-                  <TitledCard
-                    titledContentProps={{
-                      title: cardTitle,
-                    }}
-                    key={f._id}
-                  >
-                    <div className="p-5">
-                      <Fact
-                        link
-                        fact={f}
-                        celebName={f.celeb.name}
-                        slug={f.celeb.slug}
-                      />
-                    </div>
-                  </TitledCard>
+                  <div key={f._id} id="homepage-latest-fact">
+                    <TitledCard
+                      titledContentProps={{
+                        title: cardTitle,
+                      }}
+                    >
+                      <div className="p-5">
+                        <Fact
+                          link
+                          fact={f}
+                          celebName={f.celeb.name}
+                          slug={f.celeb.slug}
+                        />
+                      </div>
+                    </TitledCard>
+                  </div>
                 );
               })}
             </InfiniteScroll>

@@ -19,6 +19,7 @@
     "lighthouse-live": "cross-env URL_FILE='lighthouse/live.txt' npm run lighthouse",
     "manual-validation": "cross-env URL_FILE='lighthouse/local.txt' playwright test",
     "manual-validation-live": "cross-env URL_FILE='lighthouse/live.txt' playwright test",
+    "e2e": "playwright test",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999"
   },

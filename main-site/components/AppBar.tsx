@@ -34,12 +34,15 @@ export function Logo(props: { className?: string } = {}) {
   return (
     <div
       className={c(
-        'LOGO flex w-full items-center default:text-2xl',
+        'flex w-full items-center default:text-2xl',
         props.className,
       )}
     >
       <Link passHref href="/">
-        <a className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text font-extrabold uppercase tracking-tight text-transparent">
+        <a
+          id="logo"
+          className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text font-extrabold uppercase tracking-tight text-transparent"
+        >
           Hollowverse
         </a>
       </Link>

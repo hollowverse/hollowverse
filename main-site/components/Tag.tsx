@@ -15,6 +15,7 @@ export function Tag(
   return (
     <Link href={`/${props.slug}/tag/${props.tagId}#content`} passHref>
       <a
+        id="tag"
         className={c(
           'pointer-events-auto m-0 box-border flex gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm text-neutral-700',
           {

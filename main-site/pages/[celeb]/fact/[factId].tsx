@@ -44,6 +44,7 @@ export default function FactPage({
 
   return (
     <Page
+      id="fact-page"
       title={getTextSummary(celeb.name, fact, 55)}
       description={getTextSummary(celeb.name, fact, 145)}
       allowSearchEngines

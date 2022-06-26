@@ -30,6 +30,7 @@ export const CelebGallery: React.FC<{
             prefetch={props.prefetch === false ? false : undefined}
           >
             <a
+              id="celeb-gallery-item"
               className={c(
                 'min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden',
               )}

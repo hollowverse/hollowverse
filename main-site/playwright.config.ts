@@ -7,13 +7,23 @@ import { devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
+if (!process.env.URL) {
+  throw new Error(
+    'URL env var was not set. Use `URL=<PROTOCOL:HOSTNAME> npm run e2e` to set it',
+  );
+}
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './lib/integration-tests',
+  testMatch: /.*\.e2e\.ts/,
+
+  testDir: './e2e-tests',
+
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
+
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -42,13 +52,13 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: {
-        headless: false,
-        ...devices['Desktop Chrome'],
-      },
-    },
+    // {
+    //   name: 'chromium',
+    //   use: {
+    //     headless: false,
+    //     ...devices['Desktop Chrome'],
+    //   },
+    // },
 
     /* Test against mobile viewports. */
     {

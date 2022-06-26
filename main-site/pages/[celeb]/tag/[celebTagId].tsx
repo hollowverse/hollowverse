@@ -42,6 +42,7 @@ export default function TagPage(props: TagPageProps) {
 
   return (
     <Page
+      id="celeb-tag-page"
       title={`${name} - ${props.tag.tag.name}`}
       description={`${name}'s views on ${props.tag.tag.issue.name}`}
       allowSearchEngines

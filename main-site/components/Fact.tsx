@@ -86,7 +86,10 @@ export const Fact: React.FC<{
     <section className="relative z-0 flex flex-col gap-5">
       {link && (
         <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
-          <a className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50">
+          <a
+            id="fact-details"
+            className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50"
+          >
             <span className="invisible">Fact details</span>
           </a>
         </Link>
@@ -151,7 +154,10 @@ export const Fact: React.FC<{
         {showFooter && (
           <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
             <Link href={`${props.fact.forumLink}#reply`} passHref>
-              <a className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300">
+              <a
+                id="fact-comments-link"
+                className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300"
+              >
                 <BiMessage className="text-lg" />
                 Comments
               </a>

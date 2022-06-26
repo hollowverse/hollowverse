@@ -17,6 +17,7 @@ export default function Celeb(props: CelebPageProps) {
       description={`A collection of everything political or religious that ${name} said or did.`}
       allowSearchEngines
       pathname={props.celeb.slug}
+      id="celeb-page"
       appBar={
         <StickyAppBar>
           <TopSection {...props.celeb} />

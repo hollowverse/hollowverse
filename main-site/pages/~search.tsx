@@ -23,6 +23,7 @@ export default function Search() {
       description={`Search the religions and political views of celebrities`}
       pathname={`~search`}
       allowSearchEngines
+      id="search-page"
       appBar={
         <AppBar.Container>
           <div className="relative flex w-full items-center text-neutral-700">
@@ -34,6 +35,7 @@ export default function Search() {
                     hook.goBack();
                   }
                 }}
+                id="search-back-button"
                 className="mr-2.5 rounded-md bg-gray-100 p-2.5 hover:bg-gray-200 active:bg-gray-200"
               >
                 <FaChevronLeft />
