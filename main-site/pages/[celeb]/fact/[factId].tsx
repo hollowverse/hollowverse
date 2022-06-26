@@ -52,7 +52,7 @@ export default function FactPage({
     >
       <div className="h-container my-5 flex flex-col gap-5">
         <Link href={`/${celeb.slug}`} passHref>
-          <a>
+          <a id="fact-page-header">
             <div className="mx-5 flex items-center gap-5">
               <div className="relative aspect-square w-20">
                 <CelebImage
@@ -117,7 +117,7 @@ export default function FactPage({
         <ReturnToCelebViewsButton slug={celeb.slug} name={celeb.name} />
 
         <TitledCard titledContentProps={{ title: 'Comments' }}>
-          <div className="p-5">
+          <div className="p-5" id="fact-page-comments">
             {(commentCount === null && (
               <div className="w-ful flex justify-center">
                 <Spinner />
@@ -143,27 +143,31 @@ export default function FactPage({
         </TitledCard>
 
         {!isEmpty(otherCelebsWithTag) && (
-          <CHRList
-            title={
-              <>
-                Others <TitleSeparator /> {tag.tag.name}
-              </>
-            }
-            celebs={otherCelebsWithTag!}
-            renderBody={(c) => renderTags(c.tags)}
-          />
+          <div id="related-celebs-tag">
+            <CHRList
+              title={
+                <>
+                  Others <TitleSeparator /> {tag.tag.name}
+                </>
+              }
+              celebs={otherCelebsWithTag!}
+              renderBody={(c) => renderTags(c.tags)}
+            />
+          </div>
         )}
 
         {!isEmpty(otherCelebsWithIssue) && (
-          <CHRList
-            title={
-              <>
-                Others <TitleSeparator /> {tag.tag.issue.name}
-              </>
-            }
-            celebs={otherCelebsWithIssue!}
-            renderBody={(c) => renderTags(c.tags)}
-          />
+          <div id="related-celebs-issue">
+            <CHRList
+              title={
+                <>
+                  Others <TitleSeparator /> {tag.tag.issue.name}
+                </>
+              }
+              celebs={otherCelebsWithIssue!}
+              renderBody={(c) => renderTags(c.tags)}
+            />
+          </div>
         )}
       </div>
     </Page>

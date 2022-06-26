@@ -37,7 +37,7 @@ function lowercaseFirstLetter(s: string) {
 
 function renderQuote(quote: string) {
   return (
-    <div className="my-3 flex gap-2">
+    <div className="my-3 flex gap-2" id="fact-quote">
       <div>
         <FaQuoteLeft className="text-2xl text-neutral-300" />
       </div>
@@ -48,7 +48,7 @@ function renderQuote(quote: string) {
 
 function renderContext(celebName: string, context: string) {
   return (
-    <p className="text-base text-neutral-500">
+    <p className="text-base text-neutral-500" id="fact-context">
       {celebName} said, {lowercaseFirstLetter(context)}
     </p>
   );
