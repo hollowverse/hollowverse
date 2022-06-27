@@ -1,4 +1,3 @@
-import React from 'react';
 import { RiHome2Line, RiQuillPenLine } from 'react-icons/ri';
 import { Page } from '~/components/Page';
 import { Card } from '~/components/ui/Card';

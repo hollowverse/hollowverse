@@ -1,6 +1,6 @@
-import { Fact } from '~/lib/groq/fact.projection';
 import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
 import { mockOrderOfIssues } from '~/lib/getStatic/tests/mockOrderOfIssues';
+import { Fact } from '~/lib/groq/fact.projection';
 
 test('transformation while keeping duplicates', () => {
   const copiedFacts = [...mockFacts];

@@ -2,17 +2,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { isArray, isEmpty } from 'lodash-es';
-import { Link } from '~/lib/Link';
-import React from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import { FaChevronLeft } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
 import * as AppBar from '~/components/AppBar';
-import { Page } from '~/components/Page';
-import { Spinner } from '~/components/Spinner';
 import { BeforeResultsContainer } from '~/components/BeforeResultsContainer';
-import { SearchResults } from '~/components/SearchResults';
 import { useSearch } from '~/components/hooks/useSearch';
+import { Page } from '~/components/Page';
+import { SearchResults } from '~/components/SearchResults';
+import { Spinner } from '~/components/Spinner';
+import { Link } from '~/lib/Link';
 
 export default function Search() {
   const hook = useSearch();

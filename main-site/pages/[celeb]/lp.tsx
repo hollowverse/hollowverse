@@ -1,4 +1,3 @@
-import React from 'react';
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
 
@@ -46,5 +45,5 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
   );
 }
 
-export { getStaticProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
 export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';

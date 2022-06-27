@@ -1,5 +1,4 @@
 import { isEmpty } from 'lodash-es';
-import React from 'react';
 import { StickyAppBar } from '~/components/AppBar';
 import { ContributeCta } from '~/components/ContributeCta';
 import { Facts } from '~/components/Facts';

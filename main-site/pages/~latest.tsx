@@ -1,14 +1,12 @@
 import groq from 'groq';
-import { Link } from '~/lib/Link';
-import React from 'react';
-import { Fact } from '~/components/Fact';
 import { CelebImage } from '~/components/CelebImage';
-import { factProjection } from '~/lib/groq/fact.projection';
+import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
-import { sanityClient } from '~/shared/lib/sanityio';
-import { Fact as TFact } from '~/lib/groq/fact.projection';
-import { Picture } from '~/lib/groq/picture.projection';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
+import { Picture } from '~/lib/groq/picture.projection';
+import { Link } from '~/lib/Link';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 export default function Latest(p: any) {
   return (

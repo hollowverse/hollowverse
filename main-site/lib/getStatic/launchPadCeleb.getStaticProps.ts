@@ -1,9 +1,9 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
+import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
+import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
-import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
-import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
 
 export async function getLaunchPadIssues() {
   return uniq(

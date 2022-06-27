@@ -3,10 +3,7 @@ import { getTagTimeline, TagTimeline } from '~/lib/getStatic/getTagTimeline';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
-import {
-  OrderOfIssues,
-  orderOfIssuesProjection,
-} from '~/lib/groq/orderOfIssues.projection';
+import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebWithTimeline = Celeb & { tagTimeline: TagTimeline };

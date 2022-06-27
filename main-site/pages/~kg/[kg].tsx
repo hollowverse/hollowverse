@@ -1,11 +1,10 @@
-import React from 'react';
-import { ContributeCta } from '~/components/ContributeCta';
-import { CelebImage } from '~/components/CelebImage';
-import { Page } from '~/components/Page';
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
-import { Link } from '~/lib/Link';
+import { CelebImage } from '~/components/CelebImage';
+import { ContributeCta } from '~/components/ContributeCta';
+import { Page } from '~/components/Page';
 import { Card } from '~/components/ui/Card';
+import { Link } from '~/lib/Link';
+import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   return (

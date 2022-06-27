@@ -4,8 +4,8 @@ import {
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
 import { getLaunchPadIssues } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
-import { log } from '~/shared/lib/log';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
+import { log } from '~/shared/lib/log';
 
 export const getStaticProps = async ({
   params,

@@ -1,17 +1,9 @@
-import { shuffle, uniq } from 'lodash-es';
+import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
-import { groupCelebTags } from '~/lib/getStatic/groupCelebTags';
-import {
-  TagPageRelatedCeleb,
-  TagPageRelatedCelebsGroq,
-  tagPageRelatedCelebsGroq,
-} from '~/lib/groq/tagPageRelatedCelebs.groq';
-import { Nullish } from '~/lib/types';
 import { log } from '~/shared/lib/log';
-import { sanityClient } from '~/shared/lib/sanityio';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
   return tagTimeline.some((tpair) =>
