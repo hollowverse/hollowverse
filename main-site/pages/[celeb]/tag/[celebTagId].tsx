@@ -1,5 +1,4 @@
 import { isEmpty } from 'lodash-es';
-import React from 'react';
 import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { Page } from '~/components/Page';
@@ -8,26 +7,8 @@ import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
-import { c } from '~/lib/c';
 import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
-import { ReactElementProps } from '~/lib/types';
-
-export function CardTitle(
-  props: ReactElementProps<'div'> & { component?: React.ElementType },
-) {
-  const Root = 'h2' || props.component;
-
-  return (
-    <Root
-      {...props}
-      className={c(
-        'flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg',
-        props.className,
-      )}
-    />
-  );
-}
 
 export function renderTags(tags: TTag[]) {
   return (
@@ -63,9 +44,9 @@ export default function TagPage(props: TagPageProps) {
             celebName={props.celeb.name}
             slug={props.celeb.slug}
             title={
-              <CardTitle>
+              <h2 className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
                 {props.celeb.name} <TitleSeparator /> {props.tag.tag.issue.name}
-              </CardTitle>
+              </h2>
             }
           />
 
