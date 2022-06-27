@@ -27,7 +27,7 @@ export function CHRContent(props: { title: ReactNode; body: ReactNode }) {
   return (
     <div className="align-center relative col-span-8 flex flex-col justify-center px-5">
       <h3 className="truncate text-lg font-semibold">{props.title}</h3>
-      <p className="text-xs text-gray-500 xs:text-base">{props.body}</p>
+      {props.body}
     </div>
   );
 }

@@ -30,7 +30,14 @@ export function SearchResults(params: NonNullable<SearchResults>) {
                 }}
               />
 
-              <CHRContent title={result.name} body={result.description} />
+              <CHRContent
+                title={result.name}
+                body={
+                  <p className="text-xs text-gray-500 xs:text-base">
+                    {result.description}
+                  </p>
+                }
+              />
 
               {!result.slug && (
                 <div className="pointer-events-none absolute top-5 bottom-5 right-0 my-auto mr-[3%] flex h-[99%] flex-col justify-center bg-gradient-to-r from-transparent via-white to-white pl-24">
