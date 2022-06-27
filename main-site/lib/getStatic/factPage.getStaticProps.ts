@@ -1,11 +1,12 @@
-import { sanityClient } from '~/shared/lib/sanityio';
-import {
-  FactPageCelebGroq,
-  factPageCelebGroq,
-} from '~/lib/groq/factPageCeleb.groq';
-import { FactPageGroq, factPageGroq } from '~/lib/groq/factPage.groq';
-import { format, parse } from 'date-fns';
+import groq from 'groq';
+import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
+import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
+import { Fact, factProjection } from '~/lib/groq/fact.projection';
+import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
+import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 export type FactPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
@@ -16,23 +17,39 @@ export const getStaticProps = async ({
 }: {
   params: { celeb: string; factId: string };
 }) => {
-  const celeb = (await sanityClient.fetch(
+  const celeb = await sanityClient.fetch<Celeb>(
     'fact-page-celeb-data',
-    factPageCelebGroq,
+    groq`*[_type == 'celeb' && slug.current == $slug][0]{
+      ${celebProjection}
+    }`,
     {
       slug: params.celeb,
     },
-  )) as FactPageCelebGroq | null;
+  );
 
   if (!celeb) {
     return {
       notFound: true,
     };
   }
-  const fact = (await sanityClient.fetch('fact-page-fact-data', factPageGroq, {
-    factId: params.factId,
-    celebId: celeb._id,
-  })) as FactPageGroq | null;
+  const results = await sanityClient.fetch<{
+    fact: Fact | null;
+    orderOfIssues: OrderOfIssues;
+  }>(
+    'fact-page-fact-data',
+    groq`{
+      'fact': *[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
+        ${factProjection}
+      },
+      'orderOfIssues': ${orderOfIssuesGroq}
+    }`,
+    {
+      factId: params.factId,
+      celebId: celeb._id,
+    },
+  )!;
+
+  const { fact, orderOfIssues } = results;
 
   if (!fact) {
     return {
@@ -40,13 +57,22 @@ export const getStaticProps = async ({
     };
   }
 
+  const tag = fact.tags[0];
+
+  const { otherCelebsWithTag, otherCelebsWithIssue } = await getRelatedCelebs(
+    tag.tag._id,
+    tag.tag.issue._id,
+    params.celeb,
+    uniq([tag.tag.issue.name, ...orderOfIssues]),
+  );
+
   return {
     props: {
       celeb,
-      fact: {
-        ...fact,
-        date: format(parse(fact.date, 'yyyy-MM-dd', new Date()), 'd LLL yyyy'),
-      },
+      tag,
+      fact,
+      otherCelebsWithIssue,
+      otherCelebsWithTag,
     },
   };
 };

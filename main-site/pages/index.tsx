@@ -1,19 +1,18 @@
 import groq from 'groq';
 import { GetStaticPropsResult } from 'next';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container, Logo } from '~/components/AppBar';
-import { Card } from '~/components/Card';
 import { CelebGallery } from '~/components/CelebGallery';
 import { CelebImage } from '~/components/CelebImage';
 import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
-import { formatFactDate } from '~/lib/date';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
-import { Fact as TFact, factPartialGroq } from '~/lib/groq/fact.partial.groq';
-import { Picture } from '~/lib/groq/picture.partial.groq';
+import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
+import { Picture } from '~/lib/groq/picture.projection';
 import { Link } from '~/lib/Link';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
@@ -34,6 +33,7 @@ export default function Index(props: HomepageProps) {
       pathname=""
       allowSearchEngines
       className="text-neutral-600"
+      id="homepage"
       appBar={
         <Container navClasses="flex-col py-3">
           <Logo className="justify-center text-3xl" />
@@ -56,7 +56,10 @@ export default function Index(props: HomepageProps) {
               }}
               passHref
             >
-              <a className="textbox-border flex h-16 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-white hover:text-gray-400">
+              <a
+                id="homepage-search"
+                className="textbox-border flex h-16 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-white hover:text-gray-400"
+              >
                 Search for a celebrity{' '}
                 <FaSearch aria-hidden className="text-xl" />
               </a>
@@ -73,7 +76,7 @@ export default function Index(props: HomepageProps) {
                 <CelebGallery
                   prefetch={false}
                   celebGalleryItems={props.trendingCelebs}
-                  className="flex flex-row flex-nowrap justify-start"
+                  className="flex flex-row flex-nowrap justify-start gap-[1px]"
                 />
                 <div className="FILLER min-w-[50px] flex-grow" />
               </div>
@@ -107,39 +110,46 @@ export default function Index(props: HomepageProps) {
               }
             >
               {facts.map((f: any) => {
+                const cardTitle = (
+                  <Link passHref href={`/${f.celeb.slug}`}>
+                    <a id="homepage-latest-fact-title">
+                      <div className="flex flex-row items-center gap-3">
+                        <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
+                          <CelebImage
+                            width={150}
+                            height={150}
+                            name={f.celeb.name}
+                            picture={f.celeb.picture}
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <p>{f.celeb.name}</p>
+                          <p className="text-base text-neutral-500">
+                            {f.issues[0].name}
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                );
+
                 return (
-                  <Card
-                    title={
-                      <Link passHref href={`/${f.celeb.slug}`}>
-                        <a>
-                          <div className="flex flex-row items-center gap-3">
-                            <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
-                              <CelebImage
-                                width={150}
-                                height={150}
-                                name={f.celeb.name}
-                                picture={f.celeb.picture}
-                              />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                              <p>{f.celeb.name}</p>
-                              <p className="text-base text-neutral-500">
-                                {f.issues[0].name}
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </Link>
-                    }
-                    key={f._id}
-                    disablePadding
-                  >
-                    <Fact
-                      fact={f}
-                      celebName={f.celeb.name}
-                      linkSlug={f.celeb.slug}
-                    />
-                  </Card>
+                  <div key={f._id} id="homepage-latest-fact">
+                    <TitledCard
+                      titledContentProps={{
+                        title: cardTitle,
+                      }}
+                    >
+                      <div className="p-5">
+                        <Fact
+                          link
+                          fact={f}
+                          celebName={f.celeb.name}
+                          slug={f.celeb.slug}
+                        />
+                      </div>
+                    </TitledCard>
+                  </div>
                 );
               })}
             </InfiniteScroll>
@@ -173,19 +183,14 @@ export async function getStaticProps(): Promise<
         },
         'slug': slug.current
       },
-      ${factPartialGroq}
+      ${factProjection}
     }`,
   );
-
-  const enhancedLatestFacts = latestFacts!.map((f) => ({
-    ...f,
-    date: formatFactDate(f.date),
-  }));
 
   return {
     props: {
       trendingCelebs,
-      latestFacts: enhancedLatestFacts,
+      latestFacts: latestFacts,
     },
     revalidate: 60 * 60 * 24, // revalidate every 24 hours
   };

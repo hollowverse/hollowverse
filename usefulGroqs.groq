@@ -36,3 +36,33 @@
 distinct(*[]{_type}{
   'count': _type + ': ' + string(count(*[_type == ^._type]))
 }.count)
+
+// Facts which have a tag ID
+*[
+  _type == 'fact' &&
+  celeb->slug.current != 'elon-musk' &&
+  '0be2d35e-7bdb-4b5c-8641-7492da57ba0f' in tags[].tag->_id
+] | order(date desc) {'name': celeb->name}
+
+// Celebs that have a certain tag
+*[ _type == "celeb" ]{
+  name,
+  'matchingFacts': *[
+    _type == 'fact' &&
+    celeb._ref == ^._id &&
+    '0be2d35e-7bdb-4b5c-8641-7492da57ba0f' in tags[].tag->_id
+  ][0]
+}[defined(matchingFacts)].name
+
+// Celebs having a certain tag (bug in GROQ prevents this from actually working)
+*[
+  _type == 'celeb' &&
+  count(*[
+    _type == 'fact' &&
+    '9171bdb4-1a9b-4cb0-a967-211790a44073' in tags[].tag->_id &&
+    celeb._ref == ^._id
+  ]) > 0
+]
+
+// ID in drafts and none drafts
+*[_id match '5fd9bfb3-dd98-4198-bb71-fa52e7244e23']

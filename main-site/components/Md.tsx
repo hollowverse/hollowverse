@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';

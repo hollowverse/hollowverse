@@ -1,9 +1,6 @@
 import groq from 'groq';
+import { orderOfIssuesProjection } from '~/lib/groq/orderOfIssues.projection';
 
-export type OrderOfIssues = string[];
-
-export const orderOfIssuesGroq = groq`
-*[_type == 'orderOfTopics'][0]{
-  'issues': topics[]->{name}.name
-}.issues
-`;
+export const orderOfIssuesGroq = groq`*[_type == 'orderOfTopics'][0]{
+  'issues': ${orderOfIssuesProjection}
+}.issues`;

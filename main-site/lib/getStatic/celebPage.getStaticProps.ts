@@ -1,14 +1,8 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
-import { factsDataTransform } from '~/lib/factsDataTransform';
-import { getParsedOldContent } from '~/lib/getParsedOldContent';
-import { getTags } from '~/lib/getTags';
-import { CelebGroqResponse, celebPageGroq } from '~/lib/groq/celebPage.groq';
-import {
-  orderOfIssuesGroq,
-  OrderOfIssues as TOrderOfIssues,
-} from '~/lib/groq/orderOfIssues.groq';
+import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
+import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
 import { log } from '~/shared/lib/log';
-import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
@@ -21,33 +15,25 @@ export const getStaticProps = async ({
 }) => {
   log('info', `celebPage getStaticProps called: ${params.celeb}`);
 
-  const celeb = (await sanityClient.fetch('celeb-page-data', celebPageGroq, {
-    slug: params.celeb,
-  })) as CelebGroqResponse | null;
+  const results = await getCelebWithTimeline(params.celeb, true);
 
-  if (!celeb) {
+  if (!results) {
     return {
       notFound: true,
     };
   }
 
-  const { oldContent, facts, ...rest } = celeb;
-  const [orderOfIssues, parsedOldContent] = await Promise.all([
-    sanityClient.fetch(
-      'order-of-issues',
-      orderOfIssuesGroq,
-    ) as Promise<TOrderOfIssues>,
-    oldContent ? await getParsedOldContent(oldContent) : null,
-  ]);
+  const { oldContent, facts, ...rest } = results.celeb;
+  const parsedOldContent = oldContent
+    ? await getParsedOldContent(oldContent)
+    : null;
 
-  const transformedFacts = factsDataTransform(facts, orderOfIssues);
-  const tags = getTags(facts, orderOfIssues);
+  const transformedFacts = factsDataTransform(facts, results.orderOfIssues);
 
   return {
     props: {
       celeb: {
         ...rest,
-        tags,
         facts: transformedFacts,
         oldContent: parsedOldContent,
       },

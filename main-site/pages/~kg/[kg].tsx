@@ -1,23 +1,26 @@
-import React from 'react';
-import { ContributeCta } from '~/components/ContributeCta';
-import { Card } from '~/components/Card';
-import { CelebImage } from '~/components/CelebImage';
-import { Page } from '~/components/Page';
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
+import { CelebImage } from '~/components/CelebImage';
+import { ContributeCta } from '~/components/ContributeCta';
+import { Page } from '~/components/Page';
+import { Card } from '~/components/ui/Card';
 import { Link } from '~/lib/Link';
+import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   return (
     <Page
+      id="knowledge-graph-page"
       title={`Request to add ${params.name}`}
       description={`Request to add ${params.name} to Hollowverse`}
       pathname={`~kg/${encodeURIComponent(params['@id'])}`}
       allowSearchEngines={false}
     >
-      <Card>
+      <Card topBorder={false}>
         <div className="p-5">
-          <div className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-5">
+          <div
+            id="kg-request-ack"
+            className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-5"
+          >
             <FaRegCheckCircle className="text-xl text-white" />
 
             <p className="text-white">
@@ -27,7 +30,10 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
           </div>
 
           <div className="mt-5 flex flex-col items-center gap-5">
-            <div className="aspect-square h-[200px] w-[200px] rounded-md">
+            <div
+              id="kg-celeb-image"
+              className="aspect-square h-[200px] w-[200px] rounded-md"
+            >
               <CelebImage
                 className="rounded-md object-cover"
                 key={params.name + '-topSection-image'}
@@ -50,7 +56,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      <div className="h-container mt-5">
+      <div className="h-container my-5">
         <ContributeCta
           name={params.name}
           cta={

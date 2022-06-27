@@ -1,16 +1,23 @@
-import React from 'react';
-import { Card } from '~/components/Card';
-import { CelebGallery } from '~/components/CelebGallery';
+import { CHRList } from '~/components/ui/CHRList';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const InterestingProfiles = (props: CelebPageProps) => {
   const relatedPeople = props.celeb.oldContent!.relatedPeople;
 
   return (
-    <Card title="Other interesting profiles">
-      <div className="px-5 py-2">
-        <CelebGallery celebGalleryItems={relatedPeople} />
-      </div>
-    </Card>
+    <div id="interesting-profiles">
+      <CHRList
+        stickyTitle={false}
+        title={<>Other interesting profiles</>}
+        celebs={relatedPeople}
+        renderBody={(c) =>
+          c.summaries ? (
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-neutral-500">
+              {c.summaries.politicalViews} {c.summaries.religion}
+            </p>
+          ) : null
+        }
+      />
+    </div>
   );
 };

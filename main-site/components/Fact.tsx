@@ -1,20 +1,27 @@
 import { defaultTo } from 'lodash-es';
-import React, { PropsWithChildren } from 'react';
+import Image, { ImageProps } from 'next/image';
+import React, { PropsWithChildren, useState } from 'react';
 import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
-import { Tag } from '~/components/Tag';
-import { getSourceHost } from '~/lib/getSourceHost';
-import { Celeb } from '~/lib/groq/celeb.partial.groq';
-import { Fact as TFact } from '~/lib/groq/fact.partial.groq';
-import { Link } from '~/lib/Link';
-import Image from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
+import { formatFactDate } from '~/lib/date';
+import { getSourceHost } from '~/lib/getSourceHost';
+import { Celeb } from '~/lib/groq/celeb.projection';
+import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { Link } from '~/lib/Link';
 
 function UnoptimizedImage(
-  props: PropsWithChildren<{ src: string; alt: string }>,
+  props: PropsWithChildren<{
+    src: string;
+    alt: string;
+    onError?: ImageProps['onError'];
+  }>,
 ) {
   return (
     <Image
+      unoptimized
+      onError={props.onError}
       layout="fill"
       objectFit="cover"
       loader={({ src }) => src}
@@ -30,7 +37,7 @@ function lowercaseFirstLetter(s: string) {
 
 function renderQuote(quote: string) {
   return (
-    <div className="my-3 flex gap-2">
+    <div className="my-3 flex gap-2" id="fact-quote">
       <div>
         <FaQuoteLeft className="text-2xl text-neutral-300" />
       </div>
@@ -41,7 +48,7 @@ function renderQuote(quote: string) {
 
 function renderContext(celebName: string, context: string) {
   return (
-    <p className="text-base text-neutral-500">
+    <p className="text-base text-neutral-500" id="fact-context">
       {celebName} said, {lowercaseFirstLetter(context)}
     </p>
   );
@@ -65,15 +72,24 @@ export const Fact: React.FC<{
   fact: TFact;
   celebName: string;
   showFooter?: boolean;
-  linkSlug?: Celeb['slug'];
+  slug: Celeb['slug'];
+  link?: boolean;
 }> = (props) => {
   const showFooter = defaultTo(props.showFooter, true);
+  const link = defaultTo(props.link, false);
+
+  const [showOgImage, setShowOgImage] = useState(true);
+
+  const displayOpenGraphImage = props.fact.openGraphImage && showOgImage;
 
   return (
-    <section className="relative z-0 m-5 flex flex-col gap-5">
-      {props.linkSlug && (
-        <Link href={`/${props.linkSlug}/fact/${props.fact._id}`} passHref>
-          <a className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50">
+    <section id="fact" className="relative z-0 flex flex-col gap-5">
+      {link && (
+        <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
+          <a
+            id="fact-details"
+            className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50"
+          >
             <span className="invisible">Fact details</span>
           </a>
         </Link>
@@ -83,11 +99,12 @@ export const Fact: React.FC<{
         <div
           className={c('FACT-HEAD', {
             'relative -mx-5 -mt-5 h-[350px] bg-neutral-700':
-              props.fact.openGraphImage,
+              displayOpenGraphImage,
           })}
         >
-          {props.fact.openGraphImage && (
+          {displayOpenGraphImage && (
             <UnoptimizedImage
+              onError={() => setShowOgImage(false)}
               src={props.fact.openGraphImage!}
               alt={props.celebName}
             />
@@ -95,7 +112,7 @@ export const Fact: React.FC<{
           <div
             className={c(
               'FACT-TAGS flex flex-wrap items-center gap-2.5',
-              props.fact.openGraphImage
+              displayOpenGraphImage
                 ? c(
                     'absolute bottom-0 left-0 right-0',
                     'bg-gradient-to-t from-black via-transparent to-transparent',
@@ -106,7 +123,7 @@ export const Fact: React.FC<{
           >
             {props.fact.tags.map((t) => {
               return (
-                <Tag key={t.tag.name}>
+                <Tag key={t.tag.name} tagId={t.tag._id} slug={props.slug}>
                   <span className="flex items-center gap-1 text-neutral-700">
                     <BiHash /> {t.isLowConfidence && 'Possibly '}
                     {t.tag.name}
@@ -120,7 +137,7 @@ export const Fact: React.FC<{
                 ' text-white': props.fact.openGraphImage,
               })}
             >
-              {props.fact.date}
+              {formatFactDate(props.fact.date)}
             </p>
           </div>
         </div>
@@ -137,7 +154,10 @@ export const Fact: React.FC<{
         {showFooter && (
           <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
             <Link href={`${props.fact.forumLink}#reply`} passHref>
-              <a className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300">
+              <a
+                id="fact-comments-link"
+                className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300"
+              >
                 <BiMessage className="text-lg" />
                 Comments
               </a>

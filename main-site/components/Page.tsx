@@ -1,10 +1,10 @@
-import React, { ReactElement, ReactNode } from 'react';
-import { c } from '~/lib/c';
+import Head from 'next/head';
+import { ReactElement, ReactNode } from 'react';
 import { AppBar } from '~/components/AppBar';
 import { Footer } from '~/components/Footer';
-import Head from 'next/head';
+import { c } from '~/lib/c';
 
-export function Page(params: {
+export function Page(props: {
   children: ReactNode;
   className?: string;
   appBar?: ReactElement;
@@ -12,6 +12,7 @@ export function Page(params: {
   title: string;
   allowSearchEngines: boolean;
   description: string;
+  id: string;
   /**
    * Should not have a leading slash
    */
@@ -20,9 +21,9 @@ export function Page(params: {
   return (
     <>
       <Head>
-        <title>{params.title} - Hollowverse</title>
+        <title>{props.title} - Hollowverse</title>
 
-        {!params.allowSearchEngines && (
+        {!props.allowSearchEngines && (
           <meta key="head-robots" name="robots" content="noindex" />
         )}
 
@@ -36,13 +37,13 @@ export function Page(params: {
         <meta
           key="head-description"
           name="description"
-          content={params.description}
+          content={props.description}
         />
 
         <link
           key="head-canonical"
           rel="canonical"
-          href={`https://hollowverse.com/${params.pathname}`}
+          href={`https://hollowverse.com/${props.pathname}`}
         />
 
         <link
@@ -53,16 +54,14 @@ export function Page(params: {
       </Head>
 
       <div
-        className={c(
-          'flex min-h-screen flex-col bg-gray-100',
-          params.className,
-        )}
+        id={props.id}
+        className={c('flex min-h-screen flex-col bg-gray-100', props.className)}
       >
-        {params.appBar || <AppBar />}
+        {props.appBar || <AppBar />}
 
-        <main className="flex flex-1 flex-col">{params.children}</main>
+        <main className="flex flex-1 flex-col">{props.children}</main>
 
-        {params.footer || <Footer />}
+        {props.footer || <Footer />}
       </div>
     </>
   );

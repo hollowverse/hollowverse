@@ -4,9 +4,9 @@ import groq from 'groq';
 import { isError } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
-  ContentChangeData,
+  ContentChange,
   contentChangeProjection,
-} from '~/lib/groq/contentChange.groq';
+} from '~/lib/groq/contentChangeNotification.projection';
 import { NewFactChores } from '~/lib/NewFactChores';
 import { Json } from '~/lib/types';
 import { createContextLogger } from '~/shared/lib/log';
@@ -39,7 +39,7 @@ async function contentChangeNotify(
 
   logWithContext('debug', 'The CCN request was confirmed to be from Sanity.');
 
-  let data: ContentChangeData | null = null;
+  let data: ContentChange | null = null;
 
   for (let i = 0; i < 5; i++) {
     logWithContext(
@@ -47,7 +47,7 @@ async function contentChangeNotify(
       `ATTEMPT #${i + 1}: Retrieving Fact data from Sanity`,
     );
 
-    data = await sanityClientNoCdn.fetch<ContentChangeData>(
+    data = await sanityClientNoCdn.fetch<ContentChange>(
       'webhook content change data',
       groq`*[_id == $_id][0]{${contentChangeProjection}}`,
       { _id: webhookPayload._id },

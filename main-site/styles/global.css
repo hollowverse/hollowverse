@@ -7,6 +7,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+html {
+  -webkit-tap-highlight-color: rgb(233 213 255 / 0.5);
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFactSocialInfo } from '~/lib/getFactSocialInfo';
-import { Fact } from '~/lib/groq/fact.partial.groq';
+import { Fact } from '~/lib/groq/fact.projection';
 
 export function useFact(fact: Fact) {
   const [commentCount, setCommentCount] = useState<number | null>(null);

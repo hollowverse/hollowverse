@@ -1,7 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import React from 'react';
-import { Container, Logo, Nav, SearchButton } from '~/components/AppBar';
-import { Card } from '~/components/Card';
+import { StickyAppBar } from '~/components/AppBar';
 import { ContributeCta } from '~/components/ContributeCta';
 import { Facts } from '~/components/Facts';
 import { Md } from '~/components/Md';
@@ -18,24 +16,17 @@ export default function Celeb(props: CelebPageProps) {
       description={`A collection of everything political or religious that ${name} said or did.`}
       allowSearchEngines
       pathname={props.celeb.slug}
+      id="celeb-page"
       appBar={
-        <Card
-          stickyTitle
-          disablePadding
-          disableTitlePadding
-          className="border-x-0"
-          title={
-            <Nav>
-              <Logo />
-              <SearchButton />
-            </Nav>
-          }
-        >
-          <TopSection {...props} />
-        </Card>
+        <StickyAppBar>
+          <TopSection {...props.celeb} />
+        </StickyAppBar>
       }
     >
-      <div className="h-container mt-5 flex flex-col gap-5">
+      <div
+        className="h-container my-5 flex flex-col gap-5"
+        id={`celeb-page-${props.celeb.slug}`}
+      >
         {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}

@@ -1,8 +1,8 @@
-import { Link } from '~/lib/Link';
 import { useRouter } from 'next/router';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Card } from '~/components/Card';
+import { TitledCard } from '~/components/ui/TitledCard';
+import { Link } from '~/lib/Link';
 
 type Inputs = {
   body: string;
@@ -36,7 +36,7 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
   };
 
   return (
-    <Card title="Contribute to Hollowverse">
+    <TitledCard titledContentProps={{ title: 'Contribute to Hollowverse' }}>
       <div className="p-5">
         <div className="text-base">
           {params.cta || (
@@ -177,6 +177,6 @@ export function ContributeCta(params: { name: string; cta?: ReactNode }) {
           </p>
         </form>
       </div>
-    </Card>
+    </TitledCard>
   );
 }

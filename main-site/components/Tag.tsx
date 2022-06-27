@@ -1,9 +1,32 @@
-import React, { ReactNode } from 'react';
+import { useRouter } from 'next/router';
+import { PropsWithChildren } from 'react';
+import { c } from '~/lib/c';
+import { Link } from '~/lib/Link';
 
-export function Tag(params: { children: ReactNode }) {
+export function Tag(
+  props: PropsWithChildren<{
+    slug: string;
+    tagId: string;
+  }>,
+) {
+  const router = useRouter();
+  const isSelected = router.query.celebTagId === props.tagId;
+
   return (
-    <p className="m-0 flex gap-1 rounded-full border bg-gray-100 px-3 py-1.5 text-sm text-neutral-700 shadow-sm">
-      {params.children}
-    </p>
+    <Link href={`/${props.slug}/tag/${props.tagId}#content`} passHref>
+      <a
+        id="tag"
+        className={c(
+          'pointer-events-auto m-0 box-border flex gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm text-neutral-700',
+          {
+            'unselected border shadow-sm': !isSelected,
+            'selected -m-[1px] border-2 border-purple-300 shadow-inner':
+              isSelected,
+          },
+        )}
+      >
+        {props.children}
+      </a>
+    </Link>
   );
 }

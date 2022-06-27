@@ -1,12 +1,33 @@
-import React from 'react';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { FaRegCircle } from 'react-icons/fa';
+import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { Tag as TTag } from '~/lib/groq/tag.projection';
+import { ReactElementProps } from '~/lib/types';
 
-export const TagCollection = (props: CelebPageProps) => {
-  const tags = props.celeb.tags;
+export function Tags(
+  props: ReactElementProps<'div'> & { tags: TTag[]; slug: string },
+) {
+  return (
+    <div
+      {...props}
+      className={c('flex flex-wrap gap-2.5 pt-3', props.className)}
+    >
+      {props.tags.map((t) => (
+        <Tag key={t.tag._id} slug={props.slug} tagId={t.tag._id}>
+          {t.tag.name}
+          {t.isBackground && ' Background'}
+          {t.isLowConfidence && (
+            <FaQuestionCircle className="self-center text-xs text-neutral-400" />
+          )}
+        </Tag>
+      ))}
+    </div>
+  );
+}
+
+export const TagCollection = (props: { celeb: CelebWithTimeline }) => {
+  const tags = props.celeb.tagTimeline;
   const showTimeline = tags.length > 1;
 
   return (
@@ -20,22 +41,14 @@ export const TagCollection = (props: CelebPageProps) => {
             </p>
           )}
 
-          <div
-            className={c('flex flex-wrap gap-2.5 pt-3', {
+          <Tags
+            tags={tpair[1]}
+            slug={props.celeb.slug}
+            className={c({
               'border-l-2': i < tags.length - 1,
               'p-5': showTimeline,
             })}
-          >
-            {tpair[1].map((t, i2) => (
-              <Tag key={`${i}-${i2}`}>
-                {t.tag.name}
-                {t.isBackground && ' Background'}
-                {t.isLowConfidence && (
-                  <FaQuestionCircle className="self-center text-xs text-neutral-400" />
-                )}
-              </Tag>
-            ))}
-          </div>
+          />
         </div>
       ))}
     </div>

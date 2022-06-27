@@ -1,11 +1,10 @@
-import React from 'react';
 import Image, { ImageProps } from 'next/image';
-import { sanityImage } from '~/shared/lib/sanityio';
 import { Optional } from 'utility-types';
+import { Picture } from '~/lib/groq/picture.projection';
 import { placeholderImage } from '~/lib/placeholderImage';
-import { Picture } from '~/lib/groq/picture.partial.groq';
+import { sanityImage } from '~/shared/lib/sanityio';
 
-type Params = (
+export type CelebImageProps = (
   | (Omit<ImageProps, 'src'> & {
       picture: Picture;
       src?: undefined;
@@ -17,8 +16,8 @@ type Params = (
   height?: number;
 };
 
-export function CelebImage(params: Params) {
-  const { src, picture: _picture, name, ...rest } = params;
+export function CelebImage(props: CelebImageProps) {
+  const { src, picture: _picture, name, ...rest } = props;
   const picture = _picture || placeholderImage;
 
   return (

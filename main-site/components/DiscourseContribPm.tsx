@@ -1,5 +1,4 @@
 import { isEmpty } from 'lodash-es';
-import React from 'react';
 import { ordinal } from '~/lib/ordinal';
 import { pluralize } from '~/lib/pluralize';
 

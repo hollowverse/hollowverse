@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Card } from '~/components/Card';
-import s from '~/styles/styles.module.scss';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import s from '~/styles/styles.module.scss';
 
 export const Article = (
   props: CelebPageProps & {
@@ -23,20 +23,21 @@ export const Article = (
       }}
     >
       {oldContent.summaries && (
-        <Card title="Summary">
-          <div className="p-5">
+        <TitledCard titledContentProps={{ title: 'Summary' }}>
+          <div className="p-5" id="editorial-summary">
             <p>{oldContent.summaries.religion}</p>
             <p className="mt-3">{oldContent.summaries.politicalViews}</p>
           </div>
-        </Card>
+        </TitledCard>
       )}
 
-      <Card title="Editorial">
+      <TitledCard titledContentProps={{ title: 'Editorial' }}>
         <div
+          id="editorial"
           className={c(s.Article, 'break-normal p-5 leading-relaxed')}
           dangerouslySetInnerHTML={{ __html: oldContent.article }}
         />
-      </Card>
+      </TitledCard>
     </article>
   );
 };

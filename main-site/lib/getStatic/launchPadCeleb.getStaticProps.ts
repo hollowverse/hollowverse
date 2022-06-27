@@ -1,14 +1,15 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
+import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
+import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
-import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 
 export async function getLaunchPadIssues() {
   return uniq(
     await sanityClient.fetch(
       'launch-pad-page-data',
-      groq`[...*[_type == 'orderOfTopics'][0]{'issues': topics[]->name}.issues, ...*[_type == 'topic']{name}.name]
+      groq`[...${orderOfIssuesGroq}, ...*[_type == 'topic']{name}.name]
   `,
     ),
   ) as string[];

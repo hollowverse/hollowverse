@@ -1,9 +1,10 @@
-import { Link } from '~/lib/Link';
-import React, { ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
+import { Card } from '~/components/ui/Card';
+import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
-import { Card } from '~/components/Card';
+import { Link } from '~/lib/Link';
 
 export function Nav(props: { children: ReactNode; navClasses?: string }) {
   return (
@@ -22,7 +23,7 @@ export function Nav(props: { children: ReactNode; navClasses?: string }) {
 
 export function Container(props: { children: ReactNode; navClasses?: string }) {
   return (
-    <Card className="border-x-0">
+    <Card topBorder={false}>
       <LovelyTopBorder />
       <Nav {...props} />
     </Card>
@@ -33,12 +34,15 @@ export function Logo(props: { className?: string } = {}) {
   return (
     <div
       className={c(
-        'LOGO flex w-full items-center default:text-2xl',
+        'flex w-full items-center default:text-2xl',
         props.className,
       )}
     >
       <Link passHref href="/">
-        <a className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text font-extrabold uppercase tracking-tight text-transparent">
+        <a
+          id="logo"
+          className="lovely-gradient w-fit cursor-pointer select-none bg-clip-text font-extrabold uppercase tracking-tight text-transparent"
+        >
           Hollowverse
         </a>
       </Link>
@@ -55,7 +59,10 @@ export function SearchButton() {
       }}
       passHref
     >
-      <a className="TOGGLE-BUTTON flex self-center rounded-md border-2 border-white bg-gray-100 p-1.5 transition hover:bg-gray-200 focus:border-blue-300">
+      <a
+        id="search-icon"
+        className="TOGGLE-BUTTON flex self-center rounded-md border-2 border-white bg-gray-100 p-1.5 transition hover:bg-gray-200 focus:border-blue-300"
+      >
         <FaSearch aria-hidden className="text-xl" />
         <span className="sr-only">Search</span>
       </a>
@@ -71,3 +78,19 @@ export const AppBar = () => {
     </Container>
   );
 };
+
+export function StickyAppBar(props: PropsWithChildren<{}>) {
+  return (
+    <TitledContent
+      stickyTitle
+      title={
+        <Nav>
+          <Logo />
+          <SearchButton />
+        </Nav>
+      }
+    >
+      <Card topBorder={false}>{props.children}</Card>
+    </TitledContent>
+  );
+}

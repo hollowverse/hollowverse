@@ -1,5 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const sanityClient_ = require('@sanity/client');
+const groq = require('groq');
 
 const sanityClient = sanityClient_({
   projectId: 'ge8aosp3', // you can find this in sanity.json
@@ -13,10 +14,31 @@ module.exports = {
   generateRobotsTxt: true,
   exclude: ['*'],
   additionalPaths: async (config) => {
-    const docs = await sanityClient.fetch(
-      `*[_type == 'celeb']{'loc': '/' + slug.current}`,
+    const urls = await sanityClient.fetch(
+      groq`[
+        // Celeb pages
+        ...*[_type == 'celeb']{
+          'url': slug.current
+        }.url,
+
+        // Fact pages
+        ...*[_type == 'fact']{
+          'url': celeb->slug.current + '/fact/' + _id
+        }.url,
+
+        // Tag pages
+        ...*[_type == 'fact']{
+          'tags': tags[]{
+            'url': ^.celeb->slug.current + '/tag/' + tag._ref
+          }.url
+        }.tags[0...9999]
+      ]`,
     );
 
-    return docs;
+    const uniqueUrls = [...new Set(urls)];
+
+    return uniqueUrls.map((url) => ({
+      loc: url,
+    }));
   },
 };

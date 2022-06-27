@@ -66,11 +66,6 @@ const dummyNodeLogger = new NodeLogger(sourceToken);
 dummyBrowserLogger.setSync(noop as any);
 dummyNodeLogger.setSync(noop as any);
 
-if (getEnv() === 'development') {
-  browserLogger.setSync(consoleLogger as any);
-  nodeLogger.setSync(consoleLogger as any);
-}
-
 /**
  * Invert the comments below to silence the logs during development.
  * Use `flog` where you still need logs during development

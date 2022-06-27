@@ -1,11 +1,26 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Spinner } from '~/components/Spinner';
+import { c } from '~/lib/c';
 
 export function PageTransitionSpinner() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout | null = null;
+
+    if (loading) {
+      timeout = setTimeout(() => {
+        setShowSpinner(true);
+      }, 500);
+    } else {
+      timeout && clearTimeout(timeout);
+      setShowSpinner(false);
+    }
+  }, [loading]);
 
   useEffect(() => {
     const handleStart = () => setLoading(true);
@@ -23,11 +38,27 @@ export function PageTransitionSpinner() {
   });
 
   return (
-    (loading && (
-      <div className="fixed bottom-5 right-5">
-        <Spinner />
-      </div>
-    )) ||
-    null
+    <div
+      className={c(
+        'fixed inset-0 z-40 flex items-center justify-center overflow-hidden',
+        {
+          'h-full': loading,
+          'h-0': !loading,
+        },
+      )}
+    >
+      <div
+        className={c('absolute inset-0 bg-white transition-opacity', {
+          'opacity-0': !loading,
+          'opacity-70': loading,
+        })}
+      />
+      <Spinner
+        className={c('text-[6rem] transition-opacity duration-700', {
+          'opacity-0': !showSpinner,
+          'opacity-80': showSpinner,
+        })}
+      />
+    </div>
   );
 }
