@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { testUrl } from '~/e2e-tests/testUrl';
 
-test.only('About page E2E test', async ({ page }) => {
+test('About page E2E test', async ({ page }) => {
   await page.goto(`${testUrl}/~about`);
   await page.waitForSelector('#about-page');
 
