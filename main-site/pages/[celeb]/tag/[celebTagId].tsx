@@ -31,9 +31,9 @@ export function CardTitle(
 
 export function renderTags(tags: TTag[]) {
   return (
-    <p className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
+    <span className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
       {tags.map((t) => t.tag.name.trim()).join(', ')}
-    </p>
+    </span>
   );
 }
 

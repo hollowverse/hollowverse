@@ -15,10 +15,6 @@
     "test": "jest --watch",
     "lint": "next lint",
     "lighthouse": "lighthouse-batch -f ${URL_FILE:-lighthouse/local.txt} --html --no-report --params '--only-categories accessibility,best-practices,performance,seo'; open report/lighthouse",
-    "lighthouse-single": "cross-env URL_FILE='lighthouse/single-local.txt' npm run lighthouse",
-    "lighthouse-live": "cross-env URL_FILE='lighthouse/live.txt' npm run lighthouse",
-    "manual-validation": "cross-env URL_FILE='lighthouse/local.txt' playwright test",
-    "manual-validation-live": "cross-env URL_FILE='lighthouse/live.txt' playwright test",
     "e2e": "playwright test",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999"

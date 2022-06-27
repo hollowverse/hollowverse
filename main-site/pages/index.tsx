@@ -110,7 +110,6 @@ export default function Index(props: HomepageProps) {
               }
             >
               {facts.map((f: any) => {
-                console.log('facts.length', facts.length);
                 const cardTitle = (
                   <Link passHref href={`/${f.celeb.slug}`}>
                     <a id="homepage-latest-fact-title">
