@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import { Card, CardProps } from '~/components/ui/Card';
-import React from 'react';
 import {
   TitledContent,
   TitledContentProps,

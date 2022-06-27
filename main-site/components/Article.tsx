@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import s from '~/styles/styles.module.scss';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { TitledCard } from '~/components/ui/TitledCard';
+import s from '~/styles/styles.module.scss';
 
 export const Article = (
   props: CelebPageProps & {

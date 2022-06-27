@@ -1,4 +1,3 @@
-import React from 'react';
 import { c } from '~/lib/c';
 
 export function LovelyTopBorder(params: { className?: string }) {

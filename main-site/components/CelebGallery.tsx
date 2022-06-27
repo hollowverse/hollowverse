@@ -1,8 +1,8 @@
-import { Link } from '~/lib/Link';
 import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { c } from '~/lib/c';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { Link } from '~/lib/Link';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: NonNullable<

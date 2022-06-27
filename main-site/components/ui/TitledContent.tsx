@@ -1,5 +1,5 @@
 import { defaults } from 'lodash-es';
-import React, { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { c } from '~/lib/c';
 

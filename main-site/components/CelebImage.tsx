@@ -1,9 +1,8 @@
-import React from 'react';
 import Image, { ImageProps } from 'next/image';
-import { sanityImage } from '~/shared/lib/sanityio';
 import { Optional } from 'utility-types';
-import { placeholderImage } from '~/lib/placeholderImage';
 import { Picture } from '~/lib/groq/picture.projection';
+import { placeholderImage } from '~/lib/placeholderImage';
+import { sanityImage } from '~/shared/lib/sanityio';
 
 export type CelebImageProps = (
   | (Omit<ImageProps, 'src'> & {

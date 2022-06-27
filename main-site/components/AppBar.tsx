@@ -1,10 +1,10 @@
-import { Link } from '~/lib/Link';
-import React, { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
-import { c } from '~/lib/c';
 import { Card } from '~/components/ui/Card';
 import { TitledContent } from '~/components/ui/TitledContent';
+import { c } from '~/lib/c';
+import { Link } from '~/lib/Link';
 
 export function Nav(props: { children: ReactNode; navClasses?: string }) {
   return (

@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
 import { formatFactDate } from '~/lib/date';
 import { Fact } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
