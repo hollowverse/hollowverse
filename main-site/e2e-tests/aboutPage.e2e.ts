@@ -1,8 +1,11 @@
 import { test } from '@playwright/test';
+import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
 
+const url = `${testUrl}/~about`;
+
 test('About page E2E test', async ({ page }) => {
-  await page.goto(`${testUrl}/~about`);
+  await page.goto(url);
   await page.waitForSelector('#about-page');
 
   await page.locator(`#logo`).click();
@@ -16,4 +19,8 @@ test('About page E2E test', async ({ page }) => {
   await page.waitForSelector('#about-page');
 
   await page.waitForSelector('#about-page-content');
+});
+
+test('About page Lighthouse test', async () => {
+  await lighthouseTest(url, 'About page');
 });

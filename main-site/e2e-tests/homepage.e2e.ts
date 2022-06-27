@@ -1,9 +1,12 @@
 import { test } from '@playwright/test';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
+import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
 
+const url = testUrl;
+
 test('Homepage E2E test', async ({ page }) => {
-  await page.goto(testUrl);
+  await page.goto(url);
 
   await page.waitForSelector('#homepage');
   await page.locator('#homepage-search').click();
@@ -29,4 +32,8 @@ test('Homepage E2E test', async ({ page }) => {
     ':nth-match(#homepage-latest-fact, 3)',
     '#homepage',
   );
+});
+
+test('Homepage Lighthouse test', async () => {
+  await lighthouseTest(url, 'Homepage');
 });

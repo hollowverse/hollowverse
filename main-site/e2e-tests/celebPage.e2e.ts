@@ -1,10 +1,13 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
+import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
 
+const url = `${testUrl}/kim-kardashian`;
+
 test('Celeb page E2E test', async ({ page }) => {
-  await page.goto(`${testUrl}/kim-kardashian`);
+  await page.goto(url);
   await page.waitForSelector('#celeb-page');
 
   await commonElementsTestFragment(page, '#celeb-page');
@@ -38,4 +41,8 @@ test('Celeb page E2E test', async ({ page }) => {
     '#celeb-page >> :nth-match(#fact, 3)',
     '#celeb-page',
   );
+});
+
+test('Celeb page Lighthouse test', async () => {
+  await lighthouseTest(url, 'Celeb page');
 });

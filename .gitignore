@@ -8,6 +8,7 @@ robots.txt
 # main-site
 main-site/public/sitemap*
 main-site/shared
+main-site/**/lighthouse-reports/**.html
 
 ## CMS ignores
 cms/public

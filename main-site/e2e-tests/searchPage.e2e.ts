@@ -1,9 +1,12 @@
 import { test } from '@playwright/test';
 import { createGoBack } from '~/e2e-tests/helpers';
+import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
 
+const url = `${testUrl}/~search`;
+
 test('Search page E2E test', async ({ page }) => {
-  await page.goto(`${testUrl}/~search`);
+  await page.goto(url);
   await page.waitForSelector('#search-page');
 
   const goBack = createGoBack(page, '#search-page');
@@ -28,4 +31,8 @@ test('Search page E2E test', async ({ page }) => {
   await page.locator(':nth-match(#chr-item,1)').click();
   await page.waitForSelector(`#knowledge-graph-page`);
   await goBack();
+});
+
+test('Search page Lighthouse test', async () => {
+  await lighthouseTest(url, 'Search page');
 });

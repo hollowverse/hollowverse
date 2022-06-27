@@ -60,7 +60,6 @@ const config: PlaywrightTestConfig = {
     //     ...devices['Desktop Chrome'],
     //   },
     // },
-
     /* Test against mobile viewports. */
     {
       name: 'Mobile Safari',
@@ -69,7 +68,6 @@ const config: PlaywrightTestConfig = {
         ...devices['iPhone 12'],
       },
     },
-
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
