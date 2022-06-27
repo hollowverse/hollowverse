@@ -1,4 +1,3 @@
-import React from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { c } from '~/lib/c';
 import { ReactElementProps } from '~/lib/types';

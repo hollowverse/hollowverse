@@ -1,7 +1,7 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
-import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
 import { log } from '~/shared/lib/log';
 
 export type CelebPageProps = NonNullable<

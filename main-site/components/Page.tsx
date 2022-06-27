@@ -1,8 +1,8 @@
-import React, { ReactElement, ReactNode } from 'react';
-import { c } from '~/lib/c';
+import Head from 'next/head';
+import { ReactElement, ReactNode } from 'react';
 import { AppBar } from '~/components/AppBar';
 import { Footer } from '~/components/Footer';
-import Head from 'next/head';
+import { c } from '~/lib/c';
 
 export function Page(props: {
   children: ReactNode;

@@ -1,5 +1,4 @@
 import { isEmpty } from 'lodash-es';
-import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { TagCollection } from '~/components/TagCollection';
 import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';

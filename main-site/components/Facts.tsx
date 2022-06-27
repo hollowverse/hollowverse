@@ -1,4 +1,3 @@
-import React from 'react';
 import { FactGroup } from '~/components/FactGroup';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';

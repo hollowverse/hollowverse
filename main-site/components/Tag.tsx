@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { c } from '~/lib/c';
 import { Link } from '~/lib/Link';
 

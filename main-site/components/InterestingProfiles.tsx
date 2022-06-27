@@ -12,7 +12,7 @@ export const InterestingProfiles = (props: CelebPageProps) => {
         celebs={relatedPeople}
         renderBody={(c) =>
           c.summaries ? (
-            <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+            <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm text-neutral-500">
               {c.summaries.politicalViews} {c.summaries.religion}
             </p>
           ) : null

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Fact } from '~/components/Fact';
 import { Card } from '~/components/ui/Card';
 import { TitledContent } from '~/components/ui/TitledContent';

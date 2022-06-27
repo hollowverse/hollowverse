@@ -1,16 +1,15 @@
 import { defaultTo } from 'lodash-es';
+import Image, { ImageProps } from 'next/image';
 import React, { PropsWithChildren, useState } from 'react';
 import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
+import { FaQuoteLeft } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
+import { c } from '~/lib/c';
+import { formatFactDate } from '~/lib/date';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
-import Image, { ImageProps } from 'next/image';
-import { FaQuoteLeft } from 'react-icons/fa';
-import { c } from '~/lib/c';
-import { JsxElement } from 'typescript';
-import { formatFactDate } from '~/lib/date';
 
 function UnoptimizedImage(
   props: PropsWithChildren<{
@@ -21,6 +20,7 @@ function UnoptimizedImage(
 ) {
   return (
     <Image
+      unoptimized
       onError={props.onError}
       layout="fill"
       objectFit="cover"
