@@ -12,7 +12,7 @@ export default function About() {
       pathname={`~about`}
       allowSearchEngines={false}
     >
-      <div className="mt-5 text-neutral-500">
+      <div className="my-5 text-neutral-500" id="about-page-content">
         <Card>
           <div className="h-container flex flex-col gap-8 p-5">
             <div className="flex flex-col gap-2">

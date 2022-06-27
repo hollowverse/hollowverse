@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { createGoBack } from '~/e2e-tests/helpers';
 import { testUrl } from '~/e2e-tests/testUrl';
 
-test.only('Search page E2E test', async ({ page }) => {
+test('Search page E2E test', async ({ page }) => {
   await page.goto(`${testUrl}/~search`);
   await page.waitForSelector('#search-page');
 
