@@ -1,1 +1,2 @@
 export const GA_MEASUREMENT_ID = 'G-9DXRHRTDG6';
+export const GA_TRACKING_ID = 'UA-5715214-12';

@@ -1,10 +1,13 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
 import { PageTransitionSpinner } from '~/components/PageTransitionSpinner';
-import { GA_MEASUREMENT_ID } from '~/lib/googleAnalytics';
+import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
+import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
 import '~/styles/global.css';
 
 export default function App({ Component, pageProps }: AppProps) {
+  useGoogleAnalyticsUniversal();
+
   return (
     <>
       <Script
@@ -21,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
           gtag('js', new Date());
 
           gtag('config', '${GA_MEASUREMENT_ID}');
+          gtag('config', '${GA_TRACKING_ID}');
           `,
         }}
       />
