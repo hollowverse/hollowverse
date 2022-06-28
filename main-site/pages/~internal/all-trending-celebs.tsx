@@ -18,7 +18,7 @@ export default function TrendingSearches(props: any) {
             title: `Trending requests`,
           }}
         >
-          <div className="flex flex-wrap gap-5 p-5">
+          <div className="flex gap-5 p-5">
             {props.trending.requests.titles.map((t: any, i: any) => {
               if (t.includes('Testo')) {
                 return null;
@@ -38,7 +38,7 @@ export default function TrendingSearches(props: any) {
             title: `Trending searches`,
           }}
         >
-          <div className="flex flex-wrap gap-5 p-5">
+          <div className="flex gap-5 p-5">
             {props.trending.searches.titles.map((t: any, i: any) => {
               if (t.includes('Testo')) {
                 return null;
