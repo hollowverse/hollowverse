@@ -18,16 +18,18 @@ export default function TrendingSearches(props: any) {
             title: `Trending requests`,
           }}
         >
-          <div className="flex gap-5 p-5">
+          <div className="flex flex-col gap-5 p-5">
             {props.trending.requests.titles.map((t: any, i: any) => {
               if (t.includes('Testo')) {
                 return null;
               }
 
               return (
-                <Link key={t} href={`/${props.trending.requests.paths[i]}`}>
-                  <a>{t}</a>
-                </Link>
+                <p key={t}>
+                  <Link href={`/${props.trending.requests.paths[i]}`}>
+                    <a>{t}</a>
+                  </Link>
+                </p>
               );
             })}
           </div>
@@ -38,16 +40,18 @@ export default function TrendingSearches(props: any) {
             title: `Trending searches`,
           }}
         >
-          <div className="flex gap-5 p-5">
+          <div className="flex flex-col gap-5 p-5">
             {props.trending.searches.titles.map((t: any, i: any) => {
               if (t.includes('Testo')) {
                 return null;
               }
 
               return (
-                <Link key={t} href={`/${props.trending.requests.paths[i]}`}>
-                  <a>{t}</a>
-                </Link>
+                <p key={t}>
+                  <Link href={`/${props.trending.requests.paths[i]}`}>
+                    <a>{t}</a>
+                  </Link>
+                </p>
               );
             })}
           </div>
