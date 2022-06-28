@@ -10,7 +10,10 @@ import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { getTrendingCelebs, TrendingCelebs } from '~/lib/getTrendingCelebs';
+import {
+  getTrendingCelebs,
+  TrendingCelebs,
+} from '~/lib/getStatic/getTrendingCelebs';
 import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { Link } from '~/lib/Link';
