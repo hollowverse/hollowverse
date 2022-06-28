@@ -6,8 +6,13 @@ import { GA_TRACKING_ID } from '~/lib/googleAnalytics';
 export function useGoogleAnalyticsUniversal() {
   const router = useRouter();
   const [pagePath, setPagePath] = useState<string | null>(null);
+  const [firstTime, setFirstTime] = useState<boolean>(true);
   const debounced = useDebouncedCallback((newPagePath: string) => {
-    setPagePath(newPagePath);
+    if (!firstTime) {
+      setPagePath(newPagePath);
+    } else {
+      setFirstTime(false);
+    }
   }, 500);
 
   useEffect(() => {
