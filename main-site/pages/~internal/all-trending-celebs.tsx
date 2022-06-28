@@ -1,10 +1,6 @@
-import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
-import {
-  getGaAllTrendingCelebs,
-  getGaMostRequestedCelebs,
-} from '~/lib/getStatic/getGoogleAnalyticsTopPages';
+import { getGaAllTrendingCelebs } from '~/lib/getStatic/getGoogleAnalyticsTopPages';
 import { Link } from '~/lib/Link';
 
 export default function TrendingSearches(props: any) {
