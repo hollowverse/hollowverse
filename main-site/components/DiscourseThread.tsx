@@ -5,15 +5,6 @@ interface DiscourseThreadProps {
   threadUrl: string;
 }
 
-declare global {
-  interface Window {
-    DiscourseEmbed: {
-      discourseUrl?: string;
-      topicId?: string;
-    };
-  }
-}
-
 export const DiscourseThread: React.FC<DiscourseThreadProps> = ({
   threadUrl,
 }) => {
