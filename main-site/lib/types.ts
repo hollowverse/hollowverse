@@ -14,6 +14,6 @@ declare global {
 
     gtag: any;
 
-    adsbygoogle;
+    adsbygoogle: any;
   }
 }

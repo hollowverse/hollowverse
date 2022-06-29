@@ -14,6 +14,7 @@
     "next": "next",
     "test": "jest --watch",
     "lint": "next lint",
+    "tsc": "tsc",
     "lighthouse": "lighthouse-batch -f ${URL_FILE:-lighthouse/local.txt} --html --no-report --params '--only-categories accessibility,best-practices,performance,seo'; open report/lighthouse",
     "e2e": "playwright test",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
