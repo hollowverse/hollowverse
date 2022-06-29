@@ -7,6 +7,7 @@ import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
 import { CelebImage } from '~/components/CelebImage';
 import { Fact } from '~/components/Fact';
+import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { TitledCard } from '~/components/ui/TitledCard';
@@ -112,7 +113,7 @@ export default function Index(props: HomepageProps) {
                 </div>
               }
             >
-              {facts.map((f: any) => {
+              {facts.map((f: any, i: number) => {
                 const cardTitle = (
                   <Link passHref href={`/${f.celeb.slug}`}>
                     <a id="homepage-latest-fact-title">
@@ -137,22 +138,26 @@ export default function Index(props: HomepageProps) {
                 );
 
                 return (
-                  <div key={f._id} id="homepage-latest-fact">
-                    <TitledCard
-                      titledContentProps={{
-                        title: cardTitle,
-                      }}
-                    >
-                      <div className="p-5">
-                        <Fact
-                          link
-                          fact={f}
-                          celebName={f.celeb.name}
-                          slug={f.celeb.slug}
-                        />
-                      </div>
-                    </TitledCard>
-                  </div>
+                  <>
+                    <div key={f._id} id="homepage-latest-fact">
+                      <TitledCard
+                        titledContentProps={{
+                          title: cardTitle,
+                        }}
+                      >
+                        <div className="p-5">
+                          <Fact
+                            link
+                            fact={f}
+                            celebName={f.celeb.name}
+                            slug={f.celeb.slug}
+                          />
+                        </div>
+                      </TitledCard>
+                    </div>
+
+                    {i === 0 && <InFeedAd />}
+                  </>
                 );
               })}
             </InfiniteScroll>

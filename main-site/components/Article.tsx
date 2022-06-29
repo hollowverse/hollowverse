@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { isEmpty } from 'lodash-es';
 import React from 'react';
+import { InFeedAd } from '~/components/InFeedAd';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
@@ -30,6 +32,8 @@ export const Article = (
           </div>
         </TitledCard>
       )}
+
+      {isEmpty(props.celeb.facts.groups) && <InFeedAd />}
 
       <TitledCard titledContentProps={{ title: 'Editorial' }}>
         <div

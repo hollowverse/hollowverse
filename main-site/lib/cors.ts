@@ -27,9 +27,8 @@ export const cors = initMiddleware(
       const url = new URL(origin!);
 
       if (
-        url.hostname === 'hollowverse.com' ||
         url.hostname === 'localhost' ||
-        url.hostname === 'cms.hollowverse.com' ||
+        endsWith(url.hostname, 'hollowverse.com') ||
         endsWith(url.hostname, VERCEL_TEMP_DOMAIN)
       ) {
         callback(null, true);

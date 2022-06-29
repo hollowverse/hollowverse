@@ -12,6 +12,7 @@ export const Facts = (props: CelebPageProps) => {
 
         return (
           <FactGroup
+            index={i}
             key={issue}
             title={
               <h2 className="flex gap-2">

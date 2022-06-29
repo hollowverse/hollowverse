@@ -13,5 +13,7 @@ declare global {
     };
 
     gtag: any;
+
+    adsbygoogle;
   }
 }
