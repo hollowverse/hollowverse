@@ -4,7 +4,7 @@ out
 .vercel
 .env*.local
 robots.txt
-# tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # main-site
 main-site/public/sitemap*
