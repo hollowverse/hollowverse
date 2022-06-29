@@ -5,6 +5,7 @@ import { CelebImage } from '~/components/CelebImage';
 import { DiscourseThread } from '~/components/DiscourseThread';
 import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
+import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
@@ -41,6 +42,11 @@ export default function FactPage({
 }: FactPageProps) {
   const { contributorUsername, commentCount } = useFact(fact);
   const sourceHost = getSourceHost(fact.source);
+
+  useGaEventRecorder('issue_view', {
+    name: fact.issues[0].name,
+    id: fact.issues[0]._id,
+  });
 
   return (
     <Page

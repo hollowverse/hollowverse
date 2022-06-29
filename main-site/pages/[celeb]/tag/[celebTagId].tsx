@@ -1,6 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
+import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { Page } from '~/components/Page';
 import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
@@ -20,6 +21,11 @@ export function renderTags(tags: TTag[]) {
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
+
+  useGaEventRecorder('issue_view', {
+    name: props.tag.tag.issue.name,
+    id: props.tag.tag.issue._id,
+  });
 
   return (
     <Page
