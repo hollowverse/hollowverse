@@ -156,7 +156,7 @@ export default function Index(props: HomepageProps) {
                       </TitledCard>
                     </div>
 
-                    {i === 0 && <InFeedAd />}
+                    {i === 0 && <InFeedAd key={`ad-${i}`} />}
                   </>
                 );
               })}

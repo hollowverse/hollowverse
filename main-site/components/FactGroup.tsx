@@ -32,7 +32,7 @@ export function FactGroup(props: {
                 </div>
               </Card>
 
-              {props.index === 0 && i === 0 && <InFeedAd />}
+              {props.index === 0 && i === 0 && <InFeedAd key={`ad-${i}`} />}
             </>
           );
         })}
