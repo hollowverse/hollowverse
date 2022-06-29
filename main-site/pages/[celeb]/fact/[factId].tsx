@@ -6,6 +6,7 @@ import { DiscourseThread } from '~/components/DiscourseThread';
 import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
+import { InFeedAd } from '~/components/InFeedAd';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
@@ -161,6 +162,8 @@ export default function FactPage({
             />
           </div>
         )}
+
+        <InFeedAd />
 
         {!isEmpty(otherCelebsWithIssue) && (
           <div id="related-celebs-issue">

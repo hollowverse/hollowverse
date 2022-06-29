@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Fact } from '~/components/Fact';
+import { InFeedAd } from '~/components/InFeedAd';
 import { Card } from '~/components/ui/Card';
 import { TitledContent } from '~/components/ui/TitledContent';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
@@ -9,6 +10,7 @@ export function FactGroup(props: {
   factGroup: TFact[];
   celebName: string;
   slug: string;
+  index?: number;
 }) {
   return (
     <TitledContent
@@ -16,18 +18,22 @@ export function FactGroup(props: {
       stickyTitle
     >
       <div className="-mt-[1px] flex flex-col gap-3">
-        {props.factGroup.map((fact) => {
+        {props.factGroup.map((fact, i) => {
           return (
-            <Card key={fact._id}>
-              <div className="p-5">
-                <Fact
-                  link
-                  fact={fact}
-                  celebName={props.celebName}
-                  slug={props.slug}
-                />
-              </div>
-            </Card>
+            <Fragment key={fact._id}>
+              <Card>
+                <div className="p-5">
+                  <Fact
+                    link
+                    fact={fact}
+                    celebName={props.celebName}
+                    slug={props.slug}
+                  />
+                </div>
+              </Card>
+
+              {props.index === 0 && i === 0 && <InFeedAd />}
+            </Fragment>
           );
         })}
       </div>
