@@ -9,7 +9,7 @@ import { testUrl } from '~/e2e-tests/testUrl';
 const tagId = '304bc74d-33aa-4133-b7b1-9836c97557fd';
 const url = `${testUrl}/kim-kardashian/tag/${tagId}`;
 
-test('Tag page E2E test', async ({ page }) => {
+test('Celeb Tag page E2E test', async ({ page }) => {
   await page.goto(url);
   await page.waitForSelector('#celeb-tag-page');
 

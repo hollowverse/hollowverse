@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Fact } from '~/components/Fact';
 import { InFeedAd } from '~/components/InFeedAd';
 import { Card } from '~/components/ui/Card';
@@ -20,8 +20,8 @@ export function FactGroup(props: {
       <div className="-mt-[1px] flex flex-col gap-3">
         {props.factGroup.map((fact, i) => {
           return (
-            <>
-              <Card key={fact._id}>
+            <Fragment key={fact._id}>
+              <Card>
                 <div className="p-5">
                   <Fact
                     link
@@ -32,8 +32,8 @@ export function FactGroup(props: {
                 </div>
               </Card>
 
-              {props.index === 0 && i === 0 && <InFeedAd key={`ad-${i}`} />}
-            </>
+              {props.index === 0 && i === 0 && <InFeedAd />}
+            </Fragment>
           );
         })}
       </div>

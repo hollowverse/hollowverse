@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { GetStaticPropsResult } from 'next';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container, Logo } from '~/components/AppBar';
@@ -138,8 +138,8 @@ export default function Index(props: HomepageProps) {
                 );
 
                 return (
-                  <>
-                    <div key={f._id} id="homepage-latest-fact">
+                  <Fragment key={f._id}>
+                    <div id="homepage-latest-fact">
                       <TitledCard
                         titledContentProps={{
                           title: cardTitle,
@@ -156,8 +156,8 @@ export default function Index(props: HomepageProps) {
                       </TitledCard>
                     </div>
 
-                    {i === 0 && <InFeedAd key={`ad-${i}`} />}
-                  </>
+                    {i === 0 && <InFeedAd />}
+                  </Fragment>
                 );
               })}
             </InfiniteScroll>
