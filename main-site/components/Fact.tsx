@@ -71,12 +71,12 @@ function renderQuoteType(quote: string, context: string, celebName: string) {
 export const Fact: React.FC<{
   fact: TFact;
   celebName: string;
-  showFooter?: boolean;
   slug: Celeb['slug'];
   link?: boolean;
+  showComments?: boolean;
 }> = (props) => {
-  const showFooter = defaultTo(props.showFooter, true);
   const link = defaultTo(props.link, false);
+  const showComments = props.showComments ?? true;
 
   const [showOgImage, setShowOgImage] = useState(true);
 
@@ -151,8 +151,8 @@ export const Fact: React.FC<{
             )) || <p>{(props.fact as any).content}</p>}
         </div>
 
-        {showFooter && (
-          <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
+        <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
+          {showComments && (
             <Link href={`${props.fact.forumLink}#reply`} passHref>
               <a
                 id="fact-comments-link"
@@ -162,21 +162,21 @@ export const Fact: React.FC<{
                 Comments
               </a>
             </Link>
+          )}
 
-            <div className="flex-1" />
+          <div className="flex-1" />
 
-            <Link href={props.fact.source} passHref>
-              <a
-                rel="noreferrer"
-                target="_blank"
-                className="pointer-events-auto flex select-none items-center gap-1 text-xs text-neutral-500 transition hover:underline focus:border-blue-300"
-              >
-                <BiLink className="text-base" />
-                {getSourceHost(props.fact.source)}
-              </a>
-            </Link>
-          </div>
-        )}
+          <Link href={props.fact.source} passHref>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              className="pointer-events-auto flex select-none items-center gap-1 text-xs text-neutral-500 transition hover:underline focus:border-blue-300"
+            >
+              <BiLink className="text-base" />
+              {getSourceHost(props.fact.source)}
+            </a>
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { discourseApiClient } from '~/lib/discourseApiClient';
+import { getContributor } from '~/lib/getStatic/getContributor';
 import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
@@ -59,16 +61,22 @@ export const getStaticProps = async ({
 
   const tag = fact.tags[0];
 
-  const { otherCelebsWithTag, otherCelebsWithIssue } = await getRelatedCelebs(
-    tag.tag._id,
-    tag.tag.issue._id,
-    params.celeb,
-    uniq([tag.tag.issue.name, ...orderOfIssues]),
-  );
+  const [relatedCelebs, contributor] = await Promise.all([
+    getRelatedCelebs(
+      tag.tag._id,
+      tag.tag.issue._id,
+      params.celeb,
+      uniq([tag.tag.issue.name, ...orderOfIssues]),
+    ),
+    getContributor(fact.forumLink),
+  ]);
+
+  const { otherCelebsWithTag, otherCelebsWithIssue } = relatedCelebs;
 
   return {
     props: {
       celeb,
+      contributor,
       tag,
       fact,
       otherCelebsWithIssue,
