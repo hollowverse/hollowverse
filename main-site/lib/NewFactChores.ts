@@ -47,21 +47,24 @@ export class NewFactChores {
   }
 
   private addTags() {
-    return this.logTask(`Add 'accepted' tag to topic ${this.topic.id}`, () => {
-      const tags = [...this.topic.tags];
+    return this.logTask(
+      `Add 'accepted' and '${this.contentChange.slug}' tags to topic ${this.topic.id}`,
+      () => {
+        const tags = [...this.topic.tags];
 
-      tags.push('accepted', this.contentChange.slug);
+        tags.push('accepted', this.contentChange.slug);
 
-      const newTags = uniq(tags);
+        const newTags = uniq(tags);
 
-      return this.discourseApiClient(`t/-/${this.topic.id}.json`, {
-        method: 'PUT',
-        body: {
-          keep_existing_draft: true,
-          tags: newTags,
-        },
-      });
-    });
+        return this.discourseApiClient(`t/-/${this.topic.id}.json`, {
+          method: 'PUT',
+          body: {
+            keep_existing_draft: true,
+            tags: newTags,
+          },
+        });
+      },
+    );
   }
 
   private async formatPost() {
