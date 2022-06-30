@@ -32,9 +32,11 @@ export const cors = initMiddleware(
         endsWith(url.hostname, VERCEL_TEMP_DOMAIN)
       ) {
         callback(null, true);
+        return;
       }
 
       callback(null, false);
+      return;
     },
     methods: ['GET'],
   }),
