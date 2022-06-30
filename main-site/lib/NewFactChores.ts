@@ -46,10 +46,12 @@ export class NewFactChores {
       _discourseApiClient<T>(apiEndPoint, payload, this.logContext);
   }
 
-  private addAcceptedTag() {
+  private addTags() {
     return this.logTask(`Add 'accepted' tag to topic ${this.topic.id}`, () => {
       const tags = [...this.topic.tags];
-      tags.push('accepted');
+
+      tags.push('accepted', this.contentChange.slug);
+
       const newTags = uniq(tags);
 
       return this.discourseApiClient(`t/-/${this.topic.id}.json`, {
@@ -254,7 +256,7 @@ export class NewFactChores {
     const results = [];
 
     results.push(
-      await this.addAcceptedTag(),
+      await this.addTags(),
       isUpdateOrCreate ? await this.formatPost() : null,
       isUpdateOrCreate ? await this.lockPost() : null,
       isCreate ? await this.awardBadgesAndNotifyUser() : null,
