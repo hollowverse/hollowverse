@@ -46,20 +46,25 @@ export class NewFactChores {
       _discourseApiClient<T>(apiEndPoint, payload, this.logContext);
   }
 
-  private addAcceptedTag() {
-    return this.logTask(`Add 'accepted' tag to topic ${this.topic.id}`, () => {
-      const tags = [...this.topic.tags];
-      tags.push('accepted');
-      const newTags = uniq(tags);
+  private addTags() {
+    return this.logTask(
+      `Add 'accepted' and '${this.contentChange.slug}' tags to topic ${this.topic.id}`,
+      () => {
+        const tags = [...this.topic.tags];
 
-      return this.discourseApiClient(`t/-/${this.topic.id}.json`, {
-        method: 'PUT',
-        body: {
-          keep_existing_draft: true,
-          tags: newTags,
-        },
-      });
-    });
+        tags.push('accepted', this.contentChange.slug);
+
+        const newTags = uniq(tags);
+
+        return this.discourseApiClient(`t/-/${this.topic.id}.json`, {
+          method: 'PUT',
+          body: {
+            keep_existing_draft: true,
+            tags: newTags,
+          },
+        });
+      },
+    );
   }
 
   private async formatPost() {
@@ -254,7 +259,7 @@ export class NewFactChores {
     const results = [];
 
     results.push(
-      await this.addAcceptedTag(),
+      await this.addTags(),
       isUpdateOrCreate ? await this.formatPost() : null,
       isUpdateOrCreate ? await this.lockPost() : null,
       isCreate ? await this.awardBadgesAndNotifyUser() : null,
