@@ -39,7 +39,7 @@ export class NewFactChores {
     this.log = createContextLogger(this.logContext);
     this.discourseApiClient = <T extends Json>(
       apiEndPoint: string,
-      payload: { method: 'POST' | 'PUT' | 'GET'; body?: any } = {
+      payload: { method: 'POST' | 'PUT' | 'GET'; body?: Json } = {
         method: 'GET',
       },
     ): Promise<T> =>
@@ -61,16 +61,18 @@ export class NewFactChores {
     }
 
     const addTagToGroup = await this.logTask(
-      'Add slug to the "celeb slug" group of forum tags',
+      `Add '${slug}' to the 'celeb slug' group of forum tags`,
       () => {
+        const { id, ...tagGroup } = celebSlugTagGroup.tag_group;
+
         const updatedTagGroup = {
-          ...celebSlugTagGroup,
-          tag_names: uniq([...celebSlugTagGroup.tag_names, slug]),
+          ...tagGroup,
+          tag_names: uniq([...tagGroup.tag_names, slug]),
         };
 
         return this.discourseApiClient('tag_groups/2.json', {
           method: 'PUT',
-          body: JSON.stringify(updatedTagGroup),
+          body: { tag_group: updatedTagGroup },
         });
       },
     );
