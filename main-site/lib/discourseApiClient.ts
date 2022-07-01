@@ -3,7 +3,7 @@ import { Context, log, LoggableError } from '~/shared/lib/log';
 
 export async function discourseApiClient<T extends Json>(
   apiEndPoint: string,
-  payload: { method: 'POST' | 'PUT' | 'GET'; body?: any } = {
+  payload: { method: 'POST' | 'PUT' | 'GET'; body?: Json } = {
     method: 'GET',
   },
   logContext?: Context,
