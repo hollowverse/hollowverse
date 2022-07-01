@@ -46,21 +46,47 @@ export class NewFactChores {
       _discourseApiClient<T>(apiEndPoint, payload, this.logContext);
   }
 
-  private addTags() {
-    return this.logTask(
-      `Add 'accepted' and '${this.contentChange.slug}' tags to topic ${this.topic.id}`,
+  private async addTags() {
+    const slug = this.contentChange.slug;
+
+    const celebSlugTagGroup = await this.logTaskD(
+      'Retrieve celeb slug forum tag group',
       () => {
-        const tags = [...this.topic.tags];
+        return this.discourseApiClient('tag_groups/2.json');
+      },
+    );
 
-        tags.push('accepted', this.contentChange.slug);
+    if (isError(celebSlugTagGroup)) {
+      return celebSlugTagGroup;
+    }
 
-        const newTags = uniq(tags);
+    const addTagToGroup = await this.logTask(
+      'Add slug to the "celeb slug" group of forum tags',
+      () => {
+        const updatedTagGroup = {
+          ...celebSlugTagGroup,
+          tag_names: uniq([...celebSlugTagGroup.tag_names, slug]),
+        };
 
+        return this.discourseApiClient('tag_groups/2.json', {
+          method: 'PUT',
+          body: JSON.stringify(updatedTagGroup),
+        });
+      },
+    );
+
+    if (isError(addTagToGroup)) {
+      return addTagToGroup;
+    }
+
+    return this.logTask(
+      `Add 'accepted' and '${slug}' tags to topic ${this.topic.id}`,
+      () => {
         return this.discourseApiClient(`t/-/${this.topic.id}.json`, {
           method: 'PUT',
           body: {
             keep_existing_draft: true,
-            tags: newTags,
+            tags: ['accepted', slug],
           },
         });
       },
