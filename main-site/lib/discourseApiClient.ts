@@ -27,15 +27,12 @@ export async function discourseApiClient<T extends Json>(
     },
   );
 
-  let contentType: string;
+  let contentType: string | undefined;
   let body: any;
 
-  if (payload.type === 'urlencoded') {
+  if (payload.type === 'form') {
     contentType = 'application/x-www-form-urlencoded';
     body = qs.stringify(payload.body);
-  } else if (payload.type == 'form') {
-    contentType = 'multipart/form-data';
-    body = payload.body;
   } else {
     contentType = 'application/json';
     body = JSON.stringify(payload.body);
@@ -45,7 +42,7 @@ export async function discourseApiClient<T extends Json>(
     method: payload.method,
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
-      'content-type': contentType,
+      'Content-Type': contentType,
       'Api-Username': 'hollowbot',
     },
     body,
@@ -56,16 +53,20 @@ export async function discourseApiClient<T extends Json>(
     const isJson =
       contentType && contentType.indexOf('application/json') !== -1;
 
+    const context = {
+      ...logContext,
+      payload,
+      status: res.status,
+      statusText: res.statusText,
+      url,
+      response: isJson ? await res.json() : await res.text(),
+    };
+
+    // console.log(context);
+
     throw new LoggableError(
       `Discourse API ERROR; method: ${payload.method}; end point: ${apiEndPoint}`,
-      {
-        ...logContext,
-        payload,
-        status: res.status,
-        statusText: res.statusText,
-        url,
-        response: isJson ? await res.json() : await res.text(),
-      },
+      context,
     );
   }
 

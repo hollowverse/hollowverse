@@ -24,7 +24,7 @@ export default async function createDiscourseApis(
   try {
     await discourseApiClient('admin/plugins/explorer/queries/5', {
       method: 'PUT',
-      type: 'urlencoded',
+      type: 'form',
       body: {
         query: {
           name: 'Top contributors by celebrity',
@@ -36,7 +36,7 @@ export default async function createDiscourseApis(
 
     await discourseApiClient('admin/plugins/explorer/queries/6', {
       method: 'PUT',
-      type: 'urlencoded',
+      type: 'form',
       body: {
         query: {
           name: 'Fact page data',
