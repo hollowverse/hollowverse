@@ -8,24 +8,9 @@ import { IconType } from 'react-icons/lib';
 import { Contributor } from '~/lib/getStatic/processForumContributorFields';
 import Image from 'next/image';
 
-function WebsiteIcon(props: { socialNetworkName: string }) {
-  let Icon: IconType | undefined;
-  const sn = props.socialNetworkName;
+export function ContributorBox(props: Contributor & { showBio?: boolean }) {
+  const showBio = props.showBio ?? true;
 
-  if (sn === 'twitter') {
-    Icon = AiOutlineTwitter;
-  } else if (sn === 'instagram') {
-    Icon = AiOutlineInstagram;
-  } else if (sn === 'linkedin') {
-    Icon = AiOutlineLinkedin;
-  } else {
-    Icon = CgWebsite;
-  }
-
-  return <Icon />;
-}
-
-export function ContributorBox(props: Contributor) {
   return (
     <a href={getUrl(props)} target="_blank" rel="noreferrer">
       <div id="contributor-box" className="grid auto-rows-auto">
@@ -59,11 +44,11 @@ export function ContributorBox(props: Contributor) {
         <div className="grid grid-cols-12">
           <div className="col-span-2" />
           <div className="col-span-10 flex flex-col gap-2">
-            {props.bio && (
+            {props.bio && showBio ? (
               <p className="pointer-events-none text-sm text-neutral-600">
                 {props.bio}
               </p>
-            )}
+            ) : null}
 
             {props.website ? (
               <div className="flex items-center gap-1 text-neutral-500">
@@ -93,4 +78,21 @@ function getUrl(contributor: Contributor) {
   } catch (e) {
     return `https://forum.hollowverse.com/u/${contributor.username}/summary`;
   }
+}
+
+function WebsiteIcon(props: { socialNetworkName: string }) {
+  let Icon: IconType | undefined;
+  const sn = props.socialNetworkName;
+
+  if (sn === 'twitter') {
+    Icon = AiOutlineTwitter;
+  } else if (sn === 'instagram') {
+    Icon = AiOutlineInstagram;
+  } else if (sn === 'linkedin') {
+    Icon = AiOutlineLinkedin;
+  } else {
+    Icon = CgWebsite;
+  }
+
+  return <Icon />;
 }
