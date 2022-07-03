@@ -1,4 +1,7 @@
 import { discourseApiClient } from '~/lib/discourseApiClient';
+import { ContributorPsql } from '~/lib/psql/contributor.fields';
+import { FactPageForumDataPsql } from '~/lib/psql/factPageForumData';
+import { Json } from '~/lib/types';
 
 type Query =
   | {
@@ -10,18 +13,31 @@ type Query =
       params: { topic_id: string };
     };
 
+type QueryResults = {
+  success: boolean;
+  errors: any[];
+  duration: number;
+  result_count: number;
+  params: Json;
+  columns: string[];
+  default_limit: number;
+  relations: {};
+  colrender: {};
+  rows: any[][];
+};
+
+type ProcessedQueryResults = {
+  'fact-page-data': [FactPageForumDataPsql];
+  'top-contributors': ContributorPsql[];
+};
+
 const queryIds: { [name in Query['name']]: number } = {
   'top-contributors': 5,
   'fact-page-data': 6,
 };
 
-type QueryResultsType = {
-  'top-contributors': { foo: string };
-  'fact-page-data': { bar: number };
-};
-
-export function discoursePsqlQuery<T extends Query>(query: T) {
-  return discourseApiClient<QueryResultsType[T['name']]>(
+export async function discoursePsqlQuery<T extends Query>(query: T) {
+  const queryResults = await discourseApiClient<QueryResults>(
     `admin/plugins/explorer/queries/${queryIds[query.name]}/run`,
     {
       method: 'POST',
@@ -29,4 +45,16 @@ export function discoursePsqlQuery<T extends Query>(query: T) {
       body: { params: JSON.stringify(query.params) },
     },
   );
+
+  return queryResults.rows.map((r) => {
+    const obj: { [name: string]: any } = {};
+
+    for (let i = 0; i < r.length; i++) {
+      const rKey = queryResults.columns[i];
+
+      obj[rKey] = r[i];
+    }
+
+    return obj;
+  }) as ProcessedQueryResults[T['name']];
 }

@@ -1,5 +1,10 @@
-import { contributorFieldsPsql } from '~/lib/psql/contributor.fields';
+import {
+  contributorFieldsPsql,
+  ContributorPsql,
+} from '~/lib/psql/contributor.fields';
 import { sql } from '~/lib/sql';
+
+export type FactPageForumDataPsql = ContributorPsql & { comments: number };
 
 export const factPageForumDataPsql = sql`
 -- [params]

@@ -1,5 +1,13 @@
 import { sql } from '~/lib/sql';
 
+export type ContributorPsql = {
+  name: string;
+  username: string;
+  uploaded_avatar_id: string;
+  bio_cooked: string;
+  website: string;
+};
+
 export const contributorFieldsPsql = sql`
 users.name,
 users.username,
