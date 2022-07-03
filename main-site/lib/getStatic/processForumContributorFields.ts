@@ -1,6 +1,9 @@
-import { ContributorPsql } from '~/lib/psql/contributor.fields';
-import truncate from 'truncate-html';
+import { startsWith } from 'lodash-es';
 import randomcolor from 'randomcolor';
+import truncate from 'truncate-html';
+import { ContributorPsql } from '~/lib/psql/contributor.fields';
+
+export type Contributor = ReturnType<typeof processForumContributorFields>;
 
 export function processForumContributorFields(contributor: ContributorPsql) {
   const { uploaded_avatar_id, bio_cooked, ...rest } = contributor;
@@ -9,6 +12,8 @@ export function processForumContributorFields(contributor: ContributorPsql) {
     ...rest,
     avatar: getAvatar(rest.username, uploaded_avatar_id),
     bio: bio_cooked ? truncate(bio_cooked, 250, { stripTags: true }) : null,
+    socialNetworkName: getSocialNetworkName(rest.website),
+    websiteName: getWebsiteName(rest.website),
   };
 }
 
@@ -24,4 +29,45 @@ function getAvatar(username: string, uploadId: string | undefined) {
   }
 
   return `${base}user_avatar/forum.hollowverse.com/${username.toLowerCase()}/240/${uploadId}_2.png`;
+}
+
+function getWebsiteName(website: string | undefined) {
+  if (!website) {
+    return null;
+  }
+
+  try {
+    const u = website;
+    const protocol = new URL(u).protocol;
+
+    return u.slice((protocol + '//').length);
+  } catch (e) {
+    return null;
+  }
+}
+
+function getSocialNetworkName(website: string | undefined) {
+  if (!website) {
+    return 'none';
+  }
+
+  function test(hostname: string, socialNetworkName: string) {
+    return startsWith(hostname.toLowerCase(), socialNetworkName.toLowerCase());
+  }
+
+  try {
+    const hostname = new URL(website).hostname;
+
+    if (test(hostname, 'linkedin')) {
+      return 'linkedin';
+    } else if (test(hostname, 'twitter')) {
+      return 'twitter';
+    } else if (test(hostname, 'instagram')) {
+      return 'instagram';
+    } else {
+      return 'none';
+    }
+  } catch (e) {
+    return 'none';
+  }
 }

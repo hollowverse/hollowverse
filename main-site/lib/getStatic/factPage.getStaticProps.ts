@@ -70,8 +70,6 @@ export const getStaticProps = async ({
     getFactForumData(fact.forumLink),
   ]);
 
-  console.log('getFactForumData', factForumData);
-
   return {
     props: {
       ...factForumData,

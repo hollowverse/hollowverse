@@ -1,9 +1,7 @@
 import { isEmpty } from 'lodash-es';
-import Image from 'next/image';
-import { AiOutlineTwitter } from 'react-icons/ai';
 import { FiMessageSquare } from 'react-icons/fi';
-import { CgWebsite } from 'react-icons/cg';
 import { CelebImage } from '~/components/CelebImage';
+import { ContributorBox } from '~/components/ContributorBox';
 import { DiscourseThread } from '~/components/DiscourseThread';
 import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
@@ -86,62 +84,23 @@ export default function FactPage(props: FactPageProps) {
           </div>
         </Card>
 
-        <Card className="flex flex-col gap-5 px-5 py-5">
-          <h3 className="text-xs font-semibold uppercase tracking-tighter text-neutral-500">
-            Contributed by
-          </h3>
+        {props.contributor && (
+          <Card className="flex flex-col gap-3 px-5 py-3">
+            <h3 className="text-xs font-semibold uppercase tracking-tighter text-neutral-500">
+              Contributed by
+            </h3>
 
-          <div className="flex gap-4">
-            <div className="shrink-0">
-              <Image
-                className="rounded-full"
-                width={50}
-                height={50}
-                alt={`${props.contributor.username}'s image`}
-                src={`https://forum.hollowverse.com${props.contributor.avatar_template.replace(
-                  '{size}',
-                  '150',
-                )}`}
-              />
+            <ContributorBox {...props.contributor} />
+
+            <hr className="-mx-5" />
+
+            <div>
+              <p className="text-sm text-neutral-500">
+                You&apos;re invited to contribute, too! Learn how.
+              </p>
             </div>
-
-            <div className="flex min-w-0 flex-col gap-2">
-              <div className="flex items-center gap-1">
-                <p className="font-semibold">{props.contributor.name}</p>
-                <p className="font-semibold text-neutral-400">
-                  @{props.contributor.username}
-                </p>
-                <div className="flex-1" />
-                <AiOutlineTwitter className="text-2xl text-blue-400" />
-              </div>
-
-              <p
-                className="pointer-events-none text-sm text-neutral-600"
-                dangerouslySetInnerHTML={{
-                  __html: props.contributor.bio_excerpt,
-                }}
-              />
-
-              <div className="flex items-center gap-1">
-                <CgWebsite className="text-neutral-500" />
-                <a
-                  href={props.contributor.website}
-                  className="truncate text-sm text-blue-400 underline"
-                >
-                  {props.contributor.website_name}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <hr className="-mx-5" />
-
-          <div>
-            <p className="text-sm text-neutral-500">
-              You&apos;re invited to contribute, too! Learn how.
-            </p>
-          </div>
-        </Card>
+          </Card>
+        )}
 
         <ReturnToCelebViewsButton slug={celeb.slug} name={celeb.name} />
 
