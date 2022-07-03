@@ -1,13 +1,21 @@
+import { defaults } from 'lodash-es';
 import { Json } from '~/lib/types';
 import { Context, log, LoggableError } from '~/shared/lib/log';
+import qs from 'qs';
 
 export async function discourseApiClient<T extends Json>(
   apiEndPoint: string,
-  payload: { method: 'POST' | 'PUT' | 'GET'; body?: Json } = {
-    method: 'GET',
+  _payload?: {
+    method?: 'POST' | 'PUT' | 'GET';
+    type?: 'json' | 'urlencoded' | 'form';
+    body: Json;
   },
   logContext?: Context,
 ) {
+  const payload = defaults(_payload, {
+    method: 'GET',
+    type: 'json',
+  });
   const url = `https://forum.hollowverse.com/${apiEndPoint}`;
 
   log(
@@ -19,14 +27,28 @@ export async function discourseApiClient<T extends Json>(
     },
   );
 
+  let contentType: string;
+  let body: any;
+
+  if (payload.type === 'urlencoded') {
+    contentType = 'application/x-www-form-urlencoded';
+    body = qs.stringify(payload.body);
+  } else if (payload.type == 'form') {
+    contentType = 'multipart/form-data';
+    body = payload.body;
+  } else {
+    contentType = 'application/json';
+    body = JSON.stringify(payload.body);
+  }
+
   const res = await fetch(url, {
     method: payload.method,
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
-      'content-type': 'application/json',
+      'content-type': contentType,
       'Api-Username': 'hollowbot',
     },
-    body: JSON.stringify(payload.body),
+    body,
   });
 
   if (!res.ok) {
