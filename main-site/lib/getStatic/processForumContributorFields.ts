@@ -25,7 +25,7 @@ function getAvatar(username: string, uploadId: string | undefined) {
   if (!uploadId) {
     const color = randomcolor({
       seed: username,
-      luminosity: 'light',
+      luminosity: 'dark',
     }).substring(1);
 
     return `${base}letter_avatar_proxy/v4/letter/${username[0].toLowerCase()}/${color}/240.png`;
