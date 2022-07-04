@@ -11,6 +11,7 @@ import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { oneDay } from '~/lib/date';
 import {
   getTrendingCelebs,
   TrendingCelebs,
@@ -200,6 +201,6 @@ export async function getStaticProps(): Promise<
       trendingCelebs,
       latestFacts: latestFacts,
     },
-    revalidate: 60 * 60 * 24, // revalidate every 24 hours
+    revalidate: oneDay,
   };
 }

@@ -1,5 +1,6 @@
 import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { oneDay } from '~/lib/date';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
 import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
@@ -59,5 +60,6 @@ export const getStaticProps = async ({
       otherCelebsWithTag,
       otherCelebsWithIssue,
     },
+    revalidate: oneDay,
   };
 };

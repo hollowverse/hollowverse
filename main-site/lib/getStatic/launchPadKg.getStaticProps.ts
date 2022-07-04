@@ -1,4 +1,5 @@
 import { isEmpty } from 'lodash-es';
+import { oneDay } from '~/lib/date';
 import {
   getKgSearchId,
   requestKgResult,
@@ -11,7 +12,10 @@ export const getStaticProps = async ({
   params,
 }: {
   params: { kg: string };
-}): Promise<{ props: ResearcherLaunchPadProps } | { notFound: boolean }> => {
+}): Promise<
+  | { props: ResearcherLaunchPadProps; revalidate: number }
+  | { notFound: boolean }
+> => {
   log('info', `launchPad KG getStaticProps called: ${params.kg}`);
 
   const searchId = getKgSearchId(params.kg);
@@ -36,5 +40,6 @@ export const getStaticProps = async ({
       pathname: `~kg/${encodeURIComponent(params.kg)}/lp`,
       issues,
     },
+    revalidate: oneDay,
   };
 };
