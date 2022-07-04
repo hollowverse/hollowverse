@@ -8,7 +8,6 @@ export function TopContributors(props: {
   contributors: TopContributors;
   celebName: string;
 }) {
-  console.log('props.', props.contributors);
   return (
     <TitledCard
       titledContentProps={{
@@ -37,7 +36,7 @@ export function TopContributors(props: {
 
         <hr className="-mx-5" />
 
-        <p className="text-sm text-neutral-500">
+        <p className="text-neutral-500">
           You can contribute, too!{' '}
           <a
             className="h-link underline"
