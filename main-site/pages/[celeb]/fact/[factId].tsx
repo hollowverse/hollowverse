@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash-es';
-import { BiCalendar, BiLink, BiUserCircle } from 'react-icons/bi';
 import { FiMessageSquare } from 'react-icons/fi';
 import { CelebImage } from '~/components/CelebImage';
+import { ContributorBox } from '~/components/ContributorBox';
 import { DiscourseThread } from '~/components/DiscourseThread';
 import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
@@ -15,7 +15,6 @@ import { Card } from '~/components/ui/Card';
 import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { formatFactDate } from '~/lib/date';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
@@ -34,13 +33,8 @@ function getTextSummary(name: string, fact: TFact, length: number) {
   return text.substring(0, length) + '...';
 }
 
-export default function FactPage({
-  celeb,
-  fact,
-  otherCelebsWithIssue,
-  otherCelebsWithTag,
-  tag,
-}: FactPageProps) {
+export default function FactPage(props: FactPageProps) {
+  const { celeb, fact, otherCelebsWithIssue, otherCelebsWithTag, tag } = props;
   const { contributorUsername, commentCount } = useFact(fact);
   const sourceHost = getSourceHost(fact.source);
 
@@ -85,41 +79,35 @@ export default function FactPage({
               slug={celeb.slug}
               fact={fact}
               celebName={celeb.name}
-              showFooter={false}
+              showComments={false}
             />
+          </div>
+        </Card>
+
+        {props.contributor && (
+          <Card className="flex flex-col gap-3 px-5 py-3">
+            <h3 className="text-xs font-semibold uppercase tracking-tighter text-neutral-500">
+              Contributed by
+            </h3>
+
+            <ContributorBox {...props.contributor} />
 
             <hr className="-mx-5" />
 
-            <div className="flex flex-col gap-2 text-sm text-gray-500">
-              <div className="inline-flex items-center">
-                <BiCalendar size={22} className="mr-2" />
-                <p>Happened on {formatFactDate(fact.date)}</p>
-              </div>
-              <div className="inline-flex items-center">
-                <BiUserCircle size={22} className="mr-2" />
-                <p>
-                  Contributed by{' '}
-                  <Link
-                    href={`https://forum.hollowverse.com/u/${contributorUsername}`}
-                  >
-                    <a className="h-gray-link">@{contributorUsername}</a>
-                  </Link>
-                </p>
-              </div>
-              <div className="inline-flex items-center">
-                <BiLink size={22} className="mr-2" />
-                <p>
-                  Source:{' '}
-                  <Link href={fact.source} passHref>
-                    <a rel="noreferrer" target="_blank" className="h-gray-link">
-                      {sourceHost}
-                    </a>
-                  </Link>
-                </p>
-              </div>
+            <div>
+              <p className="text-sm text-neutral-500">
+                You can contribute, too!{' '}
+                <a
+                  className="h-link underline"
+                  href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
+                >
+                  Learn how
+                </a>
+                .
+              </p>
             </div>
-          </div>
-        </Card>
+          </Card>
+        )}
 
         <ReturnToCelebViewsButton slug={celeb.slug} name={celeb.name} />
 
@@ -141,7 +129,7 @@ export default function FactPage({
 
                   <Link href={`${fact.forumLink}#reply`}>
                     <a className="textbox-border flex h-20 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-gray-100 hover:text-gray-500">
-                      <FiMessageSquare /> Start discussion
+                      <FiMessageSquare /> Share your opinion
                     </a>
                   </Link>
                 </div>

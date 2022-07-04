@@ -25,9 +25,9 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
     return getDocumentViews(
       groq`*[
         _type == 'fact' &&
-        $param1 in *[_id == ^._id][0]{'tags': tags[]{'tag': tag->{name}}.tag.name}.tags
+        $param1 in tags[].tag._ref
       ] | order(_createdAt desc)`,
-      'name',
+      '_id',
       'Facts',
     );
   }
@@ -36,9 +36,9 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
     return getDocumentViews(
       groq`*[
         _type == 'fact' &&
-        $param1 in *[_id == ^._id][0]{'issues': topics[]->{name}.name}.issues[]
+        $param1 in topics[]._ref
       ] | order(_createdAt desc)`,
-      'name',
+      '_id',
       'Facts',
     );
   }

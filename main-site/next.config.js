@@ -18,6 +18,7 @@ const nextJsConfig = {
   images: {
     domains: [
       'cdn.sanity.io',
+      'forum.hollowverse.com',
       'encrypted-tbn0.gstatic.com',
       'encrypted-tbn1.gstatic.com',
       'encrypted-tbn2.gstatic.com',

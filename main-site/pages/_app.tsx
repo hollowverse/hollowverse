@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { PageTransitionSpinner } from '~/components/PageTransitionSpinner';
 import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
+import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -10,11 +11,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Script
-        strategy="lazyOnload"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8989100382265388"
-        crossOrigin="anonymous"
-      />
+      {getVercelEnv() !== 'preview' && (
+        <Script
+          strategy="lazyOnload"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8989100382265388"
+          crossOrigin="anonymous"
+        />
+      )}
 
       <Script
         strategy="afterInteractive"

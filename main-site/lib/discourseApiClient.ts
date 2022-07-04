@@ -1,13 +1,21 @@
+import { defaults } from 'lodash-es';
 import { Json } from '~/lib/types';
 import { Context, log, LoggableError } from '~/shared/lib/log';
+import qs from 'qs';
 
 export async function discourseApiClient<T extends Json>(
   apiEndPoint: string,
-  payload: { method: 'POST' | 'PUT' | 'GET'; body?: Json } = {
-    method: 'GET',
+  _payload?: {
+    method?: 'POST' | 'PUT' | 'GET';
+    type?: 'json' | 'urlencoded' | 'form';
+    body: Json;
   },
   logContext?: Context,
 ) {
+  const payload = defaults(_payload, {
+    method: 'GET',
+    type: 'json',
+  });
   const url = `https://forum.hollowverse.com/${apiEndPoint}`;
 
   log(
@@ -19,14 +27,25 @@ export async function discourseApiClient<T extends Json>(
     },
   );
 
+  let contentType: string | undefined;
+  let body: any;
+
+  if (payload.type === 'form') {
+    contentType = 'application/x-www-form-urlencoded';
+    body = qs.stringify(payload.body);
+  } else {
+    contentType = 'application/json';
+    body = JSON.stringify(payload.body);
+  }
+
   const res = await fetch(url, {
     method: payload.method,
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
-      'content-type': 'application/json',
+      'Content-Type': contentType,
       'Api-Username': 'hollowbot',
     },
-    body: JSON.stringify(payload.body),
+    body,
   });
 
   if (!res.ok) {
@@ -34,16 +53,20 @@ export async function discourseApiClient<T extends Json>(
     const isJson =
       contentType && contentType.indexOf('application/json') !== -1;
 
+    const context = {
+      ...logContext,
+      payload,
+      status: res.status,
+      statusText: res.statusText,
+      url,
+      response: isJson ? await res.json() : await res.text(),
+    };
+
+    // console.log(context);
+
     throw new LoggableError(
       `Discourse API ERROR; method: ${payload.method}; end point: ${apiEndPoint}`,
-      {
-        ...logContext,
-        payload,
-        status: res.status,
-        statusText: res.statusText,
-        url,
-        response: isJson ? await res.json() : await res.text(),
-      },
+      context,
     );
   }
 
