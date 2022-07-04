@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
+import { oneDay } from '~/lib/date';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
 import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
 import { log } from '~/shared/lib/log';
@@ -19,7 +20,10 @@ export const getStaticProps = async ({
   params,
 }: {
   params: { celeb: string };
-}): Promise<{ props: ResearcherLaunchPadProps } | { notFound: boolean }> => {
+}): Promise<
+  | { props: ResearcherLaunchPadProps; revalidate: number }
+  | { notFound: boolean }
+> => {
   log('info', `launchPad celeb getStaticProps called: ${params.celeb}`);
 
   const celebName = await sanityClient.fetch<string>(
@@ -42,5 +46,6 @@ export const getStaticProps = async ({
       pathname: `${params.celeb}/lp`,
       issues,
     },
+    revalidate: oneDay,
   };
 };

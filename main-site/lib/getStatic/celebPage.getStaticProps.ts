@@ -1,4 +1,5 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { oneDay } from '~/lib/date';
 import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
@@ -41,5 +42,6 @@ export const getStaticProps = async ({
         oldContent: parsedOldContent,
       },
     },
+    revalidate: oneDay,
   };
 };

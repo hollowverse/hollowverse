@@ -1,6 +1,7 @@
 import groq from 'groq';
 import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
+import { oneDay } from '~/lib/date';
 import { getFactForumData } from '~/lib/getStatic/getFactForumData';
 import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
@@ -13,11 +14,11 @@ export type FactPageProps = NonNullable<
   UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
 >;
 
-export const getStaticProps = async ({
+export async function getStaticProps({
   params,
 }: {
   params: { celeb: string; factId: string };
-}) => {
+}) {
   const celeb = await sanityClient.fetch<Celeb>(
     'fact-page-celeb-data',
     groq`*[_type == 'celeb' && slug.current == $slug][0]{
@@ -78,5 +79,6 @@ export const getStaticProps = async ({
       tag,
       fact,
     },
+    revalidate: oneDay,
   };
-};
+}
