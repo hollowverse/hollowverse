@@ -4,10 +4,8 @@ import {
   AiOutlineLinkedin,
   AiOutlineTwitter,
 } from 'react-icons/ai';
-import { CgWebsite } from 'react-icons/cg';
 import { IconType } from 'react-icons/lib';
 import { Contributor } from '~/lib/getStatic/processForumContributorFields';
-import { pluralize } from '~/lib/pluralize';
 
 export function ContributorBox(
   props: Contributor & { showBio?: boolean; count?: number },
@@ -138,7 +136,7 @@ function WebsiteIcon(props: { socialNetworkName: string }) {
   } else if (sn === 'linkedin') {
     Icon = AiOutlineLinkedin;
   } else {
-    Icon = CgWebsite;
+    return null;
   }
 
   return <Icon />;
