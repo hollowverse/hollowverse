@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { celebTopContributorsPsql } from '~/lib/psql/celebTopContributors.psql';
 import { nextApiClient } from '~/shared/lib/nextApiClient';
 import { factPageForumDataPsql } from '~/lib/psql/factPageForumData';
+import { log } from '~/shared/lib/log';
 
 /**
  * This function is meant to be called during development only.
@@ -21,7 +22,13 @@ export default async function createDiscourseApis(
     return;
   }
 
+  if (true === true) {
+    throw new Error('Uncomment this error to enable this API end point');
+  }
+
   try {
+    log('info', 'Discourse APIs updated');
+
     await discourseApiClient('admin/plugins/explorer/queries/5', {
       method: 'PUT',
       type: 'form',
