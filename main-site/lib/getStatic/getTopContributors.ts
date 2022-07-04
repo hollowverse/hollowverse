@@ -18,7 +18,7 @@ export async function getTopContributors(slug: string) {
       processForumContributorFields,
     ) as TopContributors;
   } catch (e) {
-    log('error', 'Error retrieving top contributors');
+    log('error', 'Error retrieving top contributors', { error: e as any });
 
     return null;
   }

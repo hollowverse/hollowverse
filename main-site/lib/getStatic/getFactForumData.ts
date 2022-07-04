@@ -30,7 +30,7 @@ export async function getFactForumData(forumLink: string) {
       comments,
     };
   } catch (e) {
-    log('error', 'Error retrieving fact forum data');
+    log('error', 'Error retrieving fact forum data', { error: e as any });
 
     return null;
   }
