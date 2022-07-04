@@ -39,8 +39,10 @@ export class NewFactChores {
     this.log = createContextLogger(this.logContext);
     this.discourseApiClient = <T extends Json>(
       apiEndPoint: string,
-      payload: { method: 'POST' | 'PUT' | 'GET'; body?: Json } = {
-        method: 'GET',
+      payload?: {
+        method?: 'POST' | 'PUT' | 'GET';
+        type?: 'json' | 'urlencoded' | 'form';
+        body: Json;
       },
     ): Promise<T> =>
       _discourseApiClient<T>(apiEndPoint, payload, this.logContext);
