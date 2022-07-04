@@ -83,10 +83,6 @@ async function contentChangeNotify(
   const results = [];
 
   results.push(
-    ...(await Promise.all([
-      revalidatePath(`/${webhookPayload.slug}`),
-      revalidatePath(`/`),
-    ])),
     await logTask(
       'Performing new Fact chores',
       () => {
@@ -100,6 +96,11 @@ async function contentChangeNotify(
       },
       logContext,
     ),
+
+    ...(await Promise.all([
+      revalidatePath(`/${webhookPayload.slug}`),
+      revalidatePath(`/`),
+    ])),
   );
 
   if (results.some((r) => isError(r))) {
