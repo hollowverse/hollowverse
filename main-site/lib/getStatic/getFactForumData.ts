@@ -5,8 +5,8 @@ import { log } from '~/shared/lib/log';
 
 export async function getFactForumData(forumLink: string) {
   try {
-    const topicId = '3672';
-    // const topicId = getForumTopicId(forumLink);
+    // const topicId = '3672';
+    const topicId = getForumTopicId(forumLink);
 
     if (!topicId) {
       return null;
