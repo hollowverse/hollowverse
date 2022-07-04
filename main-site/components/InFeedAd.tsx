@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
 import { Card } from '~/components/ui/Card';
-import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 
 export function InFeedAd() {
-  const shouldShowAd = getVercelEnv() !== 'preview';
-
   useEffect(() => {
-    if (shouldShowAd) {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   }, []);
 
-  return shouldShowAd ? (
+  return (
     <Card className="py-5">
       <ins
         className="adsbygoogle"
@@ -22,5 +17,5 @@ export function InFeedAd() {
         data-ad-slot="4809714565"
       />
     </Card>
-  ) : null;
+  );
 }
