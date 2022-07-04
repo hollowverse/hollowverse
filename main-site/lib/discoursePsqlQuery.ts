@@ -1,4 +1,5 @@
 import { discourseApiClient } from '~/lib/discourseApiClient';
+import { TopContributors } from '~/lib/psql/celebTopContributors.psql';
 import { ContributorPsql } from '~/lib/psql/contributor.fields';
 import { FactPageForumDataPsql } from '~/lib/psql/factPageForumData';
 import { Json } from '~/lib/types';
@@ -28,7 +29,7 @@ type QueryResults = {
 
 type ProcessedQueryResults = {
   'fact-page-data': [FactPageForumDataPsql];
-  'top-contributors': ContributorPsql[];
+  'top-contributors': TopContributors;
 };
 
 const queryIds: { [name in Query['name']]: number } = {

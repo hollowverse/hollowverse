@@ -2,6 +2,7 @@ import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
 import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
 import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
+import { getTopContributors } from '~/lib/getStatic/getTopContributors';
 import { log } from '~/shared/lib/log';
 
 export type CelebPageProps = NonNullable<
@@ -24,14 +25,16 @@ export const getStaticProps = async ({
   }
 
   const { oldContent, facts, ...rest } = results.celeb;
-  const parsedOldContent = oldContent
-    ? await getParsedOldContent(oldContent)
-    : null;
+  const [parsedOldContent, topContributors] = await Promise.all([
+    oldContent ? await getParsedOldContent(oldContent) : null,
+    getTopContributors(params.celeb),
+  ]);
 
   const transformedFacts = factsDataTransform(facts, results.orderOfIssues);
 
   return {
     props: {
+      topContributors,
       celeb: {
         ...rest,
         facts: transformedFacts,

@@ -5,7 +5,9 @@ import { ContributorPsql } from '~/lib/psql/contributor.fields';
 
 export type Contributor = ReturnType<typeof processForumContributorFields>;
 
-export function processForumContributorFields(contributor: ContributorPsql) {
+export function processForumContributorFields<T extends ContributorPsql>(
+  contributor: T,
+) {
   const { uploaded_avatar_id, bio_cooked, ...rest } = contributor;
 
   return {
@@ -21,9 +23,10 @@ function getAvatar(username: string, uploadId: string | undefined) {
   const base = 'https://forum.hollowverse.com/';
 
   if (!uploadId) {
-    const color = randomcolor({ seed: username, luminosity: 'dark' }).substring(
-      1,
-    );
+    const color = randomcolor({
+      seed: username,
+      luminosity: 'light',
+    }).substring(1);
 
     return `${base}letter_avatar_proxy/v4/letter/${username[0].toLowerCase()}/${color}/240.png`;
   }

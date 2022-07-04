@@ -1,7 +1,7 @@
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getEnv } from '~/shared/lib/getEnv';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { celebTopContributorsPsql } from '~/lib/psql/celebTopContributors';
+import { celebTopContributorsPsql } from '~/lib/psql/celebTopContributors.psql';
 import { nextApiClient } from '~/shared/lib/nextApiClient';
 import { factPageForumDataPsql } from '~/lib/psql/factPageForumData';
 

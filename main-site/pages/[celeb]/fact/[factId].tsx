@@ -96,7 +96,14 @@ export default function FactPage(props: FactPageProps) {
 
             <div>
               <p className="text-sm text-neutral-500">
-                You&apos;re invited to contribute, too! Learn how.
+                You can contribute, too!{' '}
+                <a
+                  className="h-link underline"
+                  href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
+                >
+                  Learn how
+                </a>
+                .
               </p>
             </div>
           </Card>
@@ -122,7 +129,7 @@ export default function FactPage(props: FactPageProps) {
 
                   <Link href={`${fact.forumLink}#reply`}>
                     <a className="textbox-border flex h-20 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-gray-100 hover:text-gray-500">
-                      <FiMessageSquare /> Start discussion
+                      <FiMessageSquare /> Share your opinion
                     </a>
                   </Link>
                 </div>

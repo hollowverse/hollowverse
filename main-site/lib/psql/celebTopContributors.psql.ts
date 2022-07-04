@@ -1,5 +1,8 @@
+import { Contributor } from '~/lib/getStatic/processForumContributorFields';
 import { contributorFieldsPsql } from '~/lib/psql/contributor.fields';
 import { sql } from '~/lib/sql';
+
+export type TopContributors = (Contributor & { count: number })[];
 
 export const celebTopContributorsPsql = sql`
 -- [params]
@@ -7,7 +10,7 @@ export const celebTopContributorsPsql = sql`
 
 select
   ${contributorFieldsPsql},
-  count(users.username) as "contributions_count"
+  count(users.username) as "count"
 from users
   inner join topics on users.id = topics.user_id
   inner join user_profiles on users.id = user_profiles.user_id
@@ -23,6 +26,6 @@ group by
   user_profiles.bio_cooked,
   users.uploaded_avatar_id,
   users.name
-order by "contributions_count" DESC
+order by "count" DESC
 LIMIT 10
 `;
