@@ -5,7 +5,6 @@ import { BiHash, BiLink, BiMessage } from 'react-icons/bi';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { formatFactDate } from '~/lib/date';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
@@ -137,7 +136,7 @@ export const Fact: React.FC<{
                 ' text-white': props.fact.openGraphImage,
               })}
             >
-              {formatFactDate(props.fact.date)}
+              {props.fact.date}
             </p>
           </div>
         </div>

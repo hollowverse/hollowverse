@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { getTagTimeline, TagTimeline } from '~/lib/getStatic/getTagTimeline';
+import { transformFact } from '~/lib/getStatic/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
@@ -47,6 +48,7 @@ export async function getCelebWithTimeline<T extends boolean>(
   return {
     celeb: {
       ...results.celeb,
+      facts: results.celeb.facts.map((f) => transformFact(f)),
       tagTimeline,
     },
     orderOfIssues: results.orderOfIssues,

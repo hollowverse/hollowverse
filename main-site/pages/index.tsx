@@ -16,6 +16,7 @@ import {
   getTrendingCelebs,
   TrendingCelebs,
 } from '~/lib/getStatic/getTrendingCelebs';
+import { transformFact } from '~/lib/getStatic/transformFact';
 import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { Link } from '~/lib/Link';
@@ -199,7 +200,7 @@ export async function getStaticProps(): Promise<
   return {
     props: {
       trendingCelebs,
-      latestFacts: latestFacts,
+      latestFacts: latestFacts?.map((f) => transformFact(f)),
     },
     revalidate: oneDay,
   };

@@ -3,6 +3,7 @@ import { CelebImage } from '~/components/CelebImage';
 import { Fact } from '~/components/Fact';
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { transformFact } from '~/lib/getStatic/transformFact';
 import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { Link } from '~/lib/Link';
@@ -88,7 +89,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      firstBatch,
+      firstBatch: firstBatch?.map((f) => transformFact(f)),
     },
     revalidate: 60 * 60 * 24, // revalidate every 24 hours
   };
