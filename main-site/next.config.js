@@ -18,6 +18,7 @@ const nextJsConfig = {
     'factPage.tsx',
     'knowledgeGraphPage.tsx',
     'issuePage.tsx',
+    'homepage.tsx',
   ],
 
   webpack: (config, { buildId, dev }) => {
