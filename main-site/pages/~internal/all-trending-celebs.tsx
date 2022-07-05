@@ -1,6 +1,6 @@
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { getGaAllTrendingCelebs } from '~/lib/getStatic/getGoogleAnalyticsTopPages';
+import { getGaAllTrendingCelebs } from '~/lib/getStatic/helpers/getGoogleAnalyticsTopPages';
 import { Link } from '~/lib/Link';
 
 export default function TrendingSearches(props: any) {

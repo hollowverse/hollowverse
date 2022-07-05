@@ -1,7 +1,7 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { CelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
 import { ReactElementProps } from '~/lib/types';
 

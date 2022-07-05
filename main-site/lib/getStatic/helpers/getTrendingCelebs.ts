@@ -1,6 +1,6 @@
 import groq from 'groq';
-import { getGaMostSearchedCelebs } from '~/lib/getStatic/getGoogleAnalyticsTopPages';
-import { Summaries } from '~/lib/getStatic/getParsedOldContent';
+import { getGaMostSearchedCelebs } from '~/lib/getStatic/helpers/getGoogleAnalyticsTopPages';
+import { Summaries } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { Picture } from '~/lib/groq/picture.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 

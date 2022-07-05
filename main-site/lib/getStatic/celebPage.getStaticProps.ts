@@ -1,9 +1,9 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
-import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
-import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
-import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
-import { getTopContributors } from '~/lib/getStatic/getTopContributors';
+import { factsDataTransform } from '~/lib/getStatic/helpers/factsDataTransform';
+import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
+import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
+import { getTopContributors } from '~/lib/getStatic/helpers/getTopContributors';
 import { log } from '~/shared/lib/log';
 
 export type CelebPageProps = NonNullable<

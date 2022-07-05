@@ -4,8 +4,8 @@ import { oneDay } from '~/lib/date';
 import {
   getTrendingCelebs,
   TrendingCelebs,
-} from '~/lib/getStatic/getTrendingCelebs';
-import { transformFact } from '~/lib/getStatic/transformFact';
+} from '~/lib/getStatic/helpers/getTrendingCelebs';
+import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { log } from '~/shared/lib/log';

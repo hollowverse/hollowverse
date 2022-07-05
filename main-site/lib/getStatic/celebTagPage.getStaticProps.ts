@@ -1,9 +1,9 @@
 import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
-import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
-import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
-import { TagTimeline } from '~/lib/getStatic/getTagTimeline';
+import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
+import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
+import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import { log } from '~/shared/lib/log';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
