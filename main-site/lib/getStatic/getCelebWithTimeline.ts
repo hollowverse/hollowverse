@@ -48,7 +48,7 @@ export async function getCelebWithTimeline<T extends boolean>(
   return {
     celeb: {
       ...results.celeb,
-      fact: results.celeb.facts.map((f) => transformFact(f)),
+      facts: results.celeb.facts.map((f) => transformFact(f)),
       tagTimeline,
     },
     orderOfIssues: results.orderOfIssues,
