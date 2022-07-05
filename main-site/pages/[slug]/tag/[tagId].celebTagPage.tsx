@@ -9,7 +9,7 @@ import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
-import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
+import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
 
 export function renderTags(tags: TTag[]) {
@@ -101,4 +101,4 @@ export default function TagPage(props: TagPageProps) {
 }
 
 export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/tagPage.getStaticProps';
+export { getStaticProps } from '~/lib/getStatic/celebTagPage.getStaticProps';

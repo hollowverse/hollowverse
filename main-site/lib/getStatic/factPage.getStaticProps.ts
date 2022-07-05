@@ -18,7 +18,7 @@ export type FactPageProps = NonNullable<
 export async function getStaticProps({
   params,
 }: {
-  params: { celeb: string; factId: string };
+  params: { slug: string; factId: string };
 }) {
   const celeb = await sanityClient.fetch<Celeb>(
     'fact-page-celeb-data',
@@ -26,7 +26,7 @@ export async function getStaticProps({
       ${celebProjection}
     }`,
     {
-      slug: params.celeb,
+      slug: params.slug,
     },
   );
 
@@ -66,7 +66,7 @@ export async function getStaticProps({
     getRelatedCelebs(
       tag.tag._id,
       tag.tag.issue._id,
-      params.celeb,
+      params.slug,
       uniq([tag.tag.issue.name, ...orderOfIssues]),
     ),
     getFactForumData(fact.forumLink),

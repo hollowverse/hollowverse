@@ -19,17 +19,17 @@ export async function getLaunchPadIssues() {
 export const getStaticProps = async ({
   params,
 }: {
-  params: { celeb: string };
+  params: { slug: string };
 }): Promise<
   | { props: ResearcherLaunchPadProps; revalidate: number }
   | { notFound: boolean }
 > => {
-  log('info', `launchPad celeb getStaticProps called: ${params.celeb}`);
+  log('info', `launchPad celeb getStaticProps called: ${params.slug}`);
 
   const celebName = await sanityClient.fetch<string>(
     'launch-pad-celeb',
     groq`*[_type == 'celeb' && slug.current == $slug][0]{name}.name`,
-    { slug: params.celeb },
+    { slug: params.slug },
   );
 
   if (!celebName) {
@@ -43,7 +43,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celebName,
-      pathname: `${params.celeb}/lp`,
+      pathname: `${params.slug}/lp`,
       issues,
     },
     revalidate: oneDay,
