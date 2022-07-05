@@ -1,21 +1,6 @@
 import { Fact } from '~/lib/groq/fact.projection';
-import Filter from 'bad-words';
 import { formatFactDate } from '~/lib/date';
-
-const replaceRegex = /(?<=.).+(?=.)/;
-const placeHolder = ((str: string) => '*'.repeat(str.length)) as any;
-
-const filter = new Filter({ replaceRegex, placeHolder });
-
-filter.removeWords(
-  'God-damned',
-  'god',
-  'damn',
-  'damned',
-  'butt-pirate',
-  'butt',
-  'pirate',
-);
+import { filterBadWords } from '~/lib/getStatic/filterBadWords';
 
 export function transformFact(fact: Fact): Fact {
   return {
@@ -30,7 +15,7 @@ function clean(fact: Fact, listOfProps: string[]) {
 
   listOfProps.forEach((p) => {
     // @ts-ignore
-    obj[p] = fact[p] ? filter.clean(fact[p]) : null;
+    obj[p] = fact[p] ? filterBadWords(fact[p]) : null;
   });
 
   return obj;
