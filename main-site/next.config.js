@@ -12,10 +12,12 @@ const nextJsConfig = {
 
   pageExtensions: [
     'tsx',
+    'ts',
     'celebPage.tsx',
     'celebTagPage.tsx',
     'factPage.tsx',
     'knowledgeGraphPage.tsx',
+    'issuePage.tsx',
   ],
 
   webpack: (config, { buildId, dev }) => {

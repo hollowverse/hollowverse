@@ -1,5 +1,3 @@
-import groq from 'groq';
-import { GetStaticPropsResult } from 'next';
 import { Fragment, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -11,22 +9,9 @@ import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { oneDay } from '~/lib/date';
-import {
-  getTrendingCelebs,
-  TrendingCelebs,
-} from '~/lib/getStatic/getTrendingCelebs';
-import { transformFact } from '~/lib/getStatic/transformFact';
-import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
-import { Picture } from '~/lib/groq/picture.projection';
+import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
+import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
-import { log } from '~/shared/lib/log';
-import { sanityClient } from '~/shared/lib/sanityio';
-
-type HomepageProps = {
-  trendingCelebs: TrendingCelebs;
-  latestFacts: any;
-};
 
 export default function Index(props: HomepageProps) {
   const [facts, setFacts] = useState<TFact[]>(props.latestFacts.slice(0, 10));
@@ -170,38 +155,4 @@ export default function Index(props: HomepageProps) {
   );
 }
 
-export async function getStaticProps(): Promise<
-  GetStaticPropsResult<HomepageProps>
-> {
-  log('info', 'homepage getStaticProps called');
-
-  const trendingCelebs = await getTrendingCelebs();
-
-  const latestFacts = await sanityClient.fetch<
-    (TFact & { celeb: { name: string; Picture: Picture; slug: string } })[]
-  >(
-    'latest-page-facts',
-    groq`*[_type == 'fact'] | order(date desc)[0..49] {
-      'celeb': celeb->{
-        name,
-        'picture': picture.asset->{
-          _id,
-          'metadata': {
-            'lqip': metadata.lqip,
-            'palette': metadata.palette
-          }
-        },
-        'slug': slug.current
-      },
-      ${factProjection}
-    }`,
-  );
-
-  return {
-    props: {
-      trendingCelebs,
-      latestFacts: latestFacts?.map((f) => transformFact(f)),
-    },
-    revalidate: oneDay,
-  };
-}
+export { getStaticProps } from '~/lib/getStatic/homepage.getStaticProps';
