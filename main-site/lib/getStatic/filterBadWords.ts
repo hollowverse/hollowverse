@@ -37,12 +37,9 @@ const badWords = [
 const replaceRegex = /(?<=.).+(?=.)/;
 const placeHolder = ((str: string) => '*'.repeat(str.length)) as any;
 
-const filter = new Filter({
-  replaceRegex,
-  placeHolder,
-  emptyList: true,
-  list: badWords,
-});
+const filter = new Filter({ replaceRegex, placeHolder, emptyList: true });
+
+filter.addWords(...badWords);
 
 export function filterBadWords(text: string) {
   return filter.clean(text);
