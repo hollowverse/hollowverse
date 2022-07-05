@@ -10,6 +10,14 @@ const nextJsConfig = {
     buildActivity: false,
   },
 
+  pageExtensions: [
+    'tsx',
+    'celebPage.tsx',
+    'celebTagPage.tsx',
+    'factPage.tsx',
+    'knowledgeGraphPage.tsx',
+  ],
+
   webpack: (config, { buildId, dev }) => {
     config.resolve.symlinks = false;
     return config;

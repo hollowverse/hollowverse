@@ -19,7 +19,7 @@ import { getSourceHost } from '~/lib/getSourceHost';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
-import { renderTags } from '~/pages/[celeb]/tag/[celebTagId]';
+import { renderTags } from '~/pages/[slug]/tag/[celebTagId].celebTagPage';
 
 function getTextSummary(name: string, fact: TFact, length: number) {
   let text: string;

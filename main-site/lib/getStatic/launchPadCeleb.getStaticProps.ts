@@ -2,7 +2,7 @@ import groq from 'groq';
 import { uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
-import { ResearcherLaunchPadProps } from '~/pages/[celeb]/lp';
+import { ResearcherLaunchPadProps } from '~/pages/[slug]/lp';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
