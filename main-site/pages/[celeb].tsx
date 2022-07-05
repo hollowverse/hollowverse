@@ -1,6 +1,5 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta } from '~/components/ContributeCta';
 import { Facts } from '~/components/Facts';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';

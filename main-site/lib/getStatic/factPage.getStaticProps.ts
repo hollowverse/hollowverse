@@ -4,6 +4,7 @@ import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { getFactForumData } from '~/lib/getStatic/getFactForumData';
 import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
+import { transformFact } from '~/lib/getStatic/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
@@ -77,7 +78,7 @@ export async function getStaticProps({
       ...relatedCelebs,
       celeb,
       tag,
-      fact,
+      fact: transformFact(fact),
     },
     revalidate: oneDay,
   };
