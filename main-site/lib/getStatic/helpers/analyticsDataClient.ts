@@ -1,0 +1,77 @@
+// Imports the Google Analytics Data API client library.
+import { BetaAnalyticsDataClient } from '@google-analytics/data';
+import { GA_PROPERTY_ID } from '~/lib/googleAnalytics';
+import { Json } from '~/lib/types';
+import { log } from '~/shared/lib/log';
+
+export type Dimensions = Parameters<
+  typeof analyticsDataClient.runReport
+>[0]['dimensions'];
+
+export type Metrics = Parameters<
+  typeof analyticsDataClient.runReport
+>[0]['metrics'];
+
+export type DimensionFilter = Parameters<
+  typeof analyticsDataClient.runReport
+>[0]['dimensionFilter'];
+
+export const analyticsDataClient = new BetaAnalyticsDataClient({
+  credentials: {
+    client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY,
+  },
+});
+
+// `runReport` docs https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
+export async function gaRunReport<T extends Json[]>(props: {
+  dimensions: NonNullable<Dimensions>;
+  metrics: Metrics;
+  dimensionFilter: DimensionFilter;
+  limit?: number;
+}) {
+  const limit = props.limit ?? 25;
+
+  const [response] = await analyticsDataClient.runReport({
+    property: `properties/${GA_PROPERTY_ID}`,
+
+    ...props,
+
+    limit,
+
+    dateRanges: [
+      {
+        startDate: '14daysAgo',
+        endDate: 'today',
+      },
+    ],
+  });
+
+  if (!response || !response.rows) {
+    log('error', 'no trending celebs found', {
+      response: response as any,
+    });
+
+    return null;
+  }
+
+  const rows: any = [];
+
+  for (let i = 0; response.rows!.length > i; i++) {
+    const obj: any = {};
+    const row = response.rows![i];
+    const dimensionValues = row.dimensionValues;
+
+    if (!dimensionValues) {
+      continue;
+    }
+
+    for (let i2 = 0; i2 < dimensionValues.length; i2++) {
+      obj[props.dimensions[i2].name!] = dimensionValues[i2].value;
+    }
+
+    rows.push(obj);
+  }
+
+  return rows as T;
+}

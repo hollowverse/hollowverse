@@ -1,6 +1,8 @@
+import { startsWith } from 'lodash-es';
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { getGaAllTrendingCelebs } from '~/lib/getStatic/helpers/getGoogleAnalyticsTopPages';
+import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
+import { getGaTrendingPages } from '~/lib/getStatic/helpers/getTrendingCelebs';
 import { Link } from '~/lib/Link';
 
 export default function TrendingSearches(props: any) {
@@ -19,19 +21,17 @@ export default function TrendingSearches(props: any) {
           }}
         >
           <div className="flex flex-col gap-5 p-5">
-            {props.trending.requests.titles.map((t: any, i: any) => {
-              if (t.includes('Testo')) {
-                return null;
-              }
-
-              return (
-                <p key={t}>
-                  <Link href={`/${props.trending.requests.paths[i]}`}>
-                    <a>{t}</a>
-                  </Link>
-                </p>
-              );
-            })}
+            {props.trending.requests.map(
+              ({ pagePath, pageTitle }: any, i: any) => {
+                return (
+                  <p key={pagePath}>
+                    <Link href={`${pagePath}`}>
+                      <a>{pageTitle}</a>
+                    </Link>
+                  </p>
+                );
+              },
+            )}
           </div>
         </TitledCard>
 
@@ -41,19 +41,17 @@ export default function TrendingSearches(props: any) {
           }}
         >
           <div className="flex flex-col gap-5 p-5">
-            {props.trending.searches.titles.map((t: any, i: any) => {
-              if (t.includes('Testo')) {
-                return null;
-              }
-
-              return (
-                <p key={t}>
-                  <Link href={`/${props.trending.requests.paths[i]}`}>
-                    <a>{t}</a>
-                  </Link>
-                </p>
-              );
-            })}
+            {props.trending.searches.map(
+              ({ pagePath, pageTitle }: any, i: any) => {
+                return (
+                  <p key={pagePath}>
+                    <Link href={`/${pagePath}`}>
+                      <a>{pageTitle}</a>
+                    </Link>
+                  </p>
+                );
+              },
+            )}
           </div>
         </TitledCard>
       </div>
@@ -62,11 +60,40 @@ export default function TrendingSearches(props: any) {
 }
 
 export async function getStaticProps() {
-  const trending = await getGaAllTrendingCelebs();
+  const trendingPages = await getGaTrendingPages();
+  const trendingRequests = await gaRunReport<
+    { pagePath: string; pageTitle: string }[]
+  >({
+    dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
+
+    metrics: [{ name: 'screenPageViews' }],
+
+    dimensionFilter: {
+      filter: {
+        fieldName: 'pagePath',
+        stringFilter: {
+          matchType: 'BEGINS_WITH',
+          value: '/~kg',
+          caseSensitive: false,
+        },
+      },
+    },
+  });
 
   return {
     props: {
-      trending,
+      trending: {
+        searches: trendingPages?.filter(
+          ({ pagePath }) =>
+            pagePath && pagePath !== '/' && !startsWith(pagePath, '/~'),
+        ),
+        requests: trendingRequests?.filter(
+          ({ pageTitle, pagePath }) =>
+            pagePath &&
+            pagePath !== '/' &&
+            !pageTitle.toLowerCase().includes('testo'),
+        ),
+      },
     },
   };
 }
