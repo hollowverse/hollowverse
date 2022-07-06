@@ -98,5 +98,5 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
 export { getStaticProps } from '~/lib/getStatic/kgPage.getStaticProps';

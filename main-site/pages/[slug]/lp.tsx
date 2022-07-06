@@ -45,5 +45,5 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
 export { getStaticProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';

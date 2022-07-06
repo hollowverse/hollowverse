@@ -171,5 +171,5 @@ export default function FactPage(props: FactPageProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
 export { getStaticProps } from '~/lib/getStatic/factPage.getStaticProps';

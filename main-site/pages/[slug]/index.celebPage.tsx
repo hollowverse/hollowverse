@@ -43,4 +43,4 @@ export default function Celeb(props: CelebPageProps) {
 }
 
 export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
