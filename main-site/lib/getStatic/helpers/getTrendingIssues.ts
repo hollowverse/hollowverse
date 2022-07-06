@@ -1,6 +1,4 @@
 import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
-import { Summaries } from '~/lib/getStatic/helpers/getParsedOldContent';
-import { Picture } from '~/lib/groq/picture.projection';
 
 export async function getTrendingIssues() {
   const trendingIssues = await gaRunReport<
@@ -10,7 +8,11 @@ export async function getTrendingIssues() {
       eventCount: number;
     }[]
   >({
-    dimensions: [{ name: 'customEvent:name' }, { name: 'eventName' }],
+    dimensions: [
+      { name: 'customEvent:name' },
+      { name: 'customEvent:id' },
+      { name: 'eventName' },
+    ],
 
     metrics: [{ name: 'eventCount' }],
 
@@ -27,21 +29,23 @@ export async function getTrendingIssues() {
               },
             },
           },
-        ],
-      },
 
-      notExpression: {
-        filter: {
-          fieldName: 'customEvent:name',
-          stringFilter: {
-            matchType: 'EXACT',
-            value: '(not set)',
-            caseSensitive: false,
+          {
+            notExpression: {
+              filter: {
+                fieldName: 'customEvent:name',
+                stringFilter: {
+                  matchType: 'EXACT',
+                  value: '(not set)',
+                  caseSensitive: false,
+                },
+              },
+            },
           },
-        },
+        ],
       },
     },
   });
 
-  // console.log('trendingIssues', trendingIssues);
+  console.log('trendingIssues', trendingIssues);
 }

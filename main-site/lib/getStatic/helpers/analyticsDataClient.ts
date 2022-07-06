@@ -57,8 +57,6 @@ export async function gaRunReport<T extends Json[]>(props: {
 
   const rows: any = [];
 
-  // console.log('response.rows', response.rows);
-
   for (let i = 0; response.rows!.length > i; i++) {
     const obj: any = {};
     const row = response.rows![i];
@@ -79,8 +77,6 @@ export async function gaRunReport<T extends Json[]>(props: {
 
     rows.push(obj);
   }
-
-  console.log('rows', rows);
 
   return rows as T;
 }
