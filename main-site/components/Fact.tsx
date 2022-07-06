@@ -122,7 +122,11 @@ export const Fact: React.FC<{
           >
             {props.fact.tags.map((t) => {
               return (
-                <Tag key={t.tag.name} tagId={t.tag._id} slug={props.slug}>
+                <Tag
+                  key={t.tag.name}
+                  link={`/${props.slug}/tag/${t.tag._id}#content`}
+                  tagId={t.tag._id}
+                >
                   <span className="flex items-center gap-1 text-neutral-700">
                     <BiHash /> {t.isLowConfidence && 'Possibly '}
                     {t.tag.name}

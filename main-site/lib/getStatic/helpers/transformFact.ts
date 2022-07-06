@@ -2,7 +2,7 @@ import { Fact } from '~/lib/groq/fact.projection';
 import { formatFactDate } from '~/lib/date';
 import { filterBadWords } from '~/lib/getStatic/helpers/filterBadWords';
 
-export function transformFact(fact: Fact): Fact {
+export function transformFact<T extends Fact>(fact: T): T {
   return {
     ...fact,
     ...clean(fact, ['context', 'quote', 'content']),

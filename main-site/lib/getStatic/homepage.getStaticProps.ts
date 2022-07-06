@@ -5,7 +5,12 @@ import { getTrendingCelebs } from '~/lib/getStatic/helpers/getTrendingCelebs';
 import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
-import { Fact, factProjection, Issue } from '~/lib/groq/fact.projection';
+import {
+  Fact,
+  factProjection,
+  FactWithCeleb,
+  Issue,
+} from '~/lib/groq/fact.projection';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { issueProjection } from '~/lib/groq/issue.projection';
@@ -22,7 +27,7 @@ export async function getStaticProps() {
 
     getTrendingIssues(),
 
-    sanityClient.fetch<(Fact & { celeb: Celeb })[]>(
+    sanityClient.fetch<FactWithCeleb[]>(
       'latest-page-facts',
       groq`*[_type == 'fact'] | order(date desc)[0..49] {
         'celeb': celeb->{${celebProjection}},

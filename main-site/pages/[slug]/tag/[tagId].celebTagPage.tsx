@@ -68,7 +68,10 @@ export default function TagPage(props: TagPageProps) {
                 title={
                   <>
                     Others <TitleSeparator />{' '}
-                    <Tag slug={props.celeb.slug} tagId={props.tag.tag._id}>
+                    <Tag
+                      link={`/${props.celeb.slug}/tag/${props.tag.tag._id}#content`}
+                      tagId={props.tag.tag._id}
+                    >
                       {props.tag.tag.name}
                     </Tag>
                   </>

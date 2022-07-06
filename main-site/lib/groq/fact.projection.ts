@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { Celeb } from '~/lib/groq/celeb.projection';
 import { issueProjection } from '~/lib/groq/issue.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 
@@ -23,6 +24,8 @@ export type Fact = {
       content: string;
     }
 );
+
+export type FactWithCeleb = { celeb: Celeb } & Fact;
 
 export type FactTypes = Fact['type'];
 

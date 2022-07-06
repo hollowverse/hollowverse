@@ -5,15 +5,15 @@ import { Link } from '~/lib/Link';
 
 export function Tag(
   props: PropsWithChildren<{
-    slug: string;
     tagId: string;
+    link: string;
   }>,
 ) {
   const router = useRouter();
   const isSelected = router.query.celebTagId === props.tagId;
 
   return (
-    <Link href={`/${props.slug}/tag/${props.tagId}#content`} passHref>
+    <Link href={props.link} passHref>
       <a
         id="tag"
         className={c(
