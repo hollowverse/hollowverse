@@ -3,7 +3,6 @@ import { Logtail as NodeLogger } from '@logtail/node';
 import { Context as _Context } from '@logtail/types';
 import { isArray, noop } from 'lodash-es';
 import { determineServerOrClient } from './determineServerOrClient';
-import { getEnv } from './getEnv';
 import { getNodeEnv } from './getNodeEnv';
 import { getVercelEnv } from './getVercelEnv';
 

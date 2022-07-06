@@ -1,29 +1,26 @@
 import groq from 'groq';
-import { GetStaticPropsResult } from 'next';
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
-import {
-  getTrendingCelebs,
-  TrendingCelebs,
-} from '~/lib/getStatic/helpers/getTrendingCelebs';
+import { getTrendingCelebs } from '~/lib/getStatic/helpers/getTrendingCelebs';
 import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
-import { Fact, factProjection } from '~/lib/groq/fact.projection';
+import { Fact, factProjection, Issue } from '~/lib/groq/fact.projection';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
+import { issueProjection } from '~/lib/groq/issue.projection';
 
-export type HomepageProps = {
-  trendingCelebs: TrendingCelebs;
-  latestFacts: any;
-};
+export type HomepageProps = NonNullable<
+  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
+>;
 
-export async function getStaticProps(): Promise<
-  GetStaticPropsResult<HomepageProps>
-> {
+export async function getStaticProps() {
   log('info', 'homepage getStaticProps called');
 
-  const [trendingCelebs, latestFacts] = await Promise.all([
+  const [trendingCelebs, trendingIssueNames, latestFacts] = await Promise.all([
     getTrendingCelebs(),
+
+    getTrendingIssues(),
 
     sanityClient.fetch<(Fact & { celeb: Celeb })[]>(
       'latest-page-facts',
@@ -35,10 +32,41 @@ export async function getStaticProps(): Promise<
     getTrendingIssues(),
   ]);
 
+  const trendingIssues = await sanityClient.fetch<Issue[]>(
+    'trending-issues',
+    groq`
+      *[_type == 'topic' && name in $trendingIssueNames]{
+        ${issueProjection}
+      }
+    `,
+    {
+      trendingIssueNames: trendingIssueNames!.filter(
+        (n) =>
+          !['Religion', 'Political Affiliation', 'Political Views'].includes(n),
+      ),
+    },
+  )!;
+
+  if (!trendingCelebs || !trendingIssueNames || !latestFacts) {
+    log('error', 'Required data for homepage is missing', {
+      alert: true,
+      trendingCelebs: !!trendingCelebs,
+      trendingIssues: !!trendingIssueNames,
+      latestFacts: !!latestFacts,
+    });
+  }
+
+  trendingIssues.sort((a, b) => {
+    return (
+      trendingIssueNames!.indexOf(a.name) - trendingIssueNames!.indexOf(b.name)
+    );
+  });
+
   return {
     props: {
+      trendingIssues: trendingIssues!,
       trendingCelebs: trendingCelebs!,
-      latestFacts: latestFacts?.map((f) => transformFact(f)),
+      latestFacts: latestFacts!.map((f) => transformFact(f)),
     },
     revalidate: oneDay,
   };

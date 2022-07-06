@@ -47,5 +47,7 @@ export async function getTrendingIssues() {
     },
   });
 
-  console.log('trendingIssues', trendingIssues);
+  return trendingIssues?.map((issueEvent) => {
+    return issueEvent['customEvent:name'];
+  });
 }

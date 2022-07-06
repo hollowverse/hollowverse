@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export async function getStaticProps({
@@ -6,6 +7,8 @@ export async function getStaticProps({
 }: {
   params: { issueId: string };
 }) {
+  // const trendingIssues = await getTrendingIssues();
+
   const facts = await sanityClient.fetch(
     'issue-page-facts',
     groq`
