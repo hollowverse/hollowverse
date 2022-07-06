@@ -5,6 +5,7 @@ import {
   getTrendingCelebs,
   TrendingCelebs,
 } from '~/lib/getStatic/helpers/getTrendingCelebs';
+import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
@@ -21,21 +22,22 @@ export async function getStaticProps(): Promise<
 > {
   log('info', 'homepage getStaticProps called');
 
-  const [trendingCelebs, trendingIssues, latestFacts] = await Promise.all([
+  const [trendingCelebs, latestFacts] = await Promise.all([
     getTrendingCelebs(),
-    () => null,
+
     sanityClient.fetch<(Fact & { celeb: Celeb })[]>(
       'latest-page-facts',
       groq`*[_type == 'fact'] | order(date desc)[0..49] {
-      'celeb': celeb->{${celebProjection}},
-      ${factProjection}
-    }`,
+        'celeb': celeb->{${celebProjection}},
+        ${factProjection}
+      }`,
     ),
+    getTrendingIssues(),
   ]);
 
   return {
     props: {
-      trendingCelebs,
+      trendingCelebs: trendingCelebs!,
       latestFacts: latestFacts?.map((f) => transformFact(f)),
     },
     revalidate: oneDay,

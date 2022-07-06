@@ -27,7 +27,7 @@ export const analyticsDataClient = new BetaAnalyticsDataClient({
 export async function gaRunReport<T extends Json[]>(props: {
   dimensions: NonNullable<Dimensions>;
   metrics: Metrics;
-  dimensionFilter: DimensionFilter;
+  dimensionFilter?: DimensionFilter;
   limit?: number;
 }) {
   const limit = props.limit ?? 25;
@@ -57,6 +57,8 @@ export async function gaRunReport<T extends Json[]>(props: {
 
   const rows: any = [];
 
+  // console.log('response.rows', response.rows);
+
   for (let i = 0; response.rows!.length > i; i++) {
     const obj: any = {};
     const row = response.rows![i];
@@ -66,12 +68,19 @@ export async function gaRunReport<T extends Json[]>(props: {
       continue;
     }
 
-    for (let i2 = 0; i2 < dimensionValues.length; i2++) {
-      obj[props.dimensions[i2].name!] = dimensionValues[i2].value;
-    }
+    [
+      [row.dimensionValues, props.dimensions] as const,
+      [row.metricValues, props.metrics] as const,
+    ].forEach(([values, parameterValues]) => {
+      for (let i2 = 0; i2 < values!.length; i2++) {
+        obj[parameterValues![i2].name!] = values![i2].value;
+      }
+    });
 
     rows.push(obj);
   }
+
+  console.log('rows', rows);
 
   return rows as T;
 }

@@ -34,6 +34,8 @@ export function getGaTrendingPages() {
 export async function getTrendingCelebs() {
   const gaTrendingPages = await getGaTrendingPages();
 
+  // console.log('gaTrendingPages', gaTrendingPages);
+
   if (!gaTrendingPages) {
     return null;
   }
