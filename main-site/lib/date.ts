@@ -9,8 +9,7 @@ export function formatFactDate(date: string) {
   return format(parseDate(date), 'd LLL yyyy');
 }
 
-export const oneMs = 1;
-export const oneSecond = oneMs * 1000;
+export const oneSecond = 1;
 export const oneMinute = oneSecond * 60;
 export const oneHour = oneMinute * 60;
 export const oneDay = oneHour * 24;
