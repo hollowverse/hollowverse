@@ -95,10 +95,10 @@ export default function Index(props: HomepageProps) {
             return (
               <Link key={i._id} passHref href={`~issue/${i._id}`}>
                 <a className="">
-                  <div className="h-[80px] w-[200px] overflow-hidden rounded-sm border bg-white shadow-sm">
-                    <div className="flex h-full w-full items-center justify-center gap-3 p-2 text-base text-neutral-700">
+                  <div className="h-[80px] w-fit min-w-[200px] overflow-hidden rounded-sm border bg-white shadow-sm">
+                    <div className="flex h-full grow items-center justify-center gap-3 p-2 text-base text-neutral-700">
                       <PurpleDot />
-                      <p className="max-w-full break-words text-lg text-neutral-600 line-clamp-2">
+                      <p className="w-max break-words text-lg text-neutral-600">
                         {i.name}
                       </p>
                     </div>

@@ -2,6 +2,7 @@ import groq from 'groq';
 import { head, isEmpty, tail, uniqBy } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { CatchAllParams } from '~/lib/getStatic/helpers/CatchAllParams';
+import { getIssuePageTags } from '~/lib/getStatic/helpers/getIssuePageTags';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
@@ -73,9 +74,7 @@ export async function getStaticProps({
   return {
     props: {
       ...results,
-      tags: uniqBy(results!.tags, 'tag._id').filter(
-        (t) => t.tag.issue._id === issueId,
-      ),
+      tags: getIssuePageTags(results!.tags, issueId).slice(0, 10),
       facts: results!.facts.map((f) => transformFact(f)),
       p,
     },

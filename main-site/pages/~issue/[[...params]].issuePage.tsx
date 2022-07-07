@@ -22,18 +22,21 @@ export default function IssuePage(props: IssuePageProps) {
           <h1 className="text-3xl text-neutral-600">{props.issue.name}</h1>
 
           <div className="flex flex-wrap gap-2.5 pt-3">
-            {props.tags.map((t) => (
-              <Tag
-                key={t.tag._id}
-                tagId={t.tag._id}
-                link={`/~issue/${props.issue._id}/${catchAllParams.stringify({
-                  p: props.p,
-                  tags: t.tag._id,
-                })}`}
-              >
-                {t.tag.name}
-              </Tag>
-            ))}
+            {props.tags.map((t) => {
+              return (
+                <Tag
+                  key={t.tag._id}
+                  tagId={t.tag._id}
+                  link={`/~issue/${props.issue._id}/${catchAllParams.stringify({
+                    p: props.p,
+                    tags: t.tag._id,
+                  })}`}
+                >
+                  {t.tag.name}{' '}
+                  <span className="text-neutral-500">x{t.count}</span>
+                </Tag>
+              );
+            })}
           </div>
         </div>
       </Card>
