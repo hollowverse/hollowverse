@@ -1,3 +1,4 @@
+import { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 import { PurpleDot } from '~/components/ui/PurpleDot';
@@ -7,7 +8,7 @@ import { Link } from '~/lib/Link';
 export function Tag(
   props: PropsWithChildren<{
     tagId: string;
-    link: string;
+    link: LinkProps['href'];
   }>,
 ) {
   const router = useRouter();

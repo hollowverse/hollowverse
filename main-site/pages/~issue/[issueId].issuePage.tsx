@@ -1,10 +1,11 @@
-import { useRouter } from 'next/router';
 import { FactList } from '~/components/FactList';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
+import { Pagination } from '~/components/Pagination';
 import { Tag } from '~/components/Tag';
 import { Card } from '~/components/ui/Card';
 import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
+import { Link } from '~/lib/Link';
 
 export default function IssuePage(props: IssuePageProps) {
   return (
@@ -17,7 +18,13 @@ export default function IssuePage(props: IssuePageProps) {
     >
       <Card topBorder={false}>
         <div className="h-container p-5">
-          <h1 className="text-3xl text-neutral-600">{props.issue.name}</h1>
+          <h1 className="text-3xl text-neutral-600">
+            <Link href={`/~issue/${props.issue._id}`} passHref>
+              <a className="border-b-2 border-purple-200 px-1">
+                {props.issue.name}
+              </a>
+            </Link>
+          </h1>
 
           <div className="flex flex-wrap gap-2.5 pt-3">
             {props.tags.map((t) => {
@@ -40,7 +47,7 @@ export default function IssuePage(props: IssuePageProps) {
         <FactList list={props.facts} />
       </div>
 
-      <JsonView src={props} />
+      <Pagination />
     </Page>
   );
 }
