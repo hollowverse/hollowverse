@@ -31,8 +31,8 @@ export default function TagPage(props: TagPageProps) {
   return (
     <Page
       id="celeb-tag-page"
-      title={`${name} - ${props.tag.tag.name}`}
-      description={`${name}'s views on ${props.tag.tag.issue.name}`}
+      title={`${name} ${props.tag.tag.name}?`}
+      description={`${name} ${props.tag.tag.name} when it comes to ${props.tag.tag.issue.name}?`}
       allowSearchEngines
       pathname={`/${props.celeb.slug}/tag/${props.tag.tag._id}`}
       appBar={

@@ -15,7 +15,7 @@ export default function IssuePage(props: IssuePageProps) {
       description={`List of views and opinions on ${props.issue.name} by celebrities`}
       id="issue-page"
       pathname={`~issue/${props.issue._id}`}
-      title={`Views and opinions on ${props.issue.name} by celebrities`}
+      title={`What do celebrities think of ${props.issue.name}?`}
     >
       <Card topBorder={false}>
         <div className="h-container p-5">
