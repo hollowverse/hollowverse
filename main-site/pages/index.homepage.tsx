@@ -4,6 +4,7 @@ import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
 import { FactList } from '~/components/FactList';
 import { Page } from '~/components/Page';
+import { PurpleDot } from '~/components/ui/PurpleDot';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
 import { FactWithCeleb } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
@@ -94,8 +95,13 @@ export default function Index(props: HomepageProps) {
             return (
               <Link key={i._id} passHref href={`~issue/${i._id}`}>
                 <a className="">
-                  <div className="flex h-[125px] w-[150px] items-center justify-center gap-1 overflow-hidden rounded-sm border bg-white px-4 py-2 text-center text-base text-neutral-700 shadow-sm">
-                    <p className="text-lg text-neutral-600">{i.name}</p>
+                  <div className="h-[80px] w-[200px] overflow-hidden rounded-sm border bg-white shadow-sm">
+                    <div className="flex h-full w-full items-center justify-center gap-3 p-2 text-base text-neutral-700">
+                      <PurpleDot />
+                      <p className="max-w-full break-words text-lg text-neutral-600 line-clamp-2">
+                        {i.name}
+                      </p>
+                    </div>
                   </div>
                 </a>
               </Link>

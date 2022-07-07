@@ -3,16 +3,12 @@ import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
 export async function getTrendingIssues() {
   const trendingIssues = await gaRunReport<
     {
-      'customEvent:name': string;
+      'customEvent:id': string;
       eventName: string;
       eventCount: number;
     }[]
   >({
-    dimensions: [
-      { name: 'customEvent:name' },
-      { name: 'customEvent:id' },
-      { name: 'eventName' },
-    ],
+    dimensions: [{ name: 'customEvent:id' }, { name: 'eventName' }],
 
     metrics: [{ name: 'eventCount' }],
 
@@ -33,7 +29,7 @@ export async function getTrendingIssues() {
           {
             notExpression: {
               filter: {
-                fieldName: 'customEvent:name',
+                fieldName: 'customEvent:id',
                 stringFilter: {
                   matchType: 'EXACT',
                   value: '(not set)',
@@ -48,6 +44,6 @@ export async function getTrendingIssues() {
   });
 
   return trendingIssues?.map((issueEvent) => {
-    return issueEvent['customEvent:name'];
+    return issueEvent['customEvent:id'];
   });
 }

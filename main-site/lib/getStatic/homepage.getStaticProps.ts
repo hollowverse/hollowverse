@@ -21,7 +21,7 @@ export type HomepageProps = PageProps<typeof getStaticProps>;
 export async function getStaticProps() {
   log('info', 'homepage getStaticProps called');
 
-  const [trendingCelebs, trendingIssueNames, latestFacts] = await Promise.all([
+  const [trendingCelebs, trendingIssueIds, latestFacts] = await Promise.all([
     getTrendingCelebs(),
 
     getTrendingIssues(),
@@ -39,31 +39,33 @@ export async function getStaticProps() {
   const trendingIssues = await sanityClient.fetch<Issue[]>(
     'trending-issues',
     groq`
-      *[_type == 'topic' && name in $trendingIssueNames]{
+      *[_type == 'topic' && _id in $trendingIssueIds]{
         ${issueProjection}
       }
     `,
     {
-      trendingIssueNames: trendingIssueNames!.filter(
+      trendingIssueIds: trendingIssueIds!.filter(
         (n) =>
-          !['Religion', 'Political Affiliation', 'Political Views'].includes(n),
+          ![
+            'f8639841-cf94-4be9-acbb-b4b68863c713-m', // Religion
+            'd01ad83e-5f0b-401b-b79b-65613bcc1377-m', // Political Affiliation
+            '6233368a-6ba2-4935-a0e7-8c88b90bfd72-m', // Political Views
+          ].includes(n),
       ),
     },
   )!;
 
-  if (!trendingCelebs || !trendingIssueNames || !latestFacts) {
+  if (!trendingCelebs || !trendingIssueIds || !latestFacts) {
     log('error', 'Required data for homepage is missing', {
       alert: true,
       trendingCelebs: !!trendingCelebs,
-      trendingIssues: !!trendingIssueNames,
+      trendingIssues: !!trendingIssueIds,
       latestFacts: !!latestFacts,
     });
   }
 
   trendingIssues.sort((a, b) => {
-    return (
-      trendingIssueNames!.indexOf(a.name) - trendingIssueNames!.indexOf(b.name)
-    );
+    return trendingIssueIds!.indexOf(a._id) - trendingIssueIds!.indexOf(b._id);
   });
 
   return {

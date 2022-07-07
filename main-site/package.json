@@ -33,6 +33,7 @@
     "@sentry/cli": "^2.0.4",
     "@sentry/nextjs": "^6.19.7",
     "@svgr/webpack": "^6.1.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@types/bad-words": "^3.0.1",
     "@types/cors": "^2.8.12",
     "@types/fast-levenshtein": "^0.0.2",

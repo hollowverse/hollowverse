@@ -18,5 +18,6 @@ module.exports = {
     (function () {
       return ({ addVariant }) => addVariant('default', ':where(&)');
     })(),
+    require('@tailwindcss/line-clamp'),
   ],
 };

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
+import { PurpleDot } from '~/components/ui/PurpleDot';
 import { c } from '~/lib/c';
 import { Link } from '~/lib/Link';
 
@@ -10,7 +11,7 @@ export function Tag(
   }>,
 ) {
   const router = useRouter();
-  const isSelected = router.query.celebTagId === props.tagId;
+  const isSelected = router.query.tagId === props.tagId;
 
   return (
     <Link href={props.link} passHref>
@@ -25,6 +26,7 @@ export function Tag(
           },
         )}
       >
+        <PurpleDot />
         {props.children}
       </a>
     </Link>
