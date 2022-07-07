@@ -1,12 +1,10 @@
+import { useRouter } from 'next/router';
 import { FactList } from '~/components/FactList';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { Tag } from '~/components/Tag';
 import { Card } from '~/components/ui/Card';
-import {
-  catchAllParams,
-  IssuePageProps,
-} from '~/lib/getStatic/issuePage.getStaticProps';
+import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
 
 export default function IssuePage(props: IssuePageProps) {
   return (
@@ -27,10 +25,7 @@ export default function IssuePage(props: IssuePageProps) {
                 <Tag
                   key={t.tag._id}
                   tagId={t.tag._id}
-                  link={`/~issue/${props.issue._id}/${catchAllParams.stringify({
-                    p: props.p,
-                    tags: t.tag._id,
-                  })}`}
+                  link={`/~issue/${props.issue._id}/p/1/tag/${t.tag._id}`}
                 >
                   {t.tag.name}{' '}
                   <span className="text-neutral-500">x{t.count}</span>
