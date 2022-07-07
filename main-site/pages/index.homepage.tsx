@@ -1,25 +1,14 @@
-import { Fragment, ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
-import { CelebImage } from '~/components/CelebImage';
-import { Fact } from '~/components/Fact';
 import { FactList } from '~/components/FactList';
-import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
-import { Spinner } from '~/components/Spinner';
-import { TitledCard } from '~/components/ui/TitledCard';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
-import { Fact as TFact, FactWithCeleb } from '~/lib/groq/fact.projection';
+import { FactWithCeleb } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
 
 export default function Index(props: HomepageProps) {
-  const [facts, setFacts] = useState<FactWithCeleb[]>(
-    props.latestFacts.slice(0, 10),
-  );
-  const [hasMore, setMore] = useState(true);
-
   return (
     <Page
       title="The political views and religious beliefs of celebrities"
@@ -135,27 +124,7 @@ export default function Index(props: HomepageProps) {
       <div className="flex flex-col gap-2.5">
         <h2 className="scale-y-110 px-5 text-xl font-semibold">The Latest</h2>
 
-        <InfiniteScroll
-          className="no-scrollbar flex flex-col gap-5 overflow-hidden"
-          dataLength={facts.length}
-          next={() => {
-            if (facts.length >= props.latestFacts.length) {
-              setMore(false);
-            }
-
-            setTimeout(() => {
-              setFacts(props.latestFacts.slice(0, facts.length + 10));
-            }, 2000);
-          }}
-          hasMore={hasMore}
-          loader={
-            <div className="mt-5 flex items-center justify-center">
-              <Spinner />
-            </div>
-          }
-        >
-          <FactList list={facts} />
-        </InfiniteScroll>
+        <FactList list={props.latestFacts} />
       </div>
     );
   }

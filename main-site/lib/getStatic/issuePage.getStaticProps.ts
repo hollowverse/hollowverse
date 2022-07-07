@@ -1,13 +1,20 @@
 import groq from 'groq';
-import { head, tail, uniqBy } from 'lodash-es';
+import { head, isEmpty, tail, uniqBy } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import { parseCatchAllParams } from '~/lib/getStatic/helpers/parseParamsArr';
+import { CatchAllParams } from '~/lib/getStatic/helpers/CatchAllParams';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
+import { PageProps } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
+
+export type IssuePageProps = PageProps<typeof getStaticProps>;
+export const catchAllParams = new CatchAllParams([
+  { name: 'p' },
+  { name: 'tags', isArray: true },
+] as const);
 
 export async function getStaticProps({
   params: { params },
@@ -20,12 +27,14 @@ export async function getStaticProps({
     return { notFound: true };
   }
 
-  const parsedParams = parseCatchAllParams(tail(params));
+  const parsedParams = catchAllParams.parse<{ p: string; tags: string[] }>(
+    tail(params),
+  );
 
   // Validate params
   if (
-    (parsedParams.p && isNaN(parseInt(parsedParams.p))) ||
-    (parsedParams.t && parsedParams.t.split(',').some((t) => !t))
+    (parsedParams.p && isNaN(parseInt(parsedParams.p as string))) ||
+    (parsedParams.tags && isEmpty(parsedParams.tags))
   ) {
     return { notFound: true };
   }
@@ -59,9 +68,7 @@ export async function getStaticProps({
       'factCount': count(${groqFilter})
     }`,
     { issueId, start, end },
-  );
-
-  console.log('results.tags', results.tags);
+  )!;
 
   return {
     props: {

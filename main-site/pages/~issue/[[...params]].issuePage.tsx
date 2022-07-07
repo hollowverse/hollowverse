@@ -1,9 +1,14 @@
 import { FactList } from '~/components/FactList';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
+import { Tag } from '~/components/Tag';
 import { Card } from '~/components/ui/Card';
+import {
+  catchAllParams,
+  IssuePageProps,
+} from '~/lib/getStatic/issuePage.getStaticProps';
 
-export default function IssuePage(props: any) {
+export default function IssuePage(props: IssuePageProps) {
   return (
     <Page
       allowSearchEngines
@@ -12,15 +17,32 @@ export default function IssuePage(props: any) {
       pathname={`~issue/${props.issue._id}`}
       title={`Views and opinions on ${props.issue.name} by celebrities`}
     >
-      <Card topBorder={false} className="p-5">
-        <h1 className="text-3xl text-neutral-600">{props.issue.name}</h1>
+      <Card topBorder={false}>
+        <div className="h-container p-5">
+          <h1 className="text-3xl text-neutral-600">{props.issue.name}</h1>
+
+          <div className="flex flex-wrap gap-2.5 pt-3">
+            {props.tags.map((t) => (
+              <Tag
+                key={t.tag._id}
+                tagId={t.tag._id}
+                link={`/~issue/${props.issue._id}/${catchAllParams.stringify({
+                  p: props.p,
+                  tags: t.tag._id,
+                })}`}
+              >
+                {t.tag.name}
+              </Tag>
+            ))}
+          </div>
+        </div>
       </Card>
 
-      <JsonView src={props} />
-
-      <div className="flex flex-col gap-5 py-5">
+      <div className="h-container flex flex-col gap-5 py-5">
         <FactList list={props.facts} />
       </div>
+
+      <JsonView src={props} />
     </Page>
   );
 }

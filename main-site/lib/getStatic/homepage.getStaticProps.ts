@@ -14,10 +14,9 @@ import {
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { issueProjection } from '~/lib/groq/issue.projection';
+import { PageProps } from '~/lib/types';
 
-export type HomepageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
+export type HomepageProps = PageProps<typeof getStaticProps>;
 
 export async function getStaticProps() {
   log('info', 'homepage getStaticProps called');
@@ -29,7 +28,7 @@ export async function getStaticProps() {
 
     sanityClient.fetch<FactWithCeleb[]>(
       'latest-page-facts',
-      groq`*[_type == 'fact'] | order(date desc)[0..49] {
+      groq`*[_type == 'fact'] | order(date desc)[0..25] {
         'celeb': celeb->{${celebProjection}},
         ${factProjection}
       }`,

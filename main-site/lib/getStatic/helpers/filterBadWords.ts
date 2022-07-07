@@ -1,6 +1,6 @@
 import Filter from 'bad-words';
 
-const badWords = [
+const badWords1 = [
   'asshole',
   'cock',
   'cockhead',
@@ -31,8 +31,11 @@ const badWords = [
   'cunt',
   'fatass',
   'motherfucker',
+  'motherfucker',
   'nigger',
 ];
+
+const badWords = badWords1.concat(badWords1.map((w) => `${w}s`));
 
 const replaceRegex = /(?<=.).+(?=.)/;
 const placeHolder = ((str: string) => '*'.repeat(str.length)) as any;
