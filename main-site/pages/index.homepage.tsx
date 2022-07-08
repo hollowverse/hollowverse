@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
@@ -6,7 +6,6 @@ import { FactList } from '~/components/FactList';
 import { Page } from '~/components/Page';
 import { PurpleDot } from '~/components/ui/PurpleDot';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
-import { FactWithCeleb } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
 
 export default function Index(props: HomepageProps) {
@@ -94,8 +93,11 @@ export default function Index(props: HomepageProps) {
           props.trendingIssues.map((i) => {
             return (
               <Link key={i._id} passHref href={`~issue/${i._id}`}>
-                <a className="">
-                  <div className="h-[60px] w-fit min-w-[200px] overflow-hidden rounded-sm border bg-white shadow-sm">
+                <a>
+                  <div
+                    id="trending-issue-item"
+                    className="h-[60px] w-fit min-w-[200px] overflow-hidden rounded-sm border bg-white shadow-sm"
+                  >
                     <div className="flex h-full grow items-center justify-center gap-3 p-2 text-base text-neutral-700">
                       <PurpleDot />
                       <p className="w-max break-words text-lg text-neutral-600">
