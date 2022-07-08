@@ -27,17 +27,13 @@ test('Homepage E2E test', async ({ page }) => {
   await page.locator('#logo').click();
 
   await page.waitForSelector('#homepage');
-  await page.locator(':nth-match(#homepage-latest-fact-title, 5)').click();
+  await page.locator(':nth-match(#fact-list-item-title, 5)').click();
 
   await page.waitForSelector('#homepage');
   await page.locator('#logo').click();
 
   await page.waitForSelector('#homepage');
-  await factTestFragment(
-    page,
-    ':nth-match(#homepage-latest-fact, 3)',
-    '#homepage',
-  );
+  await factTestFragment(page, ':nth-match(#fact-list-item, 3)');
 });
 
 test('Homepage Lighthouse test', async () => {

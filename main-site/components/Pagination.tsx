@@ -26,6 +26,8 @@ export function Pagination(props: {
         passHref
       >
         <a
+          id="pagination-previous-page-button"
+          aria-disabled={!showPreviousPage}
           className={c(
             'flex flex-1 items-center justify-center gap-2 rounded-md border bg-gray-50 py-2 px-5 text-neutral-500',
             {
@@ -41,6 +43,8 @@ export function Pagination(props: {
 
       <Link href={props.linkTemplate.replace('{p}', nextPage + '')} passHref>
         <a
+          id="pagination-next-page-button"
+          aria-disabled={!showNextPage}
           className={c(
             'flex flex-1 items-center justify-center gap-2 rounded-md border bg-gray-50 py-2 px-5 text-neutral-500',
             {

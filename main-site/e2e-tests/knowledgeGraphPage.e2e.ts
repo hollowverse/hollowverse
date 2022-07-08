@@ -9,7 +9,7 @@ test('Knowledge Graph page E2E test', async ({ page }) => {
   await page.goto(url);
   await page.waitForSelector('#knowledge-graph-page');
 
-  await commonElementsTestFragment(page, '#knowledge-graph-page');
+  await commonElementsTestFragment(page);
 
   await page.waitForSelector('#kg-request-ack');
   await page.waitForSelector('#kg-celeb-image');

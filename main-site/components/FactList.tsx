@@ -13,7 +13,7 @@ export function FactList(props: { list: ({ celeb: Celeb } & TFact)[] }) {
       {props.list.map((f, i: number) => {
         const cardTitle = (
           <Link passHref href={`/${f.celeb.slug}`}>
-            <a id="homepage-latest-fact-title">
+            <a id="fact-list-item-title">
               <div className="flex flex-row items-center gap-3">
                 <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
                   <CelebImage
@@ -36,7 +36,7 @@ export function FactList(props: { list: ({ celeb: Celeb } & TFact)[] }) {
 
         return (
           <Fragment key={f._id}>
-            <div id="homepage-latest-fact">
+            <div id="fact-list-item">
               <TitledCard
                 titledContentProps={{
                   title: cardTitle,

@@ -15,7 +15,7 @@ test('Celeb Tag page E2E test', async ({ page }) => {
 
   const goBack = createGoBack(page, '#celeb-tag-page');
 
-  await commonElementsTestFragment(page, '#celeb-tag-page');
+  await commonElementsTestFragment(page);
 
   await page.locator('#main-name').click();
   await page.waitForSelector('#celeb-page');
@@ -25,11 +25,7 @@ test('Celeb Tag page E2E test', async ({ page }) => {
   await page.waitForSelector(`#celeb-tag-page-${tagId}`, { state: 'detached' });
   await goBack();
 
-  await factTestFragment(
-    page,
-    '#celeb-tag-page >> :nth-match(#fact, 1)',
-    '#celeb-tag-page',
-  );
+  await factTestFragment(page, '#celeb-tag-page >> :nth-match(#fact, 1)');
 
   await page.locator('#return-to-celeb-views-button').click();
   await page.waitForSelector('#celeb-page');

@@ -96,13 +96,11 @@ export default function Index(props: HomepageProps) {
                 <a>
                   <div
                     id="trending-issue-item"
-                    className="h-[60px] w-fit min-w-[200px] overflow-hidden rounded-sm border bg-white shadow-sm"
+                    className="w-fit min-w-[200px] overflow-hidden rounded-sm border bg-white p-2 shadow-sm"
                   >
                     <div className="flex h-full grow items-center justify-center gap-3 p-2 text-base text-neutral-700">
                       <PurpleDot />
-                      <p className="w-max break-words text-lg text-neutral-600">
-                        {i.name}
-                      </p>
+                      <p className="w-max text-lg text-neutral-600">{i.name}</p>
                     </div>
                   </div>
                 </a>

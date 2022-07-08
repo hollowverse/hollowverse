@@ -1,5 +1,4 @@
 import { FactList } from '~/components/FactList';
-import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { Pagination } from '~/components/Pagination';
 import { Tag } from '~/components/Tag';
@@ -20,13 +19,16 @@ export default function IssuePage(props: IssuePageProps) {
         <div className="h-container flex flex-col gap-5 p-5">
           <h1 className="text-3xl text-neutral-600">
             <Link href={`/~issue/${props.issue._id}`} passHref>
-              <a className="border-b-2 border-purple-200 px-1">
+              <a
+                id="issue-page-title"
+                className="border-b-2 border-purple-200 px-1"
+              >
                 {props.issue.name}
               </a>
             </Link>
           </h1>
 
-          <div className="flex flex-wrap gap-2.5 pt-3">
+          <div id="issue-page-tags" className="flex flex-wrap gap-2.5 pt-3">
             {props.tags.map((t) => {
               return (
                 <Tag
@@ -45,6 +47,7 @@ export default function IssuePage(props: IssuePageProps) {
 
       <div className="h-container flex flex-col gap-5 py-5">
         <FactList list={props.facts} />
+
         <Pagination
           {...props.pagination}
           linkTemplate={

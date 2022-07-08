@@ -1,23 +1,16 @@
-import { Page } from '@playwright/test';
+import { Page, test } from '@playwright/test';
 
-export async function factTestFragment(
-  page: Page,
-  factSelector: string,
-  originPageSelector: string,
-) {
-  await page.locator(`${factSelector} >> #fact-details`).click();
-  await page.waitForSelector('#fact-page');
-  await page.goBack();
-  await page.waitForSelector(originPageSelector);
+export async function factTestFragment(page: Page, factSelector: string) {
+  const fact = await page.locator(`${factSelector} >> #fact-details`);
+  await test.expect(await fact.nth(0)).toHaveAttribute('href', /\/fact\//);
 
-  await page.locator(`${factSelector} >> :nth-match(#tag, 1)`).click();
-  await page.waitForSelector('#celeb-tag-page');
-  await page.goBack();
-  await page.waitForSelector(originPageSelector);
+  const tag = await page.locator(`${factSelector} >> :nth-match(#tag, 1)`);
+  await test.expect(await tag.nth(0)).toHaveAttribute('href', /\/tag\//);
 
-  await page.locator(`${factSelector} >> #fact-comments-link`).click();
-  await page.waitForURL(/^https:\/\/forum.hollowverse.com.*/, {
-    timeout: 10000,
-  });
-  await page.goBack();
+  const commentsLink = await page.locator(
+    `${factSelector} >> #fact-comments-link`,
+  );
+  await test
+    .expect(await commentsLink.nth(0))
+    .toHaveAttribute('href', /^https:\/\/(forum|discuss).hollowverse.com.*/);
 }

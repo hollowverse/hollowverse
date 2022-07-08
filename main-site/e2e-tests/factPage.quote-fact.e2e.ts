@@ -13,7 +13,7 @@ test('Fact page E2E test', async ({ page }) => {
 
   const goBack = createGoBack(page, '#fact-page');
 
-  await commonElementsTestFragment(page, '#fact-page');
+  await commonElementsTestFragment(page);
 
   await page.locator('#fact-page-header').click();
   await page.waitForSelector('#celeb-page');
