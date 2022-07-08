@@ -19,7 +19,7 @@ export default function TrendingSearches(props: any) {
       allowSearchEngines={false}
       pathname={'~internal/research-list'}
     >
-      <div className="h-container relative my-5 overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="h-container relative my-5 overflow-x-auto">
         <table className="w-full text-left text-sm text-gray-500">
           <thead className="bg-gray-50 text-xs uppercase text-gray-700">
             <tr>
@@ -39,10 +39,17 @@ export default function TrendingSearches(props: any) {
                     scope="row"
                     className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-900"
                   >
-                    <td className="px-6 py-4 text-left">
+                    <td className="flex gap-3 px-6 py-4 text-left">
+                      {i.name}
                       <Link href={`${i.link}/lp`}>
-                        <a className="font-medium text-blue-600 hover:underline dark:text-blue-500">
-                          {i.name}
+                        <a className="font-medium text-blue-500 underline">
+                          research
+                        </a>
+                      </Link>
+
+                      <Link href={`${i.link}`}>
+                        <a className="font-medium text-blue-500 underline">
+                          page
                         </a>
                       </Link>
                     </td>
@@ -81,8 +88,8 @@ export async function getStaticProps() {
 
   const slugs = trendingPages!.map((p) => p.pagePath.substring(1));
   const kgIds = trendingRequests!
+    .filter((p) => p.pagePath !== '/~kg/kg%3A%2Fm%2F012hshtc') // Testo
     .map((p) => decodeURIComponent(p.pagePath.substring(5)))
-    .reverse()
     .slice(0, 10);
 
   const hits = await sanityClient.fetch<
