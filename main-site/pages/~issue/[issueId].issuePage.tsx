@@ -45,9 +45,15 @@ export default function IssuePage(props: IssuePageProps) {
 
       <div className="h-container flex flex-col gap-5 py-5">
         <FactList list={props.facts} />
+        <Pagination
+          {...props.pagination}
+          linkTemplate={
+            props.tagId
+              ? `/~issue/${props.issue._id}/p/{p}/tag/${props.tagId}`
+              : `/~issue/${props.issue._id}/p/{p}`
+          }
+        />
       </div>
-
-      <Pagination />
     </Page>
   );
 }

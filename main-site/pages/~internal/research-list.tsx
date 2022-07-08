@@ -1,8 +1,5 @@
 import groq from 'groq';
-import { startsWith } from 'lodash-es';
-import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
-import { TitledCard } from '~/components/ui/TitledCard';
 import { oneDay } from '~/lib/date';
 import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
 import { getGaTrendingPages } from '~/lib/getStatic/helpers/getTrendingCelebs';
@@ -122,9 +119,7 @@ export async function getStaticProps() {
       return {
         name: kgCeleb.result.name,
         factCount: 0,
-        link: `https://hollowverse.com/~kg/${encodeURIComponent(
-          kgCeleb.result['@id'],
-        )}`,
+        link: `/~kg/${encodeURIComponent(kgCeleb.result['@id'])}`,
       };
     }),
   );
@@ -132,7 +127,7 @@ export async function getStaticProps() {
   const sanityResults = hits.map((h) => ({
     name: h.name,
     factCount: h.factCount,
-    link: `https://hollowverse.com/${h.slug}`,
+    link: `/${h.slug}`,
   }));
 
   const researchList = [...kgResults, ...sanityResults];

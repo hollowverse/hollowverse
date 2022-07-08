@@ -8,6 +8,7 @@ export type IssuePageGroq = {
   issue: Issue;
   facts: ({ celeb: Celeb } & Fact)[];
   tags: Tag[];
+  factCount: number;
 };
 
 export function getIssuePageGroq(withTagFilter: boolean) {

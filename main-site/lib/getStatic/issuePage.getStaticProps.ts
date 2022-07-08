@@ -13,8 +13,8 @@ export async function getStaticProps({
 }: {
   params: {
     issueId: string;
-    p: string;
-    tagId: string;
+    p: string | undefined;
+    tagId: string | undefined;
   };
 }) {
   // Validate params
@@ -25,7 +25,7 @@ export async function getStaticProps({
     return { notFound: true };
   }
 
-  const p = parseInt(params.p ?? 1);
+  const p = parseInt(params.p ?? '1');
   const pageSize = 25;
   const start = (p - 1) * pageSize;
   const end = start + pageSize;
@@ -43,10 +43,15 @@ export async function getStaticProps({
 
   return {
     props: {
-      ...results,
+      tagId: params.tagId ?? null,
+      pagination: {
+        currentPage: p,
+        pageSize,
+        totalItems: results!.factCount,
+      },
+      issue: results!.issue,
       tags: getIssuePageTags(results!.tags, params.issueId).slice(0, 20),
       facts: results!.facts.map((f) => transformFact(f)),
-      p,
     },
     revalidate: oneDay,
   };
