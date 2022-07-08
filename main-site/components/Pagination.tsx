@@ -13,9 +13,14 @@ export function Pagination(props: {
   const previousPage = currentPage - 1;
   const showPreviousPage = currentPage * props.pageSize > props.pageSize;
   const showNextPage = currentPage * props.pageSize < props.totalItems;
+  const showPagination = props.totalItems > props.pageSize;
 
   return (
-    <div className="flex items-center justify-center gap-5 px-5">
+    <div
+      className={c('flex items-center justify-center gap-5 px-5', {
+        hidden: !showPagination,
+      })}
+    >
       <Link
         href={props.linkTemplate.replace('{p}', previousPage + '')}
         passHref

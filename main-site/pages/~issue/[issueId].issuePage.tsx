@@ -17,7 +17,7 @@ export default function IssuePage(props: IssuePageProps) {
       title={`What do celebrities think of ${props.issue.name}?`}
     >
       <Card topBorder={false}>
-        <div className="h-container p-5">
+        <div className="h-container flex flex-col gap-5 p-5">
           <h1 className="text-3xl text-neutral-600">
             <Link href={`/~issue/${props.issue._id}`} passHref>
               <a className="border-b-2 border-purple-200 px-1">
