@@ -1,4 +1,5 @@
 import groq from 'groq';
+import { orderBy, sortBy } from 'lodash-es';
 import { Page } from '~/components/Page';
 import { oneDay } from '~/lib/date';
 import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
@@ -8,9 +9,13 @@ import {
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
 import { Link } from '~/lib/Link';
+import { sortByArray } from '~/lib/sortByArray';
+import { PageProps } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
-export default function TrendingSearches(props: any) {
+type ResearchListProps = PageProps<typeof getStaticProps>;
+
+export default function ResearchList(props: ResearchListProps) {
   return (
     <Page
       id="research-list-page"
@@ -35,25 +40,21 @@ export default function TrendingSearches(props: any) {
             {props.researchList.map((i) => {
               return (
                 <tr key={i.link} className="border-b bg-white">
-                  <th
-                    scope="row"
-                    className="whitespace-nowrap px-6 py-4 text-left font-medium text-gray-900"
-                  >
-                    <td className="flex gap-3 px-6 py-4 text-left">
-                      {i.name}
-                      <Link href={`${i.link}/lp`}>
-                        <a className="font-medium text-blue-500 underline">
-                          research
-                        </a>
-                      </Link>
+                  <td className="flex gap-3 px-6 py-4 text-left">
+                    {i.name}
+                    <Link href={`${i.link}/lp`}>
+                      <a className="font-medium text-blue-500 underline">
+                        research
+                      </a>
+                    </Link>
 
-                      <Link href={`${i.link}`}>
-                        <a className="font-medium text-blue-500 underline">
-                          page
-                        </a>
-                      </Link>
-                    </td>
-                  </th>
+                    <Link href={`${i.link}`}>
+                      <a className="font-medium text-blue-500 underline">
+                        page
+                      </a>
+                    </Link>
+                  </td>
+
                   <td className="px-6 py-4 text-left">{i.factCount}</td>
                 </tr>
               );
@@ -68,7 +69,7 @@ export default function TrendingSearches(props: any) {
 export async function getStaticProps() {
   const trendingPages = await getGaTrendingPages();
   const trendingRequests = await gaRunReport<
-    { pagePath: string; pageTitle: string }[]
+    { pagePath: string; pageTitle: string; screenPageViews: string }[]
   >({
     dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
 
@@ -86,7 +87,10 @@ export async function getStaticProps() {
     },
   });
 
-  const slugs = trendingPages!.map((p) => p.pagePath.substring(1));
+  const slugs = trendingPages!
+    .filter((s) => s.pagePath !== '/')
+    .map((p) => p.pagePath.substring(1));
+
   const kgIds = trendingRequests!
     .filter((p) => p.pagePath !== '/~kg/kg%3A%2Fm%2F012hshtc') // Testo
     .map((p) => decodeURIComponent(p.pagePath.substring(5)))
@@ -137,7 +141,11 @@ export async function getStaticProps() {
     link: `/${h.slug}`,
   }));
 
-  const researchList = [...kgResults, ...sanityResults];
+  sortByArray(sanityResults, slugs, (h) => h.link.substring(1));
+
+  const researchList = [...sanityResults, ...kgResults].filter(
+    (i) => i.factCount < 11,
+  );
 
   return {
     props: {

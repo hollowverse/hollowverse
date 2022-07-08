@@ -3,6 +3,7 @@ import { startsWith } from 'lodash-es';
 import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
 import { Summaries } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { Picture } from '~/lib/groq/picture.projection';
+import { sortByArray } from '~/lib/sortByArray';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type TrendingCelebs = {
@@ -13,7 +14,9 @@ export type TrendingCelebs = {
 }[];
 
 export function getGaTrendingPages() {
-  return gaRunReport<{ pagePath: string; pageTitle: string }[]>({
+  return gaRunReport<
+    { pagePath: string; pageTitle: string; screenPageViews: string }[]
+  >({
     dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
 
     metrics: [{ name: 'screenPageViews' }],
@@ -67,9 +70,7 @@ export async function getTrendingCelebs() {
     { slugs: gaTrendingSlugs },
   );
 
-  trendingCelebs!.sort((a: any, b: any) => {
-    return gaTrendingSlugs.indexOf(a.slug) - gaTrendingSlugs.indexOf(b.slug);
-  });
+  sortByArray(trendingCelebs!, gaTrendingSlugs, (c) => c.slug);
 
   return trendingCelebs as TrendingCelebs;
 }

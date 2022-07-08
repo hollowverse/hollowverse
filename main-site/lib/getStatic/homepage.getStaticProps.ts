@@ -15,6 +15,7 @@ import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { issueProjection } from '~/lib/groq/issue.projection';
 import { PageProps } from '~/lib/types';
+import { sortByArray } from '~/lib/sortByArray';
 
 export type HomepageProps = PageProps<typeof getStaticProps>;
 
@@ -64,9 +65,7 @@ export async function getStaticProps() {
     });
   }
 
-  trendingIssues.sort((a, b) => {
-    return trendingIssueIds!.indexOf(a._id) - trendingIssueIds!.indexOf(b._id);
-  });
+  sortByArray(trendingIssues, trendingIssueIds!, (i) => i._id);
 
   return {
     props: {
