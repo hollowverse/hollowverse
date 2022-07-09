@@ -17,6 +17,10 @@ if (!process.env.URL) {
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
+  workers: 20,
+
+  fullyParallel: true,
+
   testMatch: /.*\.e2e\.ts/,
 
   testDir: './e2e-tests',
