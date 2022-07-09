@@ -31,7 +31,7 @@ module.exports = {
           'tags': tags[]{
             'url': ^.celeb->slug.current + '/tag/' + tag._ref
           }.url
-        }.tags[0...9999]
+        }.tags[0...9999],
 
         // Issue pages
         ...*[_type == 'topic']{
