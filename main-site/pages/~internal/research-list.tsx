@@ -76,13 +76,32 @@ export async function getStaticProps() {
     metrics: [{ name: 'screenPageViews' }],
 
     dimensionFilter: {
-      filter: {
-        fieldName: 'pagePath',
-        stringFilter: {
-          matchType: 'BEGINS_WITH',
-          value: '/~kg',
-          caseSensitive: false,
-        },
+      andGroup: {
+        expressions: [
+          {
+            filter: {
+              fieldName: 'pagePath',
+              stringFilter: {
+                matchType: 'BEGINS_WITH',
+                value: '/~kg',
+                caseSensitive: false,
+              },
+            },
+          },
+
+          {
+            notExpression: {
+              filter: {
+                fieldName: 'pagePath',
+                stringFilter: {
+                  matchType: 'ENDS_WITH',
+                  value: '/lp',
+                  caseSensitive: false,
+                },
+              },
+            },
+          },
+        ],
       },
     },
   });

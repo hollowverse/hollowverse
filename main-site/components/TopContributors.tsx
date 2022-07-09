@@ -12,7 +12,7 @@ export function TopContributors(props: {
     <TitledCard
       titledContentProps={{
         title: (
-          <span className="truncate text-base">
+          <span className="block truncate text-base">
             Top{' '}
             {pluralize(
               props.contributors.length,

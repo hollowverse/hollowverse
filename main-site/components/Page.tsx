@@ -55,6 +55,7 @@ export function Page(props: {
 
       <div
         id={props.id}
+        style={{ contain: 'paint' }}
         className={c('flex min-h-screen flex-col bg-gray-100', props.className)}
       >
         {props.appBar || <AppBar />}

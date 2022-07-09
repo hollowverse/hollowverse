@@ -29,7 +29,7 @@ test('Homepage E2E test', async ({ page }) => {
   await page.waitForSelector('#homepage');
   await page.locator(':nth-match(#fact-list-item-title, 5)').click();
 
-  await page.waitForSelector('#homepage');
+  await page.waitForSelector('#celeb-page');
   await page.locator('#logo').click();
 
   await page.waitForSelector('#homepage');
