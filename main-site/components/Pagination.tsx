@@ -37,7 +37,7 @@ export function Pagination(props: {
           )}
         >
           <FaChevronLeft className="text-gray-400" />
-          Previous page
+          Previous
         </a>
       </Link>
 
@@ -53,7 +53,7 @@ export function Pagination(props: {
             },
           )}
         >
-          Next page
+          Next
           <FaChevronRight className="text-gray-400" />
         </a>
       </Link>
