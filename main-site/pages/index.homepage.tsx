@@ -96,9 +96,9 @@ export default function Index(props: HomepageProps) {
                 <a>
                   <div
                     id="trending-issue-item"
-                    className="w-fit min-w-[200px] overflow-hidden rounded-sm border bg-white p-2 shadow-sm"
+                    className="mb-2 min-w-[200px] rounded-sm border bg-white p-4 shadow-sm"
                   >
-                    <div className="flex h-full grow items-center justify-center gap-3 p-2 text-base text-neutral-700">
+                    <div className="flex items-center justify-center gap-3 text-base text-neutral-700">
                       <PurpleDot />
                       <p className="w-max text-lg text-neutral-600">{i.name}</p>
                     </div>
@@ -119,8 +119,8 @@ export default function Index(props: HomepageProps) {
           {node}
           <div className="FILLER min-w-[50px] flex-grow" />
         </div>
-        <div className="LEFT-FADE absolute top-0 left-0 bottom-0 z-10 w-7 bg-gradient-to-r from-gray-100 via-gray-100 to-transparent" />
-        <div className="RIGHT-FADE absolute top-0 right-0 bottom-0 z-10 w-7 bg-gradient-to-l from-gray-100 via-gray-100 to-transparent" />
+        <div className="LEFT-FADE absolute top-0 left-0 bottom-0 z-10 w-7 bg-gradient-to-r from-gray-100 via-transparent to-transparent" />
+        <div className="RIGHT-FADE absolute top-0 right-0 bottom-0 z-10 w-7 bg-gradient-to-l from-gray-100 via-transparent to-transparent" />
       </div>
     );
   }
