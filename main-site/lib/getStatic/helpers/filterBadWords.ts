@@ -31,7 +31,6 @@ const badWords1 = [
   'cunt',
   'fatass',
   'motherfucker',
-  'motherfucker',
   'nigger',
 ];
 

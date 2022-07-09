@@ -41,17 +41,29 @@ export async function getStaticProps({
     },
   )!;
 
+  if (
+    !results ||
+    !results.facts ||
+    !results.tags ||
+    !results.issue ||
+    !results.factCount ||
+    isEmpty(results.facts) ||
+    isEmpty(results.issue)
+  ) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       tagId: params.tagId ?? null,
       pagination: {
         currentPage: p,
         pageSize,
-        totalItems: results!.factCount,
+        totalItems: results.factCount,
       },
-      issue: results!.issue,
-      tags: getIssuePageTags(results!.tags, params.issueId).slice(0, 20),
-      facts: results!.facts.map((f) => transformFact(f)),
+      issue: results.issue,
+      tags: getIssuePageTags(results.tags, params.issueId).slice(0, 20),
+      facts: results.facts.map((f) => transformFact(f)),
     },
     revalidate: oneDay,
   };

@@ -4,17 +4,11 @@ import { GA_PROPERTY_ID } from '~/lib/googleAnalytics';
 import { Json } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 
-export type Dimensions = Parameters<
-  typeof analyticsDataClient.runReport
->[0]['dimensions'];
+type ReportParams = Parameters<typeof analyticsDataClient.runReport>[0];
 
-export type Metrics = Parameters<
-  typeof analyticsDataClient.runReport
->[0]['metrics'];
-
-export type DimensionFilter = Parameters<
-  typeof analyticsDataClient.runReport
->[0]['dimensionFilter'];
+export type Dimensions = ReportParams['dimensions'];
+export type Metrics = ReportParams['metrics'];
+export type DimensionFilter = ReportParams['dimensionFilter'];
 
 export const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {

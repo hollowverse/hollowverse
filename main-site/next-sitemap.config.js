@@ -26,12 +26,17 @@ module.exports = {
           'url': celeb->slug.current + '/fact/' + _id
         }.url,
 
-        // Tag pages
+        // Celeb Tag pages
         ...*[_type == 'fact']{
           'tags': tags[]{
             'url': ^.celeb->slug.current + '/tag/' + tag._ref
           }.url
         }.tags[0...9999]
+
+        // Issue pages
+        ...*[_type == 'topic']{
+          'url': '~issue/' + _id
+        }.url
       ]`,
     );
 

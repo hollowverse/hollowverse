@@ -4,10 +4,9 @@ import { CelebImage } from '~/components/CelebImage';
 import { Fact } from '~/components/Fact';
 import { InFeedAd } from '~/components/InFeedAd';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { Celeb } from '~/lib/groq/celeb.projection';
-import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { FactWithCeleb } from '~/lib/groq/fact.projection';
 
-export function FactList(props: { list: ({ celeb: Celeb } & TFact)[] }) {
+export function FactList(props: { list: FactWithCeleb[] }) {
   return (
     <>
       {props.list.map((f, i: number) => {

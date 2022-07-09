@@ -34,7 +34,6 @@ export async function getStaticProps() {
         ${factProjection}
       }`,
     ),
-    getTrendingIssues(),
   ]);
 
   const trendingIssues = await sanityClient.fetch<Issue[]>(

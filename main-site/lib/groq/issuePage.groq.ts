@@ -5,10 +5,10 @@ import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 
 export type IssuePageGroq = {
-  issue: Issue;
-  facts: ({ celeb: Celeb } & Fact)[];
-  tags: Tag[];
-  factCount: number;
+  issue: Issue | null;
+  facts: ({ celeb: Celeb } & Fact)[] | null;
+  tags: Tag[] | null;
+  factCount: number | null;
 };
 
 export function getIssuePageGroq(withTagFilter: boolean) {
