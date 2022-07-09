@@ -1,4 +1,4 @@
-import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
+import { factsDataTransform } from '~/lib/getStatic/helpers/factsDataTransform';
 import { mockOrderOfIssues } from '~/lib/getStatic/tests/mockOrderOfIssues';
 import { Fact } from '~/lib/groq/fact.projection';
 

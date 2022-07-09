@@ -12,7 +12,7 @@ import {
   toPairs,
 } from 'lodash-es';
 import { parseDate } from '~/lib/date';
-import { sortTags } from '~/lib/getStatic/sortTags';
+import { sortTags } from '~/lib/getStatic/helpers/sortTags';
 import { Fact } from '~/lib/groq/fact.projection';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { Tag } from '~/lib/groq/tag.projection';

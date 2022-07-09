@@ -1,6 +1,7 @@
 import { differenceWith, filter, uniqBy } from 'lodash-es';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { Tag } from '~/lib/groq/tag.projection';
+import { sortByArray } from '~/lib/sortByArray';
 
 export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
   const noDupes = uniqBy(
@@ -35,12 +36,7 @@ export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
     return orderOfIssues.includes(t.tag.issue.name);
   });
 
-  intersection.sort(function (a, b) {
-    return (
-      orderOfIssues.indexOf(a.tag.issue.name) -
-      orderOfIssues.indexOf(b.tag.issue.name)
-    );
-  });
+  sortByArray(intersection, orderOfIssues, (t) => t.tag.issue.name);
 
   return [...intersection, ...diff];
 }

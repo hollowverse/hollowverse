@@ -1,3 +1,3 @@
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
 export { getStaticProps } from '~/lib/getStatic/launchPadKg.getStaticProps';
-export { default } from '~/pages/[celeb]/lp';
+export { default } from '~/pages/[slug]/lp';

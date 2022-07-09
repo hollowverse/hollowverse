@@ -1,9 +1,9 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
-import { factsDataTransform } from '~/lib/getStatic/factsDataTransform';
-import { getCelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
-import { getParsedOldContent } from '~/lib/getStatic/getParsedOldContent';
-import { getTopContributors } from '~/lib/getStatic/getTopContributors';
+import { factsDataTransform } from '~/lib/getStatic/helpers/factsDataTransform';
+import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
+import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
+import { getTopContributors } from '~/lib/getStatic/helpers/getTopContributors';
 import { log } from '~/shared/lib/log';
 
 export type CelebPageProps = NonNullable<
@@ -13,11 +13,11 @@ export type CelebPageProps = NonNullable<
 export const getStaticProps = async ({
   params,
 }: {
-  params: { celeb: string };
+  params: { slug: string };
 }) => {
-  log('info', `celebPage getStaticProps called: ${params.celeb}`);
+  log('info', `celebPage getStaticProps called: ${params.slug}`);
 
-  const results = await getCelebWithTimeline(params.celeb, true);
+  const results = await getCelebWithTimeline(params.slug, true);
 
   if (!results) {
     return {
@@ -28,7 +28,7 @@ export const getStaticProps = async ({
   const { oldContent, facts, ...rest } = results.celeb;
   const [parsedOldContent, topContributors] = await Promise.all([
     oldContent ? await getParsedOldContent(oldContent) : null,
-    getTopContributors(params.celeb),
+    getTopContributors(params.slug),
   ]);
 
   const transformedFacts = factsDataTransform(facts, results.orderOfIssues);

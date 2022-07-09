@@ -1,7 +1,7 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { CelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
 import { ReactElementProps } from '~/lib/types';
 
@@ -14,7 +14,11 @@ export function Tags(
       className={c('flex flex-wrap gap-2.5 pt-3', props.className)}
     >
       {props.tags.map((t) => (
-        <Tag key={t.tag._id} slug={props.slug} tagId={t.tag._id}>
+        <Tag
+          key={t.tag._id}
+          link={`/${props.slug}/tag/${t.tag._id}#content`}
+          tagId={t.tag._id}
+        >
           {t.tag.name}
           {t.isBackground && ' Background'}
           {t.isLowConfidence && (

@@ -1,2 +1,3 @@
 export const GA_MEASUREMENT_ID = 'G-9DXRHRTDG6';
 export const GA_TRACKING_ID = 'UA-5715214-12';
+export const GA_PROPERTY_ID = '311007044';

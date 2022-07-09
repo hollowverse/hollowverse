@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import { CelebImage } from '~/components/CelebImage';
 import { TagCollection } from '~/components/TagCollection';
-import { CelebWithTimeline } from '~/lib/getStatic/getCelebWithTimeline';
+import { CelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { Link } from '~/lib/Link';
 
 export const TopSection = (props: CelebWithTimeline) => {

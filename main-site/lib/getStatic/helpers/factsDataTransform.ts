@@ -1,5 +1,6 @@
 import { difference, groupBy, intersection, keys } from 'lodash-es';
 import { Fact } from '~/lib/groq/fact.projection';
+import { sortByArray } from '~/lib/sortByArray';
 
 /**
  * We have groups of Facts, keyed by their issues. I.e.
@@ -22,11 +23,11 @@ export const factsDataTransform = (_facts: Fact[], orderOfIssues: string[]) => {
   const issueStrings = keys(groups);
   const intersectionArr = intersection(issueStrings, orderOfIssues);
   const differenceArr = difference(issueStrings, orderOfIssues);
-  const sortedIntersection = intersectionArr.sort(
-    (a, b) => orderOfIssues.indexOf(a) - orderOfIssues.indexOf(b),
-  );
-  const sortedDifference = differenceArr.sort();
-  const sortedIssues = [...sortedIntersection, ...sortedDifference];
+
+  sortByArray(intersectionArr, orderOfIssues, (i) => i);
+  differenceArr.sort();
+
+  const sortedIssues = [...intersectionArr, ...differenceArr];
 
   return {
     groups,

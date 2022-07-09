@@ -1,6 +1,9 @@
 import groq from 'groq';
-import { getTagTimeline, TagTimeline } from '~/lib/getStatic/getTagTimeline';
-import { transformFact } from '~/lib/getStatic/transformFact';
+import {
+  getTagTimeline,
+  TagTimeline,
+} from '~/lib/getStatic/helpers/getTagTimeline';
+import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';

@@ -1,5 +1,5 @@
 import { shuffle } from 'lodash-es';
-import { groupCelebTags } from '~/lib/getStatic/groupCelebTags';
+import { groupCelebTags } from '~/lib/getStatic/helpers/groupCelebTags';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import {
   TagPageRelatedCeleb,

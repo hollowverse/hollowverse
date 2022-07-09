@@ -9,7 +9,7 @@ import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
-import { TagPageProps } from '~/lib/getStatic/tagPage.getStaticProps';
+import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
 
 export function renderTags(tags: TTag[]) {
@@ -31,8 +31,8 @@ export default function TagPage(props: TagPageProps) {
   return (
     <Page
       id="celeb-tag-page"
-      title={`${name} - ${props.tag.tag.name}`}
-      description={`${name}'s views on ${props.tag.tag.issue.name}`}
+      title={`${name} ${props.tag.tag.name}?`}
+      description={`${name} ${props.tag.tag.name} when it comes to ${props.tag.tag.issue.name}?`}
       allowSearchEngines
       pathname={`/${props.celeb.slug}/tag/${props.tag.tag._id}`}
       appBar={
@@ -68,7 +68,10 @@ export default function TagPage(props: TagPageProps) {
                 title={
                   <>
                     Others <TitleSeparator />{' '}
-                    <Tag slug={props.celeb.slug} tagId={props.tag.tag._id}>
+                    <Tag
+                      link={`/${props.celeb.slug}/tag/${props.tag.tag._id}#content`}
+                      tagId={props.tag.tag._id}
+                    >
                       {props.tag.tag.name}
                     </Tag>
                   </>
@@ -100,5 +103,5 @@ export default function TagPage(props: TagPageProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/tagPage.getStaticProps';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
+export { getStaticProps } from '~/lib/getStatic/celebTagPage.getStaticProps';

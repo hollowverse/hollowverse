@@ -10,7 +10,7 @@ test('Celeb page E2E test', async ({ page }) => {
   await page.goto(url);
   await page.waitForSelector('#celeb-page');
 
-  await commonElementsTestFragment(page, '#celeb-page');
+  await commonElementsTestFragment(page);
 
   await page.locator('#search-icon').click();
 
@@ -36,11 +36,7 @@ test('Celeb page E2E test', async ({ page }) => {
 
   await page.waitForSelector('#celeb-page-kim-kardashian');
 
-  await factTestFragment(
-    page,
-    '#celeb-page >> :nth-match(#fact, 3)',
-    '#celeb-page',
-  );
+  await factTestFragment(page, '#celeb-page >> :nth-match(#fact, 3)');
 });
 
 test('Celeb page Lighthouse test', async () => {

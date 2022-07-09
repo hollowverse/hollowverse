@@ -12,8 +12,8 @@ export default function Celeb(props: CelebPageProps) {
 
   return (
     <Page
-      title={`${name}'s religion and political views`}
-      description={`A collection of everything political or religious that ${name} said or did.`}
+      title={`What are ${name}'s political views, religion?`}
+      description={`Did ${name} say or do anything political or about religion? Find out here!`}
       allowSearchEngines
       pathname={props.celeb.slug}
       id="celeb-page"
@@ -43,4 +43,4 @@ export default function Celeb(props: CelebPageProps) {
 }
 
 export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
-export { getStaticPaths } from '~/lib/getStatic/defaultGetStaticPaths';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';

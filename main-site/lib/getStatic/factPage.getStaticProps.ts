@@ -2,9 +2,9 @@ import groq from 'groq';
 import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
-import { getFactForumData } from '~/lib/getStatic/getFactForumData';
-import { getRelatedCelebs } from '~/lib/getStatic/getRelatedCelebs';
-import { transformFact } from '~/lib/getStatic/transformFact';
+import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
+import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
+import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
@@ -18,7 +18,7 @@ export type FactPageProps = NonNullable<
 export async function getStaticProps({
   params,
 }: {
-  params: { celeb: string; factId: string };
+  params: { slug: string; factId: string };
 }) {
   const celeb = await sanityClient.fetch<Celeb>(
     'fact-page-celeb-data',
@@ -26,7 +26,7 @@ export async function getStaticProps({
       ${celebProjection}
     }`,
     {
-      slug: params.celeb,
+      slug: params.slug,
     },
   );
 
@@ -66,7 +66,7 @@ export async function getStaticProps({
     getRelatedCelebs(
       tag.tag._id,
       tag.tag.issue._id,
-      params.celeb,
+      params.slug,
       uniq([tag.tag.issue.name, ...orderOfIssues]),
     ),
     getFactForumData(fact.forumLink),
