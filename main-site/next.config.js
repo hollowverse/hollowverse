@@ -14,7 +14,7 @@ const nextJsConfig = {
   async headers() {
     return [
       {
-        // Apply these headers to all routes in your application.
+        // Apply these headers to all routes
         source: '/:path*',
         headers: securityHeaders,
       },
