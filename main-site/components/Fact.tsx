@@ -150,7 +150,7 @@ export const Fact: React.FC<{
                 rel="noreferrer"
                 target="_blank"
                 className={c(
-                  'pointer-events-auto flex select-none items-center gap-1 text-xs transition hover:underline focus:border-blue-300 default:text-neutral-500',
+                  'pointer-events-auto flex select-none items-center gap-1 text-xs default:text-neutral-500',
                   { 'text-white': props.fact.openGraphImage },
                 )}
               >
@@ -174,7 +174,7 @@ export const Fact: React.FC<{
             <Link href={`${props.fact.forumLink}#reply`} passHref>
               <a
                 id="fact-comments-link"
-                className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 transition hover:underline focus:border-blue-300"
+                className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500"
               >
                 <BiMessage className="text-lg" />
                 Comments
@@ -185,7 +185,7 @@ export const Fact: React.FC<{
           <div className="flex-1" />
 
           <ShareButton
-            className="pointer-events-auto flex select-none items-center gap-1 transition hover:underline focus:border-blue-300"
+            className="pointer-events-auto"
             buttonText="Share this Fact"
             share={{
               text: getFactPageTitle(props.celebName, props.fact, 200),
