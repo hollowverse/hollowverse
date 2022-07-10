@@ -5,8 +5,8 @@
   "description": "hollowverse",
   "author": "M.K. Safi",
   "scripts": {
-    "dev": "cross-env DEV_SERVER_URL='http://localhost:3000' next dev",
-    "dev-ssl": "cross-env DEV_SSL_SERVER_URL='https://localhost:3000' run-p 'dev -- -p 2999' 'local-ssl-proxy --source 3000 --target 2999'",
+    "dev-no-ssl": "cross-env DEV_SERVER_URL='http://localhost:3000' next dev",
+    "dev": "cross-env DEV_SSL_SERVER_URL='https://localhost:3000' run-p 'dev-no-ssl -- -p 2999' 'local-ssl-proxy --source 3000 --target 2999'",
     "build": "run-s 'symlink-shared' 'next build'",
     "symlink-shared": "SYMLINK_DESTINATION=main-site node ../symlink-shared.js",
     "start": "run-s 'build' 'next start'",

@@ -1,10 +1,13 @@
 import { defaultTo } from 'lodash-es';
 import Image, { ImageProps } from 'next/image';
 import React, { PropsWithChildren, useState } from 'react';
-import { BiLink, BiMessage } from 'react-icons/bi';
+import { BiMessage } from 'react-icons/bi';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { ShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
+import { getFactPagePathname } from '~/lib/getFactPagePathname';
+import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Fact as TFact } from '~/lib/groq/fact.projection';
@@ -142,6 +145,15 @@ export const Fact: React.FC<{
             >
               {props.fact.date}
             </p>
+            <Link href={props.fact.source} passHref>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                className="pointer-events-auto flex select-none items-center gap-1 text-xs text-neutral-500 transition hover:underline focus:border-blue-300"
+              >
+                {getSourceHost(props.fact.source)}
+              </a>
+            </Link>
           </div>
         </div>
 
@@ -169,16 +181,14 @@ export const Fact: React.FC<{
 
           <div className="flex-1" />
 
-          <Link href={props.fact.source} passHref>
-            <a
-              rel="noreferrer"
-              target="_blank"
-              className="pointer-events-auto flex select-none items-center gap-1 text-xs text-neutral-500 transition hover:underline focus:border-blue-300"
-            >
-              <BiLink className="text-base" />
-              {getSourceHost(props.fact.source)}
-            </a>
-          </Link>
+          <ShareButton
+            className="pointer-events-auto flex select-none items-center gap-1 transition hover:underline focus:border-blue-300"
+            buttonText="Share this Fact"
+            share={{
+              text: getFactPageTitle(props.celebName, props.fact, 200),
+              url: getFactPagePathname(props.slug, props.fact),
+            }}
+          />
         </div>
       </div>
     </section>

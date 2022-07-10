@@ -15,28 +15,15 @@ import { Card } from '~/components/ui/Card';
 import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { getSourceHost } from '~/lib/getSourceHost';
+import { getFactPagePathname } from '~/lib/getFactPagePathname';
+import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
-import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
 import { renderTags } from '~/pages/[slug]/tag/[tagId].celebTagPage';
 
-function getTextSummary(name: string, fact: TFact, length: number) {
-  let text: string;
-
-  if (fact.type === 'quote') {
-    text = `${name}: ${fact.quote}`;
-  } else {
-    text = fact.content;
-  }
-
-  return text.substring(0, length) + '...';
-}
-
 export default function FactPage(props: FactPageProps) {
   const { celeb, fact, otherCelebsWithIssue, otherCelebsWithTag, tag } = props;
-  const { contributorUsername, commentCount } = useFact(fact);
-  const sourceHost = getSourceHost(fact.source);
+  const { commentCount } = useFact(fact);
 
   useGaEventRecorder('issue_view', {
     name: fact.issues[0].name,
@@ -46,10 +33,10 @@ export default function FactPage(props: FactPageProps) {
   return (
     <Page
       id="fact-page"
-      title={getTextSummary(celeb.name, fact, 55)}
-      description={getTextSummary(celeb.name, fact, 145)}
+      title={getFactPageTitle(celeb.name, fact, 90)}
+      description={getFactPageTitle(celeb.name, fact, 145)}
       allowSearchEngines
-      pathname={`${celeb.slug}/fact/${fact._id}`}
+      pathname={getFactPagePathname(celeb.slug, fact)}
     >
       <div className="h-container my-5 flex flex-col gap-5">
         <Link href={`/${celeb.slug}`} passHref>
