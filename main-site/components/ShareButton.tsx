@@ -1,4 +1,5 @@
-import { MdOutlineIosShare } from 'react-icons/md';
+import { useState } from 'react';
+import { MdCheck, MdOutlineIosShare } from 'react-icons/md';
 import { c } from '~/lib/c';
 
 export function ShareButton(props: {
@@ -6,40 +7,61 @@ export function ShareButton(props: {
   share?: { text: string; url: string };
   className?: string;
 }) {
-  return show() ? (
+  const [copied, setCopied] = useState(false);
+
+  return (
     <button
       className={c('text-blue-500', props.className)}
       onClick={async () => {
-        if (show()) {
-          try {
+        try {
+          if (typeof global?.navigator?.share !== 'undefined') {
             await global.navigator.share(
               props.share || {
                 text: document.title,
                 url: document.location.href,
               },
             );
-          } catch (e) {}
-        }
+          } else {
+            await global.navigator.clipboard.writeText(
+              props.share?.url || document.location.href,
+            );
+
+            setCopied(true);
+          }
+        } catch (e) {}
       }}
     >
-      <div className="flex items-center justify-center gap-1 border-b border-blue-500">
-        {props.buttonText || 'Share this page'}
-        <MdOutlineIosShare className="text-lg" />
+      <div
+        className={c('flex items-center justify-center gap-1', {
+          'border-b border-blue-500': !copied,
+        })}
+      >
+        {getButtonText()}
+
+        {copied ? (
+          <MdCheck className="text-lg" />
+        ) : (
+          <MdOutlineIosShare className="text-lg" />
+        )}
       </div>
     </button>
-  ) : null;
+  );
+
+  function getButtonText() {
+    if (copied) {
+      return 'Link copied to clipboard';
+    }
+
+    return props.buttonText || 'Share this page';
+  }
 }
 
 export function InBetweenContentShareButton(
   props: Parameters<typeof ShareButton>[0],
 ) {
-  return show() ? (
+  return (
     <div className="self-center">
       <ShareButton {...props} />
     </div>
-  ) : null;
-}
-
-function show() {
-  return typeof global?.navigator?.share !== 'undefined';
+  );
 }
