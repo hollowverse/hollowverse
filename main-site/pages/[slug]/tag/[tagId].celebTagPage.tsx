@@ -4,6 +4,7 @@ import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
+import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
@@ -46,6 +47,8 @@ export default function TagPage(props: TagPageProps) {
         className="h-container py-5"
       >
         <div className="flex flex-col gap-5" id="content">
+          <InBetweenContentShareButton />
+
           <FactGroup
             factGroup={props.tagFacts}
             celebName={props.celeb.name}
