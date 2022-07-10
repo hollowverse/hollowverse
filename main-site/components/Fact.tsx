@@ -189,7 +189,10 @@ export const Fact: React.FC<{
             buttonText="Share this Fact"
             share={{
               text: getFactPageTitle(props.celebName, props.fact, 200),
-              url: getFactPagePathname(props.slug, props.fact),
+              url: `https://hollowverse.com/${getFactPagePathname(
+                props.slug,
+                props.fact,
+              )}`,
             }}
           />
         </div>
