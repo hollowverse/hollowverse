@@ -1,6 +1,7 @@
 import { FactList } from '~/components/FactList';
 import { Page } from '~/components/Page';
 import { Pagination } from '~/components/Pagination';
+import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { Card } from '~/components/ui/Card';
 import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
@@ -46,6 +47,8 @@ export default function IssuePage(props: IssuePageProps) {
       </Card>
 
       <div className="h-container flex flex-col gap-5 py-5">
+        <InBetweenContentShareButton />
+
         <FactList list={props.facts} />
 
         <Pagination
