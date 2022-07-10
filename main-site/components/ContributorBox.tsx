@@ -75,14 +75,7 @@ function SmallContributorBox(props: Contributor) {
 
         {props.website && (
           <div className="flex min-w-0 items-center gap-1 text-neutral-500">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={props.website}
-              className="truncate text-sm"
-            >
-              {props.websiteName}
-            </a>
+            <span className="truncate text-sm">{props.websiteName}</span>
           </div>
         )}
       </div>
