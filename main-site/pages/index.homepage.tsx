@@ -4,10 +4,7 @@ import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
 import { FactList } from '~/components/FactList';
 import { Page } from '~/components/Page';
-import {
-  InBetweenContentShareButton,
-  ShareButton,
-} from '~/components/ShareButton';
+import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { PurpleDot } from '~/components/ui/PurpleDot';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
