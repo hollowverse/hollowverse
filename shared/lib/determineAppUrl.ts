@@ -11,7 +11,14 @@ export function determineAppUrl() {
     return `https://${vercelUrl}`;
   }
 
+  const localDevServerUrl =
+    process.env.DEV_SSL_SERVER_URL || process.env.DEV_SERVER_URL;
+
+  if (localDevServerUrl) {
+    return localDevServerUrl;
+  }
+
   return getEnv() === 'development'
-    ? window.location.origin
+    ? 'http://localhost:3000'
     : 'https://hollowverse.com';
 }
