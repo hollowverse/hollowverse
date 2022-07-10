@@ -7,7 +7,7 @@ export function Spinner(props: ReactElementProps<'svg'>) {
     <CgSpinner
       {...props}
       className={c(
-        'animate-spin text-purple-400 default:text-6xl',
+        'animate-spin text-purple-500 default:text-6xl',
         props.className,
       )}
     />

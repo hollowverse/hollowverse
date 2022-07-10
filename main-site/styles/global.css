@@ -29,7 +29,7 @@ html {
   }
 
   .lovely-gradient {
-    @apply bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400;
+    @apply bg-gradient-to-r from-purple-500 via-blue-400 to-emerald-400;
   }
 
   .h-link {
