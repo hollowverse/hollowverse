@@ -51,14 +51,7 @@ function LargeContributorBox(props: Contributor) {
           <div className="flex items-center gap-1 text-neutral-500">
             <WebsiteIcon socialNetworkName={props.socialNetworkName} />
 
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={props.website}
-              className="truncate text-sm"
-            >
-              {props.websiteName}
-            </a>
+            <span className="truncate text-sm">{props.websiteName}</span>
           </div>
         )}
       </div>

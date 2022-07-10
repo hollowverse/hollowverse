@@ -3,7 +3,24 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const securityHeaders = [
+  {
+    key: 'Feature-Policy',
+    value: 'web-share *',
+  },
+];
+
 const nextJsConfig = {
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ];
+  },
+
   reactStrictMode: true,
 
   devIndicators: {
