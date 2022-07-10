@@ -19,6 +19,6 @@ export function determineAppUrl() {
   }
 
   return getEnv() === 'development'
-    ? 'http://localhost:3000'
+    ? window.location.origin
     : 'https://hollowverse.com';
 }

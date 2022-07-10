@@ -22,7 +22,7 @@ export default function IssuePage(props: IssuePageProps) {
             <Link href={`/~issue/${props.issue._id}`} passHref>
               <a
                 id="issue-page-title"
-                className="border-b-2 border-purple-200 px-1"
+                className="border-b-2 border-purple-400 px-1"
               >
                 {props.issue.name}
               </a>
