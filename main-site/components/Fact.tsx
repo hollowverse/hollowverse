@@ -140,7 +140,7 @@ export const Fact: React.FC<{
             })}{' '}
             <p
               className={c('text-sm default:text-neutral-700', {
-                ' text-white': props.fact.openGraphImage,
+                'text-white': props.fact.openGraphImage,
               })}
             >
               {props.fact.date}
@@ -149,7 +149,10 @@ export const Fact: React.FC<{
               <a
                 rel="noreferrer"
                 target="_blank"
-                className="pointer-events-auto flex select-none items-center gap-1 text-xs text-neutral-500 transition hover:underline focus:border-blue-300"
+                className={c(
+                  'pointer-events-auto flex select-none items-center gap-1 text-xs transition hover:underline focus:border-blue-300 default:text-neutral-500',
+                  { 'text-white': props.fact.openGraphImage },
+                )}
               >
                 {getSourceHost(props.fact.source)}
               </a>
