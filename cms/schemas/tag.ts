@@ -20,5 +20,12 @@ export const tag = {
       type: 'reference',
       to: [{ type: 'topic' }],
     },
+
+    {
+      title: 'is verb',
+      name: 'isVerb',
+      type: 'boolean',
+      validation: (Rule) => Rule.required(),
+    },
   ],
 };
