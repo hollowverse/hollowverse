@@ -41,11 +41,11 @@ export async function getRelatedCelebs(
       : null;
   };
 
-  const otherCelebsWithTag = process(otherCelebs.withTag);
-  const otherCelebsWithIssue = process(otherCelebs.withIssue);
+  const otherCelebsByTag = process(otherCelebs.withTag);
+  const otherCelebsByIssue = process(otherCelebs.withIssue);
 
   return {
-    otherCelebsWithIssue,
-    otherCelebsWithTag,
+    otherCelebsByIssue,
+    otherCelebsByTag,
   };
 }

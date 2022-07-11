@@ -57,15 +57,12 @@ export default function TagPage(props: TagPageProps) {
             name={props.celeb.name}
           />
 
-          <RelatedCelebsByTag
-            celebs={props.otherCelebsWithTag}
-            tag={props.tag}
-          />
+          <RelatedCelebsByTag celebs={props.otherCelebsByTag} tag={props.tag} />
 
           <InFeedAd />
 
           <RelatedCelebsByIssue
-            celebs={props.otherCelebsWithIssue}
+            celebs={props.otherCelebsByIssue}
             tag={props.tag}
           />
         </div>
