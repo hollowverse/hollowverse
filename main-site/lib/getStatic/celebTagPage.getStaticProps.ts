@@ -41,7 +41,7 @@ export const getStaticProps = async ({
   );
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
-  const { otherCelebsByTag, otherCelebsByIssue } = await getRelatedCelebs(
+  const { relatedCelebsByTag, relatedCelebsByIssue } = await getRelatedCelebs(
     params.tagId,
     tag.tag.issue._id,
     params.slug,
@@ -53,8 +53,8 @@ export const getStaticProps = async ({
       celeb: results.celeb,
       tag,
       tagFacts,
-      otherCelebsByTag,
-      otherCelebsByIssue,
+      relatedCelebsByTag,
+      relatedCelebsByIssue,
     },
     revalidate: oneDay,
   };

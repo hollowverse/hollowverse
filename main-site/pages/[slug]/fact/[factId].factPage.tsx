@@ -126,12 +126,12 @@ export default function FactPage(props: FactPageProps) {
           </div>
         </TitledCard>
 
-        <RelatedCelebsByTag celebs={props.otherCelebsByTag} tag={props.tag} />
+        <RelatedCelebsByTag celebs={props.relatedCelebsByTag} tag={props.tag} />
 
         <InFeedAd />
 
         <RelatedCelebsByIssue
-          celebs={props.otherCelebsByIssue}
+          celebs={props.relatedCelebsByIssue}
           tag={props.tag}
         />
       </div>

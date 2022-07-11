@@ -14,7 +14,7 @@ export function renderTags(tags: Tag[]) {
 }
 
 export function RelatedCelebsByTag(props: {
-  celebs: RelatedCelebs['otherCelebsByTag'];
+  celebs: RelatedCelebs['relatedCelebsByTag'];
   tag: Tag;
 }) {
   return isEmpty(props.celebs) ? (
@@ -33,7 +33,7 @@ export function RelatedCelebsByTag(props: {
 }
 
 export function RelatedCelebsByIssue(props: {
-  celebs: RelatedCelebs['otherCelebsByIssue'];
+  celebs: RelatedCelebs['relatedCelebsByIssue'];
   tag: Tag;
 }) {
   return isEmpty(props.celebs) ? (
