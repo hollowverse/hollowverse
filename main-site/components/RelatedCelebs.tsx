@@ -1,5 +1,4 @@
 import { isEmpty } from 'lodash-es';
-import { TitleSeparator } from '~/components/TitleSeparator';
 import { CHRList } from '~/components/ui/CHRList';
 import { RelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { Tag } from '~/lib/groq/tag.projection';
@@ -17,7 +16,7 @@ export function RelatedCelebsByTag(props: {
   celebs: RelatedCelebs['relatedCelebsByTag'];
   tag: Tag;
 }) {
-  return isEmpty(props.celebs) ? (
+  return !isEmpty(props.celebs) ? (
     <div id="related-celebs-tag">
       <CHRList
         title={
@@ -36,12 +35,13 @@ export function RelatedCelebsByIssue(props: {
   celebs: RelatedCelebs['relatedCelebsByIssue'];
   tag: Tag;
 }) {
-  return isEmpty(props.celebs) ? (
+  return !isEmpty(props.celebs) ? (
     <div id="related-celebs-issue">
       <CHRList
         title={
           <>
-            Others <TitleSeparator /> {props.tag.tag.issue.name}
+            Other {props.tag.tag.issue.isPersonal ? '' : 'views on'}{' '}
+            {props.tag.tag.issue.name}
           </>
         }
         celebs={props.celebs!}

@@ -37,10 +37,7 @@ const commonRawFactsProps: Fact = {
       tag: {
         _id: 'string',
         name: 'string',
-        issue: {
-          _id: 'id',
-          name: 'string',
-        },
+        issue: { isPersonal: true, _id: 'id', name: 'string' },
         isVerb: true,
       },
     },

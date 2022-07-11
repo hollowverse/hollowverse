@@ -7,10 +7,7 @@ export const mockTags: Tag[] = [
     tag: {
       isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Environment',
-      },
+      issue: { isPersonal: true, _id: 'id', name: 'Environment' },
       name: 'Environmentalist',
     },
   },
@@ -20,10 +17,7 @@ export const mockTags: Tag[] = [
     tag: {
       isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Environment',
-      },
+      issue: { isPersonal: true, _id: 'id', name: 'Environment' },
       name: 'Pro Nuclear Power',
     },
   },
@@ -33,10 +27,7 @@ export const mockTags: Tag[] = [
     tag: {
       isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Religion',
-      },
+      issue: { isPersonal: true, _id: 'id', name: 'Religion' },
       name: 'Not Religious',
     },
   },
@@ -46,10 +37,7 @@ export const mockTags: Tag[] = [
     tag: {
       isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Political Affiliation',
-      },
+      issue: { isPersonal: true, _id: 'id', name: 'Political Affiliation' },
       name: 'Unaffiliated',
     },
   },
@@ -59,10 +47,7 @@ export const mockTags: Tag[] = [
     tag: {
       isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Political Affiliation',
-      },
+      issue: { isPersonal: true, _id: 'id', name: 'Political Affiliation' },
       name: 'Republican',
     },
   },
@@ -72,10 +57,7 @@ export const mockTags: Tag[] = [
     tag: {
       isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Political Views',
-      },
+      issue: { isPersonal: true, _id: 'id', name: 'Political Views' },
       name: 'Wants New Faces in Politics',
     },
   },

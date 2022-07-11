@@ -1,5 +1,4 @@
 import { uniq } from 'lodash-es';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
