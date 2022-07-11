@@ -3,17 +3,17 @@ import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact } from '~/lib/groq/fact.projection';
 import { tagProjection } from '~/lib/groq/tag.projection';
 
-export type TagPageRelatedFact = Pick<Fact, 'date' | 'tags'>;
+export type RelatedFact = Pick<Fact, 'date' | 'tags'>;
 
-export type TagPageRelatedCeleb = Celeb & { facts: TagPageRelatedFact[] };
+export type RelatedCeleb = Celeb & { facts: RelatedFact[] };
 
-export type TagPageRelatedCelebsGroq = {
-  withTag: TagPageRelatedCeleb[] | null;
-  withIssue: TagPageRelatedCeleb[] | null;
+export type RelatedCelebsGroq = {
+  byTag: RelatedCeleb[] | null;
+  byIssue: RelatedCeleb[] | null;
 };
 
-export const tagPageRelatedCelebsGroq = groq`{
-  'withTag': *[
+export const relatedCelebsGroq = groq`{
+  'byTag': *[
     _type == 'celeb' &&
 
     // only celebs that have the tag
@@ -40,7 +40,7 @@ export const tagPageRelatedCelebsGroq = groq`{
     }
   }[0...50] | order(tagFact.date desc),
 
-  'withIssue': *[
+  'byIssue': *[
     _type == 'celeb' &&
     count(*[
       _type == 'fact' &&

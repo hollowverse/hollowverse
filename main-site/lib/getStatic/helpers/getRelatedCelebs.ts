@@ -3,10 +3,10 @@ import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { groupCelebTags } from '~/lib/getStatic/helpers/groupCelebTags';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import {
-  TagPageRelatedCeleb,
-  TagPageRelatedCelebsGroq,
-  tagPageRelatedCelebsGroq,
-} from '~/lib/groq/tagPageRelatedCelebs.groq';
+  RelatedCeleb,
+  RelatedCelebsGroq,
+  relatedCelebsGroq,
+} from '~/lib/groq/relatedCelebs.groq';
 import { Nullish } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -18,19 +18,19 @@ export async function getRelatedCelebs(
   mainSlug: string,
   orderOfIssues: OrderOfIssues,
 ) {
-  const otherCelebs = (await sanityClient.fetch<TagPageRelatedCelebsGroq>(
-    'tag-page-related-celebs',
-    tagPageRelatedCelebsGroq,
+  const relatedCelebs = (await sanityClient.fetch<RelatedCelebsGroq>(
+    'related-celebs',
+    relatedCelebsGroq,
     {
       tagId,
       issueId,
     },
   ))!;
 
-  const process = (tagPageRelatedCelebs: Nullish<TagPageRelatedCeleb[]>) => {
-    return tagPageRelatedCelebs
+  const process = (relatedCelebs: Nullish<RelatedCeleb[]>) => {
+    return relatedCelebs
       ? shuffle(
-          groupCelebTags(tagPageRelatedCelebs, orderOfIssues)
+          groupCelebTags(relatedCelebs, orderOfIssues)
             ?.filter((cwt) => cwt.slug !== mainSlug)
             ?.slice(0, 6)
             ?.map((c) => ({
@@ -41,8 +41,8 @@ export async function getRelatedCelebs(
       : null;
   };
 
-  const otherCelebsByTag = process(otherCelebs.withTag);
-  const otherCelebsByIssue = process(otherCelebs.withIssue);
+  const otherCelebsByTag = process(relatedCelebs.byTag);
+  const otherCelebsByIssue = process(relatedCelebs.byIssue);
 
   return {
     otherCelebsByIssue,
