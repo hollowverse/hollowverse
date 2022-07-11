@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash-es';
 import { FiMessageSquare } from 'react-icons/fi';
 import { CelebImage } from '~/components/CelebImage';
 import { ContributorBox } from '~/components/ContributorBox';
@@ -8,18 +7,17 @@ import { useFact } from '~/components/hooks/useFact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
+import { OtherCelebsWithIssue } from '~/components/OtherCelebsWithIssue';
+import { OtherCelebsWithTag } from '~/components/OtherCelebsWithTag';
 import { Page } from '~/components/Page';
 import { Spinner } from '~/components/Spinner';
-import { TitleSeparator } from '~/components/TitleSeparator';
 import { Card } from '~/components/ui/Card';
-import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Link } from '~/lib/Link';
-import { renderTags } from '~/pages/[slug]/tag/[tagId].celebTagPage';
 
 export default function FactPage(props: FactPageProps) {
   const { celeb, fact, otherCelebsWithIssue, otherCelebsWithTag, tag } = props;
@@ -124,35 +122,17 @@ export default function FactPage(props: FactPageProps) {
           </div>
         </TitledCard>
 
-        {!isEmpty(otherCelebsWithTag) && (
-          <div id="related-celebs-tag">
-            <CHRList
-              title={
-                <>
-                  Others <TitleSeparator /> {tag.tag.name}
-                </>
-              }
-              celebs={otherCelebsWithTag!}
-              renderBody={(c) => renderTags(c.tags)}
-            />
-          </div>
-        )}
+        <OtherCelebsWithTag
+          otherCelebsWithTag={props.otherCelebsWithTag}
+          tag={props.tag}
+        />
 
         <InFeedAd />
 
-        {!isEmpty(otherCelebsWithIssue) && (
-          <div id="related-celebs-issue">
-            <CHRList
-              title={
-                <>
-                  Others <TitleSeparator /> {tag.tag.issue.name}
-                </>
-              }
-              celebs={otherCelebsWithIssue!}
-              renderBody={(c) => renderTags(c.tags)}
-            />
-          </div>
-        )}
+        <OtherCelebsWithIssue
+          otherCelebsWithIssue={props.otherCelebsWithIssue}
+          tag={props.tag}
+        />
       </div>
     </Page>
   );

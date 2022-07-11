@@ -8,6 +8,7 @@ export type Tag = {
     _id: string;
     name: string;
     issue: Issue;
+    isVerb: boolean | null;
   };
 };
 
@@ -18,6 +19,7 @@ tags[]{
   tag->{
     _id,
     name,
-    'issue': topic->{${issueProjection}}
+    'issue': topic->{${issueProjection}},
+    isVerb
   }
 }`;

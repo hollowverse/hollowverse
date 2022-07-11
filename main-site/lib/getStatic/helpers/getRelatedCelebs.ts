@@ -1,4 +1,5 @@
 import { shuffle } from 'lodash-es';
+import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { groupCelebTags } from '~/lib/getStatic/helpers/groupCelebTags';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import {
@@ -8,6 +9,8 @@ import {
 } from '~/lib/groq/tagPageRelatedCelebs.groq';
 import { Nullish } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
+
+export type RelatedCelebs = UnwrapPromise<ReturnType<typeof getRelatedCelebs>>;
 
 export async function getRelatedCelebs(
   tagId: string,

@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { ordinal } from '~/lib/ordinal';
-import { pluralize } from '~/lib/pluralize';
+import { pluralize } from '~/lib/language/pluralize';
 
 export function DiscourseContribPm(props: {
   username: string;

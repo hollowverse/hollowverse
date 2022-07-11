@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { ContributorBox } from '~/components/ContributorBox';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { pluralize } from '~/lib/pluralize';
+import { pluralize } from '~/lib/language/pluralize';
 import { TopContributors } from '~/lib/psql/celebTopContributors.psql';
 
 export function TopContributors(props: {

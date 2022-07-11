@@ -4,6 +4,7 @@ import { oneDay } from '~/lib/date';
 import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
@@ -12,9 +13,7 @@ function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
   );
 }
 
-export type TagPageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
+export type TagPageProps = PageProps<typeof getStaticProps>;
 
 export const getStaticProps = async ({
   params,

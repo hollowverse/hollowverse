@@ -3,6 +3,8 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
+import { OtherCelebsWithIssue } from '~/components/OtherCelebsWithIssue';
+import { OtherCelebsWithTag } from '~/components/OtherCelebsWithTag';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
@@ -12,6 +14,7 @@ import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
+import { tagIsVerb } from '~/lib/language/tagIsVerb';
 
 export function renderTags(tags: TTag[]) {
   return (
@@ -65,41 +68,17 @@ export default function TagPage(props: TagPageProps) {
             name={props.celeb.name}
           />
 
-          {!isEmpty(props.otherCelebsWithTag) && (
-            <div id="related-celebs-tag">
-              <CHRList
-                title={
-                  <>
-                    Others <TitleSeparator />{' '}
-                    <Tag
-                      link={`/${props.celeb.slug}/tag/${props.tag.tag._id}#content`}
-                      tagId={props.tag.tag._id}
-                    >
-                      {props.tag.tag.name}
-                    </Tag>
-                  </>
-                }
-                celebs={props.otherCelebsWithTag!}
-                renderBody={(c) => renderTags(c.tags)}
-              />
-            </div>
-          )}
+          <OtherCelebsWithTag
+            otherCelebsWithTag={props.otherCelebsWithTag}
+            tag={props.tag}
+          />
 
           <InFeedAd />
 
-          {!isEmpty(props.otherCelebsWithIssue) && (
-            <div id="related-celebs-issue">
-              <CHRList
-                title={
-                  <>
-                    Others <TitleSeparator /> {props.tag.tag.issue.name}
-                  </>
-                }
-                celebs={props.otherCelebsWithIssue!}
-                renderBody={(c) => renderTags(c.tags)}
-              />
-            </div>
-          )}
+          <OtherCelebsWithIssue
+            otherCelebsWithIssue={props.otherCelebsWithIssue}
+            tag={props.tag}
+          />
         </div>
       </div>
     </Page>
