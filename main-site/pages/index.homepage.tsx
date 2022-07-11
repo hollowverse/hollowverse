@@ -95,7 +95,7 @@ export default function Index(props: HomepageProps) {
         {renderSideScroller(
           props.trendingIssues.map((i) => {
             return (
-              <Link key={i._id} passHref href={`~issue/${i._id}`}>
+              <Link key={i._id} passHref href={`/~issue/${i._id}`}>
                 <a>
                   <div
                     id="trending-issue-item"
