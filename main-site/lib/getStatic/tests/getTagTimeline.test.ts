@@ -10,6 +10,7 @@ test('sortTags to remove dupes', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -22,6 +23,7 @@ test('sortTags to remove dupes', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -44,6 +46,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -56,6 +59,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -76,6 +80,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -88,6 +93,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -101,6 +107,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -113,6 +120,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -125,6 +133,7 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -147,6 +156,7 @@ test('sortTags should sort by order of issues', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -159,6 +169,7 @@ test('sortTags should sort by order of issues', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',
@@ -171,6 +182,7 @@ test('sortTags should sort by order of issues', () => {
           isBackground: false,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
             issue: {
               _id: 'id',

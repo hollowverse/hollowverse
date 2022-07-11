@@ -41,6 +41,7 @@ const commonRawFactsProps: Fact = {
           _id: 'id',
           name: 'string',
         },
+        isVerb: true,
       },
     },
   ],

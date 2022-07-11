@@ -5,6 +5,7 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
       issue: {
         _id: 'id',
@@ -17,6 +18,7 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
       issue: {
         _id: 'id',
@@ -29,6 +31,7 @@ export const mockTags: Tag[] = [
     isBackground: false,
     isLowConfidence: true,
     tag: {
+      isVerb: true,
       _id: 'id',
       issue: {
         _id: 'id',
@@ -41,6 +44,7 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
       issue: {
         _id: 'id',
@@ -53,6 +57,7 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
       issue: {
         _id: 'id',
@@ -65,6 +70,7 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
       issue: {
         _id: 'id',
