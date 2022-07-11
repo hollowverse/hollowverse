@@ -1,6 +1,6 @@
 import groq from 'groq';
-import { orderBy, sortBy } from 'lodash-es';
 import { Page } from '~/components/Page';
+import { c } from '~/lib/c';
 import { oneDay } from '~/lib/date';
 import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
 import { getGaTrendingPages } from '~/lib/getStatic/helpers/getTrendingCelebs';
@@ -39,7 +39,12 @@ export default function ResearchList(props: ResearchListProps) {
           <tbody>
             {props.researchList.map((i) => {
               return (
-                <tr key={i.link} className="border-b bg-white">
+                <tr
+                  key={i.link}
+                  className={c('border-b default:bg-white', {
+                    'bg-green-100': i.factCount > 15,
+                  })}
+                >
                   <td className="flex gap-3 px-6 py-4 text-left">
                     {i.name}
                     <Link href={`${i.link}/lp`}>
@@ -162,9 +167,7 @@ export async function getStaticProps() {
 
   sortByArray(sanityResults, slugs, (h) => h.link.substring(1));
 
-  const researchList = [...sanityResults, ...kgResults].filter(
-    (i) => i.factCount < 11,
-  );
+  const researchList = [...sanityResults, ...kgResults];
 
   return {
     props: {

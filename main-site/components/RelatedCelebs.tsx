@@ -40,7 +40,7 @@ export function RelatedCelebsByIssue(props: {
       <CHRList
         title={
           <>
-            Other {props.tag.tag.issue.isPersonal ? '' : 'views on'}{' '}
+            Other {props.tag.tag.issue.isAffiliation ? '' : 'views on'}{' '}
             {props.tag.tag.issue.name}
           </>
         }
