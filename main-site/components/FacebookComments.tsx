@@ -19,7 +19,7 @@ export function FacebookComments(props: { pathname: string; limit?: number }) {
 
   return (
     <div key={props.pathname} ref={ref}>
-      <div className="relative z-0 min-h-[150px] p-2">
+      <div className="pointer-events-auto relative z-0 min-h-[150px] p-2">
         {inView && (
           <div className="z-30 bg-white">
             <div
