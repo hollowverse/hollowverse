@@ -7,7 +7,6 @@ import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TopContributors } from '~/components/TopContributors';
 import { TopSection } from '~/components/TopSection';
-import { Card } from '~/components/ui/Card';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
