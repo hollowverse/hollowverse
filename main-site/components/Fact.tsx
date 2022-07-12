@@ -177,7 +177,7 @@ export const Fact: React.FC<{
             <button
               onClick={() => setShowComments(!showComments)}
               id="fact-comments-link"
-              className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500"
+              className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 hover:underline"
             >
               <BiMessage className="text-lg" />
               <div className={c({ hidden: showComments })}>
