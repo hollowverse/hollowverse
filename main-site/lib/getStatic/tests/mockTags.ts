@@ -5,11 +5,9 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Environment',
-      },
+      issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
       name: 'Environmentalist',
     },
   },
@@ -17,11 +15,9 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Environment',
-      },
+      issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
       name: 'Pro Nuclear Power',
     },
   },
@@ -29,11 +25,9 @@ export const mockTags: Tag[] = [
     isBackground: false,
     isLowConfidence: true,
     tag: {
+      isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Religion',
-      },
+      issue: { isAffiliation: true, _id: 'id', name: 'Religion' },
       name: 'Not Religious',
     },
   },
@@ -41,11 +35,9 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Political Affiliation',
-      },
+      issue: { isAffiliation: true, _id: 'id', name: 'Political Affiliation' },
       name: 'Unaffiliated',
     },
   },
@@ -53,11 +45,9 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Political Affiliation',
-      },
+      issue: { isAffiliation: true, _id: 'id', name: 'Political Affiliation' },
       name: 'Republican',
     },
   },
@@ -65,11 +55,9 @@ export const mockTags: Tag[] = [
     isBackground: null,
     isLowConfidence: null,
     tag: {
+      isVerb: true,
       _id: 'id',
-      issue: {
-        _id: 'id',
-        name: 'Political Views',
-      },
+      issue: { isAffiliation: true, _id: 'id', name: 'Political Views' },
       name: 'Wants New Faces in Politics',
     },
   },

@@ -1,25 +1,17 @@
-import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
+import {
+  RelatedCelebsByIssue,
+  RelatedCelebsByTag,
+} from '~/components/RelatedCelebs';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
-import { Tag } from '~/components/Tag';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
-import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
-import { Tag as TTag } from '~/lib/groq/tag.projection';
-
-export function renderTags(tags: TTag[]) {
-  return (
-    <p className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xs text-gray-500 xs:text-base">
-      {tags.map((t) => t.tag.name.trim()).join(', ')}
-    </p>
-  );
-}
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -65,46 +57,22 @@ export default function TagPage(props: TagPageProps) {
             name={props.celeb.name}
           />
 
-          {!isEmpty(props.otherCelebsWithTag) && (
-            <div id="related-celebs-tag">
-              <CHRList
-                title={
-                  <>
-                    Others <TitleSeparator />{' '}
-                    <Tag
-                      link={`/${props.celeb.slug}/tag/${props.tag.tag._id}#content`}
-                      tagId={props.tag.tag._id}
-                    >
-                      {props.tag.tag.name}
-                    </Tag>
-                  </>
-                }
-                celebs={props.otherCelebsWithTag!}
-                renderBody={(c) => renderTags(c.tags)}
-              />
-            </div>
-          )}
+          <RelatedCelebsByTag
+            celebs={props.relatedCelebsByTag}
+            tag={props.tag}
+          />
 
           <InFeedAd />
 
-          {!isEmpty(props.otherCelebsWithIssue) && (
-            <div id="related-celebs-issue">
-              <CHRList
-                title={
-                  <>
-                    Others <TitleSeparator /> {props.tag.tag.issue.name}
-                  </>
-                }
-                celebs={props.otherCelebsWithIssue!}
-                renderBody={(c) => renderTags(c.tags)}
-              />
-            </div>
-          )}
+          <RelatedCelebsByIssue
+            celebs={props.relatedCelebsByIssue}
+            tag={props.tag}
+          />
         </div>
       </div>
     </Page>
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
 export { getStaticProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
+export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';

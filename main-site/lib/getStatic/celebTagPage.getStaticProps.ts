@@ -1,9 +1,9 @@
 import { uniq } from 'lodash-es';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
@@ -12,9 +12,7 @@ function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
   );
 }
 
-export type TagPageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
+export type TagPageProps = PageProps<typeof getStaticProps>;
 
 export const getStaticProps = async ({
   params,
@@ -42,7 +40,7 @@ export const getStaticProps = async ({
   );
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
-  const { otherCelebsWithTag, otherCelebsWithIssue } = await getRelatedCelebs(
+  const { relatedCelebsByTag, relatedCelebsByIssue } = await getRelatedCelebs(
     params.tagId,
     tag.tag.issue._id,
     params.slug,
@@ -54,8 +52,8 @@ export const getStaticProps = async ({
       celeb: results.celeb,
       tag,
       tagFacts,
-      otherCelebsWithTag,
-      otherCelebsWithIssue,
+      relatedCelebsByTag,
+      relatedCelebsByIssue,
     },
     revalidate: oneDay,
   };

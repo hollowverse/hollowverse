@@ -1,15 +1,9 @@
 import { sortTags } from '~/lib/getStatic/helpers/sortTags';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
+import { RelatedCelebsGroq, RelatedFact } from '~/lib/groq/relatedCelebs.groq';
 import { Tag } from '~/lib/groq/tag.projection';
-import {
-  TagPageRelatedCelebsGroq,
-  TagPageRelatedFact,
-} from '~/lib/groq/tagPageRelatedCelebs.groq';
 
-function collectTags(
-  facts: TagPageRelatedFact[],
-  orderOfIssues: OrderOfIssues,
-) {
+function collectTags(facts: RelatedFact[], orderOfIssues: OrderOfIssues) {
   const tags: Tag[] = [];
 
   facts.forEach((f) => {
@@ -20,7 +14,7 @@ function collectTags(
 }
 
 export function groupCelebTags(
-  celebsWithFacts: NonNullable<TagPageRelatedCelebsGroq['withIssue']>,
+  celebsWithFacts: NonNullable<RelatedCelebsGroq['byIssue']>,
   orderOfIssues: OrderOfIssues,
 ) {
   return celebsWithFacts.map((cwf) => {

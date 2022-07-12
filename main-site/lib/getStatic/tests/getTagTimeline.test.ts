@@ -10,11 +10,9 @@ test('sortTags to remove dupes', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -22,11 +20,9 @@ test('sortTags to remove dupes', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -44,11 +40,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -56,11 +50,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -76,11 +68,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -88,11 +78,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -101,11 +89,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -113,11 +99,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'foobar',
           },
         },
@@ -125,11 +109,9 @@ test('sortTags to remove unnecessary lowConfidence tags', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Environmentalist',
           },
         },
@@ -147,11 +129,9 @@ test('sortTags should sort by order of issues', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'LGBT',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'LGBT' },
             name: 'Supports LGBT',
           },
         },
@@ -159,11 +139,9 @@ test('sortTags should sort by order of issues', () => {
           isBackground: null,
           isLowConfidence: null,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Environment',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Environment' },
             name: 'Pro Nuclear Power',
           },
         },
@@ -171,11 +149,9 @@ test('sortTags should sort by order of issues', () => {
           isBackground: false,
           isLowConfidence: true,
           tag: {
+            isVerb: true,
             _id: 'id',
-            issue: {
-              _id: 'id',
-              name: 'Religion',
-            },
+            issue: { isAffiliation: true, _id: 'id', name: 'Religion' },
             name: 'Not Religious',
           },
         },

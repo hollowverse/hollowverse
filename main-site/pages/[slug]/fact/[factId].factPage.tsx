@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash-es';
 import { FiMessageSquare } from 'react-icons/fi';
 import { CelebImage } from '~/components/CelebImage';
 import { ContributorBox } from '~/components/ContributorBox';
@@ -9,50 +8,50 @@ import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
+import {
+  RelatedCelebsByIssue,
+  RelatedCelebsByTag,
+} from '~/components/RelatedCelebs';
 import { Spinner } from '~/components/Spinner';
-import { TitleSeparator } from '~/components/TitleSeparator';
 import { Card } from '~/components/ui/Card';
-import { CHRList } from '~/components/ui/CHRList';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Link } from '~/lib/Link';
-import { renderTags } from '~/pages/[slug]/tag/[tagId].celebTagPage';
 
 export default function FactPage(props: FactPageProps) {
-  const { celeb, fact, otherCelebsWithIssue, otherCelebsWithTag, tag } = props;
-  const { commentCount } = useFact(fact);
+  const { commentCount } = useFact(props.fact);
 
   useGaEventRecorder('issue_view', {
-    name: fact.issues[0].name,
-    id: fact.issues[0]._id,
+    name: props.fact.issues[0].name,
+    id: props.fact.issues[0]._id,
   });
 
   return (
     <Page
       id="fact-page"
-      title={getFactPageTitle(celeb.name, fact, 90)}
-      description={getFactPageTitle(celeb.name, fact, 145)}
+      title={getFactPageTitle(props.celeb.name, props.fact, 90)}
+      description={getFactPageTitle(props.celeb.name, props.fact, 145)}
       allowSearchEngines
-      pathname={getFactPagePathname(celeb.slug, fact)}
+      pathname={getFactPagePathname(props.celeb.slug, props.fact)}
     >
       <div className="h-container my-5 flex flex-col gap-5">
-        <Link href={`/${celeb.slug}`} passHref>
+        <Link href={`/${props.celeb.slug}`} passHref>
           <a id="fact-page-header">
             <div className="mx-5 flex items-center gap-5">
               <div className="relative aspect-square w-20">
                 <CelebImage
                   className="rounded-xl object-cover"
-                  picture={celeb.picture}
-                  name={celeb.name}
+                  picture={props.celeb.picture}
+                  name={props.celeb.name}
                 />
               </div>
               <div>
-                <h1 className="text-2xl font-bold">{celeb.name}</h1>
+                <h1 className="text-2xl font-bold">{props.celeb.name}</h1>
                 <h2 className="text-xl text-neutral-500">
-                  on {fact.issues[0].name}
+                  on {props.fact.issues[0].name}
                 </h2>
               </div>
             </div>
@@ -63,9 +62,9 @@ export default function FactPage(props: FactPageProps) {
           <LovelyTopBorder />
           <div className="flex flex-col gap-3 p-5">
             <Fact
-              slug={celeb.slug}
-              fact={fact}
-              celebName={celeb.name}
+              slug={props.celeb.slug}
+              fact={props.fact}
+              celebName={props.celeb.name}
               showComments={false}
             />
           </div>
@@ -96,7 +95,10 @@ export default function FactPage(props: FactPageProps) {
           </Card>
         )}
 
-        <ReturnToCelebViewsButton slug={celeb.slug} name={celeb.name} />
+        <ReturnToCelebViewsButton
+          slug={props.celeb.slug}
+          name={props.celeb.name}
+        />
 
         <TitledCard titledContentProps={{ title: 'Comments' }}>
           <div className="p-5" id="fact-page-comments">
@@ -106,7 +108,7 @@ export default function FactPage(props: FactPageProps) {
               </div>
             )) ||
               (commentCount !== null && commentCount > 0 ? (
-                <DiscourseThread threadUrl={fact.forumLink} />
+                <DiscourseThread threadUrl={props.fact.forumLink} />
               ) : (
                 <div className="flex w-full flex-col gap-5 text-base">
                   <p>
@@ -114,7 +116,7 @@ export default function FactPage(props: FactPageProps) {
                     below.
                   </p>
 
-                  <Link href={`${fact.forumLink}#reply`}>
+                  <Link href={`${props.fact.forumLink}#reply`}>
                     <a className="textbox-border flex h-20 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-gray-100 hover:text-gray-500">
                       <FiMessageSquare /> Share your opinion
                     </a>
@@ -124,35 +126,14 @@ export default function FactPage(props: FactPageProps) {
           </div>
         </TitledCard>
 
-        {!isEmpty(otherCelebsWithTag) && (
-          <div id="related-celebs-tag">
-            <CHRList
-              title={
-                <>
-                  Others <TitleSeparator /> {tag.tag.name}
-                </>
-              }
-              celebs={otherCelebsWithTag!}
-              renderBody={(c) => renderTags(c.tags)}
-            />
-          </div>
-        )}
+        <RelatedCelebsByTag celebs={props.relatedCelebsByTag} tag={props.tag} />
 
         <InFeedAd />
 
-        {!isEmpty(otherCelebsWithIssue) && (
-          <div id="related-celebs-issue">
-            <CHRList
-              title={
-                <>
-                  Others <TitleSeparator /> {tag.tag.issue.name}
-                </>
-              }
-              celebs={otherCelebsWithIssue!}
-              renderBody={(c) => renderTags(c.tags)}
-            />
-          </div>
-        )}
+        <RelatedCelebsByIssue
+          celebs={props.relatedCelebsByIssue}
+          tag={props.tag}
+        />
       </div>
     </Page>
   );
