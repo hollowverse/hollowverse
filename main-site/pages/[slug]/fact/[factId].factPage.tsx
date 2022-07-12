@@ -1,7 +1,6 @@
-import { FiMessageSquare } from 'react-icons/fi';
 import { CelebImage } from '~/components/CelebImage';
 import { ContributorBox } from '~/components/ContributorBox';
-import { DiscourseThread } from '~/components/DiscourseThread';
+import { FacebookComments } from '~/components/FacebookComments';
 import { Fact } from '~/components/Fact';
 import { useFact } from '~/components/hooks/useFact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
@@ -12,7 +11,6 @@ import {
   RelatedCelebsByIssue,
   RelatedCelebsByTag,
 } from '~/components/RelatedCelebs';
-import { Spinner } from '~/components/Spinner';
 import { Card } from '~/components/ui/Card';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
@@ -22,8 +20,6 @@ import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { Link } from '~/lib/Link';
 
 export default function FactPage(props: FactPageProps) {
-  const { commentCount } = useFact(props.fact);
-
   useGaEventRecorder('issue_view', {
     name: props.fact.issues[0].name,
     id: props.fact.issues[0]._id,
@@ -65,7 +61,7 @@ export default function FactPage(props: FactPageProps) {
               slug={props.celeb.slug}
               fact={props.fact}
               celebName={props.celeb.name}
-              showComments={false}
+              showCommentsButton={false}
             />
           </div>
         </Card>
@@ -101,28 +97,10 @@ export default function FactPage(props: FactPageProps) {
         />
 
         <TitledCard titledContentProps={{ title: 'Comments' }}>
-          <div className="p-5" id="fact-page-comments">
-            {(commentCount === null && (
-              <div className="w-ful flex justify-center">
-                <Spinner />
-              </div>
-            )) ||
-              (commentCount !== null && commentCount > 0 ? (
-                <DiscourseThread threadUrl={props.fact.forumLink} />
-              ) : (
-                <div className="flex w-full flex-col gap-5 text-base">
-                  <p>
-                    What are your thoughts on this? Share them in the comments
-                    below.
-                  </p>
-
-                  <Link href={`${props.fact.forumLink}#reply`}>
-                    <a className="textbox-border flex h-20 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-gray-100 hover:text-gray-500">
-                      <FiMessageSquare /> Share your opinion
-                    </a>
-                  </Link>
-                </div>
-              ))}
+          <div id="fact-page-comments">
+            <FacebookComments
+              pathname={getFactPagePathname(props.celeb.slug, props.fact)}
+            />
           </div>
         </TitledCard>
 

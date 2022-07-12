@@ -34,6 +34,8 @@ export function Page(props: {
         />
         <meta key="head-charset" charSet="utf-8" />
 
+        <meta property="fb:app_id" content="528201628925813" />
+
         <meta
           key="head-description"
           name="description"

@@ -3,6 +3,8 @@ import Image, { ImageProps } from 'next/image';
 import React, { PropsWithChildren, useState } from 'react';
 import { BiMessage } from 'react-icons/bi';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { FacebookComments } from '~/components/FacebookComments';
+import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
 import { ShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
@@ -75,10 +77,11 @@ export const Fact: React.FC<{
   celebName: string;
   slug: Celeb['slug'];
   link?: boolean;
-  showComments?: boolean;
+  showCommentsButton?: boolean;
 }> = (props) => {
   const link = defaultTo(props.link, false);
-  const showComments = props.showComments ?? true;
+  const showCommentsButton = props.showCommentsButton ?? true;
+  const [showComments, setShowComments] = useState(false);
 
   const [showOgImage, setShowOgImage] = useState(true);
 
@@ -170,16 +173,18 @@ export const Fact: React.FC<{
         </div>
 
         <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
-          {showComments && (
-            <Link href={`${props.fact.forumLink}#reply`} passHref>
-              <a
-                id="fact-comments-link"
-                className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500"
-              >
-                <BiMessage className="text-lg" />
-                Comments
-              </a>
-            </Link>
+          {showCommentsButton && (
+            <button
+              onClick={() => setShowComments(!showComments)}
+              id="fact-comments-link"
+              className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 hover:underline"
+            >
+              <BiMessage className="text-lg" />
+              <div className={c({ hidden: showComments })}>
+                <FacebookCommentsCount slug={props.slug} fact={props.fact} />
+              </div>
+              {showComments ? 'Close comments' : 'Comments'}
+            </button>
           )}
 
           <div className="flex-1" />
@@ -196,6 +201,16 @@ export const Fact: React.FC<{
             }}
           />
         </div>
+
+        {showComments && (
+          <div className="-mx-5 -mb-5">
+            <hr />
+            <FacebookComments
+              pathname={getFactPagePathname(props.slug, props.fact)}
+              limit={5}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

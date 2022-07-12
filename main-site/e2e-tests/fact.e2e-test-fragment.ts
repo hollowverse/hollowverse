@@ -7,10 +7,5 @@ export async function factTestFragment(page: Page, factSelector: string) {
   const tag = await page.locator(`${factSelector} >> :nth-match(#tag, 1)`);
   await test.expect(await tag.nth(0)).toHaveAttribute('href', /\/tag\//);
 
-  const commentsLink = await page.locator(
-    `${factSelector} >> #fact-comments-link`,
-  );
-  await test
-    .expect(await commentsLink.nth(0))
-    .toHaveAttribute('href', /^https:\/\/(forum|discuss).hollowverse.com.*/);
+  await page.locator(`${factSelector} >> #fact-comments-link`);
 }

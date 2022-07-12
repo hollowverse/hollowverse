@@ -11,6 +11,18 @@ html {
   -webkit-tap-highlight-color: rgb(233 213 255 / 0.5);
 }
 
+div:not([fb-xfbml-state="rendered"]).fb-comments {
+  display: none;
+}
+
+div[fb-xfbml-state="rendered"] + .fb-comments-spinner {
+  display: none;
+}
+
+div[class^="fb_comments_count_zero"], div[class*=" fb_comments_count_zero"] {
+  display: none;
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
