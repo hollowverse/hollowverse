@@ -21,5 +21,7 @@ declare global {
     gtag: any;
 
     adsbygoogle: any;
+
+    FB: any;
   }
 }
