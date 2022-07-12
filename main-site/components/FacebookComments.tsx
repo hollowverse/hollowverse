@@ -20,7 +20,7 @@ export function FacebookComments(props: { pathname: string; limit?: number }) {
     <div
       key={props.pathname}
       ref={ref}
-      className="flex min-h-[150px] flex-col items-center justify-center"
+      className="pointer-events-auto flex min-h-[150px] flex-col items-center justify-center"
     >
       {inView && (
         <div
