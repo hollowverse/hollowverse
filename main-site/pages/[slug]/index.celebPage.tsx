@@ -1,11 +1,14 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
+import { FacebookComments } from '~/components/FacebookComments';
 import { Facts } from '~/components/Facts';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TopContributors } from '~/components/TopContributors';
 import { TopSection } from '~/components/TopSection';
+import { Card } from '~/components/ui/Card';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
@@ -40,6 +43,19 @@ export default function Celeb(props: CelebPageProps) {
             celebName={props.celeb.name}
           />
         ) : null}
+
+        <TitledCard
+          titledContentProps={{
+            title: (
+              <span className="text-base">
+                Your thoughts on {props.celeb.name}?
+              </span>
+            ),
+            stickyTitle: false,
+          }}
+        >
+          <FacebookComments pathname={`/${props.celeb.slug}`} />
+        </TitledCard>
       </div>
     </Page>
   );
