@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Spinner } from '~/components/Spinner';
@@ -18,26 +17,24 @@ export function FacebookComments(props: { pathname: string; limit?: number }) {
   });
 
   return (
-    <div key={props.pathname} ref={ref}>
-      <div className="pointer-events-auto relative z-0 min-h-[150px] p-2">
-        {inView && (
-          <div className="z-30 bg-white">
-            <div
-              className="fb-comments absolute inset-0"
-              data-href={`https://hollowverse.com/${props.pathname}`}
-              data-mobile="true"
-              data-numposts={limit}
-              data-order-by="reverse-time"
-            />
-          </div>
-        )}
+    <div
+      key={props.pathname}
+      ref={ref}
+      className="flex min-h-[150px] flex-col items-center justify-center"
+    >
+      {inView && (
+        <div
+          className="fb-comments"
+          data-href={`https://hollowverse.com/${props.pathname}`}
+          data-mobile="true"
+          data-numposts={limit}
+          data-order-by="reverse-time"
+        />
+      )}
 
-        <div className="absolute inset-0 -z-10 flex items-center justify-center">
-          <div className="flex flex-col items-center justify-center gap-2">
-            <Spinner />
-            <p className="text-neutral-500">Loading comments...</p>
-          </div>
-        </div>
+      <div className="fb-comments-spinner flex flex-col items-center justify-center gap-2">
+        <Spinner />
+        <p className="text-neutral-500">Loading comments...</p>
       </div>
     </div>
   );

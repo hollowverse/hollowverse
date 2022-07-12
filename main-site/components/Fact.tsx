@@ -4,6 +4,7 @@ import React, { PropsWithChildren, useState } from 'react';
 import { BiMessage } from 'react-icons/bi';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { FacebookComments } from '~/components/FacebookComments';
+import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
 import { ShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
@@ -180,13 +181,7 @@ export const Fact: React.FC<{
             >
               <BiMessage className="text-lg" />
               <div className={c({ hidden: showComments })}>
-                <div
-                  className="fb-comments-count"
-                  data-href={`https://hollowverse.com/${getFactPagePathname(
-                    props.slug,
-                    props.fact,
-                  )}`}
-                />
+                <FacebookCommentsCount slug={props.slug} fact={props.fact} />
               </div>
               {showComments ? 'Close comments' : 'Comments'}
             </button>
