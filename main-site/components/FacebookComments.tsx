@@ -3,11 +3,8 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Spinner } from '~/components/Spinner';
 
-export function FacebookComments(props: {
-  pathname: string;
-  numposts?: number;
-}) {
-  const numposts = props.numposts ?? 10;
+export function FacebookComments(props: { pathname: string; limit?: number }) {
+  const limit = props.limit ?? 10;
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -42,7 +39,7 @@ export function FacebookComments(props: {
               className="fb-comments absolute inset-0"
               data-href={`https://hollowverse.com/${props.pathname}`}
               data-mobile="true"
-              data-numposts={numposts}
+              data-numposts={limit}
               data-order-by="reverse-time"
             />
           </div>
