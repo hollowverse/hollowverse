@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Script
         id="facebook-sdk"
         strategy="lazyOnload"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=528201628925813&autoLogAppEvents=1"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=528201628925813"
         crossOrigin="anonymous"
         nonce="ouUS8tJS"
       />
