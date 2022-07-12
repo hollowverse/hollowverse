@@ -11,10 +11,18 @@ export default function IssuePage(props: IssuePageProps) {
   return (
     <Page
       allowSearchEngines
-      description={`List of views and opinions on ${props.issue.name} by celebrities`}
+      description={
+        props.issue.isAffiliation
+          ? `A record of all celebrity's ${props.issue.name}`
+          : `The opinions of celebrity's on ${props.issue.name}`
+      }
       id="issue-page"
       pathname={`~issue/${props.issue._id}`}
-      title={`What do celebrities think of ${props.issue.name}?`}
+      title={
+        props.issue.isAffiliation
+          ? `What are the ${props.issue.name} of celebrities?`
+          : `What do celebrities think of ${props.issue.name}?`
+      }
     >
       <Card topBorder={false}>
         <div className="h-container flex flex-col gap-5 p-5">

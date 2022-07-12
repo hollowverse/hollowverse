@@ -21,7 +21,7 @@ export function RelatedCelebsByTag(props: {
       <CHRList
         title={
           <>
-            Who else {tagIsVerb(props.tag) ? '' : 'is'} {props.tag.tag.name}?
+            Who Else {tagIsVerb(props.tag) ? '' : 'is'} {props.tag.tag.name}?
           </>
         }
         celebs={props.celebs!}
@@ -40,7 +40,7 @@ export function RelatedCelebsByIssue(props: {
       <CHRList
         title={
           <>
-            Other {props.tag.tag.issue.isAffiliation ? '' : 'views on'}{' '}
+            Other {props.tag.tag.issue.isAffiliation ? '' : 'Views on'}{' '}
             {props.tag.tag.issue.name}
           </>
         }
