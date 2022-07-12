@@ -179,6 +179,15 @@ export const Fact: React.FC<{
               className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500"
             >
               <BiMessage className="text-lg" />
+              <div className={c({ hidden: showComments })}>
+                <div
+                  className="fb-comments-count"
+                  data-href={`https://hollowverse.com/${getFactPagePathname(
+                    props.slug,
+                    props.fact,
+                  )}`}
+                />
+              </div>
               {showComments ? 'Close comments' : 'Comments'}
             </button>
           )}
@@ -199,7 +208,7 @@ export const Fact: React.FC<{
         </div>
 
         {showComments && (
-          <div className="-mx-5">
+          <div className="-mx-5 -mb-5">
             <hr />
             <FacebookComments
               pathname={getFactPagePathname(props.slug, props.fact)}

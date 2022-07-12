@@ -19,19 +19,6 @@ export function FacebookComments(props: { pathname: string; limit?: number }) {
 
   return (
     <div key={props.pathname} ref={ref}>
-      {inView && (
-        <>
-          <div id="fb-root" className="hidden" />
-          <Script
-            id="facebook-sdk"
-            strategy="lazyOnload"
-            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=528201628925813&autoLogAppEvents=1"
-            crossOrigin="anonymous"
-            nonce="ouUS8tJS"
-          />
-        </>
-      )}
-
       <div className="relative z-0 min-h-[150px] p-2">
         {inView && (
           <div className="z-30 bg-white">
