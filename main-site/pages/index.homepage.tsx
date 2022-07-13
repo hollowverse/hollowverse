@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
-import { FactList } from '~/components/FactList';
+import { MixedCelebFactList } from '~/components/MixedCelebFactList';
 import { IssuesSideScroller } from '~/components/IssuesSideScroller';
 import { Page } from '~/components/Page';
 import { PurpleDot } from '~/components/ui/PurpleDot';
@@ -104,7 +104,7 @@ export default function Index(props: HomepageProps) {
       <div className="flex flex-col gap-2.5">
         <h2 className="scale-y-110 px-5 text-xl font-semibold">The Latest</h2>
 
-        <FactList list={props.latestFacts} />
+        <MixedCelebFactList list={props.latestFacts} />
       </div>
     );
   }

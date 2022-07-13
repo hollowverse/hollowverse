@@ -1,4 +1,4 @@
-import { FactList } from '~/components/FactList';
+import { MixedCelebFactList } from '~/components/MixedCelebFactList';
 import { Page } from '~/components/Page';
 import { Pagination } from '~/components/Pagination';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
@@ -57,7 +57,7 @@ export default function IssuePage(props: IssuePageProps) {
       <div className="h-container flex flex-col gap-5 py-5">
         <InBetweenContentShareButton />
 
-        <FactList list={props.facts} />
+        <MixedCelebFactList list={props.facts} />
 
         <Pagination
           {...props.pagination}
