@@ -5,6 +5,7 @@ import { CelebGallery } from '~/components/CelebGallery';
 import { FactList } from '~/components/FactList';
 import { Page } from '~/components/Page';
 import { PurpleDot } from '~/components/ui/PurpleDot';
+import { SideScroller } from '~/components/ui/SideScroller';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
 
@@ -71,13 +72,13 @@ export default function Index(props: HomepageProps) {
           Trending Celebrities
         </h2>
 
-        {renderSideScroller(
+        <SideScroller>
           <CelebGallery
             prefetch={false}
             celebGalleryItems={props.trendingCelebs}
             className="flex flex-row flex-nowrap justify-start gap-[1px]"
-          />,
-        )}
+          />
+        </SideScroller>
       </div>
     );
   }
@@ -89,8 +90,8 @@ export default function Index(props: HomepageProps) {
           Trending Issues
         </h2>
 
-        {renderSideScroller(
-          props.trendingIssues.map((i) => {
+        <SideScroller>
+          {props.trendingIssues.map((i) => {
             return (
               <Link key={i._id} passHref href={`/~issue/${i._id}`}>
                 <a>
@@ -106,21 +107,8 @@ export default function Index(props: HomepageProps) {
                 </a>
               </Link>
             );
-          }),
-        )}
-      </div>
-    );
-  }
-
-  function renderSideScroller(node: ReactNode) {
-    return (
-      <div className="relative">
-        <div className="no-scrollbar flex flex-row gap-1 overflow-auto pl-7">
-          {node}
-          <div className="FILLER min-w-[50px] flex-grow" />
-        </div>
-        <div className="LEFT-FADE absolute top-0 left-0 bottom-0 z-10 w-7 bg-gradient-to-r from-gray-100 via-transparent to-transparent" />
-        <div className="RIGHT-FADE absolute top-0 right-0 bottom-0 z-10 w-7 bg-gradient-to-l from-gray-100 via-transparent to-transparent" />
+          })}
+        </SideScroller>
       </div>
     );
   }
