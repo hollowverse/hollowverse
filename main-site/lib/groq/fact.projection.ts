@@ -1,9 +1,7 @@
 import groq from 'groq';
 import { Celeb } from '~/lib/groq/celeb.projection';
-import { issueProjection } from '~/lib/groq/issue.projection';
+import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
-
-export type Issue = { name: string; _id: string };
 
 export type Fact = {
   _id: string;

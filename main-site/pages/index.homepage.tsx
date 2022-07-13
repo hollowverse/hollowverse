@@ -3,6 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
 import { FactList } from '~/components/FactList';
+import { IssuesSideScroller } from '~/components/IssuesSideScroller';
 import { Page } from '~/components/Page';
 import { PurpleDot } from '~/components/ui/PurpleDot';
 import { SideScroller } from '~/components/ui/SideScroller';
@@ -90,25 +91,10 @@ export default function Index(props: HomepageProps) {
           Trending Issues
         </h2>
 
-        <SideScroller>
-          {props.trendingIssues.map((i) => {
-            return (
-              <Link key={i._id} passHref href={`/~issue/${i._id}`}>
-                <a>
-                  <div
-                    id="trending-issue-item"
-                    className="mb-2 min-w-[200px] rounded-sm border bg-white p-4 shadow-sm"
-                  >
-                    <div className="flex items-center justify-center gap-3 text-base text-neutral-700">
-                      <PurpleDot />
-                      <p className="w-max text-lg text-neutral-600">{i.name}</p>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            );
-          })}
-        </SideScroller>
+        <IssuesSideScroller
+          issues={props.trendingIssues}
+          getLink={(_id) => `/~issue/${_id}`}
+        />
       </div>
     );
   }
