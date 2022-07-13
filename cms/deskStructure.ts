@@ -5,53 +5,71 @@ import { tag } from './schemas/tag';
 import { issue } from './schemas/issue';
 import { celeb } from './schemas/celeb';
 
-function getDocumentViews(query: string, param1: string, title: string) {
-  return S.document().views([
-    S.view.form(),
-    S.view
-      .component(DocumentsPane)
-      .options({
-        query,
-        params: {
-          param1,
-        },
-      })
-      .title(title),
-  ]);
-}
-
 export const getDefaultDocumentNode = ({ schemaType }) => {
   if (schemaType === tag.name) {
-    return getDocumentViews(
-      groq`*[
-        _type == 'fact' &&
-        $param1 in tags[].tag._ref
-      ] | order(_createdAt desc)`,
-      '_id',
-      'Facts',
-    );
+    return S.document().views([
+      S.view.form(),
+      S.view
+        .component(DocumentsPane)
+        .options({
+          query: groq`*[
+            _type == 'fact' &&
+            $param1 in tags[].tag._ref
+          ] | order(_createdAt desc)`,
+          params: {
+            param1: '_id',
+          },
+        })
+        .title('Facts'),
+    ]);
   }
 
   if (schemaType === issue.name) {
-    return getDocumentViews(
-      groq`*[
-        _type == 'fact' &&
-        $param1 in topics[]._ref
-      ] | order(_createdAt desc)`,
-      '_id',
-      'Facts',
-    );
+    return S.document().views([
+      S.view.form(),
+      S.view
+        .component(DocumentsPane)
+        .options({
+          query: groq`*[
+            _type == 'fact' &&
+            $param1 in topics[]._ref
+          ] | order(_createdAt desc)`,
+          params: {
+            param1: '_id',
+          },
+        })
+        .title('Facts'),
+      S.view
+        .component(DocumentsPane)
+        .options({
+          query: groq`*[
+            _type == 'tag' &&
+            $param1 == topic._ref
+          ] | order(_createdAt desc)`,
+          params: {
+            param1: '_id',
+          },
+        })
+        .title('Issue Tags'),
+    ]);
   }
 
   if (schemaType === celeb.name) {
-    return getDocumentViews(
-      groq`*[
-        _type == 'fact' &&
-        celeb._ref == $param1
-      ] | order(_createdAt desc)`,
-      '_id',
-      'Facts',
-    );
+    return S.document().views([
+      S.view.form(),
+      S.view
+        .component(DocumentsPane)
+        .options({
+          query: groq`*[
+            _type == 'fact' &&
+            celeb._ref == $param1
+          ] | order(_createdAt desc)`,
+          params: {
+            param1: '_id',
+          },
+        })
+        .title('Facts'),
+    ]);
   }
 };
 
