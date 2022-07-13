@@ -24,6 +24,7 @@ export function FactGroup(props: {
               <Card>
                 <div className="p-5">
                   <Fact
+                    showIssueName
                     link
                     fact={fact}
                     celebName={props.celebName}

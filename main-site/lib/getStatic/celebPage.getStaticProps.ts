@@ -34,7 +34,7 @@ export const getStaticProps = async ({
     getTopContributors(params.slug),
   ]);
 
-  const transformedFacts = factsDataTransform(facts, results.orderOfIssues);
+  // const transformedFacts = factsDataTransform(facts, results.orderOfIssues);
 
   return {
     props: {
@@ -42,7 +42,7 @@ export const getStaticProps = async ({
       celeb: {
         ...rest,
         issues,
-        facts: transformedFacts,
+        facts: facts.slice(0, 5),
         oldContent: parsedOldContent,
       },
     },

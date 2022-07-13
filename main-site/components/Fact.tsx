@@ -12,7 +12,7 @@ import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
-import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { Fact as TFact, QuoteFact } from '~/lib/groq/fact.projection';
 import { Link } from '~/lib/Link';
 
 function UnoptimizedImage(
@@ -32,43 +32,6 @@ function UnoptimizedImage(
       src={props.src}
       alt={props.alt}
     />
-  );
-}
-
-function lowercaseFirstLetter(s: string) {
-  return s.charAt(0).toLowerCase() + s.slice(1);
-}
-
-function renderQuote(quote: string) {
-  return (
-    <div className="my-3 flex gap-2" id="fact-quote">
-      <div>
-        <FaQuoteLeft className="text-2xl text-neutral-300" />
-      </div>
-      <blockquote>{quote}</blockquote>
-    </div>
-  );
-}
-
-function renderContext(celebName: string, context: string) {
-  return (
-    <p className="text-base text-neutral-500" id="fact-context">
-      {celebName} said, {lowercaseFirstLetter(context)}
-    </p>
-  );
-}
-
-function renderQuoteType(quote: string, context: string, celebName: string) {
-  return quote.length > context.length ? (
-    <>
-      {renderQuote(quote)}
-      {renderContext(celebName, context)}
-    </>
-  ) : (
-    <>
-      {renderContext(celebName, context)}
-      {renderQuote(quote)}
-    </>
   );
 }
 
@@ -126,6 +89,7 @@ export const Fact: React.FC<{
                 : '',
             )}
           >
+            {props.showIssueName && renderIssueName(props.fact)}{' '}
             {props.fact.tags.map((t) => {
               return (
                 <Tag
@@ -164,12 +128,9 @@ export const Fact: React.FC<{
         </div>
 
         <div className="FACT-BODY flex flex-col gap-3">
-          {(props.fact.type === 'quote' &&
-            renderQuoteType(
-              props.fact.quote,
-              props.fact.context,
-              props.celebName,
-            )) || <p>{(props.fact as any).content}</p>}
+          {(props.fact.type === 'quote' && renderFactBody(props.fact)) || (
+            <p>{(props.fact as any).content}</p>
+          )}
         </div>
 
         <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
@@ -214,4 +175,41 @@ export const Fact: React.FC<{
       </div>
     </section>
   );
+
+  function renderFactBody(fact: QuoteFact) {
+    return fact.quote.length > fact.context.length ? (
+      <>
+        {renderQuote()}
+        {renderContext()}
+      </>
+    ) : (
+      <>
+        {renderContext()}
+        {renderQuote()}
+      </>
+    );
+
+    function renderQuote() {
+      return (
+        <div className="my-3 flex gap-2" id="fact-quote">
+          <div>
+            <FaQuoteLeft className="text-2xl text-neutral-300" />
+          </div>
+          <blockquote>{fact.quote}</blockquote>
+        </div>
+      );
+    }
+
+    function renderContext() {
+      return (
+        <p className="text-base text-neutral-500" id="fact-context">
+          {props.celebName} said, {lowercaseFirstLetter()}
+        </p>
+      );
+
+      function lowercaseFirstLetter() {
+        return fact.context.charAt(0).toLowerCase() + fact.context.slice(1);
+      }
+    }
+  }
 };

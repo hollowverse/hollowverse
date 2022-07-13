@@ -32,7 +32,7 @@ export default function Celeb(props: CelebPageProps) {
       >
         <InBetweenContentShareButton />
 
-        {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
+        {!isEmpty(props.celeb.facts) && <Facts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}
 
