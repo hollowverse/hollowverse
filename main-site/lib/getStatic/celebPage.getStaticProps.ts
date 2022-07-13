@@ -1,6 +1,7 @@
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { factsDataTransform } from '~/lib/getStatic/helpers/factsDataTransform';
+import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { getTopContributors } from '~/lib/getStatic/helpers/getTopContributors';
@@ -25,6 +26,8 @@ export const getStaticProps = async ({
     };
   }
 
+  const issues = getCelebIssues(results.celeb.facts);
+
   const { oldContent, facts, ...rest } = results.celeb;
   const [parsedOldContent, topContributors] = await Promise.all([
     oldContent ? await getParsedOldContent(oldContent) : null,
@@ -38,6 +41,7 @@ export const getStaticProps = async ({
       topContributors,
       celeb: {
         ...rest,
+        issues,
         facts: transformedFacts,
         oldContent: parsedOldContent,
       },
