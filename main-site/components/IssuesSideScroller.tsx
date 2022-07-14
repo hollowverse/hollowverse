@@ -19,7 +19,10 @@ export function IssuesSideScroller(props: {
               >
                 <div className="flex items-center justify-center gap-3 text-base text-neutral-700">
                   <PurpleDot />
-                  <p className="w-max text-lg text-neutral-600">{i.name}</p>
+                  <p className="w-max text-lg text-neutral-600">
+                    {!i.isAffiliation ? 'Views on ' : ''}
+                    {i.name}
+                  </p>
                 </div>
               </div>
             </a>

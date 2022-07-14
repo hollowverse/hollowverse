@@ -20,7 +20,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
 
   return (
     <Page
-      title={`${name}'s religion and political views`}
+      title={props.issue.isAffiliation ? `` : ``}
       description={`Did ${name} say or do anything political or about religion? Find out here!`}
       allowSearchEngines
       pathname={props.celeb.slug}
@@ -42,11 +42,8 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
               ) : (
                 <Title>
                   <span>What are the views of </span>
-
-                  <CelebName />
-
-                  <span>
-                    {' '}
+                  <CelebName />{' '}
+                  <span className="mt-1">
                     on <IssueName />?
                   </span>
                 </Title>
