@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import { StickyAppBar } from '~/components/AppBar';
 import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { FacebookComments } from '~/components/FacebookComments';
@@ -30,24 +31,26 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
             celeb={props.celeb}
             tagTimeline={props.tagTimeline}
             title={
-              <h1 className="flex flex-col gap-1">
-                <span className="text-lg font-normal tracking-wide text-neutral-500">
-                  What are the views of
-                </span>
-                <span
-                  id="main-name"
-                  className="mt-1 text-4xl font-extrabold tracking-tight text-neutral-600"
-                >
-                  {props.celeb.name}
-                </span>
-                <span className="text-lg font-normal tracking-wide text-neutral-500">
-                  on{' '}
-                  <span className="border-b border-purple-500 px-1 font-semibold">
-                    {props.issue.name}
+              props.issue.isAffiliation ? (
+                <Title>
+                  <span>
+                    What are the <IssueName /> of{' '}
                   </span>
-                  ?
-                </span>
-              </h1>
+
+                  <CelebName />
+                </Title>
+              ) : (
+                <Title>
+                  <span>What are the views of </span>
+
+                  <CelebName />
+
+                  <span>
+                    {' '}
+                    on <IssueName />?
+                  </span>
+                </Title>
+              )
             }
           />
         </StickyAppBar>
@@ -107,6 +110,33 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       </div>
     </Page>
   );
+
+  function Title(props: PropsWithChildren<{}>) {
+    return (
+      <h1 className="flex flex-col gap-1 text-lg font-normal tracking-wide text-neutral-500">
+        {props.children}
+      </h1>
+    );
+  }
+
+  function IssueName() {
+    return (
+      <span className="border-b border-purple-500 px-1 font-semibold">
+        {props.issue.name}
+      </span>
+    );
+  }
+
+  function CelebName() {
+    return (
+      <span
+        id="main-name"
+        className="mt-1 text-4xl font-extrabold tracking-tight text-neutral-600"
+      >
+        {props.celeb.name}
+      </span>
+    );
+  }
 }
 
 export { getStaticProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
