@@ -41,13 +41,13 @@ export const Fact: React.FC<{
   slug: Celeb['slug'];
   link?: boolean;
   showCommentsButton?: boolean;
+  showIssueName?: boolean;
 }> = (props) => {
-  const link = defaultTo(props.link, false);
+  const link = props.link ?? false;
   const showCommentsButton = props.showCommentsButton ?? true;
+  const showIssueName = props.showIssueName ?? false;
   const [showComments, setShowComments] = useState(false);
-
   const [showOgImage, setShowOgImage] = useState(true);
-
   const displayOpenGraphImage = props.fact.openGraphImage && showOgImage;
 
   return (
@@ -89,7 +89,7 @@ export const Fact: React.FC<{
                 : '',
             )}
           >
-            {props.showIssueName && renderIssueName(props.fact)}{' '}
+            {showIssueName && <IssueName />}{' '}
             {props.fact.tags.map((t) => {
               return (
                 <Tag
@@ -117,7 +117,7 @@ export const Fact: React.FC<{
                 rel="noreferrer"
                 target="_blank"
                 className={c(
-                  'pointer-events-auto flex select-none items-center gap-1 text-xs default:text-neutral-500',
+                  'pointer-events-auto flex select-none items-center gap-1 text-xs hover:underline default:text-neutral-500',
                   { 'text-white': props.fact.openGraphImage },
                 )}
               >
@@ -175,6 +175,23 @@ export const Fact: React.FC<{
       </div>
     </section>
   );
+
+  function IssueName() {
+    const issue = props.fact.issues[0];
+
+    return (
+      <Link href={`/${props.slug}/issue/${issue._id}`}>
+        <a
+          className={c(
+            'pointer-events-auto border-b px-2 font-semibold default:border-purple-500 default:text-neutral-500',
+            { 'border-purple-200 text-white': displayOpenGraphImage },
+          )}
+        >
+          {issue.name}
+        </a>
+      </Link>
+    );
+  }
 
   function renderFactBody(fact: QuoteFact) {
     return fact.quote.length > fact.context.length ? (
