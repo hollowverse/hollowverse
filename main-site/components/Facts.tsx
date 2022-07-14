@@ -18,6 +18,7 @@ export const Facts = (props: CelebPageProps) => {
 
       <div className="flex flex-col gap-2.5">
         <FactGroup
+          showIssueName
           title={
             <h2 className="flex gap-2">
               {props.celeb.name}&apos;s latest views

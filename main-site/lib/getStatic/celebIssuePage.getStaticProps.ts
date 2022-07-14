@@ -1,6 +1,8 @@
 import groq from 'groq';
+import { uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
+import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import {
@@ -52,8 +54,20 @@ export async function getStaticProps({
 
   const tagTimeline = getTagTimeline(celeb.facts, celebWithFacts.orderOfIssues);
 
+  const tag = tagTimeline[0][1][0];
+
+  const { relatedCelebsByTag, relatedCelebsByIssue } = await getRelatedCelebs(
+    tag.tag._id,
+    tag.tag.issue._id,
+    params.slug,
+    uniq([tag.tag.issue.name, ...celebWithFacts.orderOfIssues]),
+  );
+
   return {
     props: {
+      tag,
+      relatedCelebsByIssue,
+      relatedCelebsByTag,
       tagTimeline,
       issue,
       celeb: celeb,

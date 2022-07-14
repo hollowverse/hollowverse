@@ -2,7 +2,12 @@ import { StickyAppBar } from '~/components/AppBar';
 import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
+import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
+import {
+  RelatedCelebsByTag,
+  RelatedCelebsByIssue,
+} from '~/components/RelatedCelebs';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TopSection } from '~/components/TopSection';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
@@ -90,6 +95,15 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
             pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
           />
         </TitledCard>
+
+        <RelatedCelebsByTag celebs={props.relatedCelebsByTag} tag={props.tag} />
+
+        <InFeedAd />
+
+        <RelatedCelebsByIssue
+          celebs={props.relatedCelebsByIssue}
+          tag={props.tag}
+        />
       </div>
     </Page>
   );
