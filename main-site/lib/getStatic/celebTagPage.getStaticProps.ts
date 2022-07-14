@@ -1,10 +1,18 @@
 import { uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import { getCelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
-import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import {
+  getTagTimeline,
+  TagTimeline,
+} from '~/lib/getStatic/helpers/getTagTimeline';
+import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+import {
+  CelebWithFacts,
+  getCelebWithFactsGroq,
+} from '~/lib/groq/getCelebWithFacts.groq';
 import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
+import { sanityClient } from '~/shared/lib/sanityio';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
   return tagTimeline.some((tpair) =>
@@ -21,23 +29,36 @@ export const getStaticProps = async ({
 }) => {
   log('info', `tagPage getStaticProps called: ${params.slug}/${params.tagId}`);
 
-  const results = await getCelebWithTimeline(params.slug, true);
+  const results = await sanityClient.fetch<CelebWithFacts<false>>(
+    'celeb-and-facts',
+    getCelebWithFactsGroq(),
+    {
+      slug: params.slug,
+      issueId: null,
+    },
+  )!;
 
-  if (!results) {
+  if (!results || !results.celeb) {
     return {
       notFound: true,
     };
   }
 
-  if (!tagExists(results.celeb.tagTimeline, params.tagId)) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const tagFacts = results.celeb.facts.filter((f) =>
-    f.tags.some((t) => t.tag._id === params.tagId),
+  const tagTimeline = getTagTimeline(
+    results.celeb.facts,
+    results.orderOfIssues,
   );
+
+  if (!tagExists(tagTimeline, params.tagId)) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const tagFacts = results.celeb.facts
+    .filter((f) => f.tags.some((t) => t.tag._id === params.tagId))
+    .map((f) => transformFact(f));
+
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
   const { relatedCelebsByTag, relatedCelebsByIssue } = await getRelatedCelebs(
@@ -50,6 +71,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celeb: results.celeb,
+      tagTimeline,
       tag,
       tagFacts,
       relatedCelebsByTag,

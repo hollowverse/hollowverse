@@ -5,41 +5,18 @@ import { JsonView } from '~/components/JsonView';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { SingleCelebFactList } from '~/components/SingleCelebFactList';
 import { FactGroup } from '~/components/FactGroup';
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 
 export const Facts = (props: CelebPageProps) => {
   return (
     <div className="FACTS-CONTAINER flex max-w-full flex-col gap-7">
-      {!isEmpty(props.celeb.issues.affiliations) && (
-        <div className="flex flex-col gap-2.5">
-          <h2 className="scale-y-110 px-5 text-xl font-semibold">
-            {props.celeb.name}&apos;s
-          </h2>
-
-          <IssuesSideScroller
-            issues={props.celeb.issues.affiliations}
-            getLink={(_id) => `/${props.celeb.slug}/issue/${_id}`}
-          />
-        </div>
-      )}
-
-      {!isEmpty(props.celeb.issues.views) && (
-        <div className="flex flex-col gap-2.5">
-          <h2 className="scale-y-110 px-5 text-xl font-semibold">
-            {props.celeb.name}&apos;s views on
-          </h2>
-
-          <IssuesSideScroller
-            issues={props.celeb.issues.views}
-            getLink={(_id) => `/${props.celeb.slug}/issue/${_id}`}
-          />
-        </div>
-      )}
+      <CelebViewsSelector
+        celebName={props.celeb.name}
+        slug={props.celeb.slug}
+        issues={props.celeb.issues}
+      />
 
       <div className="flex flex-col gap-2.5">
-        {/* <h2 className="scale-y-110 px-5 text-xl font-semibold">
-          {props.celeb.name}&apos;s latest views
-        </h2> */}
-
         <FactGroup
           title={
             <h2 className="flex gap-2">

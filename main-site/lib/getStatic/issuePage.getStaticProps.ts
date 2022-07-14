@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { getIssuePageTags } from '~/lib/getStatic/helpers/getIssuePageTags';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import { getIssuePageGroq, IssuePageGroq } from '~/lib/groq/issuePage.groq';
+import { getIssuePageGroq, IssuePageGroq } from '~/lib/groq/getIssuePage.groq';
 import { PageProps } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 

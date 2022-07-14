@@ -30,7 +30,7 @@ export default function TagPage(props: TagPageProps) {
       pathname={`/${props.celeb.slug}/tag/${props.tag.tag._id}`}
       appBar={
         <StickyAppBar>
-          <TopSection {...props.celeb} />
+          <TopSection celeb={props.celeb} tagTimeline={props.tagTimeline} />
         </StickyAppBar>
       }
     >

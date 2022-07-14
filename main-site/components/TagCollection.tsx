@@ -1,7 +1,8 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
-import { CelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
+import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import { Celeb } from '~/lib/groq/celeb.projection';
 import { Tag as TTag } from '~/lib/groq/tag.projection';
 import { ReactElementProps } from '~/lib/types';
 
@@ -30,8 +31,11 @@ export function Tags(
   );
 }
 
-export const TagCollection = (props: { celeb: CelebWithTimeline }) => {
-  const tags = props.celeb.tagTimeline;
+export const TagCollection = (props: {
+  celeb: Celeb;
+  tagTimeline: TagTimeline;
+}) => {
+  const tags = props.tagTimeline;
   const showTimeline = tags.length > 1;
 
   return (
@@ -39,8 +43,8 @@ export const TagCollection = (props: { celeb: CelebWithTimeline }) => {
       {tags.map((tpair, i) => (
         <div key={tpair[0]}>
           {showTimeline && (
-            <p className="-ml-2 flex items-center gap-3 text-lg tracking-wider text-neutral-500">
-              <FaRegCircle className="text-gray-300" />
+            <p className="-ml-2 flex items-center gap-3 tracking-wider text-neutral-500">
+              <FaRegCircle className="text-lg text-gray-300" />
               {tpair[0]}
             </p>
           )}

@@ -15,7 +15,7 @@ export function ReturnToCelebViewsButton(props: {
         )}
       >
         <FaChevronDown className={'rotate-90 text-xl text-purple-500'} />
-        List of other {props.name} views
+        {props.name}&apos;s main page
       </a>
     </Link>
   );
