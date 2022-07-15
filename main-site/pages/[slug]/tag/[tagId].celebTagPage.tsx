@@ -12,6 +12,7 @@ import { TitleSeparator } from '~/components/TitleSeparator';
 import { TopSection } from '~/components/TopSection';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -51,6 +52,12 @@ export default function TagPage(props: TagPageProps) {
               </h2>
             }
           />
+
+          {/* <CelebViewsSelector
+            issues={}
+            celebName={props.celeb.name}
+            slug={props.celeb.slug}
+          /> */}
 
           <ReturnToCelebViewsButton
             slug={props.celeb.slug}

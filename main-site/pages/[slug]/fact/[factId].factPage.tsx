@@ -2,7 +2,6 @@ import { CelebImage } from '~/components/CelebImage';
 import { ContributorBox } from '~/components/ContributorBox';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Fact } from '~/components/Fact';
-import { useFact } from '~/components/hooks/useFact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
@@ -17,6 +16,7 @@ import { TitledCard } from '~/components/ui/TitledCard';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { Link } from '~/lib/Link';
 
 export default function FactPage(props: FactPageProps) {
@@ -34,8 +34,14 @@ export default function FactPage(props: FactPageProps) {
       pathname={getFactPagePathname(props.celeb.slug, props.fact)}
     >
       <div className="h-container my-5 flex flex-col gap-5">
-        <Link href={`/${props.celeb.slug}`} passHref>
-          <a id="fact-page-header">
+        <Link
+          href={`/${props.celeb.slug}/issue/${props.fact.issues[0]._id}`}
+          passHref
+        >
+          <a
+            id="fact-page-header"
+            title={celebNameToIssue(props.celeb.name, props.fact.issues[0])}
+          >
             <div className="mx-5 flex items-center gap-5">
               <div className="relative aspect-square w-20">
                 <CelebImage
@@ -76,18 +82,16 @@ export default function FactPage(props: FactPageProps) {
 
             <hr className="-mx-5" />
 
-            <div>
-              <p className="text-sm text-neutral-500">
-                You can contribute, too!{' '}
-                <a
-                  className="h-link underline"
-                  href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
-                >
-                  Learn how
-                </a>
-                .
-              </p>
-            </div>
+            <p className="text-sm text-neutral-500">
+              You can contribute, too!{' '}
+              <a
+                className="h-link underline"
+                href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
+              >
+                Learn how
+              </a>
+              .
+            </p>
           </Card>
         )}
 

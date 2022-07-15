@@ -1,5 +1,4 @@
 import { isEmpty } from 'lodash-es';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
@@ -11,12 +10,11 @@ import {
   getCelebWithFactsGroq,
 } from '~/lib/groq/getCelebWithFacts.groq';
 import { Issue } from '~/lib/groq/issue.projection';
+import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
-export type CelebPageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
+export type CelebPageProps = PageProps<typeof getStaticProps>;
 
 export const getStaticProps = async ({
   params,
@@ -88,10 +86,14 @@ export const getStaticProps = async ({
     return `${rest.name}'s${affiliations}${views}.`;
 
     function process(arr: Issue[]) {
-      return arr
-        .map((i) => i.name)
-        .join(', ')
-        .replace(/, ([^,]*)$/, ', and $1');
+      // @ts-ignore
+      const formatter = new Intl.ListFormat('en', {
+        style: 'long',
+        type: 'conjunction',
+      });
+      const r = arr.map((i) => i.name);
+
+      return formatter.format(r);
     }
   }
 };

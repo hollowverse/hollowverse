@@ -11,7 +11,7 @@ export function MixedCelebFactList(props: { list: FactWithCeleb[] }) {
     <>
       {props.list.map((f, i: number) => {
         const cardTitle = (
-          <Link passHref href={`/${f.celeb.slug}`}>
+          <Link passHref href={`/${f.celeb.slug}/issue/${f.issues[0]._id}`}>
             <a id="fact-list-item-title">
               <div className="flex flex-row items-center gap-3">
                 <div className="h-[75px] w-[75px] overflow-hidden rounded-md">

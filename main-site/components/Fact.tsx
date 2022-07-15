@@ -1,4 +1,3 @@
-import { defaultTo } from 'lodash-es';
 import Image, { ImageProps } from 'next/image';
 import React, { PropsWithChildren, useState } from 'react';
 import { BiMessage } from 'react-icons/bi';
@@ -13,6 +12,7 @@ import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Fact as TFact, QuoteFact } from '~/lib/groq/fact.projection';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { Link } from '~/lib/Link';
 
 function UnoptimizedImage(
@@ -47,8 +47,8 @@ export const Fact: React.FC<{
   const showCommentsButton = props.showCommentsButton ?? true;
   const showIssueName = props.showIssueName ?? false;
   const [showComments, setShowComments] = useState(false);
-  const [showOgImage, setShowOgImage] = useState(true);
-  const displayOpenGraphImage = props.fact.openGraphImage && showOgImage;
+  const [ogImageError, setOgImageError] = useState(false);
+  const displayOpenGraphImage = props.fact.openGraphImage && !ogImageError;
 
   return (
     <section id="fact" className="relative z-0 flex flex-col gap-5">
@@ -72,7 +72,7 @@ export const Fact: React.FC<{
         >
           {displayOpenGraphImage && (
             <UnoptimizedImage
-              onError={() => setShowOgImage(false)}
+              onError={() => setOgImageError(true)}
               src={props.fact.openGraphImage!}
               alt={props.celebName}
             />
@@ -182,6 +182,7 @@ export const Fact: React.FC<{
     return (
       <Link href={`/${props.slug}/issue/${issue._id}`}>
         <a
+          title={celebNameToIssue(props.celebName, issue)}
           className={c(
             'pointer-events-auto border-b px-2 font-semibold default:border-purple-500 default:text-neutral-500',
             { 'border-purple-200 text-white': displayOpenGraphImage },

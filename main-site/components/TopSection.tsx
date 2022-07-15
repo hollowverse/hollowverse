@@ -19,29 +19,25 @@ export const TopSection = (props: {
     <div className="TOP-SECTION h-container p-5">
       <div className="flex flex-wrap items-end gap-5">
         <div className="w-[150px]">
-          {withLink(
-            <CelebImage
-              className="rounded-md object-cover"
-              key={props.celeb.name + '-topSection-image'}
-              picture={picture}
-              name={props.celeb.name}
-            />,
-          )}
+          <CelebImage
+            className="rounded-md object-cover"
+            key={props.celeb.name + '-topSection-image'}
+            picture={picture}
+            name={props.celeb.name}
+          />
         </div>
-        {withLink(
-          props.title || (
-            <h1>
-              <span className="text-lg font-normal tracking-wide text-neutral-500">
-                The Views of
-              </span>{' '}
-              <span
-                id="main-name"
-                className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600"
-              >
-                {props.celeb.name}
-              </span>
-            </h1>
-          ),
+        {props.title || (
+          <h1>
+            <span className="text-lg font-normal tracking-wide text-neutral-500">
+              The Political Views of
+            </span>{' '}
+            <span
+              id="main-name"
+              className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600"
+            >
+              {props.celeb.name}
+            </span>
+          </h1>
         )}
       </div>
 
@@ -52,18 +48,4 @@ export const TopSection = (props: {
       )}
     </div>
   );
-
-  function withLink(node: ReactNode) {
-    const link = `/${props.celeb.slug}`;
-
-    if (link == router.asPath) {
-      return node;
-    }
-
-    return (
-      <Link href={`/${props.celeb.slug}`} passHref>
-        <a>{node}</a>
-      </Link>
-    );
-  }
 };

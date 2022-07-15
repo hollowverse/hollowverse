@@ -14,15 +14,12 @@ import { TopSection } from '~/components/TopSection';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 export default function CelebIssuePage(props: CelebIssuePageProps) {
   return (
     <Page
-      title={
-        props.issue.isAffiliation
-          ? `What are ${props.celeb.name}'s ${props.issue.name}?`
-          : `What are ${props.celeb.name} views on ${props.issue.name}?`
-      }
+      title={`What are ${celebNameToIssue(props.celeb.name, props.issue)}?`}
       description={props.pageDescription}
       allowSearchEngines
       pathname={props.celeb.slug}
@@ -67,9 +64,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           slug={props.celeb.slug}
           title={
             <h2 className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
-              {props.issue.isAffiliation
-                ? `${props.celeb.name}'s ${props.issue.name}`
-                : `${props.celeb.name}'s views on ${props.issue.name}`}
+              {celebNameToIssue(props.celeb.name, props.issue)}
             </h2>
           }
         />
@@ -89,7 +84,8 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           titledContentProps={{
             title: (
               <span className="text-base">
-                Your thoughts on {props.celeb.name}?
+                Your thoughts on{' '}
+                {celebNameToIssue(props.celeb.name, props.issue)}?
               </span>
             ),
             stickyTitle: false,
