@@ -18,7 +18,8 @@
     "lighthouse": "lighthouse-batch -f ${URL_FILE:-lighthouse/local.txt} --html --no-report --params '--only-categories accessibility,best-practices,performance,seo'; open report/lighthouse",
     "e2e": "playwright test",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999"
+    "local-ssl-proxy": "local-ssl-proxy --source 3000 --target 2999",
+    "unused-exports": "ts-unused-exports ./tsconfig.json --excludePathsFromReport=pages"
   },
   "dependencies": {
     "@google-analytics/data": "^2.8.0",
@@ -91,6 +92,7 @@
     "semver": "^7.3.7",
     "tailwindcss": "^3.0.24",
     "truncate-html": "^1.0.4",
+    "ts-unused-exports": "^8.0.0",
     "tsconfig-paths-jest": "^0.0.1",
     "typescript": "^4.5.4",
     "use-debounce": "^8.0.1",
