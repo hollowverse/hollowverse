@@ -10,7 +10,12 @@ import {
   RelatedCelebsByTag,
 } from '~/components/RelatedCelebs';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
-import { TopSection } from '~/components/TopSection';
+import {
+  TopSection,
+  TsTitleContainer,
+  TsTitleSoftText,
+  TsTitleStrongText,
+} from '~/components/TopSection';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
@@ -31,21 +36,20 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
             tagTimeline={props.tagTimeline}
             title={
               props.issue.isAffiliation ? (
-                <Title>
-                  <span>
+                <TsTitleContainer>
+                  <TsTitleSoftText>
                     What are the <IssueName /> of{' '}
-                  </span>
-
-                  <CelebName />
-                </Title>
+                  </TsTitleSoftText>
+                  <TsTitleStrongText>{props.celeb.name}</TsTitleStrongText>
+                </TsTitleContainer>
               ) : (
-                <Title>
-                  <span>What are the views of </span>
-                  <CelebName />{' '}
-                  <span className="mt-1">
+                <TsTitleContainer>
+                  <TsTitleSoftText>What are the views of </TsTitleSoftText>
+                  <TsTitleStrongText>{props.celeb.name} </TsTitleStrongText>
+                  <TsTitleSoftText>
                     on <IssueName />?
-                  </span>
-                </Title>
+                  </TsTitleSoftText>
+                </TsTitleContainer>
               )
             }
           />
@@ -108,29 +112,10 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
     </Page>
   );
 
-  function Title(props: PropsWithChildren<{}>) {
-    return (
-      <h1 className="flex flex-col gap-1 text-lg font-normal tracking-wide text-neutral-500">
-        {props.children}
-      </h1>
-    );
-  }
-
   function IssueName() {
     return (
-      <span className="border-b border-purple-500 px-1 font-semibold">
+      <span className="h-issue-highlight px-1 font-semibold">
         {props.issue.name}
-      </span>
-    );
-  }
-
-  function CelebName() {
-    return (
-      <span
-        id="main-name"
-        className="mt-1 text-4xl font-extrabold tracking-tight text-neutral-600"
-      >
-        {props.celeb.name}
       </span>
     );
   }

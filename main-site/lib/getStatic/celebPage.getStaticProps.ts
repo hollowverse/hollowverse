@@ -45,22 +45,25 @@ export const getStaticProps = async ({
     results.orderOfIssues,
   );
 
-  const { oldContent, facts, ...rest } = results.celeb;
-  const [parsedOldContent, topContributors] = await Promise.all([
-    oldContent ? await getParsedOldContent(oldContent) : null,
+  const { celeb } = results;
+  const [oldContent, topContributors] = await Promise.all([
+    celeb.oldContent ? await getParsedOldContent(celeb.oldContent) : null,
     getTopContributors(params.slug),
   ]);
+  const facts = celeb.facts.slice(0, 5).map((f) => transformFact(f));
+  const hasFacts = !isEmpty(facts);
 
   return {
     props: {
       pageDescription: getPageDescription(),
       topContributors,
+      hasFacts,
       tagTimeline,
       celeb: {
+        ...celeb,
         issues,
-        ...rest,
-        facts: facts.slice(0, 5).map((f) => transformFact(f)),
-        oldContent: parsedOldContent,
+        facts,
+        oldContent,
       },
     },
     revalidate: oneDay,
@@ -83,7 +86,7 @@ export const getStaticProps = async ({
       views = `${postfix} ${process(issues.views)}`;
     }
 
-    return `${rest.name}'s${affiliations}${views}.`;
+    return `${celeb.name}'s${affiliations}${views}.`;
 
     function process(arr: Issue[]) {
       // @ts-ignore

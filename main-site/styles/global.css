@@ -52,6 +52,10 @@ div[class^="fb_comments_count_zero"], div[class*=" fb_comments_count_zero"] {
     @apply text-gray-500 hover:text-gray-600 hover:underline;
   }
 
+  .h-issue-highlight {
+    @apply border-b border-purple-500 px-1;
+  }
+
   .h-container {
     width: min(theme('screens.lg'), 100%);
     @apply mx-auto;

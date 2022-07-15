@@ -6,7 +6,12 @@ import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TopContributors } from '~/components/TopContributors';
-import { TopSection } from '~/components/TopSection';
+import {
+  TopSection,
+  TsTitleContainer,
+  TsTitleSoftText,
+  TsTitleStrongText,
+} from '~/components/TopSection';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
@@ -15,14 +20,29 @@ export default function Celeb(props: CelebPageProps) {
 
   return (
     <Page
-      title={`What are the political views of ${name}?`}
+      title={
+        props.hasFacts
+          ? `What are the political views of ${name}?`
+          : `${name}'s Religion and Political Views`
+      }
       description={props.pageDescription}
       allowSearchEngines
       pathname={props.celeb.slug}
       id="celeb-page"
       appBar={
         <StickyAppBar>
-          <TopSection celeb={props.celeb} tagTimeline={props.tagTimeline} />
+          <TopSection
+            celeb={props.celeb}
+            tagTimeline={props.tagTimeline}
+            title={
+              <TsTitleContainer>
+                <TsTitleSoftText>
+                  The {props.hasFacts ? '' : 'Religion and '}Political Views of{' '}
+                </TsTitleSoftText>
+                <TsTitleStrongText>{name}</TsTitleStrongText>
+              </TsTitleContainer>
+            }
+          />
         </StickyAppBar>
       }
     >
