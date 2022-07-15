@@ -26,6 +26,9 @@ export function RelatedCelebs(props: { relatedCelebs: TRelatedCelebs }) {
             }
             celebs={props.relatedCelebs.byTag!}
             renderBody={(c) => renderTags(c.tags)}
+            renderLink={(c) =>
+              `/${c.slug}/issue/${props.relatedCelebs.tag.tag.issue._id}`
+            }
           />
         </div>
       ) : null}
@@ -44,6 +47,9 @@ export function RelatedCelebs(props: { relatedCelebs: TRelatedCelebs }) {
             }
             celebs={props.relatedCelebs.byIssue!}
             renderBody={(c) => renderTags(c.tags)}
+            renderLink={(c) =>
+              `/${c.slug}/issue/${props.relatedCelebs.tag.tag.issue._id}`
+            }
           />
         </div>
       ) : null}

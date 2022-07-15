@@ -13,8 +13,11 @@ export function CHRList<T>(props: {
   title: ReactNode;
   celebs: CHRCeleb<T>[];
   renderBody: (c: CHRCeleb<T>) => ReactNode;
+  renderLink?: (c: CHRCeleb<T>) => string;
   stickyTitle?: boolean;
 }) {
+  const renderLink = props.renderLink ?? ((c: CHRCeleb<T>) => `/${c.slug}`);
+
   return (
     <TitledContent
       title={
@@ -29,7 +32,7 @@ export function CHRList<T>(props: {
           <CelebHorizontalRect
             className="lg:-mt-[1px]"
             key={c.slug}
-            link={`/${c.slug}`}
+            link={renderLink(c)}
           >
             <CHRImage
               celebImageProps={{
