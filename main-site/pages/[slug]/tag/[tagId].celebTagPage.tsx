@@ -70,11 +70,11 @@ export default function TagPage(props: TagPageProps) {
             }
           />
 
-          {/* <CelebViewsSelector
-            issues={}
+          <CelebViewsSelector
+            issues={props.issues}
             celebName={props.celeb.name}
             slug={props.celeb.slug}
-          /> */}
+          />
 
           <ReturnToCelebViewsButton
             slug={props.celeb.slug}

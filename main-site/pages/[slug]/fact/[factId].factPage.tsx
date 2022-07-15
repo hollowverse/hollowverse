@@ -1,9 +1,11 @@
 import { CelebImage } from '~/components/CelebImage';
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { ContributorBox } from '~/components/ContributorBox';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Fact } from '~/components/Fact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
+import { IssuesSideScroller } from '~/components/IssuesSideScroller';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
 import {
@@ -50,12 +52,10 @@ export default function FactPage(props: FactPageProps) {
                   name={props.celeb.name}
                 />
               </div>
-              <div>
-                <h1 className="text-2xl font-bold">{props.celeb.name}</h1>
-                <h2 className="text-xl text-neutral-500">
-                  on {props.fact.issues[0].name}
-                </h2>
-              </div>
+              <h1 className="text-xl text-neutral-600">
+                Fact about the {displayIssue()} of{' '}
+                <span className="font-bold">{props.celeb.name}</span>
+              </h1>
             </div>
           </a>
         </Link>
@@ -95,6 +95,12 @@ export default function FactPage(props: FactPageProps) {
           </Card>
         )}
 
+        <CelebViewsSelector
+          slug={props.celeb.slug}
+          celebName={props.celeb.name}
+          issues={props.issues}
+        />
+
         <ReturnToCelebViewsButton
           slug={props.celeb.slug}
           name={props.celeb.name}
@@ -119,6 +125,12 @@ export default function FactPage(props: FactPageProps) {
       </div>
     </Page>
   );
+
+  function displayIssue() {
+    const issue = props.fact.issues[0];
+
+    return issue.isAffiliation ? issue.name : `${issue.name} views`;
+  }
 }
 
 export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';

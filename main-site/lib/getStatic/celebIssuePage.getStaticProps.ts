@@ -50,7 +50,10 @@ export async function getStaticProps({
     facts: celebWithFacts.celeb.facts
       .filter((f) => f.issues.some((i) => i._id === params.issueId))
       .map((f) => transformFact(f)),
-    issues: getCelebIssues(celebWithFacts.celeb.facts, params.issueId),
+    issues: await getCelebIssues({
+      facts: celebWithFacts.celeb.facts,
+      excludedId: params.issueId,
+    }),
   };
 
   const tagTimeline = getTagTimeline(

@@ -38,7 +38,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const issues = getCelebIssues(results.celeb.facts);
+  const issues = await getCelebIssues({ facts: results.celeb.facts });
 
   const tagTimeline = getTagTimeline(
     results.celeb.facts,
@@ -70,6 +70,18 @@ export const getStaticProps = async ({
   };
 
   function getPageDescription() {
+    if (!hasFacts) {
+      if (oldContent?.summaries) {
+        const { religion, politicalViews } = oldContent.summaries;
+        const religionText = religion ? `Religion: ${religion}` : '';
+        const politicalViewsText = politicalViews
+          ? `Political views: ${politicalViews}`
+          : '';
+
+        return [religionText, politicalViewsText].join(' ').trim();
+      }
+    }
+
     let affiliations = '';
 
     if (!isEmpty(issues.affiliations)) {

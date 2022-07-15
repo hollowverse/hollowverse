@@ -1,5 +1,6 @@
 import { uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
+import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import {
   getTagTimeline,
@@ -61,15 +62,21 @@ export const getStaticProps = async ({
 
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
-  const { relatedCelebsByTag, relatedCelebsByIssue } = await getRelatedCelebs(
-    params.tagId,
-    tag.tag.issue._id,
-    params.slug,
-    uniq([tag.tag.issue.name, ...results.orderOfIssues]),
-  );
+  const [relatedCelebs, issues] = await Promise.all([
+    getRelatedCelebs(
+      params.tagId,
+      tag.tag.issue._id,
+      params.slug,
+      uniq([tag.tag.issue.name, ...results.orderOfIssues]),
+    ),
+    getCelebIssues({ slug: params.slug }),
+  ]);
+
+  const { relatedCelebsByTag, relatedCelebsByIssue } = relatedCelebs;
 
   return {
     props: {
+      issues,
       celeb: results.celeb,
       tagTimeline,
       tag,

@@ -1,4 +1,3 @@
-import { PropsWithChildren } from 'react';
 import { StickyAppBar } from '~/components/AppBar';
 import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { FacebookComments } from '~/components/FacebookComments';
