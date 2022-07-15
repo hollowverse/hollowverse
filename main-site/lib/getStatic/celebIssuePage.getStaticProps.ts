@@ -63,9 +63,8 @@ export async function getStaticProps({
 
   const tag = tagTimeline[0][1][0];
 
-  const { relatedCelebsByTag, relatedCelebsByIssue } = await getRelatedCelebs(
-    tag.tag._id,
-    tag.tag.issue._id,
+  const relatedCelebs = await getRelatedCelebs(
+    tag,
     params.slug,
     uniq([tag.tag.issue.name, ...celebWithFacts.orderOfIssues]),
   );
@@ -74,8 +73,7 @@ export async function getStaticProps({
     props: {
       pageDescription: getPageDescription(),
       tag,
-      relatedCelebsByIssue,
-      relatedCelebsByTag,
+      relatedCelebs,
       tagTimeline,
       issue,
       celeb: celeb,

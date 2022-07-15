@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { CHRList } from '~/components/ui/CHRList';
-import { RelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
+import { RelatedCelebs as TRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { Tag } from '~/lib/groq/tag.projection';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
 
@@ -12,41 +12,41 @@ export function renderTags(tags: Tag[]) {
   );
 }
 
-export function RelatedCelebsByTag(props: {
-  celebs: RelatedCelebs['relatedCelebsByTag'];
-  tag: Tag;
-}) {
-  return !isEmpty(props.celebs) ? (
-    <div id="related-celebs-tag">
-      <CHRList
-        title={
-          <>
-            Who Else {tagIsVerb(props.tag) ? '' : 'is'} {props.tag.tag.name}?
-          </>
-        }
-        celebs={props.celebs!}
-        renderBody={(c) => renderTags(c.tags)}
-      />
-    </div>
-  ) : null;
-}
+export function RelatedCelebs(props: { relatedCelebs: TRelatedCelebs }) {
+  return (
+    <>
+      {!isEmpty(props.relatedCelebs.byTag) ? (
+        <div id="related-celebs-tag">
+          <CHRList
+            title={
+              <>
+                Who Else {tagIsVerb(props.relatedCelebs.tag) ? '' : 'is'}{' '}
+                {props.relatedCelebs.tag.tag.name}?
+              </>
+            }
+            celebs={props.relatedCelebs.byTag!}
+            renderBody={(c) => renderTags(c.tags)}
+          />
+        </div>
+      ) : null}
 
-export function RelatedCelebsByIssue(props: {
-  celebs: RelatedCelebs['relatedCelebsByIssue'];
-  tag: Tag;
-}) {
-  return !isEmpty(props.celebs) ? (
-    <div id="related-celebs-issue">
-      <CHRList
-        title={
-          <>
-            Other {props.tag.tag.issue.isAffiliation ? '' : 'Views on'}{' '}
-            {props.tag.tag.issue.name}
-          </>
-        }
-        celebs={props.celebs!}
-        renderBody={(c) => renderTags(c.tags)}
-      />
-    </div>
-  ) : null;
+      {!isEmpty(props.relatedCelebs.byIssue) ? (
+        <div id="related-celebs-issue">
+          <CHRList
+            title={
+              <>
+                Other{' '}
+                {props.relatedCelebs.tag.tag.issue.isAffiliation
+                  ? ''
+                  : 'Views on'}{' '}
+                {props.relatedCelebs.tag.tag.issue.name}
+              </>
+            }
+            celebs={props.relatedCelebs.byIssue!}
+            renderBody={(c) => renderTags(c.tags)}
+          />
+        </div>
+      ) : null}
+    </>
+  );
 }

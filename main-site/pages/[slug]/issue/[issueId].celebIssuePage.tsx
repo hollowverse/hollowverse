@@ -4,10 +4,7 @@ import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
-import {
-  RelatedCelebsByIssue,
-  RelatedCelebsByTag,
-} from '~/components/RelatedCelebs';
+import { RelatedCelebs } from '~/components/RelatedCelebs';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import {
   TopSection,
@@ -99,14 +96,9 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           />
         </TitledCard>
 
-        <RelatedCelebsByTag celebs={props.relatedCelebsByTag} tag={props.tag} />
-
         <InFeedAd />
 
-        <RelatedCelebsByIssue
-          celebs={props.relatedCelebsByIssue}
-          tag={props.tag}
-        />
+        <RelatedCelebs relatedCelebs={props.relatedCelebs} />
       </div>
     </Page>
   );

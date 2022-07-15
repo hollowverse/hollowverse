@@ -64,15 +64,12 @@ export const getStaticProps = async ({
 
   const [relatedCelebs, issues] = await Promise.all([
     getRelatedCelebs(
-      params.tagId,
-      tag.tag.issue._id,
+      tag,
       params.slug,
       uniq([tag.tag.issue.name, ...results.orderOfIssues]),
     ),
     getCelebIssues({ slug: params.slug }),
   ]);
-
-  const { relatedCelebsByTag, relatedCelebsByIssue } = relatedCelebs;
 
   return {
     props: {
@@ -81,8 +78,7 @@ export const getStaticProps = async ({
       tagTimeline,
       tag,
       tagFacts,
-      relatedCelebsByTag,
-      relatedCelebsByIssue,
+      relatedCelebs,
     },
     revalidate: oneDay,
   };

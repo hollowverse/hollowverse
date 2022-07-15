@@ -5,13 +5,9 @@ import { FacebookComments } from '~/components/FacebookComments';
 import { Fact } from '~/components/Fact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
-import { IssuesSideScroller } from '~/components/IssuesSideScroller';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
-import {
-  RelatedCelebsByIssue,
-  RelatedCelebsByTag,
-} from '~/components/RelatedCelebs';
+import { RelatedCelebs } from '~/components/RelatedCelebs';
 import { Card } from '~/components/ui/Card';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
@@ -114,14 +110,9 @@ export default function FactPage(props: FactPageProps) {
           </div>
         </TitledCard>
 
-        <RelatedCelebsByTag celebs={props.relatedCelebsByTag} tag={props.tag} />
-
         <InFeedAd />
 
-        <RelatedCelebsByIssue
-          celebs={props.relatedCelebsByIssue}
-          tag={props.tag}
-        />
+        <RelatedCelebs relatedCelebs={props.relatedCelebs} />
       </div>
     </Page>
   );

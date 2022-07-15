@@ -65,8 +65,7 @@ export async function getStaticProps({
 
   const [relatedCelebs, factForumData, issues] = await Promise.all([
     getRelatedCelebs(
-      tag.tag._id,
-      tag.tag.issue._id,
+      tag,
       params.slug,
       uniq([tag.tag.issue.name, ...orderOfIssues]),
     ),
@@ -77,7 +76,7 @@ export async function getStaticProps({
   return {
     props: {
       ...factForumData,
-      ...relatedCelebs,
+      relatedCelebs,
       issues,
       celeb,
       tag,

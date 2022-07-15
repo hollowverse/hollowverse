@@ -2,10 +2,6 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
-import {
-  RelatedCelebsByIssue,
-  RelatedCelebsByTag,
-} from '~/components/RelatedCelebs';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TitleSeparator } from '~/components/TitleSeparator';
@@ -19,6 +15,7 @@ import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButt
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { RelatedCelebs } from '~/components/RelatedCelebs';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -81,17 +78,9 @@ export default function TagPage(props: TagPageProps) {
             name={props.celeb.name}
           />
 
-          <RelatedCelebsByTag
-            celebs={props.relatedCelebsByTag}
-            tag={props.tag}
-          />
-
           <InFeedAd />
 
-          <RelatedCelebsByIssue
-            celebs={props.relatedCelebsByIssue}
-            tag={props.tag}
-          />
+          <RelatedCelebs relatedCelebs={props.relatedCelebs} />
         </div>
       </div>
     </Page>
