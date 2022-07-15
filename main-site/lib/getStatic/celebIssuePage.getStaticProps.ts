@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { uniq } from 'lodash-es';
+import { flatten, uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
@@ -10,6 +10,7 @@ import {
   getCelebWithFactsGroq,
 } from '~/lib/groq/getCelebWithFacts.groq';
 import { Issue } from '~/lib/groq/issue.projection';
+import { tagIsVerb } from '~/lib/language/tagIsVerb';
 import { PageProps } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -52,7 +53,10 @@ export async function getStaticProps({
     issues: getCelebIssues(celebWithFacts.celeb.facts, params.issueId),
   };
 
-  const tagTimeline = getTagTimeline(celeb.facts, celebWithFacts.orderOfIssues);
+  const tagTimeline = getTagTimeline(
+    celeb.facts,
+    uniq([issue.name, ...celebWithFacts.orderOfIssues]),
+  );
 
   const tag = tagTimeline[0][1][0];
 
@@ -65,6 +69,7 @@ export async function getStaticProps({
 
   return {
     props: {
+      pageDescription: getPageDescription(),
       tag,
       relatedCelebsByIssue,
       relatedCelebsByTag,
@@ -76,4 +81,40 @@ export async function getStaticProps({
     },
     revalidate: oneDay,
   };
+
+  function getPageDescription() {
+    const tags = flatten(tagTimeline.map((tp) => tp[1]));
+
+    let lastSeenIsVerb: boolean | null = null;
+
+    const joinedTags = tags
+      .map((t, i) => {
+        let postfix: string;
+
+        if (i == tags.length - 2) {
+          postfix = ', and ';
+        } else if (i < tags.length - 1) {
+          postfix = ', ';
+        } else {
+          postfix = '.';
+        }
+
+        const content = `${t.tag.name}${postfix}`;
+        if (tagIsVerb(t)) {
+          lastSeenIsVerb = true;
+
+          return content;
+        }
+
+        if (lastSeenIsVerb == false) {
+          return content;
+        }
+
+        lastSeenIsVerb = false;
+        return `is ${content}`;
+      })
+      .join('');
+
+    return `${celeb.name} ${joinedTags}`;
+  }
 }

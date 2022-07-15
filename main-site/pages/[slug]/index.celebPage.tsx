@@ -15,8 +15,8 @@ export default function Celeb(props: CelebPageProps) {
 
   return (
     <Page
-      title={`${name}'s religion and political views`}
-      description={`Did ${name} say or do anything political or about religion? Find out here!`}
+      title={`What are the political views of ${name}?`}
+      description={props.pageDescription}
       allowSearchEngines
       pathname={props.celeb.slug}
       id="celeb-page"

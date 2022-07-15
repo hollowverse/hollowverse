@@ -7,16 +7,19 @@ export function CelebViewsSelector(props: {
   slug: string;
   issues: { affiliations: Issue[]; views: Issue[] };
 }) {
+  const combinedIssues = [...props.issues.affiliations, ...props.issues.views];
+
   return (
     <>
-      {!isEmpty(props.issues.affiliations) && (
+      {!isEmpty(combinedIssues) && (
         <div className="flex flex-col gap-2.5">
           <h2 className="scale-y-110 px-5 font-semibold">
             {props.celebName}&apos;s
           </h2>
 
           <IssuesSideScroller
-            issues={[...props.issues.affiliations, ...props.issues.views]}
+            showViewsOn
+            issues={combinedIssues}
             getLink={(_id) => `/${props.slug}/issue/${_id}`}
           />
         </div>

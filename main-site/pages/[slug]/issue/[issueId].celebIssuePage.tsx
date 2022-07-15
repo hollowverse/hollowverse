@@ -6,8 +6,8 @@ import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
 import {
-  RelatedCelebsByTag,
   RelatedCelebsByIssue,
+  RelatedCelebsByTag,
 } from '~/components/RelatedCelebs';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TopSection } from '~/components/TopSection';
@@ -16,12 +16,14 @@ import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
 
 export default function CelebIssuePage(props: CelebIssuePageProps) {
-  const name = props.celeb.name;
-
   return (
     <Page
-      title={props.issue.isAffiliation ? `` : ``}
-      description={`Did ${name} say or do anything political or about religion? Find out here!`}
+      title={
+        props.issue.isAffiliation
+          ? `What are ${props.celeb.name}'s ${props.issue.name}?`
+          : `What are ${props.celeb.name} views on ${props.issue.name}?`
+      }
+      description={props.pageDescription}
       allowSearchEngines
       pathname={props.celeb.slug}
       id="celeb-page"
@@ -65,7 +67,9 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           slug={props.celeb.slug}
           title={
             <h2 className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
-              {props.celeb.name}
+              {props.issue.isAffiliation
+                ? `${props.celeb.name}'s ${props.issue.name}`
+                : `${props.celeb.name}'s views on ${props.issue.name}`}
             </h2>
           }
         />

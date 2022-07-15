@@ -6,7 +6,10 @@ import { Link } from '~/lib/Link';
 export function IssuesSideScroller(props: {
   issues: Issue[];
   getLink: (issueId: Issue['_id']) => string;
+  showViewsOn?: boolean;
 }) {
+  const showViewsOn = props.showViewsOn ?? false;
+
   return (
     <SideScroller>
       {props.issues.map((i) => {
@@ -20,7 +23,7 @@ export function IssuesSideScroller(props: {
                 <div className="flex items-center justify-center gap-3 text-base text-neutral-700">
                   <PurpleDot />
                   <p className="w-max text-lg text-neutral-600">
-                    {!i.isAffiliation ? 'Views on ' : ''}
+                    {!i.isAffiliation && showViewsOn ? 'Views on ' : ''}
                     {i.name}
                   </p>
                 </div>
