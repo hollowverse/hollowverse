@@ -75,10 +75,7 @@ export async function getStaticProps({
     }),
   };
 
-  const tagTimeline = getTagTimeline(
-    celeb.facts,
-    uniq([issue.name, ...celebWithFacts.orderOfIssues]),
-  );
+  const tagTimeline = getTagTimeline(celeb.facts);
 
   const tag = tagTimeline[0][1][0];
 
