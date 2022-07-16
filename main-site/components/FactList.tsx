@@ -6,7 +6,7 @@ import { InFeedAd } from '~/components/InFeedAd';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { FactWithCeleb } from '~/lib/groq/fact.projection';
 
-export function MixedCelebFactList(props: { list: FactWithCeleb[] }) {
+export function FactList(props: { list: FactWithCeleb[] }) {
   return (
     <>
       {props.list.map((f, i: number) => {
@@ -24,7 +24,7 @@ export function MixedCelebFactList(props: { list: FactWithCeleb[] }) {
                 </div>
                 <div className="flex flex-col gap-1">
                   <p>{f.celeb.name}</p>
-                  <p className="text-base text-neutral-500">
+                  <p className="h-issue-highlight text-base text-neutral-500">
                     {f.issues[0].name}
                   </p>
                 </div>

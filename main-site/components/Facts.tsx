@@ -1,11 +1,6 @@
-import { isEmpty } from 'lodash-es';
-import { MixedCelebFactList } from '~/components/MixedCelebFactList';
-import { IssuesSideScroller } from '~/components/IssuesSideScroller';
-import { JsonView } from '~/components/JsonView';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { SingleCelebFactList } from '~/components/SingleCelebFactList';
-import { FactGroup } from '~/components/FactGroup';
 import { CelebViewsSelector } from '~/components/CelebViewsSelector';
+import { FactGroup } from '~/components/FactGroup';
+import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const Facts = (props: CelebPageProps) => {
   return (
@@ -28,8 +23,6 @@ export const Facts = (props: CelebPageProps) => {
           celebName={props.celeb.name}
           slug={props.celeb.slug}
         />
-
-        {/* <SingleCelebFactList celeb={props.celeb} facts={props.celeb.facts} /> */}
       </div>
     </div>
   );
