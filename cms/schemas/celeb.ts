@@ -49,6 +49,10 @@ export const celeb = {
             return 'Knowledge Graph ID is not unique. Use search to find out where it was used.';
           }
 
+          if (value !== value.trim()) {
+            return 'Please remove the spaces before or after the ID';
+          }
+
           return true;
         }),
     },
