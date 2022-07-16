@@ -1,9 +1,7 @@
-import groq from 'groq';
 import { LogLink } from '../components/LogLink';
 import { OpenGraphImage } from '../components/OpenGraphImage';
 import { isUniqueField } from '../lib/isUniqueField';
 import { getForumTopicId } from '../shared/lib/getForumTopicId';
-import { sanityClient } from '../shared/lib/sanityio';
 
 const isNotQuoteType = ({ parent }) => parent?.type !== 'quote';
 const isNotFactType = ({ parent }) => parent?.type !== 'fact';
@@ -82,6 +80,10 @@ export const fact = {
 
           if (!isUnique) {
             return 'Forum link is not unique. Use search to find out where it was used.';
+          }
+
+          if (value !== value.trim()) {
+            return 'Please remove the spaces before or after the link';
           }
 
           return true;
