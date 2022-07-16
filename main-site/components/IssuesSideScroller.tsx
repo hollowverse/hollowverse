@@ -16,13 +16,10 @@ export function IssuesSideScroller(props: {
         return (
           <Link key={i._id} passHref href={props.getLink(i._id)}>
             <a>
-              <div
-                id="celeb-issue-item"
-                className="mb-2 rounded-sm border bg-white p-2 px-3 shadow-sm"
-              >
-                <div className="flex items-center justify-center gap-3 text-base text-neutral-700">
+              <div id="celeb-issue-item" className="p-2">
+                <div className="flex items-center justify-center gap-1 text-base text-neutral-700">
                   <PurpleDot />
-                  <p className="w-max text-lg text-neutral-600">
+                  <p className="h-issue-highlight w-max text-lg font-semibold text-neutral-600">
                     {!i.isAffiliation && showViewsOn ? 'Views on ' : ''}
                     {i.name}
                   </p>
