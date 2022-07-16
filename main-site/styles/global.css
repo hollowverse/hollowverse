@@ -15,6 +15,10 @@ div:not([fb-xfbml-state="rendered"]).fb-comments {
   display: none;
 }
 
+span.fb_comments_count {
+  margin-right: 6px;
+}
+
 div[fb-xfbml-state="rendered"] + .fb-comments-spinner {
   display: none;
 }

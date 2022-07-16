@@ -138,13 +138,15 @@ export const Fact: React.FC<{
             <button
               onClick={() => setShowComments(!showComments)}
               id="fact-comments-link"
-              className="pointer-events-auto flex select-none items-center gap-1 text-base text-neutral-500 hover:underline"
+              className="pointer-events-auto flex select-none items-center gap-0.5 text-base text-neutral-500 underline"
             >
               <BiMessage className="text-lg" />
+
               <div className={c({ hidden: showComments })}>
                 <FacebookCommentsCount slug={props.slug} fact={props.fact} />
               </div>
-              {showComments ? 'Close comments' : 'Comments'}
+
+              {showComments ? 'Close comments' : `What's your opinion?`}
             </button>
           )}
 
@@ -152,7 +154,7 @@ export const Fact: React.FC<{
 
           <ShareButton
             className="pointer-events-auto"
-            buttonText="Share this Fact"
+            buttonText="Share"
             share={{
               text: getFactPageTitle(props.celebName, props.fact, 200),
               url: `https://hollowverse.com/${getFactPagePathname(
@@ -166,10 +168,12 @@ export const Fact: React.FC<{
         {showComments && (
           <div className="-mx-5 -mb-5">
             <hr />
-            <FacebookComments
-              pathname={getFactPagePathname(props.slug, props.fact)}
-              limit={5}
-            />
+            <div className="mx-4 my-1">
+              <FacebookComments
+                pathname={getFactPagePathname(props.slug, props.fact)}
+                limit={5}
+              />
+            </div>
           </div>
         )}
       </div>
