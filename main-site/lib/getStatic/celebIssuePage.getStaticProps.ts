@@ -45,9 +45,9 @@ export async function getStaticProps({
     return { notFound: true };
   }
 
-  const facts = celebWithFacts.celeb.facts
-    .filter((f) => f.issues.some((i) => i._id === params.issueId))
-    .map((f) => transformFact(f));
+  const facts = celebWithFacts.celeb.facts.filter((f) =>
+    f.issues.some((i) => i._id === params.issueId),
+  );
 
   if (isEmpty(facts)) {
     // Some pages link to the celeb Issue page because the celeb has a tag that belongs
@@ -95,7 +95,10 @@ export async function getStaticProps({
       relatedCelebs,
       tagTimeline,
       issue,
-      celeb: celeb,
+      celeb: {
+        ...celeb,
+        facts: celeb.facts.map((f) => transformFact(f)),
+      },
       slug: params.slug,
       issueId: params.issueId,
     },
