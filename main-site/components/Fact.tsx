@@ -168,7 +168,7 @@ export const Fact: React.FC<{
         {showComments && (
           <div className="-mx-5 -mb-5">
             <hr />
-            <div className="mx-4 my-1">
+            <div className="mx-3 my-1">
               <FacebookComments
                 pathname={getFactPagePathname(props.slug, props.fact)}
                 limit={5}

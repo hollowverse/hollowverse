@@ -91,9 +91,11 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
             stickyTitle: false,
           }}
         >
-          <FacebookComments
-            pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
-          />
+          <div className="my-1 mx-3">
+            <FacebookComments
+              pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
+            />
+          </div>
         </TitledCard>
 
         <InFeedAd />

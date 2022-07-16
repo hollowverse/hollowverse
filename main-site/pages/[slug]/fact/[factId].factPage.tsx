@@ -102,8 +102,12 @@ export default function FactPage(props: FactPageProps) {
           name={props.celeb.name}
         />
 
-        <TitledCard titledContentProps={{ title: 'Comments' }}>
-          <div id="fact-page-comments">
+        <TitledCard
+          titledContentProps={{
+            title: <span className="text-lg">Your thoughts on this?</span>,
+          }}
+        >
+          <div id="fact-page-comments" className="my-1 mx-3">
             <FacebookComments
               pathname={getFactPagePathname(props.celeb.slug, props.fact)}
             />

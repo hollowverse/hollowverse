@@ -73,7 +73,9 @@ export default function Celeb(props: CelebPageProps) {
             stickyTitle: false,
           }}
         >
-          <FacebookComments pathname={`/${props.celeb.slug}`} />
+          <div className="my-1 mx-3">
+            <FacebookComments pathname={`/${props.celeb.slug}`} />
+          </div>
         </TitledCard>
       </div>
     </Page>
