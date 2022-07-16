@@ -84,8 +84,8 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           titledContentProps={{
             title: (
               <span className="text-base">
-                Your thoughts on{' '}
-                {celebNameToIssue(props.celeb.name, props.issue)}?
+                Your thoughts on {props.celeb.name}&apos;s {props.issue.name}
+                {props.issue.isAffiliation ? '' : ' views'}?
               </span>
             ),
             stickyTitle: false,

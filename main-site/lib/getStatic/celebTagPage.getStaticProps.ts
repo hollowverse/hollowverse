@@ -45,10 +45,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagTimeline = getTagTimeline(
-    results.celeb.facts,
-    results.orderOfIssues,
-  );
+  const tagTimeline = getTagTimeline(results.celeb.facts);
 
   if (!tagExists(tagTimeline, params.tagId)) {
     return {

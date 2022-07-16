@@ -40,10 +40,7 @@ export const getStaticProps = async ({
 
   const issues = await getCelebIssues({ facts: results.celeb.facts });
 
-  const tagTimeline = getTagTimeline(
-    results.celeb.facts,
-    results.orderOfIssues,
-  );
+  const tagTimeline = getTagTimeline(results.celeb.facts);
 
   const { celeb } = results;
   const [oldContent, topContributors] = await Promise.all([
