@@ -25,23 +25,6 @@ export function TsTitleStrongText(props: PropsWithChildren<{}>) {
   );
 }
 
-/*
- || (
-          <h1>
-            <span className="text-lg font-normal tracking-wide text-neutral-500">
-              The Political Views of
-            </span>{' '}
-            <span
-              id="main-name"
-              className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600"
-            >
-              {props.celeb.name}
-            </span>
-          </h1>
-        )
-
- */
-
 export const TopSection = (props: {
   celeb: Celeb;
   tagTimeline: TagTimeline;

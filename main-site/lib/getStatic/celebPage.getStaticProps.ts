@@ -79,6 +79,8 @@ export const getStaticProps = async ({
           : '';
 
         return [religionText, politicalViewsText].join(' ').trim();
+      } else {
+        return oldContent?.article.substring(0, 250) || '';
       }
     }
 
