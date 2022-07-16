@@ -33,10 +33,10 @@ module.exports = {
       // Celeb pages
       ...results.celebs.map((c) => `${c.slug}`),
 
-      // Fact pages
-      ...results.facts.map((f) => `${f.slug}/fact/${f._id}`),
-
       ...results.facts.flatMap((f) => [
+        // Fact pages
+        `${f.slug}/fact/${f._id}`,
+
         ...f.issues.flatMap((i) => [
           // Master Issue pages
           `~issue/${i._ref}`,
