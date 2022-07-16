@@ -8,8 +8,9 @@ export type TagPair = [string, Tag[]];
 export type TagTimeline = TagPair[];
 
 export function getTagTimeline(facts: Fact[]) {
-  // group by tagId
   /**
+   * group by tagId
+   *
    * {'id1': [...bunch of facts],
    * 'id2': [...bunch of facts],
    * 'etc': [...asdf]
@@ -25,14 +26,14 @@ export function getTagTimeline(facts: Fact[]) {
    *
    * sort by date range
    */
-  const factsByTagId: { [tagId: string]: Fact[] } = {};
+  const tagIdToFacts: { [tagId: string]: Fact[] } = {};
 
   facts.forEach((f) => {
     f.tags.forEach((t) => {
-      if (factsByTagId[t.tag._id]) {
-        factsByTagId[t.tag._id].push(f);
+      if (tagIdToFacts[t.tag._id]) {
+        tagIdToFacts[t.tag._id].push(f);
       } else {
-        factsByTagId[t.tag._id] = [f];
+        tagIdToFacts[t.tag._id] = [f];
       }
     });
   });
@@ -40,7 +41,7 @@ export function getTagTimeline(facts: Fact[]) {
   /**
    * {'id1': '2020-2019'}
    */
-  const dateRangeByTagId = mapValues(factsByTagId, (facts) => {
+  const tagIdToDateRange = mapValues(tagIdToFacts, (facts) => {
     const dates = facts.map((f) => getYear(parseDate(f.date)));
     const firstDate = dates[0];
     const lastDate = last(dates);
@@ -48,9 +49,9 @@ export function getTagTimeline(facts: Fact[]) {
     return `${firstDate}-${lastDate}`;
   });
 
-  const tagIdsByDateRange = invertBy(dateRangeByTagId);
+  const dateRangeToTagIds = invertBy(tagIdToDateRange);
 
-  const tagsByDateRange = mapValues(tagIdsByDateRange, (arrOfTagIds) => {
+  const dateRangeToTags = mapValues(dateRangeToTagIds, (arrOfTagIds) => {
     return arrOfTagIds.map((tagId) => {
       const factWithTag = facts.find((f) =>
         f.tags.some((t) => t.tag._id === tagId),
@@ -61,7 +62,7 @@ export function getTagTimeline(facts: Fact[]) {
     });
   });
 
-  const pairs = toPairs(tagsByDateRange);
+  const pairs = toPairs(dateRangeToTags);
 
   const cleanedUpPairs = pairs.map((p) => {
     const k = p[0];
