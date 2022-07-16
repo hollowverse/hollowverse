@@ -24,8 +24,10 @@ export function FactList(props: { list: FactWithCeleb[] }) {
                 </div>
                 <div className="flex flex-col gap-1">
                   <p>{f.celeb.name}</p>
-                  <p className="h-issue-highlight text-base text-neutral-500">
-                    {f.issues[0].name}
+                  <p className="text-base text-neutral-500">
+                    <span className="h-issue-highlight">
+                      {f.issues[0].name}
+                    </span>
                   </p>
                 </div>
               </div>
