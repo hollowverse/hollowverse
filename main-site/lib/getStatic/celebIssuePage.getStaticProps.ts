@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { flatten, uniq } from 'lodash-es';
+import { flatten, isEmpty, uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
@@ -45,11 +45,30 @@ export async function getStaticProps({
     return { notFound: true };
   }
 
+  const facts = celebWithFacts.celeb.facts
+    .filter((f) => f.issues.some((i) => i._id === params.issueId))
+    .map((f) => transformFact(f));
+
+  if (isEmpty(facts)) {
+    // Some pages link to the celeb Issue page because the celeb has a tag that belongs
+    // to the issue. So it is assumed that the celeb also has at least one Fact with the Issue, but that can be
+    // a wrong assumption. The celeb may have the tag of one Issue on a Fact of a different
+    // Issue, and not have a Fact for the Tag Issue at all, in which case, we'd have an empty
+    // list of Facts for the celeb here. So we redirect this link back to the celeb's main-page.
+    //
+    // We should fix this though. Any Fact that has a Tag that belongs to Issue X, the Fact itself
+    // should also have Issue X.
+    return {
+      redirect: {
+        destination: `/${params.slug}`,
+        permanent: false,
+      },
+    };
+  }
+
   const celeb = {
     ...celebWithFacts.celeb,
-    facts: celebWithFacts.celeb.facts
-      .filter((f) => f.issues.some((i) => i._id === params.issueId))
-      .map((f) => transformFact(f)),
+    facts,
     issues: await getCelebIssues({
       facts: celebWithFacts.celeb.facts,
       excludedId: params.issueId,
