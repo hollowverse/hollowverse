@@ -1,62 +1,41 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
-import { c } from '~/lib/c';
 import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import { Celeb } from '~/lib/groq/celeb.projection';
-import { Tag as TTag } from '~/lib/groq/tag.projection';
-import { ReactElementProps } from '~/lib/types';
-
-export function Tags(
-  props: ReactElementProps<'div'> & { tags: TTag[]; slug: string },
-) {
-  return (
-    <div
-      {...props}
-      className={c('flex flex-wrap gap-2.5 pt-3', props.className)}
-    >
-      {props.tags.map((t) => (
-        <Tag
-          key={t.tag._id}
-          link={`/${props.slug}/tag/${t.tag._id}#content`}
-          tagId={t.tag._id}
-        >
-          {t.tag.name}
-          {t.isBackground && ' Background'}
-          {t.isLowConfidence && (
-            <FaQuestionCircle className="self-center text-xs text-neutral-400" />
-          )}
-        </Tag>
-      ))}
-    </div>
-  );
-}
 
 export const TagCollection = (props: {
   celeb: Celeb;
   tagTimeline: TagTimeline;
 }) => {
   const tags = props.tagTimeline;
-  const showTimeline = tags.length > 1;
 
   return (
-    <div className="flex flex-col">
+    <div className="my-5 flex flex-col gap-10 border-l-2">
       {tags.map((tpair, i) => (
-        <div key={tpair[0]}>
-          {showTimeline && (
-            <p className="-ml-2 flex items-center gap-3 tracking-wider text-neutral-500">
-              <FaRegCircle className="text-lg text-gray-300" />
+        <div key={tpair[0]} className="flex">
+          <div>
+            <FaRegCircle className="-ml-[10px] -mt-1 bg-white text-xl text-gray-300" />
+          </div>
+
+          <div className="ml-3 -mt-3 flex flex-wrap gap-2">
+            <p className="flex items-center gap-3 text-lg tracking-wider text-neutral-500">
               {tpair[0]}
             </p>
-          )}
 
-          <Tags
-            tags={tpair[1]}
-            slug={props.celeb.slug}
-            className={c({
-              'border-l-2': i < tags.length - 1,
-              'p-5': showTimeline,
-            })}
-          />
+            {tpair[1].map((t) => (
+              <Tag
+                key={t.tag._id}
+                link={`/${props.celeb.slug}/tag/${t.tag._id}#content`}
+                tagId={t.tag._id}
+              >
+                {t.tag.name}
+                {t.isBackground && ' Background'}
+                {t.isLowConfidence && (
+                  <FaQuestionCircle className="self-center text-xs text-neutral-400" />
+                )}
+              </Tag>
+            ))}
+          </div>
         </div>
       ))}
     </div>
