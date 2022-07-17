@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { flatten, isEmpty, uniq } from 'lodash-es';
+import { customTitleDefinitions } from '~/lib/customTitleDefinitions';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
@@ -10,6 +11,7 @@ import {
   getCelebWithFactsGroq,
 } from '~/lib/groq/getCelebWithFacts.groq';
 import { Issue } from '~/lib/groq/issue.projection';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
 import { PageProps } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
@@ -88,9 +90,15 @@ export async function getStaticProps({
     issues,
   };
 
+  const customTitles =
+    customTitleDefinitions[`${params.slug}/issue/${params.issueId}`];
+
   return {
     props: {
-      pageDescription: getPageDescription(),
+      pageTitle:
+        customTitles?.title ||
+        `What are ${celebNameToIssue(celeb.name, issue)}?`,
+      pageDescription: customTitles?.description || getPageDescription(),
       tag,
       relatedCelebs,
       tagTimeline,

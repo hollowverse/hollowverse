@@ -20,7 +20,7 @@ import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 export default function CelebIssuePage(props: CelebIssuePageProps) {
   return (
     <Page
-      title={`What are ${celebNameToIssue(props.celeb.name, props.issue)}?`}
+      title={props.pageTitle}
       description={props.pageDescription}
       allowSearchEngines
       pathname={props.celeb.slug}
