@@ -8,7 +8,7 @@ import { testUrl } from '~/e2e-tests/testUrl';
 const issueId = 'dbb542ca-ea4a-4df7-9f15-a773fb9e752c';
 const url = `${testUrl}/donald-trump/issue/${issueId}`;
 
-test.only('Celeb Issue page E2E test', async ({ page }) => {
+test('Celeb Issue page E2E test', async ({ page }) => {
   await page.goto(url);
 
   await page.waitForSelector('#celeb-issue-page');
