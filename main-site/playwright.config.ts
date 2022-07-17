@@ -68,6 +68,9 @@ const config: PlaywrightTestConfig = {
     {
       name: 'Mobile Safari',
       use: {
+        // launchOptions: {
+        //   slowMo: 1000,
+        // },
         headless: false,
         ...devices['iPhone 12'],
       },

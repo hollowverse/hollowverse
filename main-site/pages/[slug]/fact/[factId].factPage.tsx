@@ -1,22 +1,20 @@
 import { CelebImage } from '~/components/CelebImage';
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { ContributorBox } from '~/components/ContributorBox';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Fact } from '~/components/Fact';
-import { useFact } from '~/components/hooks/useFact';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
-import {
-  RelatedCelebsByIssue,
-  RelatedCelebsByTag,
-} from '~/components/RelatedCelebs';
+import { RelatedCelebs } from '~/components/RelatedCelebs';
 import { Card } from '~/components/ui/Card';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { Link } from '~/lib/Link';
 
 export default function FactPage(props: FactPageProps) {
@@ -34,8 +32,14 @@ export default function FactPage(props: FactPageProps) {
       pathname={getFactPagePathname(props.celeb.slug, props.fact)}
     >
       <div className="h-container my-5 flex flex-col gap-5">
-        <Link href={`/${props.celeb.slug}`} passHref>
-          <a id="fact-page-header">
+        <Link
+          href={`/${props.celeb.slug}/issue/${props.fact.issues[0]._id}`}
+          passHref
+        >
+          <a
+            id="fact-page-header"
+            title={celebNameToIssue(props.celeb.name, props.fact.issues[0])}
+          >
             <div className="mx-5 flex items-center gap-5">
               <div className="relative aspect-square w-20">
                 <CelebImage
@@ -44,12 +48,10 @@ export default function FactPage(props: FactPageProps) {
                   name={props.celeb.name}
                 />
               </div>
-              <div>
-                <h1 className="text-2xl font-bold">{props.celeb.name}</h1>
-                <h2 className="text-xl text-neutral-500">
-                  on {props.fact.issues[0].name}
-                </h2>
-              </div>
+              <h1 className="text-xl text-neutral-600">
+                Fact about the {displayIssue()} of{' '}
+                <span className="font-bold">{props.celeb.name}</span>
+              </h1>
             </div>
           </a>
         </Link>
@@ -76,45 +78,54 @@ export default function FactPage(props: FactPageProps) {
 
             <hr className="-mx-5" />
 
-            <div>
-              <p className="text-sm text-neutral-500">
-                You can contribute, too!{' '}
-                <a
-                  className="h-link underline"
-                  href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
-                >
-                  Learn how
-                </a>
-                .
-              </p>
-            </div>
+            <p className="text-sm text-neutral-500">
+              You can contribute, too!{' '}
+              <a
+                className="h-link underline"
+                href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
+              >
+                Learn how
+              </a>
+              .
+            </p>
           </Card>
         )}
+
+        <CelebViewsSelector
+          slug={props.celeb.slug}
+          celebName={props.celeb.name}
+          issues={props.issues}
+        />
 
         <ReturnToCelebViewsButton
           slug={props.celeb.slug}
           name={props.celeb.name}
         />
 
-        <TitledCard titledContentProps={{ title: 'Comments' }}>
-          <div id="fact-page-comments">
+        <TitledCard
+          titledContentProps={{
+            title: <span className="text-lg">Your thoughts on this?</span>,
+          }}
+        >
+          <div id="fact-page-comments" className="my-1 mx-3">
             <FacebookComments
               pathname={getFactPagePathname(props.celeb.slug, props.fact)}
             />
           </div>
         </TitledCard>
 
-        <RelatedCelebsByTag celebs={props.relatedCelebsByTag} tag={props.tag} />
-
         <InFeedAd />
 
-        <RelatedCelebsByIssue
-          celebs={props.relatedCelebsByIssue}
-          tag={props.tag}
-        />
+        <RelatedCelebs relatedCelebs={props.relatedCelebs} />
       </div>
     </Page>
   );
+
+  function displayIssue() {
+    const issue = props.fact.issues[0];
+
+    return issue.isAffiliation ? issue.name : `${issue.name} views`;
+  }
 }
 
 export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';

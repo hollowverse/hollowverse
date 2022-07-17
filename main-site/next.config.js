@@ -14,6 +14,7 @@ const nextJsConfig = {
     'tsx',
     'ts',
     'celebPage.tsx',
+    'celebIssuePage.tsx',
     'celebTagPage.tsx',
     'factPage.tsx',
     'knowledgeGraphPage.tsx',

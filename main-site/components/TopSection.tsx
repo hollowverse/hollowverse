@@ -1,62 +1,54 @@
 import { isEmpty } from 'lodash-es';
-import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { TagCollection } from '~/components/TagCollection';
-import { CelebWithTimeline } from '~/lib/getStatic/helpers/getCelebWithTimeline';
-import { Link } from '~/lib/Link';
+import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import { Celeb } from '~/lib/groq/celeb.projection';
 
-export const TopSection = (props: CelebWithTimeline) => {
-  const picture = props.picture;
-  const router = useRouter();
+export function TsTitleContainer(props: PropsWithChildren<{}>) {
+  return <h1 className="flex flex-col gap-1">{props.children}</h1>;
+}
 
+export function TsTitleSoftText(props: PropsWithChildren<{}>) {
+  return (
+    <span className="text-lg font-normal tracking-wide text-neutral-500">
+      {props.children}
+    </span>
+  );
+}
+
+export function TsTitleStrongText(props: PropsWithChildren<{}>) {
+  return (
+    <span className="block text-4xl font-extrabold tracking-tight text-neutral-600">
+      {props.children}
+    </span>
+  );
+}
+
+export const TopSection = (props: {
+  celeb: Celeb;
+  tagTimeline: TagTimeline;
+  title: ReactNode;
+}) => {
   return (
     <div className="TOP-SECTION h-container p-5">
-      <div className="flex flex-wrap items-end gap-x-5">
+      <div className="flex flex-wrap items-end gap-5">
         <div className="w-[150px]">
-          {withLink(
-            <CelebImage
-              className="rounded-md object-cover"
-              key={props.name + '-topSection-image'}
-              picture={picture}
-              name={props.name}
-            />,
-          )}
+          <CelebImage
+            className="rounded-md object-cover"
+            key={props.celeb.name + '-topSection-image'}
+            picture={props.celeb.picture}
+            name={props.celeb.name}
+          />
         </div>
-        {withLink(
-          <h1 className="mt-5">
-            <span className="text-lg font-normal tracking-wide text-neutral-500">
-              The Views of
-            </span>{' '}
-            <span
-              id="main-name"
-              className="mt-1 block text-4xl font-extrabold tracking-tight text-neutral-600"
-            >
-              {props.name}
-            </span>
-          </h1>,
-        )}
+        {props.title}
       </div>
 
       {!isEmpty(props.tagTimeline) && (
         <div className="pt-5">
-          <TagCollection celeb={props} />
+          <TagCollection celeb={props.celeb} tagTimeline={props.tagTimeline} />
         </div>
       )}
     </div>
   );
-
-  function withLink(node: ReactNode) {
-    const link = `/${props.slug}`;
-
-    if (link == router.asPath) {
-      return node;
-    }
-
-    return (
-      <Link href={`/${props.slug}`} passHref>
-        <a>{node}</a>
-      </Link>
-    );
-  }
 };

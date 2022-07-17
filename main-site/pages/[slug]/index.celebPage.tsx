@@ -6,7 +6,12 @@ import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TopContributors } from '~/components/TopContributors';
-import { TopSection } from '~/components/TopSection';
+import {
+  TopSection,
+  TsTitleContainer,
+  TsTitleSoftText,
+  TsTitleStrongText,
+} from '~/components/TopSection';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
@@ -15,14 +20,29 @@ export default function Celeb(props: CelebPageProps) {
 
   return (
     <Page
-      title={`What are ${name}'s political views, religion?`}
-      description={`Did ${name} say or do anything political or about religion? Find out here!`}
+      title={
+        props.hasFacts
+          ? `What are the political views of ${name}?`
+          : `${name}'s Religion and Political Views`
+      }
+      description={props.pageDescription}
       allowSearchEngines
       pathname={props.celeb.slug}
       id="celeb-page"
       appBar={
         <StickyAppBar>
-          <TopSection {...props.celeb} />
+          <TopSection
+            celeb={props.celeb}
+            tagTimeline={props.tagTimeline}
+            title={
+              <TsTitleContainer>
+                <TsTitleSoftText>
+                  The {props.hasFacts ? '' : 'Religion and '}Political Views of{' '}
+                </TsTitleSoftText>
+                <TsTitleStrongText>{name}</TsTitleStrongText>
+              </TsTitleContainer>
+            }
+          />
         </StickyAppBar>
       }
     >
@@ -32,7 +52,7 @@ export default function Celeb(props: CelebPageProps) {
       >
         <InBetweenContentShareButton />
 
-        {!isEmpty(props.celeb.facts.groups) && <Facts {...props} />}
+        {!isEmpty(props.celeb.facts) && <Facts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}
 
@@ -53,7 +73,9 @@ export default function Celeb(props: CelebPageProps) {
             stickyTitle: false,
           }}
         >
-          <FacebookComments pathname={`/${props.celeb.slug}`} />
+          <div className="my-1 mx-3">
+            <FacebookComments pathname={`/${props.celeb.slug}`} />
+          </div>
         </TitledCard>
       </div>
     </Page>

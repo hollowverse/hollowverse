@@ -2,6 +2,7 @@ import groq from 'groq';
 import { uniq } from 'lodash-es';
 import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
+import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
 import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
@@ -62,20 +63,21 @@ export async function getStaticProps({
 
   const tag = fact.tags[0];
 
-  const [relatedCelebs, factForumData] = await Promise.all([
+  const [relatedCelebs, factForumData, issues] = await Promise.all([
     getRelatedCelebs(
-      tag.tag._id,
-      tag.tag.issue._id,
+      tag,
       params.slug,
       uniq([tag.tag.issue.name, ...orderOfIssues]),
     ),
     getFactForumData(fact.forumLink),
+    getCelebIssues({ slug: params.slug }),
   ]);
 
   return {
     props: {
       ...factForumData,
-      ...relatedCelebs,
+      relatedCelebs,
+      issues,
       celeb,
       tag,
       fact: transformFact(fact),

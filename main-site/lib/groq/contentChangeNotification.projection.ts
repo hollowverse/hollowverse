@@ -1,5 +1,6 @@
 import groq from 'groq';
-import { FactTypes, Issue } from '~/lib/groq/fact.projection';
+import { FactTypes } from '~/lib/groq/fact.projection';
+import { Issue } from '~/lib/groq/issue.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 

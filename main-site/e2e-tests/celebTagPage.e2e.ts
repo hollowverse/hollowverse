@@ -17,10 +17,6 @@ test('Celeb Tag page E2E test', async ({ page }) => {
 
   await commonElementsTestFragment(page);
 
-  await page.locator('#main-name').click();
-  await page.waitForSelector('#celeb-page');
-  await goBack();
-
   await page.locator(':nth-match(#tag.unselected, 1)').click();
   await page.waitForSelector(`#celeb-tag-page-${tagId}`, { state: 'detached' });
   await goBack();

@@ -11,7 +11,10 @@ export function FactGroup(props: {
   celebName: string;
   slug: string;
   index?: number;
+  showIssueName?: boolean;
 }) {
+  const showIssueName = props.showIssueName ?? false;
+
   return (
     <TitledContent
       title={<div className="px-5 py-4">{props.title}</div>}
@@ -24,6 +27,7 @@ export function FactGroup(props: {
               <Card>
                 <div className="p-5">
                   <Fact
+                    showIssueName={showIssueName}
                     link
                     fact={fact}
                     celebName={props.celebName}

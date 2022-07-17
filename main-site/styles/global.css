@@ -15,6 +15,10 @@ div:not([fb-xfbml-state="rendered"]).fb-comments {
   display: none;
 }
 
+span.fb_comments_count {
+  margin-right: 6px;
+}
+
 div[fb-xfbml-state="rendered"] + .fb-comments-spinner {
   display: none;
 }
@@ -50,6 +54,10 @@ div[class^="fb_comments_count_zero"], div[class*=" fb_comments_count_zero"] {
 
   .h-gray-link {
     @apply text-gray-500 hover:text-gray-600 hover:underline;
+  }
+
+  .h-issue-highlight {
+    @apply border-b border-purple-500 px-1;
   }
 
   .h-container {

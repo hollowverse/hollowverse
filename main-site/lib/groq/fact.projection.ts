@@ -1,11 +1,9 @@
 import groq from 'groq';
 import { Celeb } from '~/lib/groq/celeb.projection';
-import { issueProjection } from '~/lib/groq/issue.projection';
+import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 
-export type Issue = { name: string; _id: string };
-
-export type Fact = {
+type BaseFact = {
   _id: string;
   date: string;
   source: string;
@@ -13,17 +11,20 @@ export type Fact = {
   issues: Issue[];
   tags: Tag[];
   openGraphImage?: string;
-} & (
-  | {
-      type: 'quote';
-      context: string;
-      quote: string;
-    }
-  | {
-      type: 'fact';
-      content: string;
-    }
-);
+};
+
+export type QuoteFact = BaseFact & {
+  type: 'quote';
+  context: string;
+  quote: string;
+};
+
+export type GeneralFact = BaseFact & {
+  type: 'fact';
+  content: string;
+};
+
+export type Fact = QuoteFact | GeneralFact;
 
 export type FactWithCeleb = { celeb: Celeb } & Fact;
 

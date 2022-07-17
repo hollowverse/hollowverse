@@ -16,7 +16,7 @@ test('Fact page E2E test', async ({ page }) => {
   await commonElementsTestFragment(page);
 
   await page.locator('#fact-page-header').click();
-  await page.waitForSelector('#celeb-page');
+  await page.waitForSelector('#celeb-issue-page');
   await goBack();
 
   await page.locator(':nth-match(#tag, 1)').click();

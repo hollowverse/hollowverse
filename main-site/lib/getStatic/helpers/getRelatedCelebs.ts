@@ -7,14 +7,14 @@ import {
   RelatedCelebsGroq,
   relatedCelebsGroq,
 } from '~/lib/groq/relatedCelebs.groq';
+import { Tag } from '~/lib/groq/tag.projection';
 import { Nullish } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type RelatedCelebs = UnwrapPromise<ReturnType<typeof getRelatedCelebs>>;
 
 export async function getRelatedCelebs(
-  tagId: string,
-  issueId: string,
+  tag: Tag,
   mainSlug: string,
   orderOfIssues: OrderOfIssues,
 ) {
@@ -22,8 +22,8 @@ export async function getRelatedCelebs(
     'related-celebs',
     relatedCelebsGroq,
     {
-      tagId,
-      issueId,
+      tagId: tag.tag._id,
+      issueId: tag.tag.issue._id,
     },
   ))!;
 
@@ -35,17 +35,14 @@ export async function getRelatedCelebs(
             ?.slice(0, 6)
             ?.map((c) => ({
               ...c,
-              tags: c.tags.filter((t) => t.tag._id !== tagId).slice(0, 3),
+              tags: c.tags.filter((t) => t.tag._id !== tag.tag._id).slice(0, 3),
             })),
         )
       : null;
   };
 
-  const relatedCelebsByTag = process(relatedCelebs.byTag);
-  const relatedCelebsByIssue = process(relatedCelebs.byIssue);
+  const byTag = process(relatedCelebs.byTag);
+  const byIssue = process(relatedCelebs.byIssue);
 
-  return {
-    relatedCelebsByIssue,
-    relatedCelebsByTag,
-  };
+  return { tag, byIssue, byTag };
 }

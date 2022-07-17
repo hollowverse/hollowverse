@@ -1,21 +1,15 @@
 import groq from 'groq';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { getTrendingCelebs } from '~/lib/getStatic/helpers/getTrendingCelebs';
 import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
-import {
-  Fact,
-  factProjection,
-  FactWithCeleb,
-  Issue,
-} from '~/lib/groq/fact.projection';
+import { celebProjection } from '~/lib/groq/celeb.projection';
+import { factProjection, FactWithCeleb } from '~/lib/groq/fact.projection';
+import { Issue, issueProjection } from '~/lib/groq/issue.projection';
+import { sortByArray } from '~/lib/sortByArray';
+import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
-import { issueProjection } from '~/lib/groq/issue.projection';
-import { PageProps } from '~/lib/types';
-import { sortByArray } from '~/lib/sortByArray';
 
 export type HomepageProps = PageProps<typeof getStaticProps>;
 

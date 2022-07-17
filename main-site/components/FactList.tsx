@@ -5,14 +5,18 @@ import { Fact } from '~/components/Fact';
 import { InFeedAd } from '~/components/InFeedAd';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { FactWithCeleb } from '~/lib/groq/fact.projection';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 export function FactList(props: { list: FactWithCeleb[] }) {
   return (
     <>
       {props.list.map((f, i: number) => {
         const cardTitle = (
-          <Link passHref href={`/${f.celeb.slug}`}>
-            <a id="fact-list-item-title">
+          <Link passHref href={`/${f.celeb.slug}/issue/${f.issues[0]._id}`}>
+            <a
+              id="fact-list-item-title"
+              title={celebNameToIssue(f.celeb.name, f.issues[0])}
+            >
               <div className="flex flex-row items-center gap-3">
                 <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
                   <CelebImage
@@ -25,7 +29,9 @@ export function FactList(props: { list: FactWithCeleb[] }) {
                 <div className="flex flex-col gap-1">
                   <p>{f.celeb.name}</p>
                   <p className="text-base text-neutral-500">
-                    {f.issues[0].name}
+                    <span className="h-issue-highlight">
+                      {f.issues[0].name}
+                    </span>
                   </p>
                 </div>
               </div>

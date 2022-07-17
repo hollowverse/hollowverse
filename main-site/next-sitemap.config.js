@@ -11,36 +11,48 @@ const sanityClient = sanityClient_({
 
 module.exports = {
   siteUrl: 'https://hollowverse.com',
+
   generateRobotsTxt: true,
+
   exclude: ['*'],
+
   additionalPaths: async (config) => {
-    const urls = await sanityClient.fetch(
-      groq`[
-        // Celeb pages
-        ...*[_type == 'celeb']{
-          'url': slug.current
-        }.url,
-
-        // Fact pages
-        ...*[_type == 'fact']{
-          'url': celeb->slug.current + '/fact/' + _id
-        }.url,
-
-        // Celeb Tag pages
-        ...*[_type == 'fact']{
-          'tags': tags[]{
-            'url': ^.celeb->slug.current + '/tag/' + tag._ref
-          }.url
-        }.tags[0...9999],
-
-        // Issue pages
-        ...*[_type == 'topic']{
-          'url': '~issue/' + _id
-        }.url
-      ]`,
+    const results = await sanityClient.fetch(
+      groq`{
+        'celebs': *[_type == 'celeb']{'slug': slug.current},
+        'facts': *[_type == 'fact']{
+          _id,
+          'slug': celeb->slug.current,
+          'tags': tags[]{'_ref': tag._ref},
+          'issues': topics[]{_ref}
+        }
+      }`,
     );
 
+    const urls = [
+      // Celeb pages
+      ...results.celebs.map((c) => `${c.slug}`),
+
+      ...results.facts.flatMap((f) => [
+        // Fact pages
+        `${f.slug}/fact/${f._id}`,
+
+        ...f.issues.flatMap((i) => [
+          // Master Issue pages
+          `~issue/${i._ref}`,
+
+          // Celeb Issue pages
+          `${f.slug}/issue/${i._ref}`,
+        ]),
+
+        // Tag pages
+        ...f.tags.map((t) => `${f.slug}/tag/${t._ref}`),
+      ]),
+    ];
+
     const uniqueUrls = [...new Set(urls)];
+
+    uniqueUrls.sort();
 
     return uniqueUrls.map((url) => ({
       loc: url,

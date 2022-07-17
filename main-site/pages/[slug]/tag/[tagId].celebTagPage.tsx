@@ -2,16 +2,20 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
-import {
-  RelatedCelebsByIssue,
-  RelatedCelebsByTag,
-} from '~/components/RelatedCelebs';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TitleSeparator } from '~/components/TitleSeparator';
-import { TopSection } from '~/components/TopSection';
+import {
+  TopSection,
+  TsTitleContainer,
+  TsTitleSoftText,
+  TsTitleStrongText,
+} from '~/components/TopSection';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { RelatedCelebs } from '~/components/RelatedCelebs';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -25,12 +29,23 @@ export default function TagPage(props: TagPageProps) {
     <Page
       id="celeb-tag-page"
       title={`${name} ${props.tag.tag.name}?`}
-      description={`${name} ${props.tag.tag.name} when it comes to ${props.tag.tag.issue.name}?`}
+      description={`${celebNameToIssue(name, props.tag.tag.issue)}, ${
+        props.tag.tag.name
+      }?`}
       allowSearchEngines
       pathname={`/${props.celeb.slug}/tag/${props.tag.tag._id}`}
       appBar={
         <StickyAppBar>
-          <TopSection {...props.celeb} />
+          <TopSection
+            celeb={props.celeb}
+            tagTimeline={props.tagTimeline}
+            title={
+              <TsTitleContainer>
+                <TsTitleStrongText>{name}</TsTitleStrongText>
+                <TsTitleSoftText>{props.tag.tag.name}?</TsTitleSoftText>
+              </TsTitleContainer>
+            }
+          />
         </StickyAppBar>
       }
     >
@@ -52,22 +67,20 @@ export default function TagPage(props: TagPageProps) {
             }
           />
 
+          <CelebViewsSelector
+            issues={props.issues}
+            celebName={props.celeb.name}
+            slug={props.celeb.slug}
+          />
+
           <ReturnToCelebViewsButton
             slug={props.celeb.slug}
             name={props.celeb.name}
           />
 
-          <RelatedCelebsByTag
-            celebs={props.relatedCelebsByTag}
-            tag={props.tag}
-          />
-
           <InFeedAd />
 
-          <RelatedCelebsByIssue
-            celebs={props.relatedCelebsByIssue}
-            tag={props.tag}
-          />
+          <RelatedCelebs relatedCelebs={props.relatedCelebs} />
         </div>
       </div>
     </Page>

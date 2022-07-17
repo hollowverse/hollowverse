@@ -1,30 +1,29 @@
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { FactGroup } from '~/components/FactGroup';
-import { TitleSeparator } from '~/components/TitleSeparator';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 
 export const Facts = (props: CelebPageProps) => {
-  const { groups, issues } = props.celeb.facts!;
-
   return (
     <div className="FACTS-CONTAINER flex max-w-full flex-col gap-7">
-      {issues.map((issue, i) => {
-        const factGroup = groups[issue];
+      <CelebViewsSelector
+        celebName={props.celeb.name}
+        slug={props.celeb.slug}
+        issues={props.celeb.issues}
+      />
 
-        return (
-          <FactGroup
-            index={i}
-            key={issue}
-            title={
-              <h2 className="flex gap-2">
-                {props.celeb.name} <TitleSeparator /> {issue}
-              </h2>
-            }
-            factGroup={factGroup}
-            celebName={props.celeb.name}
-            slug={props.celeb.slug}
-          />
-        );
-      })}
+      <div className="flex flex-col gap-2.5">
+        <FactGroup
+          showIssueName
+          title={
+            <h2 className="flex gap-2">
+              {props.celeb.name}&apos;s latest views
+            </h2>
+          }
+          factGroup={props.celeb.facts}
+          celebName={props.celeb.name}
+          slug={props.celeb.slug}
+        />
+      </div>
     </div>
   );
 };
