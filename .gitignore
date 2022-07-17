@@ -10,6 +10,7 @@ tsconfig.tsbuildinfo
 main-site/public/sitemap*
 main-site/shared
 main-site/**/lighthouse-reports/**.html
+main-site/test-results/**
 
 ## CMS ignores
 cms/public
