@@ -54,7 +54,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
     >
       <div
         className="h-container my-5 flex flex-col gap-5"
-        id={`celeb-page-${props.celeb.slug}`}
+        id={`celeb-issue-page-${props.issue._id}`}
       >
         <InBetweenContentShareButton />
 

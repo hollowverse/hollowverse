@@ -96,8 +96,6 @@ export async function getStaticProps({
         ...celeb,
         facts: celeb.facts.map((f) => transformFact(f)),
       },
-      slug: params.slug,
-      issueId: params.issueId,
     },
     revalidate: oneDay,
   };

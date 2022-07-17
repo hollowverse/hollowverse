@@ -1,6 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import { IssuesSideScroller } from '~/components/IssuesSideScroller';
 import { Issue } from '~/lib/groq/issue.projection';
+import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 export function CelebViewsSelector(props: {
   celebName: string;
@@ -18,6 +19,7 @@ export function CelebViewsSelector(props: {
           </h2>
 
           <IssuesSideScroller
+            getAnchorTitle={(i) => celebNameToIssue(props.celebName, i)}
             showViewsOn
             issues={combinedIssues}
             getLink={(_id) => `/${props.slug}/issue/${_id}`}

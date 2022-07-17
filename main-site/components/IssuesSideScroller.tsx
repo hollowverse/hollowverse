@@ -6,6 +6,7 @@ import { Link } from '~/lib/Link';
 export function IssuesSideScroller(props: {
   issues: Issue[];
   getLink: (issueId: Issue['_id']) => string;
+  getAnchorTitle?: (issueId: Issue) => string;
   showViewsOn?: boolean;
 }) {
   const showViewsOn = props.showViewsOn ?? false;
@@ -15,8 +16,8 @@ export function IssuesSideScroller(props: {
       {props.issues.map((i) => {
         return (
           <Link key={i._id} passHref href={props.getLink(i._id)}>
-            <a>
-              <div id="scroller-issue-item" className="p-2">
+            <a title={getTitle()} id="scroller-issue-item">
+              <div className="p-2">
                 <div className="flex items-center justify-center gap-1 text-base text-neutral-700">
                   <PurpleDot />
                   <p className="h-issue-highlight w-max text-lg font-semibold text-neutral-600">
@@ -28,6 +29,14 @@ export function IssuesSideScroller(props: {
             </a>
           </Link>
         );
+
+        function getTitle() {
+          if (props.getAnchorTitle) {
+            return props.getAnchorTitle(i);
+          }
+
+          return i.isAffiliation ? `Views on ${i.name}` : i.name;
+        }
       })}
     </SideScroller>
   );
