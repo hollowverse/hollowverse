@@ -38,15 +38,16 @@ export const getStaticProps = async ({
     };
   }
 
-  const issues = await getCelebIssues({ facts: results.celeb.facts });
-
   const tagTimeline = getTagTimeline(results.celeb.facts);
 
   const { celeb } = results;
-  const [oldContent, topContributors] = await Promise.all([
-    celeb.oldContent ? await getParsedOldContent(celeb.oldContent) : null,
+
+  const [oldContent, topContributors, issues] = await Promise.all([
+    celeb.oldContent ? getParsedOldContent(celeb.oldContent) : null,
     getTopContributors(params.slug),
+    getCelebIssues({ facts: results.celeb.facts }),
   ]);
+
   const facts = celeb.facts.slice(0, 5).map((f) => transformFact(f));
   const hasFacts = !isEmpty(facts);
 

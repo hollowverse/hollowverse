@@ -66,24 +66,27 @@ export async function getStaticProps({
     };
   }
 
-  const celeb = {
-    ...celebWithFacts.celeb,
-    facts,
-    issues: await getCelebIssues({
-      facts: celebWithFacts.celeb.facts,
-      excludedId: params.issueId,
-    }),
-  };
-
-  const tagTimeline = getTagTimeline(celeb.facts);
+  const tagTimeline = getTagTimeline(facts);
 
   const tag = tagTimeline[0][1][0];
 
-  const relatedCelebs = await getRelatedCelebs(
-    tag,
-    params.slug,
-    uniq([tag.tag.issue.name, ...celebWithFacts.orderOfIssues]),
-  );
+  const [issues, relatedCelebs] = await Promise.all([
+    getCelebIssues({
+      facts: celebWithFacts.celeb.facts,
+      excludedId: params.issueId,
+    }),
+    getRelatedCelebs(
+      tag,
+      params.slug,
+      uniq([tag.tag.issue.name, ...celebWithFacts.orderOfIssues]),
+    ),
+  ]);
+
+  const celeb = {
+    ...celebWithFacts.celeb,
+    facts: facts.map((f) => transformFact(f)),
+    issues,
+  };
 
   return {
     props: {
@@ -92,10 +95,7 @@ export async function getStaticProps({
       relatedCelebs,
       tagTimeline,
       issue,
-      celeb: {
-        ...celeb,
-        facts: celeb.facts.map((f) => transformFact(f)),
-      },
+      celeb,
     },
     revalidate: oneDay,
   };

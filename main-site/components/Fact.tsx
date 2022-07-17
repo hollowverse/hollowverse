@@ -48,7 +48,7 @@ export const Fact: React.FC<{
   const showIssueName = props.showIssueName ?? false;
   const [showComments, setShowComments] = useState(false);
   const [ogImageError, setOgImageError] = useState(false);
-  const displayOpenGraphImage = props.fact.openGraphImage && !ogImageError;
+  const showOgImage = props.fact.openGraphImage && !ogImageError;
 
   return (
     <section id="fact" className="relative z-0 flex flex-col gap-5">
@@ -66,11 +66,10 @@ export const Fact: React.FC<{
       <div className="FACT-MAIN-CONTAINER pointer-events-none flex flex-col gap-5">
         <div
           className={c('FACT-HEAD', {
-            'relative -mx-5 -mt-5 h-[350px] bg-neutral-700':
-              displayOpenGraphImage,
+            'relative -mx-5 -mt-5 h-[350px] bg-neutral-700': showOgImage,
           })}
         >
-          {displayOpenGraphImage && (
+          {showOgImage && (
             <UnoptimizedImage
               onError={() => setOgImageError(true)}
               src={props.fact.openGraphImage!}
@@ -80,7 +79,7 @@ export const Fact: React.FC<{
           <div
             className={c(
               'FACT-TAGS flex flex-wrap items-center gap-2.5',
-              displayOpenGraphImage
+              showOgImage
                 ? c(
                     'absolute bottom-0 left-0 right-0',
                     'bg-gradient-to-t from-black via-transparent to-transparent',
@@ -107,7 +106,7 @@ export const Fact: React.FC<{
             })}{' '}
             <p
               className={c('text-sm default:text-neutral-700', {
-                'text-white': props.fact.openGraphImage,
+                'text-white': showOgImage,
               })}
             >
               {props.fact.date}
@@ -118,7 +117,7 @@ export const Fact: React.FC<{
                 target="_blank"
                 className={c(
                   'pointer-events-auto flex select-none items-center gap-1 text-xs hover:underline default:text-neutral-500',
-                  { 'text-white': props.fact.openGraphImage },
+                  { 'text-white': showOgImage },
                 )}
               >
                 {getSourceHost(props.fact.source)}
@@ -189,7 +188,7 @@ export const Fact: React.FC<{
           title={celebNameToIssue(props.celebName, issue)}
           className={c(
             'pointer-events-auto border-b px-2 font-semibold default:border-purple-500 default:text-neutral-500',
-            { 'border-purple-200 text-white': displayOpenGraphImage },
+            { 'border-purple-200 text-white': showOgImage },
           )}
         >
           {issue.name}
