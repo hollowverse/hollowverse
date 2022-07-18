@@ -1,8 +1,6 @@
 import React from 'react';
 import NextErrorComponent from 'next/error';
 
-import * as Sentry from '@sentry/nextjs';
-
 export class MyError extends NextErrorComponent<{
   hasGetInitialPropsRun: any;
   err: any;
@@ -12,7 +10,6 @@ export class MyError extends NextErrorComponent<{
       // getInitialProps is not called in case of
       // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
       // err via _app.js so it can be captured
-      Sentry.captureException(this.props.err);
       // Flushing is not required in this case as it only happens on the client
     }
 
@@ -29,7 +26,6 @@ MyError.getInitialProps = async (context) => {
   // getInitialProps has run
   (errorInitialProps as any).hasGetInitialPropsRun = true;
 
-  // Returning early because we don't want to log 404 errors to Sentry.
   if (res?.statusCode === 404) {
     return errorInitialProps;
   }
@@ -48,11 +44,8 @@ MyError.getInitialProps = async (context) => {
   //    Boundaries: https://reactjs.org/docs/error-boundaries.html
 
   if (err) {
-    Sentry.captureException(err);
-
     // Flushing before returning is necessary if deploying to Vercel, see
     // https://vercel.com/docs/platform/limits#streaming-responses
-    await Sentry.flush(2000);
 
     return errorInitialProps;
   }
