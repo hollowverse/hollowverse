@@ -5,18 +5,9 @@ import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
-import LogRocket from 'logrocket';
-import { useEffect } from 'react';
-import setupLogRocketReact from 'logrocket-react';
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();
-
-  useEffect(() => {
-    LogRocket.init('hollowverse/hollowverse');
-    setupLogRocketReact(LogRocket);
-    LogRocket.identify('User');
-  }, []);
 
   return (
     <>
