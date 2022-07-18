@@ -5,7 +5,7 @@ export default function TestClientErrors() {
         <button
           type="button"
           onClick={() => {
-            throw new Error('Sentry Frontend Error');
+            throw new Error('Frontend Error');
           }}
         >
           Throw error in onClick

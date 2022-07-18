@@ -16,8 +16,3 @@ main-site/test-results/**
 cms/public
 cms/local-backups
 cms/shared
-
-# Sentry
-.sentryclirc
-
-
