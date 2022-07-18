@@ -49,5 +49,4 @@ const nextJsConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(nextJsConfig),
-
+module.exports = withBundleAnalyzer(nextJsConfig);
