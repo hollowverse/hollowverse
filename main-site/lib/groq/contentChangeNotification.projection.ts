@@ -2,7 +2,7 @@ import groq from 'groq';
 import { FactTypes } from '~/lib/groq/fact.projection';
 import { Issue } from '~/lib/groq/issue.projection';
 import { Picture } from '~/lib/groq/picture.projection';
-import { Tag, tagProjection } from '~/lib/groq/tag.projection';
+import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
 
 export type ContentChange = {
   _id: string;
@@ -14,7 +14,7 @@ export type ContentChange = {
   forumLink: string;
   source: string;
   type: FactTypes;
-  tags: Tag[];
+  tags: CelebTag[];
   issues: Issue[];
   name: string;
   slug: string;
@@ -31,7 +31,7 @@ date,
 forumLink,
 source,
 type,
-${tagProjection},
+${celebTagProjection},
 'issues': topics[]->{name},
 'name': celeb->name,
 'slug': celeb->slug.current,

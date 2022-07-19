@@ -1,6 +1,6 @@
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 
-export function tagIsVerb(tag: Tag) {
+export function tagIsVerb(tag: CelebTag) {
   if (tag.tag.isVerb !== null) {
     return tag.tag.isVerb;
   }

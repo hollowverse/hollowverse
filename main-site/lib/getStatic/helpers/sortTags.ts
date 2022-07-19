@@ -1,9 +1,9 @@
 import { differenceWith, filter, uniqBy } from 'lodash-es';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 import { sortByArray } from '~/lib/sortByArray';
 
-export function sortTags(tags: Tag[], orderOfIssues: OrderOfIssues) {
+export function sortTags(tags: CelebTag[], orderOfIssues: OrderOfIssues) {
   const noDupes = uniqBy(
     tags,
     (t) => `${t.tag.name}-is-low-confidence-${t.isLowConfidence}`,

@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact } from '~/lib/groq/fact.projection';
-import { tagProjection } from '~/lib/groq/tag.projection';
+import { celebTagProjection } from '~/lib/groq/tag.projection';
 
 export type RelatedFact = Pick<Fact, 'date' | 'tags'>;
 
@@ -36,7 +36,7 @@ export const relatedCelebsGroq = groq`{
       _type == 'fact' &&
       celeb._ref == ^._id
     ]{
-      ${tagProjection}
+      ${celebTagProjection}
     }
   }[0...50] | order(tagFact.date desc),
 
@@ -55,7 +55,7 @@ export const relatedCelebsGroq = groq`{
       celeb._ref == ^._id &&
       $issueId in topics[]._ref
     ] | order(date desc) {
-      ${tagProjection}
+      ${celebTagProjection}
     }
   }[defined(facts[0])][0...50] | order(facts[0].date desc)
 }`;

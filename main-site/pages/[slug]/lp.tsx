@@ -1,13 +1,9 @@
+import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { LaunchPadPageProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
 
-export type ResearcherLaunchPadProps = {
-  celebName: string;
-  pathname: string;
-  issues: string[];
-};
-
-export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
+export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
   return (
     <Page
       id="launch-pad-page"
@@ -16,19 +12,19 @@ export default function ResearcherLaunchPad(props: ResearcherLaunchPadProps) {
       allowSearchEngines={false}
       pathname={props.pathname}
     >
-      <div className="h-container mt-5 flex flex-col gap-5">
+      <div className="h-container my-5 flex flex-col gap-5">
         <TitledCard
           titledContentProps={{
             title: `Suggested Google searches to research ${props.celebName}'s views`,
           }}
         >
-          <div className="flex flex-wrap gap-5 p-5">
-            {props.issues.map((t) => {
+          <div className="flex flex-col gap-3 p-5">
+            {props.tags.map((t) => {
               return (
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  className="h-link rounded-full border p-1 px-3"
+                  className="h-link hover:bg-gray-200"
                   key={t}
                   href={`https://www.google.com/search?q=${encodeURIComponent(
                     `${props.celebName} ${t}`,

@@ -1,10 +1,10 @@
 import { countBy, orderBy, uniqBy } from 'lodash-es';
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 
 export function getIssuePageTags(
-  tags: Tag[],
+  tags: CelebTag[],
   issueId: string,
-): (Tag & { count: number })[] {
+): (CelebTag & { count: number })[] {
   const filtered = tags.filter((t) => t.tag.issue._id === issueId);
   const counts = countBy(filtered, 'tag._id');
   const uniques = uniqBy(filtered, 'tag._id');
