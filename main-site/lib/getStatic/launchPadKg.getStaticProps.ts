@@ -4,8 +4,7 @@ import {
   getKgSearchId,
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
-import { getLaunchPadIssues } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
-import { ResearcherLaunchPadProps } from '~/pages/[slug]/lp';
+import { getLaunchPadTags } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
 import { log } from '~/shared/lib/log';
 
 export const getStaticProps = async ({
@@ -32,13 +31,13 @@ export const getStaticProps = async ({
 
   const celeb = kgCelebs[0].result;
 
-  const issues = await getLaunchPadIssues();
+  const tags = await getLaunchPadTags();
 
   return {
     props: {
       celebName: celeb.name,
       pathname: `~kg/${encodeURIComponent(params.kg)}/lp`,
-      issues,
+      issues: tags,
     },
     revalidate: oneDay,
   };
