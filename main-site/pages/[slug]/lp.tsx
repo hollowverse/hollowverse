@@ -34,7 +34,7 @@ export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
                           className="h-link hover:bg-gray-200"
                           key={`${t.issue}-${t.name}`}
                           href={`https://www.google.com/search?q=${encodeURIComponent(
-                            `${props.celebName} ${t}`,
+                            `${props.celebName} ${t.name}`,
                           )}`}
                         >
                           {t.name}
