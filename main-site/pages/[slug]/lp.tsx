@@ -12,20 +12,19 @@ export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
       allowSearchEngines={false}
       pathname={props.pathname}
     >
-      <div className="h-container mt-5 flex flex-col gap-5">
+      <div className="h-container my-5 flex flex-col gap-5">
         <TitledCard
           titledContentProps={{
             title: `Suggested Google searches to research ${props.celebName}'s views`,
           }}
         >
-          <div className="flex flex-col gap-1 py-4">
-            {/* <JsonView src={props} /> */}
+          <div className="flex flex-col gap-3 p-5">
             {props.tags.map((t) => {
               return (
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  className="h-link p-1 px-3"
+                  className="h-link hover:bg-gray-200"
                   key={t}
                   href={`https://www.google.com/search?q=${encodeURIComponent(
                     `${props.celebName} ${t}`,
