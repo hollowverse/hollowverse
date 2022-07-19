@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Issue, issueProjection } from '~/lib/groq/issue.projection';
-import { Tag, tagProjection } from '~/lib/groq/tag.projection';
+import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
 
 type BaseFact = {
   _id: string;
@@ -9,7 +9,7 @@ type BaseFact = {
   source: string;
   forumLink: string;
   issues: Issue[];
-  tags: Tag[];
+  tags: CelebTag[];
   openGraphImage?: string;
 };
 
@@ -40,6 +40,6 @@ forumLink,
 source,
 type,
 openGraphImage,
-${tagProjection},
+${celebTagProjection},
 'issues': topics[]->{${issueProjection}}
 `;

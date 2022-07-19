@@ -22,7 +22,7 @@
     "removeComments": true,
     "stripInternal": true,
     "resolveJsonModule": true,
-    "lib": ["es5", "es6", "dom", "dom.iterable"],
+    "lib": ["es5", "es6", "dom", "dom.iterable", "ES2021"],
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true,

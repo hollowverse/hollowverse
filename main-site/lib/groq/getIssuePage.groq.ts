@@ -2,12 +2,12 @@ import groq from 'groq';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { Issue, issueProjection } from '~/lib/groq/issue.projection';
-import { Tag, tagProjection } from '~/lib/groq/tag.projection';
+import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
 
 export type IssuePageGroq = {
   issue: Issue | null;
   facts: ({ celeb: Celeb } & Fact)[] | null;
-  tags: Tag[] | null;
+  tags: CelebTag[] | null;
   factCount: number | null;
 };
 
@@ -26,7 +26,7 @@ export function getIssuePageGroq(withTagFilter: boolean) {
     }[$start...$end] | order(date desc),
 
     'tags': *[${baseFilter}]{
-      'tags': ${tagProjection}
+      'tags': ${celebTagProjection}
     }.tags[0...999],
 
     'factCount': count(*[${baseFilter}${tagFilter}])

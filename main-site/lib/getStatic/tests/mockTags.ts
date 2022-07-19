@@ -1,6 +1,6 @@
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 
-export const mockTags: Tag[] = [
+export const mockTags: CelebTag[] = [
   {
     isBackground: null,
     isLowConfidence: null,

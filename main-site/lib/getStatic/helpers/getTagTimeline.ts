@@ -2,9 +2,9 @@ import { getYear } from 'date-fns';
 import { invertBy, last, mapValues, toPairs } from 'lodash-es';
 import { parseDate } from '~/lib/date';
 import { Fact } from '~/lib/groq/fact.projection';
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 
-export type TagPair = [string, Tag[]];
+export type TagPair = [string, CelebTag[]];
 export type TagTimeline = TagPair[];
 
 export function getTagTimeline(facts: Fact[]) {
@@ -78,7 +78,7 @@ export function getTagTimeline(facts: Fact[]) {
       newKey = years[0];
     }
 
-    return [newKey, p[1]] as [string, Tag[]];
+    return [newKey, p[1]] as [string, CelebTag[]];
   });
 
   return cleanedUpPairs;

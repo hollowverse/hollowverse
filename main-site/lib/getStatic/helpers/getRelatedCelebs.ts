@@ -7,14 +7,14 @@ import {
   RelatedCelebsGroq,
   relatedCelebsGroq,
 } from '~/lib/groq/relatedCelebs.groq';
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 import { Nullish } from '~/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type RelatedCelebs = UnwrapPromise<ReturnType<typeof getRelatedCelebs>>;
 
 export async function getRelatedCelebs(
-  tag: Tag,
+  tag: CelebTag,
   mainSlug: string,
   orderOfIssues: OrderOfIssues,
 ) {

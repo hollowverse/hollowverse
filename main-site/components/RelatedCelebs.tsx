@@ -1,10 +1,10 @@
 import { isEmpty } from 'lodash-es';
 import { CHRList } from '~/components/ui/CHRList';
 import { RelatedCelebs as TRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
-import { Tag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/groq/tag.projection';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
 
-export function renderTags(tags: Tag[]) {
+export function renderTags(tags: CelebTag[]) {
   return (
     <p className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-xs text-gray-500 xs:text-base">
       {tags.map((t) => t.tag.name.trim()).join(', ')}
