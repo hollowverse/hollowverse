@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { countBy, orderBy, toPairs, uniq } from 'lodash-es';
+import { countBy, groupBy, orderBy, toPairs, uniq, uniqBy } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
 import { PageProps } from '~/lib/types';
@@ -27,14 +27,13 @@ export async function getLaunchPadTags() {
       .split(' ')
       .filter((w) => !topB.includes(w))
       .join(' ');
-    return b;
+    return { name: b, issue: t.issue.name };
   });
 
-  const a2 = uniq(a1).filter((w) => w);
+  const a2 = uniqBy(a1, (t) => t.name).filter((w) => w.name);
+  const b2 = groupBy(a2, (t) => t.issue);
 
-  a2.sort();
-
-  return a2;
+  return b2;
 }
 
 export type LaunchPadPageProps = PageProps<typeof getStaticProps>;

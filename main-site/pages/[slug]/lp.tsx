@@ -1,4 +1,3 @@
-import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { LaunchPadPageProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
@@ -18,20 +17,32 @@ export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
             title: `Suggested Google searches to research ${props.celebName}'s views`,
           }}
         >
-          <div className="flex flex-col gap-3 p-5">
-            {props.tags.map((t) => {
+          <div className="flex flex-col gap-7 p-5">
+            {Object.keys(props.tags).map((k) => {
+              const tags = props.tags[k];
+
               return (
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  className="h-link hover:bg-gray-200"
-                  key={t}
-                  href={`https://www.google.com/search?q=${encodeURIComponent(
-                    `${props.celebName} ${t}`,
-                  )}`}
-                >
-                  {t}
-                </a>
+                <div key={k}>
+                  <h1 className="text-lg font-bold">{k}</h1>
+
+                  <div className="flex flex-col gap-3 py-2">
+                    {tags.map((t) => {
+                      return (
+                        <a
+                          rel="noreferrer"
+                          target="_blank"
+                          className="h-link hover:bg-gray-200"
+                          key={`${t.issue}-${t.name}`}
+                          href={`https://www.google.com/search?q=${encodeURIComponent(
+                            `${props.celebName} ${t}`,
+                          )}`}
+                        >
+                          {t.name}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
               );
             })}
           </div>
