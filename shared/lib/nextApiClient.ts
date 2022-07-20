@@ -1,7 +1,11 @@
 import { determineAppUrl } from './determineAppUrl';
 import { Context, log } from './log';
+import { Json } from './types';
 
-export async function nextApiClient(pathname: string, init?: RequestInit) {
+export async function nextApiClient<T extends Json | null>(
+  pathname: string,
+  init?: RequestInit,
+) {
   const url = `${determineAppUrl()}/api/${pathname}`;
 
   log(
@@ -30,5 +34,5 @@ export async function nextApiClient(pathname: string, init?: RequestInit) {
     return null;
   }
 
-  return (await res.json()) as { [name: string]: any };
+  return (await res.json()) as T;
 }

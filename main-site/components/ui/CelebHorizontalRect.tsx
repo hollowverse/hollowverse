@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 import { CelebImage, CelebImageProps } from '~/components/CelebImage';
 import { c } from '~/lib/c';
-import { ReactElementProps } from '~/lib/types';
+import { ReactElementProps } from '~/shared/lib/types';
 
 export function CHRImage(
   props: ReactElementProps<'div'> & { celebImageProps: CelebImageProps },

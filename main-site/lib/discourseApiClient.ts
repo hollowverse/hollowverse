@@ -1,5 +1,5 @@
 import { defaults } from 'lodash-es';
-import { Json } from '~/lib/types';
+import { Json } from '~/shared/lib/types';
 import { Context, log, LoggableError } from '~/shared/lib/log';
 import qs from 'qs';
 

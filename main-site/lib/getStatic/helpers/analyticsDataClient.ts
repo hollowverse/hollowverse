@@ -1,8 +1,8 @@
 // Imports the Google Analytics Data API client library.
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import { GA_PROPERTY_ID } from '~/lib/googleAnalytics';
-import { Json } from '~/lib/types';
 import { log } from '~/shared/lib/log';
+import { Json } from '~/shared/lib/types';
 
 type ReportParams = Parameters<typeof analyticsDataClient.runReport>[0];
 

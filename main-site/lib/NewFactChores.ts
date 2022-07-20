@@ -6,7 +6,7 @@ import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
 import { badgeDefinitions } from '~/lib/badgeDefinitions';
 import { discourseApiClient as _discourseApiClient } from '~/lib/discourseApiClient';
 import { ContentChange } from '~/lib/groq/contentChangeNotification.projection';
-import { Json } from '~/lib/types';
+import { Json } from '~/shared/lib/types';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { Context, createContextLogger, LoggableError } from '~/shared/lib/log';

@@ -15,7 +15,7 @@ import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButt
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { RelatedCelebs } from '~/components/RelatedCelebs';
+import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -80,7 +80,7 @@ export default function TagPage(props: TagPageProps) {
 
           <InFeedAd />
 
-          <RelatedCelebs relatedCelebs={props.relatedCelebs} />
+          <RelatedCelebsWidget />
         </div>
       </div>
     </Page>

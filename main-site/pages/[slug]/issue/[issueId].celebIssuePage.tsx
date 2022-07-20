@@ -4,7 +4,7 @@ import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
 import { Page } from '~/components/Page';
-import { RelatedCelebs } from '~/components/RelatedCelebs';
+import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import {
   TopSection,
@@ -100,7 +100,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
 
         <InFeedAd />
 
-        <RelatedCelebs relatedCelebs={props.relatedCelebs} />
+        <RelatedCelebsWidget />
       </div>
     </Page>
   );

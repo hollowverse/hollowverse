@@ -1,6 +1,6 @@
 import { CgSpinner } from 'react-icons/cg';
 import { c } from '~/lib/c';
-import { ReactElementProps } from '~/lib/types';
+import { ReactElementProps } from '~/shared/lib/types';
 
 export function Spinner(props: ReactElementProps<'svg'>) {
   return (

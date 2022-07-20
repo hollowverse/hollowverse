@@ -9,7 +9,7 @@ import {
 } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
-import { PageProps } from '~/lib/types';
+import { PageProps } from '~/shared/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 
