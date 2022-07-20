@@ -7,7 +7,7 @@ import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Page } from '~/components/Page';
-import { RelatedCelebs } from '~/components/RelatedCelebs';
+import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { Card } from '~/components/ui/Card';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
@@ -116,7 +116,10 @@ export default function FactPage(props: FactPageProps) {
 
         <InFeedAd />
 
-        <RelatedCelebs relatedCelebs={props.relatedCelebs} />
+        <RelatedCelebsWidget
+          slug={props.celeb.slug}
+          tagId={props.tag.tag._id}
+        />
       </div>
     </Page>
   );

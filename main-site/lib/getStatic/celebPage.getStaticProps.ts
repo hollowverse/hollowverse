@@ -10,7 +10,7 @@ import {
   getCelebWithFactsGroq,
 } from '~/lib/groq/getCelebWithFacts.groq';
 import { Issue } from '~/lib/groq/issue.projection';
-import { PageProps } from '~/lib/types';
+import { PageProps } from '~/shared/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 

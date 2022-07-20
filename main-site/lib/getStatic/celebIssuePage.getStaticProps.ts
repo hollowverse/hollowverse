@@ -3,7 +3,6 @@ import { flatten, isEmpty, uniq } from 'lodash-es';
 import { customTitleDefinitions } from '~/lib/customTitleDefinitions';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
-import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import {
@@ -13,7 +12,7 @@ import {
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
-import { PageProps } from '~/lib/types';
+import { PageProps } from '~/shared/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebIssuePageProps = PageProps<typeof getStaticProps>;
@@ -72,17 +71,10 @@ export async function getStaticProps({
 
   const tag = tagTimeline[0][1][0];
 
-  const [issues, relatedCelebs] = await Promise.all([
-    getCelebIssues({
-      facts: celebWithFacts.celeb.facts,
-      excludedId: params.issueId,
-    }),
-    getRelatedCelebs(
-      tag,
-      params.slug,
-      uniq([tag.tag.issue.name, ...celebWithFacts.orderOfIssues]),
-    ),
-  ]);
+  const issues = await getCelebIssues({
+    facts: celebWithFacts.celeb.facts,
+    excludedId: params.issueId,
+  });
 
   const celeb = {
     ...celebWithFacts.celeb,
@@ -100,7 +92,6 @@ export async function getStaticProps({
         `What are ${celebNameToIssue(celeb.name, issue)}?`,
       pageDescription: customTitles?.description || getPageDescription(),
       tag,
-      relatedCelebs,
       tagTimeline,
       issue,
       celeb,
@@ -126,7 +117,7 @@ export async function getStaticProps({
         }
 
         const content = `${t.tag.name}${postfix}`;
-        if (tagIsVerb(t)) {
+        if (tagIsVerb(t.tag)) {
           lastSeenIsVerb = true;
 
           return content;

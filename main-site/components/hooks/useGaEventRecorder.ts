@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Json } from '~/lib/types';
+import { Json } from '~/shared/lib/types';
 
 type EventName = 'issue_view';
 

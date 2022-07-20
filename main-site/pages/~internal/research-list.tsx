@@ -10,7 +10,7 @@ import {
 } from '~/lib/getStatic/kgPage.getStaticProps';
 import { Link } from '~/lib/Link';
 import { sortByArray } from '~/lib/sortByArray';
-import { PageProps } from '~/lib/types';
+import { PageProps } from '~/shared/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 type ResearchListProps = PageProps<typeof getStaticProps>;

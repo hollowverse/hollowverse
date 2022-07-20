@@ -7,9 +7,9 @@ import { celebProjection } from '~/lib/groq/celeb.projection';
 import { factProjection, FactWithCeleb } from '~/lib/groq/fact.projection';
 import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { sortByArray } from '~/lib/sortByArray';
-import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
+import { PageProps } from '~/shared/lib/types';
 
 export type HomepageProps = PageProps<typeof getStaticProps>;
 

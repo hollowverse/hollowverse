@@ -1,11 +1,11 @@
-import { CelebTag } from '~/lib/groq/tag.projection';
+import { CelebTag, Tag } from '~/lib/groq/tag.projection';
 
-export function tagIsVerb(tag: CelebTag) {
-  if (tag.tag.isVerb !== null) {
-    return tag.tag.isVerb;
+export function tagIsVerb(tag: Tag) {
+  if (tag.isVerb !== null) {
+    return tag.isVerb;
   }
 
-  const tagName = tag.tag.name;
+  const tagName = tag.name;
   const tokens = tagName.split(' ');
 
   if (tokens.length === 1) {

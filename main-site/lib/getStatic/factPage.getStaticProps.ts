@@ -1,20 +1,16 @@
 import groq from 'groq';
-import { uniq } from 'lodash-es';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
-import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
+import { PageProps } from '~/shared/lib/types';
 
-export type FactPageProps = NonNullable<
-  UnwrapPromise<ReturnType<typeof getStaticProps>>['props']
->;
+export type FactPageProps = PageProps<typeof getStaticProps>;
 
 export async function getStaticProps({
   params,
@@ -63,12 +59,7 @@ export async function getStaticProps({
 
   const tag = fact.tags[0];
 
-  const [relatedCelebs, factForumData, issues] = await Promise.all([
-    getRelatedCelebs(
-      tag,
-      params.slug,
-      uniq([tag.tag.issue.name, ...orderOfIssues]),
-    ),
+  const [factForumData, issues] = await Promise.all([
     getFactForumData(fact.forumLink),
     getCelebIssues({ slug: params.slug }),
   ]);
@@ -76,7 +67,6 @@ export async function getStaticProps({
   return {
     props: {
       ...factForumData,
-      relatedCelebs,
       issues,
       celeb,
       tag,

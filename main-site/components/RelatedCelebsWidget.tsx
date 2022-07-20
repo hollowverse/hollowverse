@@ -1,8 +1,12 @@
 import { isEmpty } from 'lodash-es';
+import { useHvApi } from '~/components/hooks/useHvApi';
 import { CHRList } from '~/components/ui/CHRList';
-import { RelatedCelebs as TRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import { CelebTag } from '~/lib/groq/tag.projection';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
+import {
+  RelatedCelebs,
+  RelatedCelebsQueryParams,
+} from '~/pages/api/related-celebs';
 
 export function renderTags(tags: CelebTag[]) {
   return (
@@ -12,43 +16,49 @@ export function renderTags(tags: CelebTag[]) {
   );
 }
 
-export function RelatedCelebs(props: { relatedCelebs: TRelatedCelebs }) {
+export function RelatedCelebsWidget(props: RelatedCelebsQueryParams) {
+  const { data: relatedCelebs } = useHvApi<RelatedCelebs>(
+    'related-celebs?' +
+      new URLSearchParams({ tagId: props.tagId, slug: props.slug }),
+  );
+
+  if (!relatedCelebs) {
+    return null;
+  }
+
   return (
     <>
-      {!isEmpty(props.relatedCelebs.byTag) ? (
+      {!isEmpty(relatedCelebs.byTag) ? (
         <div id="related-celebs-tag">
           <CHRList
             title={
               <>
-                Who Else {tagIsVerb(props.relatedCelebs.tag) ? '' : 'is'}{' '}
-                {props.relatedCelebs.tag.tag.name}?
+                Who Else {tagIsVerb(relatedCelebs.tag) ? '' : 'is'}{' '}
+                {relatedCelebs.tag.name}?
               </>
             }
-            celebs={props.relatedCelebs.byTag!}
+            celebs={relatedCelebs.byTag!}
             renderBody={(c) => renderTags(c.tags)}
             renderLink={(c) =>
-              `/${c.slug}/issue/${props.relatedCelebs.tag.tag.issue._id}`
+              `/${c.slug}/issue/${relatedCelebs.tag.issue._id}`
             }
           />
         </div>
       ) : null}
 
-      {!isEmpty(props.relatedCelebs.byIssue) ? (
+      {!isEmpty(relatedCelebs.byIssue) ? (
         <div id="related-celebs-issue">
           <CHRList
             title={
               <>
-                Other{' '}
-                {props.relatedCelebs.tag.tag.issue.isAffiliation
-                  ? ''
-                  : 'Views on'}{' '}
-                {props.relatedCelebs.tag.tag.issue.name}
+                Other {relatedCelebs.tag.issue.isAffiliation ? '' : 'Views on'}{' '}
+                {relatedCelebs.tag.issue.name}
               </>
             }
-            celebs={props.relatedCelebs.byIssue!}
+            celebs={relatedCelebs.byIssue!}
             renderBody={(c) => renderTags(c.tags)}
             renderLink={(c) =>
-              `/${c.slug}/issue/${props.relatedCelebs.tag.tag.issue._id}`
+              `/${c.slug}/issue/${relatedCelebs.tag.issue._id}`
             }
           />
         </div>

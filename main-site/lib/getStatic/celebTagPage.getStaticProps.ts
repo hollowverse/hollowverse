@@ -1,7 +1,6 @@
 import { uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
-import { getRelatedCelebs } from '~/lib/getStatic/helpers/getRelatedCelebs';
 import {
   getTagTimeline,
   TagTimeline,
@@ -11,9 +10,9 @@ import {
   CelebWithFacts,
   getCelebWithFactsGroq,
 } from '~/lib/groq/getCelebWithFacts.groq';
-import { PageProps } from '~/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
+import { PageProps } from '~/shared/lib/types';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
   return tagTimeline.some((tpair) =>
@@ -59,14 +58,7 @@ export const getStaticProps = async ({
 
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
-  const [relatedCelebs, issues] = await Promise.all([
-    getRelatedCelebs(
-      tag,
-      params.slug,
-      uniq([tag.tag.issue.name, ...results.orderOfIssues]),
-    ),
-    getCelebIssues({ slug: params.slug }),
-  ]);
+  const issues = await getCelebIssues({ slug: params.slug });
 
   return {
     props: {
@@ -75,7 +67,6 @@ export const getStaticProps = async ({
       tagTimeline,
       tag,
       tagFacts,
-      relatedCelebs,
     },
     revalidate: oneDay,
   };
