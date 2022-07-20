@@ -1,7 +1,6 @@
 import groq from 'groq';
 import { shuffle } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { UnwrapPromise } from 'next/dist/lib/coalesced-function';
 import { cors } from '~/lib/cors';
 import { groupCelebTags } from '~/lib/getStatic/helpers/groupCelebTags';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
@@ -16,7 +15,7 @@ import { setApiCache } from '~/lib/setApiCache';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { Nullish } from '~/shared/lib/types';
 
-export type RelatedCelebs = UnwrapPromise<ReturnType<typeof relatedCelebs>>;
+export type RelatedCelebs = Awaited<ReturnType<typeof relatedCelebs>>;
 export type RelatedCelebsQueryParams = { tagId: string; slug: string };
 
 export async function relatedCelebs(tagId: string, slug: string) {
