@@ -116,7 +116,10 @@ export default function FactPage(props: FactPageProps) {
 
         <InFeedAd />
 
-        <RelatedCelebsWidget />
+        <RelatedCelebsWidget
+          slug={props.celeb.slug}
+          tagId={props.tag.tag._id}
+        />
       </div>
     </Page>
   );

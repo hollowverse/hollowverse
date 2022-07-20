@@ -80,7 +80,10 @@ export default function TagPage(props: TagPageProps) {
 
           <InFeedAd />
 
-          <RelatedCelebsWidget />
+          <RelatedCelebsWidget
+            slug={props.celeb.slug}
+            tagId={props.tag.tag._id}
+          />
         </div>
       </div>
     </Page>

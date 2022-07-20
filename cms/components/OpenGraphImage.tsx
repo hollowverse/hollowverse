@@ -3,14 +3,15 @@ import PatchEvent, { set, unset } from '@sanity/form-builder/PatchEvent';
 import { Box, Button, Flex, Text, TextInput } from '@sanity/ui';
 import React, { useState } from 'react';
 import { isUrl } from '../shared/lib/isUrl';
-import { nextApiClient } from '../shared/lib/nextApiClient';
 
 async function getOgImageUrl(source: string) {
-  const response = await nextApiClient(
-    `scrape-open-graph?url=${encodeURI(source)}`,
+  const response = await fetch(
+    `https://hollowverse.com/api/scrape-open-graph?url=${encodeURI(source)}`,
   );
 
-  return response?.result?.ogImage?.url;
+  const json = await response.json();
+
+  return json?.result?.ogImage?.url;
 }
 
 export const OpenGraphImage = React.forwardRef(function OpenGraphImage(

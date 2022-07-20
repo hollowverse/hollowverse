@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import { useEffect, useState } from 'react';
+import { useHvApi } from '~/components/hooks/useHvApi';
 import { CHRList } from '~/components/ui/CHRList';
 import { CelebTag } from '~/lib/groq/tag.projection';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
@@ -7,7 +7,6 @@ import {
   RelatedCelebs,
   RelatedCelebsQueryParams,
 } from '~/pages/api/related-celebs';
-import { nextApiClient } from '~/shared/lib/nextApiClient';
 
 export function renderTags(tags: CelebTag[]) {
   return (
@@ -18,22 +17,10 @@ export function renderTags(tags: CelebTag[]) {
 }
 
 export function RelatedCelebsWidget(props: RelatedCelebsQueryParams) {
-  const [relatedCelebs, setRelatedCelebs] = useState<RelatedCelebs>(null);
-
-  useEffect(() => {
-    async function req() {
-      const relatedCelebsRes = await nextApiClient<RelatedCelebs>(
-        'related-celebs?' +
-          new URLSearchParams({ tagId: props.tagId, slug: props.slug }),
-      );
-
-      if (relatedCelebsRes) {
-        setRelatedCelebs(relatedCelebsRes);
-      }
-    }
-
-    req();
-  });
+  const { data: relatedCelebs } = useHvApi<RelatedCelebs>(
+    'related-celebs?' +
+      new URLSearchParams({ tagId: props.tagId, slug: props.slug }),
+  );
 
   if (!relatedCelebs) {
     return null;

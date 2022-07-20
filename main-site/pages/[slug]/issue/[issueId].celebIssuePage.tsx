@@ -100,7 +100,10 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
 
         <InFeedAd />
 
-        <RelatedCelebsWidget />
+        <RelatedCelebsWidget
+          slug={props.celeb.slug}
+          tagId={props.tag.tag._id}
+        />
       </div>
     </Page>
   );
