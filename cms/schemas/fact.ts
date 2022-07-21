@@ -129,17 +129,16 @@ export const fact = {
     },
 
     {
-      title: 'Issues',
       name: 'topics',
       type: 'array',
-      description: 'What is the ideological issue that this FACT is about?',
       of: [
         {
           type: 'reference',
           to: [{ type: 'topic' }],
         },
       ],
-      validation: (Rule) => Rule.required(),
+      readOnly: true,
+      hidden: true,
     },
 
     {
