@@ -14,21 +14,16 @@ export type CelebWithFacts<T> = {
   orderOfIssues: OrderOfIssues;
 };
 
-export function getCelebWithFactsGroq(args?: {
-  issueId?: string;
-  includeOldContent?: boolean;
-}) {
-  const issueId = args?.issueId ?? null;
+export function getCelebWithFactsGroq(args?: { includeOldContent?: boolean }) {
   const includeOldContent = args?.includeOldContent ?? false;
 
   const baseFilter = groq`_type == 'fact' && celeb._ref == ^._id`;
-  const issueFilter = issueId ? groq` && $issueId in topics[]._ref` : '';
 
   return groq`{
       'celeb': *[_type == 'celeb' && slug.current == $slug][0]{
         ${celebProjection},
         ${includeOldContent ? `oldContent,` : ''}
-        'facts': *[${baseFilter}${issueFilter}]  | order(date desc) {
+        'facts': *[${baseFilter}]  | order(date desc) {
           ${factProjection}
         }
       },

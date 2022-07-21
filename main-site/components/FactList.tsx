@@ -4,6 +4,7 @@ import { CelebImage } from '~/components/CelebImage';
 import { Fact } from '~/components/Fact';
 import { InFeedAd } from '~/components/InFeedAd';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { getFactIssue } from '~/lib/getFactIssue';
 import { FactWithCeleb } from '~/lib/groq/fact.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
@@ -11,11 +12,13 @@ export function FactList(props: { list: FactWithCeleb[] }) {
   return (
     <>
       {props.list.map((f, i: number) => {
+        const issue = getFactIssue(f);
+
         const cardTitle = (
-          <Link passHref href={`/${f.celeb.slug}/issue/${f.issues[0]._id}`}>
+          <Link passHref href={`/${f.celeb.slug}/issue/${issue._id}`}>
             <a
               id="fact-list-item-title"
-              title={celebNameToIssue(f.celeb.name, f.issues[0])}
+              title={celebNameToIssue(f.celeb.name, issue)}
             >
               <div className="flex flex-row items-center gap-3">
                 <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
@@ -29,9 +32,7 @@ export function FactList(props: { list: FactWithCeleb[] }) {
                 <div className="flex flex-col gap-1">
                   <p>{f.celeb.name}</p>
                   <p className="text-base text-neutral-500">
-                    <span className="h-issue-highlight">
-                      {f.issues[0].name}
-                    </span>
+                    <span className="h-issue-highlight">{issue.name}</span>
                   </p>
                 </div>
               </div>

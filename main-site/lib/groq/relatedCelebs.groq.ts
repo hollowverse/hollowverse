@@ -53,7 +53,7 @@ export const relatedCelebsGroq = groq`{
     'facts': *[
       _type == 'fact' &&
       celeb._ref == ^._id &&
-      $issueId in topics[]._ref
+      $issueId in tags[].tag->topic._ref
     ] | order(date desc) {
       ${celebTagProjection}
     }

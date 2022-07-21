@@ -32,24 +32,16 @@ export async function getStaticProps({
       notFound: true,
     };
   }
-  const results = await sanityClient.fetch<{
-    fact: Fact | null;
-    orderOfIssues: OrderOfIssues;
-  }>(
+  const fact = await sanityClient.fetch<Fact>(
     'fact-page-fact-data',
-    groq`{
-      'fact': *[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
-        ${factProjection}
-      },
-      'orderOfIssues': ${orderOfIssuesGroq}
+    groq`*[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
+      ${factProjection}
     }`,
     {
       factId: params.factId,
       celebId: celeb._id,
     },
   )!;
-
-  const { fact, orderOfIssues } = results;
 
   if (!fact) {
     return {

@@ -47,7 +47,7 @@ export async function getStaticProps({
   }
 
   const facts = celebWithFacts.celeb.facts.filter((f) =>
-    f.issues.some((i) => i._id === params.issueId),
+    f.tags.some((t) => t.tag.issue._id === params.issueId),
   );
 
   if (isEmpty(facts)) {

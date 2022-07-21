@@ -23,8 +23,7 @@ module.exports = {
         'facts': *[_type == 'fact']{
           _id,
           'slug': celeb->slug.current,
-          'tags': tags[]{'_ref': tag._ref},
-          'issues': topics[]{_ref}
+          'tags': tags[]{'tagId': tag._ref, 'issueId': tag->topic._ref}
         }
       }`,
     );
@@ -37,16 +36,16 @@ module.exports = {
         // Fact pages
         `${f.slug}/fact/${f._id}`,
 
-        ...f.issues.flatMap((i) => [
+        ...f.tags.flatMap((t) => [
           // Master Issue pages
-          `~issue/${i._ref}`,
+          `~issue/${t.issueId}`,
 
           // Celeb Issue pages
-          `${f.slug}/issue/${i._ref}`,
+          `${f.slug}/issue/${t.issueId}`,
         ]),
 
         // Tag pages
-        ...f.tags.map((t) => `${f.slug}/tag/${t._ref}`),
+        ...f.tags.map((t) => `${f.slug}/tag/${t.tagId}`),
       ]),
     ];
 
