@@ -14,15 +14,12 @@ export function CelebViewsSelector(props: {
     <>
       {!isEmpty(combinedIssues) && (
         <div className="flex flex-col gap-2.5">
-          <h2 className="scale-y-110 px-5 font-semibold">
-            {props.celebName}&apos;s
-          </h2>
-
           <IssuesSideScroller
             getAnchorTitle={(i) => celebNameToIssue(props.celebName, i)}
             showViewsOn
             issues={combinedIssues}
             getLink={(_id) => `/${props.slug}/issue/${_id}`}
+            getLabel={(i) => `On ${i.name}`}
           />
         </div>
       )}

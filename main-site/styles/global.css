@@ -27,6 +27,10 @@ div[class^="fb_comments_count_zero"], div[class*=" fb_comments_count_zero"] {
   display: none;
 }
 
+.h-side-inner-shadows {
+  box-shadow: inset 6px 0 9px -12px rgba(0,0,0,0.4), inset -6px 0 9px -12px rgba(0,0,0,0.4);
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

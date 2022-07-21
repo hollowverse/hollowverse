@@ -32,6 +32,7 @@ export default function Celeb(props: CelebPageProps) {
       appBar={
         <StickyAppBar>
           <TopSection
+            issues={props.celeb.issues}
             celeb={props.celeb}
             tagTimeline={props.tagTimeline}
             title={

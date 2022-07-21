@@ -1,9 +1,11 @@
 import { isEmpty } from 'lodash-es';
 import { PropsWithChildren, ReactNode } from 'react';
 import { CelebImage } from '~/components/CelebImage';
+import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { TagCollection } from '~/components/TagCollection';
 import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import { Celeb } from '~/lib/groq/celeb.projection';
+import { Issue } from '~/lib/groq/issue.projection';
 
 export function TsTitleContainer(props: PropsWithChildren<{}>) {
   return <h1 className="flex flex-col gap-1">{props.children}</h1>;
@@ -29,9 +31,10 @@ export const TopSection = (props: {
   celeb: Celeb;
   tagTimeline: TagTimeline;
   title: ReactNode;
+  issues?: any;
 }) => {
   return (
-    <div className="TOP-SECTION h-container p-5">
+    <div className="TOP-SECTION h-container flex flex-col gap-5 p-5">
       <div className="flex flex-wrap items-end gap-5">
         <div className="w-[150px]">
           <CelebImage
@@ -44,10 +47,14 @@ export const TopSection = (props: {
         {props.title}
       </div>
 
+      <CelebViewsSelector
+        celebName={props.celeb.name}
+        slug={props.celeb.slug}
+        issues={props.issues}
+      />
+
       {!isEmpty(props.tagTimeline) && (
-        <div className="pt-5">
-          <TagCollection celeb={props.celeb} tagTimeline={props.tagTimeline} />
-        </div>
+        <TagCollection celeb={props.celeb} tagTimeline={props.tagTimeline} />
       )}
     </div>
   );
