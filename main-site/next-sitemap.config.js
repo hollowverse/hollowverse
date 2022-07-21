@@ -23,7 +23,7 @@ module.exports = {
         'facts': *[_type == 'fact']{
           _id,
           'slug': celeb->slug.current,
-          'tags': tags[]{'tagId': tag._ref, 'issueId': tag->issue._ref}
+          'tags': tags[]{'tagId': tag._ref, 'issueId': tag->topic._ref}
         }
       }`,
     );

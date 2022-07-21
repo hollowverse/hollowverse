@@ -12,11 +12,13 @@ export function FactList(props: { list: FactWithCeleb[] }) {
   return (
     <>
       {props.list.map((f, i: number) => {
+        const issue = getFactIssue(f);
+
         const cardTitle = (
-          <Link passHref href={`/${f.celeb.slug}/issue/${getFactIssue(f)._id}`}>
+          <Link passHref href={`/${f.celeb.slug}/issue/${issue._id}`}>
             <a
               id="fact-list-item-title"
-              title={celebNameToIssue(f.celeb.name, getFactIssue(f))}
+              title={celebNameToIssue(f.celeb.name, issue)}
             >
               <div className="flex flex-row items-center gap-3">
                 <div className="h-[75px] w-[75px] overflow-hidden rounded-md">
@@ -30,9 +32,7 @@ export function FactList(props: { list: FactWithCeleb[] }) {
                 <div className="flex flex-col gap-1">
                   <p>{f.celeb.name}</p>
                   <p className="text-base text-neutral-500">
-                    <span className="h-issue-highlight">
-                      {getFactIssue(f).name}
-                    </span>
+                    <span className="h-issue-highlight">{issue.name}</span>
                   </p>
                 </div>
               </div>
