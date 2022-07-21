@@ -32,7 +32,7 @@ export function DiscourseTopicFact(
           </div>
           <div data-theme="fact-heading-text">
             <p>{props.name}</p>
-            <p className="fact-heading-issue">{props.issues[0].name}</p>
+            <p className="fact-heading-issue">{props.tags[0].tag.issue.name}</p>
           </div>
         </div>
       </a>

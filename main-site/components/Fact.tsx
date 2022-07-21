@@ -7,6 +7,7 @@ import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
 import { ShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
+import { getFactIssue } from '~/lib/getFactIssue';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { getSourceHost } from '~/lib/getSourceHost';
@@ -180,7 +181,7 @@ export const Fact: React.FC<{
   );
 
   function IssueName() {
-    const issue = props.fact.issues[0];
+    const issue = getFactIssue(props.fact);
 
     return (
       <Link href={`/${props.slug}/issue/${issue._id}`}>

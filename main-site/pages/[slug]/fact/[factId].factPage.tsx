@@ -11,6 +11,7 @@ import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { Card } from '~/components/ui/Card';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { getFactIssue } from '~/lib/getFactIssue';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
@@ -18,9 +19,11 @@ import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { Link } from '~/lib/Link';
 
 export default function FactPage(props: FactPageProps) {
+  const issue = getFactIssue(props.fact);
+
   useGaEventRecorder('issue_view', {
-    name: props.fact.issues[0].name,
-    id: props.fact.issues[0]._id,
+    name: issue.name,
+    id: issue._id,
   });
 
   return (
@@ -32,13 +35,10 @@ export default function FactPage(props: FactPageProps) {
       pathname={getFactPagePathname(props.celeb.slug, props.fact)}
     >
       <div className="h-container my-5 flex flex-col gap-5">
-        <Link
-          href={`/${props.celeb.slug}/issue/${props.fact.issues[0]._id}`}
-          passHref
-        >
+        <Link href={`/${props.celeb.slug}/issue/${issue._id}`} passHref>
           <a
             id="fact-page-header"
-            title={celebNameToIssue(props.celeb.name, props.fact.issues[0])}
+            title={celebNameToIssue(props.celeb.name, issue)}
           >
             <div className="mx-5 flex items-center gap-5">
               <div className="relative aspect-square w-20">
@@ -125,8 +125,6 @@ export default function FactPage(props: FactPageProps) {
   );
 
   function displayIssue() {
-    const issue = props.fact.issues[0];
-
     return issue.isAffiliation ? issue.name : `${issue.name} views`;
   }
 }

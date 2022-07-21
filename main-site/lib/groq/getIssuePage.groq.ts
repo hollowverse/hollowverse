@@ -12,7 +12,7 @@ export type IssuePageGroq = {
 };
 
 export function getIssuePageGroq(withTagFilter: boolean) {
-  const baseFilter = groq`_type == 'fact' && $issueId in topics[]._ref`;
+  const baseFilter = groq`_type == 'fact' && $issueId in tags[].tag->topic._ref`;
   const tagFilter = withTagFilter ? groq` && $tagId in tags[].tag._ref` : '';
 
   return groq`{
