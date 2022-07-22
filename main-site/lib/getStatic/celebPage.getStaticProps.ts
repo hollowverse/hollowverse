@@ -42,8 +42,10 @@ export const getStaticProps = async ({
 
   const { celeb } = results;
 
+  const parseOldContent = celeb.facts.length < 5 && celeb.oldContent;
+
   const [oldContent, topContributors, issues] = await Promise.all([
-    celeb.oldContent ? getParsedOldContent(celeb.oldContent) : null,
+    parseOldContent ? getParsedOldContent(celeb.oldContent) : null,
     getTopContributors(params.slug),
     getCelebIssues({ facts: results.celeb.facts }),
   ]);
