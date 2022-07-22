@@ -15,10 +15,30 @@ import {
   HeroTitleStrongText,
   HeroTopContainer,
 } from '~/components/ui/Hero';
-import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
+import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+
+export function CelebIssueSelector(props: {
+  issue: Issue;
+  celeb: { slug: string; name: string; issues: Issue[] };
+}) {
+  return (
+    <div className="border-t border-b">
+      <IssueSelector
+        getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
+        isSelected={(i) => i._id == props.issue._id}
+        issues={props.celeb.issues}
+        getLink={(_id) =>
+          _id == noIssueFilter._id
+            ? `/${props.celeb.slug}`
+            : `/${props.celeb.slug}/issue/${_id}`
+        }
+      />
+    </div>
+  );
+}
 
 export default function CelebIssuePage(props: CelebIssuePageProps) {
   return (
@@ -54,7 +74,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
               )}{' '}
             </HeroTopContainer>
 
-            <CelebIssueSelector />
+            <CelebIssueSelector {...props} />
 
             <TagCollection
               slug={props.celeb.slug}
@@ -81,12 +101,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           }
         />
 
-        <CelebIssueSelector />
-
-        <ReturnToCelebViewsButton
-          slug={props.celeb.slug}
-          name={props.celeb.name}
-        />
+        <CelebIssueSelector {...props} />
 
         <TitledCard
           titledContentProps={{
@@ -121,24 +136,6 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       <span className="h-issue-highlight px-1 font-semibold">
         {props.issue.name}
       </span>
-    );
-  }
-
-  function CelebIssueSelector() {
-    return (
-      <div className="border-t border-b">
-        <IssueSelector
-          key={props.issue._id}
-          getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
-          isSelected={(i) => i._id == props.issue._id}
-          issues={props.celeb.issues}
-          getLink={(_id) =>
-            _id == noIssueFilter._id
-              ? `/${props.celeb.slug}`
-              : `/${props.celeb.slug}/issue/${_id}`
-          }
-        />
-      </div>
     );
   }
 }

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { SideScroller } from '~/components/ui/SideScroller';
 import { c } from '~/lib/c';
 import { Issue } from '~/lib/groq/issue.projection';
@@ -16,20 +15,18 @@ export function IssueSelector(props: {
   getLink: (issueId: Issue['_id']) => string;
   getAnchorTitle?: (issue: Issue) => string;
 }) {
-  const router = useRouter();
-  const { issueId } = router.query;
   const allIssues: Issue[] = [noIssueFilter, ...props.issues];
 
   return (
-    <SideScroller className="border-none py-2 px-5" key={issueId as string}>
+    <SideScroller className="border-none py-2 px-5">
       {allIssues.map((i) => {
         return (
-          <Link key={i._id} passHref href={props.getLink(i._id)}>
+          <Link passHref href={props.getLink(i._id)} key={i._id}>
             <a
               title={getTitle()}
               id="scroller-issue-item"
               className={c(
-                'flex items-center px-4 default:text-lg default:text-neutral-600',
+                'flex items-center px-4 hover:underline default:text-lg default:text-neutral-600',
                 {
                   'rounded-full bg-blue-100 text-base font-bold text-blue-500':
                     props.isSelected(i),

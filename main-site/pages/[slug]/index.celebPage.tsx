@@ -21,33 +21,7 @@ import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { Celeb as TCeleb } from '~/lib/groq/celeb.projection';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-
-export function CelebPageHero(
-  props: Pick<CelebPageProps, 'hasFacts' | 'tagTimeline'> &
-    Pick<TCeleb, 'name' | 'picture' | 'slug'> & { issues: Issue[] },
-) {
-  return (
-    <Hero>
-      <HeroTopContainer>
-        <HeroCelebImage name={props.name} picture={props.picture} />
-        <HeroTitleContainer>
-          <HeroTitleSoftText>
-            The {props.hasFacts ? '' : 'Religion and '}Political Views of{' '}
-          </HeroTitleSoftText>
-          <HeroTitleStrongText>{props.name}</HeroTitleStrongText>
-        </HeroTitleContainer>
-      </HeroTopContainer>
-
-      {/* <CelebViewsSelector
-        celebName={props.name}
-        slug={props.slug}
-        issues={props.issues}
-      /> */}
-
-      <TagCollection slug={props.slug} tagTimeline={props.tagTimeline} />
-    </Hero>
-  );
-}
+import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -80,17 +54,7 @@ export default function Celeb(props: CelebPageProps) {
             </HeroTopContainer>
 
             <div className="border-t border-b">
-              <IssueSelector
-                key={noIssueFilter._id}
-                getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
-                isSelected={(i) => i._id == noIssueFilter._id}
-                issues={props.celeb.issues}
-                getLink={(_id) =>
-                  _id == noIssueFilter._id
-                    ? `/${props.celeb.slug}`
-                    : `/${props.celeb.slug}/issue/${_id}`
-                }
-              />
+              <CelebIssueSelector {...props} issue={noIssueFilter} />
             </div>
 
             <TagCollection

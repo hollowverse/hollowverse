@@ -19,7 +19,7 @@ import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { CelebPageHero } from '~/pages/[slug]/index.celebPage';
 import { TagCollection } from '~/components/TagCollection';
-import { IssueSelector } from '~/components/IssueSelector';
+import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -71,7 +71,7 @@ export default function TagPage(props: TagPageProps) {
             isSelected={() => false}
             issues={props.issues}
             getLink={(_id) =>
-              _id == 'all-issues'
+              _id == noIssueFilter._id
                 ? `/${props.celeb.slug}`
                 : `/${props.celeb.slug}/issue/${_id}`
             }
