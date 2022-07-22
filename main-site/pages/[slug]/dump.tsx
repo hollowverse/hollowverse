@@ -2,10 +2,13 @@ import groq from 'groq';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
 import { oneMinute } from '~/lib/date';
-import { factProjection } from '~/lib/groq/fact.projection';
+import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
+import { PageProps } from '~/shared/lib/types';
 
-export default function DumpPage(props: any) {
+type DumpPageProps = PageProps<typeof getStaticProps>;
+
+export default function DumpPage(props: DumpPageProps) {
   return (
     <Page
       allowSearchEngines={false}
@@ -21,7 +24,7 @@ export default function DumpPage(props: any) {
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const facts = await sanityClient.fetch(
+  const facts = await sanityClient.fetch<TFact[]>(
     'dump',
     groq`
     *[_type == 'fact' && celeb->slug.current == $slug]{${factProjection}}
@@ -31,6 +34,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
   return {
     props: {
+      slug: params.slug,
       facts,
     },
 
