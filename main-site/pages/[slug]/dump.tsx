@@ -1,10 +1,22 @@
 import groq from 'groq';
 import { JsonView } from '~/components/JsonView';
+import { Page } from '~/components/Page';
 import { factProjection } from '~/lib/groq/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export default function DumpPage(props: any) {
-  return <JsonView src={props.facts} collapsed={100} />;
+  return (
+    <Page
+      allowSearchEngines={false}
+      description="Dump"
+      id="dump-page"
+      pathname={`/${props.slug}/dump`}
+      title="Dump"
+      appBar={<div />}
+    >
+      <JsonView src={props.facts} collapsed={100} />
+    </Page>
+  );
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
