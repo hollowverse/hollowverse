@@ -1,6 +1,7 @@
 import groq from 'groq';
 import { JsonView } from '~/components/JsonView';
 import { Page } from '~/components/Page';
+import { oneMinute } from '~/lib/date';
 import { factProjection } from '~/lib/groq/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -32,6 +33,8 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     props: {
       facts,
     },
+
+    revalidate: oneMinute,
   };
 }
 
