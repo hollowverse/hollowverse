@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import escapeRegExp from 'lodash.escaperegexp';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
@@ -40,6 +41,8 @@ test('Issue page E2E test', async ({ page }) => {
   await commonElementsTestFragment(page);
 });
 
-test('Issue page Lighthouse test', async () => {
-  await lighthouseTest(url, 'Issue page');
-});
+if (doLighthouse) {
+  test('Issue page Lighthouse test', async () => {
+    await lighthouseTest(url, 'Issue page');
+  });
+}

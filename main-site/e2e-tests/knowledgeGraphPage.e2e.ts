@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
 
@@ -15,6 +16,8 @@ test('Knowledge Graph page E2E test', async ({ page }) => {
   await page.waitForSelector('#kg-celeb-image');
 });
 
-test('Knowledge Graph page Lighthouse test', async () => {
-  await lighthouseTest(url, 'KG page');
-});
+if (doLighthouse) {
+  test('Knowledge Graph page Lighthouse test', async () => {
+    await lighthouseTest(url, 'KG page');
+  });
+}

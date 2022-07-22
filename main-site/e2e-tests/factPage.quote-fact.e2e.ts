@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { createGoBack } from '~/e2e-tests/helpers';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { relatedCelebsTestFragment } from '~/e2e-tests/relatedCelebs.e2e-test-fragment';
@@ -31,6 +32,8 @@ test('Fact page E2E test', async ({ page }) => {
   await relatedCelebsTestFragment(page, '#fact-page');
 });
 
-test('Fact page Lighthouse test', async () => {
-  await lighthouseTest(url, 'Fact page');
-});
+if (doLighthouse) {
+  test('Fact page Lighthouse test', async () => {
+    await lighthouseTest(url, 'Fact page');
+  });
+}

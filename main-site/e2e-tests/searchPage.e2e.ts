@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { createGoBack } from '~/e2e-tests/helpers';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
@@ -33,6 +34,8 @@ test('Search page E2E test', async ({ page }) => {
   await goBack();
 });
 
-test('Search page Lighthouse test', async () => {
-  await lighthouseTest(url, 'Search page');
-});
+if (doLighthouse) {
+  test('Search page Lighthouse test', async () => {
+    await lighthouseTest(url, 'Search page');
+  });
+}
