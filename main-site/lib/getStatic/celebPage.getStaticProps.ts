@@ -18,9 +18,14 @@ export type CelebPageProps = PageProps<typeof getStaticProps>;
 export const getStaticProps = async ({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; p: string | undefined };
 }) => {
   log('info', `celebPage getStaticProps called: ${params.slug}`);
+
+  const p = parseInt(params.p ?? '1');
+  const pageSize = 10;
+  const start = (p - 1) * pageSize;
+  const end = start + pageSize;
 
   const results = await sanityClient.fetch<CelebWithFacts<true>>(
     'celeb-and-facts',
