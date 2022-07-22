@@ -23,10 +23,6 @@ test('Celeb Tag page E2E test', async ({ page }) => {
 
   await factTestFragment(page, '#celeb-tag-page >> :nth-match(#fact, 1)');
 
-  await page.locator('#return-to-celeb-views-button').click();
-  await page.waitForSelector('#celeb-page');
-  await goBack();
-
   await relatedCelebsTestFragment(page, '#celeb-tag-page');
 });
 

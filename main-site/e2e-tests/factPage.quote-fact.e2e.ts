@@ -25,9 +25,6 @@ test('Fact page E2E test', async ({ page }) => {
 
   await page.waitForSelector('#fact-quote');
   await page.waitForSelector('#fact-context');
-  await page.locator('#return-to-celeb-views-button').click();
-  await page.waitForSelector('#celeb-page');
-  await goBack();
 
   await page.waitForSelector('#fact-page-comments');
 
