@@ -42,17 +42,38 @@ export function TopContributors(
 
         <hr className="-mx-5" />
 
-        <p className="text-neutral-500">
-          You can contribute, too!{' '}
-          <a
-            className="h-link underline"
-            href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse"
-          >
-            Learn how
-          </a>
-          .
-        </p>
+        <div className="flex flex-col gap-2 text-sm text-neutral-500">
+          <p>
+            <span className="font-bold">Help us out!</span> Can you do some
+            research on {props.celebName} to help us grow this page? We&apos;ll
+            make it worth your while!
+          </p>
+
+          <p>
+            Get in touch with us at{' '}
+            <a
+              rel="noreferrer"
+              target="_blank"
+              className="h-link"
+              href={getEmailLink()}
+            >
+              hollowverse@hollowverse.com
+            </a>
+            !
+          </p>
+        </div>
       </div>
     </TitledCard>
   );
+
+  function getEmailLink() {
+    const subject = encodeURIComponent(
+      `I'm interested in researching ${props.celebName}`,
+    );
+    const body = encodeURIComponent(
+      `Hi Hollowverse!\n\nI'm interested in helping research ${props.celebName}!\n\nTell me more.\n\nThanks!`,
+    );
+
+    return `mailto:hollowverse@hollowverse.com?subject=${subject}&body=${body}`;
+  }
 }
