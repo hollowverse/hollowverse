@@ -2,8 +2,11 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 import { Page } from '~/components/Page';
+import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
+import { TagCollection } from '~/components/TagCollection';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import {
   Hero,
@@ -13,13 +16,8 @@ import {
   HeroTitleStrongText,
   HeroTopContainer,
 } from '~/components/ui/Hero';
-import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
-import { CelebPageHero } from '~/pages/[slug]/index.celebPage';
-import { TagCollection } from '~/components/TagCollection';
-import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
