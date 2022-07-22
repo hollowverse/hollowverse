@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { relatedCelebsTestFragment } from '~/e2e-tests/relatedCelebs.e2e-test-fragment';
@@ -18,7 +19,7 @@ test('Celeb Issue page E2E test', async ({ page }) => {
 
   await page.locator('#tag');
 
-  await page.locator(':nth-match(#scroller-issue-item, 1)').click();
+  await page.locator(':nth-match(#scroller-issue-item, 2)').click();
 
   await page.waitForSelector(`#celeb-issue-page-${issueId}`, {
     state: 'detached',
@@ -30,6 +31,8 @@ test('Celeb Issue page E2E test', async ({ page }) => {
   await relatedCelebsTestFragment(page, '#celeb-issue-page');
 });
 
-test('Celeb Issue page Lighthouse test', async () => {
-  await lighthouseTest(url, 'Celeb Issue page');
-});
+if (doLighthouse) {
+  test('Celeb Issue page Lighthouse test', async () => {
+    await lighthouseTest(url, 'Celeb Issue page');
+  });
+}

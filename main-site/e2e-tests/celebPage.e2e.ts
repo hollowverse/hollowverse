@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
@@ -39,6 +40,8 @@ test('Celeb page E2E test', async ({ page }) => {
   await factTestFragment(page, '#celeb-page >> :nth-match(#fact, 3)');
 });
 
-test('Celeb page Lighthouse test', async () => {
-  await lighthouseTest(url, 'Celeb page');
-});
+if (doLighthouse) {
+  test('Celeb page Lighthouse test', async () => {
+    await lighthouseTest(url, 'Celeb page');
+  });
+}

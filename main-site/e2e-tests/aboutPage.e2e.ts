@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
 
@@ -21,6 +22,8 @@ test('About page E2E test', async ({ page }) => {
   await page.waitForSelector('#about-page-content');
 });
 
-test('About page Lighthouse test', async () => {
-  await lighthouseTest(url, 'About page');
-});
+if (doLighthouse) {
+  test('About page Lighthouse test', async () => {
+    await lighthouseTest(url, 'About page');
+  });
+}

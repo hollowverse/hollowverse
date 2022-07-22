@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { createGoBack } from '~/e2e-tests/helpers';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
@@ -23,13 +24,11 @@ test('Celeb Tag page E2E test', async ({ page }) => {
 
   await factTestFragment(page, '#celeb-tag-page >> :nth-match(#fact, 1)');
 
-  await page.locator('#return-to-celeb-views-button').click();
-  await page.waitForSelector('#celeb-page');
-  await goBack();
-
   await relatedCelebsTestFragment(page, '#celeb-tag-page');
 });
 
-test('Celeb Tag page Lighthouse test', async () => {
-  await lighthouseTest(url, 'Celeb Tag page');
-});
+if (doLighthouse) {
+  test('Celeb Tag page Lighthouse test', async () => {
+    await lighthouseTest(url, 'Celeb Tag page');
+  });
+}

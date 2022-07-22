@@ -1,23 +1,22 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
-import { Celeb } from '~/lib/groq/celeb.projection';
 
 export const TagCollection = (props: {
-  celeb: Celeb;
+  slug: string;
   tagTimeline: TagTimeline;
 }) => {
   const tags = props.tagTimeline;
 
   return (
-    <div className="my-5 flex flex-col gap-10 border-l-2">
+    <div className="flex flex-col gap-10 border-l-2">
       {tags.map((tpair, i) => (
         <div key={tpair[0]} className="flex">
-          <div>
-            <FaRegCircle className="-ml-[10px] -mt-1 bg-white text-xl text-gray-300" />
+          <div className="pt-2">
+            <FaRegCircle className="-ml-[11px] bg-white text-xl text-gray-300" />
           </div>
 
-          <div className="ml-3 -mt-3 flex flex-wrap gap-2">
+          <div className="ml-3 flex flex-wrap gap-2">
             <p className="flex items-center gap-3 text-lg tracking-wider text-neutral-500">
               {tpair[0]}
             </p>
@@ -25,7 +24,7 @@ export const TagCollection = (props: {
             {tpair[1].map((t) => (
               <Tag
                 key={t.tag._id}
-                link={`/${props.celeb.slug}/tag/${t.tag._id}#content`}
+                link={`/${props.slug}/tag/${t.tag._id}#content`}
                 tagId={t.tag._id}
               >
                 {t.tag.name}

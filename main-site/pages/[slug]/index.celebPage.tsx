@@ -2,18 +2,23 @@ import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Facts } from '~/components/Facts';
+import { noIssueFilter } from '~/components/IssueSelector';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
+import { TagCollection } from '~/components/TagCollection';
 import { TopContributors } from '~/components/TopContributors';
 import {
-  TopSection,
-  TsTitleContainer,
-  TsTitleSoftText,
-  TsTitleStrongText,
-} from '~/components/TopSection';
+  Hero,
+  HeroCelebImage,
+  HeroTitleContainer,
+  HeroTitleSoftText,
+  HeroTitleStrongText,
+  HeroTopContainer,
+} from '~/components/ui/Hero';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -31,18 +36,27 @@ export default function Celeb(props: CelebPageProps) {
       id="celeb-page"
       appBar={
         <StickyAppBar>
-          <TopSection
-            celeb={props.celeb}
-            tagTimeline={props.tagTimeline}
-            title={
-              <TsTitleContainer>
-                <TsTitleSoftText>
+          <Hero>
+            <HeroTopContainer>
+              <HeroCelebImage
+                name={props.celeb.name}
+                picture={props.celeb.picture}
+              />
+              <HeroTitleContainer>
+                <HeroTitleSoftText>
                   The {props.hasFacts ? '' : 'Religion and '}Political Views of{' '}
-                </TsTitleSoftText>
-                <TsTitleStrongText>{name}</TsTitleStrongText>
-              </TsTitleContainer>
-            }
-          />
+                </HeroTitleSoftText>
+                <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
+              </HeroTitleContainer>
+            </HeroTopContainer>
+
+            <CelebIssueSelector {...props} issue={noIssueFilter} />
+
+            <TagCollection
+              slug={props.celeb.slug}
+              tagTimeline={props.tagTimeline}
+            />
+          </Hero>
         </StickyAppBar>
       }
     >

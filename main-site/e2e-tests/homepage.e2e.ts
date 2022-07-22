@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { testUrl } from '~/e2e-tests/testUrl';
@@ -36,6 +37,8 @@ test('Homepage E2E test', async ({ page }) => {
   await factTestFragment(page, ':nth-match(#fact-list-item, 3)');
 });
 
-test('Homepage Lighthouse test', async () => {
-  await lighthouseTest(url, 'Homepage');
-});
+if (doLighthouse) {
+  test('Homepage Lighthouse test', async () => {
+    await lighthouseTest(url, 'Homepage');
+  });
+}

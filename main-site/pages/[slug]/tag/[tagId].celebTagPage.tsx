@@ -2,20 +2,22 @@ import { StickyAppBar } from '~/components/AppBar';
 import { FactGroup } from '~/components/FactGroup';
 import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
 import { InFeedAd } from '~/components/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 import { Page } from '~/components/Page';
+import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
+import { TagCollection } from '~/components/TagCollection';
 import { TitleSeparator } from '~/components/TitleSeparator';
 import {
-  TopSection,
-  TsTitleContainer,
-  TsTitleSoftText,
-  TsTitleStrongText,
-} from '~/components/TopSection';
-import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
+  Hero,
+  HeroCelebImage,
+  HeroTitleContainer,
+  HeroTitleSoftText,
+  HeroTitleStrongText,
+  HeroTopContainer,
+} from '~/components/ui/Hero';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
-import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 
 export default function TagPage(props: TagPageProps) {
   const name = props.celeb.name;
@@ -36,16 +38,23 @@ export default function TagPage(props: TagPageProps) {
       pathname={`/${props.celeb.slug}/tag/${props.tag.tag._id}`}
       appBar={
         <StickyAppBar>
-          <TopSection
-            celeb={props.celeb}
-            tagTimeline={props.tagTimeline}
-            title={
-              <TsTitleContainer>
-                <TsTitleStrongText>{name}</TsTitleStrongText>
-                <TsTitleSoftText>{props.tag.tag.name}?</TsTitleSoftText>
-              </TsTitleContainer>
-            }
-          />
+          <Hero>
+            <HeroTopContainer>
+              <HeroCelebImage
+                name={props.celeb.name}
+                picture={props.celeb.picture}
+              />
+              <HeroTitleContainer>
+                <HeroTitleSoftText>The Political Views of </HeroTitleSoftText>
+                <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
+              </HeroTitleContainer>
+            </HeroTopContainer>
+
+            <TagCollection
+              slug={props.celeb.slug}
+              tagTimeline={props.tagTimeline}
+            />
+          </Hero>
         </StickyAppBar>
       }
     >
@@ -54,6 +63,18 @@ export default function TagPage(props: TagPageProps) {
         className="h-container py-5"
       >
         <div className="flex flex-col gap-5" id="content">
+          <IssueSelector
+            key={props.tag.tag._id}
+            getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
+            isSelected={() => false}
+            issues={props.issues}
+            getLink={(_id) =>
+              _id == noIssueFilter._id
+                ? `/${props.celeb.slug}`
+                : `/${props.celeb.slug}/issue/${_id}`
+            }
+          />
+
           <InBetweenContentShareButton />
 
           <FactGroup
@@ -65,17 +86,6 @@ export default function TagPage(props: TagPageProps) {
                 {props.celeb.name} <TitleSeparator /> {props.tag.tag.issue.name}
               </h2>
             }
-          />
-
-          <CelebViewsSelector
-            issues={props.issues}
-            celebName={props.celeb.name}
-            slug={props.celeb.slug}
-          />
-
-          <ReturnToCelebViewsButton
-            slug={props.celeb.slug}
-            name={props.celeb.name}
           />
 
           <InFeedAd />
