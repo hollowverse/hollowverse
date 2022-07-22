@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Facts } from '~/components/Facts';
-import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
+import { noIssueFilter } from '~/components/IssueSelector';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
@@ -18,9 +18,6 @@ import {
 } from '~/components/ui/Hero';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { Celeb as TCeleb } from '~/lib/groq/celeb.projection';
-import { Issue } from '~/lib/groq/issue.projection';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
 export default function Celeb(props: CelebPageProps) {
@@ -53,9 +50,7 @@ export default function Celeb(props: CelebPageProps) {
               </HeroTitleContainer>
             </HeroTopContainer>
 
-            <div className="border-t border-b">
-              <CelebIssueSelector {...props} issue={noIssueFilter} />
-            </div>
+            <CelebIssueSelector {...props} issue={noIssueFilter} />
 
             <TagCollection
               slug={props.celeb.slug}

@@ -1,11 +1,9 @@
-import { ReactNode } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Container, Logo } from '~/components/AppBar';
 import { CelebGallery } from '~/components/CelebGallery';
 import { FactList } from '~/components/FactList';
 import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 import { Page } from '~/components/Page';
-import { PurpleDot } from '~/components/ui/PurpleDot';
 import { SideScroller } from '~/components/ui/SideScroller';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
@@ -89,11 +87,13 @@ export default function Index(props: HomepageProps) {
       <div className="flex flex-col gap-2.5">
         <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
 
-        <IssueSelector
-          isSelected={(i) => i._id == noIssueFilter._id}
-          issues={props.trendingIssues}
-          getLink={(_id) => `/~issue/${_id}`}
-        />
+        <div className="border-y">
+          <IssueSelector
+            isSelected={(i) => i._id == noIssueFilter._id}
+            issues={props.trendingIssues}
+            getLink={(_id) => `/~issue/${_id}`}
+          />
+        </div>
       </div>
     );
   }
