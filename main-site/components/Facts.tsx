@@ -1,4 +1,3 @@
-import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { FactGroup } from '~/components/FactGroup';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 

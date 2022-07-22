@@ -73,7 +73,7 @@ export async function getStaticProps({
 
   const issues = await getCelebIssues({
     facts: celebWithFacts.celeb.facts,
-    excludedId: params.issueId,
+    currentIssueId: params.issueId,
   });
 
   const celeb = {

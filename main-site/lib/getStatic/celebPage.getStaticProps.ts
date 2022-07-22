@@ -82,23 +82,26 @@ export const getStaticProps = async ({
       }
     }
 
-    let affiliations = '';
+    let affiliationsStr = '';
 
-    if (!isEmpty(issues.affiliations)) {
-      affiliations = ` ${process(issues.affiliations)}`;
+    const affiliations = issues.filter((i) => i.isAffiliation);
+    const views = issues.filter((i) => !i.isAffiliation);
+
+    if (!isEmpty(affiliations)) {
+      affiliationsStr = ` ${process(affiliations)}`;
     }
 
-    let views = '';
+    let viewsStr = '';
 
-    if (!isEmpty(issues.views)) {
-      const postfix = isEmpty(affiliations)
+    if (!isEmpty(views)) {
+      const postfix = isEmpty(affiliationsStr)
         ? ' views on'
         : ', as well as views on';
 
-      views = `${postfix} ${process(issues.views)}`;
+      viewsStr = `${postfix} ${process(views)}`;
     }
 
-    return `${celeb.name}'s${affiliations}${views}.`;
+    return `${celeb.name}'s${affiliationsStr}${viewsStr}.`;
 
     function process(arr: Issue[]) {
       // @ts-ignore

@@ -6,7 +6,7 @@ import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 type BaseArgs = {
-  excludedId?: string;
+  currentIssueId?: string;
 };
 
 type WithFacts = {
@@ -39,13 +39,19 @@ export async function getCelebIssues(args: Args) {
   const rawIssues = facts.flatMap((f) => f.tags.map((t) => t.tag.issue));
   const issuesFlat = flatten(rawIssues);
   const issuesUniq = uniqBy(issuesFlat, (i) => i._id);
+  const affiliations = issuesUniq.filter(
+    (i) => i.isAffiliation && i._id !== args.currentIssueId,
+  );
+  const views = issuesUniq.filter(
+    (i) => !i.isAffiliation && i._id !== args.currentIssueId,
+  );
+  const currentIssue = issuesUniq.find((i) => i._id == args.currentIssueId);
 
-  return {
-    affiliations: issuesUniq.filter(
-      (i) => i.isAffiliation && i._id !== args.excludedId,
-    ),
-    views: issuesUniq.filter(
-      (i) => !i.isAffiliation && i._id !== args.excludedId,
-    ),
-  };
+  const issues = [...affiliations, ...views];
+
+  if (currentIssue) {
+    issues.splice(0, 0, currentIssue);
+  }
+
+  return issues;
 }

@@ -28,7 +28,8 @@ div[class^="fb_comments_count_zero"], div[class*=" fb_comments_count_zero"] {
 }
 
 .h-side-inner-shadows {
-  box-shadow: inset 6px 0 9px -12px rgba(0,0,0,0.4), inset -6px 0 9px -12px rgba(0,0,0,0.4);
+  /* box-shadow: inset 6px 0 9px -12px rgba(0,0,0,0.4), inset -6px 0 9px -12px rgba(0,0,0,0.4); */
+  background: linear-gradient(to right, #999 0, #ffffff 7px, #ffffff 70%);
 }
 
 @layer utilities {

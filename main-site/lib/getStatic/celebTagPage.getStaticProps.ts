@@ -58,7 +58,10 @@ export const getStaticProps = async ({
 
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
-  const issues = await getCelebIssues({ slug: params.slug });
+  const issues = await getCelebIssues({
+    slug: params.slug,
+    currentIssueId: tag.tag.issue._id,
+  });
 
   return {
     props: {

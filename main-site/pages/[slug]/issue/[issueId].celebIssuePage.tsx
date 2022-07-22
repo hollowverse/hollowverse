@@ -1,17 +1,20 @@
 import { StickyAppBar } from '~/components/AppBar';
-import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 import { Page } from '~/components/Page';
 import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
+import { TagCollection } from '~/components/TagCollection';
 import {
-  TopSection,
-  TsTitleContainer,
-  TsTitleSoftText,
-  TsTitleStrongText,
-} from '~/components/TopSection';
+  Hero,
+  HeroCelebImage,
+  HeroTitleContainer,
+  HeroTitleSoftText,
+  HeroTitleStrongText,
+  HeroTopContainer,
+} from '~/components/ui/Hero';
 import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
@@ -27,29 +30,37 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       id="celeb-issue-page"
       appBar={
         <StickyAppBar>
-          <TopSection
-            issues={props.celeb.issues}
-            celeb={props.celeb}
-            tagTimeline={props.tagTimeline}
-            title={
-              props.issue.isAffiliation ? (
-                <TsTitleContainer>
-                  <TsTitleSoftText>
+          <Hero>
+            <HeroTopContainer>
+              <HeroCelebImage
+                name={props.celeb.name}
+                picture={props.celeb.picture}
+              />
+              {props.issue.isAffiliation ? (
+                <HeroTitleContainer>
+                  <HeroTitleSoftText>
                     What are the <IssueName /> of{' '}
-                  </TsTitleSoftText>
-                  <TsTitleStrongText>{props.celeb.name}</TsTitleStrongText>
-                </TsTitleContainer>
+                  </HeroTitleSoftText>
+                  <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
+                </HeroTitleContainer>
               ) : (
-                <TsTitleContainer>
-                  <TsTitleSoftText>What are the views of </TsTitleSoftText>
-                  <TsTitleStrongText>{props.celeb.name} </TsTitleStrongText>
-                  <TsTitleSoftText>
+                <HeroTitleContainer>
+                  <HeroTitleSoftText>What are the views of </HeroTitleSoftText>
+                  <HeroTitleStrongText>{props.celeb.name} </HeroTitleStrongText>
+                  <HeroTitleSoftText>
                     on <IssueName />?
-                  </TsTitleSoftText>
-                </TsTitleContainer>
-              )
-            }
-          />
+                  </HeroTitleSoftText>
+                </HeroTitleContainer>
+              )}{' '}
+            </HeroTopContainer>
+
+            <CelebIssueSelector />
+
+            <TagCollection
+              slug={props.celeb.slug}
+              tagTimeline={props.tagTimeline}
+            />
+          </Hero>
         </StickyAppBar>
       }
     >
@@ -70,11 +81,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           }
         />
 
-        <CelebViewsSelector
-          celebName={props.celeb.name}
-          slug={props.celeb.slug}
-          issues={props.celeb.issues}
-        />
+        <CelebIssueSelector />
 
         <ReturnToCelebViewsButton
           slug={props.celeb.slug}
@@ -114,6 +121,24 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       <span className="h-issue-highlight px-1 font-semibold">
         {props.issue.name}
       </span>
+    );
+  }
+
+  function CelebIssueSelector() {
+    return (
+      <div className="border-t border-b">
+        <IssueSelector
+          key={props.issue._id}
+          getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
+          isSelected={(i) => i._id == props.issue._id}
+          issues={props.celeb.issues}
+          getLink={(_id) =>
+            _id == noIssueFilter._id
+              ? `/${props.celeb.slug}`
+              : `/${props.celeb.slug}/issue/${_id}`
+          }
+        />
+      </div>
     );
   }
 }

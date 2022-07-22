@@ -1,10 +1,9 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/components/Tag';
 import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
-import { Celeb } from '~/lib/groq/celeb.projection';
 
 export const TagCollection = (props: {
-  celeb: Celeb;
+  slug: string;
   tagTimeline: TagTimeline;
 }) => {
   const tags = props.tagTimeline;
@@ -25,7 +24,7 @@ export const TagCollection = (props: {
             {tpair[1].map((t) => (
               <Tag
                 key={t.tag._id}
-                link={`/${props.celeb.slug}/tag/${t.tag._id}#content`}
+                link={`/${props.slug}/tag/${t.tag._id}#content`}
                 tagId={t.tag._id}
               >
                 {t.tag.name}

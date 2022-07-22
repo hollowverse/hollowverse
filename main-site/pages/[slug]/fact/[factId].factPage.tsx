@@ -1,5 +1,4 @@
 import { CelebImage } from '~/components/CelebImage';
-import { CelebViewsSelector } from '~/components/CelebViewsSelector';
 import { ContributorBox } from '~/components/ContributorBox';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Fact } from '~/components/Fact';
@@ -91,11 +90,11 @@ export default function FactPage(props: FactPageProps) {
           </Card>
         )}
 
-        <CelebViewsSelector
+        {/* <CelebViewsSelector
           slug={props.celeb.slug}
           celebName={props.celeb.name}
           issues={props.issues}
-        />
+        /> */}
 
         <ReturnToCelebViewsButton
           slug={props.celeb.slug}
