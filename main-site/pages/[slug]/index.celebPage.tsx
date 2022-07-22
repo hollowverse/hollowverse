@@ -7,7 +7,7 @@ import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
-import { TopContributors } from '~/components/TopContributors';
+import { TopContributors } from '~/components/TopContributorsWidget';
 import {
   Hero,
   HeroCelebImage,
@@ -70,12 +70,10 @@ export default function Celeb(props: CelebPageProps) {
 
         {props.celeb.oldContent && <Md {...props} />}
 
-        {!isEmpty(props.topContributors) ? (
-          <TopContributors
-            contributors={props.topContributors!}
-            celebName={props.celeb.name}
-          />
-        ) : null}
+        <TopContributors
+          slug={props.celeb.slug!}
+          celebName={props.celeb.name}
+        />
 
         <TitledCard
           titledContentProps={{

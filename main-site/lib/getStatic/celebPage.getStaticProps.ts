@@ -3,7 +3,6 @@ import { oneDay } from '~/lib/date';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
-import { getTopContributors } from '~/lib/getStatic/helpers/getTopContributors';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import {
   CelebWithFacts,
@@ -44,9 +43,8 @@ export const getStaticProps = async ({
 
   const parseOldContent = celeb.facts.length < 5 && celeb.oldContent;
 
-  const [oldContent, topContributors, issues] = await Promise.all([
+  const [oldContent, issues] = await Promise.all([
     parseOldContent ? getParsedOldContent(celeb.oldContent) : null,
-    getTopContributors(params.slug),
     getCelebIssues({ facts: results.celeb.facts }),
   ]);
 
@@ -56,7 +54,6 @@ export const getStaticProps = async ({
   return {
     props: {
       pageDescription: getPageDescription(),
-      topContributors,
       hasFacts,
       tagTimeline,
       celeb: {
