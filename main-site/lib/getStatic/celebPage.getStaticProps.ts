@@ -1,21 +1,18 @@
 import { isEmpty } from 'lodash-es';
 import { oneDay } from '~/lib/date';
+import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
+import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
 import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
 import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import {
-  CelebWithFacts,
-  getCelebWithFactsGroq,
-} from '~/lib/groq/getCelebWithFacts.groq';
-import { Issue } from '~/lib/groq/issue.projection';
-import { PageProps } from '~/shared/lib/types';
-import { log } from '~/shared/lib/log';
-import { sanityClient } from '~/shared/lib/sanityio';
 import {
   getPaginationProps,
   getPaginationRange,
 } from '~/lib/getStatic/helpers/pagination';
+import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+import { Issue } from '~/lib/groq/issue.projection';
+import { log } from '~/shared/lib/log';
+import { PageProps } from '~/shared/lib/types';
 
 export type CelebPageProps = PageProps<typeof getStaticProps>;
 
@@ -25,42 +22,26 @@ export const getStaticProps = async ({
   params: { slug: string; p: string | undefined };
 }) => {
   log('info', `celebPage getStaticProps called: ${params.slug}`);
+  const celeb = await getCeleb(params.slug);
 
-  const paginationRange = getPaginationRange({
-    p: params.p,
-  });
-
-  const results = await sanityClient.fetch<CelebWithFacts<true>>(
-    'celeb-and-facts',
-    ...getCelebWithFactsGroq({
-      includeOldContent: true,
-      params: {
-        slug: params.slug,
-        ...paginationRange,
-      },
-    }),
-  );
-
-  if (!results || !results.celeb) {
-    return {
-      notFound: true,
-    };
+  if (!celeb) {
+    return { notFound: true };
   }
 
-  const tagTimeline = getTagTimeline(results.tagTimelineFacts);
-
-  const { celeb } = results;
-
+  const allFacts = await getCelebFacts(celeb._id);
+  const paginationRange = getPaginationRange({ p: params.p });
+  const factCount = allFacts.length;
+  const hasFacts = factCount > 0;
+  const tagTimeline = getTagTimeline(allFacts);
   const parseOldContent =
-    results.factCount < paginationRange.pageSize && celeb.oldContent;
-
+    factCount < paginationRange.pageSize && celeb.oldContent !== null;
   const [oldContent, issues] = await Promise.all([
-    parseOldContent ? getParsedOldContent(celeb.oldContent) : null,
-    getCelebIssues({ facts: results.facts }),
+    parseOldContent ? getParsedOldContent(celeb.oldContent!) : null,
+    getCelebIssues({ facts: allFacts }),
   ]);
-
-  const facts = results.facts.slice(0, 5).map((f) => transformFact(f));
-  const hasFacts = !isEmpty(facts);
+  const facts = allFacts
+    .slice(paginationRange.start, paginationRange.end)
+    .map((f) => transformFact(f));
 
   return {
     props: {
@@ -69,7 +50,7 @@ export const getStaticProps = async ({
         paginationRange.p === 1
           ? `/${params.slug}`
           : `/${params.slug}/p/${paginationRange.p}`,
-      pagination: getPaginationProps(paginationRange, results.factCount),
+      pagination: getPaginationProps(paginationRange, factCount),
       hasFacts,
       tagTimeline,
       celeb: {
@@ -116,7 +97,7 @@ export const getStaticProps = async ({
       viewsStr = `${postfix} ${process(views)}`;
     }
 
-    return `${celeb.name}'s${affiliationsStr}${viewsStr}.`;
+    return `${celeb!.name}'s${affiliationsStr}${viewsStr}.`;
 
     function process(arr: Issue[]) {
       // @ts-ignore
