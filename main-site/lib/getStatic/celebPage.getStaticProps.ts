@@ -36,6 +36,7 @@ export const getStaticProps = async ({
   const parseOldContent =
     factCount < paginationRange.pageSize && celeb.oldContent !== null;
   const issues = getFactIssues(allFacts);
+
   const oldContent = parseOldContent
     ? await getParsedOldContent(celeb.oldContent!)
     : null;
@@ -53,10 +54,10 @@ export const getStaticProps = async ({
       pagination: getPaginationProps(paginationRange, factCount),
       hasFacts,
       tagTimeline,
+      issues,
+      facts,
       celeb: {
         ...celeb,
-        issues,
-        facts,
         oldContent,
       },
     },

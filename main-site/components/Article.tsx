@@ -33,7 +33,7 @@ export const Article = (
         </TitledCard>
       )}
 
-      {isEmpty(props.celeb.facts) && (
+      {isEmpty(props.facts) && (
         <InFeedAd key={`article-ad-${props.celeb.slug}`} />
       )}
 

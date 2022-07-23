@@ -69,7 +69,7 @@ export default function Celeb(props: CelebPageProps) {
 
         <InBetweenContentShareButton />
 
-        {!isEmpty(props.celeb.facts) && <Facts {...props} />}
+        {!isEmpty(props.facts) && <Facts {...props} />}
 
         <Pagination
           {...props.pagination}
