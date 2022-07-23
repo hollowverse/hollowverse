@@ -1,19 +1,15 @@
-import groq from 'groq';
-import { flatten, isEmpty, uniq } from 'lodash-es';
+import { flatten } from 'lodash-es';
 import { customTitleDefinitions } from '~/lib/customTitleDefinitions';
 import { oneDay } from '~/lib/date';
-import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
+import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
+import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
+import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
+import { getIssue } from '~/lib/getStatic/helpers/getIssue';
 import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import {
-  CelebWithFacts,
-  getCelebWithFactsGroq,
-} from '~/lib/groq/getCelebWithFacts.groq';
-import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
 import { PageProps } from '~/shared/lib/types';
-import { sanityClient } from '~/shared/lib/sanityio';
 
 export type CelebIssuePageProps = PageProps<typeof getStaticProps>;
 
@@ -22,65 +18,26 @@ export async function getStaticProps({
 }: {
   params: { slug: string; issueId: string };
 }) {
-  if (!params.issueId) {
+  if (!params.issueId || !params.slug) {
     return { notFound: true };
   }
 
-  const [celebWithFacts, issue] = await Promise.all([
-    sanityClient.fetch<CelebWithFacts<false>>(
-      'celeb-and-facts',
-      ...getCelebWithFactsGroq({
-        includeOldContent: false,
-        params: { slug: params.slug },
-      }),
-    ),
-    sanityClient.fetch<Issue>(
-      'issue',
-      groq`*[_type == 'topic' && _id == $issueId][0]`,
-      { issueId: params.issueId },
-    ),
+  const [celeb, issue] = await Promise.all([
+    getCeleb(params.slug),
+    getIssue(params.issueId),
   ]);
 
-  if (!issue || !celebWithFacts?.celeb) {
+  if (!issue || !celeb) {
     return { notFound: true };
   }
 
-  const facts = celebWithFacts.facts.filter((f) =>
+  const allFacts = await getCelebFacts(celeb._id);
+  const facts = allFacts.filter((f) =>
     f.tags.some((t) => t.tag.issue._id === params.issueId),
   );
-
-  if (isEmpty(facts)) {
-    // Some pages link to the celeb Issue page because the celeb has a tag that belongs
-    // to the issue. So it is assumed that the celeb also has at least one Fact with the Issue, but that can be
-    // a wrong assumption. The celeb may have the tag of one Issue on a Fact of a different
-    // Issue, and not have a Fact for the Tag Issue at all, in which case, we'd have an empty
-    // list of Facts for the celeb here. So we redirect this link back to the celeb's main-page.
-    //
-    // We should fix this though. Any Fact that has a Tag that belongs to Issue X, the Fact itself
-    // should also have Issue X.
-    return {
-      redirect: {
-        destination: `/${params.slug}`,
-        permanent: false,
-      },
-    };
-  }
-
   const tagTimeline = getTagTimeline(facts);
-
   const tag = tagTimeline[0][1][0];
-
-  const issues = await getCelebIssues({
-    facts: celebWithFacts.facts,
-    currentIssueId: params.issueId,
-  });
-
-  const celeb = {
-    ...celebWithFacts.celeb,
-    facts: facts.map((f) => transformFact(f)),
-    issues,
-  };
-
+  const issues = getFactIssues(allFacts);
   const customTitles =
     customTitleDefinitions[`${params.slug}/issue/${params.issueId}`];
 
@@ -93,7 +50,9 @@ export async function getStaticProps({
       tag,
       tagTimeline,
       issue,
+      issues,
       celeb,
+      facts: facts.map((f) => transformFact(f)),
     },
     revalidate: oneDay,
   };
@@ -131,6 +90,6 @@ export async function getStaticProps({
       })
       .join('');
 
-    return `${celeb.name} ${joinedTags}`;
+    return `${celeb!.name} ${joinedTags}`;
   }
 }

@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash-es';
 import { oneDay } from '~/lib/date';
 import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
 import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
-import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
+import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
 import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
 import {
@@ -35,10 +35,10 @@ export const getStaticProps = async ({
   const tagTimeline = getTagTimeline(allFacts);
   const parseOldContent =
     factCount < paginationRange.pageSize && celeb.oldContent !== null;
-  const [oldContent, issues] = await Promise.all([
-    parseOldContent ? getParsedOldContent(celeb.oldContent!) : null,
-    getCelebIssues({ facts: allFacts }),
-  ]);
+  const issues = getFactIssues(allFacts);
+  const oldContent = parseOldContent
+    ? await getParsedOldContent(celeb.oldContent!)
+    : null;
   const facts = allFacts
     .slice(paginationRange.start, paginationRange.end)
     .map((f) => transformFact(f));

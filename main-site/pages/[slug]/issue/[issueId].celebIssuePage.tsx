@@ -22,14 +22,15 @@ import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 export function CelebIssueSelector(props: {
   issue: Issue;
-  celeb: { slug: string; name: string; issues: Issue[] };
+  celeb: { slug: string; name: string };
+  issues: Issue[];
 }) {
   return (
     <div className="border-t border-b">
       <IssueSelector
         getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
         isSelected={(i) => i._id == props.issue._id}
-        issues={props.celeb.issues}
+        issues={props.issues}
         getLink={(_id) =>
           _id == noIssueFilter._id
             ? `/${props.celeb.slug}`
@@ -93,7 +94,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
         <InBetweenContentShareButton />
 
         <FactGroup
-          factGroup={props.celeb.facts}
+          factGroup={props.facts}
           celebName={props.celeb.name}
           slug={props.celeb.slug}
           title={
