@@ -45,7 +45,7 @@ export async function getStaticProps({
     return { notFound: true };
   }
 
-  const facts = celebWithFacts.celeb.facts.filter((f) =>
+  const facts = celebWithFacts.facts.filter((f) =>
     f.tags.some((t) => t.tag.issue._id === params.issueId),
   );
 
@@ -71,7 +71,7 @@ export async function getStaticProps({
   const tag = tagTimeline[0][1][0];
 
   const issues = await getCelebIssues({
-    facts: celebWithFacts.celeb.facts,
+    facts: celebWithFacts.facts,
     currentIssueId: params.issueId,
   });
 

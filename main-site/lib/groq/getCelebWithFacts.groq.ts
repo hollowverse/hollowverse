@@ -8,9 +8,10 @@ export type CelebWithFacts<T> = {
   celeb:
     | (Celeb & {
         oldContent: T extends true ? string : undefined;
-        facts: Fact[];
       })
     | null;
+  facts: Fact[];
+  factCount: number;
   orderOfIssues: OrderOfIssues;
 };
 
@@ -26,17 +27,21 @@ export function getCelebWithFactsGroq(args: {
   const start = args.params.start ?? 0;
   const end = args.params.end ?? 999;
 
-  const baseFilter = groq`_type == 'fact' && celeb._ref == ^._id`;
+  const factFilter = groq`_type == 'fact' && celeb->slug.current == $slug`;
 
   return [
     groq`{
       'celeb': *[_type == 'celeb' && slug.current == $slug][0]{
         ${celebProjection},
-        ${includeOldContent ? `oldContent,` : ''}
-        'facts': *[${baseFilter}]  | order(date desc) {
-          ${factProjection}
-        }[$start...$end]
+        ${includeOldContent ? `oldContent` : ''},
       },
+
+      'facts': *[${factFilter}]  | order(date desc) {
+        ${factProjection}
+      }[$start...$end],
+
+      'factCount': count(*[${factFilter}]),
+
       'orderOfIssues': ${orderOfIssuesGroq}
     }`,
     {

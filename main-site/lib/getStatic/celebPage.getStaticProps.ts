@@ -45,23 +45,28 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagTimeline = getTagTimeline(results.celeb.facts);
+  const tagTimeline = getTagTimeline(results.facts);
 
   const { celeb } = results;
 
-  const parseOldContent = celeb.facts.length < 5 && celeb.oldContent;
+  const parseOldContent = results.facts.length < 5 && celeb.oldContent;
 
   const [oldContent, issues] = await Promise.all([
     parseOldContent ? getParsedOldContent(celeb.oldContent) : null,
-    getCelebIssues({ facts: results.celeb.facts }),
+    getCelebIssues({ facts: results.facts }),
   ]);
 
-  const facts = celeb.facts.slice(0, 5).map((f) => transformFact(f));
+  const facts = results.facts.slice(0, 5).map((f) => transformFact(f));
   const hasFacts = !isEmpty(facts);
 
   return {
     props: {
       pageDescription: getPageDescription(),
+      pagination: {
+        currentPage: p,
+        pageSize,
+        totalItems: results.factCount,
+      },
       hasFacts,
       tagTimeline,
       celeb: {

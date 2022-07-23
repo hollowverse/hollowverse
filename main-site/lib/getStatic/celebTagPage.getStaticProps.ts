@@ -40,7 +40,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagTimeline = getTagTimeline(results.celeb.facts);
+  const tagTimeline = getTagTimeline(results.facts);
 
   if (!tagExists(tagTimeline, params.tagId)) {
     return {
@@ -48,7 +48,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagFacts = results.celeb.facts
+  const tagFacts = results.facts
     .filter((f) => f.tags.some((t) => t.tag._id === params.tagId))
     .map((f) => transformFact(f));
 
