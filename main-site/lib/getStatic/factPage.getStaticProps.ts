@@ -3,7 +3,6 @@ import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
 import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
 import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
 import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
-import { notFound } from '~/lib/getStatic/helpers/notFound';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { PageProps } from '~/shared/lib/types';
 
@@ -15,20 +14,20 @@ export async function getStaticProps({
   params: { slug: string; factId: string };
 }) {
   if (!params.slug || !params.factId) {
-    return notFound;
+    return { notFound: true };
   }
 
   const celeb = await getCeleb(params.slug);
 
   if (!celeb) {
-    return notFound;
+    return { notFound: true };
   }
 
   const allFacts = await getCelebFacts(celeb._id);
   const fact = allFacts.find((f) => f._id == params.factId);
 
   if (!fact) {
-    return notFound;
+    return { notFound: true };
   }
 
   const tag = fact.tags[0];
