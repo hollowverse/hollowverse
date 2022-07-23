@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { oneDay } from '~/lib/date';
-import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
+import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
 import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
@@ -53,7 +53,7 @@ export async function getStaticProps({
 
   const [factForumData, issues] = await Promise.all([
     getFactForumData(fact.forumLink),
-    getCelebIssues({ slug: params.slug }),
+    getFactIssues({ slug: params.slug }),
   ]);
 
   return {
