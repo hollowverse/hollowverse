@@ -3,6 +3,10 @@ import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
 import { Fact, factProjection } from '~/lib/groq/fact.projection';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
+import {
+  TagTimelineFact,
+  tagTimelineFactProjection,
+} from '~/lib/groq/tagTimelineFactsProjection';
 
 export type CelebWithFacts<T> = {
   celeb:
@@ -12,6 +16,7 @@ export type CelebWithFacts<T> = {
     | null;
   facts: Fact[];
   factCount: number;
+  tagTimelineFacts: TagTimelineFact[];
   orderOfIssues: OrderOfIssues;
 };
 
@@ -39,6 +44,10 @@ export function getCelebWithFactsGroq(args: {
       'facts': *[${factFilter}]  | order(date desc) {
         ${factProjection}
       }[$start...$end],
+
+      'tagTimelineFacts': *[${factFilter}] | order(date desc) {
+        ${tagTimelineFactProjection}
+      },
 
       'factCount': count(*[${factFilter}]),
 

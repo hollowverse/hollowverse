@@ -47,7 +47,7 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagTimeline = getTagTimeline(results.facts);
+  const tagTimeline = getTagTimeline(results.tagTimelineFacts);
 
   const { celeb } = results;
 
