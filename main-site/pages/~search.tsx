@@ -20,7 +20,7 @@ export default function Search() {
     <Page
       title={`Search the religions and political views of celebrities`}
       description={`Search the religions and political views of celebrities`}
-      pathname={`~search`}
+      pathname={`/~search`}
       allowSearchEngines
       id="search-page"
       appBar={

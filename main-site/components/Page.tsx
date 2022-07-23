@@ -13,9 +13,6 @@ export function Page(props: {
   allowSearchEngines: boolean;
   description: string;
   id: string;
-  /**
-   * Should not have a leading slash
-   */
   pathname: string;
 }) {
   return (
@@ -45,7 +42,7 @@ export function Page(props: {
         <link
           key="head-canonical"
           rel="canonical"
-          href={`https://hollowverse.com/${props.pathname}`}
+          href={`https://hollowverse.com${props.pathname}`}
         />
 
         <link

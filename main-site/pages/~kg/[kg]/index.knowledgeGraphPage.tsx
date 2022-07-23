@@ -12,7 +12,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
       id="knowledge-graph-page"
       title={`Request to add ${params.name}`}
       description={`Request to add ${params.name} to Hollowverse`}
-      pathname={`~kg/${encodeURIComponent(params['@id'])}`}
+      pathname={`/~kg/${encodeURIComponent(params['@id'])}`}
       allowSearchEngines={false}
     >
       <Card topBorder={false}>

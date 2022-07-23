@@ -8,7 +8,7 @@ export default function About() {
       id="about-page"
       title={`About`}
       description={`About Hollowverse and contact info`}
-      pathname={`~about`}
+      pathname={`/~about`}
       allowSearchEngines={false}
     >
       <div className="my-5 text-neutral-500" id="about-page-content">

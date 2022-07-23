@@ -22,7 +22,7 @@ export default function ResearchList(props: ResearchListProps) {
       title={`Celebrities to research`}
       description={`List of celebrities to research on Hollowverse`}
       allowSearchEngines={false}
-      pathname={'~internal/research-list'}
+      pathname={'/~internal/research-list'}
     >
       <div className="h-container relative my-5 overflow-x-auto">
         <table className="w-full text-left text-sm text-gray-500">

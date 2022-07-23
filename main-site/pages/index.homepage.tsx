@@ -13,7 +13,7 @@ export default function Index(props: HomepageProps) {
     <Page
       title="The political views and religious beliefs of celebrities"
       description="Learn the political views and religious beliefs of any celebrity"
-      pathname=""
+      pathname="/"
       allowSearchEngines
       className="text-neutral-600"
       id="homepage"

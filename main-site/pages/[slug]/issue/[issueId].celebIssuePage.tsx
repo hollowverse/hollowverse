@@ -46,7 +46,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       title={props.pageTitle}
       description={props.pageDescription}
       allowSearchEngines
-      pathname={props.celeb.slug}
+      pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
       id="celeb-issue-page"
       appBar={
         <StickyAppBar>

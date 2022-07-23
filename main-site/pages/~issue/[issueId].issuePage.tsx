@@ -17,7 +17,7 @@ export default function IssuePage(props: IssuePageProps) {
           : `The opinions of celebrity's on ${props.issue.name}`
       }
       id="issue-page"
-      pathname={`~issue/${props.issue._id}`}
+      pathname={`/~issue/${props.issue._id}`}
       title={
         props.issue.isAffiliation
           ? `What are the ${props.issue.name} of celebrities?`

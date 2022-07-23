@@ -19,7 +19,7 @@ export function FacebookCommentsCount(props: { slug: string; fact: Fact }) {
       {inView && (
         <div
           className="fb-comments-count"
-          data-href={`https://hollowverse.com/${getFactPagePathname(
+          data-href={`https://hollowverse.com${getFactPagePathname(
             props.slug,
             props.fact,
           )}`}

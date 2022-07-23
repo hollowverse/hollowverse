@@ -70,7 +70,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celebName,
-      pathname: `${params.slug}/lp`,
+      pathname: `/${params.slug}/lp`,
       tags,
     },
 
