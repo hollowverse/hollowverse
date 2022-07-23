@@ -29,11 +29,14 @@ export const getStaticProps = async ({
 
   const results = await sanityClient.fetch<CelebWithFacts<true>>(
     'celeb-and-facts',
-    getCelebWithFactsGroq({ includeOldContent: true }),
-    {
-      slug: params.slug,
-      issueId: null,
-    },
+    ...getCelebWithFactsGroq({
+      includeOldContent: true,
+      params: {
+        slug: params.slug,
+        start,
+        end,
+      },
+    }),
   );
 
   if (!results || !results.celeb) {

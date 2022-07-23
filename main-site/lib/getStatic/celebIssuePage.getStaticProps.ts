@@ -29,11 +29,10 @@ export async function getStaticProps({
   const [celebWithFacts, issue] = await Promise.all([
     sanityClient.fetch<CelebWithFacts<false>>(
       'celeb-and-facts',
-      getCelebWithFactsGroq({ includeOldContent: false }),
-      {
-        slug: params.slug,
-        issueId: null,
-      },
+      ...getCelebWithFactsGroq({
+        includeOldContent: false,
+        params: { slug: params.slug },
+      }),
     ),
     sanityClient.fetch<Issue>(
       'issue',
