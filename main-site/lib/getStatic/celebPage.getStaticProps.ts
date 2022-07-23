@@ -12,6 +12,10 @@ import { Issue } from '~/lib/groq/issue.projection';
 import { PageProps } from '~/shared/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
+import {
+  getPaginationProps,
+  getPaginationRange,
+} from '~/lib/getStatic/helpers/pagination';
 
 export type CelebPageProps = PageProps<typeof getStaticProps>;
 
@@ -22,10 +26,9 @@ export const getStaticProps = async ({
 }) => {
   log('info', `celebPage getStaticProps called: ${params.slug}`);
 
-  const p = parseInt(params.p ?? '1');
-  const pageSize = 10;
-  const start = (p - 1) * pageSize;
-  const end = start + pageSize;
+  const paginationRange = getPaginationRange({
+    p: params.p,
+  });
 
   const results = await sanityClient.fetch<CelebWithFacts<true>>(
     'celeb-and-facts',
@@ -33,8 +36,7 @@ export const getStaticProps = async ({
       includeOldContent: true,
       params: {
         slug: params.slug,
-        start,
-        end,
+        ...paginationRange,
       },
     }),
   );
@@ -49,7 +51,8 @@ export const getStaticProps = async ({
 
   const { celeb } = results;
 
-  const parseOldContent = results.facts.length < 5 && celeb.oldContent;
+  const parseOldContent =
+    results.factCount < paginationRange.pageSize && celeb.oldContent;
 
   const [oldContent, issues] = await Promise.all([
     parseOldContent ? getParsedOldContent(celeb.oldContent) : null,
@@ -62,11 +65,11 @@ export const getStaticProps = async ({
   return {
     props: {
       pageDescription: getPageDescription(),
-      pagination: {
-        currentPage: p,
-        pageSize,
-        totalItems: results.factCount,
-      },
+      pagePath:
+        paginationRange.p === 1
+          ? `/${params.slug}`
+          : `/${params.slug}/p/${paginationRange.p}`,
+      pagination: getPaginationProps(paginationRange, results.factCount),
       hasFacts,
       tagTimeline,
       celeb: {

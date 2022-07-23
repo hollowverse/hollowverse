@@ -1,13 +1,11 @@
 import { Link } from '~/lib/Link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { c } from '~/lib/c';
+import { PaginationProps } from '~/lib/getStatic/helpers/pagination';
 
-export function Pagination(props: {
-  linkTemplate: string;
-  currentPage: number | undefined;
-  pageSize: number;
-  totalItems: number;
-}) {
+export function Pagination(
+  props: PaginationProps & { getLink: (pageNumber: number) => string },
+) {
   const currentPage = props.currentPage || 1;
   const nextPage = currentPage + 1;
   const previousPage = currentPage - 1;
@@ -21,15 +19,12 @@ export function Pagination(props: {
         hidden: !showPagination,
       })}
     >
-      <Link
-        href={props.linkTemplate.replace('{p}', previousPage + '')}
-        passHref
-      >
+      <Link href={props.getLink(previousPage)} passHref>
         <a
           id="pagination-previous-page-button"
           aria-disabled={!showPreviousPage}
           className={c(
-            'flex flex-1 items-center justify-center gap-2 rounded-md border bg-gray-50 py-2 px-5 text-neutral-500',
+            'flex flex-1 items-center justify-center gap-2 rounded-sm border bg-white py-2 px-5 text-neutral-500',
             {
               'pointer-events-none opacity-70 shadow-none': !showPreviousPage,
               'shadow-sm': showPreviousPage,
@@ -41,12 +36,12 @@ export function Pagination(props: {
         </a>
       </Link>
 
-      <Link href={props.linkTemplate.replace('{p}', nextPage + '')} passHref>
+      <Link href={props.getLink(nextPage)} passHref>
         <a
           id="pagination-next-page-button"
           aria-disabled={!showNextPage}
           className={c(
-            'flex flex-1 items-center justify-center gap-2 rounded-md border bg-gray-50 py-2 px-5 text-neutral-500',
+            'flex flex-1 items-center justify-center gap-2 rounded-sm border bg-white py-2 px-5 text-neutral-500',
             {
               'pointer-events-none opacity-70 shadow-none': !showNextPage,
               'shadow-sm': showNextPage,

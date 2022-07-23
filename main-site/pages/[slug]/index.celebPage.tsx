@@ -5,6 +5,7 @@ import { Facts } from '~/components/Facts';
 import { noIssueFilter } from '~/components/IssueSelector';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
+import { Pagination } from '~/components/Pagination';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
 import { TopContributors } from '~/components/TopContributorsWidget';
@@ -32,7 +33,7 @@ export default function Celeb(props: CelebPageProps) {
       }
       description={props.pageDescription}
       allowSearchEngines
-      pathname={props.celeb.slug}
+      pathname={props.pagePath}
       id="celeb-page"
       appBar={
         <StickyAppBar>
@@ -64,9 +65,20 @@ export default function Celeb(props: CelebPageProps) {
         className="h-container my-5 flex flex-col gap-5"
         id={`celeb-page-${props.celeb.slug}`}
       >
+        <div id="content" aria-hidden />
+
         <InBetweenContentShareButton />
 
         {!isEmpty(props.celeb.facts) && <Facts {...props} />}
+
+        <Pagination
+          {...props.pagination}
+          getLink={(pageNumber) =>
+            pageNumber == 1
+              ? `/${props.celeb.slug}`
+              : `/${props.celeb.slug}/p/${pageNumber}#content`
+          }
+        />
 
         {props.celeb.oldContent && <Md {...props} />}
 
