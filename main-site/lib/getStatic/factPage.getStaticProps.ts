@@ -1,13 +1,10 @@
-import groq from 'groq';
 import { oneDay } from '~/lib/date';
-import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
+import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
+import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
 import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
+import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
+import { notFound } from '~/lib/getStatic/helpers/notFound';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
-import { Fact, factProjection } from '~/lib/groq/fact.projection';
-import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
-import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
-import { sanityClient } from '~/shared/lib/sanityio';
 import { PageProps } from '~/shared/lib/types';
 
 export type FactPageProps = PageProps<typeof getStaticProps>;
@@ -17,44 +14,26 @@ export async function getStaticProps({
 }: {
   params: { slug: string; factId: string };
 }) {
-  const celeb = await sanityClient.fetch<Celeb>(
-    'fact-page-celeb-data',
-    groq`*[_type == 'celeb' && slug.current == $slug][0]{
-      ${celebProjection}
-    }`,
-    {
-      slug: params.slug,
-    },
-  );
+  if (!params.slug || !params.factId) {
+    return notFound;
+  }
+
+  const celeb = await getCeleb(params.slug);
 
   if (!celeb) {
-    return {
-      notFound: true,
-    };
+    return notFound;
   }
-  const fact = await sanityClient.fetch<Fact>(
-    'fact-page-fact-data',
-    groq`*[_type == 'fact' && _id == $factId && celeb._ref == $celebId][0]{
-      ${factProjection}
-    }`,
-    {
-      factId: params.factId,
-      celebId: celeb._id,
-    },
-  )!;
+
+  const allFacts = await getCelebFacts(celeb._id);
+  const fact = allFacts.find((f) => f._id == params.factId);
 
   if (!fact) {
-    return {
-      notFound: true,
-    };
+    return notFound;
   }
 
   const tag = fact.tags[0];
-
-  const [factForumData, issues] = await Promise.all([
-    getFactForumData(fact.forumLink),
-    getFactIssues({ slug: params.slug }),
-  ]);
+  const factForumData = await getFactForumData(fact.forumLink);
+  const issues = getFactIssues(allFacts);
 
   return {
     props: {
