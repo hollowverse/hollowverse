@@ -62,11 +62,11 @@ export default function Celeb(props: CelebPageProps) {
       }
     >
       <div
-        className="h-container my-5 flex flex-col gap-5"
         id={`celeb-page-${props.celeb.slug}`}
-      >
-        <div id="content" aria-hidden />
-
+        aria-hidden
+        className="h-0 w-0"
+      />
+      <div className="h-container my-5 flex flex-col gap-5" id="content">
         <InBetweenContentShareButton />
 
         {!isEmpty(props.facts) && <Facts {...props} />}

@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
@@ -25,6 +26,10 @@ export function CelebIssueSelector(props: {
   celeb: { slug: string; name: string };
   issues: Issue[];
 }) {
+  if (isEmpty(props.issues)) {
+    return null;
+  }
+
   return (
     <div className="border-t border-b">
       <IssueSelector

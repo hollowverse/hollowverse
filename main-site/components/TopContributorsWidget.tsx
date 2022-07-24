@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash-es';
 import { Fragment } from 'react';
 import { ContributorBox } from '~/components/ContributorBox';
 import { useHvApi } from '~/components/hooks/useHvApi';
@@ -16,7 +17,7 @@ export function TopContributors(
     'top-contributors?' + new URLSearchParams({ slug: props.slug }),
   );
 
-  if (!topContributors) {
+  if (isEmpty(topContributors)) {
     return null;
   }
 
