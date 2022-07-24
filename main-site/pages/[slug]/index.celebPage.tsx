@@ -1,5 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
+import { ContributeCta } from '~/components/ContributeCta';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Facts } from '~/components/Facts';
 import { noIssueFilter } from '~/components/IssueSelector';
@@ -9,6 +10,7 @@ import { Pagination } from '~/components/Pagination';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
 import { TopContributors } from '~/components/TopContributorsWidget';
+import { Card } from '~/components/ui/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -18,6 +20,7 @@ import {
   HeroTopContainer,
 } from '~/components/ui/Hero';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { TitledContent } from '~/components/ui/TitledContent';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
@@ -89,20 +92,31 @@ export default function Celeb(props: CelebPageProps) {
           celebName={props.celeb.name}
         />
 
-        <TitledCard
-          titledContentProps={{
-            title: (
-              <span className="text-base">
-                Your thoughts on {props.celeb.name}?
-              </span>
-            ),
-            stickyTitle: false,
-          }}
-        >
-          <div className="my-1 mx-3">
-            <FacebookComments pathname={`/${props.celeb.slug}`} />
+        <Card>
+          <div className="flex flex-col gap-2 px-5 py-5">
+            <p className="text-neutral-600">
+              Send us a tip about {props.celeb.name}&apos;s politics or beliefs
+            </p>
+            <ContributeCta name={props.celeb.name} />
           </div>
-        </TitledCard>
+        </Card>
+
+        {!props.hasFacts && (
+          <TitledCard
+            titledContentProps={{
+              title: (
+                <span className="text-base">
+                  Your thoughts on {props.celeb.name}?
+                </span>
+              ),
+              stickyTitle: false,
+            }}
+          >
+            <div className="my-1 mx-3">
+              <FacebookComments pathname={`/${props.celeb.slug}`} />
+            </div>
+          </TitledCard>
+        )}
       </div>
     </Page>
   );

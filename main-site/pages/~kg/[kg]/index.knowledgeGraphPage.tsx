@@ -3,6 +3,7 @@ import { CelebImage } from '~/components/CelebImage';
 import { ContributeCta } from '~/components/ContributeCta';
 import { Page } from '~/components/Page';
 import { Card } from '~/components/ui/Card';
+import { TitledCard } from '~/components/ui/TitledCard';
 import { Link } from '~/lib/Link';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
@@ -19,7 +20,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         <div className="p-5">
           <div
             id="kg-request-ack"
-            className="h-container flex items-center gap-3 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 p-5"
+            className="h-container flex items-center gap-3 rounded-sm bg-gradient-to-r from-blue-500 to-purple-500 p-5"
           >
             <FaRegCheckCircle className="text-xl text-white" />
 
@@ -32,7 +33,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
           <div className="mt-5 flex flex-col items-center gap-5">
             <div
               id="kg-celeb-image"
-              className="aspect-square h-[200px] w-[200px] rounded-md"
+              className="aspect-square h-[200px] w-[200px]"
             >
               <CelebImage
                 className="rounded-md object-cover"
@@ -56,44 +57,17 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      <div className="h-container my-5">
-        <ContributeCta
-          name={params.name}
-          cta={
-            <div className="flex flex-col gap-2 text-base">
-              <p>Hey! 👋 Help us get started!</p>
-              <p>
-                Do you know anything about {params.name}&apos;s religion or
-                political views?
-              </p>
+      <Card className="h-container my-5 p-5">
+        <div className="flex flex-col gap-2 text-base text-neutral-600">
+          <p>Hey! 👋</p>
 
-              <p>
-                Send us a tip and claim your{' '}
-                <span className="font-semibold">$50 Amazon gift card</span> when
-                you reach the{' '}
-                <a
-                  className="h-link"
-                  href="https://forum.hollowverse.com/badges/112/saturn"
-                >
-                  <span className="font-semibold">Saturn badge</span>
-                </a>
-                !
-              </p>
+          <p>Help us kickstart {params.name}&apos;s page.</p>
 
-              <p>
-                <Link
-                  passHref
-                  href="https://forum.hollowverse.com/t/how-to-contribute-to-hollowverse/1929"
-                >
-                  <a className="h-link font-semibold">
-                    Learn more about how to contribute!
-                  </a>
-                </Link>
-              </p>
-            </div>
-          }
-        />
-      </div>
+          <p>Send us a tip about {params.name}&apos;s politics or beliefs!</p>
+
+          <ContributeCta name={params.name} />
+        </div>
+      </Card>
     </Page>
   );
 }

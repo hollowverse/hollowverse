@@ -1,5 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
+import { ContributeCta } from '~/components/ContributeCta';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
@@ -8,6 +9,7 @@ import { Page } from '~/components/Page';
 import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
+import { Card } from '~/components/ui/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -20,6 +22,7 @@ import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { CelebPageContributorCta } from '~/pages/[slug]/index.celebPage';
 
 export function CelebIssueSelector(props: {
   issue: Issue;
@@ -111,7 +114,18 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
 
         <CelebIssueSelector {...props} />
 
-        <TitledCard
+        <Card>
+          <div className="flex flex-col gap-2 px-5 py-5">
+            <p className="text-neutral-600">
+              Send us a tip about{' '}
+              {celebNameToIssue(props.celeb.name, props.issue)}, or other
+              issues!
+            </p>
+            <ContributeCta name={props.celeb.name} />
+          </div>
+        </Card>
+
+        {/* <TitledCard
           titledContentProps={{
             title: (
               <span className="text-base">
@@ -127,7 +141,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
               pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
             />
           </div>
-        </TitledCard>
+        </TitledCard> */}
 
         <InFeedAd />
 

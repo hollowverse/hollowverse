@@ -35,7 +35,7 @@ export default function Search() {
                   }
                 }}
                 id="search-back-button"
-                className="mr-2.5 rounded-md bg-gray-100 p-2.5 hover:bg-gray-200 active:bg-gray-200"
+                className="mr-2.5 rounded-sm bg-gray-100 p-2.5 hover:bg-gray-200 active:bg-gray-200"
               >
                 <FaChevronLeft />
               </a>
