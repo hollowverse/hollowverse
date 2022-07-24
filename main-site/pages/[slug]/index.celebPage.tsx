@@ -51,7 +51,9 @@ export default function Celeb(props: CelebPageProps) {
               </HeroTitleContainer>
             </HeroTopContainer>
 
-            <CelebIssueSelector {...props} issue={noIssueFilter} />
+            <div className="-mx-5">
+              <CelebIssueSelector {...props} issue={noIssueFilter} />
+            </div>
 
             <TagCollection
               slug={props.celeb.slug}
