@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta } from '~/components/ContributeCta';
+import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Facts } from '~/components/Facts';
 import { noIssueFilter } from '~/components/IssueSelector';
@@ -20,7 +20,6 @@ import {
   HeroTopContainer,
 } from '~/components/ui/Hero';
 import { TitledCard } from '~/components/ui/TitledCard';
-import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
@@ -96,7 +95,8 @@ export default function Celeb(props: CelebPageProps) {
         <Card>
           <div className="flex flex-col gap-2 px-5 py-5">
             <p className="text-neutral-600">
-              Send us a tip about {props.celeb.name}&apos;s politics or beliefs
+              Send us a tip about {props.celeb.name}&apos;s politics or beliefs.
+              Or <TweetItAtUs />
             </p>
             <ContributeCta name={props.celeb.name} />
           </div>

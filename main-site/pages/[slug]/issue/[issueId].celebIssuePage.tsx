@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta } from '~/components/ContributeCta';
+import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
@@ -116,7 +116,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
             <p className="text-neutral-600">
               Send us a tip about{' '}
               {celebNameToIssue(props.celeb.name, props.issue)}, or other
-              issues!
+              issues! You can also <TweetItAtUs />
             </p>
             <ContributeCta name={props.celeb.name} />
           </div>

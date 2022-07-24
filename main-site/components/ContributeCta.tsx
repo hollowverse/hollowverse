@@ -17,6 +17,23 @@ export const getContributeCtaLink = (name: string, data: Inputs) => {
   return href;
 };
 
+export function TweetItAtUs() {
+  return (
+    <>
+      tweet it at{' '}
+      <a
+        className="h-link"
+        target="_blank"
+        rel="noreferrer"
+        href="https://twitter.com/hollowverse"
+        title="Hollowverse's twitter account"
+      >
+        @hollowverse
+      </a>
+    </>
+  );
+}
+
 export function ContributeCta(params: { name: string; cta?: ReactNode }) {
   const router = useRouter();
   const {

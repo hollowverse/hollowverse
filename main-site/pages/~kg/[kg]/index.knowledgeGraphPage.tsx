@@ -1,6 +1,6 @@
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { CelebImage } from '~/components/CelebImage';
-import { ContributeCta } from '~/components/ContributeCta';
+import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
 import { Page } from '~/components/Page';
 import { Card } from '~/components/ui/Card';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
@@ -61,7 +61,10 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
 
           <p>Help us kickstart {params.name}&apos;s page.</p>
 
-          <p>Send us a tip about {params.name}&apos;s politics or beliefs!</p>
+          <p>
+            Send us a tip about {params.name}&apos;s politics or beliefs! You
+            can also <TweetItAtUs />
+          </p>
 
           <ContributeCta name={params.name} />
         </div>
