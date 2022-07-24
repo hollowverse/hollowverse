@@ -1,7 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { ContributeCta } from '~/components/ContributeCta';
-import { FacebookComments } from '~/components/FacebookComments';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
@@ -18,11 +17,9 @@ import {
   HeroTitleStrongText,
   HeroTopContainer,
 } from '~/components/ui/Hero';
-import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { CelebPageContributorCta } from '~/pages/[slug]/index.celebPage';
 
 export function CelebIssueSelector(props: {
   issue: Issue;

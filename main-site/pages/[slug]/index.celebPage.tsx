@@ -76,6 +76,8 @@ export default function Celeb(props: CelebPageProps) {
 
         {!isEmpty(props.facts) && <Facts {...props} />}
 
+        <CelebIssueSelector {...props} issue={noIssueFilter} />
+
         <Pagination
           {...props.pagination}
           getLink={(pageNumber) =>

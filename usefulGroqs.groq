@@ -66,3 +66,14 @@ distinct(*[]{_type}{
 
 // ID in drafts and none drafts
 *[_id match '5fd9bfb3-dd98-4198-bb71-fa52e7244e23']
+
+// Count number of facts per celeb
+*[
+  _type == 'celeb'
+]{
+  name,
+  'count': count(*[
+    _type == 'fact' &&
+    celeb._ref == ^._id
+  ])
+}
