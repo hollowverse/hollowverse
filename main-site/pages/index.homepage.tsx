@@ -109,7 +109,9 @@ export default function Index(props: HomepageProps) {
   function renderLatestFacts() {
     return (
       <div className="flex flex-col gap-2.5">
-        <h2 className="scale-y-110 px-5 text-xl font-semibold">The Latest</h2>
+        <h2 className="scale-y-110 px-5 text-xl font-semibold">
+          Recently added
+        </h2>
 
         <FactList list={props.latestFacts} />
       </div>
