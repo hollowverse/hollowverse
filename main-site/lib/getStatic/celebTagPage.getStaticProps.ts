@@ -41,7 +41,10 @@ export const getStaticProps = async ({
 
   if (!tagExists(tagTimeline, params.tagId)) {
     return {
-      notFound: true,
+      redirect: {
+        destination: `/${params.slug}`,
+        permanent: false,
+      },
     };
   }
 

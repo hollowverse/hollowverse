@@ -27,7 +27,12 @@ export async function getStaticProps({
   const fact = allFacts.find((f) => f._id == params.factId);
 
   if (!fact) {
-    return { notFound: true };
+    return {
+      redirect: {
+        destination: `/${params.slug}`,
+        permanent: false,
+      },
+    };
   }
 
   const tag = fact.tags[0];
