@@ -45,6 +45,6 @@ test('Celeb page (no old content) E2E test', async ({ page }) => {
 
 if (doLighthouse) {
   test('Celeb page (no old content) Lighthouse test', async () => {
-    await lighthouseTest(url, 'Celeb page');
+    await lighthouseTest(url, 'Celeb page no old content');
   });
 }

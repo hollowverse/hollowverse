@@ -33,6 +33,6 @@ test('Celeb page (with old content) E2E test', async ({ page }) => {
 
 if (doLighthouse) {
   test('Celeb page (with old content) Lighthouse test', async () => {
-    await lighthouseTest(url, 'Celeb page');
+    await lighthouseTest(url, 'Celeb page with old content');
   });
 }

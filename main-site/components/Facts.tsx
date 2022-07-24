@@ -8,9 +8,7 @@ export const Facts = (props: CelebPageProps) => {
         <FactGroup
           showIssueName
           title={
-            <h2 className="flex gap-2">
-              {props.celeb.name}&apos;s latest views
-            </h2>
+            <h2 className="flex gap-2">{props.celeb.name}&apos;s views</h2>
           }
           factGroup={props.facts}
           celebName={props.celeb.name}
