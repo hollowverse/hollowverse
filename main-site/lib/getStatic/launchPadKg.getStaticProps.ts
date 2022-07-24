@@ -33,7 +33,7 @@ export const getStaticProps = async ({
   return {
     props: {
       celebName: celeb.name,
-      pathname: `~kg/${encodeURIComponent(params.kg)}/lp`,
+      pathname: `/~kg/${encodeURIComponent(params.kg)}/lp`,
       tags,
     },
     revalidate: oneDay,

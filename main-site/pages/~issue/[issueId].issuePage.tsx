@@ -17,7 +17,7 @@ export default function IssuePage(props: IssuePageProps) {
           : `The opinions of celebrity's on ${props.issue.name}`
       }
       id="issue-page"
-      pathname={`~issue/${props.issue._id}`}
+      pathname={`/~issue/${props.issue._id}`}
       title={
         props.issue.isAffiliation
           ? `What are the ${props.issue.name} of celebrities?`
@@ -61,11 +61,15 @@ export default function IssuePage(props: IssuePageProps) {
 
         <Pagination
           {...props.pagination}
-          linkTemplate={
-            props.tagId
-              ? `/~issue/${props.issue._id}/p/{p}/tag/${props.tagId}`
-              : `/~issue/${props.issue._id}/p/{p}`
-          }
+          getLink={(pageNumber) => {
+            if (props.tagId) {
+              return `/~issue/${props.issue._id}/p/${pageNumber}/tag/${props.tagId}`;
+            }
+
+            return pageNumber == 1
+              ? `/~issue/${props.issue._id}`
+              : `/~issue/${props.issue._id}/p/${pageNumber}`;
+          }}
         />
       </div>
     </Page>

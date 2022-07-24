@@ -1,13 +1,16 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
+import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
 import { FacebookComments } from '~/components/FacebookComments';
 import { Facts } from '~/components/Facts';
 import { noIssueFilter } from '~/components/IssueSelector';
 import { Md } from '~/components/Md';
 import { Page } from '~/components/Page';
+import { Pagination } from '~/components/Pagination';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
-import { TopContributors } from '~/components/TopContributors';
+import { TopContributorsWidget } from '~/components/TopContributorsWidget';
+import { Card } from '~/components/ui/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -17,6 +20,7 @@ import {
   HeroTopContainer,
 } from '~/components/ui/Hero';
 import { TitledCard } from '~/components/ui/TitledCard';
+import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
@@ -32,7 +36,7 @@ export default function Celeb(props: CelebPageProps) {
       }
       description={props.pageDescription}
       allowSearchEngines
-      pathname={props.celeb.slug}
+      pathname={props.pagePath}
       id="celeb-page"
       appBar={
         <StickyAppBar>
@@ -50,7 +54,9 @@ export default function Celeb(props: CelebPageProps) {
               </HeroTitleContainer>
             </HeroTopContainer>
 
-            <CelebIssueSelector {...props} issue={noIssueFilter} />
+            <div className="-mx-5">
+              <CelebIssueSelector {...props} issue={noIssueFilter} />
+            </div>
 
             <TagCollection
               slug={props.celeb.slug}
@@ -61,36 +67,57 @@ export default function Celeb(props: CelebPageProps) {
       }
     >
       <div
-        className="h-container my-5 flex flex-col gap-5"
-        id={`celeb-page-${props.celeb.slug}`}
+        className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
+        id="content"
       >
         <InBetweenContentShareButton />
 
-        {!isEmpty(props.celeb.facts) && <Facts {...props} />}
+        {!isEmpty(props.facts) && <Facts {...props} />}
+
+        <CelebIssueSelector {...props} issue={noIssueFilter} />
+
+        <Pagination
+          {...props.pagination}
+          getLink={(pageNumber) =>
+            pageNumber == 1
+              ? `/${props.celeb.slug}`
+              : `/${props.celeb.slug}/p/${pageNumber}#content`
+          }
+        />
 
         {props.celeb.oldContent && <Md {...props} />}
 
-        {!isEmpty(props.topContributors) ? (
-          <TopContributors
-            contributors={props.topContributors!}
-            celebName={props.celeb.name}
-          />
-        ) : null}
+        <TopContributorsWidget
+          slug={props.celeb.slug!}
+          celebName={props.celeb.name}
+        />
 
-        <TitledCard
-          titledContentProps={{
-            title: (
-              <span className="text-base">
-                Your thoughts on {props.celeb.name}?
-              </span>
-            ),
-            stickyTitle: false,
-          }}
-        >
-          <div className="my-1 mx-3">
-            <FacebookComments pathname={`/${props.celeb.slug}`} />
+        <Card>
+          <div className="flex flex-col gap-2 px-5 py-5">
+            <p className="text-neutral-600">
+              Send us a tip about {props.celeb.name}&apos;s politics or beliefs.
+              Or <TweetItAtUs />
+            </p>
+            <ContributeCta name={props.celeb.name} />
           </div>
-        </TitledCard>
+        </Card>
+
+        {!props.hasFacts && (
+          <TitledCard
+            titledContentProps={{
+              title: (
+                <span className="text-base">
+                  Your thoughts on {props.celeb.name}?
+                </span>
+              ),
+              stickyTitle: false,
+            }}
+          >
+            <div className="my-1 mx-3">
+              <FacebookComments pathname={`/${props.celeb.slug}`} />
+            </div>
+          </TitledCard>
+        )}
       </div>
     </Page>
   );

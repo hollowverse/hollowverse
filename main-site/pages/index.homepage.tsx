@@ -4,6 +4,7 @@ import { CelebGallery } from '~/components/CelebGallery';
 import { FactList } from '~/components/FactList';
 import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 import { Page } from '~/components/Page';
+import { Pagination } from '~/components/Pagination';
 import { SideScroller } from '~/components/ui/SideScroller';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
@@ -13,7 +14,7 @@ export default function Index(props: HomepageProps) {
     <Page
       title="The political views and religious beliefs of celebrities"
       description="Learn the political views and religious beliefs of any celebrity"
-      pathname=""
+      pathname={props.pagePath}
       allowSearchEngines
       className="text-neutral-600"
       id="homepage"
@@ -38,6 +39,13 @@ export default function Index(props: HomepageProps) {
           {renderTrendingIssues()}
 
           {renderLatestFacts()}
+
+          <Pagination
+            {...props.pagination}
+            getLink={(pageNumber) =>
+              pageNumber === 1 ? '/' : `/~p/${pageNumber}`
+            }
+          />
         </div>
       </div>
     </Page>

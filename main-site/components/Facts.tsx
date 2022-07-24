@@ -12,7 +12,7 @@ export const Facts = (props: CelebPageProps) => {
               {props.celeb.name}&apos;s latest views
             </h2>
           }
-          factGroup={props.celeb.facts}
+          factGroup={props.facts}
           celebName={props.celeb.name}
           slug={props.celeb.slug}
         />

@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import escapeRegExp from 'lodash.escaperegexp';
 import { commonElementsTestFragment } from '~/e2e-tests/commonElements.e2e-test-fragment';
 import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
@@ -7,7 +8,7 @@ import { testUrl } from '~/e2e-tests/testUrl';
 
 const url = `${testUrl}/kim-kardashian`;
 
-test('Celeb page E2E test', async ({ page }) => {
+test('Celeb page (no old content) E2E test', async ({ page }) => {
   await page.goto(url);
   await page.waitForSelector('#celeb-page');
 
@@ -24,24 +25,26 @@ test('Celeb page E2E test', async ({ page }) => {
   await page.waitForSelector('#celeb-tag-page');
   await page.goBack();
 
-  await page.waitForSelector('#celeb-page');
-  await page.waitForSelector('#editorial-summary');
-  await page.waitForSelector('#editorial');
-  await page
-    .locator('#interesting-profiles >> :nth-match(#chr-item, 1)')
-    .click();
-  await page.waitForSelector('#celeb-page-kim-kardashian', {
-    state: 'detached',
-  });
-  await page.goBack();
-
-  await page.waitForSelector('#celeb-page-kim-kardashian');
+  await page.waitForSelector('#content.kim-kardashian');
 
   await factTestFragment(page, '#celeb-page >> :nth-match(#fact, 3)');
+
+  // Test pagination
+  await page.locator('#pagination-next-page-button').click();
+  await page.waitForURL(new RegExp(`.*${escapeRegExp('p/2')}.*`));
+
+  await factTestFragment(page, '#celeb-page >> :nth-match(#fact, 1)');
+  await commonElementsTestFragment(page);
+
+  await page.locator('#pagination-previous-page-button').click();
+  await page.waitForURL(url);
+
+  await factTestFragment(page, '#celeb-page >> :nth-match(#fact, 1)');
+  await commonElementsTestFragment(page);
 });
 
 if (doLighthouse) {
-  test('Celeb page Lighthouse test', async () => {
+  test('Celeb page (no old content) Lighthouse test', async () => {
     await lighthouseTest(url, 'Celeb page');
   });
 }

@@ -1,17 +1,13 @@
-import { uniq } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import { getCelebIssues } from '~/lib/getStatic/helpers/getCelebIssues';
+import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
+import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
+import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
 import {
   getTagTimeline,
   TagTimeline,
 } from '~/lib/getStatic/helpers/getTagTimeline';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import {
-  CelebWithFacts,
-  getCelebWithFactsGroq,
-} from '~/lib/groq/getCelebWithFacts.groq';
 import { log } from '~/shared/lib/log';
-import { sanityClient } from '~/shared/lib/sanityio';
 import { PageProps } from '~/shared/lib/types';
 
 function tagExists(tagTimeline: TagTimeline, celebTagId: string) {
@@ -29,22 +25,19 @@ export const getStaticProps = async ({
 }) => {
   log('info', `tagPage getStaticProps called: ${params.slug}/${params.tagId}`);
 
-  const results = await sanityClient.fetch<CelebWithFacts<false>>(
-    'celeb-and-facts',
-    getCelebWithFactsGroq(),
-    {
-      slug: params.slug,
-      issueId: null,
-    },
-  )!;
-
-  if (!results || !results.celeb) {
-    return {
-      notFound: true,
-    };
+  if (!params.slug || !params.tagId) {
+    return { notFound: true };
   }
 
-  const tagTimeline = getTagTimeline(results.celeb.facts);
+  const celeb = await getCeleb(params.slug);
+
+  if (!celeb) {
+    return { notFound: true };
+  }
+
+  const allFacts = await getCelebFacts(celeb._id);
+
+  const tagTimeline = getTagTimeline(allFacts);
 
   if (!tagExists(tagTimeline, params.tagId)) {
     return {
@@ -52,21 +45,18 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagFacts = results.celeb.facts
+  const tagFacts = allFacts
     .filter((f) => f.tags.some((t) => t.tag._id === params.tagId))
     .map((f) => transformFact(f));
 
   const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
 
-  const issues = await getCelebIssues({
-    slug: params.slug,
-    currentIssueId: tag.tag.issue._id,
-  });
+  const issues = getFactIssues(allFacts);
 
   return {
     props: {
       issues,
-      celeb: results.celeb,
+      celeb,
       tagTimeline,
       tag,
       tagFacts,

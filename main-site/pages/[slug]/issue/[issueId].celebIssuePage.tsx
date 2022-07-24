@@ -1,5 +1,6 @@
+import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
-import { FacebookComments } from '~/components/FacebookComments';
+import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
 import { FactGroup } from '~/components/FactGroup';
 import { InFeedAd } from '~/components/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
@@ -7,6 +8,7 @@ import { Page } from '~/components/Page';
 import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
+import { Card } from '~/components/ui/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -15,21 +17,25 @@ import {
   HeroTitleStrongText,
   HeroTopContainer,
 } from '~/components/ui/Hero';
-import { TitledCard } from '~/components/ui/TitledCard';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 export function CelebIssueSelector(props: {
   issue: Issue;
-  celeb: { slug: string; name: string; issues: Issue[] };
+  celeb: { slug: string; name: string };
+  issues: Issue[];
 }) {
+  if (isEmpty(props.issues)) {
+    return null;
+  }
+
   return (
     <div className="border-t border-b">
       <IssueSelector
         getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
         isSelected={(i) => i._id == props.issue._id}
-        issues={props.celeb.issues}
+        issues={props.issues}
         getLink={(_id) =>
           _id == noIssueFilter._id
             ? `/${props.celeb.slug}`
@@ -46,7 +52,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       title={props.pageTitle}
       description={props.pageDescription}
       allowSearchEngines
-      pathname={props.celeb.slug}
+      pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
       id="celeb-issue-page"
       appBar={
         <StickyAppBar>
@@ -74,7 +80,9 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
               )}{' '}
             </HeroTopContainer>
 
-            <CelebIssueSelector {...props} />
+            <div className="-mx-5">
+              <CelebIssueSelector {...props} />
+            </div>
 
             <TagCollection
               slug={props.celeb.slug}
@@ -91,7 +99,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
         <InBetweenContentShareButton />
 
         <FactGroup
-          factGroup={props.celeb.facts}
+          factGroup={props.facts}
           celebName={props.celeb.name}
           slug={props.celeb.slug}
           title={
@@ -103,7 +111,18 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
 
         <CelebIssueSelector {...props} />
 
-        <TitledCard
+        <Card>
+          <div className="flex flex-col gap-2 px-5 py-5">
+            <p className="text-neutral-600">
+              Send us a tip about{' '}
+              {celebNameToIssue(props.celeb.name, props.issue)}, or other
+              issues! You can also <TweetItAtUs />
+            </p>
+            <ContributeCta name={props.celeb.name} />
+          </div>
+        </Card>
+
+        {/* <TitledCard
           titledContentProps={{
             title: (
               <span className="text-base">
@@ -119,7 +138,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
               pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
             />
           </div>
-        </TitledCard>
+        </TitledCard> */}
 
         <InFeedAd />
 

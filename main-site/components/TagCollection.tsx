@@ -9,7 +9,7 @@ export const TagCollection = (props: {
   const tags = props.tagTimeline;
 
   return (
-    <div className="flex flex-col gap-10 border-l-2">
+    <div className="flex flex-col gap-5 border-l-2">
       {tags.map((tpair, i) => (
         <div key={tpair[0]} className="flex">
           <div className="pt-2">

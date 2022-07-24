@@ -19,7 +19,7 @@ test('Search page E2E test', async ({ page }) => {
   await page.fill('#search-field', 'elon musk');
   await page.keyboard.press('Enter');
   await page.locator(':nth-match(#chr-item,1)').click();
-  await page.waitForSelector(`#celeb-page-elon-musk`);
+  await page.waitForSelector(`#content.elon-musk`);
   await goBack();
 
   await page.fill('#search-field', 'sdfjasldfkjasldfjasdlfk');

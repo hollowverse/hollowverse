@@ -16,6 +16,7 @@ import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { Link } from '~/lib/Link';
+import { FiLink } from 'react-icons/fi';
 
 export default function FactPage(props: FactPageProps) {
   const issue = getFactIssue(props.fact);
@@ -69,8 +70,11 @@ export default function FactPage(props: FactPageProps) {
 
         {props.contributor && (
           <Card className="flex flex-col gap-3 px-5 py-3">
-            <h3 className="text-xs font-semibold uppercase tracking-tighter text-neutral-500">
-              Contributed by
+            <h3 className="flex text-xs font-semibold uppercase tracking-tighter text-neutral-500">
+              <span className="flex-grow">Contributed by</span>
+              <a href={props.fact.forumLink} title="Forum link">
+                <FiLink />
+              </a>
             </h3>
 
             <ContributorBox {...props.contributor} />

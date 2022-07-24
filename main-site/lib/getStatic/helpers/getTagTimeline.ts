@@ -6,8 +6,9 @@ import { CelebTag } from '~/lib/groq/tag.projection';
 
 export type TagPair = [string, CelebTag[]];
 export type TagTimeline = TagPair[];
+export type TimelineFact = Pick<Fact, 'tags' | 'date'>;
 
-export function getTagTimeline(facts: Fact[]) {
+export function getTagTimeline(facts: TimelineFact[]) {
   /**
    * group by tagId
    *
@@ -26,7 +27,7 @@ export function getTagTimeline(facts: Fact[]) {
    *
    * sort by date range
    */
-  const tagIdToFacts: { [tagId: string]: Fact[] } = {};
+  const tagIdToFacts: { [tagId: string]: TimelineFact[] } = {};
 
   facts.forEach((f) => {
     f.tags.forEach((t) => {
