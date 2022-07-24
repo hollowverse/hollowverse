@@ -21,6 +21,7 @@ import {
 } from '~/components/ui/Hero';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { TitledContent } from '~/components/ui/TitledContent';
+import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
@@ -67,11 +68,9 @@ export default function Celeb(props: CelebPageProps) {
       }
     >
       <div
-        id={`celeb-page-${props.celeb.slug}`}
-        aria-hidden
-        className="h-0 w-0"
-      />
-      <div className="h-container my-5 flex flex-col gap-5" id="content">
+        className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
+        id="content"
+      >
         <InBetweenContentShareButton />
 
         {!isEmpty(props.facts) && <Facts {...props} />}
