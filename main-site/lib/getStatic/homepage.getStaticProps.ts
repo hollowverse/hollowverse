@@ -2,6 +2,10 @@ import groq from 'groq';
 import { oneDay } from '~/lib/date';
 import { getTrendingCelebs } from '~/lib/getStatic/helpers/getTrendingCelebs';
 import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
+import {
+  getPaginationProps,
+  getPaginationRange,
+} from '~/lib/getStatic/helpers/pagination';
 import { transformFact } from '~/lib/getStatic/helpers/transformFact';
 import { celebProjection } from '~/lib/groq/celeb.projection';
 import { factProjection, FactWithCeleb } from '~/lib/groq/fact.projection';
@@ -13,30 +17,43 @@ import { PageProps } from '~/shared/lib/types';
 
 export type HomepageProps = PageProps<typeof getStaticProps>;
 
-export async function getStaticProps() {
+export async function getStaticProps({
+  params,
+}: {
+  params?: {
+    p: string;
+  };
+}) {
   log('info', 'homepage getStaticProps called');
 
-  const [trendingCelebs, trendingIssueIds, latestFacts] = await Promise.all([
-    getTrendingCelebs(),
+  const paginationRange = getPaginationRange({ p: params?.p });
 
-    getTrendingIssues(),
+  const [trendingCelebs, trendingIssueIds, latestFacts, factCount] =
+    await Promise.all([
+      getTrendingCelebs(),
 
-    sanityClient.fetch<FactWithCeleb[]>(
-      'latest-page-facts',
-      groq`*[_type == 'fact'] | order(date desc)[0..25] {
-        'celeb': celeb->{${celebProjection}},
-        ${factProjection}
-      }`,
-    ),
-  ]);
+      getTrendingIssues(),
+
+      sanityClient.fetch<FactWithCeleb[]>(
+        'latest-page-facts',
+        groq`*[_type == 'fact'] | order(_createdAt desc)[$start...$end] {
+          'celeb': celeb->{${celebProjection}},
+          ${factProjection}
+        }`,
+        { start: paginationRange.start, end: paginationRange.end },
+      ),
+
+      sanityClient.fetch<number>(
+        'fact-count',
+        groq`count(*[_type == 'fact'])`,
+      )!,
+    ]);
 
   const trendingIssues = await sanityClient.fetch<Issue[]>(
     'trending-issues',
-    groq`
-      *[_type == 'topic' && _id in $trendingIssueIds]{
-        ${issueProjection}
-      }
-    `,
+    groq`*[_type == 'topic' && _id in $trendingIssueIds]{
+      ${issueProjection}
+    }`,
     {
       trendingIssueIds: trendingIssueIds!.filter(
         (n) =>
@@ -62,6 +79,8 @@ export async function getStaticProps() {
 
   return {
     props: {
+      pagePath: paginationRange.p === 1 ? '/' : `/~p/${paginationRange.p}`,
+      pagination: getPaginationProps(paginationRange, factCount),
       trendingIssues: trendingIssues!,
       trendingCelebs: trendingCelebs!,
       latestFacts: latestFacts!.map((f) => transformFact(f)),
