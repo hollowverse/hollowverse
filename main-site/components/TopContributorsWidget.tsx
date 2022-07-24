@@ -1,17 +1,15 @@
 import { isEmpty } from 'lodash-es';
 import { Fragment } from 'react';
-import { ContributeCta } from '~/components/ContributeCta';
 import { ContributorBox } from '~/components/ContributorBox';
 import { useHvApi } from '~/components/hooks/useHvApi';
 import { TitledCard } from '~/components/ui/TitledCard';
 import { pluralize } from '~/lib/language/pluralize';
-import { TopContributors } from '~/lib/psql/celebTopContributors.psql';
 import {
   TopContributorsQueryParams,
   TopContributorsResults,
 } from '~/pages/api/top-contributors';
 
-export function TopContributors(
+export function TopContributorsWidget(
   props: TopContributorsQueryParams & { celebName: string },
 ) {
   const { data: topContributors } = useHvApi<TopContributorsResults>(

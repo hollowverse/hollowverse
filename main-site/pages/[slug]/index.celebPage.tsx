@@ -9,7 +9,7 @@ import { Page } from '~/components/Page';
 import { Pagination } from '~/components/Pagination';
 import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { TagCollection } from '~/components/TagCollection';
-import { TopContributors } from '~/components/TopContributorsWidget';
+import { TopContributorsWidget } from '~/components/TopContributorsWidget';
 import { Card } from '~/components/ui/Card';
 import {
   Hero,
@@ -88,7 +88,7 @@ export default function Celeb(props: CelebPageProps) {
 
         {props.celeb.oldContent && <Md {...props} />}
 
-        <TopContributors
+        <TopContributorsWidget
           slug={props.celeb.slug!}
           celebName={props.celeb.name}
         />

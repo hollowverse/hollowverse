@@ -3,8 +3,6 @@ import { CelebImage } from '~/components/CelebImage';
 import { ContributeCta } from '~/components/ContributeCta';
 import { Page } from '~/components/Page';
 import { Card } from '~/components/ui/Card';
-import { TitledCard } from '~/components/ui/TitledCard';
-import { Link } from '~/lib/Link';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {

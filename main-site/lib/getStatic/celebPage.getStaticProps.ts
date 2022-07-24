@@ -46,7 +46,7 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      pageDescription: getPageDescription(),
+      pageDescription: getPageDescription(celeb.name),
       pagePath:
         paginationRange.p === 1
           ? `/${params.slug}`
@@ -64,7 +64,7 @@ export const getStaticProps = async ({
     revalidate: oneDay,
   };
 
-  function getPageDescription() {
+  function getPageDescription(celebName: string) {
     if (!hasFacts) {
       if (oldContent?.summaries) {
         const { religion, politicalViews } = oldContent.summaries;
@@ -98,7 +98,7 @@ export const getStaticProps = async ({
       viewsStr = `${postfix} ${process(views)}`;
     }
 
-    return `${celeb!.name}'s${affiliationsStr}${viewsStr}.`;
+    return `${celebName}'s${affiliationsStr}${viewsStr}.`;
 
     function process(arr: Issue[]) {
       // @ts-ignore

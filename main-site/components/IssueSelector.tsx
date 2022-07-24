@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash-es';
 import { SideScroller } from '~/components/ui/SideScroller';
 import { c } from '~/lib/c';
 import { Issue } from '~/lib/groq/issue.projection';

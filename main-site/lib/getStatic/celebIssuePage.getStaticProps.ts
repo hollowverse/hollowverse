@@ -36,7 +36,7 @@ export async function getStaticProps({
     f.tags.some((t) => t.tag.issue._id === params.issueId),
   );
   const tagTimeline = getTagTimeline(facts);
-  const tag = tagTimeline[0][1][0];
+  const tag = facts[0].tags.find((t) => t.tag.issue._id === params.issueId)!;
   const issues = getFactIssues(allFacts);
   const customTitles =
     customTitleDefinitions[`${params.slug}/issue/${params.issueId}`];
@@ -46,7 +46,8 @@ export async function getStaticProps({
       pageTitle:
         customTitles?.title ||
         `What are ${celebNameToIssue(celeb.name, issue)}?`,
-      pageDescription: customTitles?.description || getPageDescription(),
+      pageDescription:
+        customTitles?.description || getPageDescription(celeb.name),
       tag,
       tagTimeline,
       issue,
@@ -57,7 +58,7 @@ export async function getStaticProps({
     revalidate: oneDay,
   };
 
-  function getPageDescription() {
+  function getPageDescription(celebName: string) {
     const tags = flatten(tagTimeline.map((tp) => tp[1]));
 
     let lastSeenIsVerb: boolean | null = null;
@@ -90,6 +91,6 @@ export async function getStaticProps({
       })
       .join('');
 
-    return `${celeb!.name} ${joinedTags}`;
+    return `${celebName} ${joinedTags}`;
   }
 }
