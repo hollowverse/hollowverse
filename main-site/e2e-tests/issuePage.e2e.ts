@@ -35,7 +35,7 @@ test('Issue page E2E test', async ({ page }) => {
   await commonElementsTestFragment(page);
 
   await page.locator('#pagination-previous-page-button').click();
-  await page.waitForURL(new RegExp(`.*${escapeRegExp('p/1')}.*`));
+  await page.waitForURL(url);
 
   await factTestFragment(page, ':nth-match(#fact-list-item, 1)');
   await commonElementsTestFragment(page);
