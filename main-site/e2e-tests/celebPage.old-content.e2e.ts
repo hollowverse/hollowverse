@@ -6,7 +6,7 @@ import { testUrl } from '~/e2e-tests/testUrl';
 
 const url = `${testUrl}/jack-white`;
 
-test.only('Celeb page (with old content) E2E test', async ({ page }) => {
+test('Celeb page (with old content) E2E test', async ({ page }) => {
   await page.goto(url);
   await page.waitForSelector('#celeb-page');
 

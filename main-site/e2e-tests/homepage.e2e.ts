@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import escapeRegExp from 'lodash.escaperegexp';
 import { doLighthouse } from '~/e2e-tests/doLighthouse';
 import { factTestFragment } from '~/e2e-tests/fact.e2e-test-fragment';
 import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
@@ -35,6 +36,17 @@ test('Homepage E2E test', async ({ page }) => {
 
   await page.waitForSelector('#homepage');
   await factTestFragment(page, ':nth-match(#fact-list-item, 3)');
+
+  // Test pagination
+  await page.locator('#pagination-next-page-button').click();
+  await page.waitForURL(new RegExp(`.*${escapeRegExp('~p/2')}.*`));
+
+  await factTestFragment(page, '#homepage >> :nth-match(#fact, 1)');
+
+  await page.locator('#pagination-previous-page-button').click();
+  await page.waitForURL(url);
+
+  await factTestFragment(page, '#homepage >> :nth-match(#fact, 1)');
 });
 
 if (doLighthouse) {
