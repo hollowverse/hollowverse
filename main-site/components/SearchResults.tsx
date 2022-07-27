@@ -26,7 +26,7 @@ export function SearchResults(params: NonNullable<SearchResults>) {
                 celebImageProps={{
                   ...(result.picture
                     ? { picture: result.picture }
-                    : { src: result.image.contentUrl }),
+                    : { src: result.image!.contentUrl }),
                   name: result.name,
                   alt: result.name,
                 }}
