@@ -1,24 +1,20 @@
 import levenshtein from 'fast-levenshtein';
 import groq from 'groq';
 import { isEmpty } from 'lodash-es';
-import { Required } from 'utility-types';
 import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
 import {
-  KnowledgeGraphCelebParams,
   KnowledgeGraphCelebResult,
   knowledgeGraphClient,
 } from '~/shared/lib/knowledgeGraphClient';
 import { sanityClient } from '~/shared/lib/sanityio';
 
-type CleanedResult = { result: Required<KnowledgeGraphCelebParams, 'image'> };
-function clean(items: KnowledgeGraphCelebResult[]) {
+function clean(items: Combined['results']) {
   return items.filter((i) => {
-    return i.result.image;
-  }) as CleanedResult[];
+    return i.result.image || i.result.picture;
+  });
 }
 
 type HvResults = Awaited<ReturnType<typeof hvSearch>>;
-
 async function hvSearch(cleanedKgResults: KnowledgeGraphCelebResult[]) {
   return await sanityClient.fetch<
     {
@@ -38,7 +34,7 @@ async function hvSearch(cleanedKgResults: KnowledgeGraphCelebResult[]) {
 }
 
 type Combined = ReturnType<typeof combine>;
-function combine(kgResults: CleanedResult[], hvResults: HvResults) {
+function combine(kgResults: KnowledgeGraphCelebResult[], hvResults: HvResults) {
   const hasHvResults = !isEmpty(hvResults);
 
   return {
@@ -136,13 +132,13 @@ function availabilitySort(results: Combined['results']) {
 
 export async function fetchResults(query: string) {
   const kgResults = await knowledgeGraphClient({ query });
-  const cleanedKgResults = clean(kgResults);
-  const hvResults = await hvSearch(cleanedKgResults);
+  const hvResults = await hvSearch(kgResults);
   const { hasHvResults, results: combinedResults } = combine(
-    cleanedKgResults,
+    kgResults,
     hvResults,
   );
-  const levenshteinSorted = levenshteinSort(query, combinedResults);
+  const cleanedKgResults = clean(combinedResults);
+  const levenshteinSorted = levenshteinSort(query, cleanedKgResults);
   const availabilitySorted = availabilitySort(levenshteinSorted);
 
   return { results: availabilitySorted, hasHvResults };
