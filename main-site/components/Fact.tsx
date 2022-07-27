@@ -1,9 +1,14 @@
 import Image, { ImageProps } from 'next/image';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { BiMessage } from 'react-icons/bi';
 import { FaQuoteLeft } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
+import {
+  recordGaEvent,
+  useGaEventRecorder,
+} from '~/components/hooks/useGaEventRecorder';
 import { ShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
@@ -44,6 +49,16 @@ export const Fact: React.FC<{
   showCommentsButton?: boolean;
   showIssueName?: boolean;
 }> = (props) => {
+  const { ref: factBodyRef, inView: factBodyInView } = useInView({
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (factBodyInView) {
+      recordGaEvent('fact_view', { id: props.fact._id });
+    }
+  }, [factBodyInView, props.fact._id]);
+
   const link = props.link ?? false;
   const showCommentsButton = props.showCommentsButton ?? true;
   const showIssueName = props.showIssueName ?? false;
@@ -127,7 +142,7 @@ export const Fact: React.FC<{
           </div>
         </div>
 
-        <div className="FACT-BODY flex flex-col gap-3">
+        <div ref={factBodyRef} className="FACT-BODY flex flex-col gap-3">
           {(props.fact.type === 'quote' && renderFactBody(props.fact)) || (
             <p>{(props.fact as any).content}</p>
           )}
