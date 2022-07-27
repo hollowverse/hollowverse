@@ -24,8 +24,10 @@ export function SearchResults(params: NonNullable<SearchResults>) {
             >
               <CHRImage
                 celebImageProps={{
+                  ...(result.picture
+                    ? { picture: result.picture }
+                    : { src: result.image.contentUrl }),
                   name: result.name,
-                  src: result.image.contentUrl,
                   alt: result.name,
                 }}
               />
