@@ -1,6 +1,8 @@
 import levenshtein from 'fast-levenshtein';
+import groq from 'groq';
 import { isEmpty } from 'lodash-es';
 import { Required } from 'utility-types';
+import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
 import {
   KnowledgeGraphCelebParams,
   KnowledgeGraphCelebResult,
@@ -15,18 +17,28 @@ function clean(items: KnowledgeGraphCelebResult[]) {
   }) as CleanedResult[];
 }
 
-type HvResult = { knowledgeGraphId: string; slug: string };
+type HvResults = Awaited<ReturnType<typeof hvSearch>>;
 
 async function hvSearch(cleanedKgResults: KnowledgeGraphCelebResult[]) {
-  return (await sanityClient.fetch(
+  return await sanityClient.fetch<
+    {
+      knowledgeGraphId: string;
+      slug: string;
+      picture: Picture;
+    }[]
+  >(
     'hv-search',
-    `*[_type == 'celeb' && knowledgeGraphId in $cleanedKgResults]{knowledgeGraphId, 'slug': slug.current}`,
+    groq`*[_type == 'celeb' && knowledgeGraphId in $cleanedKgResults]{
+      knowledgeGraphId,
+      'slug': slug.current,
+      'picture': picture.asset->{${pictureProjection}},
+    }`,
     { cleanedKgResults: cleanedKgResults.map((i) => i.result['@id']) },
-  )) as HvResult[];
+  );
 }
 
 type Combined = ReturnType<typeof combine>;
-function combine(kgResults: CleanedResult[], hvResults: HvResult[]) {
+function combine(kgResults: CleanedResult[], hvResults: HvResults) {
   const hasHvResults = !isEmpty(hvResults);
 
   return {
@@ -35,9 +47,9 @@ function combine(kgResults: CleanedResult[], hvResults: HvResult[]) {
       ...kgItem,
       result: {
         ...kgItem.result,
-        slug: hvResults.find(
+        ...hvResults?.find(
           (hvItem) => hvItem?.knowledgeGraphId === kgItem.result['@id'],
-        )?.slug,
+        ),
       },
     })),
   };
