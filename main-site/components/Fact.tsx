@@ -5,10 +5,7 @@ import { FaQuoteLeft } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
-import {
-  recordGaEvent,
-  useGaEventRecorder,
-} from '~/components/hooks/useGaEventRecorder';
+import { recordGaEvent } from '~/components/hooks/useGaEventRecorder';
 import { ShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
