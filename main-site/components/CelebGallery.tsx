@@ -2,7 +2,7 @@ import React from 'react';
 import { CelebImage } from '~/components/CelebImage';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: NonNullable<

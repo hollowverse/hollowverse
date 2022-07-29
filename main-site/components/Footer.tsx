@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { RiQuillPenLine } from 'react-icons/ri';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export const Footer = () => {
   return (

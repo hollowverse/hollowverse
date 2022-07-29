@@ -15,7 +15,7 @@ import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 import { FiLink } from 'react-icons/fi';
 
 export default function FactPage(props: FactPageProps) {

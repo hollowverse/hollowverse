@@ -1,4 +1,4 @@
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { c } from '~/lib/c';
 import { PaginationProps } from '~/lib/getStatic/helpers/pagination';

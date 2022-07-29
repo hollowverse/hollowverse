@@ -1,7 +1,7 @@
 import { SideScroller } from '~/components/ui/SideScroller';
 import { c } from '~/lib/c';
 import { Issue } from '~/lib/groq/issue.projection';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export const noIssueFilter: Issue = {
   _id: 'all-issue-filter',

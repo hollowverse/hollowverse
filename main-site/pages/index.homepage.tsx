@@ -7,7 +7,7 @@ import { Page } from '~/components/Page';
 import { Pagination } from '~/components/Pagination';
 import { SideScroller } from '~/components/ui/SideScroller';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export default function Index(props: HomepageProps) {
   return (

@@ -25,7 +25,7 @@ import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
 import { Fact as TFact, QuoteFact } from '~/lib/groq/fact.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 function UnoptimizedImage(
   props: PropsWithChildren<{
