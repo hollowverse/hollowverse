@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/cors';
+import { cors } from '~/lib/api-route-helpers/cors';
 import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
-import { setApiCache } from '~/lib/setApiCache';
+import { setApiCache } from '~/lib/api-route-helpers/setApiCache';
 import { log } from '~/shared/lib/log';
 
 export type FactViewCountResults = Awaited<ReturnType<typeof factViewCount>>;

@@ -1,8 +1,8 @@
 import { isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import ogs from 'open-graph-scraper';
-import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
-import { cors } from '~/lib/cors';
+import { apiHandlerWithErrorLogging } from '~/lib/api-route-helpers/apiHandlerWithErrorLogging';
+import { cors } from '~/lib/api-route-helpers/cors';
 import { log } from '~/shared/lib/log';
 
 async function scrapeOpenGraph(req: NextApiRequest, res: NextApiResponse) {
