@@ -1,7 +1,16 @@
 import Image, { ImageProps } from 'next/image';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { BiMessage } from 'react-icons/bi';
-import { FaQuoteLeft } from 'react-icons/fa';
+import {
+  FaQuoteLeft,
+  FaRegChartBar,
+  FaRegCommentAlt,
+  FaRegCommentDots,
+  FaRegShareSquare,
+  FaRegThumbsDown,
+  FaRegThumbsUp,
+  FaThumbsDown,
+} from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import { FacebookComments } from '~/components/FacebookComments';
 import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
@@ -145,28 +154,46 @@ export const Fact: React.FC<{
           )}
         </div>
 
-        <div className="FACT-FOOTER flex gap-2.5 text-neutral-600">
-          {showCommentsButton && (
+        <div className="FACT-FOOTER -mx-5 flex content-between justify-between border-t px-5 pt-5 text-neutral-600">
+          <div className="flex flex-col items-center gap-0.5">
+            <FaRegThumbsUp className="text-xl" />
+            <p className="font-semibold">Like</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-0.5">
+            <FaThumbsDown className="text-xl" />
+            <p className="font-semibold">13</p>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <FaRegCommentAlt className="text-xl" />
+            <p className="font-semibold">2</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-0.5">
+            <FaRegChartBar className="text-xl" />
+            <p className="font-semibold">1.2k</p>
+          </div>
+
+          <div className="flex flex-col items-center gap-0.5">
+            <FaRegShareSquare className="text-xl" />
+            <p className="font-semibold">Share</p>
+          </div>
+
+          {/* {showCommentsButton && (
             <button
-              onClick={() => setShowComments(!showComments)}
+              onClick={() => setShowComments(true)}
               id="fact-comments-link"
-              className="pointer-events-auto flex select-none items-center gap-0.5 text-base text-neutral-500 underline"
+              className="pointer-events-auto flex select-none items-center gap-0.5 text-base underline"
             >
-              <BiMessage className="text-lg" />
-
-              <div className={c({ hidden: showComments })}>
-                <FacebookCommentsCount slug={props.slug} fact={props.fact} />
-              </div>
-
-              {showComments ? 'Close comments' : `What's your opinion?`}
+              <FaRegCommentAlt className="text-2xl" />
             </button>
-          )}
+          )} */}
 
-          <div className="flex-1" />
+          {/* <div className="flex-1" /> */}
 
-          <ShareButton
+          {/* <ShareButton
             className="pointer-events-auto"
-            buttonText="Share"
             share={{
               text: getFactPageTitle(props.celebName, props.fact, 200),
               url: `https://hollowverse.com${getFactPagePathname(
@@ -174,7 +201,7 @@ export const Fact: React.FC<{
                 props.fact,
               )}`,
             }}
-          />
+          /> */}
         </div>
 
         {showComments && (
