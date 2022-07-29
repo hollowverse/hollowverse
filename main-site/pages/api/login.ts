@@ -51,7 +51,7 @@ async function handleLoginReturn(
     );
 
     const { user } = await discourseApiClient<{ user: { id: number } }>(
-      `u/${payload.username}`,
+      `u/${payload.username}.json`,
     );
 
     const userId = user.id;

@@ -7,6 +7,8 @@
     "plugin:react/jsx-runtime"
   ],
   "rules": {
+    "eqeqeq": "always",
+
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

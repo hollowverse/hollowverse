@@ -4,11 +4,12 @@ import { isString } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import cookie from 'cookie-signature';
 
-export const discourseSsoSecret = process.env.DISCOURSE_SSO_SECRET as string;
+export const discourseSsoSecret = '6yk3S54losS';
+// export const discourseSsoSecret = process.env.DISCOURSE_SSO_SECRET as string;
 
 export function getHmac() {
   // This secret is compromised. Change it.
-  return crypto.createHmac('sha256', '6yk3S54losS');
+  return crypto.createHmac('sha256', discourseSsoSecret);
 }
 
 export function getAuthenticatedUserId(
