@@ -8,6 +8,7 @@ import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
 import { FactVotes, factVotesProjection } from '~/lib/groq/fact.projection';
 import { getUserGroq, User, UserVote } from '~/lib/groq/getUser.groq';
 import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';
+import { v4 as uuid } from 'uuid';
 
 export type FactUserVote = {
   likes: number;
@@ -26,7 +27,8 @@ export default async function vote(req: NextApiRequest, res: NextApiResponse) {
     return res.status(401).json({ message: 'unauthorized' });
   }
 
-  const newVote = JSON.parse(req.body) as UserVote;
+  const newVoteRequest = JSON.parse(req.body) as UserVote;
+  const newVote = { _key: uuid(), ...newVoteRequest } as UserVote;
 
   if (
     typeof newVote.factId !== 'string' ||

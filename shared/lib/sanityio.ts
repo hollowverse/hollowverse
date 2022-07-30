@@ -29,7 +29,17 @@ const configuredSanityClientNoCdn = originalSanityClient({
 
 type QueryParams = { [key: string]: any };
 
-function createSanityClient(sanityClient: SanityClient) {
+type SanityClientCreateParams = Parameters<
+  typeof configuredSanityClient.create
+>;
+
+type SanityClientCorParams = Parameters<
+  typeof configuredSanityClient.createOrReplace
+>;
+
+type SanityClientPatchParams = Parameters<typeof configuredSanityClient.patch>;
+
+function createSanityClient(configuredSanityClient: SanityClient) {
   return {
     fetch: <T extends any>(
       requestName: string,
@@ -42,7 +52,37 @@ function createSanityClient(sanityClient: SanityClient) {
         ...(params ? { params } : undefined),
       });
 
-      return sanityClient.fetch(query, params, options as any) as T | null;
+      return configuredSanityClient.fetch(
+        query,
+        params,
+        options as any,
+      ) as T | null;
+    },
+
+    create<T extends Json>(
+      requestName: string,
+      ...args: SanityClientCreateParams
+    ) {
+      log('debug', `sanity create: ${requestName}`);
+
+      return configuredSanityClient.create(...args) as unknown as Promise<T>;
+    },
+
+    createOrReplace<T extends Json>(
+      requestName: string,
+      ...args: SanityClientCorParams
+    ) {
+      log('debug', `sanity c.o.r.: ${requestName}`);
+
+      return configuredSanityClient.createOrReplace(
+        ...args,
+      ) as unknown as Promise<T>;
+    },
+
+    patch(requestName: string, ...args: SanityClientPatchParams) {
+      log('debug', `sanity patch: ${requestName}`);
+
+      return configuredSanityClient.patch(...args);
     },
   };
 }

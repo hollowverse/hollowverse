@@ -150,6 +150,18 @@ export const fact = {
     },
 
     {
+      name: 'likes',
+      type: 'number',
+      hidden: true,
+    },
+
+    {
+      name: 'dislikes',
+      type: 'number',
+      hidden: true,
+    },
+
+    {
       title: 'logs',
       name: 'show_system_logs',
       type: 'string',
