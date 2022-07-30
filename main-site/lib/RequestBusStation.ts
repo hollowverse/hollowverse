@@ -35,7 +35,7 @@ export class RequestBusStation<T> {
           await this.drive(this.passengers);
 
           resolve(null);
-        }, 300);
+        }, 1000);
       });
     }
 

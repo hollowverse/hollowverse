@@ -22,8 +22,6 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 function handleLoginRequest(req: NextApiRequest, res: NextApiResponse) {
   const { redirect } = req.query as { redirect: string };
 
-  console.log('redirect', redirect);
-
   const sso = Buffer.from(
     QueryString.stringify(
       {

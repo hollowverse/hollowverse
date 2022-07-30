@@ -12,6 +12,7 @@ import { factVoteResultsProvider } from '~/lib/FactVoteResultsProvider';
 import { Fact } from '~/lib/groq/fact.projection';
 import { UserVote } from '~/lib/groq/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
+import { userVoteResultsProvider } from '~/lib/UserVoteResultsProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
 
 export function FactLikeButton(props: { fact: Fact }) {
@@ -25,19 +26,26 @@ export function FactLikeButton(props: { fact: Fact }) {
     dislikes: 0,
   });
 
+  const { isLoggedIn } = useUser();
+
   useEffect(() => {
     async function req() {
-      const factVotesRes = await factVoteResultsProvider.get(props.fact._id);
+      const [factVotesRes, userVote] = await Promise.all([
+        factVoteResultsProvider.get(props.fact._id),
+        isLoggedIn ? userVoteResultsProvider.get(props.fact._id) : null,
+      ]);
 
       if (factVotesRes) {
         setFactVotes(factVotesRes);
       }
+
+      if (userVote) {
+        setChoice(userVote.choice);
+      }
     }
 
     req();
-  }, []);
-
-  const { isLoggedIn } = useUser();
+  }, [isLoggedIn, props.fact._id]);
 
   return (
     <div className="flex gap-7">
@@ -75,7 +83,6 @@ export function FactLikeButton(props: { fact: Fact }) {
 
   function getClickHandler(handlerChoice: 'like' | 'dislike') {
     return async () => {
-      console.log('isLoggedIn', isLoggedIn);
       if (!isLoggedIn) {
         redirectToLogin(window.location.href);
         return;

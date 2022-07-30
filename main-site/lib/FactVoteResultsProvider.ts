@@ -10,7 +10,7 @@ class FactVoteResultsProvider {
 
   requestBusStation = new RequestBusStation<string>(async (factIds) => {
     const results = await hvApiClient<NormalizedFactVotes[]>(
-      'fact-votes',
+      'get-fact-votes',
       post({ factIds }),
     )!;
 

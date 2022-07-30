@@ -4,7 +4,7 @@ import { cors } from '~/lib/api-route-helpers/cors';
 import { FactVotes, factVotesProjection } from '~/lib/groq/fact.projection';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
-export default async function factVotes(
+export default async function getFactVotes(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
