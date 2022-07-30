@@ -18,7 +18,10 @@ export type FactUserVote = {
 
 const ongoingVoting: string[] = [];
 
-export default async function vote(req: NextApiRequest, res: NextApiResponse) {
+export default async function submitVote(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   cors(req, res);
 
   let userId: string | null = '';
@@ -95,9 +98,9 @@ export default async function vote(req: NextApiRequest, res: NextApiResponse) {
       choice: voteOperations.operation === 'remove' ? null : newVote.choice,
     });
 
-    function getUserAndFactVotes(userId: string) {
+    function getUserAndFactVotes(_userId: string) {
       return Promise.all([
-        sanityClientNoCdn.fetch<User>('user', ...getUserGroq(userId)),
+        sanityClientNoCdn.fetch<User>('user', ...getUserGroq(_userId)),
         sanityClientNoCdn.fetch<FactVotes>(
           'fact-votes',
           groq`*[_type == 'fact' && _id == $factId][0]{${factVotesProjection}}`,

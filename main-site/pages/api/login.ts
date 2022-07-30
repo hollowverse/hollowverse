@@ -1,10 +1,8 @@
-import cookie from 'cookie-signature';
-import { setCookie } from 'cookies-next';
 import { NextApiRequest, NextApiResponse } from 'next';
 import QueryString from 'qs';
-import { discourseSsoSecret, getHmac } from '~/lib/api-route-helpers/user-auth';
-import { oneYear } from '~/lib/date';
+import { getHmac, setAuthCookie } from '~/lib/api-route-helpers/user-auth';
 import { discourseApiClient } from '~/lib/discourseApiClient';
+import { getWebsiteUrl } from '~/lib/getWebsiteUrl';
 
 type LoginReturnParams = {
   sso: string;
@@ -15,61 +13,62 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
   const loginReturnParams = req.query as LoginReturnParams;
 
   if (loginReturnParams.sso && loginReturnParams.sig) {
-    return handleLoginReturn(req, res, loginReturnParams);
+    return handleLoginReturn(req, res);
   } else {
     return handleLoginRequest(req, res);
   }
 }
 
 function handleLoginRequest(req: NextApiRequest, res: NextApiResponse) {
-  const encodedPayload = Buffer.from(
-    QueryString.stringify({
-      return_sso_url: 'https://dev.hollowverse.com:3000/api/login',
-    }),
+  const { redirect } = req.query as { redirect: string };
+
+  console.log('redirect', redirect);
+
+  const sso = Buffer.from(
+    QueryString.stringify(
+      {
+        return_sso_url: `${getWebsiteUrl()}/api/login`,
+        'custom.redirect': redirect || null,
+      },
+      { skipNulls: true },
+    ),
     'utf-8',
   ).toString('base64');
-  const hexSignature = getHmac().update(encodedPayload).digest('hex');
+  const sig = getHmac().update(sso).digest('hex');
 
   return res.redirect(
-    `https://forum.hollowverse.com/session/sso_provider?sso=${encodedPayload}&sig=${hexSignature}`,
+    `https://forum.hollowverse.com/session/sso_provider?sso=${sso}&sig=${sig}`,
   );
 }
 
-async function handleLoginReturn(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  loginReturnParams: LoginReturnParams,
-) {
-  const decodedPayload = decodeURIComponent(loginReturnParams.sso);
+async function handleLoginReturn(req: NextApiRequest, res: NextApiResponse) {
+  const { sso, sig } = req.query as LoginReturnParams;
+
+  const decodedPayload = decodeURIComponent(sso);
 
   const isAuthenticated =
-    getHmac().update(decodedPayload).digest('hex') === loginReturnParams.sig;
+    getHmac().update(decodedPayload).digest('hex') === sig;
 
   if (isAuthenticated) {
     const payload = QueryString.parse(
       Buffer.from(decodedPayload, 'base64').toString(),
     );
 
+    const { username, 'custom.redirect': redirect } = payload as {
+      username: string;
+      'custom.redirect': string;
+    };
+
     const { user } = await discourseApiClient<{ user: { id: number } }>(
-      `u/${payload.username}.json`,
+      `u/${username}.json`,
     );
 
     const userId = user.id;
 
-    const cookieOptions = {
-      req,
-      res,
-      httpOnly: true,
-      secure: true,
-      maxAge: oneYear,
-    } as const;
+    setAuthCookie(req, res, userId.toString());
 
-    setCookie(
-      'userid',
-      cookie.sign(userId.toString(), discourseSsoSecret),
-      cookieOptions,
-    );
+    return res.redirect(redirect || getWebsiteUrl());
   }
 
-  return res.redirect(`https://hollowverse.com`);
+  return res.redirect(getWebsiteUrl());
 }

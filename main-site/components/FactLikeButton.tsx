@@ -5,15 +5,18 @@ import {
   FaThumbsDown,
   FaThumbsUp,
 } from 'react-icons/fa';
+import { redirectToLogin, useUser } from '~/components/hooks/useUser';
+import { c } from '~/lib/c';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
 import { factVoteResultsProvider } from '~/lib/FactVoteResultsProvider';
-import { Fact, FactVotes } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/groq/fact.projection';
 import { UserVote } from '~/lib/groq/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
-import { FactUserVote } from '~/pages/api/vote';
+import { FactUserVote } from '~/pages/api/submit-vote';
 
 export function FactLikeButton(props: { fact: Fact }) {
   const [choice, setChoice] = useState<'like' | 'dislike' | null>(null);
+  const [working, setWorking] = useState(false);
   const [factVotes, setFactVotes] = useState<{
     likes: number;
     dislikes: number;
@@ -30,14 +33,20 @@ export function FactLikeButton(props: { fact: Fact }) {
         setFactVotes(factVotesRes);
       }
     }
+
     req();
   }, []);
+
+  const { isLoggedIn } = useUser();
 
   return (
     <div className="flex gap-7">
       <button
+        disabled={working}
         onClick={getClickHandler('like')}
-        className="flex flex-col items-center gap-0.5"
+        className={c('flex min-w-[50px] flex-col items-center gap-0.5', {
+          'animate-pulse': working,
+        })}
       >
         <span className="text-xl">
           {choice === 'like' ? <FaThumbsUp /> : <FaRegThumbsUp />}
@@ -48,7 +57,10 @@ export function FactLikeButton(props: { fact: Fact }) {
       </button>
 
       <button
-        className="flex flex-col items-center gap-0.5"
+        disabled={working}
+        className={c('flex min-w-[50px] flex-col items-center gap-0.5', {
+          'animate-pulse': working,
+        })}
         onClick={getClickHandler('dislike')}
       >
         <span className="text-xl">
@@ -63,6 +75,14 @@ export function FactLikeButton(props: { fact: Fact }) {
 
   function getClickHandler(handlerChoice: 'like' | 'dislike') {
     return async () => {
+      console.log('isLoggedIn', isLoggedIn);
+      if (!isLoggedIn) {
+        redirectToLogin(window.location.href);
+        return;
+      }
+
+      setWorking(true);
+
       const op = calculateVoteOperations(
         choice && vote(choice),
         vote(handlerChoice),
@@ -79,7 +99,7 @@ export function FactLikeButton(props: { fact: Fact }) {
       });
 
       const results = await hvApiClient<FactUserVote>(
-        'vote',
+        'submit-vote',
         post({ choice: handlerChoice, factId: props.fact._id }),
       );
 
@@ -89,6 +109,8 @@ export function FactLikeButton(props: { fact: Fact }) {
         setFactVotes({ likes, dislikes });
         setChoice(resChoice);
       }
+
+      setWorking(false);
     };
   }
 
