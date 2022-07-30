@@ -13,37 +13,39 @@ import { v4 as uuid } from 'uuid';
 export type FactUserVote = {
   likes: number;
   dislikes: number;
-  choice: UserVote['choice'];
+  choice: UserVote['choice'] | null;
 };
 
-const ongoingVotes: string[] = [];
+const ongoingVoting: string[] = [];
 
 export default async function vote(req: NextApiRequest, res: NextApiResponse) {
   cors(req, res);
 
-  const userId = getAuthenticatedUserId(req, res);
-
-  if (!userId) {
-    return res.status(401).json({ message: 'unauthorized' });
-  }
-
-  const newVoteRequest = JSON.parse(req.body) as UserVote;
-  const newVote = { _key: uuid(), ...newVoteRequest } as UserVote;
-
-  if (
-    typeof newVote.factId !== 'string' ||
-    (newVote.choice !== 'like' && newVote.choice !== 'dislike')
-  ) {
-    throw Error('Bad request');
-  }
-
-  if (ongoingVotes.includes(userId)) {
-    return res.status(500).json({ message: 'wait for request to finish' });
-  }
-
-  ongoingVotes.push(userId);
+  let userId: string | null = '';
 
   try {
+    userId = getAuthenticatedUserId(req, res);
+
+    if (!userId) {
+      return res.status(401).json({ message: 'unauthorized' });
+    }
+
+    const newVoteRequest = JSON.parse(req.body) as UserVote;
+    const newVote = { _key: uuid(), ...newVoteRequest } as UserVote;
+
+    if (
+      typeof newVote.factId !== 'string' ||
+      (newVote.choice !== 'like' && newVote.choice !== 'dislike')
+    ) {
+      throw Error('Bad request');
+    }
+
+    if (ongoingVoting.includes(userId)) {
+      return res.status(500).json({ message: 'wait for request to finish' });
+    }
+
+    ongoingVoting.push(userId);
+
     let [user, factVotes] = await getUserAndFactVotes(userId);
 
     if (isEmpty(factVotes) || !factVotes) {
@@ -54,10 +56,10 @@ export default async function vote(req: NextApiRequest, res: NextApiResponse) {
       user = { _id: userId, votes: [] };
     }
 
-    const existingVote = user.votes.find((v) => v.factId == newVote.factId);
+    const existingVote = user.votes.find((v) => v.factId === newVote.factId);
     const voteOperations = calculateVoteOperations(existingVote, newVote);
 
-    if (voteOperations.operation == 'add') {
+    if (voteOperations.operation === 'add') {
       user.votes.push(newVote);
     } else {
       remove(user.votes, (v) => v.factId === newVote.factId);
@@ -86,28 +88,32 @@ export default async function vote(req: NextApiRequest, res: NextApiResponse) {
         .commit({ token: sanityWriteToken }),
     ]);
 
-    removeUserFromOngoingVotes();
+    removeUserFromOngoingVotes(userId);
 
     return res.status(200).json({
       ...totals,
-      choice: newVote.choice,
+      choice: voteOperations.operation === 'remove' ? null : newVote.choice,
     });
-  } catch (e) {
-    removeUserFromOngoingVotes();
+
+    function getUserAndFactVotes(userId: string) {
+      return Promise.all([
+        sanityClientNoCdn.fetch<User>('user', ...getUserGroq(userId)),
+        sanityClientNoCdn.fetch<FactVotes>(
+          'fact-votes',
+          groq`*[_type == 'fact' && _id == $factId][0]{${factVotesProjection}}`,
+          { factId: newVote.factId },
+        ),
+      ]);
+    }
+  } catch (err: any) {
+    removeUserFromOngoingVotes(userId);
+
+    return res
+      .status(500)
+      .json(JSON.stringify(err, Object.getOwnPropertyNames(err)));
   }
 
-  function getUserAndFactVotes(userId: string) {
-    return Promise.all([
-      sanityClientNoCdn.fetch<User>('user', ...getUserGroq(userId)),
-      sanityClientNoCdn.fetch<FactVotes>(
-        'fact-votes',
-        groq`*[_type == 'fact' && _id == $factId][0]{${factVotesProjection}}`,
-        { factId: newVote.factId },
-      ),
-    ]);
-  }
-
-  function removeUserFromOngoingVotes() {
-    remove(ongoingVotes, (uid) => uid === userId);
+  function removeUserFromOngoingVotes(_userId: string | null) {
+    remove(ongoingVoting, (uid) => uid === _userId);
   }
 }

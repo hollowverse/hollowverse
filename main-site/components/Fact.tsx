@@ -1,31 +1,23 @@
 import Image, { ImageProps } from 'next/image';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { BiMessage } from 'react-icons/bi';
 import {
-  FaQuoteLeft,
   FaRegChartBar,
   FaRegCommentAlt,
-  FaRegCommentDots,
   FaRegShareSquare,
-  FaRegThumbsDown,
-  FaRegThumbsUp,
-  FaThumbsDown,
 } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import { FacebookComments } from '~/components/FacebookComments';
-import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
+import { FactLikeButton } from '~/components/FactLikeButton';
 import { recordGaEvent } from '~/components/hooks/useGaEventRecorder';
-import { ShareButton } from '~/components/ShareButton';
+import { Link } from '~/components/Link';
 import { Tag } from '~/components/Tag';
 import { c } from '~/lib/c';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
-import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/groq/celeb.projection';
-import { Fact as TFact, QuoteFact } from '~/lib/groq/fact.projection';
+import { Fact as TFact } from '~/lib/groq/fact.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { Link } from '~/components/Link';
 
 function UnoptimizedImage(
   props: PropsWithChildren<{
@@ -55,16 +47,6 @@ export const Fact: React.FC<{
   showCommentsButton?: boolean;
   showIssueName?: boolean;
 }> = (props) => {
-  const { ref: factBodyRef, inView: factBodyInView } = useInView({
-    triggerOnce: true,
-  });
-
-  useEffect(() => {
-    if (factBodyInView) {
-      recordGaEvent('fact_view', { id: props.fact._id });
-    }
-  }, [factBodyInView, props.fact._id]);
-
   const link = props.link ?? false;
   const showCommentsButton = props.showCommentsButton ?? true;
   const showIssueName = props.showIssueName ?? false;
@@ -73,151 +55,202 @@ export const Fact: React.FC<{
   const showOgImage = props.fact.openGraphImage && !ogImageError;
 
   return (
-    <section id="fact" className="relative z-0 flex flex-col gap-5">
-      {link && (
-        <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
-          <a
-            id="fact-details"
-            className="absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50"
-          >
-            <span className="invisible">Fact details</span>
-          </a>
-        </Link>
-      )}
+    <section id="fact" className="flex flex-col gap-5">
+      <div className="FACT-MAIN-CONTAINER flex flex-col gap-5">
+        <FactHead />
 
-      <div className="FACT-MAIN-CONTAINER pointer-events-none flex flex-col gap-5">
-        <div
-          className={c('FACT-HEAD', {
-            'relative -mx-5 -mt-5 h-[350px] bg-neutral-700': showOgImage,
-          })}
-        >
-          {showOgImage && (
-            <UnoptimizedImage
-              onError={() => setOgImageError(true)}
-              src={props.fact.openGraphImage!}
-              alt={props.celebName}
-            />
-          )}
-          <div
-            className={c(
-              'FACT-TAGS flex flex-wrap items-center gap-2.5',
-              showOgImage
-                ? c(
-                    'absolute bottom-0 left-0 right-0',
-                    'bg-gradient-to-t from-black via-transparent to-transparent',
-                    'px-4 pb-5 pt-32',
-                  )
-                : '',
-            )}
-          >
-            {showIssueName && <IssueName />}{' '}
-            {props.fact.tags.map((t) => {
-              return (
-                <Tag
-                  key={t.tag.name}
-                  link={`/${props.slug}/tag/${t.tag._id}#content`}
-                  tagId={t.tag._id}
-                >
-                  <span className="flex items-center gap-1 text-neutral-700">
-                    {t.isLowConfidence && 'Possibly '}
-                    {t.tag.name}
-                    {t.isBackground && ' Background'}
-                  </span>
-                </Tag>
-              );
-            })}{' '}
-            <p
-              className={c('text-sm default:text-neutral-700', {
-                'text-white': showOgImage,
-              })}
-            >
-              {props.fact.date}
-            </p>
-            <Link href={props.fact.source} passHref>
-              <a
-                rel="noreferrer"
-                target="_blank"
-                className={c(
-                  'pointer-events-auto flex select-none items-center gap-1 text-xs hover:underline default:text-neutral-500',
-                  { 'text-white': showOgImage },
-                )}
-              >
-                {getSourceHost(props.fact.source)}
-              </a>
-            </Link>
-          </div>
-        </div>
+        <FactBody />
 
-        <div ref={factBodyRef} className="FACT-BODY flex flex-col gap-3">
-          {(props.fact.type === 'quote' && renderFactBody(props.fact)) || (
-            <p>{(props.fact as any).content}</p>
-          )}
-        </div>
+        <FactFooter />
 
-        <div className="FACT-FOOTER -mx-5 flex content-between justify-between border-t px-5 pt-5 text-neutral-600">
-          <div className="flex flex-col items-center gap-0.5">
-            <FaRegThumbsUp className="text-xl" />
-            <p className="font-semibold">Like</p>
-          </div>
-
-          <div className="flex flex-col items-center gap-0.5">
-            <FaThumbsDown className="text-xl" />
-            <p className="font-semibold">13</p>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <FaRegCommentAlt className="text-xl" />
-            <p className="font-semibold">2</p>
-          </div>
-
-          <div className="flex flex-col items-center gap-0.5">
-            <FaRegChartBar className="text-xl" />
-            <p className="font-semibold">1.2k</p>
-          </div>
-
-          <div className="flex flex-col items-center gap-0.5">
-            <FaRegShareSquare className="text-xl" />
-            <p className="font-semibold">Share</p>
-          </div>
-
-          {/* {showCommentsButton && (
-            <button
-              onClick={() => setShowComments(true)}
-              id="fact-comments-link"
-              className="pointer-events-auto flex select-none items-center gap-0.5 text-base underline"
-            >
-              <FaRegCommentAlt className="text-2xl" />
-            </button>
-          )} */}
-
-          {/* <div className="flex-1" /> */}
-
-          {/* <ShareButton
-            className="pointer-events-auto"
-            share={{
-              text: getFactPageTitle(props.celebName, props.fact, 200),
-              url: `https://hollowverse.com${getFactPagePathname(
-                props.slug,
-                props.fact,
-              )}`,
-            }}
-          /> */}
-        </div>
-
-        {showComments && (
-          <div className="-mx-5 -mb-5">
-            <hr />
-            <div className="mx-3 my-1">
-              <FacebookComments
-                pathname={getFactPagePathname(props.slug, props.fact)}
-                limit={5}
-              />
-            </div>
-          </div>
-        )}
+        <FactFacebookComments />
       </div>
     </section>
   );
+
+  function FactHead() {
+    return (
+      <div
+        className={c('FACT-HEAD', {
+          'relative -mx-5 -mt-5 h-[350px] bg-neutral-700': showOgImage,
+        })}
+      >
+        {showOgImage && (
+          <UnoptimizedImage
+            onError={() => setOgImageError(true)}
+            src={props.fact.openGraphImage!}
+            alt={props.celebName}
+          />
+        )}
+        <div
+          className={c(
+            'FACT-TAGS flex flex-wrap items-center gap-2.5',
+            showOgImage
+              ? c(
+                  'absolute bottom-0 left-0 right-0',
+                  'bg-gradient-to-t from-black via-transparent to-transparent',
+                  'px-4 pb-5 pt-32',
+                )
+              : '',
+          )}
+        >
+          {showIssueName && <IssueName />}{' '}
+          {props.fact.tags.map((t) => {
+            return (
+              <Tag
+                key={t.tag.name}
+                link={`/${props.slug}/tag/${t.tag._id}#content`}
+                tagId={t.tag._id}
+              >
+                <span className="flex items-center gap-1 text-neutral-700">
+                  {t.isLowConfidence && 'Possibly '}
+                  {t.tag.name}
+                  {t.isBackground && ' Background'}
+                </span>
+              </Tag>
+            );
+          })}{' '}
+          <p
+            className={c('text-sm default:text-neutral-700', {
+              'text-white': showOgImage,
+            })}
+          >
+            {props.fact.date}
+          </p>
+          <Link href={props.fact.source} passHref>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              className={c(
+                'pointer-events-auto flex select-none items-center gap-1 text-xs hover:underline default:text-neutral-500',
+                { 'text-white': showOgImage },
+              )}
+            >
+              {getSourceHost(props.fact.source)}
+            </a>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  function FactBody() {
+    const { ref: factBodyRef, inView: factBodyInView } = useInView({
+      triggerOnce: true,
+    });
+
+    useEffect(() => {
+      if (factBodyInView) {
+        recordGaEvent('fact_view', { id: props.fact._id });
+      }
+    }, [factBodyInView, props.fact._id]);
+
+    return (
+      <div
+        ref={factBodyRef}
+        className="FACT-BODY pointer-events-none relative z-0 flex flex-col gap-3"
+      >
+        {link && (
+          <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
+            <a
+              id="fact-details"
+              className="pointer-events-auto absolute -inset-5 -z-10 hover:bg-gray-50 focus:bg-gray-50"
+            >
+              <span className="invisible">Fact details</span>
+            </a>
+          </Link>
+        )}
+
+        {(props.fact.type === 'quote' && (
+          <>
+            <p className="text-lg text-neutral-600" id="fact-context">
+              {props.fact.context} {props.celebName} said
+            </p>
+
+            <div className="my-1 flex" id="fact-quote">
+              <blockquote className="border-l-4 pl-2 text-lg text-neutral-700">
+                {props.fact.quote}
+              </blockquote>
+            </div>
+          </>
+        )) || (
+          <p className="text-lg text-neutral-700">
+            {(props.fact as any).content}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  function FactFooter() {
+    return (
+      <div className="FACT-FOOTER -mx-5 flex content-between justify-between border-t px-5 pt-5 text-neutral-600">
+        <FactLikeButton fact={props.fact} />
+
+        {showCommentsButton && (
+          <ButtonContainer>
+            <FaRegCommentAlt className="text-xl" />
+            <p className="font-semibold">2</p>
+          </ButtonContainer>
+        )}
+
+        <ButtonContainer>
+          <FaRegChartBar className="text-xl" />
+          <p className="font-semibold">1</p>
+        </ButtonContainer>
+
+        <ButtonContainer>
+          <FaRegShareSquare className="text-xl" />
+          <p className="font-semibold">Share</p>
+        </ButtonContainer>
+
+        {/* {showCommentsButton && (
+      <button
+        onClick={() => setShowComments(true)}
+        id="fact-comments-link"
+        className="pointer-events-auto flex select-none items-center gap-0.5 text-base underline"
+      >
+        <FaRegCommentAlt className="text-2xl" />
+      </button>
+    )} */}
+
+        {/* <div className="flex-1" /> */}
+
+        {/* <ShareButton
+      className="pointer-events-auto"
+      share={{
+        text: getFactPageTitle(props.celebName, props.fact, 200),
+        url: `https://hollowverse.com${getFactPagePathname(
+          props.slug,
+          props.fact,
+        )}`,
+      }}
+    /> */}
+      </div>
+    );
+
+    function ButtonContainer(props: PropsWithChildren<{}>) {
+      return (
+        <div className="flex flex-col items-center gap-0.5">
+          {props.children}
+        </div>
+      );
+    }
+  }
+
+  function FactFacebookComments() {
+    return showComments ? (
+      <div className="-mx-5 -mb-5">
+        <hr />
+        <div className="mx-3 my-1">
+          <FacebookComments
+            pathname={getFactPagePathname(props.slug, props.fact)}
+            limit={5}
+          />
+        </div>
+      </div>
+    ) : null;
+  }
 
   function IssueName() {
     const issue = getFactIssue(props.fact);
@@ -235,42 +268,5 @@ export const Fact: React.FC<{
         </a>
       </Link>
     );
-  }
-
-  function renderFactBody(fact: QuoteFact) {
-    return fact.quote.length > fact.context.length ? (
-      <>
-        {renderQuote()}
-        {renderContext()}
-      </>
-    ) : (
-      <>
-        {renderContext()}
-        {renderQuote()}
-      </>
-    );
-
-    function renderQuote() {
-      return (
-        <div className="my-3 flex gap-2" id="fact-quote">
-          <div>
-            <FaQuoteLeft className="text-2xl text-neutral-300" />
-          </div>
-          <blockquote>{fact.quote}</blockquote>
-        </div>
-      );
-    }
-
-    function renderContext() {
-      return (
-        <p className="text-base text-neutral-500" id="fact-context">
-          {props.celebName} said, {lowercaseFirstLetter()}
-        </p>
-      );
-
-      function lowercaseFirstLetter() {
-        return fact.context.charAt(0).toLowerCase() + fact.context.slice(1);
-      }
-    }
   }
 };

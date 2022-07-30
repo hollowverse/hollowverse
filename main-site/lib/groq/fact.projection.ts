@@ -3,6 +3,7 @@ import { Celeb } from '~/lib/groq/celeb.projection';
 import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
 
 export type FactVotes = {
+  _id: string;
   likes: number | null;
   dislikes: number | null;
 };
@@ -14,7 +15,7 @@ type BaseFact = {
   forumLink: string;
   tags: CelebTag[];
   openGraphImage?: string;
-} & FactVotes;
+};
 
 export type QuoteFact = BaseFact & {
   type: 'quote';
@@ -34,6 +35,7 @@ export type FactWithCeleb = { celeb: Celeb } & Fact;
 export type FactTypes = Fact['type'];
 
 export const factVotesProjection = groq`
+_id,
 likes,
 dislikes
 `;
@@ -47,6 +49,5 @@ forumLink,
 source,
 type,
 openGraphImage,
-${factVotesProjection},
 ${celebTagProjection},
 `;
