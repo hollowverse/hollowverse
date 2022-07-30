@@ -2,7 +2,7 @@ import groq from 'groq';
 
 export type UserVote = {
   factId: string;
-  choice: 'like' | 'dislike' | null;
+  choice: 'like' | 'dislike';
 };
 
 export type User = {
