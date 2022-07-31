@@ -15,7 +15,7 @@ export function FacebookCommentsCount(props: { slug: string; fact: Fact }) {
   });
 
   return (
-    <div ref={ref} className="fb-comments-container">
+    <div ref={ref}>
       {inView && (
         <div
           className="fb-comments-count"
@@ -26,7 +26,7 @@ export function FacebookCommentsCount(props: { slug: string; fact: Fact }) {
         />
       )}
 
-      <span className="zero-text">Comment</span>
+      <span className="fb-comments-count-zero-text">Comment</span>
     </div>
   );
 }
