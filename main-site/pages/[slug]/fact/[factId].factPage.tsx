@@ -15,7 +15,7 @@ import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 import { FiLink } from 'react-icons/fi';
 
 export default function FactPage(props: FactPageProps) {
@@ -58,7 +58,7 @@ export default function FactPage(props: FactPageProps) {
 
         <Card>
           <LovelyTopBorder />
-          <div className="flex flex-col gap-3 p-5">
+          <div className="flex flex-col gap-3">
             <Fact
               slug={props.celeb.slug}
               fact={props.fact}

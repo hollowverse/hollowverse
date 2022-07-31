@@ -69,7 +69,7 @@ export default function TagPage(props: TagPageProps) {
             isSelected={() => false}
             issues={props.issues}
             getLink={(_id) =>
-              _id == noIssueFilter._id
+              _id === noIssueFilter._id
                 ? `/${props.celeb.slug}`
                 : `/${props.celeb.slug}/issue/${_id}`
             }

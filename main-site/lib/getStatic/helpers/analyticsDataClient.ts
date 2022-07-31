@@ -9,6 +9,7 @@ type ReportParams = Parameters<typeof analyticsDataClient.runReport>[0];
 export type Dimensions = ReportParams['dimensions'];
 export type Metrics = ReportParams['metrics'];
 export type DimensionFilter = ReportParams['dimensionFilter'];
+export type DateRanges = ReportParams['dateRanges'];
 
 export const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
@@ -23,8 +24,15 @@ export async function gaRunReport<T extends Json[]>(props: {
   metrics: Metrics;
   dimensionFilter?: DimensionFilter;
   limit?: number;
+  dateRanges?: DateRanges;
 }) {
   const limit = props.limit ?? 25;
+  const dateRanges = props.dateRanges ?? [
+    {
+      startDate: '14daysAgo',
+      endDate: 'today',
+    },
+  ];
 
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${GA_PROPERTY_ID}`,
@@ -33,12 +41,7 @@ export async function gaRunReport<T extends Json[]>(props: {
 
     limit,
 
-    dateRanges: [
-      {
-        startDate: '14daysAgo',
-        endDate: 'today',
-      },
-    ],
+    dateRanges,
   });
 
   if (!response || !response.rows) {

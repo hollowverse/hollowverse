@@ -34,10 +34,10 @@ export function CelebIssueSelector(props: {
     <div className="border-t border-b">
       <IssueSelector
         getAnchorTitle={(i) => celebNameToIssue(props.celeb.name, i)}
-        isSelected={(i) => i._id == props.issue._id}
+        isSelected={(i) => i._id === props.issue._id}
         issues={props.issues}
         getLink={(_id) =>
-          _id == noIssueFilter._id
+          _id === noIssueFilter._id
             ? `/${props.celeb.slug}`
             : `/${props.celeb.slug}/issue/${_id}`
         }

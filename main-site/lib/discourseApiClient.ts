@@ -27,14 +27,14 @@ export async function discourseApiClient<T extends Json>(
     },
   );
 
-  let contentType: string | undefined;
+  let requestContentType: string | undefined;
   let body: any;
 
   if (payload.type === 'form') {
-    contentType = 'application/x-www-form-urlencoded';
+    requestContentType = 'application/x-www-form-urlencoded';
     body = qs.stringify(payload.body);
   } else {
-    contentType = 'application/json';
+    requestContentType = 'application/json';
     body = JSON.stringify(payload.body);
   }
 
@@ -42,16 +42,17 @@ export async function discourseApiClient<T extends Json>(
     method: payload.method,
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
-      'Content-Type': contentType,
+      'Content-Type': requestContentType,
       'Api-Username': 'hollowbot',
     },
     body,
   });
 
   if (!res.ok) {
-    const contentType = res.headers.get('content-type');
+    const responseContentType = res.headers.get('content-type');
     const isJson =
-      contentType && contentType.indexOf('application/json') !== -1;
+      responseContentType &&
+      responseContentType.indexOf('application/json') !== -1;
 
     const context = {
       ...logContext,

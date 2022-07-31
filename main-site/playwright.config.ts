@@ -1,11 +1,12 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import path from 'path';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require('dotenv').config({ path: path.resolve(process.cwd(), '.env.local') });
 
 if (!process.env.URL) {
   throw new Error(
@@ -73,6 +74,9 @@ const config: PlaywrightTestConfig = {
         // },
         headless: false,
         ...devices['iPhone 12'],
+        contextOptions: {
+          ignoreHTTPSErrors: true,
+        },
       },
     },
     /* Test against branded browsers. */

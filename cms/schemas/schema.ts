@@ -6,9 +6,20 @@ import { issue } from './issue';
 import { tag } from './tag';
 import { orderOfIssues } from './orderOfIssues';
 import { tagLink } from './tagLink';
+import { vote } from './vote';
+import { user } from './user';
 
 export default createSchema({
   name: 'hollowverse',
 
-  types: schemaTypes.concat([fact, celeb, tag, issue, orderOfIssues, tagLink]),
+  types: schemaTypes.concat([
+    fact,
+    celeb,
+    tag,
+    issue,
+    orderOfIssues,
+    tagLink,
+    user,
+    vote,
+  ]),
 });

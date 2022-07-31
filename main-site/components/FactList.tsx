@@ -48,14 +48,12 @@ export function FactList(props: { list: FactWithCeleb[] }) {
                   title: cardTitle,
                 }}
               >
-                <div className="p-5">
-                  <Fact
-                    link
-                    fact={f}
-                    celebName={f.celeb.name}
-                    slug={f.celeb.slug}
-                  />
-                </div>
+                <Fact
+                  link
+                  fact={f}
+                  celebName={f.celeb.name}
+                  slug={f.celeb.slug}
+                />
               </TitledCard>
             </div>
 

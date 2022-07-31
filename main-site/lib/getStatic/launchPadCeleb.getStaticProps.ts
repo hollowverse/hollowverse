@@ -21,7 +21,7 @@ export async function getLaunchPadTags() {
 
   // get recurring top words
   const a = results.flatMap((t) => t.name.toLowerCase().split(' '));
-  const b = countBy(a, (a) => a);
+  const b = countBy(a, (ai) => ai);
   const c = toPairs(b);
   const d = orderBy(c, (p) => p[1], 'desc');
   const topA = d.slice(0, Math.round(d.length * 0.05)); // get the top 3%
@@ -29,12 +29,12 @@ export async function getLaunchPadTags() {
 
   // remove top words from tags
   const a1 = results.map((t) => {
-    const a = t.name.toLowerCase();
-    const b = a
+    const a1a = t.name.toLowerCase();
+    const a1b = a1a
       .split(' ')
       .filter((w) => !topB.includes(w))
       .join(' ');
-    return { name: b, issue: t.issue.name };
+    return { name: a1b, issue: t.issue.name };
   });
 
   const a2 = uniqBy(a1, (t) => t.name).filter((w) => w.name);

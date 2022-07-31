@@ -4,9 +4,14 @@
     "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:eqeqeq-fix/recommended"
   ],
   "rules": {
+    "no-shadow": "error",
+
+    "eqeqeq": "error",
+
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

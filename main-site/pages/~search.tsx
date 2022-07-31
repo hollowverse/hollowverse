@@ -11,7 +11,7 @@ import { useSearch } from '~/components/hooks/useSearch';
 import { Page } from '~/components/Page';
 import { SearchResults } from '~/components/SearchResults';
 import { Spinner } from '~/components/Spinner';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export default function Search() {
   const hook = useSearch();

@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { DiscourseContribPm } from '~/components/DiscourseContribPm';
 import { DiscourseTopicFact } from '~/components/DiscourseTopicFact';
-import { badgeDefinitions } from '~/lib/badgeDefinitions';
+import { badgeDefinitions } from '~/lib/api-route-helpers/badgeDefinitions';
 import { discourseApiClient as _discourseApiClient } from '~/lib/discourseApiClient';
 import { ContentChange } from '~/lib/groq/contentChangeNotification.projection';
 import { Json } from '~/shared/lib/types';

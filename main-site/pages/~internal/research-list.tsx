@@ -8,7 +8,7 @@ import {
   getKgSearchId,
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 import { sortByArray } from '~/lib/sortByArray';
 import { PageProps } from '~/shared/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';

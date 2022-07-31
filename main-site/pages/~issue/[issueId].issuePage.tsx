@@ -5,7 +5,7 @@ import { InBetweenContentShareButton } from '~/components/ShareButton';
 import { Tag } from '~/components/Tag';
 import { Card } from '~/components/ui/Card';
 import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export default function IssuePage(props: IssuePageProps) {
   return (
@@ -66,7 +66,7 @@ export default function IssuePage(props: IssuePageProps) {
               return `/~issue/${props.issue._id}/p/${pageNumber}/tag/${props.tagId}`;
             }
 
-            return pageNumber == 1
+            return pageNumber === 1
               ? `/~issue/${props.issue._id}`
               : `/~issue/${props.issue._id}/p/${pageNumber}`;
           }}

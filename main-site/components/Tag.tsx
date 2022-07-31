@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 import { PurpleDot } from '~/components/ui/PurpleDot';
 import { c } from '~/lib/c';
-import { Link } from '~/lib/Link';
+import { Link } from '~/components/Link';
 
 export function Tag(
   props: PropsWithChildren<{

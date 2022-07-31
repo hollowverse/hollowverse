@@ -42,8 +42,8 @@ export function getTagTimeline(facts: TimelineFact[]) {
   /**
    * {'id1': '2020-2019'}
    */
-  const tagIdToDateRange = mapValues(tagIdToFacts, (facts) => {
-    const dates = facts.map((f) => getYear(parseDate(f.date)));
+  const tagIdToDateRange = mapValues(tagIdToFacts, (tagTimelineFact) => {
+    const dates = tagTimelineFact.map((f) => getYear(parseDate(f.date)));
     const firstDate = dates[0];
     const lastDate = last(dates);
 

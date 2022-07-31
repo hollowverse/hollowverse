@@ -1,7 +1,12 @@
 import groq from 'groq';
 import { Celeb } from '~/lib/groq/celeb.projection';
-import { issueProjection } from '~/lib/groq/issue.projection';
 import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
+
+export type FactVotes = {
+  _id: string;
+  likes: number | null;
+  dislikes: number | null;
+};
 
 type BaseFact = {
   _id: string;
@@ -29,6 +34,11 @@ export type FactWithCeleb = { celeb: Celeb } & Fact;
 
 export type FactTypes = Fact['type'];
 
+export const factVotesProjection = groq`
+_id,
+likes,
+dislikes
+`;
 export const factProjection = groq`
 _id,
 content,

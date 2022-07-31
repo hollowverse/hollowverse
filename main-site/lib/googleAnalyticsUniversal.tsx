@@ -16,8 +16,8 @@ export function useGoogleAnalyticsUniversal() {
   }, 500);
 
   useEffect(() => {
-    const handleRouteChange = (pagePath: string) => {
-      return debounced(pagePath);
+    const handleRouteChange = (hrcPagePath: string) => {
+      return debounced(hrcPagePath);
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);

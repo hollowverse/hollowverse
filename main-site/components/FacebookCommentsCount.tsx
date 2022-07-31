@@ -25,6 +25,8 @@ export function FacebookCommentsCount(props: { slug: string; fact: Fact }) {
           )}`}
         />
       )}
+
+      <span className="fb-comments-count-zero-text">Comment</span>
     </div>
   );
 }
