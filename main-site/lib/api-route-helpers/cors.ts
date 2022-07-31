@@ -3,6 +3,14 @@ import { endsWith } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { VERCEL_TEMP_DOMAIN } from '~/lib/constants';
 
+export function isHvHostname(hostname: string) {
+  return (
+    endsWith(hostname, 'localhost') ||
+    endsWith(hostname, 'hollowverse.com') ||
+    endsWith(hostname, VERCEL_TEMP_DOMAIN)
+  );
+}
+
 // Helper method to wait for a middleware to execute before continuing
 // And to throw an error when an error happens in a middleware
 function initMiddleware(middleware: ReturnType<typeof Cors>) {
@@ -26,11 +34,7 @@ export const cors = initMiddleware(
 
       const url = new URL(origin!);
 
-      if (
-        url.hostname === 'localhost' ||
-        endsWith(url.hostname, 'hollowverse.com') ||
-        endsWith(url.hostname, VERCEL_TEMP_DOMAIN)
-      ) {
+      if (isHvHostname(url.hostname)) {
         callback(null, true);
         return;
       }

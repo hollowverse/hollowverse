@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import QueryString from 'qs';
+import { isHvHostname } from '~/lib/api-route-helpers/cors';
 import { getHmac, setAuthCookie } from '~/lib/api-route-helpers/user-auth';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getWebsiteUrl } from '~/lib/getWebsiteUrl';
@@ -22,11 +23,26 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
 function handleLoginRequest(req: NextApiRequest, res: NextApiResponse) {
   const { redirect } = req.query as { redirect: string };
 
+  let return_sso_url: string;
+
+  try {
+    const url = new URL(redirect);
+    const { hostname, host } = url;
+
+    if (!isHvHostname(hostname)) {
+      throw new Error();
+    }
+
+    return_sso_url = `https://${host}/api/login`;
+  } catch (e) {
+    return res.status(500).json({ message: 'Bad redirect value' });
+  }
+
   const sso = Buffer.from(
     QueryString.stringify(
       {
-        return_sso_url: `${getWebsiteUrl()}/api/login`,
-        'custom.redirect': redirect || null,
+        return_sso_url,
+        'custom.redirect': redirect,
       },
       { skipNulls: true },
     ),
@@ -65,7 +81,7 @@ async function handleLoginReturn(req: NextApiRequest, res: NextApiResponse) {
 
     setAuthCookie(req, res, userId.toString());
 
-    return res.redirect(redirect || getWebsiteUrl());
+    return res.redirect(redirect);
   }
 
   return res.redirect(getWebsiteUrl());
