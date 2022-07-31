@@ -52,12 +52,7 @@ export const Fact: React.FC<{
 
         <FactBody />
 
-        <FactFooter
-          showCommentsButton={props.showCommentsButton}
-          slug={props.slug}
-          celebName={props.celebName}
-          fact={props.fact}
-        />
+        <FactFooter {...props} />
       </div>
     </section>
   );
