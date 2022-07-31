@@ -10,7 +10,7 @@ export function getWebsiteUrl() {
   }
 
   if (getEnv() === 'preview') {
-    return process.env.NEXT_PUBLIC_VERCEL_URL as string;
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL as string}`;
   }
 
   return 'https://hollowverse.com';
