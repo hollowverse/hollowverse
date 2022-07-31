@@ -58,7 +58,7 @@ export default function FactPage(props: FactPageProps) {
 
         <Card>
           <LovelyTopBorder />
-          <div className="flex flex-col gap-3 p-5">
+          <div className="flex flex-col gap-3">
             <Fact
               slug={props.celeb.slug}
               fact={props.fact}

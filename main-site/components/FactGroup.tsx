@@ -25,15 +25,13 @@ export function FactGroup(props: {
           return (
             <Fragment key={fact._id}>
               <Card>
-                <div className="p-5">
-                  <Fact
-                    showIssueName={showIssueName}
-                    link
-                    fact={fact}
-                    celebName={props.celebName}
-                    slug={props.slug}
-                  />
-                </div>
+                <Fact
+                  showIssueName={showIssueName}
+                  link
+                  fact={fact}
+                  celebName={props.celebName}
+                  slug={props.slug}
+                />
               </Card>
 
               {props.index === 0 && i === 0 && <InFeedAd />}

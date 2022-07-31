@@ -40,8 +40,8 @@ export function FactFooter(props: {
   }, [props.fact._id]);
 
   return (
-    <div className="flex flex-col gap-5">
-      <div className="FACT-FOOTER -mx-5 flex content-between justify-between border-t px-5 pt-5 text-neutral-600">
+    <div className="-mx-5 flex flex-col border-t px-5">
+      <div className="FACT-FOOTER flex content-between justify-between py-3 text-neutral-500">
         <VoteButtons fact={props.fact} />
 
         {showCommentsButton && (
@@ -49,7 +49,7 @@ export function FactFooter(props: {
             onClick={() => setShowComments(true)}
             id="fact-comments-link"
           >
-            <FaRegCommentAlt className="text-xl" />
+            <FaRegCommentAlt className="text-lg" />
 
             <div className="font-semibold">
               <FacebookCommentsCount fact={props.fact} slug={props.slug} />
@@ -66,14 +66,14 @@ export function FactFooter(props: {
             )}`,
           })}
         >
-          <FaRegShareSquare className="text-xl" />
+          <FaRegShareSquare className="text-lg" />
           <p className="font-semibold">
             {copied ? <span className="text-sm">URL copied</span> : 'Share'}
           </p>
         </FooterButton>
 
         <FooterButton onClick={() => setShowViewCountText(!showViewCountText)}>
-          <FaRegChartBar className="text-xl" />
+          <FaRegChartBar className="text-lg" />
           <p className="font-semibold">
             {showViewCountText ? viewCount : 'Views'}
           </p>
@@ -81,14 +81,11 @@ export function FactFooter(props: {
       </div>
 
       {showComments ? (
-        <div className="-mx-5 -mb-5">
-          <hr />
-          <div className="mx-3 my-1">
-            <FacebookComments
-              pathname={getFactPagePathname(props.slug, props.fact)}
-              limit={5}
-            />
-          </div>
+        <div className="-mx-5 border-t px-2">
+          <FacebookComments
+            pathname={getFactPagePathname(props.slug, props.fact)}
+            limit={5}
+          />
         </div>
       ) : null}
     </div>
@@ -100,7 +97,7 @@ export function FooterButton(props: ReactElementProps<'button'>) {
     <button
       {...props}
       className={c(
-        'flex min-w-[50px] flex-col items-center gap-0.5',
+        'flex min-w-[50px] flex-col items-center gap-0.5 text-xs',
         props.className,
       )}
     />

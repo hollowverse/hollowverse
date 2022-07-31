@@ -46,7 +46,7 @@ export const Fact: React.FC<{
   const showOgImage = props.fact.openGraphImage && !ogImageError;
 
   return (
-    <section id="fact" className="flex flex-col gap-5">
+    <section id="fact" className="flex flex-col p-5 pb-0">
       <div className="FACT-MAIN-CONTAINER flex flex-col gap-5">
         <FactHead />
 
@@ -152,21 +152,17 @@ export const Fact: React.FC<{
 
         {(props.fact.type === 'quote' && (
           <>
-            <p className="text-lg text-neutral-600" id="fact-context">
+            <p className="text-neutral-600" id="fact-context">
               {props.fact.context}
             </p>
 
             <div className="my-1 flex" id="fact-quote">
-              <blockquote className="border-l-4 pl-2 text-lg text-neutral-700">
+              <blockquote className="border-l-4 pl-2 text-neutral-700">
                 {props.fact.quote}
               </blockquote>
             </div>
           </>
-        )) || (
-          <p className="text-lg text-neutral-700">
-            {(props.fact as any).content}
-          </p>
-        )}
+        )) || <p className="text-neutral-700">{(props.fact as any).content}</p>}
       </div>
     );
   }

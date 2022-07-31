@@ -53,14 +53,14 @@ export function VoteButtons(props: { fact: Fact }) {
   }, [isLoggedIn, props.fact._id]);
 
   return (
-    <div className="flex gap-7">
+    <div className="flex">
       <FooterButton
         id="like-button"
         disabled={working}
         className={c({ 'animate-pulse': working })}
         onClick={getClickHandler('like')}
       >
-        <span className="text-xl">
+        <span className="text-lg">
           {choice === 'like' ? (
             <FaThumbsUp className="text-purple-500" id="i-like" />
           ) : (
@@ -78,7 +78,7 @@ export function VoteButtons(props: { fact: Fact }) {
         className={c({ 'animate-pulse': working })}
         onClick={getClickHandler('dislike')}
       >
-        <span className="text-xl">
+        <span className="text-lg">
           {choice === 'dislike' ? (
             <FaThumbsDown className="text-orange-600" id="i-dislike" />
           ) : (
