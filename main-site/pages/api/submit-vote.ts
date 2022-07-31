@@ -40,11 +40,11 @@ export default async function submitVote(
       typeof newVote.factId !== 'string' ||
       (newVote.choice !== 'like' && newVote.choice !== 'dislike')
     ) {
-      throw Error('Bad request');
+      return res.status(500).json({ message: 'Bad request' });
     }
 
     if (ongoingVoting.includes(userId)) {
-      return res.status(500).json({ message: 'wait for request to finish' });
+      return res.status(500).json({ message: 'Wait for request to finish' });
     }
 
     ongoingVoting.push(userId);
@@ -52,7 +52,7 @@ export default async function submitVote(
     let [user, factVotes] = await getUserAndFactVotes(userId);
 
     if (isEmpty(factVotes) || !factVotes) {
-      throw new Error('Fact does not exist');
+      return res.status(500).json({ message: 'Fact does not exist' });
     }
 
     if (isEmpty(user) || !user) {
