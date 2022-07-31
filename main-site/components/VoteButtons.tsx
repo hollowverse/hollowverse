@@ -31,6 +31,8 @@ export function VoteButtons(props: { fact: Fact }) {
 
   useEffect(() => {
     async function req() {
+      setWorking(true);
+
       const [factVotesRes, userVote] = await Promise.all([
         factVoteCountProvider.get(props.fact._id),
         isLoggedIn ? userVoteCountProvider.get(props.fact._id) : null,
@@ -43,6 +45,8 @@ export function VoteButtons(props: { fact: Fact }) {
       if (userVote) {
         setChoice(userVote.choice);
       }
+
+      setWorking(false);
     }
 
     req();
@@ -51,35 +55,37 @@ export function VoteButtons(props: { fact: Fact }) {
   return (
     <div className="flex gap-7">
       <FooterButton
+        id="like-button"
         disabled={working}
         className={c({ 'animate-pulse': working })}
         onClick={getClickHandler('like')}
       >
         <span className="text-xl">
           {choice === 'like' ? (
-            <FaThumbsUp className="text-purple-500" />
+            <FaThumbsUp className="text-purple-500" id="i-like" />
           ) : (
             <FaRegThumbsUp />
           )}
         </span>
-        <p className="font-semibold">
+        <p className="font-semibold" id="like-count">
           {factVotes.likes ? factVotes.likes : 'Like'}
         </p>
       </FooterButton>
 
       <FooterButton
+        id="dislike-button"
         disabled={working}
         className={c({ 'animate-pulse': working })}
         onClick={getClickHandler('dislike')}
       >
         <span className="text-xl">
           {choice === 'dislike' ? (
-            <FaThumbsDown className="text-orange-600" />
+            <FaThumbsDown className="text-orange-600" id="i-dislike" />
           ) : (
             <FaRegThumbsDown />
           )}
         </span>
-        <p className="font-semibold">
+        <p className="font-semibold" id="dislike-count">
           {factVotes.dislikes ? factVotes.dislikes : 'Dislike'}
         </p>
       </FooterButton>

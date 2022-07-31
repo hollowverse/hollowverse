@@ -1,0 +1,93 @@
+/**
+ * This isn't a good idea because I shouldn't be writing an E2E test that modifies
+ * data in a production database. It could skew stats, etc.
+ *
+ * I should have an E2E database specifically for testing.
+ *
+ * Until then...I'm disabling this.
+ */
+
+import { test, expect } from '@playwright/test';
+import { testUrl } from '~/e2e-tests/testUrl';
+import sanityClient from '@sanity/client';
+import groq from 'groq';
+
+const url = `${testUrl}/dwayne-johnson/issue/d01ad83e-5f0b-401b-b79b-65613bcc1377-m`;
+
+test.only('Voting E2E test', async ({ page }) => {
+  // Start by deleting the test user from the DB to ensure an idempotent test
+  await sanityClient({
+    projectId: 'ge8aosp3',
+    dataset: 'production',
+    apiVersion: '2022-03-20',
+    useCdn: false,
+    token: process.env.SANITY_WRITE_TOKEN,
+  }).delete({ query: groq`*[_type == 'user' && _id == '119']` });
+
+  await page.goto(url);
+  await page.waitForSelector('#celeb-issue-page');
+
+  // Click the like button to initiate login flow
+  await page.waitForSelector(':nth-match(#like-button,1):not([disabled])');
+  await page.locator(':nth-match(#like-button,1)').click();
+
+  // Login on Discourse
+  await page.fill(
+    '#login-account-name',
+    process.env.DISCOURSE_E2E_BOT_NAME as string,
+  );
+  await page.fill(
+    '#login-account-password',
+    process.env.DISCOURSE_E2E_BOT_PASSWORD as string,
+  );
+  await page.locator('#login-button').click();
+
+  // You'll be redirected back to the celeb page
+  await page.waitForSelector('#celeb-issue-page');
+
+  // Calculate the current like count
+  await page.waitForSelector(':nth-match(#like-button,1):not([disabled])');
+  const currentLikeCount = await getVoteCount('like');
+
+  // Check if I voted on this before
+  const iLike = !!(await page.$(':nth-match(#i-like,1)'));
+
+  // Click like
+  await page.locator(':nth-match(#like-button,1)').click();
+
+  // Wait for network call to finish
+  await page.waitForSelector(':nth-match(#like-button,1):disabled');
+  await page.waitForSelector(':nth-match(#like-button,1):not([disabled])');
+
+  // Calculate new like count
+  const newLikeCount = await getVoteCount('like');
+
+  expect(newLikeCount).toEqual(currentLikeCount + (iLike ? -1 : 1));
+
+  async function getVoteCount(choice: 'like' | 'dislike') {
+    const tentativeCount = parseInt(
+      await page.innerText(`:nth-match(#${choice}-count,1)`),
+    );
+    const count = isFinite(tentativeCount) ? tentativeCount : 0;
+
+    return count;
+  }
+
+  // await page.locator('#search-back-button').click();
+  // await page.waitForSelector('#homepage');
+
+  // await page.fill('#search-field', 'elon musk');
+  // await page.keyboard.press('Enter');
+  // await page.locator(':nth-match(#chr-item,1)').click();
+  // await page.waitForSelector(`#content.elon-musk`);
+
+  // await page.fill('#search-field', 'sdfjasldfkjasldfjasdlfk');
+  // await page.keyboard.press('Enter');
+  // await page.waitForSelector('#no-results');
+  // await page.locator('#clear-search').click();
+
+  // await page.fill('#search-field', 'testo');
+  // await page.keyboard.press('Enter');
+  // await page.locator(':nth-match(#chr-item,1)').click();
+  // await page.waitForSelector(`#knowledge-graph-page`);
+});
