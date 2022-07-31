@@ -86,7 +86,7 @@ export async function getStaticProps({
       .map((t, i) => {
         let postfix: string;
 
-        if (i == tags.length - 2) {
+        if (i === tags.length - 2) {
           postfix = ', and ';
         } else if (i < tags.length - 1) {
           postfix = ', ';
@@ -101,7 +101,7 @@ export async function getStaticProps({
           return content;
         }
 
-        if (lastSeenIsVerb == false) {
+        if (lastSeenIsVerb === false) {
           return content;
         }
 

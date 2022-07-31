@@ -9,11 +9,11 @@ export function calculateVoteOperations(
   let likes: number = 0;
   let dislikes: number = 0;
 
-  if (existingVote && existingVote.factId == newVote.factId) {
-    if (existingVote.choice == newVote.choice) {
+  if (existingVote && existingVote.factId === newVote.factId) {
+    if (existingVote.choice === newVote.choice) {
       operation = 'remove';
 
-      if (newVote.choice == 'like') {
+      if (newVote.choice === 'like') {
         likes = -1;
       } else {
         dislikes = -1;
@@ -21,7 +21,7 @@ export function calculateVoteOperations(
     } else {
       operation = 'replace';
 
-      if (newVote.choice == 'like') {
+      if (newVote.choice === 'like') {
         likes = 1;
         dislikes = -1;
       } else {
@@ -32,7 +32,7 @@ export function calculateVoteOperations(
   } else {
     operation = 'add';
 
-    if (newVote.choice == 'like') {
+    if (newVote.choice === 'like') {
       likes = 1;
       dislikes = 0;
     } else {

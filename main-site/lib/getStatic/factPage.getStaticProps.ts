@@ -24,7 +24,7 @@ export async function getStaticProps({
   }
 
   const allFacts = await getCelebFacts(celeb._id);
-  const fact = allFacts.find((f) => f._id == params.factId);
+  const fact = allFacts.find((f) => f._id === params.factId);
 
   if (!fact) {
     return {
