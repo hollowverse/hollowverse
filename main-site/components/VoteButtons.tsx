@@ -5,6 +5,7 @@ import {
   FaThumbsDown,
   FaThumbsUp,
 } from 'react-icons/fa';
+import { FooterButton } from '~/components/FactFooter';
 import { redirectToLogin, useUser } from '~/components/hooks/useUser';
 import { c } from '~/lib/c';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
@@ -15,7 +16,7 @@ import { hvApiClient, post } from '~/lib/hvApiClient';
 import { userVoteResultsProvider } from '~/lib/UserVoteResultsProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
 
-export function FactLikeButton(props: { fact: Fact }) {
+export function VoteButtons(props: { fact: Fact }) {
   const [choice, setChoice] = useState<'like' | 'dislike' | null>(null);
   const [working, setWorking] = useState(false);
   const [factVotes, setFactVotes] = useState<{
@@ -49,12 +50,10 @@ export function FactLikeButton(props: { fact: Fact }) {
 
   return (
     <div className="flex gap-7">
-      <button
+      <FooterButton
         disabled={working}
+        className={c({ 'animate-pulse': working })}
         onClick={getClickHandler('like')}
-        className={c('flex min-w-[50px] flex-col items-center gap-0.5', {
-          'animate-pulse': working,
-        })}
       >
         <span className="text-xl">
           {choice === 'like' ? (
@@ -66,13 +65,11 @@ export function FactLikeButton(props: { fact: Fact }) {
         <p className="font-semibold">
           {factVotes.likes ? factVotes.likes : 'Like'}
         </p>
-      </button>
+      </FooterButton>
 
-      <button
+      <FooterButton
         disabled={working}
-        className={c('flex min-w-[50px] flex-col items-center gap-0.5', {
-          'animate-pulse': working,
-        })}
+        className={c({ 'animate-pulse': working })}
         onClick={getClickHandler('dislike')}
       >
         <span className="text-xl">
@@ -85,7 +82,7 @@ export function FactLikeButton(props: { fact: Fact }) {
         <p className="font-semibold">
           {factVotes.dislikes ? factVotes.dislikes : 'Dislike'}
         </p>
-      </button>
+      </FooterButton>
     </div>
   );
 
