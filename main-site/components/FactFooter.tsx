@@ -9,7 +9,7 @@ import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
 import { useShareButton } from '~/components/ShareButton';
 import { VoteButtons } from '~/components/VoteButtons';
 import { c } from '~/lib/c';
-import { factViewCountResultsProvider } from '~/lib/FactViewCountResultsProvider';
+import { factViewCountProvider } from '~/lib/FactViewCounProvider';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { Fact } from '~/lib/groq/fact.projection';
@@ -29,9 +29,7 @@ export function FactFooter(props: {
 
   useEffect(() => {
     async function req() {
-      const viewCountRes = await factViewCountResultsProvider.get(
-        props.fact._id,
-      );
+      const viewCountRes = await factViewCountProvider.get(props.fact._id);
 
       if (viewCountRes) {
         setViewCount(viewCountRes);

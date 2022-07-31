@@ -2,31 +2,31 @@ import { UserVote } from '~/lib/groq/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
 import { RequestBusStation } from '~/lib/RequestBusStation';
 
-class UserVoteResultsProvider {
+class UserVoteCountProvider {
   results: UserVote[] = [];
 
   requestBusStation = new RequestBusStation<string>(async (factIds) => {
-    const results = await hvApiClient<UserVote[]>(
+    const counts = await hvApiClient<UserVote[]>(
       'get-user-votes',
       post({ factIds }),
     )!;
 
-    if (results) {
-      this.results = results;
+    if (counts) {
+      this.results = counts;
     }
   });
 
-  findUserVoteResult(factId: string) {
+  findUserVoteCount(factId: string) {
     return this.results.find((v) => v.factId === factId);
   }
 
   async get(factId: string) {
     await this.requestBusStation.trip(factId);
 
-    const userVoteResult = this.findUserVoteResult(factId);
+    const userVoteCount = this.findUserVoteCount(factId);
 
-    return userVoteResult;
+    return userVoteCount;
   }
 }
 
-export const userVoteResultsProvider = new UserVoteResultsProvider();
+export const userVoteCountProvider = new UserVoteCountProvider();

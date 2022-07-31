@@ -3,7 +3,7 @@ import { RequestBusStation } from '~/lib/RequestBusStation';
 
 type ViewCount = { factId: string; viewCount: string };
 
-class FactViewCountResultsProvider {
+class FactViewCountProvider {
   results: ViewCount[] = [];
 
   requestBusStation = new RequestBusStation<string>(async (factIds) => {
@@ -20,17 +20,17 @@ class FactViewCountResultsProvider {
     }
   });
 
-  findFactViewCountResult(factId: string) {
+  findFactViewCount(factId: string) {
     return this.results.find((v) => v.factId === factId);
   }
 
   async get(factId: string) {
     await this.requestBusStation.trip(factId);
 
-    const factViewCountResult = this.findFactViewCountResult(factId);
+    const factViewCount = this.findFactViewCount(factId);
 
-    return factViewCountResult?.viewCount;
+    return factViewCount?.viewCount;
   }
 }
 
-export const factViewCountResultsProvider = new FactViewCountResultsProvider();
+export const factViewCountProvider = new FactViewCountProvider();

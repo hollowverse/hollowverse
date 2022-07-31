@@ -5,31 +5,31 @@ import { RequestBusStation } from '~/lib/RequestBusStation';
 
 export type NormalizedFactVotes = DeepNonNullable<FactVotes>;
 
-class FactVoteResultsProvider {
+class FactVoteCountProvider {
   results: NormalizedFactVotes[] = [];
 
   requestBusStation = new RequestBusStation<string>(async (factIds) => {
-    const results = await hvApiClient<NormalizedFactVotes[]>(
+    const counts = await hvApiClient<NormalizedFactVotes[]>(
       'get-fact-votes',
       post({ factIds }),
     )!;
 
-    if (results) {
-      this.results = results;
+    if (counts) {
+      this.results = counts;
     }
   });
 
-  findFactVoteResult(factId: string) {
+  findFactVoteCount(factId: string) {
     return this.results.find((p) => p._id === factId);
   }
 
   async get(factId: string) {
     await this.requestBusStation.trip(factId);
 
-    const factVoteResult = this.findFactVoteResult(factId);
+    const factVoteCount = this.findFactVoteCount(factId);
 
-    return factVoteResult;
+    return factVoteCount;
   }
 }
 
-export const factVoteResultsProvider = new FactVoteResultsProvider();
+export const factVoteCountProvider = new FactVoteCountProvider();

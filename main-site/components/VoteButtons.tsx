@@ -9,11 +9,11 @@ import { FooterButton } from '~/components/FactFooter';
 import { redirectToLogin, useUser } from '~/components/hooks/useUser';
 import { c } from '~/lib/c';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
-import { factVoteResultsProvider } from '~/lib/FactVoteResultsProvider';
+import { factVoteCountProvider } from '~/lib/FactVoteCountProvider';
 import { Fact } from '~/lib/groq/fact.projection';
 import { UserVote } from '~/lib/groq/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
-import { userVoteResultsProvider } from '~/lib/UserVoteResultsProvider';
+import { userVoteCountProvider } from '~/lib/UserVoteCountProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
 
 export function VoteButtons(props: { fact: Fact }) {
@@ -32,8 +32,8 @@ export function VoteButtons(props: { fact: Fact }) {
   useEffect(() => {
     async function req() {
       const [factVotesRes, userVote] = await Promise.all([
-        factVoteResultsProvider.get(props.fact._id),
-        isLoggedIn ? userVoteResultsProvider.get(props.fact._id) : null,
+        factVoteCountProvider.get(props.fact._id),
+        isLoggedIn ? userVoteCountProvider.get(props.fact._id) : null,
       ]);
 
       if (factVotesRes) {
