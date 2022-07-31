@@ -6,9 +6,7 @@ import cookie from 'cookie-signature';
 import { oneYear } from '~/lib/date';
 import { LOGIN_COOKIE_NAME } from '~/lib/constants';
 
-// This secret is compromised. Change it.
-export const discourseSsoSecret = '6yk3S54losS';
-// export const discourseSsoSecret = process.env.DISCOURSE_SSO_SECRET as string;
+export const discourseSsoSecret = process.env.DISCOURSE_SSO_SECRET as string;
 
 export function getHmac() {
   return crypto.createHmac('sha256', discourseSsoSecret);
