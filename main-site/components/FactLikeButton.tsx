@@ -57,7 +57,11 @@ export function FactLikeButton(props: { fact: Fact }) {
         })}
       >
         <span className="text-xl">
-          {choice === 'like' ? <FaThumbsUp /> : <FaRegThumbsUp />}
+          {choice === 'like' ? (
+            <FaThumbsUp className="text-purple-500" />
+          ) : (
+            <FaRegThumbsUp />
+          )}
         </span>
         <p className="font-semibold">
           {factVotes.likes ? factVotes.likes : 'Like'}
@@ -72,7 +76,11 @@ export function FactLikeButton(props: { fact: Fact }) {
         onClick={getClickHandler('dislike')}
       >
         <span className="text-xl">
-          {choice === 'dislike' ? <FaThumbsDown /> : <FaRegThumbsDown />}
+          {choice === 'dislike' ? (
+            <FaThumbsDown className="text-orange-600" />
+          ) : (
+            <FaRegThumbsDown />
+          )}
         </span>
         <p className="font-semibold">
           {factVotes.dislikes ? factVotes.dislikes : 'Dislike'}

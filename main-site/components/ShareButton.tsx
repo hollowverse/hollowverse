@@ -2,34 +2,44 @@ import { useState } from 'react';
 import { MdCheck, MdOutlineIosShare } from 'react-icons/md';
 import { c } from '~/lib/c';
 
+export function useShareButton() {
+  const [copied, setCopied] = useState(false);
+
+  function getClickHandler(args?: { url: string; text: string }) {
+    return async function clickHandler() {
+      try {
+        if (typeof global?.navigator?.share !== 'undefined') {
+          await global.navigator.share(
+            args || {
+              text: document.title,
+              url: document.location.href,
+            },
+          );
+        } else {
+          await global.navigator.clipboard.writeText(
+            args?.url || document.location.href,
+          );
+
+          setCopied(true);
+        }
+      } catch (e) {}
+    };
+  }
+
+  return { copied, getClickHandler };
+}
+
 export function ShareButton(props: {
   buttonText?: string;
   share?: { text: string; url: string };
   className?: string;
 }) {
-  const [copied, setCopied] = useState(false);
+  const { getClickHandler, copied } = useShareButton();
 
   return (
     <button
       className={c('text-blue-500', props.className)}
-      onClick={async () => {
-        try {
-          if (typeof global?.navigator?.share !== 'undefined') {
-            await global.navigator.share(
-              props.share || {
-                text: document.title,
-                url: document.location.href,
-              },
-            );
-          } else {
-            await global.navigator.clipboard.writeText(
-              props.share?.url || document.location.href,
-            );
-
-            setCopied(true);
-          }
-        } catch (e) {}
-      }}
+      onClick={getClickHandler(props.share)}
     >
       <div
         className={c('flex items-center justify-center gap-1', {
