@@ -158,7 +158,7 @@ export const Fact: React.FC<{
         {(props.fact.type === 'quote' && (
           <>
             <p className="text-lg text-neutral-600" id="fact-context">
-              {props.fact.context} {props.celebName} said
+              {props.fact.context}
             </p>
 
             <div className="my-1 flex" id="fact-quote">

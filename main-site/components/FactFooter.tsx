@@ -57,13 +57,6 @@ export function FactFooter(props: {
           </FooterButton>
         )}
 
-        <FooterButton onClick={() => setShowViewCountText(!showViewCountText)}>
-          <FaRegChartBar className="text-xl" />
-          <p className="font-semibold">
-            {showViewCountText ? viewCount : 'Views'}
-          </p>
-        </FooterButton>
-
         <FooterButton
           onClick={getClickHandler({
             text: getFactPageTitle(props.celebName, props.fact, 200),
@@ -76,6 +69,13 @@ export function FactFooter(props: {
           <FaRegShareSquare className="text-xl" />
           <p className="font-semibold">
             {copied ? <span className="text-sm">URL copied</span> : 'Share'}
+          </p>
+        </FooterButton>
+
+        <FooterButton onClick={() => setShowViewCountText(!showViewCountText)}>
+          <FaRegChartBar className="text-xl" />
+          <p className="font-semibold">
+            {showViewCountText ? viewCount : 'Views'}
           </p>
         </FooterButton>
       </div>

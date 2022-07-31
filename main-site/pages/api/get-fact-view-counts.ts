@@ -1,4 +1,4 @@
-import { random, result } from 'lodash-es';
+import { random } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/api-route-helpers/cors';
 import { setApiCache } from '~/lib/api-route-helpers/setApiCache';
@@ -71,13 +71,11 @@ export async function getFactViewCounts(factIds: string[]) {
     };
   });
 
-  console.log('results', results);
-
   return results;
 }
 
 function getEstimatedViewCount() {
-  return `~${random(10, 20)}`;
+  return `~${random(30, 50)}`;
 }
 
 export default async function getFactViewCountsApi(
@@ -88,7 +86,6 @@ export default async function getFactViewCountsApi(
   setApiCache(res);
 
   const { factIds } = JSON.parse(req.body) as { factIds: string[] };
-  console.log('=\nFILE: get-fact-view-counts.ts\nLINE: 66\n=');
 
   return res.status(200).json(await getFactViewCounts(factIds));
 }
