@@ -66,7 +66,7 @@ export default function IssuePage(props: IssuePageProps) {
               return `/~issue/${props.issue._id}/p/${pageNumber}/tag/${props.tagId}`;
             }
 
-            return pageNumber == 1
+            return pageNumber === 1
               ? `/~issue/${props.issue._id}`
               : `/~issue/${props.issue._id}/p/${pageNumber}`;
           }}

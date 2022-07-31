@@ -79,7 +79,7 @@ export default function Celeb(props: CelebPageProps) {
         <Pagination
           {...props.pagination}
           getLink={(pageNumber) =>
-            pageNumber == 1
+            pageNumber === 1
               ? `/${props.celeb.slug}`
               : `/${props.celeb.slug}/p/${pageNumber}#content`
           }
