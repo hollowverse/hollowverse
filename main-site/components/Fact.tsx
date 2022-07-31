@@ -7,6 +7,7 @@ import {
 } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import { FacebookComments } from '~/components/FacebookComments';
+import { FacebookCommentsCount } from '~/components/FacebookCommentsCount';
 import { FactLikeButton } from '~/components/FactLikeButton';
 import { recordGaEvent } from '~/components/hooks/useGaEventRecorder';
 import { Link } from '~/components/Link';
@@ -143,7 +144,7 @@ export const Fact: React.FC<{
       if (factBodyInView) {
         recordGaEvent('fact_view', { id: props.fact._id });
       }
-    }, [factBodyInView, props.fact._id]);
+    }, [factBodyInView]);
 
     return (
       <div
@@ -187,11 +188,24 @@ export const Fact: React.FC<{
       <div className="FACT-FOOTER -mx-5 flex content-between justify-between border-t px-5 pt-5 text-neutral-600">
         <FactLikeButton fact={props.fact} />
 
-        {showCommentsButton && (
+        {/* {showCommentsButton && (
           <ButtonContainer>
             <FaRegCommentAlt className="text-xl" />
-            <p className="font-semibold">2</p>
           </ButtonContainer>
+        )} */}
+
+        {showCommentsButton && (
+          <button
+            onClick={() => setShowComments(true)}
+            id="fact-comments-link"
+            className="pointer-events-auto flex select-none flex-col items-center gap-0.5 text-base"
+          >
+            <FaRegCommentAlt className="text-xl" />
+
+            <p className="font-semibold">
+              <FacebookCommentsCount fact={props.fact} slug={props.slug} />
+            </p>
+          </button>
         )}
 
         <ButtonContainer>
@@ -203,16 +217,6 @@ export const Fact: React.FC<{
           <FaRegShareSquare className="text-xl" />
           <p className="font-semibold">Share</p>
         </ButtonContainer>
-
-        {/* {showCommentsButton && (
-      <button
-        onClick={() => setShowComments(true)}
-        id="fact-comments-link"
-        className="pointer-events-auto flex select-none items-center gap-0.5 text-base underline"
-      >
-        <FaRegCommentAlt className="text-2xl" />
-      </button>
-    )} */}
 
         {/* <div className="flex-1" /> */}
 
@@ -229,10 +233,10 @@ export const Fact: React.FC<{
       </div>
     );
 
-    function ButtonContainer(props: PropsWithChildren<{}>) {
+    function ButtonContainer(buttonProps: PropsWithChildren<{}>) {
       return (
         <div className="flex flex-col items-center gap-0.5">
-          {props.children}
+          {buttonProps.children}
         </div>
       );
     }

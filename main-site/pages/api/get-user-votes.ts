@@ -30,9 +30,7 @@ export default async function getUserVotes(
       votes[factId in $factIds]
     }`,
     { userId, factIds },
-  )!;
+  );
 
-  console.log('userVotes', userVotes);
-
-  return res.status(200).json(userVotes.votes || []);
+  return res.status(200).json(userVotes?.votes || []);
 }

@@ -7,10 +7,10 @@
  * vote count, etc. Each Fact can send its own HTTP request, but when you have a page with
  * 20 Facts, that means each page load will send 20 HTTP requests just for one piece of Fact data.
  *
- * That's like each Fact having a private car and driving to the same destination as any other Fact.
+ * That's like each Fact having a private car and driving to the same destination as every other Fact.
  * This class replaces the private car with a public bus transport, so to speak.
  *
- * Facts can now call the `trip` method to schedule themselves for the next bus trip. After 300ms
+ * Facts can now call the `trip` method to schedule themselves for the next bus trip. After 1000ms
  * the bus will depart, taking with it all Facts that made it into this bus.
  *
  * See `FactVoteResultsProvider` for an example of how this class is used.
