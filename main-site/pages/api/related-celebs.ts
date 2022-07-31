@@ -15,10 +15,10 @@ import { setApiCache } from '~/lib/api-route-helpers/setApiCache';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { Nullish } from '~/shared/lib/types';
 
-export type RelatedCelebs = Awaited<ReturnType<typeof relatedCelebs>>;
+export type RelatedCelebs = Awaited<ReturnType<typeof getRelatedCelebs>>;
 export type RelatedCelebsQueryParams = { tagId: string; slug: string };
 
-export async function relatedCelebs(tagId: string, slug: string) {
+export async function getRelatedCelebs(tagId: string, slug: string) {
   const results = await sanityClient.fetch<{
     tag: Tag | null;
     orderOfIssues: OrderOfIssues;
@@ -51,15 +51,15 @@ export async function relatedCelebs(tagId: string, slug: string) {
 
   return { byIssue, byTag, tag };
 
-  function process(relatedCelebs: Nullish<RelatedCeleb[]>, tag: Tag) {
-    return relatedCelebs
+  function process(_relatedCelebs: Nullish<RelatedCeleb[]>, _tag: Tag) {
+    return _relatedCelebs
       ? shuffle(
-          groupCelebTags(relatedCelebs, results.orderOfIssues)
+          groupCelebTags(_relatedCelebs, results.orderOfIssues)
             ?.filter((cwt) => cwt.slug !== slug)
             ?.slice(0, 6)
             ?.map((c) => ({
               ...c,
-              tags: c.tags.filter((t) => t.tag._id !== tag._id).slice(0, 3),
+              tags: c.tags.filter((t) => t.tag._id !== _tag._id).slice(0, 3),
             })),
         )
       : null;
@@ -75,5 +75,5 @@ export default async function relatedCelebsApi(
 
   const { tagId, slug } = req.query as RelatedCelebsQueryParams;
 
-  return res.status(200).json(await relatedCelebs(tagId, slug));
+  return res.status(200).json(await getRelatedCelebs(tagId, slug));
 }
