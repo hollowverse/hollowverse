@@ -57,8 +57,8 @@ export const getParsedOldContent = async (oldContent: string) => {
   )!;
 
   const relatedPeople = unprocessedRelatedPeople.map((rp) => {
-    const { oldContent, ...rest } = rp;
-    const frontMatter = extractFrontMatter(oldContent);
+    const { oldContent: rpOldContent, ...rest } = rp;
+    const frontMatter = extractFrontMatter(rpOldContent);
 
     return {
       ...rest,

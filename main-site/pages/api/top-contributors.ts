@@ -7,11 +7,11 @@ import { setApiCache } from '~/lib/api-route-helpers/setApiCache';
 import { log } from '~/shared/lib/log';
 
 export type TopContributorsResults = Awaited<
-  ReturnType<typeof topContributors>
+  ReturnType<typeof getTopContributors>
 >;
 export type TopContributorsQueryParams = { slug: string };
 
-export async function topContributors(slug: string) {
+export async function getTopContributors(slug: string) {
   try {
     const topContributors = await discoursePsqlQuery({
       name: 'top-contributors',
@@ -41,5 +41,5 @@ export default async function topContributorsApi(
 
   const { slug } = req.query as TopContributorsQueryParams;
 
-  return res.status(200).json(await topContributors(slug));
+  return res.status(200).json(await getTopContributors(slug));
 }
