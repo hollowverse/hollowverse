@@ -5,6 +5,7 @@ import {
 } from '@sanity/client/sanityClient';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { Json } from './types';
 import { log } from './log';
 
 const sanityClientConfigs = {
