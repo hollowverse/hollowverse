@@ -6,6 +6,7 @@ import {
   FaThumbsUp,
 } from 'react-icons/fa';
 import { FooterButton } from '~/components/FactFooter';
+import { useIdentifyingCookie } from '~/components/hooks/useIdentifyingCookie';
 import { redirectToLogin, useUser } from '~/components/hooks/useUser';
 import { c } from '~/lib/c';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
@@ -29,6 +30,8 @@ export function VoteButtons(props: { fact: Fact }) {
   });
 
   const { isLoggedIn } = useUser();
+
+  const tmpHvId = useIdentifyingCookie();
 
   useEffect(() => {
     async function req() {
@@ -97,7 +100,7 @@ export function VoteButtons(props: { fact: Fact }) {
     return async () => {
       setWorking(true);
 
-      await log('debug', `user voting ${handlerChoice}`);
+      await log('debug', `user vote: ID ${tmpHvId}, choice: ${handlerChoice}`);
 
       if (!isLoggedIn) {
         redirectToLogin(window.location.href);
