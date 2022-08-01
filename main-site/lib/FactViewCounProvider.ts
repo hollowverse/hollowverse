@@ -1,3 +1,4 @@
+import QueryString from 'qs';
 import { hvApiClient } from '~/lib/hvApiClient';
 import { RequestBusStation } from '~/lib/RequestBusStation';
 
@@ -10,10 +11,10 @@ class FactViewCountProvider {
     // Sorting helps ensure similar calls get cached.
     factIds.sort();
 
+    const q = QueryString.stringify({ factIds }, { encodeValuesOnly: true });
+
     const results = await hvApiClient<ViewCount[]>(
-      `get-fact-view-counts?factIds=${encodeURIComponent(
-        JSON.stringify(factIds),
-      )}`,
+      `get-fact-view-counts?${q}`,
     )!;
 
     if (results) {
