@@ -1,4 +1,4 @@
-import { hvApiClient, post } from '~/lib/hvApiClient';
+import { hvApiClient } from '~/lib/hvApiClient';
 import { RequestBusStation } from '~/lib/RequestBusStation';
 
 type ViewCount = { factId: string; viewCount: string };
@@ -11,8 +11,9 @@ class FactViewCountProvider {
     factIds.sort();
 
     const results = await hvApiClient<ViewCount[]>(
-      'get-fact-view-counts',
-      post({ factIds }),
+      `get-fact-view-counts?factIds=${encodeURIComponent(
+        JSON.stringify(factIds),
+      )}`,
     )!;
 
     if (results) {
