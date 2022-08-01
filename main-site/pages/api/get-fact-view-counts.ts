@@ -85,7 +85,8 @@ export default async function getFactViewCountsApi(
   cors(req, res);
   setApiCache(res);
 
-  const { factIds } = JSON.parse(req.body) as { factIds: string[] };
+  const { factIds: fidQp } = req.query as { factIds: string };
+  const factIds = JSON.parse(decodeURIComponent(fidQp));
 
   return res.status(200).json(await getFactViewCounts(factIds));
 }
