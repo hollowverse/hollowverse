@@ -15,6 +15,7 @@ import { UserVote } from '~/lib/groq/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
 import { userVoteCountProvider } from '~/lib/UserVoteCountProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
+import { log } from '~/shared/lib/log';
 
 export function VoteButtons(props: { fact: Fact }) {
   const [choice, setChoice] = useState<'like' | 'dislike' | null>(null);
@@ -94,12 +95,14 @@ export function VoteButtons(props: { fact: Fact }) {
 
   function getClickHandler(handlerChoice: 'like' | 'dislike') {
     return async () => {
+      setWorking(true);
+
+      await log('debug', `user voting ${handlerChoice}`);
+
       if (!isLoggedIn) {
         redirectToLogin(window.location.href);
         return;
       }
-
-      setWorking(true);
 
       const op = calculateVoteOperations(
         choice && vote(choice),
