@@ -15,7 +15,7 @@
  *
  * See `FactVoteResultsProvider` for an example of how this class is used.
  */
-export class RequestBusStation<T> {
+export class RequestBusStation<T extends string> {
   passengers: T[] = [];
 
   scheduledTrip: Promise<null> | null = null;
@@ -23,7 +23,9 @@ export class RequestBusStation<T> {
   constructor(public drive: (passengers: T[]) => any) {}
 
   async trip(passenger: T) {
-    this.passengers.push(passenger);
+    if (!this.passengers.includes(passenger)) {
+      this.passengers.push(passenger);
+    }
 
     if (this.scheduledTrip) {
       return this.scheduledTrip;
