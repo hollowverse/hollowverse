@@ -42,7 +42,7 @@ export function FactFooter(props: {
   return (
     <div className="-mx-5 flex flex-col border-t px-5">
       <div className="FACT-FOOTER flex content-between justify-between py-3 text-neutral-500">
-        <VoteButtons fact={props.fact} />
+        {/* <VoteButtons fact={props.fact} /> */}
 
         {showCommentsButton && (
           <FooterButton
