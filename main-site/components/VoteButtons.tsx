@@ -32,15 +32,13 @@ export function VoteButtons(props: { fact: Fact }) {
     dislikes: 0,
   });
 
-  const { isLoggedIn } = useUser();
-
   useEffect(() => {
     async function req() {
       setWorking(true);
 
       const [factVotesRes, userVote] = await Promise.all([
         factVoteCountProvider.get(props.fact._id),
-        isLoggedIn && hasCookie(HAS_VOTED_COOKIE_NAME)
+        hasCookie(HAS_VOTED_COOKIE_NAME)
           ? userVoteCountProvider.get(props.fact._id)
           : null,
       ]);
@@ -57,7 +55,7 @@ export function VoteButtons(props: { fact: Fact }) {
     }
 
     req();
-  }, [isLoggedIn, props.fact._id]);
+  }, [props.fact._id]);
 
   return (
     <div className="flex gap-1">
