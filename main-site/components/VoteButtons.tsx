@@ -100,7 +100,10 @@ export function VoteButtons(props: { fact: Fact }) {
     return async () => {
       setWorking(true);
 
-      await log('debug', `user vote: ID ${tmpHvId}, choice: ${handlerChoice}`);
+      await log(
+        'debug',
+        `user vote; user ID ${tmpHvId}; fact ID ${props.fact._id}; choice: ${handlerChoice}`,
+      );
 
       if (!isLoggedIn) {
         redirectToLogin(window.location.href);
