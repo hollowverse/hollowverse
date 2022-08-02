@@ -129,7 +129,16 @@ export const fact = {
     },
 
     {
+      title: 'Tags',
+      name: 'tags',
+      type: 'array',
+      of: [{ type: 'tagLink' }],
+      validation: (Rule) => Rule.required(),
+    },
+
+    {
       name: 'topics',
+      title: 'Issues',
       type: 'array',
       of: [
         {
@@ -137,16 +146,8 @@ export const fact = {
           to: [{ type: 'topic' }],
         },
       ],
-      readOnly: true,
-      hidden: true,
-    },
-
-    {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
-      of: [{ type: 'tagLink' }],
-      validation: (Rule) => Rule.required(),
+      // readOnly: true,
+      // hidden: true,
     },
 
     {

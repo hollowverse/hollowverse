@@ -1,14 +1,15 @@
 import { UserVote } from '~/lib/groq/getUser.groq';
-import { hvApiClient, post } from '~/lib/hvApiClient';
+import { hvApiClient } from '~/lib/hvApiClient';
 import { RequestBusStation } from '~/lib/RequestBusStation';
 
 class UserVoteCountProvider {
   results: UserVote[] = [];
 
-  requestBusStation = new RequestBusStation<string>(async (factIds) => {
+  requestBusStation = new RequestBusStation<string>(async () => {
     const counts = await hvApiClient<UserVote[]>(
-      'get-user-votes',
-      post({ factIds }),
+      'get-anon-user-votes',
+      // 'get-user-votes',
+      // post({ factIds }),
     )!;
 
     if (counts) {

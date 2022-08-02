@@ -1,3 +1,4 @@
+import { hasCookie, setCookie } from 'cookies-next';
 import { useEffect, useState } from 'react';
 import {
   FaRegThumbsDown,
@@ -10,6 +11,8 @@ import { useIdentifyingCookie } from '~/components/hooks/useIdentifyingCookie';
 import { redirectToLogin, useUser } from '~/components/hooks/useUser';
 import { c } from '~/lib/c';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
+import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
+import { oneMonth, oneYear } from '~/lib/date';
 import { factVoteCountProvider } from '~/lib/FactVoteCountProvider';
 import { Fact } from '~/lib/groq/fact.projection';
 import { UserVote } from '~/lib/groq/getUser.groq';
@@ -29,17 +32,15 @@ export function VoteButtons(props: { fact: Fact }) {
     dislikes: 0,
   });
 
-  const { isLoggedIn } = useUser();
-
-  const tmpHvId = useIdentifyingCookie();
-
   useEffect(() => {
     async function req() {
       setWorking(true);
 
       const [factVotesRes, userVote] = await Promise.all([
         factVoteCountProvider.get(props.fact._id),
-        isLoggedIn ? userVoteCountProvider.get(props.fact._id) : null,
+        hasCookie(HAS_VOTED_COOKIE_NAME)
+          ? userVoteCountProvider.get(props.fact._id)
+          : null,
       ]);
 
       if (factVotesRes) {
@@ -54,7 +55,7 @@ export function VoteButtons(props: { fact: Fact }) {
     }
 
     req();
-  }, [isLoggedIn, props.fact._id]);
+  }, [props.fact._id]);
 
   return (
     <div className="flex gap-1">
@@ -119,18 +120,19 @@ export function VoteButtons(props: { fact: Fact }) {
         dislikes: factVotes.dislikes + op.dislikes,
       });
 
-      if (!isLoggedIn) {
-        await log(
-          'debug',
-          `user vote; user ID ${tmpHvId}; fact ID ${props.fact._id}; choice: ${handlerChoice}`,
-        );
+      // if (!isLoggedIn) {
+      //   await log(
+      //     'debug',
+      //     `user vote; user ID ${tmpHvId}; fact ID ${props.fact._id}; choice: ${handlerChoice}`,
+      //   );
 
-        redirectToLogin(window.location.href);
-        return;
-      }
+      //   redirectToLogin(window.location.href);
+      //   return;
+      // }
+      setCookie(HAS_VOTED_COOKIE_NAME, 'true', { maxAge: oneMonth });
 
       const results = await hvApiClient<FactUserVote>(
-        'submit-vote',
+        'submit-anon-vote',
         post({ choice: handlerChoice, factId: props.fact._id }),
       );
 
