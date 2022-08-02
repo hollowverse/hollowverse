@@ -45,8 +45,12 @@ export default function TagPage(props: TagPageProps) {
                 picture={props.celeb.picture}
               />
               <HeroTitleContainer>
-                <HeroTitleSoftText>The Political Views of </HeroTitleSoftText>
                 <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
+                <HeroTitleSoftText>
+                  <span className="text-xl font-semibold">
+                    {props.tag.tag.name}?
+                  </span>
+                </HeroTitleSoftText>
               </HeroTitleContainer>
             </HeroTopContainer>
 

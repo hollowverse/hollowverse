@@ -1,4 +1,4 @@
-import { random, uniq } from 'lodash-es';
+import { isEmpty, random, uniq } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import QueryString from 'qs';
 import { cors } from '~/lib/api-route-helpers/cors';
@@ -88,7 +88,13 @@ export default async function getFactViewCountsApi(
 
   const { factIds } = QueryString.parse(req.query as any, {
     arrayLimit: Infinity,
-  }) as any;
+  }) as any as { factIds: string[] };
 
-  return res.status(200).json(await getFactViewCounts(uniq(factIds)));
+  const uniqFactIds = uniq(factIds);
+
+  if (isEmpty(uniqFactIds)) {
+    return res.status(200).json([]);
+  }
+
+  return res.status(200).json(await getFactViewCounts(uniqFactIds));
 }

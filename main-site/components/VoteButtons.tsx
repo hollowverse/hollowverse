@@ -6,6 +6,7 @@ import {
   FaThumbsUp,
 } from 'react-icons/fa';
 import { FooterButton } from '~/components/FactFooter';
+import { useIdentifyingCookie } from '~/components/hooks/useIdentifyingCookie';
 import { redirectToLogin, useUser } from '~/components/hooks/useUser';
 import { c } from '~/lib/c';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
@@ -15,6 +16,7 @@ import { UserVote } from '~/lib/groq/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
 import { userVoteCountProvider } from '~/lib/UserVoteCountProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
+import { log } from '~/shared/lib/log';
 
 export function VoteButtons(props: { fact: Fact }) {
   const [choice, setChoice] = useState<'like' | 'dislike' | null>(null);
@@ -28,6 +30,8 @@ export function VoteButtons(props: { fact: Fact }) {
   });
 
   const { isLoggedIn } = useUser();
+
+  const tmpHvId = useIdentifyingCookie();
 
   useEffect(() => {
     async function req() {
@@ -94,12 +98,17 @@ export function VoteButtons(props: { fact: Fact }) {
 
   function getClickHandler(handlerChoice: 'like' | 'dislike') {
     return async () => {
+      setWorking(true);
+
+      await log(
+        'debug',
+        `user vote; user ID ${tmpHvId}; fact ID ${props.fact._id}; choice: ${handlerChoice}`,
+      );
+
       if (!isLoggedIn) {
         redirectToLogin(window.location.href);
         return;
       }
-
-      setWorking(true);
 
       const op = calculateVoteOperations(
         choice && vote(choice),
