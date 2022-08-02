@@ -57,40 +57,44 @@ export function VoteButtons(props: { fact: Fact }) {
   }, [isLoggedIn, props.fact._id]);
 
   return (
-    <div className="flex">
+    <div className="flex gap-1">
       <FooterButton
         id="like-button"
         disabled={working}
-        className={c({ 'animate-pulse': working })}
+        className={c('rounded-md bg-emerald-50 px-2', {
+          'animate-pulse': working,
+        })}
         onClick={getClickHandler('like')}
       >
-        <span className="text-lg">
+        <span className="text-lg text-emerald-700">
           {choice === 'like' ? (
-            <FaThumbsUp className="text-purple-500" id="i-like" />
+            <FaThumbsUp className="text-emerald-700" id="i-like" />
           ) : (
             <FaRegThumbsUp />
           )}
         </span>
-        <p className="font-semibold" id="like-count">
-          {factVotes.likes ? factVotes.likes : 'Like'}
+        <p className="font-semibold text-emerald-700" id="like-count">
+          {factVotes.likes ? factVotes.likes : 'Agree'}
         </p>
       </FooterButton>
 
       <FooterButton
         id="dislike-button"
         disabled={working}
-        className={c({ 'animate-pulse': working })}
+        className={c('rounded-md bg-red-50 px-2', {
+          'animate-pulse': working,
+        })}
         onClick={getClickHandler('dislike')}
       >
-        <span className="text-lg">
+        <span className="text-lg text-red-700">
           {choice === 'dislike' ? (
-            <FaThumbsDown className="text-orange-600" id="i-dislike" />
+            <FaThumbsDown className="text-red-700" id="i-dislike" />
           ) : (
             <FaRegThumbsDown />
           )}
         </span>
-        <p className="font-semibold" id="dislike-count">
-          {factVotes.dislikes ? factVotes.dislikes : 'Dislike'}
+        <p className="font-semibold text-red-700" id="dislike-count">
+          {factVotes.dislikes ? factVotes.dislikes : 'Disagree'}
         </p>
       </FooterButton>
     </div>
@@ -99,16 +103,6 @@ export function VoteButtons(props: { fact: Fact }) {
   function getClickHandler(handlerChoice: 'like' | 'dislike') {
     return async () => {
       setWorking(true);
-
-      await log(
-        'debug',
-        `user vote; user ID ${tmpHvId}; fact ID ${props.fact._id}; choice: ${handlerChoice}`,
-      );
-
-      if (!isLoggedIn) {
-        redirectToLogin(window.location.href);
-        return;
-      }
 
       const op = calculateVoteOperations(
         choice && vote(choice),
@@ -124,6 +118,16 @@ export function VoteButtons(props: { fact: Fact }) {
         likes: factVotes.likes + op.likes,
         dislikes: factVotes.dislikes + op.dislikes,
       });
+
+      if (!isLoggedIn) {
+        await log(
+          'debug',
+          `user vote; user ID ${tmpHvId}; fact ID ${props.fact._id}; choice: ${handlerChoice}`,
+        );
+
+        redirectToLogin(window.location.href);
+        return;
+      }
 
       const results = await hvApiClient<FactUserVote>(
         'submit-vote',

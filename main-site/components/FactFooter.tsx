@@ -97,7 +97,7 @@ export function FooterButton(props: ReactElementProps<'button'>) {
     <button
       {...props}
       className={c(
-        'flex min-w-[50px] flex-col items-center gap-0.5 text-xs',
+        'flex min-w-[50px] flex-col items-center gap-0.5 py-1 text-xs',
         props.className,
       )}
     />
