@@ -5,9 +5,11 @@ import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/components/hooks/googleAnalyticsUniversal';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
+import { useIdentifyingCookie } from '~/components/hooks/useIdentifyingCookie';
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();
+  useIdentifyingCookie();
 
   return (
     <>
