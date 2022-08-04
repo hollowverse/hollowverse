@@ -50,7 +50,7 @@ export const getStaticProps = async ({
 
   return {
     redirect: {
-      destination: `/${params.slug}/~issue/${allFacts[0].tags[0].tag.issue._id}`,
+      destination: `/${params.slug}/issue/${allFacts[0].tags[0].tag.issue._id}`,
       permanent: false,
     },
   };
