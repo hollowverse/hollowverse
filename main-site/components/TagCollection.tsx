@@ -22,11 +22,7 @@ export const TagCollection = (props: {
             </p>
 
             {tpair[1].map((t) => (
-              <Tag
-                key={t.tag._id}
-                link={`/${props.slug}/tag/${t.tag._id}#content`}
-                tagId={t.tag._id}
-              >
+              <Tag key={t.tag._id} tagId={t.tag._id}>
                 {t.tag.name}
                 {t.isBackground && ' Background'}
                 {t.isLowConfidence && (

@@ -19,12 +19,6 @@ test('Celeb page (no old content) E2E test', async ({ page }) => {
   await page.waitForSelector('#search-page');
   await page.locator('#search-back-button').click();
 
-  await page.waitForSelector('#celeb-page');
-  await page.locator(':nth-match(#tag, 1)').click();
-
-  await page.waitForSelector('#celeb-tag-page');
-  await page.goBack();
-
   await page.waitForSelector('#content.kim-kardashian');
 
   await factTestFragment(page, '#celeb-page >> :nth-match(#fact, 3)');
