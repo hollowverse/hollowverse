@@ -62,7 +62,7 @@ export function VoteButtons(props: { fact: Fact }) {
       <FooterButton
         id="like-button"
         disabled={working}
-        className={c('rounded-md bg-emerald-50 px-2', {
+        className={c('rounded-md bg-emerald-50 px-2 shadow-sm', {
           'animate-pulse': working,
         })}
         onClick={getClickHandler('like')}
@@ -82,7 +82,7 @@ export function VoteButtons(props: { fact: Fact }) {
       <FooterButton
         id="dislike-button"
         disabled={working}
-        className={c('rounded-md bg-red-50 px-2', {
+        className={c('rounded-md bg-red-50 px-2 shadow-sm', {
           'animate-pulse': working,
         })}
         onClick={getClickHandler('dislike')}

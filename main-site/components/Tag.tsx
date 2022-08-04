@@ -19,7 +19,7 @@ export function Tag(
       className={c(
         'pointer-events-auto m-0 box-border flex gap-2 rounded-full bg-gray-100 px-4 py-2 text-sm text-neutral-700',
         {
-          'unselected border shadow-sm': !isSelected,
+          'unselected border': !isSelected,
           'selected -m-[1px] border-2 border-purple-300 shadow-inner':
             isSelected,
         },
