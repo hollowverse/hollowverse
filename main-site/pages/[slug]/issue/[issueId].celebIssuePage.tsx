@@ -59,6 +59,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
           <Hero>
             <HeroTopContainer>
               <HeroCelebImage
+                slug={props.celeb.slug}
                 name={props.celeb.name}
                 picture={props.celeb.picture}
               />
@@ -108,8 +109,6 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
             </h2>
           }
         />
-
-        <CelebIssueSelector {...props} />
 
         <Card>
           <div className="flex flex-col gap-2 px-5 py-5">

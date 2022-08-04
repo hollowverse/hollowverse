@@ -53,15 +53,6 @@ export default function Celeb(props: CelebPageProps) {
                 <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
               </HeroTitleContainer>
             </HeroTopContainer>
-
-            <div className="-mx-5">
-              <CelebIssueSelector {...props} issue={noIssueFilter} />
-            </div>
-
-            <TagCollection
-              slug={props.celeb.slug}
-              tagTimeline={props.tagTimeline}
-            />
           </Hero>
         </StickyAppBar>
       }
@@ -70,11 +61,7 @@ export default function Celeb(props: CelebPageProps) {
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
-        <InBetweenContentShareButton />
-
         {!isEmpty(props.facts) && <Facts {...props} />}
-
-        <CelebIssueSelector {...props} issue={noIssueFilter} />
 
         <Pagination
           {...props.pagination}

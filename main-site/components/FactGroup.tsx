@@ -18,7 +18,7 @@ export function FactGroup(props: {
   return (
     <TitledContent
       title={<div className="px-5 py-4">{props.title}</div>}
-      stickyTitle
+      bottomStickyTitle
     >
       <div className="-mt-[1px] flex flex-col gap-3">
         {props.factGroup.map((fact, i) => {
