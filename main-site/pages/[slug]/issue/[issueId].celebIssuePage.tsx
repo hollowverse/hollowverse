@@ -2,6 +2,7 @@ import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/components/AppBar';
 import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
 import { FactGroup } from '~/components/FactGroup';
+import { CelebFactGroupTitle, NavigationTip } from '~/components/Facts';
 import { InFeedAd } from '~/components/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
 import { Page } from '~/components/Page';
@@ -81,10 +82,6 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
               )}{' '}
             </HeroTopContainer>
 
-            <div className="-mx-5">
-              <CelebIssueSelector {...props} />
-            </div>
-
             <TagCollection
               slug={props.celeb.slug}
               tagTimeline={props.tagTimeline}
@@ -97,17 +94,13 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
         className="h-container my-5 flex flex-col gap-5"
         id={`celeb-issue-page-${props.issue._id}`}
       >
-        <InBetweenContentShareButton />
+        <NavigationTip celebName={props.celeb.name} issue={props.issue} />
 
         <FactGroup
           factGroup={props.facts}
           celebName={props.celeb.name}
           slug={props.celeb.slug}
-          title={
-            <h2 className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap text-lg">
-              {celebNameToIssue(props.celeb.name, props.issue)}
-            </h2>
-          }
+          title={<CelebFactGroupTitle {...props} />}
         />
 
         <Card>
