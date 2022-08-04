@@ -19,7 +19,8 @@ import {
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
-export default function TagPage(props: TagPageProps) {
+// export default function TagPage(props: TagPageProps) {
+export default function TagPage(props: any) {
   const name = props.celeb.name;
 
   useGaEventRecorder('issue_view', {
