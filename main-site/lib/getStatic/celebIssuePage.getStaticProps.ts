@@ -54,7 +54,7 @@ export async function getStaticProps({
     };
   }
 
-  const tagTimeline = getTagTimeline(facts);
+  const tagTimeline = getTagTimeline(facts, issue);
   const tag = facts[0].tags.find((t) => t.tag.issue._id === params.issueId)!;
   const issues = getFactIssues(allFacts);
   const customTitles =

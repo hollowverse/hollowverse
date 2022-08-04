@@ -1,23 +1,27 @@
-import { defaults } from 'lodash-es';
 import { PropsWithChildren, ReactNode } from 'react';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { c } from '~/lib/c';
 
-export type TitledContentProps = {
-  title: ReactNode;
-  stickyTitle?: boolean;
-};
+export type TitledContentProps =
+  | {
+      title: ReactNode;
+    } & ({ stickyTitle?: boolean } | { bottomStickyTitle: boolean });
 
-export function TitledContent(_props: PropsWithChildren<TitledContentProps>) {
-  const props = defaults({}, _props, {
-    stickyTitle: false,
-  });
+export function TitledContent(props: PropsWithChildren<TitledContentProps>) {
+  const stickyTitle = 'stickyTitle' in props ? props.stickyTitle : false;
+  const bottomStickyTitle =
+    'bottomStickyTitle' in props ? props.bottomStickyTitle : false;
+  const isSticked = stickyTitle || bottomStickyTitle;
 
   return (
     <div className="relative z-0">
+      {bottomStickyTitle && props.children}
+
       <div
         className={c({
-          'sticky top-0 z-10 shadow-sm': props.stickyTitle,
+          'sticky z-10 shadow-sm': isSticked,
+          'top-0': stickyTitle,
+          'bottom-0': bottomStickyTitle,
         })}
       >
         <LovelyTopBorder />
@@ -30,7 +34,7 @@ export function TitledContent(_props: PropsWithChildren<TitledContentProps>) {
         </div>
       </div>
 
-      {props.children}
+      {(stickyTitle || !isSticked) && props.children}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import { CelebImage } from '~/components/CelebImage';
-import { Celeb } from '~/lib/groq/celeb.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 
 export function HeroTitleContainer(props: PropsWithChildren<{}>) {
@@ -27,8 +26,12 @@ export function HeroTopContainer(props: PropsWithChildren<{}>) {
   return <div className="flex flex-wrap items-end gap-5">{props.children}</div>;
 }
 
-export function HeroCelebImage(props: { name: string; picture: Picture }) {
-  return (
+export function HeroCelebImage(props: {
+  name: string;
+  picture: Picture;
+  slug?: string;
+}) {
+  const content = (
     <div className="w-[150px]">
       <CelebImage
         className="rounded-md object-cover"
@@ -38,6 +41,16 @@ export function HeroCelebImage(props: { name: string; picture: Picture }) {
       />
     </div>
   );
+
+  if (props.slug) {
+    return (
+      <a href={`/${props.slug}`} title={`The political views of ${props.name}`}>
+        {content}
+      </a>
+    );
+  }
+
+  return content;
 }
 
 export const Hero = (props: PropsWithChildren<{}>) => {

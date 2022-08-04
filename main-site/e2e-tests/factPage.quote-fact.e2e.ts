@@ -20,10 +20,6 @@ test('Fact page E2E test', async ({ page }) => {
   await page.waitForSelector('#celeb-issue-page');
   await goBack();
 
-  await page.locator(':nth-match(#tag, 1)').click();
-  await page.waitForSelector('#celeb-tag-page');
-  await goBack();
-
   await page.waitForSelector('#fact-quote');
   await page.waitForSelector('#fact-context');
 

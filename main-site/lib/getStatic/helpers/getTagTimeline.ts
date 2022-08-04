@@ -2,13 +2,14 @@ import { getYear } from 'date-fns';
 import { invertBy, last, mapValues, toPairs } from 'lodash-es';
 import { parseDate } from '~/lib/date';
 import { Fact } from '~/lib/groq/fact.projection';
+import { Issue } from '~/lib/groq/issue.projection';
 import { CelebTag } from '~/lib/groq/tag.projection';
 
 export type TagPair = [string, CelebTag[]];
 export type TagTimeline = TagPair[];
 export type TimelineFact = Pick<Fact, 'tags' | 'date'>;
 
-export function getTagTimeline(facts: TimelineFact[]) {
+export function getTagTimeline(facts: TimelineFact[], issue?: Issue) {
   /**
    * group by tagId
    *
@@ -30,13 +31,15 @@ export function getTagTimeline(facts: TimelineFact[]) {
   const tagIdToFacts: { [tagId: string]: TimelineFact[] } = {};
 
   facts.forEach((f) => {
-    f.tags.forEach((t) => {
-      if (tagIdToFacts[t.tag._id]) {
-        tagIdToFacts[t.tag._id].push(f);
-      } else {
-        tagIdToFacts[t.tag._id] = [f];
-      }
-    });
+    f.tags
+      .filter((t) => (!issue ? true : issue._id === t.tag.issue._id))
+      .forEach((t) => {
+        if (tagIdToFacts[t.tag._id]) {
+          tagIdToFacts[t.tag._id].push(f);
+        } else {
+          tagIdToFacts[t.tag._id] = [f];
+        }
+      });
   });
 
   /**

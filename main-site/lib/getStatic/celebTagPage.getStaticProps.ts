@@ -48,22 +48,29 @@ export const getStaticProps = async ({
     };
   }
 
-  const tagFacts = allFacts
-    .filter((f) => f.tags.some((t) => t.tag._id === params.tagId))
-    .map((f) => transformFact(f));
-
-  const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
-
-  const issues = getFactIssues(allFacts);
-
   return {
-    props: {
-      issues,
-      celeb,
-      tagTimeline,
-      tag,
-      tagFacts,
+    redirect: {
+      destination: `/${params.slug}/issue/${allFacts[0].tags[0].tag.issue._id}`,
+      permanent: false,
     },
-    revalidate: oneDay,
   };
+
+  // const tagFacts = allFacts
+  //   .filter((f) => f.tags.some((t) => t.tag._id === params.tagId))
+  //   .map((f) => transformFact(f));
+
+  // const tag = tagFacts[0].tags.find((t) => t.tag._id === params.tagId)!;
+
+  // const issues = getFactIssues(allFacts);
+
+  // return {
+  //   props: {
+  //     issues,
+  //     celeb,
+  //     tagTimeline,
+  //     tag,
+  //     tagFacts,
+  //   },
+  //   revalidate: oneDay,
+  // };
 };

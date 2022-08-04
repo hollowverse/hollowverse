@@ -44,8 +44,8 @@ module.exports = {
           `${f.slug}/issue/${t.issueId}`,
         ]),
 
-        // Tag pages
-        ...f.tags.map((t) => `${f.slug}/tag/${t.tagId}`),
+        // // Tag pages
+        // ...f.tags.map((t) => `${f.slug}/tag/${t.tagId}`),
       ]),
     ];
 
