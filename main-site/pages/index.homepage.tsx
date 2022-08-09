@@ -102,7 +102,9 @@ export default function Index(props: HomepageProps) {
           <IssueSelector
             isSelected={(i) => i._id === noIssueFilter._id}
             issues={props.trendingIssues}
-            getLink={(_id) => `/~issue/${_id}`}
+            getLink={(_id) =>
+              _id === noIssueFilter._id ? '/' : `/~issue/${_id}`
+            }
           />
         </div>
       </div>
