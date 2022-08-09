@@ -28,7 +28,7 @@ export async function getStaticProps({
 
   const paginationRange = getPaginationRange({ p: params?.p });
 
-  const [trendingCelebs, trendingIssueIds, latestFacts, factCount] =
+  const [trendingCelebs, trendingIssueIds, latestFacts, factCount, forumCta] =
     await Promise.all([
       getTrendingCelebs(),
 
@@ -47,6 +47,11 @@ export async function getStaticProps({
         'fact-count',
         groq`count(*[_type == 'fact'])`,
       )!,
+
+      sanityClient.fetch<{ message: string }>(
+        'forum-cta',
+        groq`*[_type == 'forum-cta'][0]{message}`,
+      ),
     ]);
 
   const trendingIssues = await sanityClient.fetch<Issue[]>(
@@ -79,6 +84,7 @@ export async function getStaticProps({
 
   return {
     props: {
+      forumCta: forumCta?.message,
       pagePath: paginationRange.p === 1 ? '/' : `/~p/${paginationRange.p}`,
       pagination: getPaginationProps(paginationRange, factCount),
       trendingIssues: trendingIssues!,

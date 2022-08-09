@@ -14,7 +14,7 @@ test('Celeb page (no old content) E2E test', async ({ page }) => {
 
   await commonElementsTestFragment(page);
 
-  await page.locator('#search-icon').click();
+  await page.locator('#search-link').click();
 
   await page.waitForSelector('#search-page');
   await page.locator('#search-back-button').click();

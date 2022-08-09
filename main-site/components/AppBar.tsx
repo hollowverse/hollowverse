@@ -1,10 +1,10 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaComment, FaSearch } from 'react-icons/fa';
+import { Link } from '~/components/Link';
 import { LovelyTopBorder } from '~/components/LovelyTopBorder';
 import { Card } from '~/components/ui/Card';
 import { TitledContent } from '~/components/ui/TitledContent';
 import { c } from '~/lib/c';
-import { Link } from '~/components/Link';
 
 export function Nav(props: { children: ReactNode; navClasses?: string }) {
   return (
@@ -23,7 +23,7 @@ export function Nav(props: { children: ReactNode; navClasses?: string }) {
 
 export function Container(props: { children: ReactNode; navClasses?: string }) {
   return (
-    <Card topBorder={false}>
+    <Card topBorder={false} className="font-normal">
       <LovelyTopBorder />
       <Nav {...props} />
     </Card>
@@ -33,10 +33,7 @@ export function Container(props: { children: ReactNode; navClasses?: string }) {
 export function Logo(props: { className?: string } = {}) {
   return (
     <div
-      className={c(
-        'flex w-full items-center default:text-2xl',
-        props.className,
-      )}
+      className={c('flex w-full items-center default:text-xl', props.className)}
     >
       <Link passHref href="/">
         <a
@@ -52,21 +49,31 @@ export function Logo(props: { className?: string } = {}) {
 
 export function SearchButton() {
   return (
-    <Link
-      href={{
-        pathname: '/~search',
-        query: { local: true },
-      }}
-      passHref
-    >
+    <div className="flex text-sm uppercase text-neutral-500">
       <a
-        id="search-icon"
-        className="TOGGLE-BUTTON flex self-center rounded-sm border-2 border-white bg-gray-100 p-1.5 transition hover:bg-gray-200 focus:border-blue-300"
+        href="https://forum.hollowverse.com"
+        className="flex items-center gap-1 p-1.5 font-normal"
       >
-        <FaSearch aria-hidden className="text-xl" />
-        <span className="sr-only">Search</span>
+        <FaComment className="text-sm font-normal" />
+        Forum
       </a>
-    </Link>
+
+      <Link
+        href={{
+          pathname: '/~search',
+          query: { local: true },
+        }}
+        passHref
+      >
+        <a
+          id="search-link"
+          className="flex items-center gap-1 p-1.5 font-normal"
+        >
+          <FaSearch className="text-sm font-normal" />
+          Search
+        </a>
+      </Link>
+    </div>
   );
 }
 
