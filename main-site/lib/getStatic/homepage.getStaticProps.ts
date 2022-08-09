@@ -48,7 +48,7 @@ export async function getStaticProps({
         groq`count(*[_type == 'fact'])`,
       )!,
 
-      sanityClient.fetch<string>(
+      sanityClient.fetch<{ message: string }>(
         'forum-cta',
         groq`*[_type == 'forum-cta'][0]{message}`,
       ),
@@ -84,7 +84,7 @@ export async function getStaticProps({
 
   return {
     props: {
-      forumCta,
+      forumCta: forumCta?.message,
       pagePath: paginationRange.p === 1 ? '/' : `/~p/${paginationRange.p}`,
       pagination: getPaginationProps(paginationRange, factCount),
       trendingIssues: trendingIssues!,

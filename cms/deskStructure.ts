@@ -78,7 +78,9 @@ export default () =>
     .title('Content')
     .items([
       ...S.documentTypeListItems().filter((listItem) => {
-        if (['orderOfTopics', 'media.tag'].includes(listItem.getId())) {
+        if (
+          ['orderOfTopics', 'media.tag', 'forum-cta'].includes(listItem.getId())
+        ) {
           return false;
         }
 
@@ -92,5 +94,13 @@ export default () =>
             .title('Order of issues')
             .schemaType('orderOfTopics')
             .documentId('orderOfTopics'),
+        ),
+      S.listItem()
+        .title('Forum CTA')
+        .child(
+          S.editor()
+            .title('Forum CTA')
+            .schemaType('forum-cta')
+            .documentId('forum-cta'),
         ),
     ]);
