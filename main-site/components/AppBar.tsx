@@ -52,7 +52,6 @@ export function SearchButton() {
     <div className="flex text-sm uppercase text-neutral-500">
       <a
         href="https://forum.hollowverse.com"
-        id="search-icon"
         className="flex items-center gap-1 p-1.5 font-normal"
       >
         <FaComment className="text-sm font-normal" />
@@ -67,7 +66,7 @@ export function SearchButton() {
         passHref
       >
         <a
-          id="search-icon"
+          id="search-link"
           className="flex items-center gap-1 p-1.5 font-normal"
         >
           <FaSearch className="text-sm font-normal" />

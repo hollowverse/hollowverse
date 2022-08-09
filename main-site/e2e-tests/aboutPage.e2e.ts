@@ -14,7 +14,7 @@ test('About page E2E test', async ({ page }) => {
   await page.goBack();
   await page.waitForSelector('#about-page');
 
-  await page.locator('#search-icon').click();
+  await page.locator('#search-link').click();
   await page.waitForSelector('#search-page');
   await page.goBack();
   await page.waitForSelector('#about-page');
