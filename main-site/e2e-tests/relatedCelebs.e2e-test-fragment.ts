@@ -4,9 +4,9 @@ export async function relatedCelebsTestFragment(
   page: Page,
   originPageSelector: string,
 ) {
-  await page.locator('#related-celebs-tag >> :nth-match(#chr-item, 1)').click();
+  await page.locator('#related-celebs-tag >> :nth-match(#chr-item,1)').click();
   await page.waitForSelector('#celeb-page, #celeb-issue-page');
-  await page.goBack();
+  await page.goBack({ waitUntil: 'load' });
   await page.waitForSelector(originPageSelector);
 
   await page

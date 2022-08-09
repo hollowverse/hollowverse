@@ -6,7 +6,7 @@ import { lighthouseTest } from '~/e2e-tests/lighthouseTest';
 import { relatedCelebsTestFragment } from '~/e2e-tests/relatedCelebs.e2e-test-fragment';
 import { testUrl } from '~/e2e-tests/testUrl';
 
-const issueId = 'dbb542ca-ea4a-4df7-9f15-a773fb9e752c';
+const issueId = 'd01ad83e-5f0b-401b-b79b-65613bcc1377-m';
 const url = `${testUrl}/donald-trump/issue/${issueId}`;
 
 test('Celeb Issue page E2E test', async ({ page }) => {
@@ -19,7 +19,7 @@ test('Celeb Issue page E2E test', async ({ page }) => {
 
   await page.locator('#tag');
 
-  await page.locator(':nth-match(#scroller-issue-item, 2)').click();
+  await page.locator(':nth-match(#scroller-issue-item, 4)').click();
 
   await page.waitForSelector(`#celeb-issue-page-${issueId}`, {
     state: 'detached',
