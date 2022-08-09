@@ -8,6 +8,7 @@ import { Pagination } from '~/components/Pagination';
 import { SideScroller } from '~/components/ui/SideScroller';
 import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
 import { Link } from '~/components/Link';
+import { ForumCta } from '~/components/ForumCta';
 
 export default function Index(props: HomepageProps) {
   return (
@@ -32,13 +33,15 @@ export default function Index(props: HomepageProps) {
     >
       <div className="h-container py-5">
         <div className="flex flex-col gap-7">
-          {renderSearchField()}
+          <SearchField />
 
-          {renderTrendingCelebs()}
+          <TrendingCelebs />
 
-          {renderTrendingIssues()}
+          <ForumCta message={props.forumCta} />
 
-          {renderLatestFacts()}
+          <TrendingIssues />
+
+          <LatestFacts />
 
           <Pagination
             {...props.pagination}
@@ -51,7 +54,7 @@ export default function Index(props: HomepageProps) {
     </Page>
   );
 
-  function renderSearchField() {
+  function SearchField() {
     return (
       <div className="px-5">
         <Link
@@ -72,7 +75,7 @@ export default function Index(props: HomepageProps) {
     );
   }
 
-  function renderTrendingCelebs() {
+  function TrendingCelebs() {
     return (
       <div className="flex flex-col gap-2.5">
         <h2 className="scale-y-110 px-5 text-xl font-semibold">
@@ -90,7 +93,7 @@ export default function Index(props: HomepageProps) {
     );
   }
 
-  function renderTrendingIssues() {
+  function TrendingIssues() {
     return (
       <div className="flex flex-col gap-2.5">
         <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
@@ -106,7 +109,7 @@ export default function Index(props: HomepageProps) {
     );
   }
 
-  function renderLatestFacts() {
+  function LatestFacts() {
     return (
       <div className="flex flex-col gap-2.5">
         <h2 className="scale-y-110 px-5 text-xl font-semibold">
