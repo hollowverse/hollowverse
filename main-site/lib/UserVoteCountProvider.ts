@@ -1,4 +1,4 @@
-import { UserVote } from '~/lib/groq/getUser.groq';
+import { UserVote } from '~/lib/getUser.groq';
 import { hvApiClient } from '~/lib/hvApiClient';
 import { RequestBusStation } from '~/lib/RequestBusStation';
 

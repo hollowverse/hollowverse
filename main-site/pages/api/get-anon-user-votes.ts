@@ -1,9 +1,9 @@
 import { getCookie } from 'cookies-next';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { HV_TMP_ID_COOKIE_NAME } from '~/components/hooks/useIdentifyingCookie';
-import { cors } from '~/lib/api-route-helpers/cors';
+import { HV_TMP_ID_COOKIE_NAME } from '~/lib/useIdentifyingCookie';
+import { cors } from '~/lib/cors';
 import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
-import { User } from '~/lib/groq/getUser.groq';
+import { User } from '~/lib/getUser.groq';
 import { redis } from '~/lib/redis';
 
 export default async function getUserVotes(

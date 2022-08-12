@@ -6,8 +6,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   ContentChange,
   contentChangeProjection,
-} from '~/lib/groq/contentChangeNotification.projection';
-import { NewFactChores } from '~/lib/api-route-helpers/NewFactChores';
+} from '~/lib/contentChangeNotification.projection';
+import { NewFactChores } from '~/lib/NewFactChores';
 import { Json } from '~/shared/lib/types';
 import { createContextLogger } from '~/shared/lib/log';
 import { logTask } from '~/shared/lib/log.server';

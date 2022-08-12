@@ -1,4 +1,4 @@
-import { UserVote } from '~/lib/groq/getUser.groq';
+import { UserVote } from '~/lib/getUser.groq';
 import { Nullish } from '~/shared/lib/types';
 
 export function calculateVoteOperations(

@@ -1,7 +1,6 @@
 import { discourseApiClient } from '~/lib/discourseApiClient';
-import { TopContributors } from '~/lib/psql/celebTopContributors.psql';
-import { ContributorPsql } from '~/lib/psql/contributor.fields';
-import { FactPageForumDataPsql } from '~/lib/psql/factPageForumData';
+import { FactPageForumDataPsql } from '~/lib/factPageForumData';
+import { TopContributors } from '~/lib/celebTopContributors.psql';
 import { Json } from '~/shared/lib/types';
 
 type Query =

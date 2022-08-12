@@ -1,14 +1,13 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
-import { FactGroup } from '~/components/FactGroup';
-import { CelebFactGroupTitle, NavigationTip } from '~/components/Facts';
-import { InFeedAd } from '~/components/InFeedAd';
-import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
-import { Page } from '~/components/Page';
-import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
-import { TagCollection } from '~/components/TagCollection';
-import { Card } from '~/components/ui/Card';
+import { StickyAppBar } from '~/lib/AppBar';
+import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
+import { CelebFacts } from '~/lib/CelebFacts';
+import { InFeedAd } from '~/lib/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
+import { Page } from '~/lib/Page';
+import { RelatedCelebsWidget } from '~/lib/RelatedCelebsWidget';
+import { TagCollection } from '~/lib/TagCollection';
+import { Card } from '~/lib/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -16,10 +15,11 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/components/ui/Hero';
-import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
-import { Issue } from '~/lib/groq/issue.projection';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+} from '~/lib/Hero';
+import { CelebIssuePageProps } from '~/lib/celebIssuePage.getStaticProps';
+import { Issue } from '~/lib/issue.projection';
+import { celebNameToIssue } from '~/lib/celebNameToIssue';
+import { NavigationTip } from '~/lib/NavigationTip';
 
 export function CelebIssueSelector(props: {
   issue: Issue;
@@ -95,11 +95,12 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       >
         <NavigationTip celebName={props.celeb.name} issue={props.issue} />
 
-        <FactGroup
+        <CelebFacts
           factGroup={props.facts}
-          celebName={props.celeb.name}
+          celeb={props.celeb}
           slug={props.celeb.slug}
-          title={<CelebFactGroupTitle {...props} />}
+          issue={props.issue}
+          issues={props.issues}
         />
 
         <Card>
@@ -150,5 +151,5 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
   }
 }
 
-export { getStaticProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
+export { getStaticProps } from '~/lib/celebIssuePage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';

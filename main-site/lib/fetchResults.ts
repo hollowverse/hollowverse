@@ -1,7 +1,7 @@
 import levenshtein from 'fast-levenshtein';
 import groq from 'groq';
 import { isEmpty } from 'lodash-es';
-import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
+import { Picture, pictureProjection } from '~/lib/picture.projection';
 import {
   KnowledgeGraphCelebResult,
   knowledgeGraphClient,

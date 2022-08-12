@@ -1,14 +1,14 @@
 import { FaSearch } from 'react-icons/fa';
-import { Container, Logo } from '~/components/AppBar';
-import { CelebGallery } from '~/components/CelebGallery';
-import { FactList } from '~/components/FactList';
-import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
-import { Page } from '~/components/Page';
-import { Pagination } from '~/components/Pagination';
-import { SideScroller } from '~/components/ui/SideScroller';
-import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
-import { Link } from '~/components/Link';
-import { ForumCta } from '~/components/ForumCta';
+import { Container, Logo } from '~/lib/AppBar';
+import { CelebGallery } from '~/lib/CelebGallery';
+import { FactList } from '~/lib/FactList';
+import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
+import { Page } from '~/lib/Page';
+import { Pagination } from '~/lib/Pagination';
+import { SideScroller } from '~/lib/SideScroller';
+import { HomepageProps } from '~/lib/homepage.getStaticProps';
+import { Link } from '~/lib/Link';
+import { ForumCta } from '~/lib/ForumCta';
 
 export default function Index(props: HomepageProps) {
   return (
@@ -124,4 +124,4 @@ export default function Index(props: HomepageProps) {
   }
 }
 
-export { getStaticProps } from '~/lib/getStatic/homepage.getStaticProps';
+export { getStaticProps } from '~/lib/homepage.getStaticProps';

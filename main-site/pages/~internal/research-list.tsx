@@ -1,14 +1,11 @@
 import groq from 'groq';
-import { Page } from '~/components/Page';
+import { Page } from '~/lib/Page';
 import { c } from '~/lib/c';
 import { oneDay } from '~/lib/date';
-import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
-import { getGaTrendingPages } from '~/lib/getStatic/helpers/getTrendingCelebs';
-import {
-  getKgSearchId,
-  requestKgResult,
-} from '~/lib/getStatic/kgPage.getStaticProps';
-import { Link } from '~/components/Link';
+import { gaRunReport } from '~/lib/analyticsDataClient';
+import { getGaTrendingPages } from '~/lib/getTrendingCelebs';
+import { getKgSearchId, requestKgResult } from '~/lib/kgPage.getStaticProps';
+import { Link } from '~/lib/Link';
 import { sortByArray } from '~/lib/sortByArray';
 import { PageProps } from '~/shared/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';

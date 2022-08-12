@@ -1,6 +1,6 @@
-import { Page } from '~/components/Page';
-import { TitledCard } from '~/components/ui/TitledCard';
-import { LaunchPadPageProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
+import { Page } from '~/lib/Page';
+import { TitledCard } from '~/lib/TitledCard';
+import { LaunchPadPageProps } from '~/lib/launchPadCeleb.getStaticProps';
 
 export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
   return (
@@ -52,5 +52,5 @@ export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';
+export { getStaticProps } from '~/lib/launchPadCeleb.getStaticProps';

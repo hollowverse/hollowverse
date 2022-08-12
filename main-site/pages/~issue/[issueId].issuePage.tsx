@@ -1,11 +1,11 @@
-import { FactList } from '~/components/FactList';
-import { Page } from '~/components/Page';
-import { Pagination } from '~/components/Pagination';
-import { InBetweenContentShareButton } from '~/components/ShareButton';
-import { Tag } from '~/components/Tag';
-import { Card } from '~/components/ui/Card';
-import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
-import { Link } from '~/components/Link';
+import { FactList } from '~/lib/FactList';
+import { Page } from '~/lib/Page';
+import { Pagination } from '~/lib/Pagination';
+import { InBetweenContentShareButton } from '~/lib/ShareButton';
+import { Tag } from '~/lib/Tag';
+import { Card } from '~/lib/Card';
+import { IssuePageProps } from '~/lib/issuePage.getStaticProps';
+import { Link } from '~/lib/Link';
 
 export default function IssuePage(props: IssuePageProps) {
   return (
@@ -76,5 +76,5 @@ export default function IssuePage(props: IssuePageProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/issuePage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';
+export { getStaticProps } from '~/lib/issuePage.getStaticProps';

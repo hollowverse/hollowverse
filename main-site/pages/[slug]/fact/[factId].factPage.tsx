@@ -1,21 +1,21 @@
-import { CelebImage } from '~/components/CelebImage';
-import { ContributorBox } from '~/components/ContributorBox';
-import { FacebookComments } from '~/components/FacebookComments';
-import { Fact } from '~/components/Fact';
-import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
-import { InFeedAd } from '~/components/InFeedAd';
-import { LovelyTopBorder } from '~/components/LovelyTopBorder';
-import { Page } from '~/components/Page';
-import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
-import { Card } from '~/components/ui/Card';
-import { ReturnToCelebViewsButton } from '~/components/ui/ReturnToCelebViewsButton';
-import { TitledCard } from '~/components/ui/TitledCard';
+import { CelebImage } from '~/lib/CelebImage';
+import { ContributorBox } from '~/lib/ContributorBox';
+import { FacebookComments } from '~/lib/FacebookComments';
+import { Fact } from '~/lib/Fact';
+import { useGaEventRecorder } from '~/lib/useGaEventRecorder';
+import { InFeedAd } from '~/lib/InFeedAd';
+import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
+import { Page } from '~/lib/Page';
+import { RelatedCelebsWidget } from '~/lib/RelatedCelebsWidget';
+import { Card } from '~/lib/Card';
+import { ReturnToCelebViewsButton } from '~/lib/ReturnToCelebViewsButton';
+import { TitledCard } from '~/lib/TitledCard';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
-import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { Link } from '~/components/Link';
+import { FactPageProps } from '~/lib/factPage.getStaticProps';
+import { celebNameToIssue } from '~/lib/celebNameToIssue';
+import { Link } from '~/lib/Link';
 import { FiLink } from 'react-icons/fi';
 
 export default function FactPage(props: FactPageProps) {
@@ -132,5 +132,5 @@ export default function FactPage(props: FactPageProps) {
   }
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/factPage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';
+export { getStaticProps } from '~/lib/factPage.getStaticProps';

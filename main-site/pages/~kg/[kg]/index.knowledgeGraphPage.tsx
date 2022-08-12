@@ -1,8 +1,8 @@
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { CelebImage } from '~/components/CelebImage';
-import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
-import { Page } from '~/components/Page';
-import { Card } from '~/components/ui/Card';
+import { CelebImage } from '~/lib/CelebImage';
+import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
+import { Page } from '~/lib/Page';
+import { Card } from '~/lib/Card';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
@@ -73,5 +73,5 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/kgPage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';
+export { getStaticProps } from '~/lib/kgPage.getStaticProps';
