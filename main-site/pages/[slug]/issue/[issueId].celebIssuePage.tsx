@@ -1,8 +1,8 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/lib/AppBar';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
-import { FactGroup } from '~/lib/FactGroup';
-import { CelebFactGroupTitle, NavigationTip } from '~/lib/Facts';
+import { CelebFacts } from '~/lib/CelebFacts';
+import { CelebFactGroupTitle } from '~/lib/CelebPageFacts';
 import { InFeedAd } from '~/lib/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
 import { Page } from '~/lib/Page';
@@ -20,6 +20,7 @@ import {
 import { CelebIssuePageProps } from '~/lib/celebIssuePage.getStaticProps';
 import { Issue } from '~/lib/issue.projection';
 import { celebNameToIssue } from '~/lib/celebNameToIssue';
+import { NavigationTip } from '~/lib/NavigationTip';
 
 export function CelebIssueSelector(props: {
   issue: Issue;
@@ -95,7 +96,7 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       >
         <NavigationTip celebName={props.celeb.name} issue={props.issue} />
 
-        <FactGroup
+        <CelebFacts
           factGroup={props.facts}
           celebName={props.celeb.name}
           slug={props.celeb.slug}

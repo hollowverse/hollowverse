@@ -1,28 +1,11 @@
 import { CelebImage } from '~/lib/CelebImage';
-import { FactGroup } from '~/lib/FactGroup';
+import { CelebFacts } from '~/lib/CelebFacts';
 import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { Issue } from '~/lib/issue.projection';
 import { celebNameToIssue } from '~/lib/celebNameToIssue';
-
-export function NavigationTip(props: { celebName: string; issue?: Issue }) {
-  return (
-    <p className="px-5 font-bold">
-      👇 Below is evidence of{' '}
-      {!props.issue ? (
-        <span className="underline">
-          {props.celebName}&apos;s politics and beliefs
-        </span>
-      ) : (
-        <span className="underline">
-          {celebNameToIssue(props.celebName, props.issue)}
-        </span>
-      )}
-      . Have a read! Or use the links at the bottom to see evidence for a
-      specific topic
-    </p>
-  );
-}
+import { Pagination } from '~/lib/Pagination';
+import { NavigationTip } from '~/lib/NavigationTip';
 
 export function CelebFactGroupTitle(props: {
   celeb: Pick<CelebPageProps['celeb'], 'picture' | 'name' | 'slug'>;
@@ -54,13 +37,13 @@ export function CelebFactGroupTitle(props: {
   );
 }
 
-export const Facts = (props: CelebPageProps) => {
+export const CelebPageFacts = (props: CelebPageProps) => {
   return (
     <div className="FACTS-CONTAINER flex max-w-full flex-col gap-7">
       <NavigationTip celebName={props.celeb.name} />
 
       <div className="flex flex-col gap-2.5">
-        <FactGroup
+        <CelebFacts
           showIssueName
           title={<CelebFactGroupTitle {...props} issue={noIssueFilter} />}
           factGroup={props.facts}
@@ -68,6 +51,15 @@ export const Facts = (props: CelebPageProps) => {
           slug={props.celeb.slug}
         />
       </div>
+
+      <Pagination
+        {...props.pagination}
+        getLink={(pageNumber) =>
+          pageNumber === 1
+            ? `/${props.celeb.slug}`
+            : `/${props.celeb.slug}/p/${pageNumber}#content`
+        }
+      />
     </div>
   );
 };

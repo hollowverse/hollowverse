@@ -6,7 +6,7 @@ import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { CelebPageHero } from '~/lib/celebPageHero';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { FacebookComments } from '~/lib/FacebookComments';
-import { Facts } from '~/lib/Facts';
+import { CelebPageFacts } from '~/lib/CelebPageFacts';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
 import { Pagination } from '~/lib/Pagination';
@@ -37,16 +37,7 @@ export default function Celeb(props: CelebPageProps) {
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
-        {!isEmpty(props.facts) && <Facts {...props} />}
-
-        <Pagination
-          {...props.pagination}
-          getLink={(pageNumber) =>
-            pageNumber === 1
-              ? `/${props.celeb.slug}`
-              : `/${props.celeb.slug}/p/${pageNumber}#content`
-          }
-        />
+        {!isEmpty(props.facts) && <CelebPageFacts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}
 

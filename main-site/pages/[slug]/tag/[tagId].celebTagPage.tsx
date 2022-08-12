@@ -1,5 +1,5 @@
 import { StickyAppBar } from '~/lib/AppBar';
-import { FactGroup } from '~/lib/FactGroup';
+import { CelebFacts } from '~/lib/CelebFacts';
 import { useGaEventRecorder } from '~/lib/useGaEventRecorder';
 import { InFeedAd } from '~/lib/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
@@ -82,7 +82,7 @@ export default function TagPage(props: any) {
 
           <InBetweenContentShareButton />
 
-          <FactGroup
+          <CelebFacts
             factGroup={props.tagFacts}
             celebName={props.celeb.name}
             slug={props.celeb.slug}

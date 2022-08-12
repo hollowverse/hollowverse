@@ -5,7 +5,7 @@ import { Card } from '~/lib/Card';
 import { TitledContent } from '~/lib/TitledContent';
 import { Fact as TFact } from '~/lib/fact.projection';
 
-export function FactGroup(props: {
+export function CelebFacts(props: {
   title: ReactNode;
   factGroup: TFact[];
   celebName: string;
