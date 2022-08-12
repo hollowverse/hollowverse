@@ -1,6 +1,6 @@
 import groq from 'groq';
-import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
-import { Fact } from '~/lib/groq/fact.projection';
+import { Celeb, celebProjection } from '~/lib/c/celeb.projection';
+import { Fact } from '~/lib/f/fact.projection';
 import { celebTagProjection } from '~/lib/groq/tag.projection';
 
 export type RelatedFact = Pick<Fact, 'date' | 'tags'>;

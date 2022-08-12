@@ -1,7 +1,7 @@
 import { Link } from '~/lib/l/Link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { c } from '~/lib/c';
-import { PaginationProps } from '~/lib/getStatic/helpers/pagination';
+import { PaginationProps } from '~/lib/g/getPaginationRange';
 
 export function Pagination(
   props: PaginationProps & { getLink: (pageNumber: number) => string },

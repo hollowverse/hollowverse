@@ -1,4 +1,4 @@
-import { sortTags } from '~/lib/getStatic/helpers/sortTags';
+import { sortTags } from '~/lib/s/sortTags';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import { RelatedCelebsGroq, RelatedFact } from '~/lib/groq/relatedCelebs.groq';
 import { CelebTag } from '~/lib/groq/tag.projection';

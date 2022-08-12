@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Fact, factProjection } from '~/lib/groq/fact.projection';
+import { Fact, factProjection } from '~/lib/f/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export async function getCelebFacts(celebId: string) {

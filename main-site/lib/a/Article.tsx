@@ -5,7 +5,7 @@ import React from 'react';
 import { InFeedAd } from '~/lib/i/InFeedAd';
 import { TitledCard } from '~/lib/t/TitledCard';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 import s from '~/styles/styles.module.scss';
 
 export const Article = (

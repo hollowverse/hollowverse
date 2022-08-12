@@ -1,5 +1,5 @@
-import { sortTags } from '~/lib/getStatic/helpers/sortTags';
-import { mockOrderOfIssues } from '~/lib/getStatic/tests/mockOrderOfIssues';
+import { sortTags } from '~/lib/s/sortTags';
+import { mockOrderOfIssues } from '~/lib/tests/mockOrderOfIssues';
 
 test('sortTags to remove dupes', () => {
   expect(

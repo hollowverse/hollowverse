@@ -18,7 +18,7 @@ import {
 } from '~/lib/h/Hero';
 import { TitledCard } from '~/lib/t/TitledCard';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -106,5 +106,5 @@ export default function Celeb(props: CelebPageProps) {
   );
 }
 
-export { getStaticProps } from '~/lib/getStatic/celebPage.getStaticProps';
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
+export { getStaticProps } from '~/lib/c/celebPage.getStaticProps';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';

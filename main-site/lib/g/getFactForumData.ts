@@ -1,5 +1,5 @@
 import { discoursePsqlQuery } from '~/lib/discoursePsqlQuery';
-import { processForumContributorFields } from '~/lib/getStatic/helpers/processForumContributorFields';
+import { processForumContributorFields } from '~/lib/p/processForumContributorFields';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { log } from '~/shared/lib/log';
 

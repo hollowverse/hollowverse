@@ -13,7 +13,7 @@ import { TitledCard } from '~/lib/t/TitledCard';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
-import { FactPageProps } from '~/lib/getStatic/factPage.getStaticProps';
+import { FactPageProps } from '~/lib/f/factPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { Link } from '~/lib/l/Link';
 import { FiLink } from 'react-icons/fi';
@@ -132,5 +132,5 @@ export default function FactPage(props: FactPageProps) {
   }
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/factPage.getStaticProps';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticProps } from '~/lib/f/factPage.getStaticProps';

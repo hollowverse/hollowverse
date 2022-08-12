@@ -17,7 +17,7 @@ import {
   HeroTitleStrongText,
   HeroTopContainer,
 } from '~/lib/h/Hero';
-import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
+import { CelebIssuePageProps } from '~/lib/c/celebIssuePage.getStaticProps';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
@@ -150,5 +150,5 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
   }
 }
 
-export { getStaticProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
+export { getStaticProps } from '~/lib/c/celebIssuePage.getStaticProps';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';

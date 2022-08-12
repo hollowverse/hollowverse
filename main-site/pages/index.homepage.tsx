@@ -6,7 +6,7 @@ import { IssueSelector, noIssueFilter } from '~/lib/i/IssueSelector';
 import { Page } from '~/lib/p/Page';
 import { Pagination } from '~/lib/p/Pagination';
 import { SideScroller } from '~/lib/s/SideScroller';
-import { HomepageProps } from '~/lib/getStatic/homepage.getStaticProps';
+import { HomepageProps } from '~/lib/h/homepage.getStaticProps';
 import { Link } from '~/lib/l/Link';
 import { ForumCta } from '~/lib/f/ForumCta';
 
@@ -124,4 +124,4 @@ export default function Index(props: HomepageProps) {
   }
 }
 
-export { getStaticProps } from '~/lib/getStatic/homepage.getStaticProps';
+export { getStaticProps } from '~/lib/h/homepage.getStaticProps';

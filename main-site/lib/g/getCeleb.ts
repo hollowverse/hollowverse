@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
+import { Celeb, celebProjection } from '~/lib/c/celeb.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export async function getCeleb(slug: string) {

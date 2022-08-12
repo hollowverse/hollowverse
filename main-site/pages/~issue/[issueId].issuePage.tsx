@@ -4,7 +4,7 @@ import { Pagination } from '~/lib/p/Pagination';
 import { InBetweenContentShareButton } from '~/lib/s/ShareButton';
 import { Tag } from '~/lib/t/Tag';
 import { Card } from '~/lib/c/Card';
-import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
+import { IssuePageProps } from '~/lib/i/issuePage.getStaticProps';
 import { Link } from '~/lib/l/Link';
 
 export default function IssuePage(props: IssuePageProps) {
@@ -76,5 +76,5 @@ export default function IssuePage(props: IssuePageProps) {
   );
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/issuePage.getStaticProps';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticProps } from '~/lib/i/issuePage.getStaticProps';

@@ -12,7 +12,7 @@ import { c } from '~/lib/c';
 import { factViewCountProvider } from '~/lib/FactViewCounProvider';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
-import { Fact } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/f/fact.projection';
 import { ReactElementProps } from '~/shared/lib/types';
 
 export function FactFooter(props: {

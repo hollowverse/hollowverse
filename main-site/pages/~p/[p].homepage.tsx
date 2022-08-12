@@ -1,3 +1,3 @@
 export { default } from '~/pages/index.homepage';
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
-export { getStaticProps } from '~/lib/getStatic/homepage.getStaticProps';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticProps } from '~/lib/h/homepage.getStaticProps';

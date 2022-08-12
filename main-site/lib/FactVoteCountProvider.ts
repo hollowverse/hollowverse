@@ -1,5 +1,5 @@
 import { DeepNonNullable } from 'utility-types';
-import { FactVotes } from '~/lib/groq/fact.projection';
+import { FactVotes } from '~/lib/f/fact.projection';
 import { hvApiClient, post } from '~/lib/hvApiClient';
 import { RequestBusStation } from '~/lib/RequestBusStation';
 

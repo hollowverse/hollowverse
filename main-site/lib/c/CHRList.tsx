@@ -5,7 +5,7 @@ import {
   CHRImage,
 } from '~/lib/c/CelebHorizontalRect';
 import { TitledContent } from '~/lib/t/TitledContent';
-import { Celeb } from '~/lib/groq/celeb.projection';
+import { Celeb } from '~/lib/c/celeb.projection';
 
 type CHRCeleb<T> = Pick<Celeb, 'slug' | 'name' | 'picture'> & T;
 

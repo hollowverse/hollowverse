@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/api-route-helpers/cors';
-import { getAuthenticatedUserId } from '~/lib/api-route-helpers/user-auth';
+import { cors } from '~/lib/c/cors';
+import { getAuthenticatedUserId } from '~/lib/u/user-auth';
 import { UserVote } from '~/lib/groq/getUser.groq';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 

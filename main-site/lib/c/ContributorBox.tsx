@@ -5,7 +5,7 @@ import {
   AiOutlineTwitter,
 } from 'react-icons/ai';
 import { IconType } from 'react-icons/lib';
-import { Contributor } from '~/lib/getStatic/helpers/processForumContributorFields';
+import { Contributor } from '~/lib/p/processForumContributorFields';
 
 export function ContributorBox(
   props: Contributor & { showBio?: boolean; count?: number },

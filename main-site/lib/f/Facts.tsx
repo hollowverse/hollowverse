@@ -1,7 +1,7 @@
 import { CelebImage } from '~/lib/c/CelebImage';
 import { FactGroup } from '~/lib/f/FactGroup';
 import { IssueSelector, noIssueFilter } from '~/lib/i/IssueSelector';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 

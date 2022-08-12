@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
 import { gaRunReport } from '~/lib/a/analyticsDataClient';
-import { Summaries } from '~/lib/getStatic/helpers/getParsedOldContent';
+import { Summaries } from '~/lib/g/getParsedOldContent';
 import { Picture } from '~/lib/groq/picture.projection';
 import { sortByArray } from '~/lib/sortByArray';
 import { sanityClient } from '~/shared/lib/sanityio';

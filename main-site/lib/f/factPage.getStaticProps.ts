@@ -1,9 +1,9 @@
 import { oneDay } from '~/lib/date';
-import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
-import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
-import { getFactForumData } from '~/lib/getStatic/helpers/getFactForumData';
-import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+import { getCeleb } from '~/lib/g/getCeleb';
+import { getCelebFacts } from '~/lib/g/getCelebFacts';
+import { getFactForumData } from '~/lib/g/getFactForumData';
+import { getFactIssues } from '~/lib/g/getFactIssues';
+import { transformFact } from '~/lib/t/transformFact';
 import { PageProps } from '~/shared/lib/types';
 
 export type FactPageProps = PageProps<typeof getStaticProps>;

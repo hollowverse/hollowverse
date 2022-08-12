@@ -1,8 +1,8 @@
 import { isEmpty, random, uniq } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import QueryString from 'qs';
-import { cors } from '~/lib/api-route-helpers/cors';
-import { setApiCache } from '~/lib/api-route-helpers/setApiCache';
+import { cors } from '~/lib/c/cors';
+import { setApiCache } from '~/lib/s/setApiCache';
 import { gaRunReport } from '~/lib/a/analyticsDataClient';
 
 export type RelatedCelebs = Awaited<ReturnType<typeof getFactViewCounts>>;

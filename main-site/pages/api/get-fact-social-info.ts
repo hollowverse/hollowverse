@@ -1,7 +1,7 @@
 import { isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { apiHandlerWithErrorLogging } from '~/lib/a/apiHandlerWithErrorLogging';
-import { cors } from '~/lib/api-route-helpers/cors';
+import { cors } from '~/lib/c/cors';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { log } from '~/shared/lib/log';

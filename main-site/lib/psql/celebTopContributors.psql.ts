@@ -1,4 +1,4 @@
-import { Contributor } from '~/lib/getStatic/helpers/processForumContributorFields';
+import { Contributor } from '~/lib/p/processForumContributorFields';
 import { contributorFieldsPsql } from '~/lib/psql/contributor.fields';
 import { sql } from '~/lib/sql';
 

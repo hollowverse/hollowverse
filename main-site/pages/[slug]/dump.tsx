@@ -2,7 +2,7 @@ import groq from 'groq';
 import { JsonView } from '~/lib/j/JsonView';
 import { Page } from '~/lib/p/Page';
 import { oneMinute } from '~/lib/date';
-import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
+import { Fact as TFact, factProjection } from '~/lib/f/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { PageProps } from '~/shared/lib/types';
 
@@ -42,4 +42,4 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   };
 }
 
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';

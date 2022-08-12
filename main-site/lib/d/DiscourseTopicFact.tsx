@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { formatFactDate } from '~/lib/date';
-import { Fact } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/f/fact.projection';
 import { Picture } from '~/lib/groq/picture.projection';
 import { sanityImage } from '~/shared/lib/sanityio';
 

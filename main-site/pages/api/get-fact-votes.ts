@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/api-route-helpers/cors';
-import { FactVotes, factVotesProjection } from '~/lib/groq/fact.projection';
+import { cors } from '~/lib/c/cors';
+import { FactVotes, factVotesProjection } from '~/lib/f/fact.projection';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
 export default async function getFactVotes(

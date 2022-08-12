@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import { getIssuePageTags } from '~/lib/getStatic/helpers/getIssuePageTags';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+import { getIssuePageTags } from '~/lib/g/getIssuePageTags';
+import { transformFact } from '~/lib/t/transformFact';
 import { getIssuePageGroq, IssuePageGroq } from '~/lib/groq/getIssuePage.groq';
 import { PageProps } from '~/shared/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';

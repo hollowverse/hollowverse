@@ -1,12 +1,9 @@
 import { oneDay } from '~/lib/date';
-import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
-import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
-import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
-import {
-  getTagTimeline,
-  TagTimeline,
-} from '~/lib/getStatic/helpers/getTagTimeline';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+import { getCeleb } from '~/lib/g/getCeleb';
+import { getCelebFacts } from '~/lib/g/getCelebFacts';
+import { getFactIssues } from '~/lib/g/getFactIssues';
+import { getTagTimeline, TagTimeline } from '~/lib/g/getTagTimeline';
+import { transformFact } from '~/lib/t/transformFact';
 import { log } from '~/shared/lib/log';
 import { PageProps } from '~/shared/lib/types';
 

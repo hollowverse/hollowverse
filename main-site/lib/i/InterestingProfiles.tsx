@@ -1,5 +1,5 @@
 import { CHRList } from '~/lib/c/CHRList';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 
 export const InterestingProfiles = (props: CelebPageProps) => {
   const relatedPeople = props.celeb.oldContent!.relatedPeople;

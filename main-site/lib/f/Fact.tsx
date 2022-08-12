@@ -8,8 +8,8 @@ import { Tag } from '~/lib/t/Tag';
 import { c } from '~/lib/c';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { getSourceHost } from '~/lib/getSourceHost';
-import { Celeb } from '~/lib/groq/celeb.projection';
-import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { Celeb } from '~/lib/c/celeb.projection';
+import { Fact as TFact } from '~/lib/f/fact.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 function UnoptimizedImage(

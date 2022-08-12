@@ -1,5 +1,5 @@
 import { flatten, uniqBy } from 'lodash-es';
-import { Fact } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/f/fact.projection';
 
 export function getFactIssues(facts: Fact[]) {
   const rawIssues = facts.flatMap((f) => f.tags.map((t) => t.tag.issue));

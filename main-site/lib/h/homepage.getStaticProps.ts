@@ -1,14 +1,14 @@
 import groq from 'groq';
 import { oneDay } from '~/lib/date';
-import { getTrendingCelebs } from '~/lib/getStatic/helpers/getTrendingCelebs';
-import { getTrendingIssues } from '~/lib/getStatic/helpers/getTrendingIssues';
+import { getTrendingCelebs } from '~/lib/g/getTrendingCelebs';
+import { getTrendingIssues } from '~/lib/g/getTrendingIssues';
 import {
   getPaginationProps,
   getPaginationRange,
-} from '~/lib/getStatic/helpers/pagination';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
-import { celebProjection } from '~/lib/groq/celeb.projection';
-import { factProjection, FactWithCeleb } from '~/lib/groq/fact.projection';
+} from '~/lib/g/getPaginationRange';
+import { transformFact } from '~/lib/t/transformFact';
+import { celebProjection } from '~/lib/c/celeb.projection';
+import { factProjection, FactWithCeleb } from '~/lib/f/fact.projection';
 import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { sortByArray } from '~/lib/sortByArray';
 import { log } from '~/shared/lib/log';

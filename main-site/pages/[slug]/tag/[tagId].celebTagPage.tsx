@@ -16,7 +16,7 @@ import {
   HeroTitleStrongText,
   HeroTopContainer,
 } from '~/lib/h/Hero';
-import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
+import { TagPageProps } from '~/lib/c/celebTagPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 
 // export default function TagPage(props: TagPageProps) {
@@ -105,5 +105,5 @@ export default function TagPage(props: any) {
   );
 }
 
-export { getStaticProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
-export { getStaticPaths } from '~/lib/getStatic/default.getStaticPaths';
+export { getStaticProps } from '~/lib/c/celebTagPage.getStaticProps';
+export { getStaticPaths } from '~/lib/d/default.getStaticPaths';

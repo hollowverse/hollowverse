@@ -1,6 +1,6 @@
 import { FaQuestionCircle, FaRegCircle } from 'react-icons/fa';
 import { Tag } from '~/lib/t/Tag';
-import { TagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import { TagTimeline } from '~/lib/g/getTagTimeline';
 
 export const TagCollection = (props: {
   slug: string;

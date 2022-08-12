@@ -1,7 +1,7 @@
 import { getCookie } from 'cookies-next';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { HV_TMP_ID_COOKIE_NAME } from '~/lib/u/useIdentifyingCookie';
-import { cors } from '~/lib/api-route-helpers/cors';
+import { cors } from '~/lib/c/cors';
 import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
 import { User } from '~/lib/groq/getUser.groq';
 import { redis } from '~/lib/redis';

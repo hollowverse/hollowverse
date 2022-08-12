@@ -1,6 +1,6 @@
 import groq from 'groq';
-import { Celeb, celebProjection } from '~/lib/groq/celeb.projection';
-import { Fact, factProjection } from '~/lib/groq/fact.projection';
+import { Celeb, celebProjection } from '~/lib/c/celeb.projection';
+import { Fact, factProjection } from '~/lib/f/fact.projection';
 import { Issue, issueProjection } from '~/lib/groq/issue.projection';
 import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
 

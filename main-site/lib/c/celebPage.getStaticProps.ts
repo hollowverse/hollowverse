@@ -1,15 +1,15 @@
 import { isEmpty } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
-import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
-import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
-import { getParsedOldContent } from '~/lib/getStatic/helpers/getParsedOldContent';
-import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
+import { getCeleb } from '~/lib/g/getCeleb';
+import { getCelebFacts } from '~/lib/g/getCelebFacts';
+import { getFactIssues } from '~/lib/g/getFactIssues';
+import { getParsedOldContent } from '~/lib/g/getParsedOldContent';
+import { getTagTimeline } from '~/lib/g/getTagTimeline';
 import {
   getPaginationProps,
   getPaginationRange,
-} from '~/lib/getStatic/helpers/pagination';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+} from '~/lib/g/getPaginationRange';
+import { transformFact } from '~/lib/t/transformFact';
 import { Issue } from '~/lib/groq/issue.projection';
 import { log } from '~/shared/lib/log';
 import { PageProps } from '~/shared/lib/types';

@@ -3,7 +3,7 @@ import { Fact } from '~/lib/f/Fact';
 import { InFeedAd } from '~/lib/i/InFeedAd';
 import { Card } from '~/lib/c/Card';
 import { TitledContent } from '~/lib/t/TitledContent';
-import { Fact as TFact } from '~/lib/groq/fact.projection';
+import { Fact as TFact } from '~/lib/f/fact.projection';
 
 export function FactGroup(props: {
   title: ReactNode;

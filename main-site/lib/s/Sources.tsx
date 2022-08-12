@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 
 export const Sources = (
   props: CelebPageProps & {

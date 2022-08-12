@@ -1,10 +1,7 @@
 import { isEmpty } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import {
-  getKgSearchId,
-  requestKgResult,
-} from '~/lib/getStatic/kgPage.getStaticProps';
-import { getLaunchPadTags } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
+import { getKgSearchId, requestKgResult } from '~/lib/k/kgPage.getStaticProps';
+import { getLaunchPadTags } from '~/lib/l/launchPadCeleb.getStaticProps';
 import { log } from '~/shared/lib/log';
 
 export const getStaticProps = async ({

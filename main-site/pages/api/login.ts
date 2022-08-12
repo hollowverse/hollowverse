@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import QueryString from 'qs';
-import { isHvHostname } from '~/lib/api-route-helpers/cors';
-import { getHmac, setAuthCookie } from '~/lib/api-route-helpers/user-auth';
+import { isHvHostname } from '~/lib/c/cors';
+import { getHmac, setAuthCookie } from '~/lib/u/user-auth';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getWebsiteUrl } from '~/lib/getWebsiteUrl';
 

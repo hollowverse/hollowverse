@@ -1,8 +1,8 @@
 import groq from 'groq';
 import { shuffle } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/api-route-helpers/cors';
-import { groupCelebTags } from '~/lib/getStatic/helpers/groupCelebTags';
+import { cors } from '~/lib/c/cors';
+import { groupCelebTags } from '~/lib/g/groupCelebTags';
 import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
 import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
 import {
@@ -11,7 +11,7 @@ import {
   RelatedCelebsGroq,
 } from '~/lib/groq/relatedCelebs.groq';
 import { Tag, tagProjection } from '~/lib/groq/tag.projection';
-import { setApiCache } from '~/lib/api-route-helpers/setApiCache';
+import { setApiCache } from '~/lib/s/setApiCache';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { Nullish } from '~/shared/lib/types';
 

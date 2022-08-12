@@ -1,12 +1,12 @@
 import { flatten, isEmpty } from 'lodash-es';
 import { customTitleDefinitions } from '~/lib/customTitleDefinitions';
 import { oneDay } from '~/lib/date';
-import { getCeleb } from '~/lib/getStatic/helpers/getCeleb';
-import { getCelebFacts } from '~/lib/getStatic/helpers/getCelebFacts';
-import { getFactIssues } from '~/lib/getStatic/helpers/getFactIssues';
-import { getIssue } from '~/lib/getStatic/helpers/getIssue';
-import { getTagTimeline } from '~/lib/getStatic/helpers/getTagTimeline';
-import { transformFact } from '~/lib/getStatic/helpers/transformFact';
+import { getCeleb } from '~/lib/g/getCeleb';
+import { getCelebFacts } from '~/lib/g/getCelebFacts';
+import { getFactIssues } from '~/lib/g/getFactIssues';
+import { getIssue } from '~/lib/g/getIssue';
+import { getTagTimeline } from '~/lib/g/getTagTimeline';
+import { transformFact } from '~/lib/t/transformFact';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 import { tagIsVerb } from '~/lib/language/tagIsVerb';
 import { PageProps } from '~/shared/lib/types';

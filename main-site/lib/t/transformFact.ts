@@ -1,6 +1,6 @@
-import { Fact } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/f/fact.projection';
 import { formatFactDate } from '~/lib/date';
-import { filterBadWords } from '~/lib/getStatic/helpers/filterBadWords';
+import { filterBadWords } from '~/lib/f/filterBadWords';
 
 export function transformFact<T extends Fact>(fact: T): T {
   return {

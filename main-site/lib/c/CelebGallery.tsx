@@ -1,7 +1,7 @@
 import React from 'react';
 import { CelebImage } from '~/lib/c/CelebImage';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
+import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 import { Link } from '~/lib/l/Link';
 
 export const CelebGallery: React.FC<{

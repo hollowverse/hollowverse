@@ -1,7 +1,7 @@
 import { getYear } from 'date-fns';
 import { invertBy, last, mapValues, toPairs } from 'lodash-es';
 import { parseDate } from '~/lib/date';
-import { Fact } from '~/lib/groq/fact.projection';
+import { Fact } from '~/lib/f/fact.projection';
 import { Issue } from '~/lib/groq/issue.projection';
 import { CelebTag } from '~/lib/groq/tag.projection';
 
