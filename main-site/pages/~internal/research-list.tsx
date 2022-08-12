@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Page } from '~/components/p/Page';
+import { Page } from '~/lib/p/Page';
 import { c } from '~/lib/c';
 import { oneDay } from '~/lib/date';
 import { gaRunReport } from '~/lib/a/analyticsDataClient';
@@ -8,7 +8,7 @@ import {
   getKgSearchId,
   requestKgResult,
 } from '~/lib/getStatic/kgPage.getStaticProps';
-import { Link } from '~/components/l/Link';
+import { Link } from '~/lib/l/Link';
 import { sortByArray } from '~/lib/sortByArray';
 import { PageProps } from '~/shared/lib/types';
 import { sanityClient } from '~/shared/lib/sanityio';

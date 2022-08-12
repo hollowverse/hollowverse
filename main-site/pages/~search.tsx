@@ -7,11 +7,11 @@ import { FaChevronLeft } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
 import * as AppBar from '~/lib/a/AppBar';
 import { BeforeResultsContainer } from '~/lib/b/BeforeResultsContainer';
-import { useSearch } from '~/components/u/useSearch';
-import { Page } from '~/components/p/Page';
-import { SearchResults } from '~/components/s/SearchResults';
-import { Spinner } from '~/components/s/Spinner';
-import { Link } from '~/components/l/Link';
+import { useSearch } from '~/lib/u/useSearch';
+import { Page } from '~/lib/p/Page';
+import { SearchResults } from '~/lib/s/SearchResults';
+import { Spinner } from '~/lib/s/Spinner';
+import { Link } from '~/lib/l/Link';
 
 export default function Search() {
   const hook = useSearch();

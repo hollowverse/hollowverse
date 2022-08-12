@@ -1,11 +1,11 @@
-import { FactList } from '~/components/f/FactList';
-import { Page } from '~/components/p/Page';
-import { Pagination } from '~/components/p/Pagination';
-import { InBetweenContentShareButton } from '~/components/s/ShareButton';
-import { Tag } from '~/components/t/Tag';
-import { Card } from '~/components/c/Card';
+import { FactList } from '~/lib/f/FactList';
+import { Page } from '~/lib/p/Page';
+import { Pagination } from '~/lib/p/Pagination';
+import { InBetweenContentShareButton } from '~/lib/s/ShareButton';
+import { Tag } from '~/lib/t/Tag';
+import { Card } from '~/lib/c/Card';
 import { IssuePageProps } from '~/lib/getStatic/issuePage.getStaticProps';
-import { Link } from '~/components/l/Link';
+import { Link } from '~/lib/l/Link';
 
 export default function IssuePage(props: IssuePageProps) {
   return (

@@ -1,8 +1,8 @@
 import { FaRegCheckCircle } from 'react-icons/fa';
-import { CelebImage } from '~/components/c/CelebImage';
-import { ContributeCta, TweetItAtUs } from '~/components/c/ContributeCta';
-import { Page } from '~/components/p/Page';
-import { Card } from '~/components/c/Card';
+import { CelebImage } from '~/lib/c/CelebImage';
+import { ContributeCta, TweetItAtUs } from '~/lib/c/ContributeCta';
+import { Page } from '~/lib/p/Page';
+import { Card } from '~/lib/c/Card';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {

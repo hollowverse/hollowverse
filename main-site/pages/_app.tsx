@@ -1,11 +1,11 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
-import { PageTransitionSpinner } from '~/components/p/PageTransitionSpinner';
+import { PageTransitionSpinner } from '~/lib/p/PageTransitionSpinner';
 import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
-import { useGoogleAnalyticsUniversal } from '~/components/g/googleAnalyticsUniversal';
+import { useGoogleAnalyticsUniversal } from '~/lib/g/googleAnalyticsUniversal';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
-import { useIdentifyingCookie } from '~/components/u/useIdentifyingCookie';
+import { useIdentifyingCookie } from '~/lib/u/useIdentifyingCookie';
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();

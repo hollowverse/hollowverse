@@ -1,6 +1,6 @@
 import groq from 'groq';
-import { JsonView } from '~/components/j/JsonView';
-import { Page } from '~/components/p/Page';
+import { JsonView } from '~/lib/j/JsonView';
+import { Page } from '~/lib/p/Page';
 import { oneMinute } from '~/lib/date';
 import { Fact as TFact, factProjection } from '~/lib/groq/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';

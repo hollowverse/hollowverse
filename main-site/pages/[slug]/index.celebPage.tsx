@@ -1,13 +1,13 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/lib/a/AppBar';
-import { ContributeCta, TweetItAtUs } from '~/components/c/ContributeCta';
-import { FacebookComments } from '~/components/f/FacebookComments';
-import { Facts } from '~/components/f/Facts';
-import { Md } from '~/components/m/Md';
-import { Page } from '~/components/p/Page';
-import { Pagination } from '~/components/p/Pagination';
-import { TopContributorsWidget } from '~/components/t/TopContributorsWidget';
-import { Card } from '~/components/c/Card';
+import { ContributeCta, TweetItAtUs } from '~/lib/c/ContributeCta';
+import { FacebookComments } from '~/lib/f/FacebookComments';
+import { Facts } from '~/lib/f/Facts';
+import { Md } from '~/lib/m/Md';
+import { Page } from '~/lib/p/Page';
+import { Pagination } from '~/lib/p/Pagination';
+import { TopContributorsWidget } from '~/lib/t/TopContributorsWidget';
+import { Card } from '~/lib/c/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -15,8 +15,8 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/components/h/Hero';
-import { TitledCard } from '~/components/t/TitledCard';
+} from '~/lib/h/Hero';
+import { TitledCard } from '~/lib/t/TitledCard';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 

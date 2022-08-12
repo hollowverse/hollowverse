@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { InFeedAd } from '~/components/i/InFeedAd';
-import { TitledCard } from '~/components/t/TitledCard';
+import { InFeedAd } from '~/lib/i/InFeedAd';
+import { TitledCard } from '~/lib/t/TitledCard';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
 import s from '~/styles/styles.module.scss';
