@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { ReactElement, ReactNode } from 'react';
 import { AppBar } from '~/lib/a/AppBar';
 import { Footer } from '~/lib/f/Footer';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export function Page(props: {
   children: ReactNode;

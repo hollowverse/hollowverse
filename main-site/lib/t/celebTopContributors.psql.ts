@@ -1,6 +1,6 @@
 import { Contributor } from '~/lib/p/processForumContributorFields';
 import { contributorFieldsPsql } from '~/lib/c/contributor.fields';
-import { sql } from '~/lib/sql';
+import { sql } from '~/lib/s/sql';
 
 export type TopContributors = (Contributor & { count: number })[];
 

@@ -6,11 +6,11 @@ import { v4 as uuid } from 'uuid';
 import { HV_TMP_ID_COOKIE_NAME } from '~/lib/u/useIdentifyingCookie';
 import { cors } from '~/lib/c/cors';
 import { sanityWriteToken } from '~/lib/s/sanityWriteToken';
-import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
-import { oneMonth } from '~/lib/date';
+import { calculateVoteOperations } from '~/lib/c/calculateVoteOperations';
+import { oneMonth } from '~/lib/d/date';
 import { FactVotes, factVotesProjection } from '~/lib/f/fact.projection';
 import { User, UserVote } from '~/lib/g/getUser.groq';
-import { redis } from '~/lib/redis';
+import { redis } from '~/lib/r/redis';
 import { log } from '~/shared/lib/log';
 import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';
 

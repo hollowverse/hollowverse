@@ -9,15 +9,15 @@ import {
 import { FooterButton } from '~/lib/f/FactFooter';
 import { useIdentifyingCookie } from '~/lib/u/useIdentifyingCookie';
 import { redirectToLogin, useUser } from '~/lib/u/useUser';
-import { c } from '~/lib/c';
-import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
-import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
-import { oneMonth, oneYear } from '~/lib/date';
-import { factVoteCountProvider } from '~/lib/FactVoteCountProvider';
+import { c } from '~/lib/c/c';
+import { calculateVoteOperations } from '~/lib/c/calculateVoteOperations';
+import { HAS_VOTED_COOKIE_NAME } from '~/lib/c/constants';
+import { oneMonth, oneYear } from '~/lib/d/date';
+import { factVoteCountProvider } from '~/lib/f/FactVoteCountProvider';
 import { Fact } from '~/lib/f/fact.projection';
 import { UserVote } from '~/lib/g/getUser.groq';
-import { hvApiClient, post } from '~/lib/hvApiClient';
-import { userVoteCountProvider } from '~/lib/UserVoteCountProvider';
+import { hvApiClient, post } from '~/lib/h/hvApiClient';
+import { userVoteCountProvider } from '~/lib/u/UserVoteCountProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
 import { log } from '~/shared/lib/log';
 

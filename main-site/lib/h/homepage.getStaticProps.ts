@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { oneDay } from '~/lib/date';
+import { oneDay } from '~/lib/d/date';
 import { getTrendingCelebs } from '~/lib/g/getTrendingCelebs';
 import { getTrendingIssues } from '~/lib/g/getTrendingIssues';
 import {
@@ -10,7 +10,7 @@ import { transformFact } from '~/lib/t/transformFact';
 import { celebProjection } from '~/lib/c/celeb.projection';
 import { factProjection, FactWithCeleb } from '~/lib/f/fact.projection';
 import { Issue, issueProjection } from '~/lib/i/issue.projection';
-import { sortByArray } from '~/lib/sortByArray';
+import { sortByArray } from '~/lib/s/sortByArray';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { PageProps } from '~/shared/lib/types';

@@ -1,5 +1,5 @@
 import { FaChevronDown } from 'react-icons/fa';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { Link } from '~/lib/l/Link';
 
 export function ReturnToCelebViewsButton(props: {

@@ -1,6 +1,6 @@
 import { getCookie, hasCookie, setCookie } from 'cookies-next';
 import shortUuid from 'short-uuid';
-import { oneYear } from '~/lib/date';
+import { oneYear } from '~/lib/d/date';
 
 export const HV_TMP_ID_COOKIE_NAME = 'tmphvid';
 

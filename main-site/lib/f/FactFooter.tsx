@@ -8,10 +8,10 @@ import { FacebookComments } from '~/lib/f/FacebookComments';
 import { FacebookCommentsCount } from '~/lib/f/FacebookCommentsCount';
 import { useShareButton } from '~/lib/s/ShareButton';
 import { VoteButtons } from '~/lib/v/VoteButtons';
-import { c } from '~/lib/c';
-import { factViewCountProvider } from '~/lib/FactViewCounProvider';
-import { getFactPagePathname } from '~/lib/getFactPagePathname';
-import { getFactPageTitle } from '~/lib/getFactPageTitle';
+import { c } from '~/lib/c/c';
+import { factViewCountProvider } from '~/lib/f/FactViewCounProvider';
+import { getFactPagePathname } from '~/lib/g/getFactPagePathname';
+import { getFactPageTitle } from '~/lib/g/getFactPageTitle';
 import { Fact } from '~/lib/f/fact.projection';
 import { ReactElementProps } from '~/shared/lib/types';
 

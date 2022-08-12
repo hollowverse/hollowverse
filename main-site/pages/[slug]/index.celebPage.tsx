@@ -17,7 +17,7 @@ import {
   HeroTopContainer,
 } from '~/lib/h/Hero';
 import { TitledCard } from '~/lib/t/TitledCard';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 
 export default function Celeb(props: CelebPageProps) {

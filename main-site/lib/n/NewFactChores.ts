@@ -4,7 +4,7 @@ import ReactDOMServer from 'react-dom/server';
 import { DiscourseContribPm } from '~/lib/d/DiscourseContribPm';
 import { DiscourseTopicFact } from '~/lib/d/DiscourseTopicFact';
 import { badgeDefinitions } from '~/lib/b/badgeDefinitions';
-import { discourseApiClient as _discourseApiClient } from '~/lib/discourseApiClient';
+import { discourseApiClient as _discourseApiClient } from '~/lib/d/discourseApiClient';
 import { ContentChange } from '~/lib/c/contentChangeNotification.projection';
 import { Json } from '~/shared/lib/types';
 import { SanityWebhookProps } from '~/pages/api/content-change-notify';

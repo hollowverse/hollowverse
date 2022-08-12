@@ -1,5 +1,5 @@
 import { format, parse } from 'date-fns';
-import { ISO_8601_DATE_FORMAT } from '~/lib/constants';
+import { ISO_8601_DATE_FORMAT } from '~/lib/c/constants';
 
 export function parseDate(date: string) {
   return parse(date, ISO_8601_DATE_FORMAT, new Date());

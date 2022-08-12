@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Spinner } from '~/lib/s/Spinner';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export function PageTransitionSpinner() {
   const router = useRouter();

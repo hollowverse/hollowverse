@@ -1,4 +1,4 @@
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { ReactElementProps } from '~/shared/lib/types';
 
 export type CardProps = { topBorder?: boolean };

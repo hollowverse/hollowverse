@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import { oneDay } from '~/lib/date';
+import { oneDay } from '~/lib/d/date';
 import { getIssuePageTags } from '~/lib/g/getIssuePageTags';
 import { transformFact } from '~/lib/t/transformFact';
 import { getIssuePageGroq, IssuePageGroq } from '~/lib/g/getIssuePage.groq';

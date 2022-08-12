@@ -1,5 +1,5 @@
 import { SideScroller } from '~/lib/s/SideScroller';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { Issue } from '~/lib/i/issue.projection';
 import { Link } from '~/lib/l/Link';
 import { PropsWithChildren } from 'react';

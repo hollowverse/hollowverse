@@ -1,7 +1,7 @@
 import Cors from 'cors';
 import { endsWith } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { VERCEL_TEMP_DOMAIN } from '~/lib/constants';
+import { VERCEL_TEMP_DOMAIN } from '~/lib/c/constants';
 
 export function isHvHostname(hostname: string) {
   return (

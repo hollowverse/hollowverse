@@ -4,7 +4,7 @@ import { CelebImage } from '~/lib/c/CelebImage';
 import { Fact } from '~/lib/f/Fact';
 import { InFeedAd } from '~/lib/i/InFeedAd';
 import { TitledCard } from '~/lib/t/TitledCard';
-import { getFactIssue } from '~/lib/getFactIssue';
+import { getFactIssue } from '~/lib/g/getFactIssue';
 import { FactWithCeleb } from '~/lib/f/fact.projection';
 import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 

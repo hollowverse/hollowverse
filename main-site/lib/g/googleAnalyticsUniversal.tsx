@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import { GA_TRACKING_ID } from '~/lib/googleAnalytics';
+import { GA_TRACKING_ID } from '~/lib/g/googleAnalytics';
 
 export function useGoogleAnalyticsUniversal() {
   const router = useRouter();

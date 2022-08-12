@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import { oneDay } from '~/lib/date';
+import { oneDay } from '~/lib/d/date';
 import { getKgSearchId, requestKgResult } from '~/lib/k/kgPage.getStaticProps';
 import { getLaunchPadTags } from '~/lib/l/launchPadCeleb.getStaticProps';
 import { log } from '~/shared/lib/log';

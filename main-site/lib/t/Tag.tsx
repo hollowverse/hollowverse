@@ -2,7 +2,7 @@ import { LinkProps } from 'next/link';
 import { useRouter } from 'next/router';
 import { PropsWithChildren } from 'react';
 import { PurpleDot } from '~/lib/p/PurpleDot';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { Link } from '~/lib/l/Link';
 
 export function Tag(

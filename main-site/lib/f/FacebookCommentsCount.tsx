@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { getFactPagePathname } from '~/lib/getFactPagePathname';
+import { getFactPagePathname } from '~/lib/g/getFactPagePathname';
 import { Fact } from '~/lib/f/fact.projection';
 
 export function FacebookCommentsCount(props: { slug: string; fact: Fact }) {

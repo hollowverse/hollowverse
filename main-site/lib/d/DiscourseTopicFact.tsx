@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { formatFactDate } from '~/lib/date';
+import { formatFactDate } from '~/lib/d/date';
 import { Fact } from '~/lib/f/fact.projection';
 import { Picture } from '~/lib/p/picture.projection';
 import { sanityImage } from '~/shared/lib/sanityio';

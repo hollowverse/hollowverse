@@ -1,5 +1,5 @@
 import { Fact } from '~/lib/f/fact.projection';
-import { formatFactDate } from '~/lib/date';
+import { formatFactDate } from '~/lib/d/date';
 import { filterBadWords } from '~/lib/f/filterBadWords';
 
 export function transformFact<T extends Fact>(fact: T): T {

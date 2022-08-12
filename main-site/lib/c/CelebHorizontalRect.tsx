@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { CelebImage, CelebImageProps } from '~/lib/c/CelebImage';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { ReactElementProps } from '~/shared/lib/types';
 
 export function CHRImage(

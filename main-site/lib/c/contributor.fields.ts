@@ -1,4 +1,4 @@
-import { sql } from '~/lib/sql';
+import { sql } from '~/lib/s/sql';
 
 export type ContributorPsql = {
   name?: string;

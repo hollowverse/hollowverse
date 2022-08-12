@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/c/cors';
-import { discoursePsqlQuery } from '~/lib/discoursePsqlQuery';
+import { discoursePsqlQuery } from '~/lib/d/discoursePsqlQuery';
 import { processForumContributorFields } from '~/lib/p/processForumContributorFields';
 import { TopContributors } from '~/lib/t/celebTopContributors.psql';
 import { setApiCache } from '~/lib/s/setApiCache';

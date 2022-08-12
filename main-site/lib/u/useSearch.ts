@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { PromiseType } from 'utility-types';
-import { fetchResults } from '~/lib/fetchResults';
+import { fetchResults } from '~/lib/f/fetchResults';
 
 export type SearchResults = PromiseType<ReturnType<typeof fetchResults>> | null;
 

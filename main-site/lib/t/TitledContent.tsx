@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { LovelyTopBorder } from '~/lib/l/LovelyTopBorder';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export type TitledContentProps =
   | {

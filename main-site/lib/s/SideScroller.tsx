@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { ReactElementProps } from '~/shared/lib/types';
 
 export function SideScroller(props: ReactElementProps<'div'>) {

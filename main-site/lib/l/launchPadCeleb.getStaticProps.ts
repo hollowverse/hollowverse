@@ -7,7 +7,7 @@ import {
   toPairs,
   uniqBy,
 } from 'lodash-es';
-import { oneDay } from '~/lib/date';
+import { oneDay } from '~/lib/d/date';
 import { Tag, tagProjection } from '~/lib/t/tag.projection';
 import { PageProps } from '~/shared/lib/types';
 import { log } from '~/shared/lib/log';

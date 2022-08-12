@@ -1,7 +1,7 @@
 import { DeepNonNullable } from 'utility-types';
 import { FactVotes } from '~/lib/f/fact.projection';
-import { hvApiClient, post } from '~/lib/hvApiClient';
-import { RequestBusStation } from '~/lib/RequestBusStation';
+import { hvApiClient, post } from '~/lib/h/hvApiClient';
+import { RequestBusStation } from '~/lib/r/RequestBusStation';
 
 export type NormalizedFactVotes = DeepNonNullable<FactVotes>;
 

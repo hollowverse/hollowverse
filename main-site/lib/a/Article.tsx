@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { InFeedAd } from '~/lib/i/InFeedAd';
 import { TitledCard } from '~/lib/t/TitledCard';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
 import s from '~/styles/styles.module.scss';
 

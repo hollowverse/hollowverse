@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { JsonView } from '~/lib/j/JsonView';
 import { Page } from '~/lib/p/Page';
-import { oneMinute } from '~/lib/date';
+import { oneMinute } from '~/lib/d/date';
 import { Fact as TFact, factProjection } from '~/lib/f/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { PageProps } from '~/shared/lib/types';

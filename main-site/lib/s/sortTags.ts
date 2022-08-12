@@ -1,7 +1,7 @@
 import { differenceWith, filter, uniqBy } from 'lodash-es';
 import { OrderOfIssues } from '~/lib/o/orderOfIssues.projection';
 import { CelebTag } from '~/lib/t/tag.projection';
-import { sortByArray } from '~/lib/sortByArray';
+import { sortByArray } from '~/lib/s/sortByArray';
 
 export function sortTags(tags: CelebTag[], orderOfIssues: OrderOfIssues) {
   const noDupes = uniqBy(

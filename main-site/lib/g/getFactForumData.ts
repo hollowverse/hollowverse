@@ -1,4 +1,4 @@
-import { discoursePsqlQuery } from '~/lib/discoursePsqlQuery';
+import { discoursePsqlQuery } from '~/lib/d/discoursePsqlQuery';
 import { processForumContributorFields } from '~/lib/p/processForumContributorFields';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { log } from '~/shared/lib/log';

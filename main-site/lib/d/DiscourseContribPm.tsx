@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import { ordinal } from '~/lib/ordinal';
+import { ordinal } from '~/lib/o/ordinal';
 import { pluralize } from '~/lib/p/pluralize';
 
 export function DiscourseContribPm(props: {

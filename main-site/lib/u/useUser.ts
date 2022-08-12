@@ -1,5 +1,5 @@
 import { hasCookie } from 'cookies-next';
-import { LOGIN_COOKIE_NAME } from '~/lib/constants';
+import { LOGIN_COOKIE_NAME } from '~/lib/c/constants';
 
 export function redirectToLogin(redirect: string) {
   window.location.href = `/api/login?redirect=${encodeURI(redirect)}`;

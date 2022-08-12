@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MdCheck, MdOutlineIosShare } from 'react-icons/md';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export function useShareButton() {
   const [copied, setCopied] = useState(false);

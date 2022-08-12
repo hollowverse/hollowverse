@@ -1,5 +1,5 @@
 import { NextApiResponse } from 'next';
-import { oneDay } from '~/lib/date';
+import { oneDay } from '~/lib/d/date';
 
 export function setApiCache(res: NextApiResponse) {
   res.setHeader(

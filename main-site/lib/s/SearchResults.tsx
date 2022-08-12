@@ -4,7 +4,7 @@ import {
   CHRContent,
   CHRImage,
 } from '~/lib/c/CelebHorizontalRect';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export function SearchResults(params: NonNullable<SearchResults>) {
   const { results, hasHvResults } = params;

@@ -1,6 +1,6 @@
 import QueryString from 'qs';
-import { hvApiClient } from '~/lib/hvApiClient';
-import { RequestBusStation } from '~/lib/RequestBusStation';
+import { hvApiClient } from '~/lib/h/hvApiClient';
+import { RequestBusStation } from '~/lib/r/RequestBusStation';
 
 type ViewCount = { factId: string; viewCount: string };
 

@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/c/cors';
 import { sanityWriteToken } from '~/lib/s/sanityWriteToken';
 import { getAuthenticatedUserId } from '~/lib/u/user-auth';
-import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
+import { calculateVoteOperations } from '~/lib/c/calculateVoteOperations';
 import { FactVotes, factVotesProjection } from '~/lib/f/fact.projection';
 import { getUserGroq, User, UserVote } from '~/lib/g/getUser.groq';
 import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';

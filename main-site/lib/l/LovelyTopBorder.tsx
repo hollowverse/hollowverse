@@ -1,4 +1,4 @@
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export function LovelyTopBorder(params: { className?: string }) {
   return (

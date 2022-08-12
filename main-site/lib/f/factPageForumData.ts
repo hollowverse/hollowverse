@@ -2,7 +2,7 @@ import {
   contributorFieldsPsql,
   ContributorPsql,
 } from '~/lib/c/contributor.fields';
-import { sql } from '~/lib/sql';
+import { sql } from '~/lib/s/sql';
 
 export type FactPageForumDataPsql = ContributorPsql & { comments: number };
 

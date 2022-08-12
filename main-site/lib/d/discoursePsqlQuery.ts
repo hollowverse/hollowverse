@@ -1,4 +1,4 @@
-import { discourseApiClient } from '~/lib/discourseApiClient';
+import { discourseApiClient } from '~/lib/d/discourseApiClient';
 import { FactPageForumDataPsql } from '~/lib/f/factPageForumData';
 import { TopContributors } from '~/lib/t/celebTopContributors.psql';
 import { Json } from '~/shared/lib/types';

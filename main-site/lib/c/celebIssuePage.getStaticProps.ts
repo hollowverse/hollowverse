@@ -1,6 +1,6 @@
 import { flatten, isEmpty } from 'lodash-es';
-import { customTitleDefinitions } from '~/lib/customTitleDefinitions';
-import { oneDay } from '~/lib/date';
+import { customTitleDefinitions } from '~/lib/c/customTitleDefinitions';
+import { oneDay } from '~/lib/d/date';
 import { getCeleb } from '~/lib/g/getCeleb';
 import { getCelebFacts } from '~/lib/g/getCelebFacts';
 import { getFactIssues } from '~/lib/g/getFactIssues';

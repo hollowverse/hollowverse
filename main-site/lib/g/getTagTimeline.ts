@@ -1,6 +1,6 @@
 import { getYear } from 'date-fns';
 import { invertBy, last, mapValues, toPairs } from 'lodash-es';
-import { parseDate } from '~/lib/date';
+import { parseDate } from '~/lib/d/date';
 import { Fact } from '~/lib/f/fact.projection';
 import { Issue } from '~/lib/i/issue.projection';
 import { CelebTag } from '~/lib/t/tag.projection';

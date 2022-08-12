@@ -3,7 +3,7 @@ import { startsWith } from 'lodash-es';
 import { gaRunReport } from '~/lib/a/analyticsDataClient';
 import { Summaries } from '~/lib/g/getParsedOldContent';
 import { Picture } from '~/lib/p/picture.projection';
-import { sortByArray } from '~/lib/sortByArray';
+import { sortByArray } from '~/lib/s/sortByArray';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type TrendingCelebs = {

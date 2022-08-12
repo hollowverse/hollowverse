@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
 import { PageTransitionSpinner } from '~/lib/p/PageTransitionSpinner';
-import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
+import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/g/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/g/googleAnalyticsUniversal';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';

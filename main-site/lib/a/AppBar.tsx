@@ -4,7 +4,7 @@ import { Link } from '~/lib/l/Link';
 import { LovelyTopBorder } from '~/lib/l/LovelyTopBorder';
 import { Card } from '~/lib/c/Card';
 import { TitledContent } from '~/lib/t/TitledContent';
-import { c } from '~/lib/c';
+import { c } from '~/lib/c/c';
 
 export function Nav(props: { children: ReactNode; navClasses?: string }) {
   return (

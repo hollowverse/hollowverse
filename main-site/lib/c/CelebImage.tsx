@@ -1,7 +1,7 @@
 import Image, { ImageProps } from 'next/image';
 import { Optional } from 'utility-types';
 import { Picture } from '~/lib/p/picture.projection';
-import { placeholderImage } from '~/lib/placeholderImage';
+import { placeholderImage } from '~/lib/p/placeholderImage';
 import { sanityImage } from '~/shared/lib/sanityio';
 
 export type CelebImageProps = (

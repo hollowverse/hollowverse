@@ -1,6 +1,6 @@
 import { UserVote } from '~/lib/g/getUser.groq';
-import { hvApiClient } from '~/lib/hvApiClient';
-import { RequestBusStation } from '~/lib/RequestBusStation';
+import { hvApiClient } from '~/lib/h/hvApiClient';
+import { RequestBusStation } from '~/lib/r/RequestBusStation';
 
 class UserVoteCountProvider {
   results: UserVote[] = [];

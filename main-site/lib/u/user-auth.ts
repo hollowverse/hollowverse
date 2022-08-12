@@ -3,8 +3,8 @@ import crypto from 'crypto';
 import { isString } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import cookie from 'cookie-signature';
-import { oneYear } from '~/lib/date';
-import { LOGIN_COOKIE_NAME } from '~/lib/constants';
+import { oneYear } from '~/lib/d/date';
+import { LOGIN_COOKIE_NAME } from '~/lib/c/constants';
 
 export const discourseSsoSecret = process.env.DISCOURSE_SSO_SECRET as string;
 
