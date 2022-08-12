@@ -2,7 +2,6 @@ import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/lib/AppBar';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { CelebFacts } from '~/lib/CelebFacts';
-import { CelebFactGroupTitle } from '~/lib/CelebPageFacts';
 import { InFeedAd } from '~/lib/InFeedAd';
 import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
 import { Page } from '~/lib/Page';
@@ -98,9 +97,10 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
 
         <CelebFacts
           factGroup={props.facts}
-          celebName={props.celeb.name}
+          celeb={props.celeb}
           slug={props.celeb.slug}
-          title={<CelebFactGroupTitle {...props} />}
+          issue={props.issue}
+          issues={props.issues}
         />
 
         <Card>

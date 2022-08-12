@@ -9,19 +9,13 @@ export type TitledContentProps =
 
 export function TitledContent(props: PropsWithChildren<TitledContentProps>) {
   const stickyTitle = 'stickyTitle' in props ? props.stickyTitle : false;
-  const bottomStickyTitle =
-    'bottomStickyTitle' in props ? props.bottomStickyTitle : false;
-  const isSticked = stickyTitle || bottomStickyTitle;
 
   return (
     <div className="relative z-0">
-      {bottomStickyTitle && props.children}
-
       <div
         className={c({
-          'sticky z-10 shadow-sm': isSticked,
+          'sticky z-10 shadow-sm': stickyTitle,
           'top-0': stickyTitle,
-          'bottom-0': bottomStickyTitle,
         })}
       >
         <LovelyTopBorder />
@@ -34,7 +28,7 @@ export function TitledContent(props: PropsWithChildren<TitledContentProps>) {
         </div>
       </div>
 
-      {(stickyTitle || !isSticked) && props.children}
+      {props.children}
     </div>
   );
 }

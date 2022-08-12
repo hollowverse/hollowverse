@@ -3,13 +3,12 @@ import { StickyAppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { CelebPageFacts } from '~/lib/CelebPageFacts';
 import { CelebPageHero } from '~/lib/celebPageHero';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { FacebookComments } from '~/lib/FacebookComments';
-import { CelebPageFacts } from '~/lib/CelebPageFacts';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
-import { Pagination } from '~/lib/Pagination';
 import { TitledCard } from '~/lib/TitledCard';
 import { TopContributorsWidget } from '~/lib/TopContributorsWidget';
 
