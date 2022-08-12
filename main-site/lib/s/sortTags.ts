@@ -1,6 +1,6 @@
 import { differenceWith, filter, uniqBy } from 'lodash-es';
-import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
-import { CelebTag } from '~/lib/groq/tag.projection';
+import { OrderOfIssues } from '~/lib/o/orderOfIssues.projection';
+import { CelebTag } from '~/lib/t/tag.projection';
 import { sortByArray } from '~/lib/sortByArray';
 
 export function sortTags(tags: CelebTag[], orderOfIssues: OrderOfIssues) {

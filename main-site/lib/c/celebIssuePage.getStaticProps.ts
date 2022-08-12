@@ -7,8 +7,8 @@ import { getFactIssues } from '~/lib/g/getFactIssues';
 import { getIssue } from '~/lib/g/getIssue';
 import { getTagTimeline } from '~/lib/g/getTagTimeline';
 import { transformFact } from '~/lib/t/transformFact';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
-import { tagIsVerb } from '~/lib/language/tagIsVerb';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
+import { tagIsVerb } from '~/lib/t/tagIsVerb';
 import { PageProps } from '~/shared/lib/types';
 
 export type CelebIssuePageProps = PageProps<typeof getStaticProps>;

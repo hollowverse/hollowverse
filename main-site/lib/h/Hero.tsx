@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { CelebImage } from '~/lib/c/CelebImage';
-import { Picture } from '~/lib/groq/picture.projection';
+import { Picture } from '~/lib/p/picture.projection';
 
 export function HeroTitleContainer(props: PropsWithChildren<{}>) {
   return <h1 className="flex flex-col gap-1">{props.children}</h1>;

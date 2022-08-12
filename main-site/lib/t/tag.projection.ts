@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Issue, issueProjection } from '~/lib/groq/issue.projection';
+import { Issue, issueProjection } from '~/lib/i/issue.projection';
 
 export type Tag = {
   _id: string;

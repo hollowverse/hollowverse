@@ -9,7 +9,7 @@ import { sanityWriteToken } from '~/lib/s/sanityWriteToken';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
 import { oneMonth } from '~/lib/date';
 import { FactVotes, factVotesProjection } from '~/lib/f/fact.projection';
-import { User, UserVote } from '~/lib/groq/getUser.groq';
+import { User, UserVote } from '~/lib/g/getUser.groq';
 import { redis } from '~/lib/redis';
 import { log } from '~/shared/lib/log';
 import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';

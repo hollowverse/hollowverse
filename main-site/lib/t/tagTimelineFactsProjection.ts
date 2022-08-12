@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
+import { CelebTag, celebTagProjection } from '~/lib/t/tag.projection';
 
 export type TagTimelineFact = {
   tags: CelebTag[];

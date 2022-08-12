@@ -17,7 +17,7 @@ import {
   HeroTopContainer,
 } from '~/lib/h/Hero';
 import { TagPageProps } from '~/lib/c/celebTagPage.getStaticProps';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 
 // export default function TagPage(props: TagPageProps) {
 export default function TagPage(props: any) {

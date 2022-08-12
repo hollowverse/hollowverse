@@ -6,7 +6,7 @@ import { sanityWriteToken } from '~/lib/s/sanityWriteToken';
 import { getAuthenticatedUserId } from '~/lib/u/user-auth';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
 import { FactVotes, factVotesProjection } from '~/lib/f/fact.projection';
-import { getUserGroq, User, UserVote } from '~/lib/groq/getUser.groq';
+import { getUserGroq, User, UserVote } from '~/lib/g/getUser.groq';
 import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';
 import { v4 as uuid } from 'uuid';
 

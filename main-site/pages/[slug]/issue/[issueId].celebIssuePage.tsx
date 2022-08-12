@@ -18,8 +18,8 @@ import {
   HeroTopContainer,
 } from '~/lib/h/Hero';
 import { CelebIssuePageProps } from '~/lib/c/celebIssuePage.getStaticProps';
-import { Issue } from '~/lib/groq/issue.projection';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { Issue } from '~/lib/i/issue.projection';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 
 export function CelebIssueSelector(props: {
   issue: Issue;

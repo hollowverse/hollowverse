@@ -2,8 +2,8 @@ import { CelebImage } from '~/lib/c/CelebImage';
 import { FactGroup } from '~/lib/f/FactGroup';
 import { IssueSelector, noIssueFilter } from '~/lib/i/IssueSelector';
 import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
-import { Issue } from '~/lib/groq/issue.projection';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { Issue } from '~/lib/i/issue.projection';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 
 export function NavigationTip(props: { celebName: string; issue?: Issue }) {
   return (

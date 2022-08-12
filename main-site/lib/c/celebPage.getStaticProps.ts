@@ -10,7 +10,7 @@ import {
   getPaginationRange,
 } from '~/lib/g/getPaginationRange';
 import { transformFact } from '~/lib/t/transformFact';
-import { Issue } from '~/lib/groq/issue.projection';
+import { Issue } from '~/lib/i/issue.projection';
 import { log } from '~/shared/lib/log';
 import { PageProps } from '~/shared/lib/types';
 

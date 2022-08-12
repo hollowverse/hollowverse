@@ -2,7 +2,7 @@ import matter from 'gray-matter';
 import groq from 'groq';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
-import { Picture, pictureProjection } from '~/lib/groq/picture.projection';
+import { Picture, pictureProjection } from '~/lib/p/picture.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export type Summaries = {

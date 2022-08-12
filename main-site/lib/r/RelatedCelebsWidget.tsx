@@ -1,8 +1,8 @@
 import { isEmpty } from 'lodash-es';
 import { useHvApi } from '~/lib/u/useHvApi';
 import { CHRList } from '~/lib/c/CHRList';
-import { CelebTag } from '~/lib/groq/tag.projection';
-import { tagIsVerb } from '~/lib/language/tagIsVerb';
+import { CelebTag } from '~/lib/t/tag.projection';
+import { tagIsVerb } from '~/lib/t/tagIsVerb';
 import {
   RelatedCelebs,
   RelatedCelebsQueryParams,

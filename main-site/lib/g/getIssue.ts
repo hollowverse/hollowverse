@@ -1,5 +1,5 @@
 import groq from 'groq';
-import { Issue } from '~/lib/groq/issue.projection';
+import { Issue } from '~/lib/i/issue.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export async function getIssue(issueId: string) {

@@ -1,8 +1,8 @@
 import groq from 'groq';
 import { FactTypes } from '~/lib/f/fact.projection';
-import { Issue } from '~/lib/groq/issue.projection';
-import { Picture } from '~/lib/groq/picture.projection';
-import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
+import { Issue } from '~/lib/i/issue.projection';
+import { Picture } from '~/lib/p/picture.projection';
+import { CelebTag, celebTagProjection } from '~/lib/t/tag.projection';
 
 export type ContentChange = {
   _id: string;

@@ -1,5 +1,5 @@
 import { countBy, orderBy, uniqBy } from 'lodash-es';
-import { CelebTag } from '~/lib/groq/tag.projection';
+import { CelebTag } from '~/lib/t/tag.projection';
 
 export function getIssuePageTags(
   tags: CelebTag[],

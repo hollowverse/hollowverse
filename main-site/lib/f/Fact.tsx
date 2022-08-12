@@ -10,7 +10,7 @@ import { getFactIssue } from '~/lib/getFactIssue';
 import { getSourceHost } from '~/lib/getSourceHost';
 import { Celeb } from '~/lib/c/celeb.projection';
 import { Fact as TFact } from '~/lib/f/fact.projection';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 
 function UnoptimizedImage(
   props: PropsWithChildren<{

@@ -9,7 +9,7 @@ import {
 import { transformFact } from '~/lib/t/transformFact';
 import { celebProjection } from '~/lib/c/celeb.projection';
 import { factProjection, FactWithCeleb } from '~/lib/f/fact.projection';
-import { Issue, issueProjection } from '~/lib/groq/issue.projection';
+import { Issue, issueProjection } from '~/lib/i/issue.projection';
 import { sortByArray } from '~/lib/sortByArray';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';

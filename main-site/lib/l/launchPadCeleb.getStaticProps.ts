@@ -8,7 +8,7 @@ import {
   uniqBy,
 } from 'lodash-es';
 import { oneDay } from '~/lib/date';
-import { Tag, tagProjection } from '~/lib/groq/tag.projection';
+import { Tag, tagProjection } from '~/lib/t/tag.projection';
 import { PageProps } from '~/shared/lib/types';
 import { log } from '~/shared/lib/log';
 import { sanityClient } from '~/shared/lib/sanityio';

@@ -14,7 +14,7 @@ import { getFactIssue } from '~/lib/getFactIssue';
 import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { getFactPageTitle } from '~/lib/getFactPageTitle';
 import { FactPageProps } from '~/lib/f/factPage.getStaticProps';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 import { Link } from '~/lib/l/Link';
 import { FiLink } from 'react-icons/fi';
 

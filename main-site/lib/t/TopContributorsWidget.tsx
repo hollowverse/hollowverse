@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { ContributorBox } from '~/lib/c/ContributorBox';
 import { useHvApi } from '~/lib/u/useHvApi';
 import { TitledCard } from '~/lib/t/TitledCard';
-import { pluralize } from '~/lib/language/pluralize';
+import { pluralize } from '~/lib/p/pluralize';
 import {
   TopContributorsQueryParams,
   TopContributorsResults,

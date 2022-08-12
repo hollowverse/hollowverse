@@ -1,6 +1,6 @@
 import groq from 'groq';
-import { orderOfIssuesGroq } from '~/lib/groq/orderOfIssues.groq';
-import { OrderOfIssues } from '~/lib/groq/orderOfIssues.projection';
+import { orderOfIssuesGroq } from '~/lib/o/orderOfIssues.groq';
+import { OrderOfIssues } from '~/lib/o/orderOfIssues.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 
 export async function getOrderOfIssues() {

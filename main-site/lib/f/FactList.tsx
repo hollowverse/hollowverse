@@ -6,7 +6,7 @@ import { InFeedAd } from '~/lib/i/InFeedAd';
 import { TitledCard } from '~/lib/t/TitledCard';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { FactWithCeleb } from '~/lib/f/fact.projection';
-import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 
 export function FactList(props: { list: FactWithCeleb[] }) {
   return (

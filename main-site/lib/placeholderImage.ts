@@ -1,4 +1,4 @@
-import { Picture } from '~/lib/groq/picture.projection';
+import { Picture } from '~/lib/p/picture.projection';
 
 export const placeholderImage = {
   _id: 'image-98dc320a756a3f0f5dc40a59ced1194619719a60-225x225-png',

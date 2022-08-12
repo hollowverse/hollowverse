@@ -1,6 +1,6 @@
 import Image, { ImageProps } from 'next/image';
 import { Optional } from 'utility-types';
-import { Picture } from '~/lib/groq/picture.projection';
+import { Picture } from '~/lib/p/picture.projection';
 import { placeholderImage } from '~/lib/placeholderImage';
 import { sanityImage } from '~/shared/lib/sanityio';
 

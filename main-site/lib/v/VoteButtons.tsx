@@ -15,7 +15,7 @@ import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
 import { oneMonth, oneYear } from '~/lib/date';
 import { factVoteCountProvider } from '~/lib/FactVoteCountProvider';
 import { Fact } from '~/lib/f/fact.projection';
-import { UserVote } from '~/lib/groq/getUser.groq';
+import { UserVote } from '~/lib/g/getUser.groq';
 import { hvApiClient, post } from '~/lib/hvApiClient';
 import { userVoteCountProvider } from '~/lib/UserVoteCountProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';

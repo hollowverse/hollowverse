@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { Celeb } from '~/lib/c/celeb.projection';
-import { CelebTag, celebTagProjection } from '~/lib/groq/tag.projection';
+import { CelebTag, celebTagProjection } from '~/lib/t/tag.projection';
 
 export type FactVotes = {
   _id: string;

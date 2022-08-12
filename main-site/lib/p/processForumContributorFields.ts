@@ -1,7 +1,7 @@
 import { startsWith } from 'lodash-es';
 import randomcolor from 'randomcolor';
 import truncate from 'truncate-html';
-import { ContributorPsql } from '~/lib/psql/contributor.fields';
+import { ContributorPsql } from '~/lib/c/contributor.fields';
 
 export type Contributor = ReturnType<typeof processForumContributorFields>;
 
