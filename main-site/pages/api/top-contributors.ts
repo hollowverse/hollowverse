@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/c/cors';
-import { discoursePsqlQuery } from '~/lib/d/discoursePsqlQuery';
-import { processForumContributorFields } from '~/lib/p/processForumContributorFields';
-import { TopContributors } from '~/lib/t/celebTopContributors.psql';
-import { setApiCache } from '~/lib/s/setApiCache';
+import { cors } from '~/lib/cors';
+import { discoursePsqlQuery } from '~/lib/discoursePsqlQuery';
+import { processForumContributorFields } from '~/lib/processForumContributorFields';
+import { TopContributors } from '~/lib/celebTopContributors.psql';
+import { setApiCache } from '~/lib/setApiCache';
 import { log } from '~/shared/lib/log';
 
 export type TopContributorsResults = Awaited<

@@ -1,21 +1,21 @@
-import { CelebImage } from '~/lib/c/CelebImage';
-import { ContributorBox } from '~/lib/c/ContributorBox';
-import { FacebookComments } from '~/lib/f/FacebookComments';
-import { Fact } from '~/lib/f/Fact';
-import { useGaEventRecorder } from '~/lib/u/useGaEventRecorder';
-import { InFeedAd } from '~/lib/i/InFeedAd';
-import { LovelyTopBorder } from '~/lib/l/LovelyTopBorder';
-import { Page } from '~/lib/p/Page';
-import { RelatedCelebsWidget } from '~/lib/r/RelatedCelebsWidget';
-import { Card } from '~/lib/c/Card';
-import { ReturnToCelebViewsButton } from '~/lib/r/ReturnToCelebViewsButton';
-import { TitledCard } from '~/lib/t/TitledCard';
-import { getFactIssue } from '~/lib/g/getFactIssue';
-import { getFactPagePathname } from '~/lib/g/getFactPagePathname';
-import { getFactPageTitle } from '~/lib/g/getFactPageTitle';
-import { FactPageProps } from '~/lib/f/factPage.getStaticProps';
-import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
-import { Link } from '~/lib/l/Link';
+import { CelebImage } from '~/lib/CelebImage';
+import { ContributorBox } from '~/lib/ContributorBox';
+import { FacebookComments } from '~/lib/FacebookComments';
+import { Fact } from '~/lib/Fact';
+import { useGaEventRecorder } from '~/lib/useGaEventRecorder';
+import { InFeedAd } from '~/lib/InFeedAd';
+import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
+import { Page } from '~/lib/Page';
+import { RelatedCelebsWidget } from '~/lib/RelatedCelebsWidget';
+import { Card } from '~/lib/Card';
+import { ReturnToCelebViewsButton } from '~/lib/ReturnToCelebViewsButton';
+import { TitledCard } from '~/lib/TitledCard';
+import { getFactIssue } from '~/lib/getFactIssue';
+import { getFactPagePathname } from '~/lib/getFactPagePathname';
+import { getFactPageTitle } from '~/lib/getFactPageTitle';
+import { FactPageProps } from '~/lib/factPage.getStaticProps';
+import { celebNameToIssue } from '~/lib/celebNameToIssue';
+import { Link } from '~/lib/Link';
 import { FiLink } from 'react-icons/fi';
 
 export default function FactPage(props: FactPageProps) {
@@ -132,5 +132,5 @@ export default function FactPage(props: FactPageProps) {
   }
 }
 
-export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
-export { getStaticProps } from '~/lib/f/factPage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';
+export { getStaticProps } from '~/lib/factPage.getStaticProps';

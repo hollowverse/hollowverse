@@ -1,10 +1,10 @@
 import { getCookie } from 'cookies-next';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { HV_TMP_ID_COOKIE_NAME } from '~/lib/u/useIdentifyingCookie';
-import { cors } from '~/lib/c/cors';
-import { HAS_VOTED_COOKIE_NAME } from '~/lib/c/constants';
-import { User } from '~/lib/g/getUser.groq';
-import { redis } from '~/lib/r/redis';
+import { HV_TMP_ID_COOKIE_NAME } from '~/lib/useIdentifyingCookie';
+import { cors } from '~/lib/cors';
+import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
+import { User } from '~/lib/getUser.groq';
+import { redis } from '~/lib/redis';
 
 export default async function getUserVotes(
   req: NextApiRequest,

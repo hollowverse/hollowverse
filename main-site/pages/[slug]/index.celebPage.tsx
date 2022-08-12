@@ -1,17 +1,17 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/lib/a/AppBar';
-import { c } from '~/lib/c/c';
-import { Card } from '~/lib/c/Card';
-import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
-import { CelebPageHero } from '~/lib/c/celebPageHero';
-import { ContributeCta, TweetItAtUs } from '~/lib/c/ContributeCta';
-import { FacebookComments } from '~/lib/f/FacebookComments';
-import { Facts } from '~/lib/f/Facts';
-import { Md } from '~/lib/m/Md';
-import { Page } from '~/lib/p/Page';
-import { Pagination } from '~/lib/p/Pagination';
-import { TitledCard } from '~/lib/t/TitledCard';
-import { TopContributorsWidget } from '~/lib/t/TopContributorsWidget';
+import { StickyAppBar } from '~/lib/AppBar';
+import { c } from '~/lib/c';
+import { Card } from '~/lib/Card';
+import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { CelebPageHero } from '~/lib/celebPageHero';
+import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
+import { FacebookComments } from '~/lib/FacebookComments';
+import { Facts } from '~/lib/Facts';
+import { Md } from '~/lib/Md';
+import { Page } from '~/lib/Page';
+import { Pagination } from '~/lib/Pagination';
+import { TitledCard } from '~/lib/TitledCard';
+import { TopContributorsWidget } from '~/lib/TopContributorsWidget';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -86,5 +86,5 @@ export default function Celeb(props: CelebPageProps) {
   );
 }
 
-export { getStaticProps } from '~/lib/c/celebPage.getStaticProps';
-export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticProps } from '~/lib/celebPage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';

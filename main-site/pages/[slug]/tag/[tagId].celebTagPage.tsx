@@ -1,13 +1,13 @@
-import { StickyAppBar } from '~/lib/a/AppBar';
-import { FactGroup } from '~/lib/f/FactGroup';
-import { useGaEventRecorder } from '~/lib/u/useGaEventRecorder';
-import { InFeedAd } from '~/lib/i/InFeedAd';
-import { IssueSelector, noIssueFilter } from '~/lib/i/IssueSelector';
-import { Page } from '~/lib/p/Page';
-import { RelatedCelebsWidget } from '~/lib/r/RelatedCelebsWidget';
-import { InBetweenContentShareButton } from '~/lib/s/ShareButton';
-import { TagCollection } from '~/lib/t/TagCollection';
-import { TitleSeparator } from '~/lib/t/TitleSeparator';
+import { StickyAppBar } from '~/lib/AppBar';
+import { FactGroup } from '~/lib/FactGroup';
+import { useGaEventRecorder } from '~/lib/useGaEventRecorder';
+import { InFeedAd } from '~/lib/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
+import { Page } from '~/lib/Page';
+import { RelatedCelebsWidget } from '~/lib/RelatedCelebsWidget';
+import { InBetweenContentShareButton } from '~/lib/ShareButton';
+import { TagCollection } from '~/lib/TagCollection';
+import { TitleSeparator } from '~/lib/TitleSeparator';
 import {
   Hero,
   HeroCelebImage,
@@ -15,9 +15,9 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/lib/h/Hero';
-import { TagPageProps } from '~/lib/c/celebTagPage.getStaticProps';
-import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
+} from '~/lib/Hero';
+import { TagPageProps } from '~/lib/celebTagPage.getStaticProps';
+import { celebNameToIssue } from '~/lib/celebNameToIssue';
 
 // export default function TagPage(props: TagPageProps) {
 export default function TagPage(props: any) {
@@ -105,5 +105,5 @@ export default function TagPage(props: any) {
   );
 }
 
-export { getStaticProps } from '~/lib/c/celebTagPage.getStaticProps';
-export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticProps } from '~/lib/celebTagPage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';

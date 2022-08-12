@@ -1,4 +1,4 @@
-import { apiHandlerWithErrorLogging } from '~/lib/a/apiHandlerWithErrorLogging';
+import { apiHandlerWithErrorLogging } from '~/lib/apiHandlerWithErrorLogging';
 
 const handler = async () => {
   throw new Error('API throw error test');

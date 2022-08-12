@@ -1,14 +1,14 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/lib/a/AppBar';
-import { ContributeCta, TweetItAtUs } from '~/lib/c/ContributeCta';
-import { FactGroup } from '~/lib/f/FactGroup';
-import { CelebFactGroupTitle, NavigationTip } from '~/lib/f/Facts';
-import { InFeedAd } from '~/lib/i/InFeedAd';
-import { IssueSelector, noIssueFilter } from '~/lib/i/IssueSelector';
-import { Page } from '~/lib/p/Page';
-import { RelatedCelebsWidget } from '~/lib/r/RelatedCelebsWidget';
-import { TagCollection } from '~/lib/t/TagCollection';
-import { Card } from '~/lib/c/Card';
+import { StickyAppBar } from '~/lib/AppBar';
+import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
+import { FactGroup } from '~/lib/FactGroup';
+import { CelebFactGroupTitle, NavigationTip } from '~/lib/Facts';
+import { InFeedAd } from '~/lib/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
+import { Page } from '~/lib/Page';
+import { RelatedCelebsWidget } from '~/lib/RelatedCelebsWidget';
+import { TagCollection } from '~/lib/TagCollection';
+import { Card } from '~/lib/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -16,10 +16,10 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/lib/h/Hero';
-import { CelebIssuePageProps } from '~/lib/c/celebIssuePage.getStaticProps';
-import { Issue } from '~/lib/i/issue.projection';
-import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
+} from '~/lib/Hero';
+import { CelebIssuePageProps } from '~/lib/celebIssuePage.getStaticProps';
+import { Issue } from '~/lib/issue.projection';
+import { celebNameToIssue } from '~/lib/celebNameToIssue';
 
 export function CelebIssueSelector(props: {
   issue: Issue;
@@ -150,5 +150,5 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
   }
 }
 
-export { getStaticProps } from '~/lib/c/celebIssuePage.getStaticProps';
-export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticProps } from '~/lib/celebIssuePage.getStaticProps';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';

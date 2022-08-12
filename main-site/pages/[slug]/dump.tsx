@@ -1,8 +1,8 @@
 import groq from 'groq';
-import { JsonView } from '~/lib/j/JsonView';
-import { Page } from '~/lib/p/Page';
-import { oneMinute } from '~/lib/d/date';
-import { Fact as TFact, factProjection } from '~/lib/f/fact.projection';
+import { JsonView } from '~/lib/JsonView';
+import { Page } from '~/lib/Page';
+import { oneMinute } from '~/lib/date';
+import { Fact as TFact, factProjection } from '~/lib/fact.projection';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { PageProps } from '~/shared/lib/types';
 
@@ -42,4 +42,4 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
   };
 }
 
-export { getStaticPaths } from '~/lib/d/default.getStaticPaths';
+export { getStaticPaths } from '~/lib/default.getStaticPaths';

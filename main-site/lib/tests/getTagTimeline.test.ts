@@ -1,4 +1,4 @@
-import { sortTags } from '~/lib/s/sortTags';
+import { sortTags } from '~/lib/sortTags';
 import { mockOrderOfIssues } from '~/lib/tests/mockOrderOfIssues';
 
 test('sortTags to remove dupes', () => {

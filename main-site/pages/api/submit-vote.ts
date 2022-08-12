@@ -1,12 +1,12 @@
 import groq from 'groq';
 import { isEmpty, remove } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/c/cors';
-import { sanityWriteToken } from '~/lib/s/sanityWriteToken';
-import { getAuthenticatedUserId } from '~/lib/u/user-auth';
-import { calculateVoteOperations } from '~/lib/c/calculateVoteOperations';
-import { FactVotes, factVotesProjection } from '~/lib/f/fact.projection';
-import { getUserGroq, User, UserVote } from '~/lib/g/getUser.groq';
+import { cors } from '~/lib/cors';
+import { sanityWriteToken } from '~/lib/sanityWriteToken';
+import { getAuthenticatedUserId } from '~/lib/user-auth';
+import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
+import { FactVotes, factVotesProjection } from '~/lib/fact.projection';
+import { getUserGroq, User, UserVote } from '~/lib/getUser.groq';
 import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';
 import { v4 as uuid } from 'uuid';
 

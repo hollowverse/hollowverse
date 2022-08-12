@@ -1,4 +1,4 @@
-import { CelebTag } from '~/lib/t/tag.projection';
+import { CelebTag } from '~/lib/tag.projection';
 
 export const mockTags: CelebTag[] = [
   {

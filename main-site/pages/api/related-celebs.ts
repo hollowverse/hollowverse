@@ -1,17 +1,17 @@
 import groq from 'groq';
 import { shuffle } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/c/cors';
-import { groupCelebTags } from '~/lib/g/groupCelebTags';
-import { orderOfIssuesGroq } from '~/lib/o/orderOfIssues.groq';
-import { OrderOfIssues } from '~/lib/o/orderOfIssues.projection';
+import { cors } from '~/lib/cors';
+import { groupCelebTags } from '~/lib/groupCelebTags';
+import { orderOfIssuesGroq } from '~/lib/orderOfIssues.groq';
+import { OrderOfIssues } from '~/lib/orderOfIssues.projection';
 import {
   RelatedCeleb,
   relatedCelebsGroq,
   RelatedCelebsGroq,
-} from '~/lib/r/relatedCelebs.groq';
-import { Tag, tagProjection } from '~/lib/t/tag.projection';
-import { setApiCache } from '~/lib/s/setApiCache';
+} from '~/lib/relatedCelebs.groq';
+import { Tag, tagProjection } from '~/lib/tag.projection';
+import { setApiCache } from '~/lib/setApiCache';
 import { sanityClient } from '~/shared/lib/sanityio';
 import { Nullish } from '~/shared/lib/types';
 

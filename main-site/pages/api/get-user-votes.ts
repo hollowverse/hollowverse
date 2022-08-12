@@ -1,8 +1,8 @@
 import groq from 'groq';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { cors } from '~/lib/c/cors';
-import { getAuthenticatedUserId } from '~/lib/u/user-auth';
-import { UserVote } from '~/lib/g/getUser.groq';
+import { cors } from '~/lib/cors';
+import { getAuthenticatedUserId } from '~/lib/user-auth';
+import { UserVote } from '~/lib/getUser.groq';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
 export default async function getUserVotes(

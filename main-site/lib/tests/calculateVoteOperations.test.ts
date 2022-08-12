@@ -1,4 +1,4 @@
-import { calculateVoteOperations } from '~/lib/c/calculateVoteOperations';
+import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
 
 function vote(choice: 'like' | 'dislike') {
   return { factId: '1', choice };
