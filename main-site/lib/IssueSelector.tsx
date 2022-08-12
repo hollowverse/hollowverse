@@ -7,7 +7,7 @@ import { PropsWithChildren } from 'react';
 export const noIssueFilter: Issue = {
   _id: 'all-issue-filter',
   isAffiliation: true,
-  name: 'All Issues',
+  name: 'All Views',
 };
 
 export function IssueSelector(props: {
@@ -22,14 +22,14 @@ export function IssueSelector(props: {
 
   if (useCardTitleStyle) {
     return (
-      <div className="no-scrollbar -my-2 flex items-center gap-4 overflow-scroll rounded-l-md bg-gray-50 p-2 pl-4 pr-10 text-sm font-bold shadow-inner">
+      <div className="no-scrollbar flex items-center gap-4 overflow-scroll rounded-l-md p-2 pl-4 pr-10 text-base font-bold text-gray-50">
         {allIssues.map((i) => {
           return (
             <IssueLink
               key={i._id}
               i={i}
               className={c('whitespace-nowrap', {
-                'h-link underline': props.isSelected(i),
+                'text-blue-300 underline': props.isSelected(i),
               })}
             >
               {i.name}

@@ -1,11 +1,8 @@
-import { CelebImage } from '~/lib/CelebImage';
 import { CelebFacts } from '~/lib/CelebFacts';
-import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
-import { Issue } from '~/lib/issue.projection';
-import { celebNameToIssue } from '~/lib/celebNameToIssue';
-import { Pagination } from '~/lib/Pagination';
+import { noIssueFilter } from '~/lib/IssueSelector';
 import { NavigationTip } from '~/lib/NavigationTip';
+import { Pagination } from '~/lib/Pagination';
 
 export const CelebPageFacts = (props: CelebPageProps) => {
   return (
