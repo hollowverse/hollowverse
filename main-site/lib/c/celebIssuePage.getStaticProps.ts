@@ -1,4 +1,5 @@
 import { flatten, isEmpty } from 'lodash-es';
+import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 import { customTitleDefinitions } from '~/lib/c/customTitleDefinitions';
 import { oneDay } from '~/lib/d/date';
 import { getCeleb } from '~/lib/g/getCeleb';
@@ -6,9 +7,8 @@ import { getCelebFacts } from '~/lib/g/getCelebFacts';
 import { getFactIssues } from '~/lib/g/getFactIssues';
 import { getIssue } from '~/lib/g/getIssue';
 import { getTagTimeline } from '~/lib/g/getTagTimeline';
-import { transformFact } from '~/lib/t/transformFact';
-import { celebNameToIssue } from '~/lib/c/celebNameToIssue';
 import { tagIsVerb } from '~/lib/t/tagIsVerb';
+import { transformFact } from '~/lib/t/transformFact';
 import { PageProps } from '~/shared/lib/types';
 
 export type CelebIssuePageProps = PageProps<typeof getStaticProps>;

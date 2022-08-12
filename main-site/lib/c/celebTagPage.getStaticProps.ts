@@ -1,9 +1,6 @@
-import { oneDay } from '~/lib/d/date';
 import { getCeleb } from '~/lib/g/getCeleb';
 import { getCelebFacts } from '~/lib/g/getCelebFacts';
-import { getFactIssues } from '~/lib/g/getFactIssues';
 import { getTagTimeline, TagTimeline } from '~/lib/g/getTagTimeline';
-import { transformFact } from '~/lib/t/transformFact';
 import { log } from '~/shared/lib/log';
 import { PageProps } from '~/shared/lib/types';
 

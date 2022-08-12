@@ -3,14 +3,14 @@ import { oneDay } from '~/lib/d/date';
 import { getCeleb } from '~/lib/g/getCeleb';
 import { getCelebFacts } from '~/lib/g/getCelebFacts';
 import { getFactIssues } from '~/lib/g/getFactIssues';
-import { getParsedOldContent } from '~/lib/g/getParsedOldContent';
-import { getTagTimeline } from '~/lib/g/getTagTimeline';
 import {
   getPaginationProps,
   getPaginationRange,
 } from '~/lib/g/getPaginationRange';
-import { transformFact } from '~/lib/t/transformFact';
+import { getParsedOldContent } from '~/lib/g/getParsedOldContent';
+import { getTagTimeline } from '~/lib/g/getTagTimeline';
 import { Issue } from '~/lib/i/issue.projection';
+import { transformFact } from '~/lib/t/transformFact';
 import { log } from '~/shared/lib/log';
 import { PageProps } from '~/shared/lib/types';
 

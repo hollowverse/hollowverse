@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./{components,pages}/**/*.{js,ts,jsx,tsx}'],
+  content: ['./{lib,pages}/**/*.{js,ts,jsx,tsx}'],
   variants: {
     extend: {
       margin: ['last'],

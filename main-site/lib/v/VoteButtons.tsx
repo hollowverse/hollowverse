@@ -6,20 +6,17 @@ import {
   FaThumbsDown,
   FaThumbsUp,
 } from 'react-icons/fa';
-import { FooterButton } from '~/lib/f/FactFooter';
-import { useIdentifyingCookie } from '~/lib/u/useIdentifyingCookie';
-import { redirectToLogin, useUser } from '~/lib/u/useUser';
 import { c } from '~/lib/c/c';
 import { calculateVoteOperations } from '~/lib/c/calculateVoteOperations';
 import { HAS_VOTED_COOKIE_NAME } from '~/lib/c/constants';
-import { oneMonth, oneYear } from '~/lib/d/date';
-import { factVoteCountProvider } from '~/lib/f/FactVoteCountProvider';
+import { oneMonth } from '~/lib/d/date';
 import { Fact } from '~/lib/f/fact.projection';
+import { FooterButton } from '~/lib/f/FactFooter';
+import { factVoteCountProvider } from '~/lib/f/FactVoteCountProvider';
 import { UserVote } from '~/lib/g/getUser.groq';
 import { hvApiClient, post } from '~/lib/h/hvApiClient';
 import { userVoteCountProvider } from '~/lib/u/UserVoteCountProvider';
 import { FactUserVote } from '~/pages/api/submit-vote';
-import { log } from '~/shared/lib/log';
 
 export function VoteButtons(props: { fact: Fact }) {
   const [choice, setChoice] = useState<'like' | 'dislike' | null>(null);

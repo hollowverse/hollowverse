@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { isEmpty } from 'lodash-es';
 import React from 'react';
-import { InFeedAd } from '~/lib/i/InFeedAd';
-import { TitledCard } from '~/lib/t/TitledCard';
 import { c } from '~/lib/c/c';
 import { CelebPageProps } from '~/lib/c/celebPage.getStaticProps';
+import { InFeedAd } from '~/lib/i/InFeedAd';
+import { TitledCard } from '~/lib/t/TitledCard';
 import s from '~/styles/styles.module.scss';
 
 export const Article = (
