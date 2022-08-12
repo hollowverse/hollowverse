@@ -3,7 +3,7 @@ import groq from 'groq';
 import { isEmpty, remove } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { v4 as uuid } from 'uuid';
-import { HV_TMP_ID_COOKIE_NAME } from '~/components/hooks/useIdentifyingCookie';
+import { HV_TMP_ID_COOKIE_NAME } from '~/components/u/useIdentifyingCookie';
 import { cors } from '~/lib/api-route-helpers/cors';
 import { sanityWriteToken } from '~/lib/api-route-helpers/sanityWriteToken';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';

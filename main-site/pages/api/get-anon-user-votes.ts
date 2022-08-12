@@ -1,6 +1,6 @@
 import { getCookie } from 'cookies-next';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { HV_TMP_ID_COOKIE_NAME } from '~/components/hooks/useIdentifyingCookie';
+import { HV_TMP_ID_COOKIE_NAME } from '~/components/u/useIdentifyingCookie';
 import { cors } from '~/lib/api-route-helpers/cors';
 import { HAS_VOTED_COOKIE_NAME } from '~/lib/constants';
 import { User } from '~/lib/groq/getUser.groq';

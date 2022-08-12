@@ -1,14 +1,14 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
-import { FactGroup } from '~/components/FactGroup';
-import { CelebFactGroupTitle, NavigationTip } from '~/components/Facts';
-import { InFeedAd } from '~/components/InFeedAd';
-import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
-import { Page } from '~/components/Page';
-import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
-import { TagCollection } from '~/components/TagCollection';
-import { Card } from '~/components/ui/Card';
+import { StickyAppBar } from '~/lib/a/AppBar';
+import { ContributeCta, TweetItAtUs } from '~/components/c/ContributeCta';
+import { FactGroup } from '~/components/f/FactGroup';
+import { CelebFactGroupTitle, NavigationTip } from '~/components/f/Facts';
+import { InFeedAd } from '~/components/i/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/components/i/IssueSelector';
+import { Page } from '~/components/p/Page';
+import { RelatedCelebsWidget } from '~/components/r/RelatedCelebsWidget';
+import { TagCollection } from '~/components/t/TagCollection';
+import { Card } from '~/components/c/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -16,7 +16,7 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/components/ui/Hero';
+} from '~/components/h/Hero';
 import { CelebIssuePageProps } from '~/lib/getStatic/celebIssuePage.getStaticProps';
 import { Issue } from '~/lib/groq/issue.projection';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';

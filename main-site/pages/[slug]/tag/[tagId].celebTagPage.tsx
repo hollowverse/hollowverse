@@ -1,13 +1,13 @@
-import { StickyAppBar } from '~/components/AppBar';
-import { FactGroup } from '~/components/FactGroup';
-import { useGaEventRecorder } from '~/components/hooks/useGaEventRecorder';
-import { InFeedAd } from '~/components/InFeedAd';
-import { IssueSelector, noIssueFilter } from '~/components/IssueSelector';
-import { Page } from '~/components/Page';
-import { RelatedCelebsWidget } from '~/components/RelatedCelebsWidget';
-import { InBetweenContentShareButton } from '~/components/ShareButton';
-import { TagCollection } from '~/components/TagCollection';
-import { TitleSeparator } from '~/components/TitleSeparator';
+import { StickyAppBar } from '~/lib/a/AppBar';
+import { FactGroup } from '~/components/f/FactGroup';
+import { useGaEventRecorder } from '~/components/u/useGaEventRecorder';
+import { InFeedAd } from '~/components/i/InFeedAd';
+import { IssueSelector, noIssueFilter } from '~/components/i/IssueSelector';
+import { Page } from '~/components/p/Page';
+import { RelatedCelebsWidget } from '~/components/r/RelatedCelebsWidget';
+import { InBetweenContentShareButton } from '~/components/s/ShareButton';
+import { TagCollection } from '~/components/t/TagCollection';
+import { TitleSeparator } from '~/components/t/TitleSeparator';
 import {
   Hero,
   HeroCelebImage,
@@ -15,7 +15,7 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/components/ui/Hero';
+} from '~/components/h/Hero';
 import { TagPageProps } from '~/lib/getStatic/celebTagPage.getStaticProps';
 import { celebNameToIssue } from '~/lib/language/celebNameToIssue';
 

@@ -1,6 +1,6 @@
 import { isString } from 'lodash-es';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { apiHandlerWithErrorLogging } from '~/lib/api-route-helpers/apiHandlerWithErrorLogging';
+import { apiHandlerWithErrorLogging } from '~/lib/a/apiHandlerWithErrorLogging';
 import { cors } from '~/lib/api-route-helpers/cors';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';

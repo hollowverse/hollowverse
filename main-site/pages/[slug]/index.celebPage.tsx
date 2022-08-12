@@ -1,16 +1,13 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/components/AppBar';
-import { ContributeCta, TweetItAtUs } from '~/components/ContributeCta';
-import { FacebookComments } from '~/components/FacebookComments';
-import { Facts } from '~/components/Facts';
-import { noIssueFilter } from '~/components/IssueSelector';
-import { Md } from '~/components/Md';
-import { Page } from '~/components/Page';
-import { Pagination } from '~/components/Pagination';
-import { InBetweenContentShareButton } from '~/components/ShareButton';
-import { TagCollection } from '~/components/TagCollection';
-import { TopContributorsWidget } from '~/components/TopContributorsWidget';
-import { Card } from '~/components/ui/Card';
+import { StickyAppBar } from '~/lib/a/AppBar';
+import { ContributeCta, TweetItAtUs } from '~/components/c/ContributeCta';
+import { FacebookComments } from '~/components/f/FacebookComments';
+import { Facts } from '~/components/f/Facts';
+import { Md } from '~/components/m/Md';
+import { Page } from '~/components/p/Page';
+import { Pagination } from '~/components/p/Pagination';
+import { TopContributorsWidget } from '~/components/t/TopContributorsWidget';
+import { Card } from '~/components/c/Card';
 import {
   Hero,
   HeroCelebImage,
@@ -18,11 +15,10 @@ import {
   HeroTitleSoftText,
   HeroTitleStrongText,
   HeroTopContainer,
-} from '~/components/ui/Hero';
-import { TitledCard } from '~/components/ui/TitledCard';
+} from '~/components/h/Hero';
+import { TitledCard } from '~/components/t/TitledCard';
 import { c } from '~/lib/c';
 import { CelebPageProps } from '~/lib/getStatic/celebPage.getStaticProps';
-import { CelebIssueSelector } from '~/pages/[slug]/issue/[issueId].celebIssuePage';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;

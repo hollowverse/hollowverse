@@ -1,6 +1,6 @@
 import groq from 'groq';
 import { startsWith } from 'lodash-es';
-import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
+import { gaRunReport } from '~/lib/a/analyticsDataClient';
 import { Summaries } from '~/lib/getStatic/helpers/getParsedOldContent';
 import { Picture } from '~/lib/groq/picture.projection';
 import { sortByArray } from '~/lib/sortByArray';

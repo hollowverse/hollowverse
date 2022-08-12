@@ -5,13 +5,13 @@ import { isArray, isEmpty } from 'lodash-es';
 import { DebounceInput } from 'react-debounce-input';
 import { FaChevronLeft } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
-import * as AppBar from '~/components/AppBar';
-import { BeforeResultsContainer } from '~/components/BeforeResultsContainer';
-import { useSearch } from '~/components/hooks/useSearch';
-import { Page } from '~/components/Page';
-import { SearchResults } from '~/components/SearchResults';
-import { Spinner } from '~/components/Spinner';
-import { Link } from '~/components/Link';
+import * as AppBar from '~/lib/a/AppBar';
+import { BeforeResultsContainer } from '~/lib/b/BeforeResultsContainer';
+import { useSearch } from '~/components/u/useSearch';
+import { Page } from '~/components/p/Page';
+import { SearchResults } from '~/components/s/SearchResults';
+import { Spinner } from '~/components/s/Spinner';
+import { Link } from '~/components/l/Link';
 
 export default function Search() {
   const hook = useSearch();

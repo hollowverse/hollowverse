@@ -1,4 +1,4 @@
-import { gaRunReport } from '~/lib/getStatic/helpers/analyticsDataClient';
+import { gaRunReport } from '~/lib/a/analyticsDataClient';
 
 export async function getTrendingIssues() {
   const trendingIssues = await gaRunReport<

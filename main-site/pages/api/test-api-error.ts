@@ -1,4 +1,4 @@
-import { apiHandlerWithErrorLogging } from '~/lib/api-route-helpers/apiHandlerWithErrorLogging';
+import { apiHandlerWithErrorLogging } from '~/lib/a/apiHandlerWithErrorLogging';
 
 const handler = async () => {
   throw new Error('API throw error test');

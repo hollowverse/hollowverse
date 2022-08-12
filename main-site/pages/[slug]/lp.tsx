@@ -1,5 +1,5 @@
-import { Page } from '~/components/Page';
-import { TitledCard } from '~/components/ui/TitledCard';
+import { Page } from '~/components/p/Page';
+import { TitledCard } from '~/components/t/TitledCard';
 import { LaunchPadPageProps } from '~/lib/getStatic/launchPadCeleb.getStaticProps';
 
 export default function ResearcherLaunchPad(props: LaunchPadPageProps) {
