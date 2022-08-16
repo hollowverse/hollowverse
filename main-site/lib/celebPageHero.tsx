@@ -15,7 +15,7 @@ export function CelebPageHero(props: CelebPageProps) {
         <HeroCelebImage name={props.celeb.name} picture={props.celeb.picture} />
         <HeroTitleContainer>
           <HeroTitleSoftText>
-            The {props.hasFacts ? '' : 'Religion and '}Political Views of{' '}
+            The Religion and Political Views of{' '}
           </HeroTitleSoftText>
           <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
         </HeroTitleContainer>

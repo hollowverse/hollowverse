@@ -10,7 +10,6 @@ import { FacebookComments } from '~/lib/FacebookComments';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
 import { TitledCard } from '~/lib/TitledCard';
-import { TopContributorsWidget } from '~/lib/TopContributorsWidget';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -19,7 +18,7 @@ export default function Celeb(props: CelebPageProps) {
     <Page
       title={
         props.hasFacts
-          ? `What are the political views of ${name}?`
+          ? `What are the political views and Religious Beliefs of ${name}?`
           : `${name}'s Religion and Political Views`
       }
       description={props.pageDescription}
@@ -36,14 +35,17 @@ export default function Celeb(props: CelebPageProps) {
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
+        {/* <Card className="flex flex-col gap-5 p-5">
+          <Link href="/edit" passHref>
+            <a className="flex w-fit items-center gap-3 rounded-md border border-blue-600 bg-blue-500 py-2 px-5 text-white">
+              Edit Chris Pratt&apos;s page <FaRegEdit className="text-xl" />
+            </a>
+          </Link>
+        </Card> */}
+
         {!isEmpty(props.facts) && <CelebPageFacts {...props} />}
 
         {props.celeb.oldContent && <Md {...props} />}
-
-        <TopContributorsWidget
-          slug={props.celeb.slug!}
-          celebName={props.celeb.name}
-        />
 
         <Card>
           <div className="flex flex-col gap-2 px-5 py-5">
