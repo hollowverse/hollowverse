@@ -1,10 +1,10 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import { FaComment, FaSearch } from 'react-icons/fa';
 import { c } from '~/lib/c';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
-import { TitledContent } from '~/lib/TitledContent';
+import { TitledContent } from '~/lib/TitledContent.ui';
 
 export function Nav(props: { children: ReactNode; navClasses?: string }) {
   return (
@@ -77,14 +77,14 @@ export function SearchButton() {
   );
 }
 
-export const AppBar = () => {
+export function AppBar() {
   return (
     <Container>
       <Logo />
       <SearchButton />
     </Container>
   );
-};
+}
 
 export function StickyAppBar(props: PropsWithChildren<{}>) {
   return (

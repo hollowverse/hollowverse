@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import { Celeb } from '~/lib/celeb.projection';
 import { CelebImage } from '~/lib/CelebImage';
 import { celebNameToIssue } from '~/lib/celebNameToIssue';

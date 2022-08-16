@@ -1,6 +1,6 @@
 import { RiHome2Line, RiQuillPenLine } from 'react-icons/ri';
 import { Page } from '~/lib/Page';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 
 export default function About() {
   return (

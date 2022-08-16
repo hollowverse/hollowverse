@@ -7,7 +7,7 @@ import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
 import { Page } from '~/lib/Page';
 import { RelatedCelebsWidget } from '~/lib/RelatedCelebsWidget';
 import { TagCollection } from '~/lib/TagCollection';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import {
   Hero,
   HeroCelebImage,

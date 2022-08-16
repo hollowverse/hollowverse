@@ -5,7 +5,7 @@ import {
   CHRContent,
   CHRImage,
 } from '~/lib/CelebHorizontalRect';
-import { TitledContent } from '~/lib/TitledContent';
+import { TitledContent } from '~/lib/TitledContent.ui';
 
 type CHRCeleb<T> = Pick<Celeb, 'slug' | 'name' | 'picture'> & T;
 

@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash-es';
 import { Fragment } from 'react';
 import { ContributorBox } from '~/lib/ContributorBox';
 import { useHvApi } from '~/lib/useHvApi';
-import { TitledCard } from '~/lib/TitledCard';
+import { TitledCard } from '~/lib/TitledCard.ui';
 import { pluralize } from '~/lib/pluralize';
 import {
   TopContributorsQueryParams,

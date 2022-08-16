@@ -1,15 +1,15 @@
 import { isEmpty } from 'lodash-es';
 import { StickyAppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { CelebPageFacts } from '~/lib/CelebPageFacts';
-import { CelebPageHero } from '~/lib/celebPageHero';
+import { CelebPageHero } from '~/lib/CelebPageHero';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
-import { TitledCard } from '~/lib/TitledCard';
+import { TitledCard } from '~/lib/TitledCard.ui';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;

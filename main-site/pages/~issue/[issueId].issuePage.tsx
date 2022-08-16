@@ -3,7 +3,7 @@ import { Page } from '~/lib/Page';
 import { Pagination } from '~/lib/Pagination';
 import { InBetweenContentShareButton } from '~/lib/ShareButton';
 import { Tag } from '~/lib/Tag';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import { IssuePageProps } from '~/lib/issuePage.getStaticProps';
 import { Link } from '~/lib/Link';
 

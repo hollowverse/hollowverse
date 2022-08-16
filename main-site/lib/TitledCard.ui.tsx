@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import { Card, CardProps } from '~/lib/Card';
-import { TitledContent, TitledContentProps } from '~/lib/TitledContent';
+import { Card, CardProps } from '~/lib/Card.ui';
+import { TitledContent, TitledContentProps } from '~/lib/TitledContent.ui';
 
 export function TitledCard(
   props: PropsWithChildren<{

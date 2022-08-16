@@ -1,5 +1,5 @@
 import { FcVoicePresentation } from 'react-icons/fc';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 
 export function ForumCta(props: { message?: string | null }) {
   const message = props.message ?? 'What are your political views and beliefs?';

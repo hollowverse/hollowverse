@@ -2,7 +2,7 @@ import { FaRegCheckCircle } from 'react-icons/fa';
 import { CelebImage } from '~/lib/CelebImage';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { Page } from '~/lib/Page';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
