@@ -1,15 +1,13 @@
-import { Fragment, ReactNode } from 'react';
-import { Fact } from '~/lib/Fact';
-import { InFeedAd } from '~/lib/InFeedAd';
+import { Fragment } from 'react';
 import { Card } from '~/lib/Card';
-import { TitledContent } from '~/lib/TitledContent';
-import { Fact as TFact } from '~/lib/fact.projection';
+import { Celeb } from '~/lib/celeb.projection';
 import { CelebImage } from '~/lib/CelebImage';
 import { celebNameToIssue } from '~/lib/celebNameToIssue';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { Fact } from '~/lib/Fact';
+import { Fact as TFact } from '~/lib/fact.projection';
+import { InFeedAd } from '~/lib/InFeedAd';
 import { Issue } from '~/lib/issue.projection';
 import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
-import { Celeb } from '~/lib/celeb.projection';
 
 export function CelebFacts(props: {
   factGroup: TFact[];
