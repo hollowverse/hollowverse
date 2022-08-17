@@ -1,4 +1,5 @@
 import { RadioGroup } from '@headlessui/react';
+import { ExternalLinkIcon } from '@heroicons/react/solid';
 import { isEmpty } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -47,6 +48,17 @@ export function EditForm(props: EditPageProps) {
           {...register('dob', { required: true })}
           type="date"
         />
+
+        <a
+          href={`https://www.google.com/search?q=${encodeURIComponent(
+            `What is ${props.celeb.name}'s date of birth?`,
+          )}`}
+          target="_blank"
+          rel="noreferrer"
+          className="h-link flex items-center gap-1 underline"
+        >
+          <ExternalLinkIcon className="h-5 w-5" /> Google the answer
+        </a>
       </Card>
 
       <Card className="flex flex-col gap-3 p-5">
@@ -85,20 +97,15 @@ export function EditForm(props: EditPageProps) {
         <Alert color="red">
           <div className="flex flex-col gap-2 text-neutral-600">
             {errors.dob && (
-              <p>
-                * The answer to {props.celeb.name}'s date of birth wasn't given
-              </p>
+              <p>* {props.celeb.name}'s date of birth is missing</p>
             )}
 
             {errors.alive && (
-              <p>
-                * The answer about {props.celeb.name}'s living status wasn't
-                given
-              </p>
+              <p>* {props.celeb.name}'s living status is missing</p>
             )}
 
             {errors.dod && (
-              <p>The answer to {props.celeb.name} date of death wasn't given</p>
+              <p>* {props.celeb.name}'s date of death is missing</p>
             )}
           </div>
         </Alert>
