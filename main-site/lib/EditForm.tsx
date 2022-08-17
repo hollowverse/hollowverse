@@ -1,5 +1,5 @@
 import { RadioGroup } from '@headlessui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button } from '~/lib/Button.ui';
 import { Card } from '~/lib/Card.ui';
@@ -9,11 +9,21 @@ import { RadioOption } from '~/lib/RadioOption.ui';
 import { EditPageProps } from '~/pages/[slug]/edit.page';
 
 export function EditForm(props: EditPageProps) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue, reset, watch } = useForm();
+  const radioValue = watch('radio');
   const [data, setData] = useState('');
 
+  useEffect(() => {
+    register('radio');
+  }, [register]);
+
+  const handleChange = (e: any) => setValue('radio', e);
+
   return (
-    <form className="flex flex-col gap-3">
+    <form
+      className="flex flex-col gap-3"
+      onSubmit={handleSubmit((data_) => setData(JSON.stringify(data_)))}
+    >
       <Card className="flex flex-col gap-3 p-5">
         <H3>What's {props.celeb.name}'s date of birth?</H3>
 
@@ -24,16 +34,12 @@ export function EditForm(props: EditPageProps) {
         <H3>Is {props.celeb.name} alive or dead?</H3>
 
         <RadioGroup
-          value={{ name: 'Yes' }}
-          onChange={() => null}
+          value={radioValue}
+          onChange={handleChange}
           className="flex gap-3"
         >
-          <RadioOption value={{ name: 'alive' }}>
-            <RadioGroup.Label>Alive</RadioGroup.Label>
-          </RadioOption>
-          <RadioOption value={{ name: 'deceased' }}>
-            <RadioGroup.Label>Dead</RadioGroup.Label>
-          </RadioOption>
+          <RadioOption value={'alive'}>Alive</RadioOption>
+          <RadioOption value={'dead'}>Dead</RadioOption>
         </RadioGroup>
 
         <div>
@@ -50,10 +56,10 @@ export function EditForm(props: EditPageProps) {
       </Card>
 
       <div className="flex justify-end p-5">
-        <Button disabled type="submit">
-          Submit
-        </Button>
+        <Button type="submit">Submit</Button>
       </div>
+
+      <p>{data}</p>
     </form>
   );
 }

@@ -16,11 +16,18 @@ import { Page } from '~/lib/Page';
 import { PageProps } from '~/shared/lib/types';
 import useLocalStorage, { writeStorage } from '@rehooks/local-storage';
 import { P } from '~/lib/P.ui';
+import { c } from '~/lib/c';
+import { useEffect, useState } from 'react';
 
 export type EditPageProps = PageProps<typeof getStaticProps>;
 
 export default function EditPage(props: EditPageProps) {
   const [editAlertDismissed] = useLocalStorage('edit-alert-dismissed', false);
+  const [hideAlert, setHideAlert] = useState(false);
+
+  useEffect(() => {
+    setHideAlert(editAlertDismissed);
+  }, [editAlertDismissed]);
 
   return (
     <Page
@@ -47,27 +54,24 @@ export default function EditPage(props: EditPageProps) {
         </Card>
 
         <div className="h-container flex flex-col gap-3 py-5">
-          {!editAlertDismissed && (
-            <div className="px-2">
-              <Alert
-                onDismiss={() => writeStorage('edit-alert-dismissed', true)}
-                body={
-                  <div className="flex flex-col gap-3">
-                    <p className="font-semibold">Dear friend,</p>
+          <div className={c('px-2', { hidden: hideAlert })}>
+            <Alert
+              onDismiss={() => writeStorage('edit-alert-dismissed', true)}
+              body={
+                <div className="flex flex-col gap-3">
+                  <p className="font-semibold">Dear friend,</p>
 
-                    <p>
-                      This website will be taken down unless generous people
-                      like you contribute! Please help us gather some
-                      information about{' '}
-                      <span className="underline">{props.celeb.name}</span>.
-                    </p>
+                  <p>
+                    This website will be taken down unless generous people like
+                    you contribute! Please help us gather some information about{' '}
+                    <span className="underline">{props.celeb.name}</span>.
+                  </p>
 
-                    <p>We're grateful for your time!</p>
-                  </div>
-                }
-              />
-            </div>
-          )}
+                  <p>We're grateful for your time!</p>
+                </div>
+              }
+            />
+          </div>
 
           <EditForm {...props} />
         </div>
