@@ -1,10 +1,10 @@
 import Alert from '~/lib/Alert.ui';
 import { AppBar } from '~/lib/AppBar';
+import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { oneDay } from '~/lib/date';
 import { EditForm } from '~/lib/EditForm';
 import { getCeleb } from '~/lib/getCeleb';
-import { H3 } from '~/lib/H3.ui';
 import {
   Hero,
   HeroCelebImage,
@@ -13,21 +13,16 @@ import {
   HeroTopContainer,
 } from '~/lib/Hero';
 import { Page } from '~/lib/Page';
+import { useLocalStorage } from '~/lib/useLocalStorage';
 import { PageProps } from '~/shared/lib/types';
-import useLocalStorage, { writeStorage } from '@rehooks/local-storage';
-import { P } from '~/lib/P.ui';
-import { c } from '~/lib/c';
-import { useEffect, useState } from 'react';
 
 export type EditPageProps = PageProps<typeof getStaticProps>;
 
 export default function EditPage(props: EditPageProps) {
-  const [editAlertDismissed] = useLocalStorage('edit-alert-dismissed', false);
-  const [hideAlert, setHideAlert] = useState(false);
-
-  useEffect(() => {
-    setHideAlert(editAlertDismissed);
-  }, [editAlertDismissed]);
+  const [editAlertDismissed, setEditAlertDismissed] = useLocalStorage<boolean>(
+    'edit-alert-dismissed',
+    false,
+  );
 
   return (
     <Page
@@ -54,9 +49,9 @@ export default function EditPage(props: EditPageProps) {
         </Card>
 
         <div className="h-container flex flex-col gap-3 py-5">
-          <div className={c('px-2', { hidden: hideAlert })}>
+          <div className={c('px-2', { hidden: editAlertDismissed })}>
             <Alert
-              onDismiss={() => writeStorage('edit-alert-dismissed', true)}
+              onDismiss={() => setEditAlertDismissed(true)}
               body={
                 <div className="flex flex-col gap-3">
                   <p className="font-semibold">Dear friend,</p>
