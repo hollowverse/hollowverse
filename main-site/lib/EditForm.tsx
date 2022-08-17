@@ -31,28 +31,27 @@ export function EditForm(props: EditPageProps) {
       </Card>
 
       <Card className="flex flex-col gap-3 p-5">
-        <H3>Is {props.celeb.name} alive or dead?</H3>
+        <H3>Is {props.celeb.name} still living or passed away?</H3>
 
         <RadioGroup
           value={radioValue}
           onChange={handleChange}
           className="flex gap-3"
         >
-          <RadioOption value={'alive'}>Alive</RadioOption>
-          <RadioOption value={'dead'}>Dead</RadioOption>
+          <RadioOption value={'alive'}>Still living</RadioOption>
+          <RadioOption value={'dead'}>Passed away</RadioOption>
         </RadioGroup>
 
-        <div>
-          <label
-            htmlFor="dod"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Date {props.celeb.name} passed away
-          </label>
-          <div className="mt-1">
-            <Input {...register('dod')} type="date" name="dod" id="dod" />
+        {radioValue === 'dead' && (
+          <div className="mt-5">
+            <label htmlFor="dod" className="block font-medium text-gray-700">
+              What date did {props.celeb.name} pass away?
+            </label>
+            <div className="mt-1">
+              <Input {...register('dod')} type="date" name="dod" id="dod" />
+            </div>
           </div>
-        </div>
+        )}
       </Card>
 
       <div className="flex justify-end p-5">
