@@ -8,6 +8,8 @@
     "plugin:eqeqeq-fix/recommended"
   ],
   "rules": {
+    "react/no-unescaped-entities": "off",
+
     "no-shadow": "error",
 
     "eqeqeq": "error",

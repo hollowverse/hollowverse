@@ -30,6 +30,7 @@
     "@logtail/node": "^0.1.12",
     "@next/bundle-analyzer": "^12.1.2",
     "@playwright/test": "^1.21.0",
+    "@rehooks/local-storage": "^2.4.4",
     "@sanity/client": "^3.2.2",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^1.0.2",
