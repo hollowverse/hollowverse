@@ -50,22 +50,18 @@ export default function EditPage(props: EditPageProps) {
 
         <div className="h-container flex flex-col gap-3 py-5">
           <div className={c('px-2', { hidden: editAlertDismissed })}>
-            <Alert
-              onDismiss={() => setEditAlertDismissed(true)}
-              body={
-                <div className="flex flex-col gap-3">
-                  <p className="font-semibold">Dear friend,</p>
+            <Alert color="yellow" onDismiss={() => setEditAlertDismissed(true)}>
+              <div className="flex flex-col gap-3">
+                <p className="font-semibold">Dear friend,</p>
 
-                  <p>
-                    This website will be taken down unless generous people like
-                    you contribute! Please help us gather some information about{' '}
-                    <span className="underline">{props.celeb.name}</span>.
-                  </p>
+                <p>
+                  We really need you to help us find some information about{' '}
+                  <span className="underline">{props.celeb.name}</span>.
+                </p>
 
-                  <p>We're grateful for your time!</p>
-                </div>
-              }
-            />
+                <p>We're very grateful for your time!</p>
+              </div>
+            </Alert>
           </div>
 
           <EditForm {...props} />

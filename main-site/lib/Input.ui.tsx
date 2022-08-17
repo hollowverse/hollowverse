@@ -4,14 +4,19 @@ import { ReactElementProps } from '~/shared/lib/types';
 
 export const Input = forwardRef<
   HTMLInputElement,
-  JSX.IntrinsicElements['input']
->(function Input(props: ReactElementProps<'input'>, ref) {
+  JSX.IntrinsicElements['input'] & { error?: boolean }
+>(function Input(props, ref) {
+  const { error, ...rest } = props;
   return (
     <input
       ref={ref}
-      {...props}
+      {...rest}
       className={c(
-        'block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-purple-600 focus:ring-purple-600 sm:max-w-xs sm:text-sm',
+        {
+          'border-red-600 ring-red-600': error,
+          'border-gray-300': !error,
+        },
+        'block w-full max-w-lg rounded-md shadow-sm focus:border-purple-600 focus:ring-purple-600 sm:max-w-xs sm:text-sm',
         props.className,
       )}
     />
