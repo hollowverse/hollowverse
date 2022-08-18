@@ -17,6 +17,7 @@ import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
 import { LoginIcon, ExternalLinkIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 import { useLocationHref } from '~/lib/useLocationHref';
+import { useUser } from '~/lib/useUser';
 
 const user = {
   name: 'Chelsea Hagon',
@@ -38,6 +39,7 @@ const userNavigation = [
 
 export function NavBar(props: PropsWithChildren<{}>) {
   const href = useLocationHref();
+  const { isLoggedIn } = useUser();
 
   return (
     <Popover
@@ -87,14 +89,16 @@ export function NavBar(props: PropsWithChildren<{}>) {
                 </Popover.Button>
               </div>
               <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
-                <a
-                  href={`/api/login?redirect=${encodeURI(href)}`}
-                  className={c(
-                    'flex cursor-pointer items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
-                  )}
-                >
-                  Login <LoginIcon className="h-4 w-4 text-gray-500" />
-                </a>
+                {(!isLoggedIn && (
+                  <a
+                    href={`/api/login?redirect=${encodeURI(href)}`}
+                    className={c(
+                      'flex cursor-pointer items-center gap-1 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
+                    )}
+                  >
+                    Login <LoginIcon className="h-4 w-4 text-gray-500" />
+                  </a>
+                )) || <ProfileDropdown />}
                 {/* Profile dropdown */}
                 {/* <ProfileDropdown /> */}
               </div>
