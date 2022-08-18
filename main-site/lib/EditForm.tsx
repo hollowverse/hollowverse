@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Alert from '~/lib/Alert.ui';
-import { Button } from '~/lib/Button.ui';
+import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { H3 } from '~/lib/H3.ui';
 import { Input } from '~/lib/Input.ui';
@@ -112,7 +112,15 @@ export function EditForm(props: EditPageProps) {
       )}
 
       <div className="flex justify-end p-5">
-        <Button type="submit">Submit</Button>
+        <button
+          className={c(
+            'inline-flex justify-center rounded-md border border-transparent bg-purple-600 py-2 px-10 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 default:hover:bg-purple-700',
+            { 'opacity-30 hover:bg-purple-600': false },
+          )}
+          type="submit"
+        >
+          Submit
+        </button>
       </div>
     </form>
   );

@@ -49,7 +49,7 @@ export default function EditPage(props: EditPageProps) {
         </Card>
 
         <div className="h-container flex flex-col gap-3 py-5">
-          <div className={c('px-2', { hidden: editAlertDismissed })}>
+          <div className={c({ hidden: editAlertDismissed })}>
             <Alert color="yellow" onDismiss={() => setEditAlertDismissed(true)}>
               <div className="flex flex-col gap-3">
                 <p className="font-semibold">Dear friend,</p>
@@ -59,7 +59,7 @@ export default function EditPage(props: EditPageProps) {
                   <span className="underline">{props.celeb.name}</span>.
                 </p>
 
-                <p>We're very grateful that you're helping us to keep going!</p>
+                <p>Your help keeps us going, and we're very grateful for it!</p>
               </div>
             </Alert>
           </div>
