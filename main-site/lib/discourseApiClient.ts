@@ -3,7 +3,7 @@ import { Json } from '~/shared/lib/types';
 import { Context, log, LoggableError } from '~/shared/lib/log';
 import qs from 'qs';
 
-export async function discourseApiClient<T extends Json>(args: {
+export type DiscourseApiClientArgs = {
   api: string;
   username?: string;
   payload?: {
@@ -12,11 +12,15 @@ export async function discourseApiClient<T extends Json>(args: {
     body: Json;
   };
   logContext?: Context;
-}) {
+};
+
+export async function discourseApiClient<T extends Json>(
+  args: DiscourseApiClientArgs,
+) {
+  const username = args.username ?? 'hollowbot';
   const payload = defaults(args.payload, {
     method: 'GET',
     type: 'json',
-    username: 'hollowbot',
   });
   const url = `https://forum.hollowverse.com/${args.api}`;
 
@@ -45,7 +49,7 @@ export async function discourseApiClient<T extends Json>(args: {
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
       'Content-Type': requestContentType,
-      'Api-Username': payload.username,
+      'Api-Username': username,
     },
     body,
   });

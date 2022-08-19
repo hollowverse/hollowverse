@@ -1,22 +1,7 @@
-/* eslint-disable no-shadow */
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/no-redundant-roles */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-
-import { Menu, Popover, Transition } from '@headlessui/react';
-import {
-  BellIcon,
-  FireIcon,
-  HomeIcon,
-  MenuIcon,
-  TrendingUpIcon,
-  UserGroupIcon,
-  XIcon,
-} from '@heroicons/react/outline';
 import Head from 'next/head';
-import { Fragment, PropsWithChildren, ReactElement, ReactNode } from 'react';
+import React from 'react';
+import { PropsWithChildren, ReactElement, ReactNode } from 'react';
 import { c } from '~/lib/c';
-import { Link } from '~/lib/Link';
 
 export function Page(props: {
   className?: string;
@@ -66,10 +51,7 @@ export function Page(props: {
         />
       </Head>
 
-      <div className="min-h-full">
-        {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
-        {props.children}
-      </div>
+      <div className="min-h-full">{props.children}</div>
     </>
   );
 }

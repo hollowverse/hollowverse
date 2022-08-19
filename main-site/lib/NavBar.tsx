@@ -32,9 +32,11 @@ const navigation = [
   { name: 'Trending', href: '#', icon: TrendingUpIcon, current: false },
 ] as const;
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  {
+    name: 'Your Profile',
+    href: 'https://forum.hollowverse.com/my/preferences/profile',
+  },
+  { name: 'Sign out', href: '/~logout' },
 ] as const;
 
 export function NavBar(props: PropsWithChildren<{}>) {

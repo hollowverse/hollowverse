@@ -6,6 +6,12 @@ import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
 import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
+import React, { useEffect, useState } from 'react';
+import { discourseApiClient } from '~/lib/discourseApiClient';
+
+export const UserContext = React.createContext<{ avatar: string | null }>({
+  avatar: null,
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();
@@ -50,7 +56,10 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <PageTransitionSpinner />
-      <Component {...pageProps} />
+
+      <UserContext.Provider value={{ avatar: 'asdf' }}>
+        <Component {...pageProps} />
+      </UserContext.Provider>
     </>
   );
 }

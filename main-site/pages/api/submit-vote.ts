@@ -3,7 +3,7 @@ import { isEmpty, remove } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/cors';
 import { sanityWriteToken } from '~/lib/sanityWriteToken';
-import { getAuthenticatedUserId } from '~/lib/user-auth';
+import { getUserAuth } from '~/lib/user-auth';
 import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
 import { FactVotes, factVotesProjection } from '~/lib/fact.projection';
 import { getUserGroq, User, UserVote } from '~/lib/getUser.groq';
@@ -27,11 +27,13 @@ export default async function submitVote(
   let userId: string | null = '';
 
   try {
-    userId = getAuthenticatedUserId(req, res);
+    const auth = getUserAuth(req, res);
 
-    if (!userId) {
+    if (!auth) {
       return res.status(401).json({ message: 'unauthorized' });
     }
+
+    userId = auth.id;
 
     const newVoteRequest = JSON.parse(req.body) as UserVote;
     const newVote = { _key: uuid(), ...newVoteRequest } as UserVote;
