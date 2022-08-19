@@ -10,6 +10,7 @@ import { HelpWanted } from '~/lib/HelpWanted';
 import { Link } from '~/lib/Link';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
+import { TopContributorsWidget } from '~/lib/TopContributorsWidget';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -42,6 +43,11 @@ export default function Celeb(props: CelebPageProps) {
         )}
 
         <HelpWanted pfName={props.celeb.name} slug={props.celeb.slug} />
+
+        <TopContributorsWidget
+          celebName={props.celeb.name}
+          slug={props.celeb.slug}
+        />
       </div>
     </Page>
   );

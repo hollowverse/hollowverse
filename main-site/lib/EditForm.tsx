@@ -10,6 +10,8 @@ import { H3 } from '~/lib/H3.ui';
 import { Input } from '~/lib/Input.ui';
 import { RadioOption } from '~/lib/RadioOption.ui';
 import { EditPageProps } from '~/pages/[slug]/edit.page';
+import * as yup from 'yup';
+import { EditFormFields, editFormValidate } from '~/lib/editFormValidate';
 
 export function EditForm(props: EditPageProps) {
   const {
@@ -18,16 +20,24 @@ export function EditForm(props: EditPageProps) {
     setValue,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<EditFormFields>({
+    criteriaMode: 'all',
+    reValidateMode: 'onBlur',
+    resolver: (values, _context, { names }) => {
+      return {
+        values,
+        errors: editFormValidate(values),
+      };
+    },
+  });
   const pfAlive = watch('alive');
   const [data, setData] = useState('');
 
   useEffect(() => {
-    register('alive', { validate: (val) => val !== undefined });
+    register('alive');
   }, [register]);
 
   const handleChange = (e: any) => {
-    console.log('e', e);
     return setValue('alive', e, {
       shouldTouch: true,
       shouldDirty: true,
@@ -38,16 +48,23 @@ export function EditForm(props: EditPageProps) {
   return (
     <form
       className="flex flex-col gap-3"
-      onSubmit={handleSubmit((data_) => setData(JSON.stringify(data_)))}
+      onSubmit={handleSubmit(async (data_) => {
+        // const s = yup.object({
+        //   livingStatus: yup.bool().required(),
+        //   dob: yup.date().required(),
+        //   dod: yup.date().when('livingStatus', {
+        //     is: true,
+        //     then: yup.date().required(),
+        //   }),
+        // });
+        // console.log(await s.validate({ livingStatus: false, dob: '1' }));
+        // console.log(JSON.stringify(data_));
+      })}
     >
       <Card className="flex flex-col gap-3 p-5">
         <H3>What's {props.celeb.name}'s date of birth?</H3>
 
-        <Input
-          error={!!errors.dod}
-          {...register('dob', { required: true })}
-          type="date"
-        />
+        <Input error={!!errors.dod} {...register('dob')} type="date" />
 
         <a
           href={`https://www.google.com/search?q=${encodeURIComponent(
@@ -81,9 +98,7 @@ export function EditForm(props: EditPageProps) {
             <div className="mt-1">
               <Input
                 error={!!errors.dod}
-                {...register('dod', {
-                  validate: (val) => (pfAlive ? true : !!val),
-                })}
+                {...register('dod')}
                 type="date"
                 name="dod"
                 id="dod"
