@@ -1,14 +1,17 @@
 import { FaSearch } from 'react-icons/fa';
-import { Container, Logo } from '~/lib/AppBar';
+import { Logo } from '~/lib/AppBar';
+import { c } from '~/lib/c';
+import { Card } from '~/lib/Card.ui';
 import { CelebGallery } from '~/lib/CelebGallery';
 import { FactList } from '~/lib/FactList';
+import { ForumCta } from '~/lib/ForumCta';
+import { HomepageProps } from '~/lib/homepage.getStaticProps';
 import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
+import { Link } from '~/lib/Link';
+import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
 import { Page } from '~/lib/Page';
 import { Pagination } from '~/lib/Pagination';
 import { SideScroller } from '~/lib/SideScroller';
-import { HomepageProps } from '~/lib/homepage.getStaticProps';
-import { Link } from '~/lib/Link';
-import { ForumCta } from '~/lib/ForumCta';
 
 export default function Index(props: HomepageProps) {
   return (
@@ -20,15 +23,25 @@ export default function Index(props: HomepageProps) {
       className="text-neutral-600"
       id="homepage"
       appBar={
-        <Container navClasses="flex-col py-3">
-          <Logo className="justify-center text-3xl" />
+        <Card topBorder={false} className="font-normal">
+          <LovelyTopBorder />
 
-          <h1 className="text-center text-xl italic text-neutral-500">
-            The Political Views
-            <br />
-            and Religions of Celebrities
-          </h1>
-        </Container>
+          <nav
+            role="navigation"
+            aria-label="Main Navigation"
+            className={c(
+              'NAV h-container flex flex-col items-center justify-between py-3 px-5 default:flex-row default:gap-2',
+            )}
+          >
+            <Logo className="justify-center text-3xl" />
+
+            <h1 className="text-center text-xl italic text-neutral-500">
+              The Political Views
+              <br />
+              and Religions of Celebrities
+            </h1>
+          </nav>
+        </Card>
       }
     >
       <div className="h-container py-5">

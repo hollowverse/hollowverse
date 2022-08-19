@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { NavBar } from '~/lib/NavBar';
 import { Page } from '~/lib/Page.v2';
 

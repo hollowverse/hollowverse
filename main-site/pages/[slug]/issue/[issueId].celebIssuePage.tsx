@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/lib/AppBar';
+import { AppBar } from '~/lib/AppBar';
 import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { CelebFacts } from '~/lib/CelebFacts';
 import { InFeedAd } from '~/lib/InFeedAd';
@@ -54,41 +54,41 @@ export default function CelebIssuePage(props: CelebIssuePageProps) {
       allowSearchEngines
       pathname={`/${props.celeb.slug}/issue/${props.issue._id}`}
       id="celeb-issue-page"
-      appBar={
-        <StickyAppBar>
-          <Hero>
-            <HeroTopContainer>
-              <HeroCelebImage
-                slug={props.celeb.slug}
-                name={props.celeb.name}
-                picture={props.celeb.picture}
-              />
-              {props.issue.isAffiliation ? (
-                <HeroTitleContainer>
-                  <HeroTitleSoftText>
-                    What are the <IssueName /> of{' '}
-                  </HeroTitleSoftText>
-                  <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
-                </HeroTitleContainer>
-              ) : (
-                <HeroTitleContainer>
-                  <HeroTitleSoftText>What are the views of </HeroTitleSoftText>
-                  <HeroTitleStrongText>{props.celeb.name} </HeroTitleStrongText>
-                  <HeroTitleSoftText>
-                    on <IssueName />?
-                  </HeroTitleSoftText>
-                </HeroTitleContainer>
-              )}{' '}
-            </HeroTopContainer>
-
-            <TagCollection
-              slug={props.celeb.slug}
-              tagTimeline={props.tagTimeline}
-            />
-          </Hero>
-        </StickyAppBar>
-      }
+      appBar={<AppBar />}
     >
+      <Card topBorder={false}>
+        <Hero>
+          <HeroTopContainer>
+            <HeroCelebImage
+              slug={props.celeb.slug}
+              name={props.celeb.name}
+              picture={props.celeb.picture}
+            />
+            {props.issue.isAffiliation ? (
+              <HeroTitleContainer>
+                <HeroTitleSoftText>
+                  What are the <IssueName /> of{' '}
+                </HeroTitleSoftText>
+                <HeroTitleStrongText>{props.celeb.name}</HeroTitleStrongText>
+              </HeroTitleContainer>
+            ) : (
+              <HeroTitleContainer>
+                <HeroTitleSoftText>What are the views of </HeroTitleSoftText>
+                <HeroTitleStrongText>{props.celeb.name} </HeroTitleStrongText>
+                <HeroTitleSoftText>
+                  on <IssueName />?
+                </HeroTitleSoftText>
+              </HeroTitleContainer>
+            )}{' '}
+          </HeroTopContainer>
+
+          <TagCollection
+            slug={props.celeb.slug}
+            tagTimeline={props.tagTimeline}
+          />
+        </Hero>
+      </Card>
+
       <div
         className="h-container my-5 flex flex-col gap-5"
         id={`celeb-issue-page-${props.issue._id}`}

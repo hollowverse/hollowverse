@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash-es';
-import { StickyAppBar } from '~/lib/AppBar';
+import { AppBar, StickyAppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
@@ -25,12 +25,12 @@ export default function Celeb(props: CelebPageProps) {
       allowSearchEngines
       pathname={props.pagePath}
       id="celeb-page"
-      appBar={
-        <StickyAppBar>
-          <CelebPageHero {...props} />
-        </StickyAppBar>
-      }
+      appBar={<AppBar />}
     >
+      <Card topBorder={false}>
+        <CelebPageHero {...props} />
+      </Card>
+
       <div
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"

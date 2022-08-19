@@ -11,13 +11,12 @@ import {
   UserGroupIcon,
   XIcon,
 } from '@heroicons/react/solid';
-import { Fragment, PropsWithChildren, useContext } from 'react';
+import { Fragment, PropsWithChildren } from 'react';
 import { c } from '~/lib/c';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
 import { useLocationHref } from '~/lib/useLocationHref';
 import { User, useUser } from '~/lib/useUser';
-import { UserContext } from '~/pages/_app';
 
 const user_ = {
   name: 'Chelsea Hagon',
@@ -42,9 +41,6 @@ const userNavigation = [
 export function NavBar(props: PropsWithChildren<{}>) {
   const href = useLocationHref();
   const user = useUser();
-  const isLoggedIn = !!user;
-
-  console.log('user', user);
 
   return (
     <Popover
@@ -84,16 +80,18 @@ export function NavBar(props: PropsWithChildren<{}>) {
 
               <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
                 {/* Mobile menu button */}
-                <Popover.Button className="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500">
-                  <span className="sr-only">Open menu</span>
-                  {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Popover.Button>
+                {user && (
+                  <Popover.Button className="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500">
+                    <span className="sr-only">Open menu</span>
+                    {open ? (
+                      <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    )}
+                  </Popover.Button>
+                )}
               </div>
-              <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
+              <div className="flex items-center justify-end xl:col-span-4">
                 {(!user && (
                   <a
                     href={`/api/login?redirect=${encodeURI(href)}`}
@@ -112,23 +110,6 @@ export function NavBar(props: PropsWithChildren<{}>) {
           </div>
 
           <Popover.Panel as="nav" className="lg:hidden" aria-label="Global">
-            <div className="mx-auto max-w-3xl space-y-1 px-2 pt-2 pb-3 sm:px-4">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  aria-current={item.current ? 'page' : undefined}
-                  className={c(
-                    item.current
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'hover:bg-gray-50',
-                    'block rounded-md py-2 px-3 text-base font-medium',
-                  )}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
             <div className="border-t border-gray-200 pt-4">
               <div className="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
                 <div className="flex-shrink-0">

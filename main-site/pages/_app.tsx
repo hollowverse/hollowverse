@@ -1,15 +1,11 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
-import React from 'react';
 import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
 import { PageTransitionSpinner } from '~/lib/PageTransitionSpinner';
 import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
-import { User, useUser } from '~/lib/useUser';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
-
-export const UserContext = React.createContext<User | null>(null);
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();

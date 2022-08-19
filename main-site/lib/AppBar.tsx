@@ -1,34 +1,11 @@
-import { PropsWithChildren, ReactNode } from 'react';
-import { FaComment, FaSearch } from 'react-icons/fa';
+import { ReactNode, useState } from 'react';
+import { FaBars, FaSearch, FaTimes } from 'react-icons/fa';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
-import { TitledContent } from '~/lib/TitledContent.ui';
-
-export function Nav(props: { children: ReactNode; navClasses?: string }) {
-  return (
-    <nav
-      role="navigation"
-      aria-label="Main Navigation"
-      className={c(
-        'NAV h-container flex items-center justify-between py-3 px-5 default:flex-row default:gap-2',
-        props.navClasses,
-      )}
-    >
-      {props.children}
-    </nav>
-  );
-}
-
-export function Container(props: { children: ReactNode; navClasses?: string }) {
-  return (
-    <Card topBorder={false} className="font-normal">
-      <LovelyTopBorder />
-      <Nav {...props} />
-    </Card>
-  );
-}
+import { useLocationHref } from '~/lib/useLocationHref';
+import { useUser } from '~/lib/useUser';
 
 export function Logo(props: { className?: string } = {}) {
   return (
@@ -47,57 +24,82 @@ export function Logo(props: { className?: string } = {}) {
   );
 }
 
-export function SearchButton() {
-  return (
-    <div className="flex text-sm uppercase text-neutral-500">
-      <a
-        href="https://forum.hollowverse.com"
-        className="flex items-center gap-1 p-1.5 font-normal"
-      >
-        <FaComment className="text-sm font-normal" />
-        Forum
-      </a>
-
-      <Link
-        href={{
-          pathname: '/~search',
-          query: { local: true },
-        }}
-        passHref
-      >
-        <a
-          id="search-link"
-          className="flex items-center gap-1 p-1.5 font-normal"
-        >
-          <FaSearch className="text-sm font-normal" />
-          Search
-        </a>
-      </Link>
-    </div>
-  );
-}
-
 export function AppBar() {
-  return (
-    <Container>
-      <Logo />
-      <SearchButton />
-    </Container>
-  );
-}
+  const [open, setOpen] = useState(false);
+  const href = useLocationHref();
+  const user = useUser();
 
-export function StickyAppBar(props: PropsWithChildren<{}>) {
   return (
-    <TitledContent
-      stickyTitle
-      title={
-        <Nav>
+    <Card topBorder={false} className="font-normal">
+      <LovelyTopBorder />
+
+      <nav
+        role="navigation"
+        aria-label="Main Navigation"
+        className="h-container flex flex-col gap-3 py-3 px-5"
+      >
+        <div className="flex items-center justify-between default:flex-row default:gap-2">
           <Logo />
-          <SearchButton />
-        </Nav>
-      }
-    >
-      <Card topBorder={false}>{props.children}</Card>
-    </TitledContent>
+
+          <div className="flex gap-3">
+            <Link
+              href={{
+                pathname: '/~search',
+                query: { local: true },
+              }}
+              passHref
+            >
+              <a
+                id="search-link"
+                className="flex items-center gap-1 p-1.5 font-normal text-neutral-400"
+              >
+                <FaSearch className="h-6 w-6" />
+                <span className="hidden text-base uppercase md:block">
+                  Search
+                </span>
+              </a>
+            </Link>
+
+            <button
+              className="flex items-center gap-1 p-1.5 font-normal text-neutral-400"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? (
+                <FaTimes className="h-6 w-6" />
+              ) : (
+                <FaBars className="h-6 w-6" />
+              )}
+              <span className="hidden text-base font-normal uppercase text-neutral-400 md:block">
+                Menu
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {open && (
+          <div className="flex flex-col items-end gap-3 border-t py-5">
+            <a
+              href="https://forum.hollowverse.com"
+              className="h-link underline"
+            >
+              Forum
+            </a>
+
+            {(user && (
+              <a href="/~logout" className="h-link underline">
+                Sign-out
+              </a>
+            )) || (
+              <a
+                className="h-link underline"
+                href={`/api/login?redirect=${encodeURI(href)}`}
+              >
+                Sign-in
+              </a>
+            )}
+          </div>
+        )}
+      </nav>
+    </Card>
   );
 }
