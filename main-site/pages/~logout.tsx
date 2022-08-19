@@ -14,9 +14,12 @@ export async function getServerSideProps({
 }: GetServerSidePropsContext) {
   const userId = getAuthenticatedUserId(req, res);
 
-  await discourseApiClient(`admin/users/${userId}/log_out`, {
-    method: 'POST',
-    body: {},
+  await discourseApiClient({
+    api: `admin/users/${userId}/log_out`,
+    payload: {
+      method: 'POST',
+      body: {},
+    },
   });
 
   deleteCookie(LOGIN_COOKIE_NAME, { req, res });

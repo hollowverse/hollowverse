@@ -45,7 +45,11 @@ export class NewFactChores {
         body: Json;
       },
     ): Promise<T> =>
-      _discourseApiClient<T>(apiEndPoint, payload, this.logContext);
+      _discourseApiClient<T>({
+        api: apiEndPoint,
+        payload,
+        logContext: this.logContext,
+      });
   }
 
   private async addTags() {

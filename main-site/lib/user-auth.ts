@@ -19,8 +19,6 @@ export function getHmac() {
 export function getAuthenticatedUserId(req: Req, res: Res) {
   const tentativeUserId = getCookie(LOGIN_COOKIE_NAME, { req, res });
 
-  console.log('tentativeUserId', tentativeUserId);
-
   if (!isString(tentativeUserId)) {
     return null;
   }

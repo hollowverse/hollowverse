@@ -25,7 +25,7 @@ async function getFactSocialInfo(req: NextApiRequest, res: NextApiResponse) {
     throw new Error(`Cant find post ID in: ${queryUrl}`);
   }
 
-  const topic = await discourseApiClient(`t/-/${topicId}.json`);
+  const topic = await discourseApiClient({ api: `t/-/${topicId}.json` });
 
   if (!topic) {
     throw new Error(`Could not find topic for Topic ID: ${topicId}`);

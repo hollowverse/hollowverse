@@ -3,26 +3,28 @@ import { Json } from '~/shared/lib/types';
 import { Context, log, LoggableError } from '~/shared/lib/log';
 import qs from 'qs';
 
-export async function discourseApiClient<T extends Json>(
-  apiEndPoint: string,
-  _payload?: {
+export async function discourseApiClient<T extends Json>(args: {
+  api: string;
+  username?: string;
+  payload?: {
     method?: 'POST' | 'PUT' | 'GET';
     type?: 'json' | 'urlencoded' | 'form';
     body: Json;
-  },
-  logContext?: Context,
-) {
-  const payload = defaults(_payload, {
+  };
+  logContext?: Context;
+}) {
+  const payload = defaults(args.payload, {
     method: 'GET',
     type: 'json',
+    username: 'hollowbot',
   });
-  const url = `https://forum.hollowverse.com/${apiEndPoint}`;
+  const url = `https://forum.hollowverse.com/${args.api}`;
 
   log(
     'debug',
-    `Discourse API call; method: ${payload.method}; end point: ${apiEndPoint}`,
+    `Discourse API call; method: ${payload.method}; end point: ${args.api}`,
     {
-      ...logContext,
+      ...args.logContext,
       payload,
     },
   );
@@ -43,7 +45,7 @@ export async function discourseApiClient<T extends Json>(
     headers: {
       'Api-Key': process.env.DISCOURSE_SYSTEM_PRIVILEGE_SECRET!,
       'Content-Type': requestContentType,
-      'Api-Username': 'hollowbot',
+      'Api-Username': payload.username,
     },
     body,
   });
@@ -55,7 +57,7 @@ export async function discourseApiClient<T extends Json>(
       responseContentType.indexOf('application/json') !== -1;
 
     const context = {
-      ...logContext,
+      ...args.logContext,
       payload,
       status: res.status,
       statusText: res.statusText,
@@ -66,7 +68,7 @@ export async function discourseApiClient<T extends Json>(
     // console.log(context);
 
     throw new LoggableError(
-      `Discourse API ERROR; method: ${payload.method}; end point: ${apiEndPoint}`,
+      `Discourse API ERROR; method: ${payload.method}; end point: ${args.api}`,
       context,
     );
   }

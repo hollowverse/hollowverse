@@ -37,14 +37,14 @@ const queryIds: { [name in Query['name']]: number } = {
 };
 
 export async function discoursePsqlQuery<T extends Query>(query: T) {
-  const queryResults = await discourseApiClient<QueryResults>(
-    `admin/plugins/explorer/queries/${queryIds[query.name]}/run`,
-    {
+  const queryResults = await discourseApiClient<QueryResults>({
+    api: `admin/plugins/explorer/queries/${queryIds[query.name]}/run`,
+    payload: {
       method: 'POST',
       type: 'form',
       body: { params: JSON.stringify(query.params) },
     },
-  );
+  });
 
   return queryResults.rows.map((r) => {
     const obj: { [name: string]: any } = {};
