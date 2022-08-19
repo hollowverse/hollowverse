@@ -1,15 +1,12 @@
 import { isEmpty } from 'lodash-es';
-import { AppBar, StickyAppBar } from '~/lib/AppBar';
+import { AppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { CelebPageFacts } from '~/lib/CelebPageFacts';
 import { CelebPageHero } from '~/lib/CelebPageHero';
-import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
-import { FacebookComments } from '~/lib/FacebookComments';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
-import { TitledCard } from '~/lib/TitledCard.ui';
 
 export default function Celeb(props: CelebPageProps) {
   const name = props.celeb.name;
@@ -43,35 +40,10 @@ export default function Celeb(props: CelebPageProps) {
           </Link>
         </Card> */}
 
-        {!isEmpty(props.facts) && <CelebPageFacts {...props} />}
-
         {props.celeb.oldContent && <Md {...props} />}
 
-        <Card>
-          <div className="flex flex-col gap-2 px-5 py-5">
-            <p className="text-neutral-600">
-              Send us a tip about {props.celeb.name}&apos;s politics or beliefs.
-              Or <TweetItAtUs />
-            </p>
-            <ContributeCta name={props.celeb.name} />
-          </div>
-        </Card>
-
-        {!props.hasFacts && (
-          <TitledCard
-            titledContentProps={{
-              title: (
-                <span className="text-base">
-                  Your thoughts on {props.celeb.name}?
-                </span>
-              ),
-              stickyTitle: false,
-            }}
-          >
-            <div className="my-1 mx-3">
-              <FacebookComments pathname={`/${props.celeb.slug}`} />
-            </div>
-          </TitledCard>
+        {!isEmpty(props.facts) && !props.celeb.oldContent && (
+          <CelebPageFacts {...props} />
         )}
       </div>
     </Page>

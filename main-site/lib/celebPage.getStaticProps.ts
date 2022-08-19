@@ -33,8 +33,7 @@ export const getStaticProps = async ({
   const factCount = allFacts.length;
   const hasFacts = factCount > 0;
   const tagTimeline = getTagTimeline(allFacts);
-  const parseOldContent =
-    factCount < paginationRange.pageSize && celeb.oldContent !== null;
+  const parseOldContent = celeb.oldContent !== null;
   const issues = getFactIssues(allFacts);
 
   const oldContent = parseOldContent
