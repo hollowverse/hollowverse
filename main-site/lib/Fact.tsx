@@ -43,7 +43,7 @@ export const Fact: React.FC<{
   const link = props.link ?? false;
   const showIssueName = props.showIssueName ?? false;
   const [ogImageError, setOgImageError] = useState(false);
-  const showOgImage = props.fact.openGraphImage && !ogImageError;
+  const showOgImage = false && props.fact.openGraphImage && !ogImageError;
 
   return (
     <section id="fact" className="flex flex-col p-5 pb-0">
