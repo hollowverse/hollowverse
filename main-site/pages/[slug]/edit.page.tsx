@@ -55,11 +55,17 @@ export default function EditPage(props: EditPageProps) {
                 <p className="font-semibold">Dear friend,</p>
 
                 <p>
-                  We really need you to help us find some information about{' '}
+                  I coded this website. Now I'm trying to keep the information
+                  up to date, and I need your help. Please see if you can find
+                  some information about{' '}
                   <span className="underline">{props.celeb.name}</span>.
                 </p>
 
-                <p>Your help keeps us going, and we're very grateful for it!</p>
+                <p>Your help keeps me going, and I'm very grateful for it!</p>
+
+                <p>Thank you very much!</p>
+
+                <p> --MK</p>
               </div>
             </Alert>
           </div>
