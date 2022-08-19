@@ -1,17 +1,15 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
-import { PageTransitionSpinner } from '~/lib/PageTransitionSpinner';
+import React from 'react';
 import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
+import { PageTransitionSpinner } from '~/lib/PageTransitionSpinner';
+import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
+import { User, useUser } from '~/lib/useUser';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
-import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
-import React, { useEffect, useState } from 'react';
-import { discourseApiClient } from '~/lib/discourseApiClient';
 
-export const UserContext = React.createContext<{ avatar: string | null }>({
-  avatar: null,
-});
+export const UserContext = React.createContext<User | null>(null);
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();
@@ -57,9 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
       />
       <PageTransitionSpinner />
 
-      <UserContext.Provider value={{ avatar: 'asdf' }}>
-        <Component {...pageProps} />
-      </UserContext.Provider>
+      <Component {...pageProps} />
     </>
   );
 }

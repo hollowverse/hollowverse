@@ -1,25 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Popover, Menu, Transition } from '@headlessui/react';
+import { Menu, Popover, Transition } from '@headlessui/react';
 import {
   BellIcon,
-  XIcon,
-  MenuIcon,
   FireIcon,
   HomeIcon,
+  LoginIcon,
+  MenuIcon,
   TrendingUpIcon,
   UserGroupIcon,
+  XIcon,
 } from '@heroicons/react/solid';
-import { PropsWithChildren, Fragment } from 'react';
+import { Fragment, PropsWithChildren, useContext } from 'react';
 import { c } from '~/lib/c';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
-import { LoginIcon, ExternalLinkIcon } from '@heroicons/react/solid';
-import { useRouter } from 'next/router';
 import { useLocationHref } from '~/lib/useLocationHref';
-import { useUser } from '~/lib/useUser';
+import { User, useUser } from '~/lib/useUser';
+import { UserContext } from '~/pages/_app';
 
-const user = {
+const user_ = {
   name: 'Chelsea Hagon',
   email: 'chelsea.hagon@example.com',
   imageUrl:
@@ -41,7 +41,10 @@ const userNavigation = [
 
 export function NavBar(props: PropsWithChildren<{}>) {
   const href = useLocationHref();
-  const { isLoggedIn } = useUser();
+  const user = useUser();
+  const isLoggedIn = !!user;
+
+  console.log('user', user);
 
   return (
     <Popover
@@ -91,7 +94,7 @@ export function NavBar(props: PropsWithChildren<{}>) {
                 </Popover.Button>
               </div>
               <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
-                {(!isLoggedIn && (
+                {(!user && (
                   <a
                     href={`/api/login?redirect=${encodeURI(href)}`}
                     className={c(
@@ -100,7 +103,8 @@ export function NavBar(props: PropsWithChildren<{}>) {
                   >
                     Login <LoginIcon className="h-4 w-4 text-gray-500" />
                   </a>
-                )) || <ProfileDropdown />}
+                )) ||
+                  (user && <ProfileDropdown user={user} />)}
                 {/* Profile dropdown */}
                 {/* <ProfileDropdown /> */}
               </div>
@@ -130,16 +134,16 @@ export function NavBar(props: PropsWithChildren<{}>) {
                 <div className="flex-shrink-0">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={user.imageUrl}
+                    src={`https://forum.hollowverse.com/${user?.avatar_template}`}
                     alt=""
                   />
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
-                    {user.name}
+                    {user_.name}
                   </div>
                   <div className="text-sm font-medium text-gray-500">
-                    {user.email}
+                    {user_.email}
                   </div>
                 </div>
                 <button
@@ -187,13 +191,20 @@ export function NavBar(props: PropsWithChildren<{}>) {
   );
 }
 
-function ProfileDropdown() {
+function ProfileDropdown(props: { user: User }) {
   return (
     <Menu as="div" className="relative ml-5 flex-shrink-0">
       <div>
         <Menu.Button className="flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
           <span className="sr-only">Open user menu</span>
-          <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+          <img
+            className="h-8 w-8 rounded-full"
+            src={`https://forum.hollowverse.com/${props.user.avatar_template.replace(
+              '{size}',
+              '64',
+            )}`}
+            alt=""
+          />
         </Menu.Button>
       </div>
       <Transition
