@@ -21,12 +21,23 @@ function validateDate(date: string) {
 }
 
 export type EditFormFields = {
-  dob: string | null;
+  slug: string;
+  dob: string;
   dod: string | null;
-  alive: boolean | null;
+  alive: boolean;
 };
 
 export const editFormFieldDefinitions = {
+  slug: {
+    validate: (vals: EditFormFields) => {
+      if (!vals.slug) {
+        return 'slug is required';
+      }
+
+      return null;
+    },
+  },
+
   dob: {
     validate: (vals: EditFormFields) => {
       if (!vals.dob) {
@@ -70,7 +81,7 @@ export const editFormFieldDefinitions = {
 } as const;
 
 export function editFormValidate(vals: EditFormFields) {
-  let errors: any = {};
+  let errors: { [fieldName: string]: string } = {};
 
   (Object.keys(vals) as Array<keyof EditFormFields>).forEach((k) => {
     const validationResults = editFormFieldDefinitions[k].validate(vals);

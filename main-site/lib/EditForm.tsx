@@ -6,12 +6,12 @@ import { useForm } from 'react-hook-form';
 import Alert from '~/lib/Alert.ui';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
+import { EditFormFields, editFormValidate } from '~/lib/editFormValidate';
 import { H3 } from '~/lib/H3.ui';
+import { hvApiClient, post } from '~/lib/hvApiClient';
 import { Input } from '~/lib/Input.ui';
 import { RadioOption } from '~/lib/RadioOption.ui';
 import { EditPageProps } from '~/pages/[slug]/edit.page';
-import * as yup from 'yup';
-import { EditFormFields, editFormValidate } from '~/lib/editFormValidate';
 
 export function EditForm(props: EditPageProps) {
   const {
@@ -49,18 +49,11 @@ export function EditForm(props: EditPageProps) {
     <form
       className="flex flex-col gap-3"
       onSubmit={handleSubmit(async (data_) => {
-        // const s = yup.object({
-        //   livingStatus: yup.bool().required(),
-        //   dob: yup.date().required(),
-        //   dod: yup.date().when('livingStatus', {
-        //     is: true,
-        //     then: yup.date().required(),
-        //   }),
-        // });
-        // console.log(await s.validate({ livingStatus: false, dob: '1' }));
-        // console.log(JSON.stringify(data_));
+        await hvApiClient<any>(`submit-edit`, post(data_))!;
       })}
     >
+      <input type="hidden" {...register('slug')} value={props.celeb.slug} />
+
       <Card className="flex flex-col gap-3 p-5">
         <H3>What's {props.celeb.name}'s date of birth?</H3>
 

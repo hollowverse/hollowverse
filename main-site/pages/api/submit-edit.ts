@@ -1,16 +1,15 @@
+import { SanityDocument } from '@sanity/client';
 import groq from 'groq';
 import { isEmpty, remove } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Celeb } from '~/lib/celeb.projection';
 import { cors } from '~/lib/cors';
+import { EditFormFields, editFormValidate } from '~/lib/editFormValidate';
 import { sanityWriteToken } from '~/lib/sanityWriteToken';
 import { getUserAuth } from '~/lib/user-auth';
-import { calculateVoteOperations } from '~/lib/calculateVoteOperations';
-import { FactVotes, factVotesProjection } from '~/lib/fact.projection';
-import { getUserGroq, User, UserVote } from '~/lib/getUser.groq';
-import { sanityClient, sanityClientNoCdn } from '~/shared/lib/sanityio';
-import { v4 as uuid } from 'uuid';
+import { configuredSanityClient, sanityClient } from '~/shared/lib/sanityio';
 
-const ongoingVoting: string[] = [];
+const ongoingSubmissions: string[] = [];
 
 export default async function submitEdit(
   req: NextApiRequest,
@@ -27,7 +26,61 @@ export default async function submitEdit(
       return res.status(401).json({ message: 'unauthorized' });
     }
 
-    return res.status(200).json(JSON.parse(req.body));
+    const payload = JSON.parse(req.body) as EditFormFields;
+
+    const validationResults = editFormValidate(payload);
+
+    if (!isEmpty(validationResults)) {
+      return res.status(500).send('Bad request');
+    }
+
+    /**
+     * When I receive a submission here, two things come to mind
+     *
+     * 1. save it to the database
+     * 2. do the forum update thread thing
+     *
+     * let's start with 1.
+     *
+     * currently the data i'm receiving is for dob and dod. that's it.
+     *
+     * this data goes on the celeb profile. so i'll have to write that information there. i will
+     * not be writing the username with this information, unlike what i'd do with the positions.
+     *
+     * i guess i will be writing the information with the celeb because i want to credit users
+     * for all of their contributions
+     *
+     * but the data should be a draft. and while i have a draft, i should not allow another draft,
+     * so the celeb should not be editable. this is also the way it has to be because i don't know another way
+     * to do it.
+     *
+     * okay, so then when i receive the payload, i would check if the document already has a draft version,
+     * in which case i would not update it. but if there's not a draft version of it, i would
+     * publish a new draft version.
+     */
+    const celeb = await sanityClient.fetch<Celeb>(
+      'submit-edit-get-celeb-id',
+      groq`*[_type == 'celeb' && slug.current == $slug][0]`,
+      { slug: payload.slug },
+    );
+
+    if (!celeb) {
+      return res.status(500).send('bad request');
+    }
+
+    const s = await configuredSanityClient.createOrReplace(
+      {
+        ...celeb,
+        dod: payload.dod,
+        dob: payload.dob,
+        contributorId: auth.id,
+        _type: 'celeb',
+        _id: `drafts.${celeb._id}`,
+      },
+      { token: sanityWriteToken },
+    );
+
+    return res.status(200).json({ celeb });
 
     // userId = auth.id;
 
@@ -115,6 +168,6 @@ export default async function submitEdit(
   }
 
   function removeUserFromOngoingVotes(_userId: string | null) {
-    remove(ongoingVoting, (uid) => uid === _userId);
+    remove(ongoingSubmissions, (uid) => uid === _userId);
   }
 }

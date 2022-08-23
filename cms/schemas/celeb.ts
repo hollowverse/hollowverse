@@ -80,6 +80,18 @@ export const celeb = {
     },
 
     {
+      title: 'Date of death',
+      name: 'dod',
+      type: 'date',
+    },
+
+    {
+      title: 'Contributor ID',
+      name: 'contributorId',
+      type: 'number',
+    },
+
+    {
       title: 'Old content',
       name: 'oldContent',
       type: 'text',
