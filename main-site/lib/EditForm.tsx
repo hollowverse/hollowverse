@@ -52,7 +52,12 @@ export function EditForm(props: EditPageProps) {
         await hvApiClient<any>(`submit-edit`, post(data_))!;
       })}
     >
-      <input type="hidden" {...register('slug')} value={props.celeb.slug} />
+      <input type="hidden" {...register('id')} value={props.celeb._id} />
+      <input
+        type="hidden"
+        {...register('knowledgeGraphId')}
+        value={props.celeb.knowledgeGraphId}
+      />
 
       <Card className="flex flex-col gap-3 p-5">
         <H3>What's {props.celeb.name}'s date of birth?</H3>

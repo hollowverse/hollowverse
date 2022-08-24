@@ -29,7 +29,7 @@ export function getUserAuth(req: Req, res: Res) {
     return null;
   }
 
-  return JSON.parse(auth) as { id: string; username: string };
+  return JSON.parse(auth) as { id: number; username: string };
 }
 
 export function setAuthCookie(

@@ -4,6 +4,7 @@ import { Context, log, LoggableError } from '~/shared/lib/log';
 import qs from 'qs';
 
 export type DiscourseApiClientArgs = {
+  /** without leading slash */
   api: string;
   username?: string;
   payload?: {

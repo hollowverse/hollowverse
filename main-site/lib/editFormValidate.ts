@@ -21,17 +21,24 @@ function validateDate(date: string) {
 }
 
 export type EditFormFields = {
-  slug: string;
+  id: string | null;
   dob: string;
   dod: string | null;
   alive: boolean;
+  knowledgeGraphId: string;
 };
 
 export const editFormFieldDefinitions = {
-  slug: {
+  knowledgeGraphId: {
     validate: (vals: EditFormFields) => {
-      if (!vals.slug) {
-        return 'slug is required';
+      return !vals.knowledgeGraphId ? 'knowledgeGraphId is required' : null;
+    },
+  },
+
+  id: {
+    validate: (vals: EditFormFields) => {
+      if (!vals.id) {
+        return 'id is required';
       }
 
       return null;

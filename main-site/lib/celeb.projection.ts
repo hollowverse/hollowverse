@@ -8,6 +8,10 @@ export type Celeb = {
   wikipediaId: string;
   slug: string;
   picture: Picture;
+  contributorId: number;
+  knowledgeGraphId: string;
+  dod: string | null;
+  dob: string | null;
 };
 
 export const celebProjection = groq`
@@ -15,6 +19,10 @@ _id,
 name,
 pronoun,
 wikipediaId,
+contributorId,
+knowledgeGraphId,
+dod,
+dob,
 'slug': slug.current,
 'picture': picture.asset->{${pictureProjection}}
 `;
