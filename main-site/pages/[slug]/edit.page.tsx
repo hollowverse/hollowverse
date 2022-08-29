@@ -61,7 +61,10 @@ export default function EditPage(props: EditPageProps) {
                   <span className="underline">{props.celeb.name}</span>.
                 </p>
 
-                <p>Your help keeps me going, and I'm very grateful for it!</p>
+                <p>
+                  Your help keeps us going, and it's appreciated by thousands of
+                  readers!
+                </p>
 
                 <p>Thank you very much!</p>
 

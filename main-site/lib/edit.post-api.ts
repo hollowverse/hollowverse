@@ -31,12 +31,7 @@ export async function editPostApi(req: NextApiRequest, res: NextApiResponse) {
     }
 
     /**
-     * for now, i want to make sure a doc exists, because we only allow edits of
-     * existing docs... but, you know, immediately after this i will wanna
-     * implement positions, which would allow creation of new docs. so maybe i
-     * should already figure this out. yeah, i think i will...
-     *
-     * i think when i receive a doc that is new, the `id` should be `null`.
+     * when i receive a doc that is new, the `id` should be `null`.
      *
      * if the id is `null`, the first step is to determine the type of doc that
      * is being sent, i.e. `celeb` or `position`. then check if it already
@@ -51,7 +46,7 @@ export async function editPostApi(req: NextApiRequest, res: NextApiResponse) {
      *
      * when you submit a new position for an existing celeb, the client should
      * provide the ID for whom the position is being submitted. then we can
-     * check if the celeb already has that position of not.
+     * check if the celeb already has that position or not.
      *
      * if the doc doesn't already exist, we create a new one from this
      * submission. but if it does exist, we have to first check if there's

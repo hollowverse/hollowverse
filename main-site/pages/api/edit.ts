@@ -13,13 +13,13 @@ export default async function edit(req: NextApiRequest, res: NextApiResponse) {
   let userId: string | null = '';
 
   try {
-    const auth = getUserAuth(req, res);
-
-    if (!auth) {
-      return res.status(401).json({ message: 'Unauthorized' });
-    }
-
     if (req.method === 'POST') {
+      const auth = getUserAuth(req, res);
+
+      if (!auth) {
+        return res.status(401).json({ message: 'Unauthorized' });
+      }
+
       return editPostApi(req, res);
     } else if (req.method === 'GET') {
       return editGetApi(req, res);
