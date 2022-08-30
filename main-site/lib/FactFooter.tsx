@@ -5,7 +5,7 @@ import {
   FaRegShareSquare,
 } from 'react-icons/fa';
 import { FacebookComments } from '~/lib/FacebookComments';
-import { FacebookCommentsCount } from '~/lib/FacebookCommentsCount';
+import { FacebookCommentsCount } from '~/lib/disabled/FacebookCommentsCount';
 import { useShareButton } from '~/lib/ShareButton';
 import { VoteButtons } from '~/lib/VoteButtons';
 import { c } from '~/lib/c';

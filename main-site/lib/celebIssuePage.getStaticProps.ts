@@ -6,8 +6,8 @@ import { getCeleb } from '~/lib/getCeleb';
 import { getCelebFacts } from '~/lib/getCelebFacts';
 import { getFactIssues } from '~/lib/getFactIssues';
 import { getIssue } from '~/lib/getIssue';
-import { getTagTimeline } from '~/lib/getTagTimeline';
-import { tagIsVerb } from '~/lib/tagIsVerb';
+import { getTagTimeline } from '~/lib/disabled/getTagTimeline';
+import { tagIsVerb } from '~/lib/disabled/tagIsVerb';
 import { transformFact } from '~/lib/transformFact';
 import { PageProps } from '~/shared/lib/types';
 

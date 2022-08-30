@@ -1,6 +1,6 @@
-import { CelebFacts } from '~/lib/CelebFacts';
+import { CelebFacts } from '~/lib/deprecated/CelebFacts';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
-import { noIssueFilter } from '~/lib/IssueSelector';
+import { noIssueFilter } from '~/lib/disabled/IssueSelector';
 import { NavigationTip } from '~/lib/NavigationTip';
 import { Pagination } from '~/lib/Pagination';
 

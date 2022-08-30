@@ -8,7 +8,7 @@ import {
   getPaginationRange,
 } from '~/lib/getPaginationRange';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
-import { getTagTimeline } from '~/lib/getTagTimeline';
+import { getTagTimeline } from '~/lib/disabled/getTagTimeline';
 import { Issue } from '~/lib/issue.projection';
 import { transformFact } from '~/lib/transformFact';
 import { log } from '~/shared/lib/log';

@@ -16,7 +16,7 @@ export type FactUserVote = {
   choice: UserVote['choice'] | null;
 };
 
-const ongoingVoting: string[] = [];
+const ongoingVoting: number[] = [];
 
 export default async function submitVote(
   req: NextApiRequest,
@@ -24,7 +24,7 @@ export default async function submitVote(
 ) {
   cors(req, res);
 
-  let userId: string | null = '';
+  let userId: number | null = null;
 
   try {
     const auth = getUserAuth(req, res);
@@ -58,7 +58,7 @@ export default async function submitVote(
     }
 
     if (isEmpty(user) || !user) {
-      user = { _id: userId, votes: [] };
+      user = { _id: String(userId), votes: [] };
     }
 
     const existingVote = user.votes.find((v) => v.factId === newVote.factId);
@@ -100,7 +100,7 @@ export default async function submitVote(
       choice: voteOperations.operation === 'remove' ? null : newVote.choice,
     });
 
-    function getUserAndFactVotes(_userId: string) {
+    function getUserAndFactVotes(_userId: number) {
       return Promise.all([
         sanityClientNoCdn.fetch<User>('user', ...getUserGroq(_userId)),
         sanityClientNoCdn.fetch<FactVotes>(
@@ -118,7 +118,7 @@ export default async function submitVote(
       .json(JSON.stringify(err, Object.getOwnPropertyNames(err)));
   }
 
-  function removeUserFromOngoingVotes(_userId: string | null) {
+  function removeUserFromOngoingVotes(_userId: number | null) {
     remove(ongoingVoting, (uid) => uid === _userId);
   }
 }

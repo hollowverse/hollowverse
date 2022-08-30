@@ -3,7 +3,7 @@ import { ExternalLinkIcon } from '@heroicons/react/solid';
 import { isEmpty } from 'lodash-es';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Accordion } from '~/lib/Accordion.ui';
+// import { Accordion } from '~/lib/Accordion.ui';
 import Alert from '~/lib/Alert.ui';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';

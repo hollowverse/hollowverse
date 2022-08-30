@@ -3,15 +3,11 @@ import { Logo } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { CelebGallery } from '~/lib/CelebGallery';
-import { FactList } from '~/lib/FactList';
-import { ForumCta } from '~/lib/ForumCta';
 import { HomepageProps } from '~/lib/homepage.getStaticProps';
-import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
 import { Page } from '~/lib/Page';
 import { Pagination } from '~/lib/Pagination';
-import { SideScroller } from '~/lib/SideScroller';
 
 export default function Index(props: HomepageProps) {
   return (
@@ -50,11 +46,11 @@ export default function Index(props: HomepageProps) {
 
           <TrendingCelebs />
 
-          <ForumCta message={props.forumCta} />
+          {/* <ForumCta message={props.forumCta} /> */}
 
-          <TrendingIssues />
+          {/* <TrendingIssues /> */}
 
-          <LatestFacts />
+          {/* <LatestFacts /> */}
 
           <Pagination
             {...props.pagination}
@@ -95,46 +91,46 @@ export default function Index(props: HomepageProps) {
           Trending Celebrities
         </h2>
 
-        <SideScroller>
-          <CelebGallery
-            prefetch={false}
-            celebGalleryItems={props.trendingCelebs}
-            className="flex flex-row flex-nowrap justify-start gap-[1px]"
-          />
-        </SideScroller>
+        <CelebGallery
+          prefetch={false}
+          celebGalleryItems={props.trendingCelebs}
+          className="flex flex-row flex-nowrap justify-start gap-[1px]"
+        />
+        {/* <SideScroller>
+        </SideScroller> */}
       </div>
     );
   }
 
-  function TrendingIssues() {
-    return (
-      <div className="flex flex-col gap-2.5">
-        <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
+  // function TrendingIssues() {
+  //   return (
+  //     <div className="flex flex-col gap-2.5">
+  //       <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
 
-        <div className="border-y">
-          <IssueSelector
-            isSelected={(i) => i._id === noIssueFilter._id}
-            issues={props.trendingIssues}
-            getLink={(_id) =>
-              _id === noIssueFilter._id ? '/' : `/~issue/${_id}`
-            }
-          />
-        </div>
-      </div>
-    );
-  }
+  //       <div className="border-y">
+  //         <IssueSelector
+  //           isSelected={(i) => i._id === noIssueFilter._id}
+  //           issues={props.trendingIssues}
+  //           getLink={(_id) =>
+  //             _id === noIssueFilter._id ? '/' : `/~issue/${_id}`
+  //           }
+  //         />
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  function LatestFacts() {
-    return (
-      <div className="flex flex-col gap-2.5">
-        <h2 className="scale-y-110 px-5 text-xl font-semibold">
-          Recently added
-        </h2>
+  // function LatestFacts() {
+  //   return (
+  //     <div className="flex flex-col gap-2.5">
+  //       <h2 className="scale-y-110 px-5 text-xl font-semibold">
+  //         Recently added
+  //       </h2>
 
-        <FactList list={props.latestFacts} />
-      </div>
-    );
-  }
+  //       <FactList list={props.latestFacts} />
+  //     </div>
+  //   );
+  // }
 }
 
 export { getStaticProps } from '~/lib/homepage.getStaticProps';
