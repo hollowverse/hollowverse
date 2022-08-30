@@ -57,7 +57,7 @@ export function FactList(props: { list: FactWithCeleb[] }) {
               </TitledCard>
             </div>
 
-            {i === 0 && <InFeedAd />}
+            {/* {i === 0 && <InFeedAd />} */}
           </Fragment>
         );
       })}

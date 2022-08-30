@@ -33,9 +33,9 @@ export const Article = (
         </TitledCard>
       )}
 
-      {isEmpty(props.facts) && (
+      {/* {isEmpty(props.facts) && (
         <InFeedAd key={`article-ad-${props.celeb.slug}`} />
-      )}
+      )} */}
 
       <TitledCard titledContentProps={{ title: 'Editorial' }}>
         <div

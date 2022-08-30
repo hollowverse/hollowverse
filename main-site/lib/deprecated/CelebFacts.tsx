@@ -31,7 +31,7 @@ export function CelebFacts(props: {
               />
             </Card>
 
-            {props.index === 0 && i === 0 && <InFeedAd />}
+            {/* {props.index === 0 && i === 0 && <InFeedAd />} */}
           </Fragment>
         );
       })}
