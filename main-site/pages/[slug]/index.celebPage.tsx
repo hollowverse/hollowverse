@@ -6,10 +6,13 @@ import { Card } from '~/lib/Card.ui';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { CelebPageFacts } from '~/lib/CelebPageFacts';
 import { CelebPageHero } from '~/lib/CelebPageHero';
+import { FacebookComments } from '~/lib/FacebookComments';
+import { getFactPagePathname } from '~/lib/getFactPagePathname';
 import { HelpWanted } from '~/lib/HelpWanted';
 import { Link } from '~/lib/Link';
 import { Md } from '~/lib/Md';
 import { Page } from '~/lib/Page';
+import { TitledCard } from '~/lib/TitledCard.ui';
 import { TopContributorsWidget } from '~/lib/TopContributorsWidget';
 
 export default function Celeb(props: CelebPageProps) {
@@ -42,12 +45,24 @@ export default function Celeb(props: CelebPageProps) {
           <CelebPageFacts {...props} />
         )}
 
-        <HelpWanted pfName={props.celeb.name} slug={props.celeb.slug} />
+        <TitledCard
+          titledContentProps={{
+            title: (
+              <span className="text-base">What do you think of this?</span>
+            ),
+          }}
+        >
+          <div id="fact-page-comments" className="my-1 mx-3">
+            <FacebookComments pathname={`/${props.celeb.slug}`} />
+          </div>
+        </TitledCard>
 
-        <TopContributorsWidget
+        {/* <HelpWanted pfName={props.celeb.name} slug={props.celeb.slug} /> */}
+
+        {/* <TopContributorsWidget
           celebName={props.celeb.name}
           slug={props.celeb.slug}
-        />
+        /> */}
       </div>
     </Page>
   );
