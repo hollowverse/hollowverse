@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { CelebImage } from '~/lib/CelebImage';
 import { Fact } from '~/lib/Fact';
 import { InFeedAd } from '~/lib/InFeedAd';
-import { TitledCard } from '~/lib/TitledCard';
+import { TitledCard } from '~/lib/TitledCard.ui';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { FactWithCeleb } from '~/lib/fact.projection';
 import { celebNameToIssue } from '~/lib/celebNameToIssue';
@@ -57,7 +57,7 @@ export function FactList(props: { list: FactWithCeleb[] }) {
               </TitledCard>
             </div>
 
-            {i === 0 && <InFeedAd />}
+            {/* {i === 0 && <InFeedAd />} */}
           </Fragment>
         );
       })}

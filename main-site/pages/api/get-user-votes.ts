@@ -1,7 +1,7 @@
 import groq from 'groq';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/cors';
-import { getAuthenticatedUserId } from '~/lib/user-auth';
+import { getUserAuth } from '~/lib/user-auth';
 import { UserVote } from '~/lib/getUser.groq';
 import { sanityClientNoCdn } from '~/shared/lib/sanityio';
 
@@ -11,9 +11,9 @@ export default async function getUserVotes(
 ) {
   cors(req, res);
 
-  const userId = getAuthenticatedUserId(req, res);
+  const auth = getUserAuth(req, res);
 
-  if (!userId) {
+  if (!auth) {
     return res.status(401).json({ message: 'unauthorized' });
   }
 
@@ -29,7 +29,7 @@ export default async function getUserVotes(
     ][0]{
       votes[factId in $factIds]
     }`,
-    { userId, factIds },
+    { userId: auth.id, factIds },
   );
 
   return res.status(200).json(userVotes?.votes || []);

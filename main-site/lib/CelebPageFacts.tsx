@@ -1,6 +1,5 @@
-import { CelebFacts } from '~/lib/CelebFacts';
+import { CelebFacts } from '~/lib/deprecated/CelebFacts';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
-import { noIssueFilter } from '~/lib/IssueSelector';
 import { NavigationTip } from '~/lib/NavigationTip';
 import { Pagination } from '~/lib/Pagination';
 
@@ -14,8 +13,6 @@ export const CelebPageFacts = (props: CelebPageProps) => {
           showIssueName
           factGroup={props.facts}
           celeb={props.celeb}
-          issue={noIssueFilter}
-          issues={props.issues}
           slug={props.celeb.slug}
         />
       </div>

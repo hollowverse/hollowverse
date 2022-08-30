@@ -1,11 +1,11 @@
 import { AppProps } from 'next/app';
 import Script from 'next/script';
-import { PageTransitionSpinner } from '~/lib/PageTransitionSpinner';
 import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
+import { PageTransitionSpinner } from '~/lib/PageTransitionSpinner';
+import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
-import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
 
 export default function App({ Component, pageProps }: AppProps) {
   useGoogleAnalyticsUniversal();
@@ -50,6 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <PageTransitionSpinner />
+
       <Component {...pageProps} />
     </>
   );

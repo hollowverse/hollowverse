@@ -8,6 +8,5 @@
       "~/*": ["./*"]
     }
   },
-  "exclude": ["node_modules", "next.config.js", "out"],
-  "include": ["."]
+  "include": ["pages", "lib"]
 }

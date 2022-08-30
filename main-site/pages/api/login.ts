@@ -73,13 +73,11 @@ async function handleLoginReturn(req: NextApiRequest, res: NextApiResponse) {
       'custom.redirect': string;
     };
 
-    const { user } = await discourseApiClient<{ user: { id: number } }>(
-      `u/${username}.json`,
-    );
+    const { user } = await discourseApiClient<{ user: { id: number } }>({
+      api: `u/${username}.json`,
+    });
 
-    const userId = user.id;
-
-    setAuthCookie(req, res, userId.toString());
+    setAuthCookie(req, res, JSON.stringify({ id: user.id, username }));
 
     return res.redirect(redirect);
   }

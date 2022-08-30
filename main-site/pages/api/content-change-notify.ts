@@ -7,7 +7,6 @@ import {
   ContentChange,
   contentChangeProjection,
 } from '~/lib/contentChangeNotification.projection';
-import { NewFactChores } from '~/lib/NewFactChores';
 import { Json } from '~/shared/lib/types';
 import { createContextLogger } from '~/shared/lib/log';
 import { logTask } from '~/shared/lib/log.server';
@@ -83,19 +82,19 @@ async function contentChangeNotify(
   const results = [];
 
   results.push(
-    await logTask(
-      'Performing new Fact chores',
-      () => {
-        const newFactChores = new NewFactChores(
-          data!,
-          webhookPayload.operation,
-          logContext,
-        );
+    // await logTask(
+    //   'Performing new Fact chores',
+    //   () => {
+    //     const newFactChores = new NewFactChores(
+    //       data!,
+    //       webhookPayload.operation,
+    //       logContext,
+    //     );
 
-        return newFactChores.run();
-      },
-      logContext,
-    ),
+    //     return newFactChores.run();
+    //   },
+    //   logContext,
+    // ),
 
     ...(await Promise.all([
       revalidatePath(`/${webhookPayload.slug}`),

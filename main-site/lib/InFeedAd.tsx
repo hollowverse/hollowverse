@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 
 export function InFeedAd() {
   useEffect(() => {

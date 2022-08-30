@@ -1,10 +1,14 @@
+import cookie from 'cookie-signature';
 import { getCookie, setCookie } from 'cookies-next';
 import crypto from 'crypto';
 import { isString } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
-import cookie from 'cookie-signature';
+import { AUTH_COOKIE_NAME } from '~/lib/constants';
 import { oneYear } from '~/lib/date';
-import { LOGIN_COOKIE_NAME } from '~/lib/constants';
+
+type OptionType = NonNullable<Parameters<typeof getCookie>[1]>;
+type Req = OptionType['req'];
+type Res = OptionType['res'];
 
 export const discourseSsoSecret = process.env.DISCOURSE_SSO_SECRET as string;
 
@@ -12,23 +16,20 @@ export function getHmac() {
   return crypto.createHmac('sha256', discourseSsoSecret);
 }
 
-export function getAuthenticatedUserId(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  const tentativeUserId = getCookie(LOGIN_COOKIE_NAME, { req, res });
+export function getUserAuth(req: Req, res: Res) {
+  const tentativeAuth = getCookie(AUTH_COOKIE_NAME, { req, res });
 
-  if (!isString(tentativeUserId)) {
+  if (!isString(tentativeAuth)) {
     return null;
   }
 
-  const userId = cookie.unsign(tentativeUserId, discourseSsoSecret);
+  const auth = cookie.unsign(tentativeAuth, discourseSsoSecret);
 
-  if (!userId) {
+  if (!auth) {
     return null;
   }
 
-  return userId;
+  return JSON.parse(auth) as { id: number; username: string };
 }
 
 export function setAuthCookie(
@@ -44,7 +45,7 @@ export function setAuthCookie(
   } as const;
 
   setCookie(
-    LOGIN_COOKIE_NAME,
+    AUTH_COOKIE_NAME,
     cookie.sign(userId, discourseSsoSecret),
     cookieOptions,
   );

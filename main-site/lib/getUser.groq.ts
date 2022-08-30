@@ -10,7 +10,7 @@ export type User = {
   votes: UserVote[];
 };
 
-export function getUserGroq(userId: string) {
+export function getUserGroq(userId: number) {
   return [
     groq`*[_type == 'user' && _id == $userId][0]{
       _id,

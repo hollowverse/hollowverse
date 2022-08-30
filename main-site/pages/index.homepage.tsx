@@ -1,14 +1,12 @@
 import { FaSearch } from 'react-icons/fa';
-import { Container, Logo } from '~/lib/AppBar';
+import { Logo } from '~/lib/AppBar';
+import { c } from '~/lib/c';
+import { Card } from '~/lib/Card.ui';
 import { CelebGallery } from '~/lib/CelebGallery';
-import { FactList } from '~/lib/FactList';
-import { IssueSelector, noIssueFilter } from '~/lib/IssueSelector';
-import { Page } from '~/lib/Page';
-import { Pagination } from '~/lib/Pagination';
-import { SideScroller } from '~/lib/SideScroller';
 import { HomepageProps } from '~/lib/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
-import { ForumCta } from '~/lib/ForumCta';
+import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
+import { Page } from '~/lib/Page';
 
 export default function Index(props: HomepageProps) {
   return (
@@ -20,15 +18,25 @@ export default function Index(props: HomepageProps) {
       className="text-neutral-600"
       id="homepage"
       appBar={
-        <Container navClasses="flex-col py-3">
-          <Logo className="justify-center text-3xl" />
+        <Card topBorder={false} className="font-normal">
+          <LovelyTopBorder />
 
-          <h1 className="text-center text-xl italic text-neutral-500">
-            The Political Views
-            <br />
-            and Religions of Celebrities
-          </h1>
-        </Container>
+          <nav
+            role="navigation"
+            aria-label="Main Navigation"
+            className={c(
+              'NAV h-container flex flex-col items-center justify-between py-3 px-5 default:flex-row default:gap-2',
+            )}
+          >
+            <Logo className="justify-center text-3xl" />
+
+            <h1 className="text-center text-xl italic text-neutral-500">
+              The Political Views
+              <br />
+              and Religions of Celebrities
+            </h1>
+          </nav>
+        </Card>
       }
     >
       <div className="h-container py-5">
@@ -37,18 +45,18 @@ export default function Index(props: HomepageProps) {
 
           <TrendingCelebs />
 
-          <ForumCta message={props.forumCta} />
+          {/* <ForumCta message={props.forumCta} /> */}
 
-          <TrendingIssues />
+          {/* <TrendingIssues /> */}
 
-          <LatestFacts />
+          {/* <LatestFacts /> */}
 
-          <Pagination
+          {/* <Pagination
             {...props.pagination}
             getLink={(pageNumber) =>
               pageNumber === 1 ? '/' : `/~p/${pageNumber}`
             }
-          />
+          /> */}
         </div>
       </div>
     </Page>
@@ -82,46 +90,48 @@ export default function Index(props: HomepageProps) {
           Trending Celebrities
         </h2>
 
-        <SideScroller>
+        <div className="flex justify-center">
           <CelebGallery
             prefetch={false}
             celebGalleryItems={props.trendingCelebs}
-            className="flex flex-row flex-nowrap justify-start gap-[1px]"
-          />
-        </SideScroller>
-      </div>
-    );
-  }
-
-  function TrendingIssues() {
-    return (
-      <div className="flex flex-col gap-2.5">
-        <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
-
-        <div className="border-y">
-          <IssueSelector
-            isSelected={(i) => i._id === noIssueFilter._id}
-            issues={props.trendingIssues}
-            getLink={(_id) =>
-              _id === noIssueFilter._id ? '/' : `/~issue/${_id}`
-            }
+            className="flex flex-row gap-[1px]"
           />
         </div>
+        {/* <SideScroller>
+        </SideScroller> */}
       </div>
     );
   }
 
-  function LatestFacts() {
-    return (
-      <div className="flex flex-col gap-2.5">
-        <h2 className="scale-y-110 px-5 text-xl font-semibold">
-          Recently added
-        </h2>
+  // function TrendingIssues() {
+  //   return (
+  //     <div className="flex flex-col gap-2.5">
+  //       <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
 
-        <FactList list={props.latestFacts} />
-      </div>
-    );
-  }
+  //       <div className="border-y">
+  //         <IssueSelector
+  //           isSelected={(i) => i._id === noIssueFilter._id}
+  //           issues={props.trendingIssues}
+  //           getLink={(_id) =>
+  //             _id === noIssueFilter._id ? '/' : `/~issue/${_id}`
+  //           }
+  //         />
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  // function LatestFacts() {
+  //   return (
+  //     <div className="flex flex-col gap-2.5">
+  //       <h2 className="scale-y-110 px-5 text-xl font-semibold">
+  //         Recently added
+  //       </h2>
+
+  //       <FactList list={props.latestFacts} />
+  //     </div>
+  //   );
+  // }
 }
 
 export { getStaticProps } from '~/lib/homepage.getStaticProps';

@@ -8,7 +8,6 @@ import {
   getPaginationRange,
 } from '~/lib/getPaginationRange';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
-import { getTagTimeline } from '~/lib/getTagTimeline';
 import { Issue } from '~/lib/issue.projection';
 import { transformFact } from '~/lib/transformFact';
 import { log } from '~/shared/lib/log';
@@ -32,9 +31,7 @@ export const getStaticProps = async ({
   const paginationRange = getPaginationRange({ p: params.p });
   const factCount = allFacts.length;
   const hasFacts = factCount > 0;
-  const tagTimeline = getTagTimeline(allFacts);
-  const parseOldContent =
-    factCount < paginationRange.pageSize && celeb.oldContent !== null;
+  const parseOldContent = celeb.oldContent !== null;
   const issues = getFactIssues(allFacts);
 
   const oldContent = parseOldContent
@@ -53,7 +50,6 @@ export const getStaticProps = async ({
           : `/${params.slug}/p/${paginationRange.p}`,
       pagination: getPaginationProps(paginationRange, factCount),
       hasFacts,
-      tagTimeline,
       issues,
       facts,
       celeb: {

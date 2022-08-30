@@ -12,6 +12,7 @@ const nextJsConfig = {
   pageExtensions: [
     'tsx',
     'ts',
+    'page.tsx',
     'celebPage.tsx',
     'celebIssuePage.tsx',
     'celebTagPage.tsx',

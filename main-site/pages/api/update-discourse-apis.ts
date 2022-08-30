@@ -1,8 +1,8 @@
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getEnv } from '~/shared/lib/getEnv';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { celebTopContributorsPsql } from '~/lib/celebTopContributors.psql';
-import { factPageForumDataPsql } from '~/lib/factPageForumData';
+// import { celebTopContributorsPsql } from '~/lib/celebTopContributors.psql';
+// import { factPageForumDataPsql } from '~/lib/factPageForumData';
 import { log } from '~/shared/lib/log';
 
 /**
@@ -28,29 +28,35 @@ export default async function createDiscourseApis(
   try {
     log('info', 'Discourse APIs updated');
 
-    await discourseApiClient('admin/plugins/explorer/queries/5', {
-      method: 'PUT',
-      type: 'form',
-      body: {
-        query: {
-          name: 'Top contributors by celebrity',
-          description: 'Get the top contributors of a specific celebrity',
-          sql: celebTopContributorsPsql,
-        },
-      },
-    });
+    // await discourseApiClient({
+    //   api: 'admin/plugins/explorer/queries/5',
+    //   payload: {
+    //     method: 'PUT',
+    //     type: 'form',
+    //     body: {
+    //       query: {
+    //         name: 'Top contributors by celebrity',
+    //         description: 'Get the top contributors of a specific celebrity',
+    //         sql: celebTopContributorsPsql,
+    //       },
+    //     },
+    //   },
+    // });
 
-    await discourseApiClient('admin/plugins/explorer/queries/6', {
-      method: 'PUT',
-      type: 'form',
-      body: {
-        query: {
-          name: 'Fact page data',
-          description: 'Data needed on the Fact page',
-          sql: factPageForumDataPsql,
-        },
-      },
-    });
+    // await discourseApiClient({
+    //   api: 'admin/plugins/explorer/queries/6',
+    //   payload: {
+    //     method: 'PUT',
+    //     type: 'form',
+    //     body: {
+    //       query: {
+    //         name: 'Fact page data',
+    //         description: 'Data needed on the Fact page',
+    //         sql: factPageForumDataPsql,
+    //       },
+    //     },
+    //   },
+    // });
 
     res.json({ ok: 'Discourse APIs updated' });
   } catch (e) {

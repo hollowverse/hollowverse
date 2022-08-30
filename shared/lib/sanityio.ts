@@ -1,4 +1,4 @@
-import originalSanityClient from '@sanity/client';
+import originalSanityClient, { SanityDocument } from '@sanity/client';
 import {
   FilteredResponseQueryOptions,
   SanityClient,
@@ -18,7 +18,7 @@ const sanityClientConfigs = {
   apiVersion: '2022-03-20',
 };
 
-const configuredSanityClient = originalSanityClient({
+export const configuredSanityClient = originalSanityClient({
   ...sanityClientConfigs,
   useCdn: true, // `false` if you want to ensure fresh data
 });
@@ -42,6 +42,15 @@ type SanityClientPatchParams = Parameters<typeof configuredSanityClient.patch>;
 
 function createSanityClient(configuredSanityClient: SanityClient) {
   return {
+    getDocument: <T extends Json>(requestName: string, id: string) => {
+      log('debug', `sanity fetch: ${requestName}`, {
+        requestName,
+        id,
+      });
+
+      return configuredSanityClient.getDocument<T>(id);
+    },
+
     fetch: <T extends any>(
       requestName: string,
       query: string,
@@ -60,14 +69,16 @@ function createSanityClient(configuredSanityClient: SanityClient) {
       ) as T | null;
     },
 
-    create<T extends Json>(
-      requestName: string,
-      ...args: SanityClientCreateParams
-    ) {
-      log('debug', `sanity create: ${requestName}`);
+    // create<T extends Json>(
+    //   requestName: string,
+    //   ...args: SanityClientCreateParams
+    // ) {
+    //   log('debug', `sanity create: ${requestName}`);
 
-      return configuredSanityClient.create(...args) as unknown as Promise<T>;
-    },
+    //   return configuredSanityClient.create<SanityDocument<T>>(
+    //     ...args,
+    //   ) as unknown as Promise<T>;
+    // },
 
     createOrReplace<T extends Json>(
       requestName: string,

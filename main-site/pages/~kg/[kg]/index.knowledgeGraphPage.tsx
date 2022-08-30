@@ -1,8 +1,7 @@
 import { FaRegCheckCircle } from 'react-icons/fa';
 import { CelebImage } from '~/lib/CelebImage';
-import { ContributeCta, TweetItAtUs } from '~/lib/ContributeCta';
 import { Page } from '~/lib/Page';
-import { Card } from '~/lib/Card';
+import { Card } from '~/lib/Card.ui';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 
 export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
@@ -55,7 +54,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      <Card className="h-container my-5 p-5">
+      {/* <Card className="h-container my-5 p-5">
         <div className="flex flex-col gap-2 text-base text-neutral-600">
           <p>Hey! 👋</p>
 
@@ -68,7 +67,7 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
 
           <ContributeCta name={params.name} />
         </div>
-      </Card>
+      </Card> */}
     </Page>
   );
 }
