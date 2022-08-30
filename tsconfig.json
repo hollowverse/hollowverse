@@ -27,5 +27,6 @@
     "incremental": true,
     "isolatedModules": true,
     "allowJs": true
-  }
+  },
+  "exclude": ["node_modules", "next.config.js", "out", "old-code-for-reference"]
 }

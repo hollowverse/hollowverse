@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { FactFooter } from '~/lib/FactFooter';
 import { recordGaEvent } from '~/lib/useGaEventRecorder';
 import { Link } from '~/lib/Link';
-import { Tag } from '~/lib/disabled/Tag';
+import { Tag } from '~/lib/Tag';
 import { c } from '~/lib/c';
 import { getFactIssue } from '~/lib/getFactIssue';
 import { getSourceHost } from '~/lib/getSourceHost';

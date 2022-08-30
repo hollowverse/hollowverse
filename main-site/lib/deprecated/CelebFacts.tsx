@@ -1,13 +1,9 @@
 import { Fragment } from 'react';
 import { Card } from '~/lib/Card.ui';
 import { Celeb } from '~/lib/celeb.projection';
-import { CelebImage } from '~/lib/CelebImage';
-import { celebNameToIssue } from '~/lib/celebNameToIssue';
 import { Fact } from '~/lib/Fact';
 import { Fact as TFact } from '~/lib/fact.projection';
 import { InFeedAd } from '~/lib/InFeedAd';
-import { Issue } from '~/lib/issue.projection';
-import { IssueSelector, noIssueFilter } from '~/lib/disabled/IssueSelector';
 
 export function CelebFacts(props: {
   factGroup: TFact[];
@@ -15,8 +11,8 @@ export function CelebFacts(props: {
   slug: string;
   index?: number;
   showIssueName?: boolean;
-  issues: Issue[];
-  issue: Issue;
+  // issues: Issue[];
+  // issue: Issue;
 }) {
   const showIssueName = props.showIssueName ?? false;
 
@@ -40,7 +36,7 @@ export function CelebFacts(props: {
         );
       })}
 
-      <div className="sticky bottom-0 z-10 p-2">
+      {/* <div className="sticky bottom-0 z-10 p-2">
         <div className="relative flex gap-1 rounded-md border border-neutral-800 bg-gray-700 shadow-lg">
           <div className="w-[45px] shrink-0">
             <CelebImage
@@ -64,7 +60,7 @@ export function CelebFacts(props: {
 
           <div className="pointer-events-none absolute right-0 h-full w-24 rounded-md bg-gradient-to-r from-transparent via-transparent to-neutral-700" />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
