@@ -86,9 +86,9 @@ export function AppBar() {
             </a>
 
             {(user && (
-              <a href="/~logout" className="h-link underline">
-                Sign-out
-              </a>
+              <Link href="/~logout" passHref>
+                <a className="h-link underline">Sign-out</a>
+              </Link>
             )) || (
               <a
                 className="h-link underline"
