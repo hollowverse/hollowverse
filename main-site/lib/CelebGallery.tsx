@@ -12,12 +12,7 @@ export const CelebGallery: React.FC<{
   className?: string;
 }> = (props) => {
   return (
-    <div
-      className={c(
-        'default:flex default:flex-wrap default:justify-center',
-        props.className,
-      )}
-    >
+    <div className={c('flex flex-wrap justify-center', props.className)}>
       {props.celebGalleryItems.map((celebData) => {
         const picture = celebData.picture;
 
@@ -33,7 +28,7 @@ export const CelebGallery: React.FC<{
               title={`${celebData.name}'s political views`}
               id="celeb-gallery-item"
               className={c(
-                'min-w-[150px] max-w-[200px] flex-shrink flex-grow basis-[100px] overflow-hidden',
+                'min-w-[150px] max-w-[150px] flex-shrink flex-grow basis-[150px] overflow-hidden',
               )}
             >
               <div className="relative z-0 w-full">

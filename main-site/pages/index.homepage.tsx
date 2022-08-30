@@ -7,7 +7,6 @@ import { HomepageProps } from '~/lib/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
 import { Page } from '~/lib/Page';
-import { Pagination } from '~/lib/Pagination';
 
 export default function Index(props: HomepageProps) {
   return (
@@ -52,12 +51,12 @@ export default function Index(props: HomepageProps) {
 
           {/* <LatestFacts /> */}
 
-          <Pagination
+          {/* <Pagination
             {...props.pagination}
             getLink={(pageNumber) =>
               pageNumber === 1 ? '/' : `/~p/${pageNumber}`
             }
-          />
+          /> */}
         </div>
       </div>
     </Page>
@@ -91,11 +90,13 @@ export default function Index(props: HomepageProps) {
           Trending Celebrities
         </h2>
 
-        <CelebGallery
-          prefetch={false}
-          celebGalleryItems={props.trendingCelebs}
-          className="flex flex-row flex-nowrap justify-start gap-[1px]"
-        />
+        <div className="flex justify-center">
+          <CelebGallery
+            prefetch={false}
+            celebGalleryItems={props.trendingCelebs}
+            className="flex flex-row gap-[1px]"
+          />
+        </div>
         {/* <SideScroller>
         </SideScroller> */}
       </div>

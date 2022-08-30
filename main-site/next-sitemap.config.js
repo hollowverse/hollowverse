@@ -32,21 +32,21 @@ module.exports = {
       // Celeb pages
       ...results.celebs.map((c) => `${c.slug}`),
 
-      ...results.facts.flatMap((f) => [
-        // Fact pages
-        `${f.slug}/fact/${f._id}`,
+      // ...results.facts.flatMap((f) => [
+      //   // Fact pages
+      //   `${f.slug}/fact/${f._id}`,
 
-        ...f.tags.flatMap((t) => [
-          // Master Issue pages
-          `~issue/${t.issueId}`,
+      //   ...f.tags.flatMap((t) => [
+      //     // Master Issue pages
+      //     `~issue/${t.issueId}`,
 
-          // Celeb Issue pages
-          `${f.slug}/issue/${t.issueId}`,
-        ]),
+      //     // Celeb Issue pages
+      //     `${f.slug}/issue/${t.issueId}`,
+      //   ]),
 
-        // // Tag pages
-        // ...f.tags.map((t) => `${f.slug}/tag/${t.tagId}`),
-      ]),
+      //   // // Tag pages
+      //   // ...f.tags.map((t) => `${f.slug}/tag/${t.tagId}`),
+      // ]),
     ];
 
     const uniqueUrls = [...new Set(urls)];

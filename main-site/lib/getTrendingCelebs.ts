@@ -17,6 +17,8 @@ export function getGaTrendingPages() {
   return gaRunReport<
     { pagePath: string; pageTitle: string; screenPageViews: string }[]
   >({
+    limit: 51,
+
     dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
 
     metrics: [{ name: 'screenPageViews' }],
@@ -36,8 +38,6 @@ export function getGaTrendingPages() {
 
 export async function getTrendingCelebs() {
   const gaTrendingPages = await getGaTrendingPages();
-
-  // console.log('gaTrendingPages', gaTrendingPages);
 
   if (!gaTrendingPages) {
     return null;

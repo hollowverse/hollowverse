@@ -40,7 +40,6 @@ export const Fact: React.FC<{
   showCommentsButton?: boolean;
   showIssueName?: boolean;
 }> = (props) => {
-  const link = props.link ?? false;
   const showIssueName = props.showIssueName ?? false;
   const [ogImageError, setOgImageError] = useState(false);
   const showOgImage = false && props.fact.openGraphImage && !ogImageError;
@@ -135,7 +134,7 @@ export const Fact: React.FC<{
         ref={factBodyRef}
         className="FACT-BODY pointer-events-none relative z-0 flex flex-col gap-3"
       >
-        {link && (
+        {/* {link && (
           <Link href={`/${props.slug}/fact/${props.fact._id}`} passHref>
             <a
               id="fact-details"
@@ -144,7 +143,7 @@ export const Fact: React.FC<{
               <span className="invisible">Fact details</span>
             </a>
           </Link>
-        )}
+        )} */}
 
         {(props.fact.type === 'quote' && (
           <>
@@ -167,17 +166,15 @@ export const Fact: React.FC<{
     const issue = getFactIssue(props.fact);
 
     return (
-      <Link href={`/${props.slug}/issue/${issue._id}`}>
-        <a
-          title={celebNameToIssue(props.celebName, issue)}
-          className={c(
-            'pointer-events-auto border-b px-2 font-semibold default:border-purple-500 default:text-neutral-500',
-            { 'border-purple-200 text-white': showOgImage },
-          )}
-        >
-          {issue.name}
-        </a>
-      </Link>
+      <p
+        title={celebNameToIssue(props.celebName, issue)}
+        className={c(
+          'pointer-events-auto border-b px-2 font-semibold default:border-purple-500 default:text-neutral-500',
+          { 'border-purple-200 text-white': showOgImage },
+        )}
+      >
+        {issue.name}
+      </p>
     );
   }
 };
