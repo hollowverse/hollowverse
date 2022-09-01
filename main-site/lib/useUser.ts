@@ -24,7 +24,7 @@ export function useUser() {
 
     const auth = JSON.parse(auth_.split('.')[0]);
 
-    if (!cachedUser) {
+    if (!cachedUser && auth?.username) {
       async function req() {
         const args: DiscourseApiClientArgs = {
           api: `u/${auth.username}.json`,
@@ -44,7 +44,7 @@ export function useUser() {
       }
 
       req();
-    } else {
+    } else if (cachedUser) {
       setUser(cachedUser);
     }
   }, [auth_]);
