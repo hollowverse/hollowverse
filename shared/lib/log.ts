@@ -49,14 +49,18 @@ function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
     message: string | Error,
     context?: Context,
   ) {
-    const logger =
-      determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
+    try {
+      const logger =
+        determineServerOrClient() === 'server' ? nodeLogger : browserLogger;
 
-    return logger[level](message, {
-      env: getEnvShortName(getVercelEnv() || getNodeEnv()),
-      commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
-      ...context,
-    });
+      return logger[level](message, {
+        env: getEnvShortName(getVercelEnv() || getNodeEnv()),
+        commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
+        ...context,
+      });
+    } catch (e) {
+      return null;
+    }
   };
 }
 
