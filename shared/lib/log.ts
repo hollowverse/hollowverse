@@ -58,7 +58,9 @@ function createLogger(nodeLogger: NodeLogger, browserLogger: BrowserLogger) {
         commit: process.env.VERCEL_GIT_COMMIT_MESSAGE || 'unknown',
         ...context,
       });
-    } catch (e) {}
+    } catch (e) {
+      return null;
+    }
   };
 }
 
