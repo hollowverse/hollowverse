@@ -26,9 +26,16 @@ export const Article = (
     >
       {oldContent.summaries && (
         <TitledCard titledContentProps={{ title: 'Summary' }}>
-          <div className="p-5" id="editorial-summary">
-            <p>{oldContent.summaries.religion}</p>
-            <p className="mt-3">{oldContent.summaries.politicalViews}</p>
+          <div className="flex flex-col gap-5 p-5" id="editorial-summary">
+            <div className="flex flex-col gap-2">
+              <h3 className="font-semibold">Religion</h3>
+              <p>{oldContent.summaries.religion}</p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <h3 className="font-semibold">Political views</h3>
+              <p>{oldContent.summaries.politicalViews}</p>
+            </div>
           </div>
         </TitledCard>
       )}
