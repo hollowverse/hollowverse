@@ -1,11 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
-import {
-  ExclamationIcon,
-  XCircleIcon,
-  XIcon,
-  ExternalLinkIcon,
-} from '@heroicons/react/solid';
-import { MouseEventHandler, PropsWithChildren, ReactNode } from 'react';
+import { ExclamationIcon, XCircleIcon, XIcon } from '@heroicons/react/solid';
+import { MouseEventHandler, PropsWithChildren } from 'react';
 import { c } from '~/lib/c';
 
 export default function Alert(

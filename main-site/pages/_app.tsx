@@ -1,15 +1,28 @@
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import { ThemeProvider } from '@mui/material/styles';
 import { AppProps } from 'next/app';
 import Script from 'next/script';
+import createEmotionCache from '~/lib/createEmotionCache';
 import { GA_MEASUREMENT_ID, GA_TRACKING_ID } from '~/lib/googleAnalytics';
 import { useGoogleAnalyticsUniversal } from '~/lib/googleAnalyticsUniversal';
 import { PageTransitionSpinner } from '~/lib/PageTransitionSpinner';
+import { theme } from '~/lib/theme';
 import { useIdentifyingCookie } from '~/lib/useIdentifyingCookie';
 import { getVercelEnv } from '~/shared/lib/getVercelEnv';
 import '~/styles/global.css';
 
-export default function App({ Component, pageProps }: AppProps) {
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+export default function App(props: MyAppProps) {
   useGoogleAnalyticsUniversal();
   useIdentifyingCookie();
+
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
     <>
@@ -49,9 +62,14 @@ export default function App({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <PageTransitionSpinner />
 
-      <Component {...pageProps} />
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <PageTransitionSpinner />
+
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
     </>
   );
 }

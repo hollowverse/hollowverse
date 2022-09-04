@@ -22,12 +22,18 @@
     "unused-exports": "ts-unused-exports ./tsconfig.json --excludePathsFromReport=pages"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.3",
+    "@emotion/react": "^11.10.4",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.4",
     "@google-analytics/data": "^2.8.0",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^1.0.6",
     "@logtail/browser": "^0.1.12",
     "@logtail/js": "^0.1.12",
     "@logtail/node": "^0.1.12",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.3",
     "@next/bundle-analyzer": "^12.1.2",
     "@playwright/test": "^1.21.0",
     "@rehooks/local-storage": "^2.4.4",
