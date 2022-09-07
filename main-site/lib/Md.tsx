@@ -2,18 +2,16 @@ import { Alert, Avatar } from '@mui/material';
 import { useState } from 'react';
 import { FaInfoCircle, FaRegEdit } from 'react-icons/fa';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
+import { Sources } from '~/lib/Sources';
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 
 export const Md = (props: CelebPageMainProps) => {
-  const [showSources, setShowSources] = useState(false);
   const oldContent = props.celeb.oldContent!;
 
   return (
     <section className="flex flex-col gap-5">
-      {oldContent.article && (
-        <Article setShowSources={setShowSources} {...props} />
-      )}
+      <Article {...props} />
 
       {/* {oldContent.sources?.length > 0 && (
         <Sources

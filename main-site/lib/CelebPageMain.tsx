@@ -1,4 +1,4 @@
-import { AppBar } from '@mui/material';
+import { AppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { CelebPageHero } from '~/lib/CelebPageHero';
