@@ -1,0 +1,10 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import { discourseApiClient } from '~/lib/discourseApiClient';
+
+export default async function exec(req: NextApiRequest, res: NextApiResponse) {
+  const topic = await discourseApiClient({ api: 't/9741.json' });
+
+  console.log('topic', topic);
+
+  return res.json(topic);
+}

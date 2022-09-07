@@ -1,15 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { isEmpty } from 'lodash-es';
 import React from 'react';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
-import { InFeedAd } from '~/lib/InFeedAd';
+import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { TitledCard } from '~/lib/TitledCard.ui';
 import s from '~/styles/styles.module.scss';
 
 export const Article = (
-  props: CelebPageProps & {
+  props: CelebPageMainProps & {
     setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
   },
 ) => {

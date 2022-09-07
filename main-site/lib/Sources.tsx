@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React from 'react';
 import { FaChevronDown } from 'react-icons/fa';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 
 export const Sources = (
-  props: CelebPageProps & {
+  props: CelebPageMainProps & {
     setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
     showSources: boolean;
   },

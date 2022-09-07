@@ -1,12 +1,11 @@
 import { Alert, Avatar } from '@mui/material';
 import { useState } from 'react';
 import { FaInfoCircle, FaRegEdit } from 'react-icons/fa';
-import { MdOutlineInfo } from 'react-icons/md';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 
-export const Md = (props: CelebPageProps) => {
+export const Md = (props: CelebPageMainProps) => {
   const [showSources, setShowSources] = useState(false);
   const oldContent = props.celeb.oldContent!;
 

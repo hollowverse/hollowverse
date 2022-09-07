@@ -1,16 +1,14 @@
-import { FaRegEdit } from 'react-icons/fa';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { Celeb } from '~/lib/celeb.projection';
 import {
   Hero,
-  HeroTopContainer,
   HeroCelebImage,
   HeroTitleContainer,
   HeroTitleSoftText,
   HeroTitleStrongText,
+  HeroTopContainer,
 } from '~/lib/Hero';
-import { Link } from '~/lib/Link';
 
-export function CelebPageHero(props: CelebPageProps) {
+export function CelebPageHero(props: { celeb: Celeb }) {
   return (
     <Hero>
       <HeroTopContainer>

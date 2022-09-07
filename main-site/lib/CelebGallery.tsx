@@ -1,12 +1,12 @@
 import React from 'react';
 import { c } from '~/lib/c';
 import { CelebImage } from '~/lib/CelebImage';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
+import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { Link } from '~/lib/Link';
 
 export const CelebGallery: React.FC<{
   celebGalleryItems: NonNullable<
-    CelebPageProps['celeb']['oldContent']
+    CelebPageMainProps['celeb']['oldContent']
   >['relatedPeople'];
   prefetch?: boolean;
   className?: string;

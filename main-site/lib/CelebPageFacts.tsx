@@ -2,8 +2,9 @@ import { CelebFacts } from '~/lib/deprecated/CelebFacts';
 import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { NavigationTip } from '~/lib/NavigationTip';
 import { Pagination } from '~/lib/Pagination';
+import { CelebPagePropsFactsOnly } from '~/lib/celebPageFactsOnly.getStaticProps';
 
-export const CelebPageFacts = (props: CelebPageProps) => {
+export const CelebPageFacts = (props: CelebPagePropsFactsOnly) => {
   return (
     <div className="flex max-w-full flex-col gap-7">
       <NavigationTip celebName={props.celeb.name} />
