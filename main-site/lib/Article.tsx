@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+import { FaRegEdit } from 'react-icons/fa';
 import { c } from '~/lib/c';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { TitledCard } from '~/lib/TitledCard.ui';
@@ -43,7 +44,23 @@ export const Article = (props: CelebPageMainProps) => {
         <InFeedAd key={`article-ad-${props.celeb.slug}`} />
       )} */}
 
-      <TitledCard titledContentProps={{ title: 'Editorial' }}>
+      <TitledCard
+        titledContentProps={{
+          title: (
+            <span className="flex gap-3">
+              Wiki{' '}
+              <a
+                href={props.celeb.wiki!}
+                className="h-link flex items-center text-base font-normal"
+              >
+                <span className="flex items-center gap-1 ">
+                  <FaRegEdit /> Edit
+                </span>
+              </a>
+            </span>
+          ),
+        }}
+      >
         <div className={s.Article}>
           <div
             id="editorial"

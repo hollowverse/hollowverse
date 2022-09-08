@@ -16,15 +16,14 @@ export const Footer = () => {
 
           <div className="flex-1" />
 
-          <Link href="/~about" passHref>
-            <a
-              id="about-link"
-              className="align-center flex h-fit justify-center gap-1 self-center text-xs uppercase leading-loose text-neutral-400"
-            >
-              <RiQuillPenLine className="self-center text-base" />
-              About Hollowverse
-            </a>
-          </Link>
+          <a
+            href="https://forum.hollowverse.com/t/about-hollowverse/9745"
+            id="about-link"
+            className="align-center flex h-fit justify-center gap-1 self-center text-xs uppercase leading-loose text-neutral-400"
+          >
+            <RiQuillPenLine className="self-center text-base" />
+            About Hollowverse
+          </a>
         </div>
       </div>
     </footer>
