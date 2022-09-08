@@ -1,4 +1,4 @@
-import { oneDay } from '~/lib/date';
+import { formatFactDate, oneDay } from '~/lib/date';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getCeleb } from '~/lib/getCeleb';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
@@ -21,7 +21,7 @@ export async function celebPageMainGetStaticProps(
 
   const wiki = {
     content: topicPost.cooked as string,
-    date: topicPost.created_at as string,
+    date: formatFactDate(topicPost.created_at?.split('T')?.[0]) as string,
     username: topicPost.username as string,
     name: topicPost.name as string,
     avatar: topicPost.avatar_template as string,

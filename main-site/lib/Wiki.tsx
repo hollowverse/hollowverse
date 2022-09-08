@@ -1,25 +1,14 @@
 import { Alert, Avatar } from '@mui/material';
-import { useState } from 'react';
 import { FaInfoCircle, FaRegEdit } from 'react-icons/fa';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
-import { Sources } from '~/lib/Sources';
 import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 
-export const Md = (props: CelebPageMainProps) => {
-  const oldContent = props.celeb.oldContent!;
-
+export function Wiki(props: CelebPageMainProps) {
+  console.log('props.wiki.avatar', props.wiki.avatar);
   return (
     <section className="flex flex-col gap-5">
       <Article {...props} />
-
-      {/* {oldContent.sources?.length > 0 && (
-        <Sources
-          showSources={showSources}
-          setShowSources={setShowSources}
-          {...props}
-        />
-      )} */}
 
       <div className="px-1">
         <Alert severity="info">
@@ -27,15 +16,18 @@ export const Md = (props: CelebPageMainProps) => {
             <div className="flex flex-col gap-2">
               <p>
                 This wiki was last updated on{' '}
-                <span className="underline">June 12th 2012</span> by:
+                <span className="underline">{props.wiki.date}</span> by:
               </p>
 
               <div className="flex items-center gap-3">
                 <Avatar
-                  alt="Tom Kershaw"
-                  src="https://forum.hollowverse.com/user_avatar/forum.hollowverse.com/tkershaw3/90/1361_2.png"
+                  alt={props.wiki.name}
+                  src={`https://forum.hollowverse.com/${props.wiki.avatar.replace(
+                    '{size}',
+                    '90',
+                  )}`}
                 />
-                <p className="text-md font-bold">Tom Kershaw</p>
+                <p className="text-md font-bold">{props.wiki.name}</p>
               </div>
             </div>
 
@@ -44,12 +36,12 @@ export const Md = (props: CelebPageMainProps) => {
 
               <p>
                 <span className="underline">We invite you</span> and ask you to
-                please help us update this wiki by editing it.
+                help us update this wiki by editing it.
               </p>
 
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <a
-                  href="/"
+                  href={props.celeb.wiki!}
                   className="flex items-center gap-2 rounded-md bg-blue-500 py-2 px-5 text-white shadow-md"
                   title="asdf"
                 >
@@ -57,7 +49,7 @@ export const Md = (props: CelebPageMainProps) => {
                 </a>
 
                 <a
-                  href="/"
+                  href="https://forum.hollowverse.com/t/how-to-edit-or-create-a-wiki/7333"
                   className="flex items-center gap-2 rounded-md border border-blue-400 px-5 py-2 shadow-sm"
                 >
                   <FaInfoCircle />
@@ -72,4 +64,4 @@ export const Md = (props: CelebPageMainProps) => {
       <InterestingProfiles {...props} />
     </section>
   );
-};
+}

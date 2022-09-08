@@ -4,7 +4,7 @@ import { Card } from '~/lib/Card.ui';
 import { CelebPageHero } from '~/lib/CelebPageHero';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { FacebookComments } from '~/lib/FacebookComments';
-import { Md } from '~/lib/Md';
+import { Wiki } from '~/lib/Wiki';
 import { Page } from '~/lib/Page';
 import { TitledCard } from '~/lib/TitledCard.ui';
 
@@ -28,7 +28,7 @@ export function CelebPageMain(props: CelebPageMainProps) {
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
-        {props.celeb.oldContent && <Md {...props} />}
+        {props.celeb.oldContent && <Wiki {...props} />}
 
         <TitledCard
           titledContentProps={{
