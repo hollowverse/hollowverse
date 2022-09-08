@@ -1,7 +1,7 @@
+import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { CHRList } from '~/lib/CHRList';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 
-export const InterestingProfiles = (props: CelebPageProps) => {
+export const InterestingProfiles = (props: CelebPageMainProps) => {
   const relatedPeople = props.celeb.oldContent!.relatedPeople;
 
   return (

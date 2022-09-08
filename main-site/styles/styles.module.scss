@@ -1,11 +1,28 @@
 .Article {
   :global {
-    .source-citation {
+    .footnote-ref {
       color: #4f46e5;
       margin-left: 1px;
       position: relative;
       font-size: 0.8rem;
       bottom: 3px;
+    }
+
+    .footnotes-list, .footnotes-sep {
+      display: none;
+    }
+
+    .show-footnotes {
+      .footnotes-list, .footnotes-sep {
+        display: block;
+      }
+    }
+
+    ol.footnotes-list {
+      color: #467ee5;
+      margin-top: 20px;
+      margin-left: 30px;
+      list-style-type: decimal;
     }
 
     p {

@@ -1,4 +1,5 @@
 import { isUniqueField } from '../lib/isUniqueField';
+import { getForumTopicId } from '../shared/lib/getForumTopicId';
 
 export const celeb = {
   title: 'Celebrity',
@@ -71,6 +72,33 @@ export const celeb = {
         direction: 'horizontal',
       },
       validation: (Rule) => Rule.required(),
+    },
+
+    {
+      title: 'Forum wiki link',
+      name: 'wiki',
+      type: 'url',
+      description: 'The link to the forum wiki',
+      validation: (Rule) =>
+        Rule.required().custom(async (value, context) => {
+          const topicId = getForumTopicId(value);
+
+          if (!topicId) {
+            return "This doesn't look like a valid forum link";
+          }
+
+          const isUnique = await isUniqueField('celeb', 'wiki', value, context);
+
+          if (!isUnique) {
+            return 'Wiki link is not unique. Use search to find out where it was used.';
+          }
+
+          if (value !== value.trim()) {
+            return 'Please remove the spaces before or after the link';
+          }
+
+          return true;
+        }),
     },
 
     {

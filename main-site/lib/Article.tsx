@@ -1,26 +1,25 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { isEmpty } from 'lodash-es';
-import React from 'react';
+import React, { useState } from 'react';
 import { c } from '~/lib/c';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
-import { InFeedAd } from '~/lib/InFeedAd';
+import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { TitledCard } from '~/lib/TitledCard.ui';
 import s from '~/styles/styles.module.scss';
 
-export const Article = (
-  props: CelebPageProps & {
-    setShowSources: React.Dispatch<React.SetStateAction<boolean>>;
-  },
-) => {
+export const Article = (props: CelebPageMainProps) => {
+  const [showFootnotes, setShowFootnotes] = useState(false);
   const oldContent = props.celeb.oldContent!;
 
   return (
     <article
       className="flex flex-col gap-5"
       onClick={(e) => {
-        if ((e.target as Element).classList.contains('source-citation')) {
-          props.setShowSources(true);
+        if (
+          (e.target as Element)?.parentElement?.classList.contains(
+            'footnote-ref',
+          )
+        ) {
+          setShowFootnotes(true);
         }
       }}
     >
@@ -45,11 +44,22 @@ export const Article = (
       )} */}
 
       <TitledCard titledContentProps={{ title: 'Editorial' }}>
-        <div
-          id="editorial"
-          className={c(s.Article, 'break-normal p-5 leading-relaxed')}
-          dangerouslySetInnerHTML={{ __html: oldContent.article }}
-        />
+        <div className={s.Article}>
+          <div
+            id="editorial"
+            className={c('break-normal p-5 pb-0 leading-relaxed', {
+              'show-footnotes': showFootnotes,
+            })}
+            dangerouslySetInnerHTML={{ __html: props.wiki.content }}
+          />
+
+          <button
+            className="px-5 pb-5 text-sm text-gray-500"
+            onClick={() => setShowFootnotes(!showFootnotes)}
+          >
+            ({showFootnotes ? 'Hide footnotes' : 'Show footnotes'})
+          </button>
+        </div>
       </TitledCard>
     </article>
   );

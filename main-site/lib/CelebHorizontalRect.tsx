@@ -10,7 +10,10 @@ export function CHRImage(
   const { celebImageProps, ...rest } = props;
 
   return (
-    <div {...rest} className={c('col-span-2', rest.className)}>
+    <div
+      {...rest}
+      className={c('col-span-2 max-h-[100px] max-w-[100px]', rest.className)}
+    >
       <CelebImage
         layout="responsive"
         objectFit="cover"
@@ -25,7 +28,7 @@ export function CHRImage(
 
 export function CHRContent(props: { title: ReactNode; body: ReactNode }) {
   return (
-    <div className="align-center relative col-span-8 flex flex-col justify-center px-5">
+    <div className="align-center relative col-span-10 flex flex-col justify-center px-5">
       <h3 className="truncate text-lg font-semibold">{props.title}</h3>
       {props.body}
     </div>
@@ -44,7 +47,7 @@ export function CelebHorizontalRect(
           id="chr-item"
           {...rest}
           className={c(
-            'relative grid w-full grid-cols-10 overflow-hidden border-b bg-white lg:border-x lg:border-t',
+            'relative grid w-full grid-cols-12 overflow-hidden border-b bg-white lg:border-x lg:border-t',
             rest.className,
           )}
         />
