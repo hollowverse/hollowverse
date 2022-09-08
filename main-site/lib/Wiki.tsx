@@ -5,7 +5,6 @@ import { Article } from './Article';
 import { InterestingProfiles } from './InterestingProfiles';
 
 export function Wiki(props: CelebPageMainProps) {
-  console.log('props.wiki.avatar', props.wiki.avatar);
   return (
     <section className="flex flex-col gap-5">
       <Article {...props} />
@@ -43,7 +42,6 @@ export function Wiki(props: CelebPageMainProps) {
                 <a
                   href={props.celeb.wiki!}
                   className="flex items-center gap-2 rounded-md bg-blue-500 py-2 px-5 text-white shadow-md"
-                  title="asdf"
                 >
                   <FaRegEdit /> Edit this wiki
                 </a>
