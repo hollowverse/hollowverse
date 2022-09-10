@@ -33,7 +33,7 @@ export default function Index(props: HomepageProps) {
             <h1 className="text-center text-xl italic text-neutral-500">
               The Political Views
               <br />
-              and Religions of Celebrities
+              and Religions of Public Figures
             </h1>
           </nav>
         </Card>

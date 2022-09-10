@@ -9,6 +9,7 @@ import { tagLink } from './tagLink';
 import { vote } from './vote';
 import { user } from './user';
 import { forumCta } from './forumCta';
+import { position } from './position';
 
 export default createSchema({
   name: 'hollowverse',
@@ -23,5 +24,6 @@ export default createSchema({
     user,
     vote,
     forumCta,
+    position,
   ]),
 });

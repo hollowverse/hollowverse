@@ -1,7 +1,9 @@
 import { formatFactDate, oneDay } from '~/lib/date';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getCeleb } from '~/lib/getCeleb';
+import { getCelebPositions } from '~/lib/getCelebPositions';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
+import { sortPositions } from '~/lib/sortPositions';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { PageProps } from '~/shared/lib/types';
 
@@ -16,7 +18,11 @@ export async function celebPageMainGetStaticProps(
 ) {
   const oldContent = await getParsedOldContent(celeb.oldContent!);
   const wikiTopicId = getForumTopicId(celeb.wiki!);
-  const topic = await discourseApiClient({ api: `t/${wikiTopicId}.json` });
+
+  const [topic, positions] = await Promise.all([
+    discourseApiClient({ api: `t/${wikiTopicId}.json` }),
+    getCelebPositions(celeb._id),
+  ]);
   const topicPost = topic.post_stream.posts[0];
 
   const wiki = {
@@ -30,6 +36,7 @@ export async function celebPageMainGetStaticProps(
   return {
     props: {
       wiki,
+      positions: sortPositions(positions),
       pageDescription: getPageDescription(),
       pagePath: `/${params.slug}`,
       celeb: {

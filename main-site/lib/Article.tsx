@@ -9,7 +9,6 @@ import s from '~/styles/styles.module.scss';
 
 export const Article = (props: CelebPageMainProps) => {
   const [showFootnotes, setShowFootnotes] = useState(false);
-  const oldContent = props.celeb.oldContent!;
 
   return (
     <article
@@ -24,26 +23,6 @@ export const Article = (props: CelebPageMainProps) => {
         }
       }}
     >
-      {oldContent.summaries && (
-        <TitledCard titledContentProps={{ title: 'Summary' }}>
-          <div className="flex flex-col gap-5 p-5" id="editorial-summary">
-            <div className="flex flex-col gap-2">
-              <h3 className="font-semibold">Religion</h3>
-              <p>{oldContent.summaries.religion}</p>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <h3 className="font-semibold">Political views</h3>
-              <p>{oldContent.summaries.politicalViews}</p>
-            </div>
-          </div>
-        </TitledCard>
-      )}
-
-      {/* {isEmpty(props.facts) && (
-        <InFeedAd key={`article-ad-${props.celeb.slug}`} />
-      )} */}
-
       <TitledCard
         titledContentProps={{
           title: (
