@@ -64,8 +64,8 @@ distinct(*[]{_type}{
   ]) > 0
 ]
 
-// ID in drafts and none drafts
-*[_id match '5fd9bfb3-dd98-4198-bb71-fa52e7244e23']
+// ID in drafts
+*[_id in path("drafts.**")]
 
 // Count number of facts per celeb
 *[

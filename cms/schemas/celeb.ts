@@ -71,7 +71,6 @@ export const celeb = {
         layout: 'radio',
         direction: 'horizontal',
       },
-      validation: (Rule) => Rule.required(),
     },
 
     {
@@ -123,14 +122,6 @@ export const celeb = {
       title: 'Old content',
       name: 'oldContent',
       type: 'text',
-    },
-
-    {
-      title: 'Wikipedia ID',
-      name: 'wikipediaId',
-      type: 'string',
-      readOnly: true,
-      hidden: true,
     },
   ],
 };
