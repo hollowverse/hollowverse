@@ -3,6 +3,7 @@ import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getCeleb } from '~/lib/getCeleb';
 import { getCelebPositions } from '~/lib/getCelebPositions';
 import { getParsedOldContent } from '~/lib/getParsedOldContent';
+import { sortPositions } from '~/lib/sortPositions';
 import { getForumTopicId } from '~/shared/lib/getForumTopicId';
 import { PageProps } from '~/shared/lib/types';
 
@@ -35,6 +36,7 @@ export async function celebPageMainGetStaticProps(
   return {
     props: {
       wiki,
+      positions: sortPositions(positions),
       pageDescription: getPageDescription(),
       pagePath: `/${params.slug}`,
       celeb: {
