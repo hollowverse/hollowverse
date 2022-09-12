@@ -7,6 +7,7 @@ import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { CelebPageHero } from '~/lib/CelebPageHero';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
+import { CelebSummary } from '~/lib/CelebSummary';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { InterestingProfiles } from '~/lib/InterestingProfiles';
 import { Page } from '~/lib/Page';
@@ -33,18 +34,7 @@ export function CelebPageMain(props: CelebPageMainProps) {
         id="content"
       >
         <section className="flex flex-col gap-5">
-          {!isEmpty(props.positions) && (
-            <TitledCard titledContentProps={{ title: 'Summary' }}>
-              <div className="flex flex-col gap-5 p-5" id="editorial-summary">
-                {props.positions.map((p) => (
-                  <div className="flex flex-col gap-2" key={p._id}>
-                    <h3 className="font-semibold">{p.issue}</h3>
-                    <p>{p.summary}</p>
-                  </div>
-                ))}
-              </div>
-            </TitledCard>
-          )}
+          <CelebSummary {...props} />
 
           <Article {...props} />
 

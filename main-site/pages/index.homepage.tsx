@@ -11,8 +11,8 @@ import { Page } from '~/lib/Page';
 export default function Index(props: HomepageProps) {
   return (
     <Page
-      title="The political views and religious beliefs of celebrities"
-      description="Learn the political views and religious beliefs of any celebrity"
+      title="The political views and religious beliefs of public figures"
+      description="Learn the political views and religious beliefs of public figures"
       pathname={props.pagePath}
       allowSearchEngines
       className="text-neutral-600"
