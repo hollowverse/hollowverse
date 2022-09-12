@@ -21,7 +21,7 @@ export function TitledContent(props: PropsWithChildren<TitledContentProps>) {
         <LovelyTopBorder />
         <div
           className={c(
-            'border-b bg-white text-xl font-bold text-neutral-600 lg:border-x',
+            'border-b bg-white text-lg font-bold text-neutral-600 lg:border-x',
           )}
         >
           {props.title}

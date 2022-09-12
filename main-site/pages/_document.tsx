@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
       <Html lang="en" className="h-full scroll-smooth bg-gray-100">
         <Head>
           {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
           <meta name="viewport" content="initial-scale=1, width=device-width" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
