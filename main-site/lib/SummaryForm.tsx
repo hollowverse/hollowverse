@@ -1,4 +1,4 @@
-import { Alert, TextField } from '@mui/material';
+import { Alert, Button, TextField } from '@mui/material';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { isEmpty, values } from 'lodash-es';
 import { summaryFormValidate } from '~/lib/summaryFormValidate';
 import { hvApiClient, post } from '~/lib/hvApiClient';
+import { useState } from 'react';
 
 type SummaryFormFields = {
   religionSummary: string;
@@ -16,7 +17,10 @@ export type SummaryFormPayload = {
   celeb: CelebPageMainProps['celeb'];
 } & SummaryFormFields;
 
-export default function SummaryForm(props: CelebPageMainProps) {
+export default function SummaryForm(
+  props: CelebPageMainProps & { onDone: () => any },
+) {
+  const [loading, setLoading] = useState(false);
   const form = useForm<SummaryFormFields>({
     criteriaMode: 'all',
     reValidateMode: 'onBlur',
@@ -38,7 +42,9 @@ export default function SummaryForm(props: CelebPageMainProps) {
             celeb: props.celeb,
           };
 
+          setLoading(true);
           await hvApiClient('summary-form-submit', post(body));
+          props.onDone();
         })}
       >
         <TextField
@@ -47,7 +53,7 @@ export default function SummaryForm(props: CelebPageMainProps) {
           defaultValue={props.positions[0].summary}
           helperText={`Write a sentence or two summarizing ${props.celeb.name}'s religious views.`}
           label={`${props.celeb.name}'s religion summary`}
-          disabled={false}
+          disabled={loading}
           variant="outlined"
         />
 
@@ -57,7 +63,7 @@ export default function SummaryForm(props: CelebPageMainProps) {
           defaultValue={props.positions[1].summary}
           helperText={`Write a sentence or two summarizing ${props.celeb.name}'s political views.`}
           label={`${props.celeb.name}'s political views summary`}
-          disabled={false}
+          disabled={loading}
           variant="outlined"
         />
 
@@ -74,17 +80,21 @@ export default function SummaryForm(props: CelebPageMainProps) {
           </div>
         )}
 
-        <LoadingButton
-          loading={false}
-          type="submit"
-          color="secondary"
-          loadingPosition="start"
-          startIcon={<SaveIcon />}
-          variant="contained"
-          className="w-fit bg-blue-500"
-        >
-          Submit Changes
-        </LoadingButton>
+        <div className="flex gap-3">
+          <LoadingButton
+            loading={loading}
+            type="submit"
+            color="secondary"
+            loadingPosition="start"
+            startIcon={<SaveIcon />}
+            variant="contained"
+            className="w-fit bg-blue-500"
+          >
+            Submit Changes
+          </LoadingButton>
+
+          <Button onClick={props.onDone}>Cancel</Button>
+        </div>
       </form>
     </div>
   );

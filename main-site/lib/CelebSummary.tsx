@@ -22,28 +22,30 @@ export function CelebSummary(props: CelebPageMainProps) {
         title: (
           <span className="flex gap-3">
             Summary{' '}
-            <button
-              onClick={() => {
-                if (user) {
-                  setEdit(!edit);
-                } else {
-                  window.location.href = `/api/login?redirect=${encodeURI(
-                    href,
-                  )}`;
-                }
-              }}
-              className="h-link flex items-center text-base font-normal"
-            >
-              <span className="flex items-center gap-1 ">
-                <FaRegEdit /> {edit ? 'Cancel edit' : 'Edit'}
-              </span>
-            </button>
+            {!edit && (
+              <button
+                onClick={() => {
+                  if (user) {
+                    setEdit(!edit);
+                  } else {
+                    window.location.href = `/api/login?redirect=${encodeURI(
+                      href,
+                    )}`;
+                  }
+                }}
+                className="h-link flex items-center text-base font-normal"
+              >
+                <span className="flex items-center gap-1 ">
+                  <FaRegEdit /> Edit
+                </span>
+              </button>
+            )}
           </span>
         ),
       }}
     >
       <div className="flex flex-col gap-5 p-5" id="editorial-summary">
-        {(edit && <EditSummary {...props} />) ||
+        {(edit && <EditSummary {...props} onDone={() => setEdit(false)} />) ||
           props.positions.map((p) => (
             <div className="flex flex-col gap-2" key={p._id}>
               <h3 className="font-semibold">{p.issue}</h3>
