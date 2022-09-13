@@ -1,7 +1,9 @@
 import { remove } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/cors';
-import { editPostApi } from '~/lib/edit.post-api-old';
+import { createSummaryFormForumPost } from '~/lib/createSummaryFormForumPost';
+import { discourseApiClient } from '~/lib/discourseApiClient';
+import { SummaryFormPayload } from '~/lib/SummaryForm';
 import { getUserAuth } from '~/lib/user-auth';
 
 const ongoingSubmissions: string[] = [];
@@ -15,17 +17,53 @@ export default async function summaryFormSubmit(
   let userId: string | null = '';
 
   try {
-    if (req.method === 'POST') {
-      const auth = getUserAuth(req, res);
-
-      if (!auth) {
-        return res.status(401).send('Unauthorized');
-      }
-
-      return editPostApi(req, res);
-    } else {
+    if (req.method !== 'POST') {
       return res.status(500).send('Unrecognized operation');
     }
+
+    const auth = getUserAuth(req, res);
+
+    if (!auth) {
+      return res.status(401).send('Unauthorized');
+    }
+
+    const payload = JSON.parse(req.body) as SummaryFormPayload;
+    const topicTitle = `${payload.celeb.name}'s page edits`;
+
+    let searchResults = await discourseApiClient({
+      api: `search.json?q=${encodeURI(
+        `${topicTitle} @hollowverse #edits order:latest_topic in:title status:open`,
+      )}`,
+    });
+
+    const topic =
+      searchResults?.topics?.[0] ||
+      (await discourseApiClient({
+        api: 'posts.json',
+        username: 'hollowverse',
+        payload: {
+          method: 'POST',
+          body: {
+            title: topicTitle,
+            raw: `Use this topic to suggest and discuss edits to <a href="https://hollowverse.com/${payload.celeb.slug}">${payload.celeb.name}'s page</a>.`,
+            category: 11,
+          },
+        },
+      }));
+
+    const post = await discourseApiClient({
+      api: 'posts.json',
+      username: auth.username,
+      payload: {
+        method: 'POST',
+        body: {
+          topic_id: topic.topic_id || topic.id,
+          raw: createSummaryFormForumPost(payload),
+        },
+      },
+    });
+
+    return res.status(200).json(post);
   } catch (err: any) {
     removeUserFromOngoingSubmissions(userId);
 

@@ -5,11 +5,16 @@ import SaveIcon from '@mui/icons-material/Save';
 import { useForm } from 'react-hook-form';
 import { isEmpty, values } from 'lodash-es';
 import { summaryFormValidate } from '~/lib/summaryFormValidate';
+import { hvApiClient, post } from '~/lib/hvApiClient';
 
 type SummaryFormFields = {
   religionSummary: string;
   polvisSummary: string;
 };
+
+export type SummaryFormPayload = {
+  celeb: CelebPageMainProps['celeb'];
+} & SummaryFormFields;
 
 export default function SummaryForm(props: CelebPageMainProps) {
   const form = useForm<SummaryFormFields>({
@@ -28,7 +33,12 @@ export default function SummaryForm(props: CelebPageMainProps) {
       <form
         className="flex flex-col gap-7"
         onSubmit={form.handleSubmit(async (data) => {
-          console.log(data);
+          const body: SummaryFormPayload = {
+            ...data,
+            celeb: props.celeb,
+          };
+
+          await hvApiClient('summary-form-submit', post(body));
         })}
       >
         <TextField
