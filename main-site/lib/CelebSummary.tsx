@@ -7,7 +7,7 @@ import { TitledCard } from '~/lib/TitledCard.ui';
 import { useLocationHref } from '~/lib/useLocationHref';
 import { useUser } from '~/lib/useUser';
 
-const EditSummary = dynamic(() => import('~/lib/EditSummary'), {
+const EditSummary = dynamic(() => import('~/lib/SummaryForm'), {
   loading: () => <div>loading...</div>,
 });
 

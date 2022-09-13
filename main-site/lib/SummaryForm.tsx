@@ -4,21 +4,21 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
 import { useForm } from 'react-hook-form';
 import { isEmpty, values } from 'lodash-es';
-import { editSummaryValidate } from '~/lib/editSummaryValidate';
+import { summaryFormValidate } from '~/lib/summaryFormValidate';
 
-type EditSummaryFields = {
+type SummaryFormFields = {
   religionSummary: string;
   polvisSummary: string;
 };
 
-export default function EditSummary(props: CelebPageMainProps) {
-  const form = useForm<EditSummaryFields>({
+export default function SummaryForm(props: CelebPageMainProps) {
+  const form = useForm<SummaryFormFields>({
     criteriaMode: 'all',
     reValidateMode: 'onBlur',
     resolver: (formValues) => {
       return {
         values: formValues,
-        errors: editSummaryValidate(formValues),
+        errors: summaryFormValidate(formValues),
       };
     },
   });

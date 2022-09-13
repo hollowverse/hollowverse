@@ -42,7 +42,7 @@ export const editFormFieldDefinitions = {
   },
 } as const;
 
-export function editSummaryValidate(vals: EditFormFields) {
+export function summaryFormValidate(vals: EditFormFields) {
   let errors: { [fieldName: string]: string } = {};
 
   (Object.keys(vals) as Array<keyof EditFormFields>).forEach((k) => {
