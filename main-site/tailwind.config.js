@@ -19,6 +19,6 @@ module.exports = {
       return ({ addVariant }) => addVariant('default', ':where(&)');
     })(),
     require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/forms'),
+    // require('@tailwindcss/forms'),
   ],
 };

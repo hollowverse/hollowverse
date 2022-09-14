@@ -5,11 +5,12 @@ import { GA_TRACKING_ID } from '~/lib/googleAnalytics';
 
 export function useGoogleAnalyticsUniversal() {
   const router = useRouter();
-  const [pagePath, setPagePath] = useState<string | null>(null);
   const [firstTime, setFirstTime] = useState<boolean>(true);
   const debounced = useDebouncedCallback((newPagePath: string) => {
     if (!firstTime) {
-      setPagePath(newPagePath);
+      window.gtag('config', GA_TRACKING_ID, {
+        page_path: newPagePath,
+      });
     } else {
       setFirstTime(false);
     }
@@ -28,12 +29,4 @@ export function useGoogleAnalyticsUniversal() {
       router.events.off('hashChangeComplete', handleRouteChange);
     };
   }, [router.events, debounced]);
-
-  useEffect(() => {
-    if (pagePath) {
-      window.gtag('config', GA_TRACKING_ID, {
-        page_path: pagePath,
-      });
-    }
-  }, [pagePath]);
 }
