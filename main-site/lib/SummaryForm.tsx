@@ -22,7 +22,7 @@ export type SummaryFormPayload = {
 
 export default function SummaryForm(props: {
   onDone: () => any;
-  positions: Position[];
+  positions: (Position | null)[];
   celeb: Celeb;
 }) {
   const [status, setStatus] = useState<'ready' | 'loading' | 'done'>('ready');
@@ -65,8 +65,8 @@ export default function SummaryForm(props: {
     const loading = status === 'loading';
     const form = useForm<SummaryFormFields>({
       defaultValues: {
-        religionSummary: props.positions[0].summary,
-        polvisSummary: props.positions[1].summary,
+        religionSummary: props.positions[0]?.summary,
+        polvisSummary: props.positions[1]?.summary,
       },
       criteriaMode: 'all',
       reValidateMode: 'onBlur',
