@@ -1,12 +1,3 @@
-import { isValid } from 'date-fns';
-import { parseDate } from '~/lib/date';
-
-function validateDate(date: string) {
-  const parsedDate = parseDate(date);
-
-  return isValid(parsedDate);
-}
-
 export type EditFormFields = {
   religionSummary: string | null;
   polvisSummary: string;
