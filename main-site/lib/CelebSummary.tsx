@@ -8,7 +8,7 @@ import { useLocationHref } from '~/lib/useLocationHref';
 import { useUser } from '~/lib/useUser';
 
 const EditSummary = dynamic(() => import('~/lib/SummaryForm'), {
-  loading: () => <div>loading...</div>,
+  loading: () => <div>Loading...</div>,
 });
 
 export function CelebSummary(props: CelebPageMainProps) {

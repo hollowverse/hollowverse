@@ -46,7 +46,7 @@ export function summaryFormValidate(vals: EditFormFields) {
   let errors: { [fieldName: string]: string } = {};
 
   (Object.keys(vals) as Array<keyof EditFormFields>).forEach((k) => {
-    const validationResults = editFormFieldDefinitions[k].validate(vals);
+    const validationResults = editFormFieldDefinitions[k]?.validate(vals);
 
     if (validationResults) {
       errors[k] = validationResults;

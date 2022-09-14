@@ -1,9 +1,10 @@
-import { remove } from 'lodash-es';
+import { isEmpty, remove } from 'lodash-es';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { cors } from '~/lib/cors';
 import { createSummaryFormForumPost } from '~/lib/createSummaryFormForumPost';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { SummaryFormPayload } from '~/lib/SummaryForm';
+import { summaryFormValidate } from '~/lib/summaryFormValidate';
 import { getUserAuth } from '~/lib/user-auth';
 
 const ongoingSubmissions: string[] = [];
@@ -18,16 +19,21 @@ export default async function summaryFormSubmit(
 
   try {
     if (req.method !== 'POST') {
-      return res.status(500).send('Unrecognized operation');
+      return res.status(500).json({ message: 'Unrecognized operation' });
     }
 
     const auth = getUserAuth(req, res);
 
     if (!auth) {
-      return res.status(401).send('Unauthorized');
+      return res.status(401).json({ message: 'Unauthorized' });
     }
 
     const payload = JSON.parse(req.body) as SummaryFormPayload;
+
+    if (!isEmpty(summaryFormValidate(payload))) {
+      return res.status(403).json({ message: 'Bad request' });
+    }
+
     const topicTitle = `${payload.celeb.name}'s page edits`;
 
     let searchResults = await discourseApiClient({
