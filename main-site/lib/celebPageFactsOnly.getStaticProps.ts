@@ -3,12 +3,14 @@ import { Celeb } from '~/lib/celeb.projection';
 import { oneDay } from '~/lib/date';
 import { getCeleb } from '~/lib/getCeleb';
 import { getCelebFacts } from '~/lib/getCelebFacts';
+import { getCelebPositions } from '~/lib/getCelebPositions';
 import { getFactIssues } from '~/lib/getFactIssues';
 import {
   getPaginationProps,
   getPaginationRange,
 } from '~/lib/getPaginationRange';
 import { Issue } from '~/lib/issue.projection';
+import { sortPositions } from '~/lib/sortPositions';
 import { transformFact } from '~/lib/transformFact';
 import { PageProps } from '~/shared/lib/types';
 
@@ -24,7 +26,11 @@ export async function celebPageFactsOnlyGetStaticProps(
   },
   celeb: NonNullable<Awaited<ReturnType<typeof getCeleb>>>,
 ) {
-  const allFacts = await getCelebFacts(celeb._id);
+  const [allFacts, positions] = await Promise.all([
+    getCelebFacts(celeb._id),
+    getCelebPositions(celeb._id),
+  ]);
+
   const paginationRange = getPaginationRange({ p: params.p });
   const factCount = allFacts.length;
   const hasFacts = factCount > 0;
@@ -35,6 +41,7 @@ export async function celebPageFactsOnlyGetStaticProps(
 
   return {
     props: {
+      positions: sortPositions(positions),
       pageDescription: getPageDescription(celeb.name),
       pagePath:
         paginationRange.p === 1

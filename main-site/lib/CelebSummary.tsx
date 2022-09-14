@@ -2,7 +2,8 @@ import { isEmpty } from 'lodash-es';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
-import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
+import { Celeb } from '~/lib/celeb.projection';
+import { Position } from '~/lib/position.projection';
 import { TitledCard } from '~/lib/TitledCard.ui';
 import { useLocationHref } from '~/lib/useLocationHref';
 import { useUser } from '~/lib/useUser';
@@ -11,7 +12,7 @@ const EditSummary = dynamic(() => import('~/lib/SummaryForm'), {
   loading: () => <div>Loading...</div>,
 });
 
-export function CelebSummary(props: CelebPageMainProps) {
+export function CelebSummary(props: { positions: Position[]; celeb: Celeb }) {
   const [edit, setEdit] = useState(false);
   const href = useLocationHref();
   const user = useUser();

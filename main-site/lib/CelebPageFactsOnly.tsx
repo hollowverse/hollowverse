@@ -1,10 +1,10 @@
 import { AppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
-import { CelebPageProps } from '~/lib/celebPage.getStaticProps';
 import { CelebPageFacts } from '~/lib/CelebPageFacts';
 import { CelebPagePropsFactsOnly } from '~/lib/celebPageFactsOnly.getStaticProps';
 import { CelebPageHero } from '~/lib/CelebPageHero';
+import { CelebSummary } from '~/lib/CelebSummary';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { Page } from '~/lib/Page';
 import { TitledCard } from '~/lib/TitledCard.ui';
@@ -29,6 +29,8 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
+        <CelebSummary {...props} />
+
         <CelebPageFacts {...props} />
 
         <TitledCard
