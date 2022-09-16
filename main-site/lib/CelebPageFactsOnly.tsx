@@ -1,3 +1,5 @@
+import { Button } from '@mui/material';
+import { FaRegEdit, FaInfoCircle } from 'react-icons/fa';
 import { AppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
@@ -8,6 +10,8 @@ import { CelebSummary } from '~/lib/CelebSummary';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { Page } from '~/lib/Page';
 import { TitledCard } from '~/lib/TitledCard.ui';
+import EditIcon from '@mui/icons-material/Edit';
+import InfoIcon from '@mui/icons-material/Info';
 
 export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
   const name = props.celeb.name;
@@ -30,6 +34,32 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
         id="content"
       >
         <CelebSummary {...props} />
+
+        <TitledCard titledContentProps={{ title: 'Wiki' }}>
+          <div className="p-5">
+            <p>
+              Be the first to write a short wiki about {props.celeb.name}'s
+              religion and political views.
+            </p>
+
+            <div>
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <Button
+                  startIcon={<EditIcon />}
+                  size="small"
+                  variant="contained"
+                  className="w-fit bg-blue-500"
+                >
+                  Write a short wiki
+                </Button>
+
+                <Button startIcon={<InfoIcon />} size="small" className="w-fit">
+                  How to write a wiki
+                </Button>
+              </div>
+            </div>
+          </div>
+        </TitledCard>
 
         <CelebPageFacts {...props} />
 

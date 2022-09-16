@@ -42,8 +42,8 @@ export function CelebSummary(props: { positions: Position[]; celeb: Celeb }) {
           )) || (
             <div className="flex flex-col gap-5 ">
               <p>
-                No one has written a summary for {props.celeb.name}'s religion
-                and political views. We'd like to invite you to do it!
+                Be the first to write a quick summary of {props.celeb.name}'s
+                religion and political views!
               </p>
 
               <Button
