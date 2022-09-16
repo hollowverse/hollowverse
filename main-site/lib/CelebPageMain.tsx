@@ -31,7 +31,7 @@ export function CelebPageMain(props: CelebPageMainProps) {
         id="content"
       >
         <section className="flex flex-col gap-5">
-          <CelebSummary {...props} />
+          <CelebSummary celeb={props.celeb} positions={props.positions} />
 
           <Article {...props} />
 

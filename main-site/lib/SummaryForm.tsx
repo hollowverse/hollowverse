@@ -17,13 +17,13 @@ type SummaryFormFields = {
 };
 
 export type SummaryFormPayload = {
-  celeb: Celeb;
+  celeb: { name: string; slug?: string };
 } & SummaryFormFields;
 
 export default function SummaryForm(props: {
   onDone: () => any;
   positions: (Position | null)[];
-  celeb: Celeb;
+  celeb: { name: string; slug?: string };
 }) {
   const [status, setStatus] = useState<'ready' | 'loading' | 'done'>('ready');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

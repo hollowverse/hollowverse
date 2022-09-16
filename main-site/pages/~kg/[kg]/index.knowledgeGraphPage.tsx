@@ -3,30 +3,20 @@ import { CelebImage } from '~/lib/CelebImage';
 import { Page } from '~/lib/Page';
 import { Card } from '~/lib/Card.ui';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
+import { CelebSummary } from '~/lib/CelebSummary';
+import { WriteWikiCta } from '~/lib/WriteWikiCta';
 
-export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
+export default function KnowledgeGraphCeleb(props: KnowledgeGraphCelebParams) {
   return (
     <Page
       id="knowledge-graph-page"
-      title={`Request to add ${params.name}`}
-      description={`Request to add ${params.name} to Hollowverse`}
-      pathname={`/~kg/${encodeURIComponent(params['@id'])}`}
+      title={`Request to add ${props.name}`}
+      description={`Request to add ${props.name} to Hollowverse`}
+      pathname={`/~kg/${encodeURIComponent(props['@id'])}`}
       allowSearchEngines={false}
     >
       <Card topBorder={false}>
         <div className="p-5">
-          <div
-            id="kg-request-ack"
-            className="h-container flex items-center gap-3 rounded-sm bg-gradient-to-r from-blue-500 to-purple-500 p-5"
-          >
-            <FaRegCheckCircle className="text-xl text-white" />
-
-            <p className="text-white">
-              We&apos;ve received your request to add{' '}
-              <span className="font-bold">{params.name}</span>
-            </p>
-          </div>
-
           <div className="mt-5 flex flex-col items-center gap-5">
             <div
               id="kg-celeb-image"
@@ -34,19 +24,19 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
             >
               <CelebImage
                 className="rounded-md object-cover"
-                key={params.name + '-topSection-image'}
-                name={params.name}
-                src={params.image?.contentUrl}
+                key={props.name + '-topSection-image'}
+                name={props.name}
+                src={props.image?.contentUrl}
                 priority
               />
             </div>
             <h1 className="mt-5 text-center">
               <span className="mt-2 block text-4xl font-extrabold tracking-tight">
-                {params.name}
+                {props.name}
               </span>
-              {params.description && (
+              {props.description && (
                 <span className="text-base font-normal tracking-wide text-neutral-500">
-                  {' ' + params.description}
+                  {' ' + props.description}
                 </span>
               )}
             </h1>
@@ -54,20 +44,25 @@ export default function KnowledgeGraphCeleb(params: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      {/* <Card className="h-container my-5 p-5">
-        <div className="flex flex-col gap-2 text-base text-neutral-600">
-          <p>Hey! 👋</p>
+      <div className="h-container flex flex-col gap-5 py-5">
+        <Card className="p-5">
+          <div className="flex flex-col gap-2 text-base text-neutral-600">
+            <p>
+              We don't have a page for {props.name} yet. But we invite you to
+              create one!
+            </p>
 
-          <p>Help us kickstart {params.name}&apos;s page.</p>
+            <p>
+              Just write a quick summary or a wiki to create a page for{' '}
+              {props.name}.
+            </p>
+          </div>
+        </Card>
 
-          <p>
-            Send us a tip about {params.name}&apos;s politics or beliefs! You
-            can also <TweetItAtUs />
-          </p>
+        <CelebSummary celeb={{ name: props.name }} positions={[]} />
 
-          <ContributeCta name={params.name} />
-        </div>
-      </Card> */}
+        <WriteWikiCta celeb={{ name: props.name }} />
+      </div>
     </Page>
   );
 }
