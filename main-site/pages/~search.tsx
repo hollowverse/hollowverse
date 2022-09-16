@@ -85,7 +85,7 @@ export default function Search() {
         )) ||
           (!isArray(hook.searchResults?.results) && (
             <BeforeResultsContainer>
-              Search for a celebrity!
+              Search for a public figure!
             </BeforeResultsContainer>
           )) ||
           (isEmpty(hook.searchResults?.results) && (

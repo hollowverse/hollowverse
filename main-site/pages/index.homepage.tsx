@@ -76,7 +76,8 @@ export default function Index(props: HomepageProps) {
             id="homepage-search"
             className="textbox-border flex h-16 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-white hover:text-gray-400"
           >
-            Search for a celebrity <FaSearch aria-hidden className="text-xl" />
+            Search for a public figure{' '}
+            <FaSearch aria-hidden className="text-xl" />
           </a>
         </Link>
       </div>
