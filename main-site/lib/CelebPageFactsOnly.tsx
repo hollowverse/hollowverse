@@ -1,5 +1,6 @@
+import EditIcon from '@mui/icons-material/Edit';
+import InfoIcon from '@mui/icons-material/Info';
 import { Button } from '@mui/material';
-import { FaRegEdit, FaInfoCircle } from 'react-icons/fa';
 import { AppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
@@ -10,15 +11,11 @@ import { CelebSummary } from '~/lib/CelebSummary';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { Page } from '~/lib/Page';
 import { TitledCard } from '~/lib/TitledCard.ui';
-import EditIcon from '@mui/icons-material/Edit';
-import InfoIcon from '@mui/icons-material/Info';
 
 export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
-  const name = props.celeb.name;
-
   return (
     <Page
-      title={`What are the political views and Religious Beliefs of ${name}?`}
+      title={`What are the political views and Religious Beliefs of ${props.celeb.name}?`}
       description={props.pageDescription}
       allowSearchEngines
       pathname={props.pagePath}
@@ -45,6 +42,7 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
             <div>
               <div className="mt-3 flex flex-wrap items-center gap-3">
                 <Button
+                  href={getWikiContribLink()}
                   startIcon={<EditIcon />}
                   size="small"
                   variant="contained"
@@ -53,7 +51,12 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
                   Write a short wiki
                 </Button>
 
-                <Button startIcon={<InfoIcon />} size="small" className="w-fit">
+                <Button
+                  href="https://forum.hollowverse.com/t/how-to-edit-or-create-a-wiki/7333#write-a-new-wiki-2"
+                  startIcon={<InfoIcon />}
+                  size="small"
+                  className="w-fit"
+                >
                   How to write a wiki
                 </Button>
               </div>
@@ -77,4 +80,12 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
       </div>
     </Page>
   );
+
+  function getWikiContribLink() {
+    const title = `${props.celeb.name}'s wiki`;
+    const encodedTitle = encodeURIComponent(title);
+    const href = `https://forum.hollowverse.com/new-topic?title=${encodedTitle}&category=wiki`;
+
+    return href;
+  }
 }
