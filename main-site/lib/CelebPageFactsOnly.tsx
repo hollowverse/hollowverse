@@ -11,6 +11,7 @@ import { CelebSummary } from '~/lib/CelebSummary';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { Page } from '~/lib/Page';
 import { TitledCard } from '~/lib/TitledCard.ui';
+import { WriteWikiCta } from '~/lib/WriteWikiCta';
 
 export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
   return (
@@ -30,39 +31,9 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
-        <CelebSummary {...props} />
+        <CelebSummary celeb={props.celeb} positions={props.positions} />
 
-        <TitledCard titledContentProps={{ title: 'Wiki' }}>
-          <div className="p-5">
-            <p>
-              Be the first to write a short wiki about {props.celeb.name}'s
-              religion and political views.
-            </p>
-
-            <div>
-              <div className="mt-3 flex flex-wrap items-center gap-3">
-                <Button
-                  href={getWikiContribLink()}
-                  startIcon={<EditIcon />}
-                  size="small"
-                  variant="contained"
-                  className="w-fit bg-blue-500"
-                >
-                  Write a short wiki
-                </Button>
-
-                <Button
-                  href="https://forum.hollowverse.com/t/how-to-edit-or-create-a-wiki/7333#write-a-new-wiki-2"
-                  startIcon={<InfoIcon />}
-                  size="small"
-                  className="w-fit"
-                >
-                  How to write a wiki
-                </Button>
-              </div>
-            </div>
-          </div>
-        </TitledCard>
+        <WriteWikiCta celeb={props.celeb} />
 
         <CelebPageFacts {...props} />
 
@@ -80,12 +51,4 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
       </div>
     </Page>
   );
-
-  function getWikiContribLink() {
-    const title = `${props.celeb.name}'s wiki`;
-    const encodedTitle = encodeURIComponent(title);
-    const href = `https://forum.hollowverse.com/new-topic?title=${encodedTitle}&category=wiki`;
-
-    return href;
-  }
 }

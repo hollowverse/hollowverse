@@ -51,7 +51,9 @@ export default async function summaryFormSubmit(
           method: 'POST',
           body: {
             title: topicTitle,
-            raw: `Use this topic to suggest and discuss edits to <a href="https://hollowverse.com/${payload.celeb.slug}">${payload.celeb.name}'s page</a>.`,
+            raw: payload.celeb.slug
+              ? `Use this topic to suggest and discuss edits to <a href="https://hollowverse.com/${payload.celeb.slug}">${payload.celeb.name}'s page</a>.`
+              : `Use this topic to suggest and discuss edits to ${payload.celeb.name}'s page.`,
             category: 11,
           },
         },

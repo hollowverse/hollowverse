@@ -1,20 +1,22 @@
+import EditIcon from '@mui/icons-material/Edit';
 import { Button } from '@mui/material';
 import { isEmpty } from 'lodash-es';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
-import { Celeb } from '~/lib/celeb.projection';
 import { Position } from '~/lib/position.projection';
 import { TitledCard } from '~/lib/TitledCard.ui';
 import { useLocationHref } from '~/lib/useLocationHref';
 import { useUser } from '~/lib/useUser';
-import EditIcon from '@mui/icons-material/Edit';
 
 const EditSummary = dynamic(() => import('~/lib/SummaryForm'), {
   loading: () => <div>Loading...</div>,
 });
 
-export function CelebSummary(props: { positions: Position[]; celeb: Celeb }) {
+export function CelebSummary(props: {
+  positions: Position[];
+  celeb: { name: string; slug?: string };
+}) {
   const [edit, setEdit] = useState(false);
   const href = useLocationHref();
   const user = useUser();
@@ -84,7 +86,13 @@ export function CelebSummary(props: { positions: Position[]; celeb: Celeb }) {
         }}
       >
         <div className="flex flex-col gap-5 p-5" id="editorial-summary">
-          {(edit && <EditSummary {...props} onDone={() => setEdit(false)} />) ||
+          {(edit && (
+            <EditSummary
+              celeb={props.celeb}
+              positions={props.positions}
+              onDone={() => setEdit(false)}
+            />
+          )) ||
             props.positions.map((p) => (
               <div className="flex flex-col gap-2" key={p._id}>
                 <h3 className="font-semibold">{p.issue}</h3>
