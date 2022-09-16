@@ -8,6 +8,8 @@ import { summaryFormValidate } from '~/lib/summaryFormValidate';
 import { hvApiClient, post } from '~/lib/hvApiClient.v2';
 import { useState } from 'react';
 import { Json } from '~/shared/lib/types';
+import { Position } from '~/lib/position.projection';
+import { Celeb } from '~/lib/celeb.projection';
 
 type SummaryFormFields = {
   religionSummary: string;
@@ -15,12 +17,14 @@ type SummaryFormFields = {
 };
 
 export type SummaryFormPayload = {
-  celeb: CelebPageMainProps['celeb'];
+  celeb: Celeb;
 } & SummaryFormFields;
 
-export default function SummaryForm(
-  props: CelebPageMainProps & { onDone: () => any },
-) {
+export default function SummaryForm(props: {
+  onDone: () => any;
+  positions: (Position | null)[];
+  celeb: Celeb;
+}) {
   const [status, setStatus] = useState<'ready' | 'loading' | 'done'>('ready');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [forumPost, setForumPost] = useState<Json | null>(null);
@@ -61,8 +65,8 @@ export default function SummaryForm(
     const loading = status === 'loading';
     const form = useForm<SummaryFormFields>({
       defaultValues: {
-        religionSummary: props.positions[0].summary,
-        polvisSummary: props.positions[1].summary,
+        religionSummary: props.positions[0]?.summary,
+        polvisSummary: props.positions[1]?.summary,
       },
       criteriaMode: 'all',
       reValidateMode: 'onBlur',

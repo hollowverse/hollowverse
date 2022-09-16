@@ -14,8 +14,7 @@ export function NavigationTip(props: { celebName: string; issue?: Issue }) {
           {celebNameToIssue(props.celebName, props.issue)}
         </span>
       )}
-      . Have a read! Or use the links at the bottom to see evidence for a
-      specific topic
+      .
     </p>
   );
 }

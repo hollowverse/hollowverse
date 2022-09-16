@@ -1,6 +1,3 @@
-import { Alert, Avatar } from '@mui/material';
-import { isEmpty } from 'lodash-es';
-import { FaInfoCircle, FaRegEdit } from 'react-icons/fa';
 import { AppBar } from '~/lib/AppBar';
 import { Article } from '~/lib/Article';
 import { c } from '~/lib/c';
