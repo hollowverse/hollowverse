@@ -1,6 +1,10 @@
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { CHRList } from '~/lib/CHRList';
+import {
+  CelebHorizontalRect,
+  CHRContent,
+  CHRImage,
+} from '~/lib/CelebHorizontalRect';
 import { Page } from '~/lib/Page';
 import { RequestedPageProps } from '~/lib/requestedPage.getStaticProps';
 
@@ -14,44 +18,59 @@ export default function RequestedPfsPage(props: RequestedPageProps) {
       pathname={'/~requested'}
     >
       <div className="h-container p-5">
-        <CHRList
-          celebs={props.requested!}
-          title={'Requested'}
-          renderBody={(c) => {
-            return (
-              <div className="flex gap-6 p-3">
-                <p>
-                  Wiki{' '}
-                  {c.wiki ? (
-                    <CheckIcon className="text-green-600" />
-                  ) : (
-                    <CloseIcon className="text-red-600" />
-                  )}
-                </p>
+        {props.requested.map((pf: any) => {
+          return (
+            <div id="search-result" key={pf['@id'] || pf.slug}>
+              <CelebHorizontalRect
+                link={`/${pf.slug || '~kg/' + encodeURIComponent(pf['@id'])}`}
+              >
+                <CHRImage
+                  celebImageProps={{
+                    ...(pf.picture
+                      ? { picture: pf.picture }
+                      : { src: pf.image!.contentUrl }),
+                    name: pf.name,
+                    alt: pf.name,
+                  }}
+                />
 
-                <p>
-                  Religion summary{' '}
-                  {c.religionSummary ? (
-                    <CheckIcon className="text-green-600" />
-                  ) : (
-                    <CloseIcon className="text-red-600" />
-                  )}
-                </p>
+                <CHRContent
+                  title={pf.name}
+                  body={
+                    <div className="flex gap-6 p-3">
+                      <p>
+                        Wiki{' '}
+                        {pf.wiki ? (
+                          <CheckIcon className="text-green-600" />
+                        ) : (
+                          <CloseIcon className="text-red-600" />
+                        )}
+                      </p>
 
-                <p>
-                  Political Views summary{' '}
-                  {c.polvisSummary ? (
-                    <CheckIcon className="text-green-600" />
-                  ) : (
-                    <CloseIcon className="text-red-600" />
-                  )}
-                </p>
-              </div>
-            );
-          }}
-        />
+                      <p>
+                        Religion summary{' '}
+                        {pf.religionSummary ? (
+                          <CheckIcon className="text-green-600" />
+                        ) : (
+                          <CloseIcon className="text-red-600" />
+                        )}
+                      </p>
 
-        {/* <JsonView src={props} collapsed={4} /> */}
+                      <p>
+                        Political Views summary{' '}
+                        {pf.polvisSummary ? (
+                          <CheckIcon className="text-green-600" />
+                        ) : (
+                          <CloseIcon className="text-red-600" />
+                        )}
+                      </p>
+                    </div>
+                  }
+                />
+              </CelebHorizontalRect>
+            </div>
+          );
+        })}
       </div>
     </Page>
   );
