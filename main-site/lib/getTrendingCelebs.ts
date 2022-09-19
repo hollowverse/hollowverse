@@ -13,11 +13,13 @@ export type TrendingCelebs = {
   summaries: Summaries;
 }[];
 
-export function getGaTrendingPages() {
+export function getGaTrendingPages(args?: { limit?: number }) {
+  const limit = args?.limit ?? 51;
+
   return gaRunReport<
     { pagePath: string; pageTitle: string; screenPageViews: string }[]
   >({
-    limit: 51,
+    limit,
 
     dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
 
@@ -36,8 +38,8 @@ export function getGaTrendingPages() {
   });
 }
 
-export async function getTrendingCelebs() {
-  const gaTrendingPages = await getGaTrendingPages();
+export async function getTrendingCelebs(args?: { limit?: number }) {
+  const gaTrendingPages = await getGaTrendingPages(args);
 
   if (!gaTrendingPages) {
     return null;
