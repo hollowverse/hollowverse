@@ -95,7 +95,7 @@ export const Article = (props: CelebPageMainProps) => {
                     </a>
 
                     <a
-                      href="https://forum.hollowverse.com/t/how-to-edit-or-create-a-wiki/7333"
+                      href="https://forum.hollowverse.com/t/-/7333#edit-wiki-4"
                       className="flex items-center gap-2 rounded-md border border-blue-400 px-5 py-2 shadow-sm"
                     >
                       <FaInfoCircle />

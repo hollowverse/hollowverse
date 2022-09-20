@@ -25,7 +25,7 @@ export function WriteWikiCta(props: { celeb: { name: string } }) {
             </Button>
 
             <Button
-              href="https://forum.hollowverse.com/t/how-to-edit-or-create-a-wiki/7333#write-a-new-wiki-2"
+              href="https://forum.hollowverse.com/t/-/7333#write-a-new-wiki-6"
               startIcon={<InfoIcon />}
               size="small"
               className="w-fit"

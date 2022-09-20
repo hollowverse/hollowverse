@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { RiQuillPenLine } from 'react-icons/ri';
-import { Link } from '~/lib/Link';
 
 export const Footer = () => {
   return (
@@ -17,7 +16,7 @@ export const Footer = () => {
           <div className="flex-1" />
 
           <a
-            href="https://forum.hollowverse.com/t/about-hollowverse/9745"
+            href="https://forum.hollowverse.com/t/-/7333"
             id="about-link"
             className="align-center flex h-fit justify-center gap-1 self-center text-xs uppercase leading-loose text-neutral-400"
           >
