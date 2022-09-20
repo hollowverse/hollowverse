@@ -60,7 +60,7 @@ export const Article = (props: CelebPageMainProps) => {
           <div className="px-1">
             <Alert severity="info" className="m-2">
               <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col">
                   <p>
                     This wiki was last updated on{' '}
                     <span className="underline">{props.wiki.date}</span> by:
@@ -78,7 +78,7 @@ export const Article = (props: CelebPageMainProps) => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col">
                   <p>Today we're opening contributions to all readers.</p>
 
                   <p>
