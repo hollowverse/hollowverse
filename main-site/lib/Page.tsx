@@ -29,6 +29,7 @@ export function Page(props: {
           name="viewport"
           content="initial-scale=1, width=device-width"
         />
+
         <meta key="head-charset" charSet="utf-8" />
 
         <meta property="fb:app_id" content="305338489525900" />
