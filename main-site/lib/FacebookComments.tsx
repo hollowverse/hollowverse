@@ -25,10 +25,9 @@ export function FacebookComments(props: { pathname: string; limit?: number }) {
       {inView && (
         <div
           className="fb-comments"
-          data-href={`https://hollowverse.com/${props.pathname}`}
+          data-href={`http://hollowverse.com/${props.pathname}/`}
           data-mobile="true"
           data-numposts={limit}
-          data-order-by="reverse-time"
         />
       )}
 
