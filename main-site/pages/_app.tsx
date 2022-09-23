@@ -35,10 +35,11 @@ export default function App(props: MyAppProps) {
       )}
 
       <div id="fb-root" className="hidden" />
+
       <Script
         id="facebook-sdk"
         strategy="lazyOnload"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=528201628925813"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=305338489525900"
         crossOrigin="anonymous"
         nonce="ouUS8tJS"
       />
