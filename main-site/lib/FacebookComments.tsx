@@ -28,6 +28,7 @@ export function FacebookComments(props: { pathname: string; limit?: number }) {
           data-href={`http://hollowverse.com/${props.pathname}/`}
           data-mobile="true"
           data-numposts={limit}
+          data-order-by="reverse_time"
         />
       )}
 
