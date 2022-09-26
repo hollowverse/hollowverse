@@ -79,7 +79,11 @@ export const celeb = {
       type: 'url',
       description: 'The link to the forum wiki',
       validation: (Rule) =>
-        Rule.required().custom(async (value, context) => {
+        Rule.custom(async (value, context) => {
+          if (!value) {
+            return true;
+          }
+
           const topicId = getForumTopicId(value);
 
           if (!topicId) {
