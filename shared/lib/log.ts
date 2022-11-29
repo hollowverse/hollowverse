@@ -73,8 +73,8 @@ dummyNodeLogger.setSync(noop as any);
  * Invert the comments below to silence the logs during development.
  * Use `flog` where you still need logs during development
  */
-export const log = createLogger(nodeLogger, browserLogger);
-// export const log = createLogger(dummyNodeLogger, dummyBrowserLogger);
+// export const log = createLogger(nodeLogger, browserLogger);
+export const log = createLogger(dummyNodeLogger, dummyBrowserLogger);
 // export const flog = createLogger(nodeLogger, browserLogger);
 
 export function createContextLogger(context: Context) {
