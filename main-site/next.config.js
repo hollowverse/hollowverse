@@ -28,6 +28,8 @@ const nextJsConfig = {
   },
 
   images: {
+    unoptimized: true,
+
     domains: [
       'cdn.sanity.io',
       'forum.hollowverse.com',
