@@ -13,8 +13,9 @@ export const CelebGallery: React.FC<{
 }> = (props) => {
   return (
     <div className={c('flex flex-wrap justify-center', props.className)}>
-      {props.celebGalleryItems.map((celebData) => {
+      {props.celebGalleryItems.map((celebData, index) => {
         const picture = celebData.picture;
+        const isLCP = index === 0;
 
         return (
           <Link
@@ -36,6 +37,7 @@ export const CelebGallery: React.FC<{
                   key={celebData.slug + '-image'}
                   picture={picture}
                   name={celebData.name}
+                  priority={isLCP}
                 />
 
                 <p className="font-primary absolute bottom-3 left-3 z-10 text-sm font-semibold text-white">
