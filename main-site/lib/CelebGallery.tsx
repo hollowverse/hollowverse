@@ -26,9 +26,8 @@ export const CelebGallery: React.FC<{
           >
             <a
               title={`${celebData.name}'s political views`}
-              id="celeb-gallery-item"
               className={c(
-                'min-w-[150px] max-w-[150px] flex-shrink flex-grow basis-[150px] overflow-hidden',
+                'celeb-gallery-item min-w-[150px] max-w-[150px] flex-shrink flex-grow basis-[150px] overflow-hidden',
               )}
             >
               <div className="relative z-0 w-full">
