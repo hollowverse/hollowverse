@@ -20,22 +20,22 @@ export function CelebImage(props: CelebImageProps) {
   const { src, picture: _picture, name, ...rest } = props;
   const picture = _picture || placeholderImage;
 
+  const sanityImageURL = sanityImage(picture)
+    .fit('crop')
+    .crop('top')
+    .width(rest.width || 260)
+    .height(rest.height || 290)
+    .url();
+
   return (
     <Image
-      src={
-        src ||
-        sanityImage(picture)
-          .fit('crop')
-          .crop('top')
-          .width(rest.width || 260)
-          .height(rest.height || 290)
-          .url()
-      }
+      src={src || sanityImageURL}
       layout="responsive"
       width={260}
       height={290}
       objectFit="cover"
       objectPosition="top"
+      unoptimized
       blurDataURL={picture ? picture.metadata.lqip : ''}
       placeholder={picture ? 'blur' : undefined}
       alt={name}
