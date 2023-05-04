@@ -50,6 +50,18 @@ export default function App(props: MyAppProps) {
       />
 
       <Script
+        strategy="afterInteractive"
+        src="//delivery.pubgenius.io/hollowve-EXzIimSq/wrapper.js"
+      />
+
+      <Script
+        id="pubg-init"
+        dangerouslySetInnerHTML={{
+          __html: `window.pubg = window.pubg || { queue: [] };`,
+        }}
+      />
+
+      <Script
         id="gtag-init"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
