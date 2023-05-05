@@ -58,6 +58,7 @@ export const CelebGallery: React.FC<{
                     key={celebData.slug + '-image'}
                     picture={picture}
                     name={celebData.name}
+                    priority={isLCP}
                   />
 
                   <p className="font-primary absolute bottom-3 left-3 z-10 text-sm font-semibold text-white">
