@@ -11,19 +11,19 @@ html {
   -webkit-tap-highlight-color: rgb(233 213 255 / 0.5);
 }
 
-div:not([fb-xfbml-state="rendered"]).fb-comments {
+div:not([fb-xfbml-state='rendered']).fb-comments {
   display: none;
 }
 
-div[fb-xfbml-state="rendered"] + .fb-comments-spinner {
+div[fb-xfbml-state='rendered'] + .fb-comments-spinner {
   display: none;
 }
 
-div[class*=" fb_comments_count_zero"] {
+div[class*=' fb_comments_count_zero'] {
   display: none;
 }
 
-div:not([class*=" fb_comments_count_zero"]) + .fb-comments-count-zero-text {
+div:not([class*=' fb_comments_count_zero']) + .fb-comments-count-zero-text {
   display: none;
 }
 
@@ -68,5 +68,17 @@ div:not([class*=" fb_comments_count_zero"]) + .fb-comments-count-zero-text {
   .h-container {
     width: min(theme('screens.lg'), 100%);
     @apply mx-auto;
+  }
+}
+
+.ad-siderail {
+  width: 100%;
+  height: 600px;
+  max-width: 120px;
+}
+
+@media (min-width: 1256px) {
+  .ad-siderail {
+    max-width: 300px;
   }
 }

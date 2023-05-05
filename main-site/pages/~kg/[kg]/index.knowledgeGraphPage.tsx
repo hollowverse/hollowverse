@@ -5,6 +5,7 @@ import { Card } from '~/lib/Card.ui';
 import { KnowledgeGraphCelebParams } from '~/shared/lib/knowledgeGraphClient';
 import { CelebSummary } from '~/lib/CelebSummary';
 import { WriteWikiCta } from '~/lib/WriteWikiCta';
+import ContentWithSiderailContainer from '~/lib/ContentWithSiderailContainer';
 
 export default function KnowledgeGraphCeleb(props: KnowledgeGraphCelebParams) {
   return (
@@ -44,25 +45,27 @@ export default function KnowledgeGraphCeleb(props: KnowledgeGraphCelebParams) {
         </div>
       </Card>
 
-      <div className="h-container flex flex-col gap-5 py-5">
-        <Card className="p-5">
-          <div className="flex flex-col gap-2 text-base text-neutral-600">
-            <p>
-              We don't have a page for {props.name} yet. But we invite you to
-              create one!
-            </p>
+      <ContentWithSiderailContainer>
+        <div className="h-container flex flex-col gap-5 py-5">
+          <Card className="p-5">
+            <div className="flex flex-col gap-2 text-base text-neutral-600">
+              <p>
+                We don't have a page for {props.name} yet. But we invite you to
+                create one!
+              </p>
 
-            <p>
-              Just write a quick summary or a wiki to create a page for{' '}
-              {props.name}.
-            </p>
-          </div>
-        </Card>
+              <p>
+                Just write a quick summary or a wiki to create a page for{' '}
+                {props.name}.
+              </p>
+            </div>
+          </Card>
 
-        <CelebSummary celeb={{ name: props.name }} positions={[]} />
+          <CelebSummary celeb={{ name: props.name }} positions={[]} />
 
-        <WriteWikiCta celeb={{ name: props.name }} />
-      </div>
+          <WriteWikiCta celeb={{ name: props.name }} />
+        </div>
+      </ContentWithSiderailContainer>
     </Page>
   );
 }

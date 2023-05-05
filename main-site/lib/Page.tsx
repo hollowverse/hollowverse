@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import AdUnit from '~/lib/AdUnit';
 import { AppBar } from '~/lib/AppBar';
 import { Footer } from '~/lib/Footer';
 import { c } from '~/lib/c';
@@ -15,6 +16,18 @@ export function Page(props: {
   id: string;
   pathname: string;
 }) {
+  const [isAdWaitExpired, setIsAdWaitExpired] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsAdWaitExpired(true);
+    }, 1000 * 7);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  });
+
   return (
     <>
       <Head>
@@ -58,7 +71,25 @@ export function Page(props: {
         style={{ contain: 'paint' }}
         className={c('flex min-h-screen flex-col bg-gray-100', props.className)}
       >
-        {props.appBar || <AppBar />}
+        <div
+          className={c(
+            ' sticky top-0 z-50 shadow transition-all',
+            isAdWaitExpired && 'sticky top-0 md:static',
+          )}
+        >
+          <div className="flex h-[90px] w-full items-center justify-center bg-white md:h-[250px]">
+            <AdUnit deliveryId="pubg-97p-vf9" />
+          </div>
+        </div>
+
+        <div
+          className={c(
+            'sticky top-[90px] z-50 shadow',
+            isAdWaitExpired ? 'md:top-0' : 'md:top-[250px]',
+          )}
+        >
+          {props.appBar || <AppBar />}
+        </div>
 
         <main className="flex flex-1 flex-col">{props.children}</main>
 

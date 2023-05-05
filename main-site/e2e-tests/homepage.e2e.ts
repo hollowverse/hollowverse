@@ -17,7 +17,7 @@ test('Homepage E2E test', async ({ page }) => {
   await page.locator('#search-back-button').click();
 
   await page.waitForSelector('#homepage');
-  await page.locator(':nth-match(#celeb-gallery-item, 4)').click();
+  await page.locator(':nth-match(.celeb-gallery-item, 4)').click();
 
   await page.waitForSelector('#celeb-page');
   await page.locator('#logo').click();

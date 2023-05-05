@@ -15,6 +15,7 @@ import { Link } from '~/lib/Link';
 import { Card } from '~/lib/Card.ui';
 import { c } from '~/lib/c';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
+import ContentWithSiderailContainer from '~/lib/ContentWithSiderailContainer';
 
 export default function Search() {
   const hook = useSearch();
@@ -77,25 +78,27 @@ export default function Search() {
         </Card>
       }
     >
-      <div className="h-container mb-5 flex min-h-full flex-1 flex-col items-stretch text-neutral-600">
-        {(hook.loading && (
-          <BeforeResultsContainer>
-            <Spinner />
-          </BeforeResultsContainer>
-        )) ||
-          (!isArray(hook.searchResults?.results) && (
+      <ContentWithSiderailContainer className="h-container">
+        <div className="h-container mb-5 flex min-h-full flex-1 flex-col items-stretch text-neutral-600">
+          {(hook.loading && (
             <BeforeResultsContainer>
-              Search for a public figure!
+              <Spinner />
             </BeforeResultsContainer>
           )) ||
-          (isEmpty(hook.searchResults?.results) && (
-            <BeforeResultsContainer>
-              <span id="no-results">
-                We couldn&apos;t find anyone by that name!
-              </span>
-            </BeforeResultsContainer>
-          )) || <SearchResults {...hook.searchResults!} />}
-      </div>
+            (!isArray(hook.searchResults?.results) && (
+              <BeforeResultsContainer>
+                Search for a public figure!
+              </BeforeResultsContainer>
+            )) ||
+            (isEmpty(hook.searchResults?.results) && (
+              <BeforeResultsContainer>
+                <span id="no-results">
+                  We couldn&apos;t find anyone by that name!
+                </span>
+              </BeforeResultsContainer>
+            )) || <SearchResults {...hook.searchResults!} />}
+        </div>
+      </ContentWithSiderailContainer>
     </Page>
   );
 }
