@@ -36,7 +36,10 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
         <CelebSummary celeb={props.celeb} positions={props.positions} />
 
         <div className="flex h-[250px] w-full items-center justify-center">
-          <AdUnit deliveryId="pubg-j5k-b36" />
+          {/* Desktop Ad */}
+          <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+          {/* Mobile Ad */}
+          <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />
         </div>
 
         <WriteWikiCta celeb={props.celeb} />
@@ -44,7 +47,10 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
         <CelebPageFacts {...props} />
 
         <div className="flex h-[250px] w-full items-center justify-center">
-          <AdUnit deliveryId="pubg-j5k-b36" />
+          {/* Desktop Ad */}
+          <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+          {/* Mobile Ad */}
+          <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
         </div>
 
         <TitledCard
@@ -60,7 +66,10 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
         </TitledCard>
 
         <div className="flex h-[250px] w-full items-center justify-center">
-          <AdUnit deliveryId="pubg-j5k-b36" />
+          {/* Desktop Ad */}
+          <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+          {/* Mobile Ad */}
+          <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
         </div>
       </ContentWithSiderailContainer>
     </Page>

@@ -36,13 +36,19 @@ export function CelebPageMain(props: CelebPageMainProps) {
           <CelebSummary celeb={props.celeb} positions={props.positions} />
 
           <div className="flex h-[250px] w-full items-center justify-center">
-            <AdUnit deliveryId="pubg-j5k-b36" />
+            {/* Desktop Ad */}
+            <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+            {/* Mobile Ad */}
+            <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
           </div>
 
           <Article {...props} />
 
           <div className="flex h-[250px] w-full items-center justify-center">
-            <AdUnit deliveryId="pubg-j5k-b36" />
+            {/* Desktop Ad */}
+            <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+            {/* Mobile Ad */}
+            <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
           </div>
 
           <InterestingProfiles {...props} />
@@ -61,7 +67,10 @@ export function CelebPageMain(props: CelebPageMainProps) {
         </TitledCard>
       </ContentWithSiderailContainer>
       <div className="mb-5 flex h-[250px] w-full items-center justify-center">
-        <AdUnit deliveryId="pubg-j5k-b36" />
+        {/* Desktop Ad */}
+        <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+        {/* Mobile Ad */}
+        <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
       </div>
     </Page>
   );
