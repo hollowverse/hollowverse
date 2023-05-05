@@ -37,6 +37,7 @@ export const CelebGallery: React.FC<{
     >
       {props.celebGalleryItems.map((celebData, index) => {
         const picture = celebData.picture;
+        const isLCP = index === 0;
 
         return (
           <Fragment key={celebData.slug}>
