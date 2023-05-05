@@ -42,9 +42,6 @@ export default function Index(props: HomepageProps) {
       }
     >
       <div className="pb-5">
-        <div className="sticky top-0 z-50 mb-5 flex h-[50px] w-full items-center justify-center bg-white md:hidden">
-          <AdUnit deliveryId="pubg-yqn-4hl" />
-        </div>
         <div className="flex flex-col gap-7">
           <SearchField />
 
