@@ -39,6 +39,23 @@ export async function celebPageFactsOnlyGetStaticProps(
     .slice(paginationRange.start, paginationRange.end)
     .map((f) => transformFact(f));
 
+  const paginationProps = getPaginationProps(paginationRange, factCount);
+
+  const outsidePaginationRange =
+    paginationProps.currentPage < 1 ||
+    paginationProps.currentPage * paginationProps.pageSize -
+      paginationProps.totalItems >
+      paginationProps.pageSize;
+
+  if (outsidePaginationRange) {
+    return {
+      redirect: {
+        destination: `/${params.slug}`,
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
       positions: sortPositions(positions),
@@ -47,7 +64,7 @@ export async function celebPageFactsOnlyGetStaticProps(
         paginationRange.p === 1
           ? `/${params.slug}`
           : `/${params.slug}/p/${paginationRange.p}`,
-      pagination: getPaginationProps(paginationRange, factCount),
+      pagination: paginationProps,
       hasFacts,
       issues,
       facts,
