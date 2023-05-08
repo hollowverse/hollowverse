@@ -16,6 +16,16 @@ export async function celebPageMainGetStaticProps(
   },
   celeb: NonNullable<Awaited<ReturnType<typeof getCeleb>>>,
 ) {
+  if (params.p) {
+    // Pagination isn't supported for celebs with wiki pages
+    return {
+      redirect: {
+        destination: `/${params.slug}`,
+        permanent: false,
+      },
+    };
+  }
+
   const oldContent = await getParsedOldContent(celeb.oldContent!);
   const wikiTopicId = getForumTopicId(celeb.wiki!);
 

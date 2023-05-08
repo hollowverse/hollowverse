@@ -30,7 +30,7 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
       </Card>
 
       <ContentWithSiderailContainer
-        className={c('my-5 flex w-full flex-col gap-5 ', props.celeb.slug)}
+        className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
         <CelebSummary celeb={props.celeb} positions={props.positions} />
