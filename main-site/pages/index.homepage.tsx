@@ -1,5 +1,4 @@
 import { FaSearch } from 'react-icons/fa';
-import AdUnit from '~/lib/AdUnit';
 import { Logo } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
@@ -32,7 +31,7 @@ export default function Index(props: HomepageProps) {
           >
             <Logo className="justify-center text-3xl" />
 
-            <h1 className="text-center text-xl italic text-neutral-500">
+            <h1 className="text-xl italic text-center text-neutral-500">
               The Political Views
               <br />
               and Religions of Public Figures
@@ -66,7 +65,7 @@ export default function Index(props: HomepageProps) {
 
   function SearchField() {
     return (
-      <div className="h-container px-5">
+      <div className="px-5 h-container">
         <Link
           href={{
             pathname: '/~search',
@@ -76,7 +75,7 @@ export default function Index(props: HomepageProps) {
         >
           <a
             id="homepage-search"
-            className="textbox-border flex h-16 w-full items-center justify-center gap-2 bg-gray-50 text-lg text-gray-400 shadow-inner hover:bg-white hover:text-gray-400"
+            className="flex items-center justify-center w-full h-16 gap-2 text-lg text-gray-400 shadow-inner textbox-border bg-gray-50 hover:bg-white hover:text-gray-400"
           >
             Search for a public figure{' '}
             <FaSearch aria-hidden className="text-xl" />
@@ -88,9 +87,9 @@ export default function Index(props: HomepageProps) {
 
   function TrendingCelebs() {
     return (
-      <ContentWithSiderailContainer className="ml-0 mr-0 items-center">
+      <ContentWithSiderailContainer className="items-center ml-0 mr-0">
         <div className="mr-4 ml-4 flex max-w-[768px] flex-col gap-2.5 sm:min-w-[460px]">
-          <h2 className="scale-y-110 px-5 text-xl font-semibold">
+          <h2 className="px-5 text-xl font-semibold scale-y-110">
             Trending Celebrities
           </h2>
           <CelebGallery
