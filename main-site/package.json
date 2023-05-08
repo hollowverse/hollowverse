@@ -129,5 +129,8 @@
   "bugs": {
     "url": "https://github.com/hollowverse/hollowverse/issues"
   },
-  "homepage": "https://github.com/hollowverse/hollowverse#readme"
+  "homepage": "https://github.com/hollowverse/hollowverse#readme",
+  "devDependencies": {
+    "critters": "^0.0.16"
+  }
 }
