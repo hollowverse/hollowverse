@@ -9,6 +9,10 @@ const nextJsConfig = {
     buildActivity: false,
   },
 
+  experimental: {
+    optimizeCss: true,
+  },
+
   pageExtensions: [
     'tsx',
     'ts',
