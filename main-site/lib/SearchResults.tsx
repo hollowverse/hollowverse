@@ -54,14 +54,14 @@ export function SearchResults(params: NonNullable<SearchResults>) {
               </CelebHorizontalRect>
             </div>
 
-            {
+            {/* {
               // Position ad after every 5 rows and after the last row
               ((index + 1) % 5 === 0 || index === results.length - 1) && (
                 <div className="my-4 flex h-[250px] w-full items-center justify-center md:hidden">
                   <AdUnit deliveryId="pubg-gzy-tbi" />
                 </div>
               )
-            }
+            } */}
           </Fragment>
         );
       })}
