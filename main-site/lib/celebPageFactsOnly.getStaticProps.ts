@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es';
 import { Celeb } from '~/lib/celeb.projection';
-import { oneDay } from '~/lib/date';
+import { oneDay, oneWeek } from '~/lib/date';
 import { getCeleb } from '~/lib/getCeleb';
 import { getCelebFacts } from '~/lib/getCelebFacts';
 import { getCelebPositions } from '~/lib/getCelebPositions';
@@ -70,7 +70,7 @@ export async function celebPageFactsOnlyGetStaticProps(
       facts,
       celeb: celeb as Celeb,
     },
-    revalidate: oneDay,
+    revalidate: oneWeek,
   };
 
   function getPageDescription(celebName: string) {

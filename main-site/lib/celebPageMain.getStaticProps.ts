@@ -1,4 +1,4 @@
-import { formatFactDate, oneDay } from '~/lib/date';
+import { formatFactDate, oneDay, oneWeek } from '~/lib/date';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getCeleb } from '~/lib/getCeleb';
 import { getCelebPositions } from '~/lib/getCelebPositions';
@@ -54,7 +54,7 @@ export async function celebPageMainGetStaticProps(
         oldContent,
       },
     },
-    revalidate: oneDay,
+    revalidate: oneWeek,
   };
 
   function getPageDescription() {
