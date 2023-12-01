@@ -21,6 +21,9 @@ export async function getStaticProps({
   if (!celeb.wiki) {
     return celebPageFactsOnlyGetStaticProps({ params }, celeb);
   }
+  // if (!celeb.oldContent) {
+  //   return celebPageFactsOnlyGetStaticProps({ params }, celeb);
+  // }
 
   return celebPageMainGetStaticProps({ params }, celeb);
 }

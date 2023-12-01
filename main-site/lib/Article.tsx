@@ -57,7 +57,7 @@ export const Article = (props: CelebPageMainProps) => {
             ({showFootnotes ? 'Hide footnotes' : 'Show footnotes'})
           </button>
 
-          <div className="px-1">
+          {/* <div className="px-1">
             <Alert severity="info" className="m-2">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
@@ -105,7 +105,7 @@ export const Article = (props: CelebPageMainProps) => {
                 </div>
               </div>
             </Alert>
-          </div>
+          </div> */}
         </div>
       </TitledCard>
     </article>
