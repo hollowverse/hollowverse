@@ -17,49 +17,50 @@ export default async function createDiscourseApis(
   _req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (getEnv() !== 'development') {
-    return;
-  }
+  return res.status(503);
+  // if (getEnv() !== 'development') {
+  //   return;
+  // }
 
-  if (true === true) {
-    throw new Error('Uncomment this error to enable this API end point');
-  }
+  // if (true === true) {
+  //   throw new Error('Uncomment this error to enable this API end point');
+  // }
 
-  try {
-    log('info', 'Discourse APIs updated');
+  // try {
+  //   log('info', 'Discourse APIs updated');
 
-    // await discourseApiClient({
-    //   api: 'admin/plugins/explorer/queries/5',
-    //   payload: {
-    //     method: 'PUT',
-    //     type: 'form',
-    //     body: {
-    //       query: {
-    //         name: 'Top contributors by celebrity',
-    //         description: 'Get the top contributors of a specific celebrity',
-    //         sql: celebTopContributorsPsql,
-    //       },
-    //     },
-    //   },
-    // });
+  //   // await discourseApiClient({
+  //   //   api: 'admin/plugins/explorer/queries/5',
+  //   //   payload: {
+  //   //     method: 'PUT',
+  //   //     type: 'form',
+  //   //     body: {
+  //   //       query: {
+  //   //         name: 'Top contributors by celebrity',
+  //   //         description: 'Get the top contributors of a specific celebrity',
+  //   //         sql: celebTopContributorsPsql,
+  //   //       },
+  //   //     },
+  //   //   },
+  //   // });
 
-    // await discourseApiClient({
-    //   api: 'admin/plugins/explorer/queries/6',
-    //   payload: {
-    //     method: 'PUT',
-    //     type: 'form',
-    //     body: {
-    //       query: {
-    //         name: 'Fact page data',
-    //         description: 'Data needed on the Fact page',
-    //         sql: factPageForumDataPsql,
-    //       },
-    //     },
-    //   },
-    // });
+  //   // await discourseApiClient({
+  //   //   api: 'admin/plugins/explorer/queries/6',
+  //   //   payload: {
+  //   //     method: 'PUT',
+  //   //     type: 'form',
+  //   //     body: {
+  //   //       query: {
+  //   //         name: 'Fact page data',
+  //   //         description: 'Data needed on the Fact page',
+  //   //         sql: factPageForumDataPsql,
+  //   //       },
+  //   //     },
+  //   //   },
+  //   // });
 
-    res.json({ ok: 'Discourse APIs updated' });
-  } catch (e) {
-    res.json({ error: JSON.stringify(e) });
-  }
+  //   res.json({ ok: 'Discourse APIs updated' });
+  // } catch (e) {
+  //   res.json({ error: JSON.stringify(e) });
+  // }
 }
