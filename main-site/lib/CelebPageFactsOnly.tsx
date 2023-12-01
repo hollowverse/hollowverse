@@ -42,7 +42,7 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
           <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />
         </div> */}
 
-        <WriteWikiCta celeb={props.celeb} />
+        {/* <WriteWikiCta celeb={props.celeb} /> */}
 
         <CelebPageFacts {...props} />
 
