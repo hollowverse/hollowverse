@@ -77,7 +77,7 @@ export function CelebSummary(props: {
                   className="h-link flex items-center text-base font-normal"
                 >
                   <span className="flex items-center gap-1 ">
-                    <FaRegEdit /> Edit
+                    {/* <FaRegEdit /> Edit */}
                   </span>
                 </button>
               )}

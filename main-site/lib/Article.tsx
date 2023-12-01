@@ -34,7 +34,7 @@ export const Article = (props: CelebPageMainProps) => {
                 className="h-link flex items-center text-base font-normal"
               >
                 <span className="flex items-center gap-1 ">
-                  <FaRegEdit /> Edit
+                  {/* <FaRegEdit /> Edit */}
                 </span>
               </a>
             </span>
