@@ -60,7 +60,7 @@ export function AppBar() {
               </a>
             </Link>
 
-            <button
+            {/* <button
               className="flex items-center gap-1 p-1.5 font-normal text-neutral-400"
               onClick={() => setOpen(!open)}
             >
@@ -72,7 +72,7 @@ export function AppBar() {
               <span className="hidden text-base font-normal uppercase text-neutral-400 md:block">
                 Menu
               </span>
-            </button>
+            </button> */}
           </div>
         </div>
 
