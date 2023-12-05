@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { isEmpty } from 'lodash-es';
+import { oneWeek, oneYear } from '~/lib/date';
 import { knowledgeGraphClient } from '~/shared/lib/knowledgeGraphClient';
 import { sanityClient } from '~/shared/lib/sanityio';
 
@@ -61,5 +62,6 @@ export const getStaticProps = async ({
 
   return {
     props: kgCelebs[0].result,
+    revalidate: oneYear,
   };
 };

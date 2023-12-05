@@ -1,6 +1,7 @@
 import groq from 'groq';
 import { first, last, startsWith } from 'lodash-es';
 import { Celeb, celebProjection } from '~/lib/celeb.projection';
+import { oneYear } from '~/lib/date';
 import { getGaTrendingPages } from '~/lib/getTrendingCelebs';
 import { getKgSearchId } from '~/lib/kgPage.getStaticProps';
 import { Position } from '~/lib/position.projection';
@@ -63,6 +64,7 @@ export async function getStaticProps() {
 
   return {
     props: { requested, kgIds, pfsWithoutPages },
+    revalidate: oneYear,
   };
 
   function getIds() {
