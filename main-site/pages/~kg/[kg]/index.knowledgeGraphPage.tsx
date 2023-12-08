@@ -47,7 +47,8 @@ export default function KnowledgeGraphCeleb(props: KnowledgeGraphCelebParams) {
       <div className="h-container flex flex-col gap-5 py-5">
         <Card className="p-5">
           <div className="flex flex-col gap-2 text-base text-neutral-600">
-            <p>
+            <p>We don't have a page for {props.name} yet.</p>
+            {/* <p>
               We don't have a page for {props.name} yet. But we invite you to
               create one!
             </p>
@@ -55,13 +56,13 @@ export default function KnowledgeGraphCeleb(props: KnowledgeGraphCelebParams) {
             <p>
               Just write a quick summary or a wiki to create a page for{' '}
               {props.name}.
-            </p>
+            </p> */}
           </div>
         </Card>
 
         <CelebSummary celeb={{ name: props.name }} positions={[]} />
 
-        <WriteWikiCta celeb={{ name: props.name }} />
+        {/* <WriteWikiCta celeb={{ name: props.name }} /> */}
       </div>
     </Page>
   );

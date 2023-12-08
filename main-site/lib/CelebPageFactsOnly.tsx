@@ -33,7 +33,7 @@ export default function CelebPageFactsOnly(props: CelebPagePropsFactsOnly) {
       >
         <CelebSummary celeb={props.celeb} positions={props.positions} />
 
-        <WriteWikiCta celeb={props.celeb} />
+        {/* <WriteWikiCta celeb={props.celeb} /> */}
 
         <CelebPageFacts {...props} />
 
