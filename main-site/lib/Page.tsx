@@ -16,17 +16,17 @@ export function Page(props: {
   id: string;
   pathname: string;
 }) {
-  const [isAdWaitExpired, setIsAdWaitExpired] = useState(true);
+  const [isAdWaitExpired, setIsAdWaitExpired] = useState(false);
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setIsAdWaitExpired(true);
-  //   }, 1000 * 7);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsAdWaitExpired(true);
+    }, 1000 * 7);
 
-  //   return () => {
-  //     clearTimeout(timeout);
-  //   };
-  // });
+    return () => {
+      clearTimeout(timeout);
+    };
+  });
 
   return (
     <>
@@ -71,8 +71,7 @@ export function Page(props: {
         style={{ contain: 'paint' }}
         className={c('flex min-h-screen flex-col bg-gray-100', props.className)}
       >
-        {/* <div
-          style={{ display: 'none' }}
+        <div
           className={c(
             'sticky top-0 z-50 hidden shadow transition-all md:block',
             isAdWaitExpired && 'sticky top-0 md:static',
@@ -81,19 +80,17 @@ export function Page(props: {
           <div className="flex h-[90px] w-full items-center justify-center bg-white md:h-[250px]">
             <AdUnit deliveryId="pubg-97p-vf9" />
           </div>
-        </div> */}
+        </div>
 
-        {/* <div className={c('sticky top-0 z-50 shadow transition-all md:hidden')}>
+        <div className={c('sticky top-0 z-50 shadow transition-all md:hidden')}>
           <div className="flex h-[50px] w-full items-center justify-center bg-white md:h-[250px]">
             <AdUnit deliveryId="pubg-yqn-4hl" />
           </div>
-        </div> */}
+        </div>
 
         <div
           className={c(
-            'sticky z-50 shadow',
-            // 'top-[50px]',
-            'top-0',
+            'sticky top-[50px] z-50 shadow',
             isAdWaitExpired ? 'md:top-0' : 'md:top-[250px]',
           )}
         >

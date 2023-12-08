@@ -35,21 +35,21 @@ export function CelebPageMain(props: CelebPageMainProps) {
         <section className="flex flex-col gap-5">
           <CelebSummary celeb={props.celeb} positions={props.positions} />
 
-          {/* <div
-            className="flex h-[250px] w-full items-center justify-center"
-          >
+          <div className="flex h-[250px] w-full items-center justify-center">
+            {/* Desktop Ad */}
             <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+            {/* Mobile Ad */}
             <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
-          </div> */}
+          </div>
 
           <Article {...props} />
 
-          {/* <div
-            className="flex h-[250px] w-full items-center justify-center"
-          >
+          <div className="flex h-[250px] w-full items-center justify-center">
+            {/* Desktop Ad */}
             <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+            {/* Mobile Ad */}
             <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
-          </div> */}
+          </div>
 
           <InterestingProfiles {...props} />
         </section>
@@ -66,12 +66,12 @@ export function CelebPageMain(props: CelebPageMainProps) {
           </div>
         </TitledCard>
       </ContentWithSiderailContainer>
-      {/* <div
-        className="mb-5 flex h-[250px] w-full items-center justify-center"
-      >
+      <div className="mb-5 flex h-[250px] w-full items-center justify-center">
+        {/* Desktop Ad */}
         <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
+        {/* Mobile Ad */}
         <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
-      </div> */}
+      </div>
     </Page>
   );
 }

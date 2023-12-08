@@ -71,14 +71,14 @@ export const CelebGallery: React.FC<{
               </a>
             </Link>
 
-            {/* {
+            {
               // Position ad after every 5 rows
               (index + 1) % (itemsPerRow * 5) === 0 && (
                 <div className="my-4 flex h-[250px] w-full items-center justify-center md:hidden">
                   <AdUnit deliveryId="pubg-gzy-tbi" />
                 </div>
               )
-            } */}
+            }
           </Fragment>
         );
       })}
