@@ -4,4 +4,4 @@ you some times run into the issue where the build will not run when you want it 
 
 Edit this file and make a commit to trigger the build manually.
 
-🤔 😀👍
+🤔 😀
