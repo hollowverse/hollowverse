@@ -47,7 +47,7 @@ export const Article = (props: CelebPageMainProps) => {
             className={c('break-normal p-5 pb-0 leading-relaxed', {
               'show-footnotes': showFootnotes,
             })}
-            dangerouslySetInnerHTML={{ __html: props.wiki.content }}
+            dangerouslySetInnerHTML={{ __html: props.celeb.oldContent.article }}
           />
 
           <button
