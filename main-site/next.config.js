@@ -54,15 +54,6 @@ const nextJsConfig = {
     locales: ['en'],
     defaultLocale: 'en',
   },
-
-  async rewrites() {
-    return [
-      {
-        source: '/ads.txt',
-        destination: 'https://adstxt.pubgenius.io/hollowverse.com/ads.txt',
-      },
-    ];
-  },
 };
 
 module.exports = withBundleAnalyzer(nextJsConfig);

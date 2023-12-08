@@ -2,7 +2,7 @@ import Alert from '~/lib/Alert.ui';
 import { AppBar } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
-import { oneDay } from '~/lib/date';
+import { oneDay, oneMonth, oneWeek } from '~/lib/date';
 import { EditForm } from '~/lib/EditForm-old';
 import { getCeleb } from '~/lib/getCeleb';
 import {
@@ -93,7 +93,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       slug: params.slug,
     },
 
-    revalidate: oneDay,
+    revalidate: oneWeek,
   };
 }
 

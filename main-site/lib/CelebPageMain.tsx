@@ -1,4 +1,3 @@
-import AdUnit from '~/lib/AdUnit';
 import { AppBar } from '~/lib/AppBar';
 import { Article } from '~/lib/Article';
 import { c } from '~/lib/c';
@@ -6,7 +5,6 @@ import { Card } from '~/lib/Card.ui';
 import { CelebPageHero } from '~/lib/CelebPageHero';
 import { CelebPageMainProps } from '~/lib/celebPageMain.getStaticProps';
 import { CelebSummary } from '~/lib/CelebSummary';
-import ContentWithSiderailContainer from '~/lib/ContentWithSiderailContainer';
 import { FacebookComments } from '~/lib/FacebookComments';
 import { InterestingProfiles } from '~/lib/InterestingProfiles';
 import { Page } from '~/lib/Page';
@@ -28,28 +26,14 @@ export function CelebPageMain(props: CelebPageMainProps) {
         <CelebPageHero {...props} />
       </Card>
 
-      <ContentWithSiderailContainer
+      <div
         className={c('h-container my-5 flex flex-col gap-5', props.celeb.slug)}
         id="content"
       >
         <section className="flex flex-col gap-5">
           <CelebSummary celeb={props.celeb} positions={props.positions} />
 
-          {/* <div
-            className="flex h-[250px] w-full items-center justify-center"
-          >
-            <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
-            <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
-          </div> */}
-
           <Article {...props} />
-
-          {/* <div
-            className="flex h-[250px] w-full items-center justify-center"
-          >
-            <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
-            <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
-          </div> */}
 
           <InterestingProfiles {...props} />
         </section>
@@ -61,17 +45,11 @@ export function CelebPageMain(props: CelebPageMainProps) {
             ),
           }}
         >
-          <div id="fact-page-comments" className="mx-3 my-1">
+          <div id="fact-page-comments" className="my-1 mx-3">
             <FacebookComments pathname={`/${props.celeb.slug}`} />
           </div>
         </TitledCard>
-      </ContentWithSiderailContainer>
-      {/* <div
-        className="mb-5 flex h-[250px] w-full items-center justify-center"
-      >
-        <AdUnit deliveryId="pubg-j5k-b36" className="hidden md:block" />
-        <AdUnit deliveryId="pubg-48d-8fu" className="md:hidden" />{' '}
-      </div> */}
+      </div>
     </Page>
   );
 }

@@ -12,17 +12,19 @@ export const Footer = () => {
             alt="Hollowverse: Important people and their beliefs"
             src="/images/logo.svg"
           />
-
           <div className="flex-1" />
-
-          <a
-            href="https://forum.hollowverse.com/t/-/7333"
-            id="about-link"
-            className="align-center flex h-fit justify-center gap-1 self-center text-xs uppercase leading-loose text-neutral-400"
-          >
-            <RiQuillPenLine className="self-center text-base" />
-            About Hollowverse
-          </a>
+          <RiQuillPenLine className="self-center text-base" />
+          <span className="align-center flex h-fit justify-center gap-1 self-center text-xs uppercase leading-loose text-neutral-400">
+            This website is for sale for $25,000 USD.{' '}
+            <a
+              className="bold underline"
+              href="mailto:msafi+hollowversesale@msafi.com"
+              id="about-link"
+            >
+              Email me
+            </a>
+            , if interested.
+          </span>
         </div>
       </div>
     </footer>

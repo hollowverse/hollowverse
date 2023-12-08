@@ -11,13 +11,14 @@ type LoginReturnParams = {
 };
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
-  const loginReturnParams = req.query as LoginReturnParams;
+  return res.status(503);
+  // const loginReturnParams = req.query as LoginReturnParams;
 
-  if (loginReturnParams.sso && loginReturnParams.sig) {
-    return handleLoginReturn(req, res);
-  } else {
-    return handleLoginRequest(req, res);
-  }
+  // if (loginReturnParams.sso && loginReturnParams.sig) {
+  //   return handleLoginReturn(req, res);
+  // } else {
+  //   return handleLoginRequest(req, res);
+  // }
 }
 
 function handleLoginRequest(req: NextApiRequest, res: NextApiResponse) {

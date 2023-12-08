@@ -1,4 +1,4 @@
-import { formatFactDate, oneDay } from '~/lib/date';
+import { formatFactDate, oneDay, oneWeek } from '~/lib/date';
 import { discourseApiClient } from '~/lib/discourseApiClient';
 import { getCeleb } from '~/lib/getCeleb';
 import { getCelebPositions } from '~/lib/getCelebPositions';
@@ -27,25 +27,26 @@ export async function celebPageMainGetStaticProps(
   }
 
   const oldContent = await getParsedOldContent(celeb.oldContent!);
-  const wikiTopicId = getForumTopicId(celeb.wiki!);
+  // const wikiTopicId = getForumTopicId(celeb.wiki!);
 
-  const [topic, positions] = await Promise.all([
-    discourseApiClient({ api: `t/${wikiTopicId}.json` }),
-    getCelebPositions(celeb._id),
-  ]);
-  const topicPost = topic.post_stream.posts[0];
+  const positions = await getCelebPositions(celeb._id);
+  // const [topic, positions] = await Promise.all([
+  //   discourseApiClient({ api: `t/${wikiTopicId}.json` }),
+  //   getCelebPositions(celeb._id),
+  // ]);
+  // const topicPost = topic.post_stream.posts[0];
 
-  const wiki = {
-    content: topicPost.cooked as string,
-    date: formatFactDate(topicPost.created_at?.split('T')?.[0]) as string,
-    username: topicPost.username as string,
-    name: topicPost.name as string,
-    avatar: topicPost.avatar_template as string,
-  };
+  // const wiki = {
+  //   content: topicPost.cooked as string,
+  //   date: formatFactDate(topicPost.created_at?.split('T')?.[0]) as string,
+  //   username: topicPost.username as string,
+  //   name: topicPost.name as string,
+  //   avatar: topicPost.avatar_template as string,
+  // };
 
   return {
     props: {
-      wiki,
+      // wiki,
       positions: sortPositions(positions),
       pageDescription: getPageDescription(),
       pagePath: `/${params.slug}`,
@@ -54,7 +55,7 @@ export async function celebPageMainGetStaticProps(
         oldContent,
       },
     },
-    revalidate: oneDay,
+    revalidate: oneWeek,
   };
 
   function getPageDescription() {

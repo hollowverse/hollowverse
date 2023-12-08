@@ -3,7 +3,6 @@ import { Logo } from '~/lib/AppBar';
 import { c } from '~/lib/c';
 import { Card } from '~/lib/Card.ui';
 import { CelebGallery } from '~/lib/CelebGallery';
-import ContentWithSiderailContainer from '~/lib/ContentWithSiderailContainer';
 import { HomepageProps } from '~/lib/homepage.getStaticProps';
 import { Link } from '~/lib/Link';
 import { LovelyTopBorder } from '~/lib/LovelyTopBorder';
@@ -40,7 +39,7 @@ export default function Index(props: HomepageProps) {
         </Card>
       }
     >
-      <div className="pb-5">
+      <div className="h-container py-5">
         <div className="flex flex-col gap-7">
           <SearchField />
 
@@ -65,7 +64,7 @@ export default function Index(props: HomepageProps) {
 
   function SearchField() {
     return (
-      <div className="px-5 h-container">
+      <div className="px-5">
         <Link
           href={{
             pathname: '/~search',
@@ -87,28 +86,28 @@ export default function Index(props: HomepageProps) {
 
   function TrendingCelebs() {
     return (
-      <ContentWithSiderailContainer className="items-center ml-0 mr-0">
-        <div className="mr-4 ml-4 flex max-w-[768px] flex-col gap-2.5 sm:min-w-[460px]">
-          <h2 className="px-5 text-xl font-semibold scale-y-110">
-            Trending Celebrities
-          </h2>
+      <div className="flex flex-col gap-2.5">
+        <h2 className="scale-y-110 px-5 text-xl font-semibold">
+          Trending Celebrities
+        </h2>
+
+        <div className="flex justify-center">
           <CelebGallery
             prefetch={false}
             celebGalleryItems={props.trendingCelebs}
             className="flex flex-row gap-[1px]"
           />
         </div>
-
         {/* <SideScroller>
         </SideScroller> */}
-      </ContentWithSiderailContainer>
+      </div>
     );
   }
 
   // function TrendingIssues() {
   //   return (
   //     <div className="flex flex-col gap-2.5">
-  //       <h2 className="px-5 text-xl font-semibold scale-y-110">Issues</h2>
+  //       <h2 className="scale-y-110 px-5 text-xl font-semibold">Issues</h2>
 
   //       <div className="border-y">
   //         <IssueSelector
@@ -126,7 +125,7 @@ export default function Index(props: HomepageProps) {
   // function LatestFacts() {
   //   return (
   //     <div className="flex flex-col gap-2.5">
-  //       <h2 className="px-5 text-xl font-semibold scale-y-110">
+  //       <h2 className="scale-y-110 px-5 text-xl font-semibold">
   //         Recently added
   //       </h2>
 

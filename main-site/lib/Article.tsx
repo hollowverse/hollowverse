@@ -34,7 +34,7 @@ export const Article = (props: CelebPageMainProps) => {
                 className="h-link flex items-center text-base font-normal"
               >
                 <span className="flex items-center gap-1 ">
-                  <FaRegEdit /> Edit
+                  {/* <FaRegEdit /> Edit */}
                 </span>
               </a>
             </span>
@@ -47,7 +47,7 @@ export const Article = (props: CelebPageMainProps) => {
             className={c('break-normal p-5 pb-0 leading-relaxed', {
               'show-footnotes': showFootnotes,
             })}
-            dangerouslySetInnerHTML={{ __html: props.wiki.content }}
+            dangerouslySetInnerHTML={{ __html: props.celeb.oldContent.article }}
           />
 
           <button
@@ -57,7 +57,7 @@ export const Article = (props: CelebPageMainProps) => {
             ({showFootnotes ? 'Hide footnotes' : 'Show footnotes'})
           </button>
 
-          <div className="px-1">
+          {/* <div className="px-1">
             <Alert severity="info" className="m-2">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col">
@@ -105,7 +105,7 @@ export const Article = (props: CelebPageMainProps) => {
                 </div>
               </div>
             </Alert>
-          </div>
+          </div> */}
         </div>
       </TitledCard>
     </article>

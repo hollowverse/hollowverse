@@ -13,74 +13,75 @@ export default async function summaryFormSubmit(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  cors(req, res);
+  return res.status(503);
+  // cors(req, res);
 
-  let userId: string | null = '';
+  // let userId: string | null = '';
 
-  try {
-    if (req.method !== 'POST') {
-      return res.status(500).json({ message: 'Unrecognized operation' });
-    }
+  // try {
+  //   if (req.method !== 'POST') {
+  //     return res.status(500).json({ message: 'Unrecognized operation' });
+  //   }
 
-    const auth = getUserAuth(req, res);
+  //   const auth = getUserAuth(req, res);
 
-    if (!auth) {
-      return res.status(401).json({ message: 'Unauthorized' });
-    }
+  //   if (!auth) {
+  //     return res.status(401).json({ message: 'Unauthorized' });
+  //   }
 
-    const payload = JSON.parse(req.body) as SummaryFormPayload;
+  //   const payload = JSON.parse(req.body) as SummaryFormPayload;
 
-    if (!isEmpty(summaryFormValidate(payload))) {
-      return res.status(403).json({ message: 'Bad request' });
-    }
+  //   if (!isEmpty(summaryFormValidate(payload))) {
+  //     return res.status(403).json({ message: 'Bad request' });
+  //   }
 
-    const topicTitle = `${payload.celeb.name}'s page edits`;
+  //   const topicTitle = `${payload.celeb.name}'s page edits`;
 
-    let searchResults = await discourseApiClient({
-      api: `search.json?q=${encodeURI(
-        `${topicTitle} @hollowverse #edits order:latest_topic in:title status:open`,
-      )}`,
-    });
+  //   let searchResults = await discourseApiClient({
+  //     api: `search.json?q=${encodeURI(
+  //       `${topicTitle} @hollowverse #edits order:latest_topic in:title status:open`,
+  //     )}`,
+  //   });
 
-    const topic =
-      searchResults?.topics?.[0] ||
-      (await discourseApiClient({
-        api: 'posts.json',
-        username: 'hollowverse',
-        payload: {
-          method: 'POST',
-          body: {
-            title: topicTitle,
-            raw: payload.celeb.slug
-              ? `Use this topic to suggest and discuss edits to <a href="https://hollowverse.com/${payload.celeb.slug}">${payload.celeb.name}'s page</a>.`
-              : `Use this topic to suggest and discuss edits to ${payload.celeb.name}'s page.`,
-            category: 11,
-          },
-        },
-      }));
+  //   const topic =
+  //     searchResults?.topics?.[0] ||
+  //     (await discourseApiClient({
+  //       api: 'posts.json',
+  //       username: 'hollowverse',
+  //       payload: {
+  //         method: 'POST',
+  //         body: {
+  //           title: topicTitle,
+  //           raw: payload.celeb.slug
+  //             ? `Use this topic to suggest and discuss edits to <a href="https://hollowverse.com/${payload.celeb.slug}">${payload.celeb.name}'s page</a>.`
+  //             : `Use this topic to suggest and discuss edits to ${payload.celeb.name}'s page.`,
+  //           category: 11,
+  //         },
+  //       },
+  //     }));
 
-    const post = await discourseApiClient({
-      api: 'posts.json',
-      username: auth.username,
-      payload: {
-        method: 'POST',
-        body: {
-          topic_id: topic.topic_id || topic.id,
-          raw: createSummaryFormForumPost(payload),
-        },
-      },
-    });
+  //   const post = await discourseApiClient({
+  //     api: 'posts.json',
+  //     username: auth.username,
+  //     payload: {
+  //       method: 'POST',
+  //       body: {
+  //         topic_id: topic.topic_id || topic.id,
+  //         raw: createSummaryFormForumPost(payload),
+  //       },
+  //     },
+  //   });
 
-    return res.status(200).json(post);
-  } catch (err: any) {
-    removeUserFromOngoingSubmissions(userId);
+  //   return res.status(200).json(post);
+  // } catch (err: any) {
+  //   removeUserFromOngoingSubmissions(userId);
 
-    return res
-      .status(500)
-      .json(JSON.stringify(err, Object.getOwnPropertyNames(err)));
-  }
+  //   return res
+  //     .status(500)
+  //     .json(JSON.stringify(err, Object.getOwnPropertyNames(err)));
+  // }
 
-  function removeUserFromOngoingSubmissions(_userId: string | null) {
-    remove(ongoingSubmissions, (uid) => uid === _userId);
-  }
+  // function removeUserFromOngoingSubmissions(_userId: string | null) {
+  //   remove(ongoingSubmissions, (uid) => uid === _userId);
+  // }
 }

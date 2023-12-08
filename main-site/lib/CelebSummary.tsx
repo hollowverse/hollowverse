@@ -21,7 +21,8 @@ export function CelebSummary(props: {
   const href = useLocationHref();
   const user = useUser();
 
-  return isEmpty(props.positions) ? <AskForSummaryContrib /> : <Summary />;
+  return isEmpty(props.positions) ? <div /> : <Summary />;
+  // return isEmpty(props.positions) ? <AskForSummaryContrib /> : <Summary />;
 
   function onClick() {
     if (user) {
@@ -77,7 +78,7 @@ export function CelebSummary(props: {
                   className="h-link flex items-center text-base font-normal"
                 >
                   <span className="flex items-center gap-1 ">
-                    <FaRegEdit /> Edit
+                    {/* <FaRegEdit /> Edit */}
                   </span>
                 </button>
               )}
